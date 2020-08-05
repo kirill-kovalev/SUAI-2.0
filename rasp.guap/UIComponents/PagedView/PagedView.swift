@@ -12,7 +12,7 @@ class PagedView : UIView, UIScrollViewDelegate{
     
     let scrollView:UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
-        //scrollView.isPagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         
@@ -54,7 +54,7 @@ class PagedView : UIView, UIScrollViewDelegate{
         
         scrollView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-15)
+            make.bottom.equalTo(pageControl.snp.top)
         }
         pageControl.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
@@ -64,7 +64,13 @@ class PagedView : UIView, UIScrollViewDelegate{
         
     }
     
-    
+    func add(asChild childVC: UIViewController, of parentVC: UIViewController){
+        
+        self.addSubview(childVC.view)
+//        childVC.view.frame = parentVC.view.bounds
+//        childVC.didMove(toParent: parentVC)
+        
+    }
     
     override func addSubview(_ view: UIView) {
         self.container.addSubview(view)
@@ -76,11 +82,17 @@ class PagedView : UIView, UIScrollViewDelegate{
     
     private func setupViewConstraints(_ view: UIView){
         view.snp.makeConstraints { (make) in
-            make.size.equalTo(self.scrollView.contentLayoutGuide)
+            make.height.width.equalTo(self.scrollView)
+            if views.last != nil {
+                make.left.equalTo(views.last!.snp.right)
+            }else{
+                print(views)
+                make.left.equalToSuperview()
+            }
         }
         container.snp.remakeConstraints { (make) in
-            make.top.bottom.leading.height.equalTo(self.scrollView.contentLayoutGuide)
-            make.width.equalTo(self.scrollView.contentLayoutGuide).multipliedBy(self.pageControl.numberOfPages)
+            make.top.bottom.leading.trailing.equalTo(self.scrollView)
+            make.width.equalTo(self.scrollView).multipliedBy(self.pageControl.numberOfPages+1)
         }
     }
     
