@@ -9,8 +9,9 @@
 import UIKit
 
 class PagedView : UIView, UIScrollViewDelegate{
+    var delegate : PagedViewDelegate?
     
-    let scrollView:UIScrollView = {
+    private let scrollView:UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -25,7 +26,8 @@ class PagedView : UIView, UIScrollViewDelegate{
         pageControl.currentPage = 0
         return pageControl;
     }()
-    let container: UIStackView = {
+    
+    private let container: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         return stack
@@ -40,7 +42,7 @@ class PagedView : UIView, UIScrollViewDelegate{
         scrollView.delegate = self
         addViews()
         setupConstraints()
-        
+        pageControl.addTarget(self, action: #selector(self.pageControlHandler(_:)), for: .touchUpInside)
         
     }
     
@@ -60,17 +62,12 @@ class PagedView : UIView, UIScrollViewDelegate{
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(15)
         }
-
+        container.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.height.equalToSuperview()
+        }
         
     }
     
-    func add(asChild childVC: UIViewController, of parentVC: UIViewController){
-        
-        self.addSubview(childVC.view)
-//        childVC.view.frame = parentVC.view.bounds
-//        childVC.didMove(toParent: parentVC)
-        
-    }
     
     override func addSubview(_ view: UIView) {
         self.container.addSubview(view)
@@ -91,7 +88,7 @@ class PagedView : UIView, UIScrollViewDelegate{
             }
         }
         container.snp.remakeConstraints { (make) in
-            make.top.bottom.leading.trailing.equalTo(self.scrollView)
+            make.top.bottom.leading.trailing.equalToSuperview()
             make.width.equalTo(self.scrollView).multipliedBy(self.pageControl.numberOfPages+1)
         }
     }
@@ -99,10 +96,16 @@ class PagedView : UIView, UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         self.pageControl.currentPage = Int(pageNumber)
+        self.delegate?.pagedViewDidChanged(Int(pageNumber))
     }
-    func updatesSize(){
-        self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(self.pageControl.numberOfPages), height: self.scrollView.frame.height)
+    @objc private func pageControlHandler(_ sender:UIPageControl){
+        let pageNumber = sender.currentPage
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView.contentOffset = CGPoint(x: Int(self.scrollView.frame.size.width) * pageNumber, y: 0)
+        }
+        self.delegate?.pagedViewDidChanged(pageNumber)
     }
+    
     
     
     required init?(coder: NSCoder) {
