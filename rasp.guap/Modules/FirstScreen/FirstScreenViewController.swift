@@ -20,6 +20,9 @@ class FirstScreenViewController: ViewController<FirstScreenView>{
         rootView.btn2.addTarget(action: { (sender) in
             self.navigationController?.pushViewController(StartScreenViewController(), animated: true)
         }, for: .touchUpInside)
+        rootView.btn3.addTarget(action: { (btn) in
+            print("hey!")
+        }, for: .touchDown)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

@@ -24,17 +24,22 @@ class FirstScreenView: MainView {
         return btn;
     }()
     let btn2 :Button = {
-           let btn = Button(frame: .zero)
-           btn.translatesAutoresizingMaskIntoConstraints = false
-           btn.setTitle("Go", for: .normal)
-           btn.setTitleColor(.textFirstLevel, for: .normal)
-           return btn;
-       }()
+        let btn = Button(frame: .zero)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Go", for: .normal)
+        btn.setTitleColor(.textFirstLevel, for: .normal)
+        return btn;
+    }()
+    let btn3 :Button = {
+        let btn = Button(frame: .zero)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Alert", for: .normal)
+        btn.setTitleColor(.textFirstLevel, for: .normal)
+        return btn;
+    }()
     let textInput:UITextField =  {
         let field = UITextField(frame: .zero)
         field.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         return field
     }()
 	
@@ -52,6 +57,7 @@ class FirstScreenView: MainView {
 		self.addSubview(label)
         self.addSubview(btn)
         self.addSubview(btn2)
+        self.addSubview(btn3)
 	}
 	
 	private func setupConstraints(){
@@ -66,9 +72,13 @@ class FirstScreenView: MainView {
             NSLayoutConstraint(item: btn, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         ])
         NSLayoutConstraint.activate([
-                   NSLayoutConstraint(item: btn2, attribute: .top, relatedBy: .equal, toItem: btn, attribute: .bottom, multiplier: 1, constant: 10),
-                   NSLayoutConstraint(item: btn2, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
-               ])
+            NSLayoutConstraint(item: btn2, attribute: .top, relatedBy: .equal, toItem: btn, attribute: .bottom, multiplier: 1, constant: 10),
+            NSLayoutConstraint(item: btn2, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+        ])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: btn3, attribute: .top, relatedBy: .equal, toItem: btn2, attribute: .bottom, multiplier: 1, constant: 10),
+            NSLayoutConstraint(item: btn3, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+        ])
         
         
 	}

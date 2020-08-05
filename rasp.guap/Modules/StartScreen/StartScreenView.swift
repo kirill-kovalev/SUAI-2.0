@@ -23,12 +23,13 @@ class StartScreenView: MainView {
         }
     }
     
-    var colors:[UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
+    var colors:[UIColor] = [UIColor.red, UIColor.green, UIColor.blue, UIColor.yellow]
     
     func setupConstraints() {
         self.pagedView.snp.makeConstraints { (make) in
             make.width.height.left.top.equalTo(safeAreaLayoutGuide)
         }
+        
     }
     
     
