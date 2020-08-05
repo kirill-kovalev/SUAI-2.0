@@ -17,3 +17,6 @@ extension UIColor{
     public static let textSecondLevel = UIColor(named: "textSecondLevel")
     public static let textThirdLevel = UIColor(named: "textThirdLevel")
 }
+
+
+

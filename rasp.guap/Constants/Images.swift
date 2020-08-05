@@ -11,3 +11,4 @@ import UIKit
 extension UIImage{
     static let modalViewExitCross = UIImage(named: "ModalViewExitCross")
 }
+
