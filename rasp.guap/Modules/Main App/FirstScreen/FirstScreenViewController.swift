@@ -18,7 +18,7 @@ class FirstScreenViewController: ViewController<FirstScreenView>{
             self.present(TimetableFilterViewConroller(), animated: true, completion: nil)
         }, for: .touchUpInside)
         rootView.btn2.addTarget(action: { (sender) in
-            self.navigationController?.pushViewController(StartScreenViewController(), animated: true)
+            self.navigationController?.pushViewController(TutorialScreenViewController(), animated: true)
         }, for: .touchUpInside)
         rootView.btn3.addTarget(action: { (btn) in
             print("hey!")

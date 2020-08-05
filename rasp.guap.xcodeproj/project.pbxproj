@@ -1,0 +1,648 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
+		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
+		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
+		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
+		5D2ADFAA24D4294B006DACED /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA924D4294B006DACED /* Colors.swift */; };
+		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
+		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
+		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
+		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
+		5D7DF85E24D486CC00CCD0AE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85D24D486CC00CCD0AE /* Images.swift */; };
+		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
+		5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62324D412AB000418B5 /* FirstScreenView.swift */; };
+		5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */; };
+		5D95A62A24D412AB000418B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62924D412AB000418B5 /* MainView.swift */; };
+		5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62B24D412AB000418B5 /* ViewController.swift */; };
+		5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */; };
+		5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63624D412AC000418B5 /* Assets.xcassets */; };
+		5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */; };
+		5DA10F3A24DB21D700D09BD8 /* Swiftgen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */; };
+		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
+		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
+		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
+		5DA10F4924DB556A00D09BD8 /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4824DB556A00D09BD8 /* FirstPage.swift */; };
+		5DA10F4B24DB5DE400D09BD8 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */; };
+		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
+		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
+		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
+		5D2ADFA924D4294B006DACED /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
+		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
+		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		5D7DF85D24D486CC00CCD0AE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		5D95A61C24D412AB000418B5 /* rasp.guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rasp.guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5D95A62324D412AB000418B5 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
+		5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
+		5D95A62924D412AB000418B5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5D95A62B24D412AB000418B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5D95A63424D412AB000418B5 /* rasp_guap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rasp_guap.xcdatamodel; sourceTree = "<group>"; };
+		5D95A63624D412AC000418B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5D95A63924D412AC000418B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5D95A63B24D412AC000418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftgen.swift; sourceTree = "<group>"; };
+		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
+		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
+		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
+		5DA10F4824DB556A00D09BD8 /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
+		5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
+		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
+		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
+		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
+		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D95A61924D412AB000418B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2612D29CDE1D426FAFFD5273 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D2ADF9924D423D8006DACED /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5D2ADF9A24D42407006DACED /* ModalViewController.swift */,
+				5D2ADF9C24D4242A006DACED /* ModalView.swift */,
+			);
+			path = ModalViewController;
+			sourceTree = "<group>";
+		};
+		5D2ADF9E24D425C3006DACED /* TimetableFilter */ = {
+			isa = PBXGroup;
+			children = (
+				5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */,
+				5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */,
+			);
+			path = TimetableFilter;
+			sourceTree = "<group>";
+		};
+		5D2ADFA724D42918006DACED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5D2ADFA824D42939006DACED /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */,
+				5D2ADFA924D4294B006DACED /* Colors.swift */,
+				5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */,
+				5D7DF85D24D486CC00CCD0AE /* Images.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		5D3E08C224D4A4F100DF6DBD /* TutuorialScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F4224DB541900D09BD8 /* FirstPage */,
+				5DA10F4324DB542400D09BD8 /* SecondPage */,
+				5DA10F4424DB543800D09BD8 /* ThirdPage */,
+				5DA10F4524DB544700D09BD8 /* FourthPage */,
+				5DA10F4624DB544E00D09BD8 /* FifthPage */,
+				5DA10F4724DB546800D09BD8 /* GroupSelectPage */,
+				5DA10F3D24DB44F200D09BD8 /* UIComponents */,
+				5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */,
+				5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */,
+			);
+			path = TutuorialScreen;
+			sourceTree = "<group>";
+		};
+		5D633A0424DB1AA700ACE561 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				5D3E08C224D4A4F100DF6DBD /* TutuorialScreen */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		5D633A0524DB1ACB00ACE561 /* Main App */ = {
+			isa = PBXGroup;
+			children = (
+				5D2ADF9E24D425C3006DACED /* TimetableFilter */,
+				5D95A62224D412AB000418B5 /* FirstScreen */,
+			);
+			path = "Main App";
+			sourceTree = "<group>";
+		};
+		5D95A61324D412AB000418B5 = {
+			isa = PBXGroup;
+			children = (
+				5D95A61E24D412AB000418B5 /* rasp.guap */,
+				5D95A61D24D412AB000418B5 /* Products */,
+				A235ABA9F81984ED9F89B1AE /* Pods */,
+				2612D29CDE1D426FAFFD5273 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5D95A61D24D412AB000418B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D95A61C24D412AB000418B5 /* rasp.guap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D95A61E24D412AB000418B5 /* rasp.guap */ = {
+			isa = PBXGroup;
+			children = (
+				5D95A61F24D412AB000418B5 /* AppDelegate.swift */,
+				5D95A63624D412AC000418B5 /* Assets.xcassets */,
+				5D2ADFA724D42918006DACED /* Extensions */,
+				5D2ADFA824D42939006DACED /* Constants */,
+				5D95A62124D412AB000418B5 /* Modules */,
+				5D95A62724D412AB000418B5 /* UIComponents */,
+				5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */,
+				5D95A63B24D412AC000418B5 /* Info.plist */,
+				5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */,
+			);
+			path = rasp.guap;
+			sourceTree = "<group>";
+		};
+		5D95A62124D412AB000418B5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5D633A0424DB1AA700ACE561 /* Tutorial */,
+				5D633A0524DB1ACB00ACE561 /* Main App */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5D95A62224D412AB000418B5 /* FirstScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5D95A62324D412AB000418B5 /* FirstScreenView.swift */,
+				5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */,
+			);
+			path = FirstScreen;
+			sourceTree = "<group>";
+		};
+		5D95A62724D412AB000418B5 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5DA7DD3524D4B8EA00176157 /* PagedView */,
+				5D2ADF9924D423D8006DACED /* ModalViewController */,
+				5D95A62824D412AB000418B5 /* ModuleComponents */,
+				5D7DF85B24D46B0E00CCD0AE /* Button.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		5D95A62824D412AB000418B5 /* ModuleComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5D95A62924D412AB000418B5 /* MainView.swift */,
+				5D95A62B24D412AB000418B5 /* ViewController.swift */,
+			);
+			path = ModuleComponents;
+			sourceTree = "<group>";
+		};
+		5DA10F3D24DB44F200D09BD8 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */,
+				5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		5DA10F4224DB541900D09BD8 /* FirstPage */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F4824DB556A00D09BD8 /* FirstPage.swift */,
+			);
+			path = FirstPage;
+			sourceTree = "<group>";
+		};
+		5DA10F4324DB542400D09BD8 /* SecondPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecondPage;
+			sourceTree = "<group>";
+		};
+		5DA10F4424DB543800D09BD8 /* ThirdPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdPage;
+			sourceTree = "<group>";
+		};
+		5DA10F4524DB544700D09BD8 /* FourthPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FourthPage;
+			sourceTree = "<group>";
+		};
+		5DA10F4624DB544E00D09BD8 /* FifthPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FifthPage;
+			sourceTree = "<group>";
+		};
+		5DA10F4724DB546800D09BD8 /* GroupSelectPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GroupSelectPage;
+			sourceTree = "<group>";
+		};
+		5DA7DD3524D4B8EA00176157 /* PagedView */ = {
+			isa = PBXGroup;
+			children = (
+				5DA7DD3624D4B8FB00176157 /* PagedView.swift */,
+				5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */,
+			);
+			path = PagedView;
+			sourceTree = "<group>";
+		};
+		A235ABA9F81984ED9F89B1AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */,
+				6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D95A61B24D412AB000418B5 /* rasp.guap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D95A63E24D412AC000418B5 /* Build configuration list for PBXNativeTarget "rasp.guap" */;
+			buildPhases = (
+				026171D9DAFEDFA3E8078B37 /* [CP] Check Pods Manifest.lock */,
+				5D95A61824D412AB000418B5 /* Sources */,
+				5D95A61924D412AB000418B5 /* Frameworks */,
+				5D95A61A24D412AB000418B5 /* Resources */,
+				788A4287CF2100560709D7E6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rasp.guap;
+			productName = rasp.guap;
+			productReference = 5D95A61C24D412AB000418B5 /* rasp.guap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D95A61424D412AB000418B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Kovalev K.A.";
+				TargetAttributes = {
+					5D95A61B24D412AB000418B5 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 5D95A61724D412AB000418B5 /* Build configuration list for PBXProject "rasp.guap" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5D95A61324D412AB000418B5;
+			productRefGroup = 5D95A61D24D412AB000418B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D95A61B24D412AB000418B5 /* rasp.guap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D95A61A24D412AB000418B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */,
+				5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		026171D9DAFEDFA3E8078B37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rasp.guap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		788A4287CF2100560709D7E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rasp.guap/Pods-rasp.guap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rasp.guap/Pods-rasp.guap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rasp.guap/Pods-rasp.guap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D95A61824D412AB000418B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
+				5D2ADFAA24D4294B006DACED /* Colors.swift in Sources */,
+				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
+				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
+				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
+				5DA10F3A24DB21D700D09BD8 /* Swiftgen.swift in Sources */,
+				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
+				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
+				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
+				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
+				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
+				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
+				5D7DF85E24D486CC00CCD0AE /* Images.swift in Sources */,
+				5DA10F4B24DB5DE400D09BD8 /* TutorialPage.swift in Sources */,
+				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
+				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
+				5D95A62A24D412AB000418B5 /* MainView.swift in Sources */,
+				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
+				5DA10F4924DB556A00D09BD8 /* FirstPage.swift in Sources */,
+				5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */,
+				5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */,
+				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
+				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D95A63924D412AC000418B5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5D95A63C24D412AC000418B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5D95A63D24D412AC000418B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5D95A63F24D412AC000418B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45G7K48JJS;
+				INFOPLIST_FILE = rasp.guap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5D95A64024D412AC000418B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45G7K48JJS;
+				INFOPLIST_FILE = rasp.guap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D95A61724D412AB000418B5 /* Build configuration list for PBXProject "rasp.guap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D95A63C24D412AC000418B5 /* Debug */,
+				5D95A63D24D412AC000418B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D95A63E24D412AC000418B5 /* Build configuration list for PBXNativeTarget "rasp.guap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D95A63F24D412AC000418B5 /* Debug */,
+				5D95A64024D412AC000418B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D95A63424D412AB000418B5 /* rasp_guap.xcdatamodel */,
+			);
+			currentVersion = 5D95A63424D412AB000418B5 /* rasp_guap.xcdatamodel */;
+			path = rasp_guap.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5D95A61424D412AB000418B5 /* Project object */;
+}
