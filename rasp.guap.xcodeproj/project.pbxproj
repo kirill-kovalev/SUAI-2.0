@@ -41,6 +41,13 @@
 		5DA10F6724DC261100D09BD8 /* TTCommons-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5D24DC261100D09BD8 /* TTCommons-Medium.ttf */; };
 		5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F6824DC2ED900D09BD8 /* Assets.swift */; };
 		5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F6A24DC2EE600D09BD8 /* Fonts.swift */; };
+		5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F6C24DC412600D09BD8 /* SecondPageView.swift */; };
+		5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7024DC41D300D09BD8 /* TutorialPageTemplate.swift */; };
+		5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7324DC4FB300D09BD8 /* ThirdPageView.swift */; };
+		5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7724DC58A900D09BD8 /* FourthPageView.swift */; };
+		5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7924DC58B300D09BD8 /* FifthPageView.swift */; };
+		5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7D24DC5D7D00D09BD8 /* GroupSelectPage.swift */; };
+		5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7F24DC5DF400D09BD8 /* GroupSelectPageViewController.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +89,13 @@
 		5DA10F5D24DC261100D09BD8 /* TTCommons-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Medium.ttf"; sourceTree = "<group>"; };
 		5DA10F6824DC2ED900D09BD8 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5DA10F6A24DC2EE600D09BD8 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		5DA10F6C24DC412600D09BD8 /* SecondPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageView.swift; sourceTree = "<group>"; };
+		5DA10F7024DC41D300D09BD8 /* TutorialPageTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageTemplate.swift; sourceTree = "<group>"; };
+		5DA10F7324DC4FB300D09BD8 /* ThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageView.swift; sourceTree = "<group>"; };
+		5DA10F7724DC58A900D09BD8 /* FourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPageView.swift; sourceTree = "<group>"; };
+		5DA10F7924DC58B300D09BD8 /* FifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthPageView.swift; sourceTree = "<group>"; };
+		5DA10F7D24DC5D7D00D09BD8 /* GroupSelectPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectPage.swift; sourceTree = "<group>"; };
+		5DA10F7F24DC5DF400D09BD8 /* GroupSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectPageViewController.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */,
+				5DA10F7024DC41D300D09BD8 /* TutorialPageTemplate.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -271,6 +286,7 @@
 		5DA10F4324DB542400D09BD8 /* SecondPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DA10F6C24DC412600D09BD8 /* SecondPageView.swift */,
 			);
 			path = SecondPage;
 			sourceTree = "<group>";
@@ -278,6 +294,7 @@
 		5DA10F4424DB543800D09BD8 /* ThirdPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DA10F7324DC4FB300D09BD8 /* ThirdPageView.swift */,
 			);
 			path = ThirdPage;
 			sourceTree = "<group>";
@@ -285,6 +302,7 @@
 		5DA10F4524DB544700D09BD8 /* FourthPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DA10F7724DC58A900D09BD8 /* FourthPageView.swift */,
 			);
 			path = FourthPage;
 			sourceTree = "<group>";
@@ -292,6 +310,7 @@
 		5DA10F4624DB544E00D09BD8 /* FifthPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DA10F7924DC58B300D09BD8 /* FifthPageView.swift */,
 			);
 			path = FifthPage;
 			sourceTree = "<group>";
@@ -299,6 +318,8 @@
 		5DA10F4724DB546800D09BD8 /* GroupSelectPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DA10F7D24DC5D7D00D09BD8 /* GroupSelectPage.swift */,
+				5DA10F7F24DC5DF400D09BD8 /* GroupSelectPageViewController.swift */,
 			);
 			path = GroupSelectPage;
 			sourceTree = "<group>";
@@ -353,6 +374,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D95A63E24D412AC000418B5 /* Build configuration list for PBXNativeTarget "rasp.guap" */;
 			buildPhases = (
+				5DA10F7224DC458D00D09BD8 /* ShellScript */,
 				026171D9DAFEDFA3E8078B37 /* [CP] Check Pods Manifest.lock */,
 				5D95A61824D412AB000418B5 /* Sources */,
 				5D95A61924D412AB000418B5 /* Frameworks */,
@@ -446,6 +468,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5DA10F7224DC458D00D09BD8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd rasp.guap\nswiftgen\ncd ../\n";
+		};
 		788A4287CF2100560709D7E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -472,6 +511,7 @@
 			files = (
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
+				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
@@ -481,9 +521,14 @@
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
+				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
+				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
+				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
+				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
+				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
 				5D95A62A24D412AB000418B5 /* MainView.swift in Sources */,
@@ -492,6 +537,7 @@
 				5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */,
 				5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
+				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

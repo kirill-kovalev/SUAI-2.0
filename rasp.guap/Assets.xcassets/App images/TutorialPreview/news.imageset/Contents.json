@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Последние новости.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

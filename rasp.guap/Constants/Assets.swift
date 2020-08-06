@@ -24,6 +24,12 @@ internal enum Asset {
   internal enum AppImages {
     internal static let launchScreen = ImageAsset(name: "LaunchScreen")
     internal static let tutorialEipse = ImageAsset(name: "TutorialEipse")
+    internal enum TutorialPreview {
+      internal static let deadline = ImageAsset(name: "deadline")
+      internal static let info = ImageAsset(name: "info")
+      internal static let news = ImageAsset(name: "news")
+      internal static let timetable = ImageAsset(name: "timetable")
+    }
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
   }
   internal enum PocketColors {
