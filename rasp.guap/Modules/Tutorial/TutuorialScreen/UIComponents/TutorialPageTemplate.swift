@@ -11,12 +11,14 @@ import UIKit
 
 class TutorialPageView:MainView{
     
+    // MARK: - Views
     let title:UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = FontFamily.TTCommons.demiBold.font(size: 22)
         return label
     }()
+    
     let text:UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
@@ -25,19 +27,15 @@ class TutorialPageView:MainView{
         label.font = FontFamily.TTCommons.regular.font(size: 18)
         return label
     }()
+    
     let imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
+    // MARK: - View setup
     
-   
-    
-    required init() {
-        super.init()
-        
-    }
     func addViews(){
         self.addSubview(title)
         self.addSubview(text)
@@ -67,7 +65,4 @@ class TutorialPageView:MainView{
 
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

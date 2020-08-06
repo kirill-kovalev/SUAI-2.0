@@ -10,12 +10,15 @@ import UIKit
 
 class FirstScreenView: MainView {
 	
+    // MARK: - Views
+    
 	let label: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.text = "Hello World!"
         label.textColor = Asset.PocketColors.pocketBlack.color
 		return label
 	}()
+    
     let btn :Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +26,7 @@ class FirstScreenView: MainView {
         btn.setTitleColor(.black, for: .normal)
         return btn;
     }()
+    
     let btn2 :Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +34,7 @@ class FirstScreenView: MainView {
         btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
         return btn;
     }()
+    
     let btn3 :Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -37,20 +42,20 @@ class FirstScreenView: MainView {
         btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
         return btn;
     }()
+    
     let textInput:UITextField =  {
         let field = UITextField(frame: .zero)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
 	
-	
+	// MARK: - View setup
 	required init() {
 		super.init()
         self.backgroundColor = Asset.PocketColors.pocketWhite.color
-		
+        
 		addViews()
 		setupConstraints()
-		
 	}
 
 	private func addViews(){

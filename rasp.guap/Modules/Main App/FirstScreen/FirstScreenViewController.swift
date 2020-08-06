@@ -11,7 +11,7 @@ import UIKit
 class FirstScreenViewController: ViewController<FirstScreenView>{
 	
 	
-	
+	// MARK: - ViewController lifecycle
 	override func viewDidLoad() {
 		self.rootView.label.text = "Hello everyone!"
         rootView.btn.addTarget(action: { (sender) in

@@ -11,8 +11,7 @@ import UIKit
 
 class GroupSelectPageView:TutorialPageView{
     
-    
-    
+    // MARK: - View setup
     
     required init() {
         super.init()
@@ -20,18 +19,10 @@ class GroupSelectPageView:TutorialPageView{
         addViews()
         setupConstraints()
     }
+    
     private func setupUI(){
-        
         self.title.text = "Начнем?"
         self.text.text = "Выбери свою группу и нажми “Продолжить”"
-    }
-    override func addViews(){
-        super.addViews()
-        
-    }
-    override func setupConstraints(){
-        super.setupConstraints()
-
     }
     
     required init?(coder: NSCoder) {

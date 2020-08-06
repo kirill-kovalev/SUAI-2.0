@@ -11,13 +11,14 @@ import UIKit
 class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
     
     var content = ContentView()
+    
     required init() {
         super.init()
         
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .crossDissolve
         self.rootView.setContent(content)
-    
+        
         setupCloseElements()
     }
     
@@ -63,14 +64,8 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
             self.dismiss(animated: true, completion: nil)
         }
     }
-
     
     
-    
-    
-    
-    
-
     override func viewWillAppear(_ animated: Bool) {
         if animated {
             dispalyAnimation(show: true)
@@ -100,11 +95,11 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
     
     
     
-
+    
     
     
     required init?(coder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
-       
+    
 }

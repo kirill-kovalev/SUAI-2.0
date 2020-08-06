@@ -9,9 +9,12 @@
 import UIKit
 class GroupSelectPageViewController : ViewController<GroupSelectPageView> {
     
+     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         
     }
+    
+     // MARK: - Actions
     
 
 }

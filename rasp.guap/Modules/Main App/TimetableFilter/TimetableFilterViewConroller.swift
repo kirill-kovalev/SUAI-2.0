@@ -10,10 +10,11 @@ import UIKit
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 
+    
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         setTitle("Модальное окно")
     }
     

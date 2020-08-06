@@ -10,6 +10,7 @@ import UIKit
 
 class FourthPageView : TutorialPageView{
    
+     // MARK: - View setup
     
     required init() {
         super.init()
@@ -17,6 +18,7 @@ class FourthPageView : TutorialPageView{
         addViews()
         setupConstraints()
     }
+    
     private func setupText(){
         self.imageView.image = Asset.AppImages.TutorialPreview.timetable.image
         self.title.text = "Расписание"

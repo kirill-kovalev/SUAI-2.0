@@ -10,12 +10,23 @@ import UIKit
 
 class TimetableFilterView:UIView{
     
+    // MARK: - Views
+    
     let color:UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UIColor(red: 0x54/0xFF, green: 0xF5/0xFF, blue: 0xBA/0xFF, alpha: 1)
         view.layer.cornerRadius = CornerRadius.default.rawValue
         return view
     }()
+    
+    
+    // MARK: - View setup
+    
+    required init() {
+        super.init(frame: .zero)
+        addViews()
+        setupConstraints()
+    }
     
     func addViews() {
         self.addSubview(color)
@@ -27,13 +38,6 @@ class TimetableFilterView:UIView{
         }
     }
     
-    
-    required init() {
-        super.init(frame: .zero)
-        addViews()
-        setupConstraints()
-        
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -10,6 +10,7 @@ import UIKit
 
 class ThirdPageView : TutorialPageView{
    
+     // MARK: - View setup
     
     required init() {
         super.init()
@@ -17,6 +18,7 @@ class ThirdPageView : TutorialPageView{
         addViews()
         setupConstraints()
     }
+    
     private func setupText(){
         self.imageView.image = Asset.AppImages.TutorialPreview.deadline.image
         self.title.text = "Дедлайны"

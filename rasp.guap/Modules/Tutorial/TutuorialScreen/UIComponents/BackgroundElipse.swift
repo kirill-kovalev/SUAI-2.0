@@ -11,16 +11,21 @@ extension TutorialScreenView{
     
 
     class BackgroundElipse: UIImageView {
+        
+        private var rootView:UIView = UIView(frame: .zero)
+        
+        
         init() {
             super.init(frame: .zero)
             self.image = UIImage(named: "TutorialEipse")?.withRenderingMode(.alwaysTemplate)
-            //self.frame = CGRect(origin: .zero , size: self.image!.size )
             self.contentMode = .scaleToFill
             rootView = self.superview ?? UIView(frame: UIScreen.main.bounds)
             setState(position: 0)
         }
-        private var rootView:UIView = UIView(frame: .zero)
         
+        
+        
+        // all poossible Ellipse states
         func setState(position: Int){
             switch position  {
                 case 0:
@@ -41,7 +46,6 @@ extension TutorialScreenView{
                     self.transform = CGAffineTransform(rotationAngle: -106.degreesToRadians )
                         .concatenating(CGAffineTransform(translationX: -self.rootView.frame.width * 3/5, y: -self.rootView.frame.height * 1/3 ))
                         
-                    
                     self.tintColor = Asset.PocketColors.pocketError.color
                     
                 break;
@@ -69,13 +73,13 @@ extension TutorialScreenView{
                     
                 break;
                 
-                
                 default:
                     self.transform = CGAffineTransform(rotationAngle: 90 )
                         .concatenating(CGAffineTransform(translationX: 0, y: -self.rootView.frame.height/4))
                         .concatenating(CGAffineTransform(scaleX: 2, y: 2))
                 break;
             }
+            
         }
         
         required init?(coder: NSCoder) {

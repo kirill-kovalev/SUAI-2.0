@@ -10,6 +10,7 @@ import UIKit
 
 class FirstPageView:TutorialPageView{
     
+    // MARK: - Views
     
     private let gestureZone:UIView = {
         let view = UIView(frame: .zero)
@@ -24,6 +25,8 @@ class FirstPageView:TutorialPageView{
         return gesture
     }()
     
+    // MARK: - View setup
+    
     required init() {
         super.init()
         setupUI()
@@ -31,10 +34,11 @@ class FirstPageView:TutorialPageView{
         setupConstraints()
         self.gestureZone.addGestureRecognizer(tapGesture)
     }
+    
     private func setupUI(){
         self.imageView.image = Asset.AppImages.pocketpocketLogo.image
         self.title.text = "Добро пожаловать!"
-
+        
         let attributedString = NSMutableAttributedString(string: "тапни сюда", attributes: [
             NSAttributedString.Key.foregroundColor : Asset.PocketColors.accent.color
         ])
@@ -43,10 +47,12 @@ class FirstPageView:TutorialPageView{
         text.append(NSMutableAttributedString(string: ",\n чтобы сразу перейти к выбору группы"))
         self.text.attributedText = text
     }
+    
     override func addViews(){
         super.addViews()
         self.addSubview(gestureZone)
     }
+    
     override func setupConstraints(){
         super.setupConstraints()
         gestureZone.snp.makeConstraints { (make) in
