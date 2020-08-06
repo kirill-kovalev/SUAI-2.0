@@ -63,7 +63,8 @@ class PagedView : UIView, UIScrollViewDelegate{
             make.height.equalTo(15)
         }
         container.snp.makeConstraints { (make) in
-            make.top.bottom.leading.trailing.height.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(scrollView.snp.height)
         }
         
     }
@@ -73,6 +74,7 @@ class PagedView : UIView, UIScrollViewDelegate{
         self.container.addSubview(view)
         setupViewConstraints(view)
         self.views.append(view)
+        view.frame = self.frame
         pageControl.numberOfPages = self.views.count
         
     }
@@ -88,22 +90,30 @@ class PagedView : UIView, UIScrollViewDelegate{
             }
         }
         container.snp.remakeConstraints { (make) in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(scrollView.snp.height)
             make.width.equalTo(self.scrollView).multipliedBy(self.pageControl.numberOfPages+1)
         }
+    }
+    public func setPage(pageNumber:Int, animated:Bool){
+        var duration = 0.3
+        if !animated {
+            duration = 0
+        }
+        UIView.animate(withDuration: duration) {
+            self.scrollView.contentOffset = CGPoint(x: Int(self.scrollView.frame.size.width) * pageNumber, y: 0)
+            self.pageControl.currentPage = Int(pageNumber)
+        }
+        self.delegate?.pagedViewDidChanged(pageNumber)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        self.pageControl.currentPage = Int(pageNumber)
-        self.delegate?.pagedViewDidChanged(Int(pageNumber))
+        setPage(pageNumber: Int(pageNumber), animated: true)
     }
     @objc private func pageControlHandler(_ sender:UIPageControl){
         let pageNumber = sender.currentPage
-        UIView.animate(withDuration: 0.3) {
-            self.scrollView.contentOffset = CGPoint(x: Int(self.scrollView.frame.size.width) * pageNumber, y: 0)
-        }
-        self.delegate?.pagedViewDidChanged(pageNumber)
+        setPage(pageNumber: pageNumber, animated: true)
     }
     
     
