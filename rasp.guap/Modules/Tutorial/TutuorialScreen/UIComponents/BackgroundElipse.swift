@@ -25,7 +25,7 @@ extension TutorialScreenView{
             switch position  {
                 case 0:
                     self.transform = CGAffineTransform(rotationAngle: -56.degreesToRadians )
-                        .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 4/5, y: -self.rootView.frame.height/3))
+                        .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 4/5, y: -self.rootView.frame.height * 3/5 ))
                     
                     self.tintColor = Asset.PocketColors.pocketGray.color
                     

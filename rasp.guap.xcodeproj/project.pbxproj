@@ -11,12 +11,10 @@
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
 		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
-		5D2ADFAA24D4294B006DACED /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA924D4294B006DACED /* Colors.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
-		5D7DF85E24D486CC00CCD0AE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85D24D486CC00CCD0AE /* Images.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
 		5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62324D412AB000418B5 /* FirstScreenView.swift */; };
 		5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */; };
@@ -25,15 +23,12 @@
 		5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */; };
 		5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63624D412AC000418B5 /* Assets.xcassets */; };
 		5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */; };
-		5DA10F3A24DB21D700D09BD8 /* Swiftgen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */; };
 		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
 		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
 		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
 		5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4824DB556A00D09BD8 /* FirstPageView.swift */; };
-		5DA10F4B24DB5DE400D09BD8 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */; };
 		5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4C24DBFE3C00D09BD8 /* FirstPageViewController.swift */; };
 		5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4E24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift */; };
-		5DA10F5124DC219000D09BD8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F5024DC219000D09BD8 /* Fonts.swift */; };
 		5DA10F5E24DC261100D09BD8 /* TTCommons-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5424DC261100D09BD8 /* TTCommons-DemiBold.ttf */; };
 		5DA10F5F24DC261100D09BD8 /* TTCommons-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5524DC261100D09BD8 /* TTCommons-Italic.ttf */; };
 		5DA10F6024DC261100D09BD8 /* TTCommons-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5624DC261100D09BD8 /* TTCommons-Light.ttf */; };
@@ -44,6 +39,8 @@
 		5DA10F6524DC261100D09BD8 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5B24DC261100D09BD8 /* TTCommons-Regular.ttf */; };
 		5DA10F6624DC261100D09BD8 /* TTCommons-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5C24DC261100D09BD8 /* TTCommons-Bold.ttf */; };
 		5DA10F6724DC261100D09BD8 /* TTCommons-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F5D24DC261100D09BD8 /* TTCommons-Medium.ttf */; };
+		5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F6824DC2ED900D09BD8 /* Assets.swift */; };
+		5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F6A24DC2EE600D09BD8 /* Fonts.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
@@ -53,12 +50,10 @@
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
 		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
-		5D2ADFA924D4294B006DACED /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		5D7DF85D24D486CC00CCD0AE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* rasp.guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rasp.guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D95A62324D412AB000418B5 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
@@ -69,15 +64,12 @@
 		5D95A63624D412AC000418B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D95A63924D412AC000418B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D95A63B24D412AC000418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftgen.swift; sourceTree = "<group>"; };
 		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
 		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
 		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
 		5DA10F4824DB556A00D09BD8 /* FirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageView.swift; sourceTree = "<group>"; };
-		5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		5DA10F4C24DBFE3C00D09BD8 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		5DA10F4E24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTutorialPageSkipDelegate.swift; sourceTree = "<group>"; };
-		5DA10F5024DC219000D09BD8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		5DA10F5424DC261100D09BD8 /* TTCommons-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-DemiBold.ttf"; sourceTree = "<group>"; };
 		5DA10F5524DC261100D09BD8 /* TTCommons-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Italic.ttf"; sourceTree = "<group>"; };
 		5DA10F5624DC261100D09BD8 /* TTCommons-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Light.ttf"; sourceTree = "<group>"; };
@@ -88,6 +80,8 @@
 		5DA10F5B24DC261100D09BD8 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
 		5DA10F5C24DC261100D09BD8 /* TTCommons-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Bold.ttf"; sourceTree = "<group>"; };
 		5DA10F5D24DC261100D09BD8 /* TTCommons-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Medium.ttf"; sourceTree = "<group>"; };
+		5DA10F6824DC2ED900D09BD8 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		5DA10F6A24DC2EE600D09BD8 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */,
-				5DA10F5024DC219000D09BD8 /* Fonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,10 +137,9 @@
 		5D2ADFA824D42939006DACED /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				5DA10F3924DB21D700D09BD8 /* Swiftgen.swift */,
-				5D2ADFA924D4294B006DACED /* Colors.swift */,
+				5DA10F6A24DC2EE600D09BD8 /* Fonts.swift */,
+				5DA10F6824DC2ED900D09BD8 /* Assets.swift */,
 				5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */,
-				5D7DF85D24D486CC00CCD0AE /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -262,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */,
-				5DA10F4A24DB5DE400D09BD8 /* TutorialPage.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -480,22 +471,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
-				5D2ADFAA24D4294B006DACED /* Colors.swift in Sources */,
-				5DA10F5124DC219000D09BD8 /* Fonts.swift in Sources */,
+				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
-				5DA10F3A24DB21D700D09BD8 /* Swiftgen.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
+				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
-				5D7DF85E24D486CC00CCD0AE /* Images.swift in Sources */,
-				5DA10F4B24DB5DE400D09BD8 /* TutorialPage.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
 				5D95A62A24D412AB000418B5 /* MainView.swift in Sources */,
