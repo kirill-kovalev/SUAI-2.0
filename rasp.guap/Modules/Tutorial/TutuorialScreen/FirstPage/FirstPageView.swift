@@ -8,34 +8,9 @@
 
 import UIKit
 
-class FirstPageView:MainView{
-    private let image: UIImageView = {
-        let image = Asset.AppImages.pocketpocketLogo
-        let imageView = UIImageView(image: image.image)
-        return imageView
-    }()
-    private let title:UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "Добро пожаловать!"
-        label.textAlignment = .center
-        label.font = FontFamily.TTCommons.demiBold.font(size: 22)
-        return label
-    }()
-    private let text:UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.textColor = Asset.PocketColors.pocketGray.color
-        let attributedString = NSMutableAttributedString(string: "тапни сюда", attributes: [
-            NSAttributedString.Key.foregroundColor : Asset.PocketColors.accent.color
-        ])
-        let text = NSMutableAttributedString(string: "Свайпни влево, если хочешь узнать \nособенности сервиса или ")
-        text.append(attributedString)
-        text.append(NSMutableAttributedString(string: ",\n чтобы сразу перейти к выбору группы"))
-        label.numberOfLines = 3
-        label.attributedText = text
-        label.font = FontFamily.TTCommons.regular.font(size: 18)
-        return label
-    }()
+class FirstPageView:TutorialPageView{
+    
+    
     private let gestureZone:UIView = {
         let view = UIView(frame: .zero)
         
@@ -51,32 +26,29 @@ class FirstPageView:MainView{
     
     required init() {
         super.init()
+        setupUI()
         addViews()
         setupConstraints()
         self.gestureZone.addGestureRecognizer(tapGesture)
-        
     }
-    private func addViews(){
-        self.addSubview(image)
-        self.addSubview(title)
-        self.addSubview(text)
+    private func setupUI(){
+        self.imageView.image = Asset.AppImages.pocketpocketLogo.image
+        self.title.text = "Добро пожаловать!"
+
+        let attributedString = NSMutableAttributedString(string: "тапни сюда", attributes: [
+            NSAttributedString.Key.foregroundColor : Asset.PocketColors.accent.color
+        ])
+        let text = NSMutableAttributedString(string: "Свайпни влево, если хочешь узнать \nособенности сервиса или ")
+        text.append(attributedString)
+        text.append(NSMutableAttributedString(string: ",\n чтобы сразу перейти к выбору группы"))
+        self.text.attributedText = text
+    }
+    override func addViews(){
+        super.addViews()
         self.addSubview(gestureZone)
     }
-    private func setupConstraints(){
-        image.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.size.equalTo(image.image?.size ?? .zero)
-        }
-        title.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(self.snp.bottom).dividedBy(1.25)
-        }
-        text.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(title.snp.bottom).offset(10)
-            make.bottom.lessThanOrEqualToSuperview()
-            make.leading.trailing.equalToSuperview().inset(10)
-       }
+    override func setupConstraints(){
+        super.setupConstraints()
         gestureZone.snp.makeConstraints { (make) in
             make.trailing.bottom.top.equalTo(text)
             make.leading.equalTo(text.snp.centerX)

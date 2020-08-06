@@ -48,6 +48,7 @@
 		5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7924DC58B300D09BD8 /* FifthPageView.swift */; };
 		5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7D24DC5D7D00D09BD8 /* GroupSelectPage.swift */; };
 		5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F7F24DC5DF400D09BD8 /* GroupSelectPageViewController.swift */; };
+		5DA10F8224DC5EBE00D09BD8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5DA10F8124DC5EBE00D09BD8 /* swiftgen.yml */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		5DA10F7924DC58B300D09BD8 /* FifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthPageView.swift; sourceTree = "<group>"; };
 		5DA10F7D24DC5D7D00D09BD8 /* GroupSelectPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectPage.swift; sourceTree = "<group>"; };
 		5DA10F7F24DC5DF400D09BD8 /* GroupSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectPageViewController.swift; sourceTree = "<group>"; };
+		5DA10F8124DC5EBE00D09BD8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				5D95A62724D412AB000418B5 /* UIComponents */,
 				5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */,
 				5D95A63B24D412AC000418B5 /* Info.plist */,
+				5DA10F8124DC5EBE00D09BD8 /* swiftgen.yml */,
 				5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */,
 			);
 			path = rasp.guap;
@@ -428,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA10F8224DC5EBE00D09BD8 /* swiftgen.yml in Resources */,
 				5DA10F5E24DC261100D09BD8 /* TTCommons-DemiBold.ttf in Resources */,
 				5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */,
 				5DA10F6524DC261100D09BD8 /* TTCommons-Regular.ttf in Resources */,
