@@ -18,25 +18,21 @@ class TutorialScreenView: MainView, UIScrollViewDelegate {
         return pages
     }()
     let elipse = TutorialScreenView.BackgroundElipse()
-//    let backButton:Button = {
-//        let btn = Button(frame: .zero);
-//        btn.setTitle("Назад", for: .normal)
-//        return btn
-//    }()
+    let backButton:Button = {
+        let btn = Button(frame: .zero);
+        btn.setTitle("Назад", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        return btn
+    }()
 
     func addViews() {
         
         self.addSubview(elipse)
         self.addSubview(pagedView)
-//        self.addSubview(backButton)
-//        for i in 0..<colors.count {
-//            let v = UIView(frame: .zero)
-//            v.backgroundColor = colors[i].withAlphaComponent(0.05)
-//            pagedView.addSubview(v)
-//        }
+        self.addSubview(backButton)
+
     }
     
-    var colors:[UIColor] = [UIColor.red, UIColor.green, UIColor.blue, UIColor.yellow , .brown ,.magenta]
     
     func setupConstraints() {
         self.pagedView.snp.makeConstraints { (make) in
@@ -48,10 +44,10 @@ class TutorialScreenView: MainView, UIScrollViewDelegate {
             make.width.equalTo(self.snp.height).multipliedBy(1.6)
             make.height.equalTo(self.snp.width).multipliedBy(1.6)
         }
-//        self.backButton.snp.makeConstraints { (make) in
-//            make.top.left.equalToSuperview()
-//            make.height.width.equalTo(150)
-//        }
+        self.backButton.snp.makeConstraints { (make) in
+            make.top.left.equalToSuperview()
+            make.height.width.equalTo(150)
+        }
         
     }
     
@@ -60,6 +56,7 @@ class TutorialScreenView: MainView, UIScrollViewDelegate {
         super.init()
         addViews()
         setupConstraints()
+        self.backgroundColor = Asset.PocketColors.pocketWhite.color
     }
     
     required init?(coder: NSCoder) {

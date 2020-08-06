@@ -8,13 +8,17 @@
 
 import UIKit
 
-class TutorialScreenViewController: ViewController<TutorialScreenView>, PagedViewDelegate {
+class TutorialScreenViewController: ViewController<TutorialScreenView>, PagedViewDelegate, FirstTutorialPageSkipDelegate {
     func pagedViewDidChanged(_ pageNumber: Int) {
        moveElipse(position: pageNumber)
     }
+    func skipPages() {
+        print("skip")
+        self.rootView.pagedView.setPage(pageNumber: self.stepPages.count - 1 , animated: true)
+    }
     
     
-    let stepPages:[UIViewController] = [FirstScreenViewController()]
+    let stepPages:[UIViewController] = [FirstPageViewController(),FirstScreenViewController()]
     
     
     
@@ -26,24 +30,21 @@ class TutorialScreenViewController: ViewController<TutorialScreenView>, PagedVie
     
     override func viewDidLoad() {
         self.rootView.pagedView.delegate = self
-//        for page in stepPages {
-//            self.addChild(page)
-//            self.rootView.pagedView.addSubview(page.view)
-//        }
-//        self.rootView.backButton.addTarget(action: { (sender) in
-//            self.navigationController?.popViewController(animated: true)
-//        }, for: .touchUpInside)
+        (self.stepPages.first as! FirstPageViewController).delegate = self
+        for page in stepPages {
+            self.addChild(page)
+            self.rootView.pagedView.addSubview(page.view)
+            page.didMove(toParent: self)
+        }
         
-        
-        self.rootView.pagedView.addSubview(TutorialPage<UIView>())
+         self.rootView.backButton.addTarget(action: { (sender) in
+                    self.navigationController?.popViewController(animated: true)
+                }, for: .touchUpInside)
+
     }
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
-//         moveElipse(position: 0)
-//        UIView.animate(withDuration: 0.35) {
-//            self.navigationController?.isNavigationBarHidden = false
-//        }
         
     }
     
