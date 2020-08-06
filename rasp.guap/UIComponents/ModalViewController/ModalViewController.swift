@@ -83,11 +83,7 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         }
     }
     private func dispalyAnimation(show:Bool){
-        
-//        if show {
-//            self.rootView.container.transform = scaleTransform.concatenating(positionTransform)
-//        }
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.3) {
             self.rootView.container.transform = show ? . identity : ModalView.hiddenTransform
         }
     }

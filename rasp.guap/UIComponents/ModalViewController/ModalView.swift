@@ -20,7 +20,7 @@ class ModalView: MainView {
         let container = UIView();
         container.translatesAutoresizingMaskIntoConstraints = false
         
-        container.backgroundColor = .backgroundSecondLevel
+        container.backgroundColor = Asset.PocketColors.pocketWhite.color
         container.layer.cornerRadius = CornerRadius.default.rawValue
         
         container.transform = ModalView.hiddenTransform
@@ -35,12 +35,12 @@ class ModalView: MainView {
     
     let closeButton:Button = {
         let btn = Button(frame: .zero)
-        btn.setImage(.modalViewExitCross, for: .normal)
+        btn.setImage(Asset.OldAssets.modalViewExitCross.image, for: .normal)
         return btn
     }()
     let titleLabel:UILabel = {
         let label = UILabel(frame: .zero)
-        label.textColor = .textSecondLevel
+        label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = "title"
         label.textAlignment = .center
         return label
