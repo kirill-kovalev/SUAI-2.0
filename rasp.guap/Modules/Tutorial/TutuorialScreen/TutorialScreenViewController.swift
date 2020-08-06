@@ -53,9 +53,7 @@ class TutorialScreenViewController: ViewController<TutorialScreenView>, PagedVie
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.35) {
-            self.navigationController?.isNavigationBarHidden = true
-        }
+        moveElipse(position: 0)
         
     }
     
