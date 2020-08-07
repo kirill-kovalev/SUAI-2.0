@@ -30,6 +30,7 @@ internal enum Asset {
       internal static let news = ImageAsset(name: "news")
       internal static let timetable = ImageAsset(name: "timetable")
     }
+    internal static let photoPlaceholder = ImageAsset(name: "photoPlaceholder")
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
   }
   internal enum PocketColors {
@@ -71,14 +72,9 @@ internal enum Asset {
     internal static let searchBarFieldTint = ColorAsset(name: "search_bar_field_tint")
     internal static let separatorCommon = ColorAsset(name: "separator_common")
   }
-  internal enum OldAssets {
+  internal enum SystemIcons {
+    internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
-    internal static let backgroundFirstLevel = ColorAsset(name: "backgroundFirstLevel")
-    internal static let backgroundSecondLevel = ColorAsset(name: "backgroundSecondLevel")
-    internal static let backgroundThirdLevel = ColorAsset(name: "backgroundThirdLevel")
-    internal static let textFirstLevel = ColorAsset(name: "textFirstLevel")
-    internal static let textSecondLevel = ColorAsset(name: "textSecondLevel")
-    internal static let textThirdLevel = ColorAsset(name: "textThirdLevel")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

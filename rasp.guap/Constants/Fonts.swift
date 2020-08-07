@@ -16,6 +16,27 @@
 
 // swiftlint:disable identifier_name line_length type_body_length
 internal enum FontFamily {
+  internal enum SFProDisplay {
+    internal static let black = FontConvertible(name: "SFProDisplay-Black", family: "SF Pro Display", path: "SFProDisplay-Black.ttf")
+    internal static let blackItalic = FontConvertible(name: "SFProDisplay-BlackItalic", family: "SF Pro Display", path: "SFProDisplay-BlackItalic.ttf")
+    internal static let bold = FontConvertible(name: "SFProDisplay-Bold", family: "SF Pro Display", path: "SFProDisplay-Bold.ttf")
+    internal static let boldItalic = FontConvertible(name: "SFProDisplay-BoldItalic", family: "SF Pro Display", path: "SFProDisplay-BoldItalic.ttf")
+    internal static let heavy = FontConvertible(name: "SFProDisplay-Heavy", family: "SF Pro Display", path: "SFProDisplay-Heavy.ttf")
+    internal static let heavyItalic = FontConvertible(name: "SFProDisplay-HeavyItalic", family: "SF Pro Display", path: "SFProDisplay-HeavyItalic.ttf")
+    internal static let light = FontConvertible(name: "SFProDisplay-Light", family: "SF Pro Display", path: "SFProDisplay-Light.ttf")
+    internal static let lightItalic = FontConvertible(name: "SFProDisplay-LightItalic", family: "SF Pro Display", path: "SFProDisplay-LightItalic.ttf")
+    internal static let medium = FontConvertible(name: "SFProDisplay-Medium", family: "SF Pro Display", path: "SFProDisplay-Medium.ttf")
+    internal static let mediumItalic = FontConvertible(name: "SFProDisplay-MediumItalic", family: "SF Pro Display", path: "SFProDisplay-MediumItalic.ttf")
+    internal static let regular = FontConvertible(name: "SFProDisplay-Regular", family: "SF Pro Display", path: "SFProDisplay-Regular.ttf")
+    internal static let italic = FontConvertible(name: "SFProDisplay-RegularItalic", family: "SF Pro Display", path: "SFProDisplay-RegularItalic.ttf")
+    internal static let semibold = FontConvertible(name: "SFProDisplay-Semibold", family: "SF Pro Display", path: "SFProDisplay-Semibold.ttf")
+    internal static let semiboldItalic = FontConvertible(name: "SFProDisplay-SemiboldItalic", family: "SF Pro Display", path: "SFProDisplay-SemiboldItalic.ttf")
+    internal static let thin = FontConvertible(name: "SFProDisplay-Thin", family: "SF Pro Display", path: "SFProDisplay-Thin.ttf")
+    internal static let thinItalic = FontConvertible(name: "SFProDisplay-ThinItalic", family: "SF Pro Display", path: "SFProDisplay-ThinItalic.ttf")
+    internal static let ultralight = FontConvertible(name: "SFProDisplay-Ultralight", family: "SF Pro Display", path: "SFProDisplay-Ultralight.ttf")
+    internal static let ultralightItalic = FontConvertible(name: "SFProDisplay-UltralightItalic", family: "SF Pro Display", path: "SFProDisplay-UltralightItalic.ttf")
+    internal static let all: [FontConvertible] = [black, blackItalic, bold, boldItalic, heavy, heavyItalic, light, lightItalic, medium, mediumItalic, regular, italic, semibold, semiboldItalic, thin, thinItalic, ultralight, ultralightItalic]
+  }
   internal enum TTCommons {
     internal static let bold = FontConvertible(name: "TTCommons-Bold", family: "TT Commons", path: "TTCommons-Bold.ttf")
     internal static let boldItalic = FontConvertible(name: "TTCommons-BoldItalic", family: "TT Commons", path: "TTCommons-BoldItalic.ttf")
@@ -29,7 +50,7 @@ internal enum FontFamily {
     internal static let regular = FontConvertible(name: "TTCommons-Regular", family: "TT Commons", path: "TTCommons-Regular.ttf")
     internal static let all: [FontConvertible] = [bold, boldItalic, demiBold, demiBoldItalic, italic, light, lightItalic, medium, mediumItalic, regular]
   }
-  internal static let allCustomFonts: [FontConvertible] = [TTCommons.all].flatMap { $0 }
+  internal static let allCustomFonts: [FontConvertible] = [SFProDisplay.all, TTCommons.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }
