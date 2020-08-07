@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModalView: MainView {
+class ModalView: View {
     
     static let hiddenTransform: CGAffineTransform = {
         let positionTransform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height)

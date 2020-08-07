@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController<View:MainView>: UIViewController {
+class ViewController<ContentView:View>: UIViewController {
 
-	let rootView = View();
+	let rootView = ContentView();
     required init() {
         super.init(nibName: nil, bundle: nil)
         

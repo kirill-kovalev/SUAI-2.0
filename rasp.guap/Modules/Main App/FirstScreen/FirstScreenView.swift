@@ -8,22 +8,22 @@
 
 import UIKit
 
-class FirstScreenView: MainView {
-	
+class FirstScreenView: View {
+    
     // MARK: - Views
     
-	let label: UILabel = {
-		let label = UILabel(frame: .zero)
-		label.text = "Hello World!"
+    let label: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Hello World!"
         label.textColor = Asset.PocketColors.pocketBlack.color
-		return label
-	}()
+        return label
+    }()
     
     let btn :Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Show", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
         return btn;
     }()
     
@@ -48,30 +48,38 @@ class FirstScreenView: MainView {
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
-	
-	// MARK: - View setup
-	required init() {
-		super.init()
+    
+    let pocketDiv: PocketDivView = {
+        let news = PocketDeadlineView()
+        let div = PocketDivView(content: news )
+        return div
+    }()
+    
+    // MARK: - View setup
+    required init() {
+        super.init()
         self.backgroundColor = Asset.PocketColors.pocketWhite.color
         
-		addViews()
-		setupConstraints()
-	}
-
-	private func addViews(){
-		self.addSubview(label)
+        addViews()
+        setupConstraints()
+    }
+    
+    private func addViews(){
+        self.addSubview(label)
         self.addSubview(btn)
         self.addSubview(btn2)
         self.addSubview(btn3)
-	}
-	
-	private func setupConstraints(){
-		label.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
-			NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-		])
-		
+        self.addSubview(pocketDiv)
+        
+    }
+    
+    private func setupConstraints(){
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
+        ])
+        
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: btn, attribute: .top, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 10),
             NSLayoutConstraint(item: btn, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
@@ -85,11 +93,17 @@ class FirstScreenView: MainView {
             NSLayoutConstraint(item: btn3, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         ])
         
+        pocketDiv.snp.makeConstraints { (make) in
+            
+            make.top.equalToSuperview().offset(50)
+            make.centerX.equalToSuperview()
+            make.leftMargin.rightMargin.equalToSuperview()
+        }
         
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

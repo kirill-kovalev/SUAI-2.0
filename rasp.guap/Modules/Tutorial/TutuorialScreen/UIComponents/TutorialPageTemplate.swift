@@ -9,7 +9,7 @@
 import UIKit
 
 
-class TutorialPageView:MainView{
+class TutorialPageView:View{
     
     // MARK: - Views
     let title:UILabel = {

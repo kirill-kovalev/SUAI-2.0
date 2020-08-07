@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MainView: UIView {
+class View: UIView {
 
 	required init() {
 		super.init(frame: .zero)

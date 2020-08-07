@@ -18,7 +18,7 @@
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
 		5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62324D412AB000418B5 /* FirstScreenView.swift */; };
 		5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */; };
-		5D95A62A24D412AB000418B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62924D412AB000418B5 /* MainView.swift */; };
+		5D95A62A24D412AB000418B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62924D412AB000418B5 /* View.swift */; };
 		5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62B24D412AB000418B5 /* ViewController.swift */; };
 		5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */; };
 		5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63624D412AC000418B5 /* Assets.xcassets */; };
@@ -74,6 +74,8 @@
 		5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */; };
 		5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
+		5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */; };
+		5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +92,7 @@
 		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D95A62324D412AB000418B5 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
-		5D95A62924D412AB000418B5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5D95A62924D412AB000418B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5D95A62B24D412AB000418B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D95A63424D412AB000418B5 /* rasp_guap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rasp_guap.xcdatamodel; sourceTree = "<group>"; };
 		5D95A63624D412AC000418B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +149,8 @@
 		5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivView.swift; sourceTree = "<group>"; };
 		5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketNewsView.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
+		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
+		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +302,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5DC4BC6B24DD808800E90BB3 /* PocketDeadline */,
 				5DA10F8F24DCACCF00D09BD8 /* PocketNews */,
 				5DA10F8C24DC7D5200D09BD8 /* PocketDiv */,
 				5DA10F8324DC792B00D09BD8 /* Basic */,
@@ -311,7 +316,7 @@
 		5D95A62824D412AB000418B5 /* ModuleComponents */ = {
 			isa = PBXGroup;
 			children = (
-				5D95A62924D412AB000418B5 /* MainView.swift */,
+				5D95A62924D412AB000418B5 /* View.swift */,
 				5D95A62B24D412AB000418B5 /* ViewController.swift */,
 			);
 			path = ModuleComponents;
@@ -444,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				5D7DF85B24D46B0E00CCD0AE /* Button.swift */,
+				5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -471,6 +477,14 @@
 				5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */,
 			);
 			path = PagedView;
+			sourceTree = "<group>";
+		};
+		5DC4BC6B24DD808800E90BB3 /* PocketDeadline */ = {
+			isa = PBXGroup;
+			children = (
+				5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */,
+			);
+			path = PocketDeadline;
 			sourceTree = "<group>";
 		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
@@ -644,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
+				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
@@ -668,9 +683,10 @@
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
+				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
-				5D95A62A24D412AB000418B5 /* MainView.swift in Sources */,
+				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,

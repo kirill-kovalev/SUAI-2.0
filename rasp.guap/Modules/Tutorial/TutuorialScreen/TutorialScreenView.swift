@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialScreenView: MainView, UIScrollViewDelegate {
+class TutorialScreenView: View, UIScrollViewDelegate {
     
     
     let pagedView:PagedView = {

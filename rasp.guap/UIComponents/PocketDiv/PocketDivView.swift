@@ -8,14 +8,18 @@
 
 import UIKit
 
-class PocketDivView : UIView {
+class PocketDivView : View {
     
-    private var content : UIView = UIView(frame: .zero);
+    private var content : UIView
     
+    required init() {
+        self.content = UIView(frame: .zero);
+        super.init()
+    }
     required init(content:UIView) {
-        super.init(frame: .zero)
-        
         self.content = content
+        
+        super.init()
         
         setupView()
         self.addSubview(content)
@@ -40,11 +44,16 @@ class PocketDivView : UIView {
         
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.setupView()
+    }
+    
     /// TODO: сделать комбинирование теней
-
-   private func setupCombinedShadows() {
+    
+    private func setupCombinedShadows() {
         super.layoutSubviews()
-
+        
         let shadow1 = CALayer()
         
         shadow1.shadowColor = Asset.PocketColors.pocketLightShadow.color.cgColor
@@ -53,7 +62,7 @@ class PocketDivView : UIView {
         
         shadow1.masksToBounds = false
         shadow1.frame = self.layer.frame
-
+        
         let shadow2 = CALayer()
         shadow2.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         shadow2.shadowRadius = 15
@@ -61,9 +70,9 @@ class PocketDivView : UIView {
         
         shadow2.masksToBounds = false
         //shadow2.frame = self.frame
-
-
-
+        
+        
+        
         self.layer.masksToBounds = false
         self.layer.addSublayer(shadow1)
         self.layer.addSublayer(shadow2)
@@ -80,29 +89,31 @@ class PocketDivView : UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
+    
 }
-
-extension CALayer {
-    func applySketchShadow(
-        color: UIColor = .black,
-        alpha: Float = 0.5,
-        x: CGFloat = 0,
-        y: CGFloat = 2,
-        blur: CGFloat = 4,
-        spread: CGFloat = 0)
-    {
-        shadowColor = color.cgColor
-        shadowOpacity = alpha
-        shadowOffset = CGSize(width: x, height: y)
-        shadowRadius = blur / 2.0
-        if spread == 0 {
-            shadowPath = nil
-        } else {
-            let dx = -spread
-            let rect = bounds.insetBy(dx: dx, dy: dx)
-            shadowPath = UIBezierPath(rect: rect).cgPath
-        }
-        masksToBounds = false
-    }
-}
+//
+//extension CALayer {
+//    func applySketchShadow(
+//        color: UIColor = .black,
+//        alpha: Float = 0.5,
+//        x: CGFloat = 0,
+//        y: CGFloat = 2,
+//        blur: CGFloat = 4,
+//        spread: CGFloat = 0)
+//    {
+//        shadowColor = color.cgColor
+//        shadowOpacity = alpha
+//        shadowOffset = CGSize(width: x, height: y)
+//        shadowRadius = blur / 2.0
+//        if spread == 0 {
+//            shadowPath = nil
+//        } else {
+//            let dx = -spread
+//            let rect = bounds.insetBy(dx: dx, dy: dx)
+//            shadowPath = UIBezierPath(rect: rect).cgPath
+//        }
+//        masksToBounds = false
+//    }
+//}
