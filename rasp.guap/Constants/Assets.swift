@@ -30,6 +30,12 @@ internal enum Asset {
       internal static let news = ImageAsset(name: "news")
       internal static let timetable = ImageAsset(name: "timetable")
     }
+    internal enum DeadlineStateImages {
+      internal static let article = ImageAsset(name: "article")
+      internal static let calendar = ImageAsset(name: "calendar")
+      internal static let done = ImageAsset(name: "done")
+      internal static let recent = ImageAsset(name: "recent")
+    }
     internal static let photoPlaceholder = ImageAsset(name: "photoPlaceholder")
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
   }
@@ -76,6 +82,7 @@ internal enum Asset {
     internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
   }
+  internal static let recentOutline561deadlineTimer = ImageAsset(name: "recent_outline_56 1deadline_timer")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
