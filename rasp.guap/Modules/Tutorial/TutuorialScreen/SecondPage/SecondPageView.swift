@@ -12,21 +12,21 @@ class SecondPageView: TutorialPageView{
     
     // MARK: - Views
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    let newsFirst:PocketNewsView = PocketNewsView()
+    let newsSecond:PocketNewsView = PocketNewsView()
     
-    let div:UIView = {
-        let div = UIView(frame: .zero)
-        return div
-    }()
+    var divFirst:PocketDivView?
+    var divSecond:PocketDivView?
+    
     
     // MARK: - View setup
     
     required init() {
         super.init()
+        
+        divFirst = PocketDivView(content: newsFirst)
+        divSecond = PocketDivView(content: newsSecond)
+        
         setupUI()
         addViews()
         setupConstraints()
@@ -34,27 +34,32 @@ class SecondPageView: TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        self.addSubview(imageView)
+        self.addSubview(divFirst!)
+        self.addSubview(divSecond!)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        imageView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
-            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
-            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
-            make.height.lessThanOrEqualTo(imageHeight)
-            make.size.lessThanOrEqualToSuperview()
-            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
-        }
+        divFirst?.snp.makeConstraints({ (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(12)
+            make.bottom.equalTo(self.snp.centerY).inset(10)
+        })
+        divSecond?.snp.makeConstraints({ (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(12)
+            make.top.equalTo(self.snp.centerY).offset(10)
+        })
+    
     }
     
     private func setupUI(){
         self.title.text = "Новости"
         self.text.text = "Будь в курсе всех событий \nуниверситета и секций"
-        self.imageView.image = Asset.AppImages.TutorialPreview.news.image
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
