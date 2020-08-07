@@ -35,7 +35,7 @@ class ModalView: MainView {
     
     let closeButton:Button = {
         let btn = Button(frame: .zero)
-        btn.setImage(Asset.OldAssets.modalViewExitCross.image, for: .normal)
+        btn.setImage(Asset.SystemIcons.modalViewExitCross.image, for: .normal)
         return btn
     }()
     let titleLabel:UILabel = {
