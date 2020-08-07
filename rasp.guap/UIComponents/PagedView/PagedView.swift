@@ -118,6 +118,7 @@ class PagedView : UIView{
             self.scrollView.contentOffset = CGPoint(x: Int(self.scrollView.frame.size.width) * pageNumber, y: 0)
             self.pageControl.currentPage = Int(pageNumber)
         }
+        UIImpactFeedbackGenerator(style: .light ).impactOccurred()
         self.delegate?.pagedViewDidChanged(pageNumber)
     }
     

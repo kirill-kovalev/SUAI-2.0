@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PocketNewsView: UIView {
+class PocketNewsView: View {
     
     // MARK: - views
     
@@ -63,9 +63,8 @@ class PocketNewsView: UIView {
     
     
     
-    init() {
-        super.init(frame:.zero)
-        
+    required init() {
+        super.init()
         addViews()
         setupConstraints()
     }

@@ -78,8 +78,12 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         }
     }
     private func dispalyAnimation(show:Bool){
-        UIView.animate(withDuration: 0.3) {
+        UIImpactFeedbackGenerator(style: show ? .light : .heavy).impactOccurred()
+
+        UIView.animate(withDuration: 0.3, animations: {
             self.rootView.container.transform = show ? . identity : ModalView.hiddenTransform
+        }) { (completion) in
+            UIImpactFeedbackGenerator(style: show ? .heavy : .light).impactOccurred()
         }
     }
     
