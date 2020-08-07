@@ -12,10 +12,11 @@ class ThirdPageView : TutorialPageView{
     
     // MARK: - Views
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    let deadlines: [PocketDivView] = {
+        var deadlines = [ PocketDeadlineView(), PocketDeadlineView(), PocketDeadlineView(), PocketDeadlineView(), PocketDeadlineView()]
+        return deadlines.map { deadline in
+            PocketDivView(content: deadline)
+        }
     }()
     
     // MARK: - View setup
@@ -29,25 +30,25 @@ class ThirdPageView : TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        self.addSubview(imageView)
+        
+        for deadline in deadlines {
+            self.addSubview(deadline)
+        }
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        imageView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
-            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
-            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
-            make.height.lessThanOrEqualTo(imageHeight)
-            make.size.lessThanOrEqualToSuperview()
-            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
+        for deadline in deadlines {
+            deadline.snp.makeConstraints { (make) in
+                make.center.equalToSuperview()
+                make.width.equalToSuperview().inset(12)
+            }
         }
     }
     
     private func setupText(){
-        self.imageView.image = Asset.AppImages.TutorialPreview.deadline.image
+        
         self.title.text = "Дедлайны"
         self.text.text = "Контролируй учебный процесс, ставь \nзадачи и выполняй их в срок"
     }
