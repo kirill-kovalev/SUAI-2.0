@@ -19,11 +19,28 @@ enum DedadlineState{
 
 class PocketDeadlineView: View {
     
-    public func setLessonText(lesson name:String){
-        
+    public func setLessonText(lesson name:String?){
+        self.lessonLabel.text = name
+        if name == "" || name == nil {
+            self.calendarIcon.snp.updateConstraints { (make) in
+                make.width.equalTo(0)
+            }
+        }else{
+            self.calendarIcon.snp.updateConstraints { (make) in
+                make.width.equalTo(20)
+            }
+        }
     }
-    public func setDescriptionText(description text:String){
-        
+    public func setDescriptionText(description text:String?){
+        if text == "" || text == nil {
+            self.articleIcon.snp.updateConstraints { (make) in
+                make.width.equalTo(0)
+            }
+        }else{
+            self.articleIcon.snp.updateConstraints { (make) in
+                make.width.equalTo(20)
+            }
+        }
     }
     public func setState(state:DedadlineState){
         switch state {
@@ -31,36 +48,37 @@ class PocketDeadlineView: View {
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
             imageView.tintColor = Asset.PocketColors.pocketRedButtonText.color
-        break;
+            break;
         case .open:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketBlue.color
             imageView.tintColor = Asset.PocketColors.buttonOutlineBorder.color
-        break;
-            case .closed:
+            break;
+        case .closed:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineGreen.color
             imageView.tintColor = Asset.PocketColors.pocketGreenButtonText.color
-        break;
+            break;
         }
     }
     
     // MARK: - views
     
-    let authorLabel:UILabel = {
+    let titleLabel:UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
-        label.textColor = Asset.PocketColors.pocketDarkBlue.color
-        label.text = "ГУАП | SUAI"
+        label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketBlack.color
+        label.numberOfLines = 2
+        label.text = "Название дедлайна \nв две строки"
         return label
     }()
     
-    let titleLabel:UILabel = {
+    let lessonLabel:UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = FontFamily.SFProDisplay.semibold.font(size: 15)
-        label.textColor = Asset.PocketColors.pocketBlack.color
-        label.numberOfLines = 2
-        label.text = "Приходи на день абитуриента и выбирай свое будущее!"
+        label.font = FontFamily.SFProDisplay.regular.font(size: 13)
+        label.textColor = Asset.PocketColors.pocketGray.color
+        label.text = "Какой-то предмет"
+        label.numberOfLines = 1
         return label
     }()
     
@@ -85,8 +103,15 @@ class PocketDeadlineView: View {
         icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
         return icon
     }()
+    let checkbox:CheckBox = {
+        let checkbox = CheckBox(frame: .zero)
+        checkbox.checkmarkColor = Asset.PocketColors.pocketDarkBlue.color
+        checkbox.uncheckedBorderColor = Asset.PocketColors.pocketLightGray.color
+        checkbox.checkedBorderColor =  Asset.PocketColors.pocketDarkBlue.color
+        return checkbox
+    }()
     
-
+    
     
     
     
@@ -94,27 +119,61 @@ class PocketDeadlineView: View {
         super.init()
         addViews()
         setupConstraints()
+        setState(state: .nearest)
         
-        self.setState(state: .nearest)
-        
-        self.setState(state: .closed)
     }
     
     private func addViews(){
         
-        self.addSubview(authorLabel)
+        self.addSubview(lessonLabel)
         self.addSubview(titleLabel)
         self.addSubview(imageView)
-
+        
+        self.addSubview(articleIcon)
+        self.addSubview(calendarIcon)
+        
+        self.addSubview(self.checkbox)
     }
     
     private func setupConstraints(){
         self.imageView.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.height.width.equalTo(44)
+            make.top.greaterThanOrEqualToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+        self.titleLabel.snp.makeConstraints { (make) in
+            make.top.greaterThanOrEqualToSuperview()
+            make.left.equalTo(imageView.snp.right).offset(12)
+            make.right.lessThanOrEqualTo(self.articleIcon.snp.left)
+            make.centerY.lessThanOrEqualToSuperview()
+        }
+        self.lessonLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(imageView.snp.right).offset(12)
+            make.right.equalTo(titleLabel)
+            make.centerY.greaterThanOrEqualToSuperview()
+            
+            make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            make.bottom.equalToSuperview()
+        }
+        self.articleIcon.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+            make.right.equalTo(self.calendarIcon.snp.left).inset(-6)
+        }
+        self.calendarIcon.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+            make.right.equalTo(self.checkbox.snp.left).inset(-6)
+        }
+        self.checkbox.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(18)
+            make.right.equalToSuperview()
         }
         
-       
+        
     }
     
     
