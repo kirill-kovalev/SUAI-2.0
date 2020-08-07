@@ -25,6 +25,12 @@ class FirstPageView:TutorialPageView{
         return gesture
     }()
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     // MARK: - View setup
     
     required init() {
@@ -50,16 +56,30 @@ class FirstPageView:TutorialPageView{
     
     override func addViews(){
         super.addViews()
+        
+        self.addSubview(imageView)
         self.addSubview(gestureZone)
     }
     
     override func setupConstraints(){
         super.setupConstraints()
+        
+        imageView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
+            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
+            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
+            make.height.lessThanOrEqualTo(imageHeight)
+            make.size.lessThanOrEqualToSuperview()
+            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
+        }
+        
         gestureZone.snp.makeConstraints { (make) in
             make.trailing.bottom.top.equalTo(text)
             make.leading.equalTo(text.snp.centerX)
         }
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

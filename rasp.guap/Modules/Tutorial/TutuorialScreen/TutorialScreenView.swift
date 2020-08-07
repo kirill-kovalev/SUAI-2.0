@@ -13,8 +13,8 @@ class TutorialScreenView: MainView, UIScrollViewDelegate {
     
     let pagedView:PagedView = {
         let pages =  PagedView();
-        pages.pageControl.currentPageIndicatorTintColor =  Asset.PocketColors.accent.color
-        pages.pageControl.pageIndicatorTintColor = Asset.PocketColors.pocketAqua.color
+        pages.pageControl.currentPageIndicatorTintColor =  Asset.PocketColors.pocketDarkBlue.color
+        pages.pageControl.pageIndicatorTintColor = Asset.PocketColors.pocketBlue.color
         return pages
     }()
     let elipse = TutorialScreenView.BackgroundElipse()

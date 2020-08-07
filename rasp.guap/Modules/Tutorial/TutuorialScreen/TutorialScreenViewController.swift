@@ -10,26 +10,20 @@ import UIKit
 
 class TutorialScreenViewController: ViewController<TutorialScreenView> {
     
-    private let pages : [MainView] = [SecondPageView(),ThirdPageView(),FourthPageView(),FifthPageView()]
+    private let pages : [UIViewController] = [FirstPageViewController(),SecondPageViewController(),ThirdPageViewController(),FourthPageViewController(),FifthPageViewController(),GroupSelectPageViewController()]
     
     // MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         self.rootView.pagedView.delegate = self
         
-        let first = FirstPageViewController()
-        first.delegate = self
-        self.addChild(first)
-        self.rootView.pagedView.addSubview(first.view)
-        first.didMove(toParent: self)
+        (pages[0] as! FirstPageViewController).delegate = self
         
         for page in pages {
-            self.rootView.pagedView.addSubview(page)
+            self.addChild(page)
+            self.rootView.pagedView.addSubview(page.view)
+            page.didMove(toParent: self)
         }
-        
-        let last = GroupSelectPageViewController()
-        self.addChild(last)
-        self.rootView.pagedView.addSubview(last.view)
         
         self.rootView.backButton.addTarget(action: { (sender) in
             self.navigationController?.popViewController(animated: true)

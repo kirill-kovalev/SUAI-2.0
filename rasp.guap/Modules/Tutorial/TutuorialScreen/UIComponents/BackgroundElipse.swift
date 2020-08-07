@@ -32,14 +32,14 @@ extension TutorialScreenView{
                     self.transform = CGAffineTransform(rotationAngle: -56.degreesToRadians )
                         .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 4/5, y: -self.rootView.frame.height * 3/5 ))
                     
-                    self.tintColor = Asset.PocketColors.pocketGray.color
+                    self.tintColor = Asset.PocketColors.pocketLightGray.color
                     
                 break;
                 case 1:
                     self.transform = CGAffineTransform(rotationAngle: -42.degreesToRadians)
                         .concatenating(CGAffineTransform(translationX: 0, y: -self.rootView.frame.height * 1/3))
                     
-                    self.tintColor = Asset.PocketColors.pocketGray.color
+                    self.tintColor = Asset.PocketColors.pocketLightGray.color
                     
                 break;
                 case 2:
@@ -52,7 +52,7 @@ extension TutorialScreenView{
                 case 3:
                     self.transform = CGAffineTransform(rotationAngle: -61.degreesToRadians )
                         .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 3/5, y: -self.rootView.frame.height/4))
-                    self.tintColor = Asset.PocketColors.pocketGray.color
+                    self.tintColor = Asset.PocketColors.pocketLightGray.color
                     
                 break;
                 
@@ -60,7 +60,7 @@ extension TutorialScreenView{
                     self.transform = CGAffineTransform(rotationAngle: -70.degreesToRadians )
                         .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 3/4, y:  -self.rootView.frame.height * 3/4))
                     
-                    self.tintColor = Asset.PocketColors.pocketGray.color
+                    self.tintColor = Asset.PocketColors.pocketLightGray.color
                     
                 break;
                 
@@ -69,7 +69,7 @@ extension TutorialScreenView{
                         .concatenating(CGAffineTransform(translationX: self.rootView.frame.width * 1/2, y: self.rootView.frame.height * 1/5))
                         .concatenating(CGAffineTransform(scaleX: 0.8, y: 0.8))
                     
-                    self.tintColor = Asset.PocketColors.pocketGray.color
+                    self.tintColor = Asset.PocketColors.pocketLightGray.color
                     
                 break;
                 

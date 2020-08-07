@@ -28,34 +28,21 @@ class TutorialPageView:MainView{
         return label
     }()
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    
 
     // MARK: - View setup
     
     func addViews(){
         self.addSubview(title)
         self.addSubview(text)
-        self.addSubview(imageView)
     }
     func setupConstraints(){
-        imageView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
-            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
-            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
-            make.height.lessThanOrEqualTo(imageHeight)
-            make.size.lessThanOrEqualToSuperview()
-            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
-        }
         
         title.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(self.snp.bottom).multipliedBy(0.8)
         }
+        
         text.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(title.snp.bottom).offset(10)
