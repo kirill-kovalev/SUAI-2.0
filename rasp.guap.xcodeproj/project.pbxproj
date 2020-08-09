@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
+		5D0E336724E01A7E00B45143 /* PocketDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
@@ -76,10 +78,14 @@
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */; };
 		5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */; };
+		5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DCE2FE924E0282700CFF29A /* PocketDayView.xib */; };
+		5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE2FEC24E03AEC00CFF29A /* PocketTagButton.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
+		5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayViewController.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
 		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		5DCE2FE924E0282700CFF29A /* PocketDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PocketDayView.xib; sourceTree = "<group>"; };
+		5DCE2FEC24E03AEC00CFF29A /* PocketTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTagButton.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +195,16 @@
 				5DA10F4724DB546800D09BD8 /* GroupSelectPage */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		5D0E335524E0103900B45143 /* PocketDay */ = {
+			isa = PBXGroup;
+			children = (
+				5D0E336224E018FD00B45143 /* PocketDayView.swift */,
+				5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */,
+				5DCE2FE924E0282700CFF29A /* PocketDayView.xib */,
+			);
+			path = PocketDay;
 			sourceTree = "<group>";
 		};
 		5D2ADF9924D423D8006DACED /* ModalViewController */ = {
@@ -310,6 +328,8 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5DCE2FEB24E03ACF00CFF29A /* PocketTag */,
+				5D0E335524E0103900B45143 /* PocketDay */,
 				5DC4BC6B24DD808800E90BB3 /* PocketDeadline */,
 				5DA10F8F24DCACCF00D09BD8 /* PocketNews */,
 				5DA10F8C24DC7D5200D09BD8 /* PocketDiv */,
@@ -495,6 +515,14 @@
 			path = PocketDeadline;
 			sourceTree = "<group>";
 		};
+		5DCE2FEB24E03ACF00CFF29A /* PocketTag */ = {
+			isa = PBXGroup;
+			children = (
+				5DCE2FEC24E03AEC00CFF29A /* PocketTagButton.swift */,
+			);
+			path = PocketTag;
+			sourceTree = "<group>";
+		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D99B25024DD600900D6C648 /* SFProDisplay-UltralightItalic.ttf in Resources */,
+				5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */,
 				5D99B24E24DD600900D6C648 /* SFProDisplay-BlackItalic.ttf in Resources */,
 				5D99B23724DD58CF00D6C648 /* TTCommons-Medium.ttf in Resources */,
 				5D99B25A24DD600900D6C648 /* SFProDisplay-RegularItalic.ttf in Resources */,
@@ -691,12 +720,15 @@
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
+				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
+				5D0E336724E01A7E00B45143 /* PocketDayViewController.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
 				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
+				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
 				5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */,
 				5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */,
