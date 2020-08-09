@@ -10,14 +10,14 @@ import UIKit
 
 class ViewController<ContentView:View>: UIViewController {
 
-	let rootView = ContentView();
+    var rootView:ContentView {
+            return (self.view as! ContentView)
+    }
     
     
     required init() {
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
-        //print("\(ContentView.Type.self).init")
-
         //setting up keyboard display
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -28,40 +28,10 @@ class ViewController<ContentView:View>: UIViewController {
     
     
 	override func loadView(){
-        //print("\(ContentView.self).loadView")
-		self.view = rootView
+        self.view = ContentView();
 	}
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //print("\(ContentView.Type.self).viewDidLoad")
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //print("\(ContentView.Type.self).viewWillAppear")
-    }
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        print("\(ContentView.Type.self).viewWillLayoutSubviews")
-//    }
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        print("\(ContentView.Type.self).viewDidLayoutSubviews")
-//    }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        print("\(ContentView.Type.self).viewDidAppear")
-//    }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        print("\(ContentView.Type.self).viewWillDisappear")
-//    }
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        print("\(ContentView.Type.self).viewDidDisappear")
-//    }
-//	deinit {
-//        print("\(ContentView.Type.self).deinit")
-//	}
+
+
     
     
     // MARK: - default required init from coder
