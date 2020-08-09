@@ -1,17 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "Стартовый экран.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "filename" : "IMG_57DBA98363DB-1.jpeg",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "IMG_D24A7B29BC00-1.jpeg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
