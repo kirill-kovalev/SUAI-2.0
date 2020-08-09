@@ -50,7 +50,7 @@ class FirstScreenView: View {
     }()
     
     let pocketDiv: PocketDivView = {
-        let news = PocketDeadlineView()
+        let news = PocketDayView.fromNib()
         let div = PocketDivView(content: news )
         return div
     }()
@@ -69,7 +69,7 @@ class FirstScreenView: View {
         self.addSubview(btn)
         self.addSubview(btn2)
         //self.addSubview(btn3)
-        //self.addSubview(pocketDiv)
+        self.addSubview(pocketDiv)
         
     }
     
@@ -93,12 +93,12 @@ class FirstScreenView: View {
 //            NSLayoutConstraint(item: btn3, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
 //        ])
         
-//        pocketDiv.snp.makeConstraints { (make) in
-//
-//            make.top.equalToSuperview().offset(50)
-//            make.centerX.equalToSuperview()
-//            make.leftMargin.rightMargin.equalToSuperview()
-//        }
+        pocketDiv.snp.makeConstraints { (make) in
+
+            make.top.equalToSuperview().offset(50)
+            make.centerX.equalToSuperview()
+            make.leftMargin.rightMargin.equalToSuperview()
+        }
         
     }
     
