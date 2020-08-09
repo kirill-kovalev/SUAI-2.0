@@ -12,6 +12,11 @@ class ThirdPageViewController : ViewController<ThirdPageView> {
     
     // MARK: - View Controller lifecycle
     override func viewDidAppear(_ animated:Bool) {
+        setupAnimations()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setupAnimations), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc private func setupAnimations(){
         var delay = 0.0
         let duration = 4.0
         for view in self.rootView.deadlines{
@@ -36,7 +41,8 @@ class ThirdPageViewController : ViewController<ThirdPageView> {
                     view.layer.opacity = 0
                 }
                 
-            }, completion: nil)
+                }, completion: nil)
+                
             delay += duration * 0.2
         }
     }

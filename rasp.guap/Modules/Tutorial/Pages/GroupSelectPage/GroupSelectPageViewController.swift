@@ -11,7 +11,9 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView> {
     
      // MARK: - ViewController lifecycle
     override func viewDidLoad() {
-        
+        self.rootView.button.addTarget(action: { (sender) in
+            self.present(TimetableFilterViewConroller(), animated: true, completion: nil)
+        }, for: .touchUpInside)
     }
     
      // MARK: - Actions

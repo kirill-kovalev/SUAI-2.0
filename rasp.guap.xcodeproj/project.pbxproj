@@ -176,6 +176,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5D0E335424DF2FA600B45143 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				5DA10F4224DB541900D09BD8 /* FirstPage */,
+				5DA10F4324DB542400D09BD8 /* SecondPage */,
+				5DA10F4424DB543800D09BD8 /* ThirdPage */,
+				5DA10F4524DB544700D09BD8 /* FourthPage */,
+				5DA10F4624DB544E00D09BD8 /* FifthPage */,
+				5DA10F4724DB546800D09BD8 /* GroupSelectPage */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		5D2ADF9924D423D8006DACED /* ModalViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,13 +228,6 @@
 		5D3E08C224D4A4F100DF6DBD /* TutuorialScreen */ = {
 			isa = PBXGroup;
 			children = (
-				5DA10F4224DB541900D09BD8 /* FirstPage */,
-				5DA10F4324DB542400D09BD8 /* SecondPage */,
-				5DA10F4424DB543800D09BD8 /* ThirdPage */,
-				5DA10F4524DB544700D09BD8 /* FourthPage */,
-				5DA10F4624DB544E00D09BD8 /* FifthPage */,
-				5DA10F4724DB546800D09BD8 /* GroupSelectPage */,
-				5DA10F3D24DB44F200D09BD8 /* UIComponents */,
 				5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */,
 				5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */,
 			);
@@ -231,7 +237,9 @@
 		5D633A0424DB1AA700ACE561 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				5D0E335424DF2FA600B45143 /* Pages */,
 				5D3E08C224D4A4F100DF6DBD /* TutuorialScreen */,
+				5DA10F3D24DB44F200D09BD8 /* UIComponents */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";

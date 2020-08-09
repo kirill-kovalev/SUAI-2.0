@@ -28,14 +28,25 @@ class SecondPageViewController : ViewController<SecondPageView> {
 //            }
 //        }, completion: nil)
         
-        self.rootView.divSecond?.transform = .init(scaleX: 0.95, y: 0.95)
-        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear,.repeat,.autoreverse], animations: {
-            self.rootView.divFirst?.transform = .init(scaleX: 0.95, y: 0.95)
-            self.rootView.divSecond?.transform = .identity
-        }, completion: nil )
+        
         
         
         
     }
+    override func viewDidLayoutSubviews() {
+        setupAnimations()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setupAnimations), name: UIApplication.didBecomeActiveNotification, object: nil)
+       
+    }
+    
+    @objc private func setupAnimations(){
+        self.rootView.divFirst?.transform = .identity
+        self.rootView.divSecond?.transform = .init(scaleX: 0.95, y: 0.95)
+        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear,.repeat,.autoreverse], animations: {
+            self.rootView.divFirst?.transform = .init(scaleX: 0.95, y: 0.95)
+            self.rootView.divSecond?.transform = .identity
+        }, completion: nil)
+    }
+    
     
 }
