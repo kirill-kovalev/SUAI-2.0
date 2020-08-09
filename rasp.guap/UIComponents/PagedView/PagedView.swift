@@ -84,7 +84,6 @@ class PagedView : UIView{
             if views.last != nil {
                 make.left.equalTo(views.last!.snp.right)
             }else{
-                print(views)
                 make.left.equalToSuperview()
             }
         }

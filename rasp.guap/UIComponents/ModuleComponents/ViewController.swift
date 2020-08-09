@@ -11,14 +11,66 @@ import UIKit
 class ViewController<ContentView:View>: UIViewController {
 
 	let rootView = ContentView();
+    
+    
     required init() {
         super.init(nibName: nil, bundle: nil)
-        
+        self.modalPresentationStyle = .overFullScreen
+        //print("\(ContentView.Type.self).init")
+
+        //setting up keyboard display
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
+    
+    
+    
+	override func loadView(){
+        //print("\(ContentView.self).loadView")
+		self.view = rootView
+	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //print("\(ContentView.Type.self).viewDidLoad")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //print("\(ContentView.Type.self).viewWillAppear")
+    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        print("\(ContentView.Type.self).viewWillLayoutSubviews")
+//    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        print("\(ContentView.Type.self).viewDidLayoutSubviews")
+//    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("\(ContentView.Type.self).viewDidAppear")
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        print("\(ContentView.Type.self).viewWillDisappear")
+//    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        print("\(ContentView.Type.self).viewDidDisappear")
+//    }
+//	deinit {
+//        print("\(ContentView.Type.self).deinit")
+//	}
+    
+    
+    // MARK: - default required init from coder
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - keyboard function
     @objc private func keyboardWillShow(_ notification:Notification) {
         adjustingHeight(true, notification: notification)
     }
@@ -42,16 +94,5 @@ class ViewController<ContentView:View>: UIViewController {
             self.rootView.transform = .init(translationX: 0, y: -changeInHeight/2)
         })
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-	override func loadView(){
-		self.view = rootView
-	}
-	
-	deinit {
-	}
 
 }
