@@ -18,6 +18,7 @@ class ViewController<ContentView:View>: UIViewController {
     required init() {
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
+        
         //setting up keyboard display
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -37,7 +38,7 @@ class ViewController<ContentView:View>: UIViewController {
     // MARK: - default required init from coder
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     // MARK: - keyboard function
