@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func startApp(){
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navVC = UINavigationController(rootViewController: FirstScreenViewController() )
+        let navVC = UINavigationController(rootViewController: TutorialScreenViewController() )
         navVC.isNavigationBarHidden = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

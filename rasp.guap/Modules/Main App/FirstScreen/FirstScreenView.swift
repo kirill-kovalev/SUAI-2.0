@@ -14,7 +14,7 @@ class FirstScreenView: View {
     
     let label: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Hello World!"
+        label.text = ""
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
@@ -68,8 +68,8 @@ class FirstScreenView: View {
         self.addSubview(label)
         self.addSubview(btn)
         self.addSubview(btn2)
-        self.addSubview(btn3)
-        self.addSubview(pocketDiv)
+        //self.addSubview(btn3)
+        //self.addSubview(pocketDiv)
         
     }
     
@@ -88,17 +88,17 @@ class FirstScreenView: View {
             NSLayoutConstraint(item: btn2, attribute: .top, relatedBy: .equal, toItem: btn, attribute: .bottom, multiplier: 1, constant: 10),
             NSLayoutConstraint(item: btn2, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         ])
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: btn3, attribute: .top, relatedBy: .equal, toItem: btn2, attribute: .bottom, multiplier: 1, constant: 10),
-            NSLayoutConstraint(item: btn3, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
-        ])
+//        NSLayoutConstraint.activate([
+//            NSLayoutConstraint(item: btn3, attribute: .top, relatedBy: .equal, toItem: btn2, attribute: .bottom, multiplier: 1, constant: 10),
+//            NSLayoutConstraint(item: btn3, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+//        ])
         
-        pocketDiv.snp.makeConstraints { (make) in
-            
-            make.top.equalToSuperview().offset(50)
-            make.centerX.equalToSuperview()
-            make.leftMargin.rightMargin.equalToSuperview()
-        }
+//        pocketDiv.snp.makeConstraints { (make) in
+//
+//            make.top.equalToSuperview().offset(50)
+//            make.centerX.equalToSuperview()
+//            make.leftMargin.rightMargin.equalToSuperview()
+//        }
         
     }
     

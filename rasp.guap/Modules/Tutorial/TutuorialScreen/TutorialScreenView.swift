@@ -46,7 +46,7 @@ class TutorialScreenView: View, UIScrollViewDelegate {
         }
         self.backButton.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview()
-            make.height.width.equalTo(150)
+            make.height.width.equalTo(0)
         }
         
     }
