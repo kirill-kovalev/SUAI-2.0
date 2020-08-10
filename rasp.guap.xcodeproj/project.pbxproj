@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
-		5D0E336724E01A7E00B45143 /* PocketDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
 		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
+		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
+		5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */; };
+		5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */; };
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
@@ -85,13 +87,15 @@
 
 /* Begin PBXFileReference section */
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
-		5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayViewController.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
 		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
+		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
+		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* rasp.guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rasp.guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				5D0E336224E018FD00B45143 /* PocketDayView.swift */,
-				5D0E336624E01A7D00B45143 /* PocketDayViewController.swift */,
 				5DCE2FE924E0282700CFF29A /* PocketDayView.xib */,
 			);
 			path = PocketDay;
@@ -265,10 +268,20 @@
 		5D633A0524DB1ACB00ACE561 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
+				5D74FE2524E13E3700FC38B8 /* TimetableController */,
 				5D2ADF9E24D425C3006DACED /* TimetableFilter */,
 				5D95A62224D412AB000418B5 /* FirstScreen */,
 			);
 			path = "Main App";
+			sourceTree = "<group>";
+		};
+		5D74FE2524E13E3700FC38B8 /* TimetableController */ = {
+			isa = PBXGroup;
+			children = (
+				5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */,
+				5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */,
+			);
+			path = TimetableController;
 			sourceTree = "<group>";
 		};
 		5D95A61324D412AB000418B5 = {
@@ -346,6 +359,7 @@
 			children = (
 				5D95A62924D412AB000418B5 /* View.swift */,
 				5D95A62B24D412AB000418B5 /* ViewController.swift */,
+				5D74FE2324E0993700FC38B8 /* NibView.swift */,
 			);
 			path = ModuleComponents;
 			sourceTree = "<group>";
@@ -711,17 +725,18 @@
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
+				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
+				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
 				5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */,
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
-				5D0E336724E01A7E00B45143 /* PocketDayViewController.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
@@ -735,6 +750,7 @@
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
+				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

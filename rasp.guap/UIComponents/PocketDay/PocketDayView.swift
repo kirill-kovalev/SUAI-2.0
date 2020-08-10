@@ -8,8 +8,7 @@
 
 import UIKit
 
-class PocketDayView: View {
+class PocketDayView: NibView {
 
-    @IBOutlet weak var label: UILabel!
     
 }

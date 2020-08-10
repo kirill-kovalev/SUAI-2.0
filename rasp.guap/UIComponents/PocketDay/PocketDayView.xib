@@ -20,54 +20,54 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PocketDayView" customModule="rasp_guap" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="322" height="71"/>
+            <rect key="frame" x="0.0" y="0.0" width="322" height="85"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfE-ze-hKY">
-                    <rect key="frame" x="0.0" y="2" width="46" height="17"/>
+                    <rect key="frame" x="0.0" y="8" width="46" height="16.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операционные системы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-RC-tIi">
-                    <rect key="frame" x="61" y="2" width="261" height="17"/>
+                    <rect key="frame" x="61" y="8" width="261" height="16.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZa-4r-lXR">
-                    <rect key="frame" x="8" y="54.5" width="30" height="14.5"/>
+                    <rect key="frame" x="8" y="63" width="30.5" height="14"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-KS-lCG">
-                    <rect key="frame" x="20" y="27" width="6.5" height="17"/>
+                    <rect key="frame" x="19" y="34.5" width="8" height="16.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_tag_border"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m76-gE-7Cg">
-                    <rect key="frame" x="46" y="0.0" width="5" height="71"/>
+                    <rect key="frame" x="46" y="6" width="5" height="73"/>
                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="5" id="YuO-Sb-UWB"/>
-                        <constraint firstAttribute="height" constant="71" id="dBr-et-Ga6"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="71" id="dBr-et-Ga6"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
+                            <real key="value" value="2.5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поляк. М. Д. - старший преподаватель и еще что-то" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-nH-IFg">
-                    <rect key="frame" x="61" y="53.5" width="251" height="17"/>
+                    <rect key="frame" x="61" y="62" width="251" height="16.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_gray"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYt-aq-V9z">
-                    <rect key="frame" x="61" y="23.5" width="251" height="24"/>
+                    <rect key="frame" x="61" y="30.5" width="251" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SpC-dU-hUb" customClass="PocketTagButton" customModule="rasp_guap" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="251" height="24"/>
@@ -87,8 +87,8 @@
                 <constraint firstItem="mYt-aq-V9z" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="DaN-rs-zDY"/>
                 <constraint firstItem="KfE-ze-hKY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F9m-WS-zKs"/>
                 <constraint firstItem="m76-gE-7Cg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="ItP-gf-Ha2"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Pw4-hq-UhW"/>
-                <constraint firstAttribute="bottom" secondItem="fZa-4r-lXR" secondAttribute="bottom" constant="2" id="QfI-vO-djF"/>
+                <constraint firstItem="m76-gE-7Cg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Pw4-hq-UhW"/>
+                <constraint firstItem="fZa-4r-lXR" firstAttribute="bottom" secondItem="m76-gE-7Cg" secondAttribute="bottom" constant="-2" id="QfI-vO-djF"/>
                 <constraint firstItem="nl8-KS-lCG" firstAttribute="centerX" secondItem="KfE-ze-hKY" secondAttribute="centerX" id="RbM-Px-ClP"/>
                 <constraint firstItem="KfE-ze-hKY" firstAttribute="trailing" secondItem="m76-gE-7Cg" secondAttribute="leading" id="Umq-dG-Etf"/>
                 <constraint firstItem="5Dv-nH-IFg" firstAttribute="centerY" secondItem="fZa-4r-lXR" secondAttribute="centerY" id="VYx-80-cTQ"/>
@@ -96,16 +96,16 @@
                 <constraint firstItem="VbT-RC-tIi" firstAttribute="firstBaseline" secondItem="KfE-ze-hKY" secondAttribute="firstBaseline" id="ath-d6-cdd"/>
                 <constraint firstItem="VbT-RC-tIi" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="ba5-pk-LF4"/>
                 <constraint firstItem="mYt-aq-V9z" firstAttribute="leading" secondItem="VbT-RC-tIi" secondAttribute="leading" id="fzs-7R-q2I"/>
-                <constraint firstItem="KfE-ze-hKY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="la1-Y9-AZU"/>
+                <constraint firstItem="KfE-ze-hKY" firstAttribute="top" secondItem="m76-gE-7Cg" secondAttribute="top" constant="2" id="la1-Y9-AZU"/>
                 <constraint firstAttribute="trailing" secondItem="VbT-RC-tIi" secondAttribute="trailing" id="oox-T7-0f4"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="xOj-BY-R27"/>
+                <constraint firstItem="m76-gE-7Cg" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-6" id="xOj-BY-R27"/>
                 <constraint firstItem="5Dv-nH-IFg" firstAttribute="leading" secondItem="VbT-RC-tIi" secondAttribute="leading" id="yG6-2k-dcs"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="249.27536231884059" y="-90.736607142857139"/>
+            <point key="canvasLocation" x="249.27536231884059" y="-86.049107142857139"/>
         </view>
     </objects>
     <resources>
