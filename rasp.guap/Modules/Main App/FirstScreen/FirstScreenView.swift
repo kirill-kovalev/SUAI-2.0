@@ -50,7 +50,7 @@ class FirstScreenView: View {
     }()
     
     let pocketDiv: PocketDivView = {
-        let news = PocketDayView.fromNib()
+        let news = UIView(frame: .zero)
         let div = PocketDivView(content: news )
         return div
     }()
@@ -94,7 +94,6 @@ class FirstScreenView: View {
 //        ])
         
         pocketDiv.snp.makeConstraints { (make) in
-
             make.top.equalToSuperview().offset(50)
             make.centerX.equalToSuperview()
             make.leftMargin.rightMargin.equalToSuperview()

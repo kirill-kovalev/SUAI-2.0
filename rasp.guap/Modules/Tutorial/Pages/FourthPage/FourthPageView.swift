@@ -11,12 +11,7 @@ import UIKit
 class FourthPageView : TutorialPageView{
     
     // MARK: - Views
-    
-    let imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    let tableContainer: PocketDivView = PocketDivView()
    
      // MARK: - View setup
     
@@ -29,25 +24,18 @@ class FourthPageView : TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        self.addSubview(imageView)
+        self.addSubview(tableContainer)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
-        
-        imageView.snp.makeConstraints { (make) in
+        tableContainer.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
-            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
-            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
-            make.height.lessThanOrEqualTo(imageHeight)
-            make.size.lessThanOrEqualToSuperview()
-            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
+            make.width.equalToSuperview().inset(12)
         }
     }
     
     private func setupText(){
-        self.imageView.image = Asset.AppImages.TutorialPreview.timetable.image
         self.title.text = "Расписание"
         self.text.text = "Смотри расписание преподавателей и \nгрупп в реальном времени"
     }

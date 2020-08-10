@@ -20,7 +20,6 @@ class FirstPageViewController : ViewController<FirstPageView> {
     
     // MARK: - Actions
     @objc private func action(_ sender:UITapGestureRecognizer){
-        print("tap")
         self.delegate?.skipPages()
     }
 }
