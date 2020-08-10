@@ -10,23 +10,32 @@ import UIKit
 
 class PocketDivView : View {
     
-    private var content : UIView
+     var content : UIView
     
     required init() {
         self.content = UIView(frame: .zero);
         super.init()
+        
+        setupView()
+        super.addSubview(content)
+        setupConstraints()
     }
+    
+    override func addSubview(_ view: UIView) {
+        self.content.addSubview(view)
+    }
+    
+    
     required init(content:UIView) {
         self.content = content
-        
         super.init()
         
         setupView()
-        self.addSubview(content)
+        super.addSubview(content)
         setupConstraints()
-        
-        layoutSubviews()
+
     }
+    
     private func setupView(){
         
         self.backgroundColor = Asset.PocketColors.pocketWhite.color
