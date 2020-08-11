@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
+		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
+		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		5D95A61C24D412AB000418B5 /* rasp.guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rasp.guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D95A61C24D412AB000418B5 /* SUAI Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUAI Pocket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D95A62324D412AB000418B5 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 			path = PocketDay;
 			sourceTree = "<group>";
 		};
+		5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */ = {
+			isa = PBXGroup;
+			children = (
+				5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */,
+			);
+			path = PocketFAQCard;
+			sourceTree = "<group>";
+		};
 		5D2ADF9924D423D8006DACED /* ModalViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +310,7 @@
 		5D95A61D24D412AB000418B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D95A61C24D412AB000418B5 /* rasp.guap.app */,
+				5D95A61C24D412AB000418B5 /* SUAI Pocket.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +354,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */,
 				5DCE2FEB24E03ACF00CFF29A /* PocketTag */,
 				5D0E335524E0103900B45143 /* PocketDay */,
 				5DC4BC6B24DD808800E90BB3 /* PocketDeadline */,
@@ -569,7 +580,7 @@
 			);
 			name = rasp.guap;
 			productName = rasp.guap;
-			productReference = 5D95A61C24D412AB000418B5 /* rasp.guap.app */;
+			productReference = 5D95A61C24D412AB000418B5 /* SUAI Pocket.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -741,6 +752,7 @@
 				5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
+				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
@@ -900,7 +912,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guap;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -920,7 +932,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guap;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
