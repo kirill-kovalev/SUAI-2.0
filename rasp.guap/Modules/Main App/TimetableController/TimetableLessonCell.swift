@@ -11,6 +11,7 @@ import UIKit
 class TimetableLessonCell: UITableViewCell{
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style:style,reuseIdentifier:reuseIdentifier)
+        self.backgroundColor = .clear
         let pocketLessonView = PocketDayView.fromNib()
         self.contentView.addSubview(pocketLessonView)
         pocketLessonView.snp.makeConstraints { (make) in
