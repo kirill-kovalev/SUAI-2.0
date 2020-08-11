@@ -12,11 +12,15 @@ class FifthPageView : TutorialPageView{
     
     // MARK: - Views
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    let cards = [
+        PocketFAQCard(title: "Институты и\nфакультеты", image: Asset.AppImages.FAQImages.inst.image),
+        PocketFAQCard(title: "Отделы \nуниверситета", image: Asset.AppImages.FAQImages.otd.image),
+        PocketFAQCard(title: "Приемная \nкомиссия", image: Asset.AppImages.FAQImages.hat.image),
+        PocketFAQCard(title: "Иностранные\nстуденты", image: Asset.AppImages.FAQImages.inst.image)
+    ]
+    lazy var containers = cards.map { (card)  in
+        PocketDivView(content: card)
+    }
    
      // MARK: - View setup
     
@@ -29,25 +33,24 @@ class FifthPageView : TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        self.addSubview(imageView)
+        for card in self.containers{
+            self.addSubview(card)
+        }
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        imageView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            let imageHeight:CGFloat = imageView.image?.size.height ?? 1
-            let imageWidth:CGFloat = imageView.image?.size.width ?? 0
-            make.width.equalTo(imageView.snp.height).multipliedBy(imageWidth/imageHeight)
-            make.height.lessThanOrEqualTo(imageHeight)
-            make.size.lessThanOrEqualToSuperview()
-            make.width.height.lessThanOrEqualToSuperview().multipliedBy(0.8).priority(.high)
+        for card in self.containers {
+            card.snp.makeConstraints { (make) in
+                make.width.equalToSuperview().multipliedBy(0.4)
+                make.height.equalTo(card.snp.width).multipliedBy(0.8)
+                make.center.equalToSuperview()
+            }
         }
     }
     
     private func setupText(){
-        self.imageView.image = Asset.AppImages.TutorialPreview.info.image
         self.title.text = "Справочник"
         self.text.text = "Находи всю важную информацию об \nуниверситете и не только"
     }
