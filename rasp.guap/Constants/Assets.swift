@@ -22,6 +22,15 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal enum AppImages {
+    internal enum FAQImages {
+      internal static let hat = ImageAsset(name: "hat")
+      internal static let inst = ImageAsset(name: "inst")
+      internal static let med = ImageAsset(name: "med")
+      internal static let medal = ImageAsset(name: "medal")
+      internal static let nav = ImageAsset(name: "nav")
+      internal static let otd = ImageAsset(name: "otd")
+      internal static let stu = ImageAsset(name: "stu")
+    }
     internal static let launchScreen = ImageAsset(name: "LaunchScreen")
     internal static let tutorialEipse = ImageAsset(name: "TutorialEipse")
     internal enum TutorialPreview {
@@ -82,7 +91,6 @@ internal enum Asset {
     internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
   }
-  internal static let recentOutline561deadlineTimer = ImageAsset(name: "recent_outline_56 1deadline_timer")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
