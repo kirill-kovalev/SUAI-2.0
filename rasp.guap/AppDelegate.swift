@@ -24,11 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func showTutorialPages(){
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = TutorialScreenViewController()
+        window?.makeKeyAndVisible()
+    }
     func startApp(){
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navVC = UINavigationController(rootViewController: TutorialScreenViewController() )
-        navVC.isNavigationBarHidden = true
-        window?.rootViewController = navVC
+        let tabBar = MainTabBarController()
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
     

@@ -52,7 +52,7 @@ class TimetableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let modal = LessonModalViewController()
+        let modal = LessonInfoModalViewController()
         self.present(modal, animated: true, completion: {
             self.tableView.deselectRow(at: indexPath, animated: true)
         })

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class LessonModalViewController : ModalViewController<LessonModalView>{
+class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
 }

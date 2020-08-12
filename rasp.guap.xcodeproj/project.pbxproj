@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
-		5D2640E824E41A4F001A97A2 /* LessonModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */; };
-		5D2640EA24E41A58001A97A2 /* LessonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonModalView.swift */; };
+		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
+		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
 		5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426824E41C57001A97A2 /* Schedule.User.swift */; };
 		5D26427024E41C57001A97A2 /* Preps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426924E41C57001A97A2 /* Preps.swift */; };
 		5D26427124E41C57001A97A2 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426A24E41C57001A97A2 /* Timetable.swift */; };
@@ -23,6 +23,7 @@
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
 		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
+		5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
@@ -31,8 +32,6 @@
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
-		5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62324D412AB000418B5 /* FirstScreenView.swift */; };
-		5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */; };
 		5D95A62A24D412AB000418B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62924D412AB000418B5 /* View.swift */; };
 		5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62B24D412AB000418B5 /* ViewController.swift */; };
 		5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */; };
@@ -98,8 +97,8 @@
 
 /* Begin PBXFileReference section */
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
-		5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModalViewController.swift; sourceTree = "<group>"; };
-		5D2640E924E41A58001A97A2 /* LessonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModalView.swift; sourceTree = "<group>"; };
+		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
+		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
 		5D26426824E41C57001A97A2 /* Schedule.User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.User.swift; sourceTree = "<group>"; };
 		5D26426924E41C57001A97A2 /* Preps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preps.swift; sourceTree = "<group>"; };
 		5D26426A24E41C57001A97A2 /* Timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
 		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
+		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
@@ -122,8 +122,6 @@
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* SUAI Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUAI Pocket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5D95A62324D412AB000418B5 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
-		5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
 		5D95A62924D412AB000418B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5D95A62B24D412AB000418B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D95A63424D412AB000418B5 /* rasp_guap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rasp_guap.xcdatamodel; sourceTree = "<group>"; };
@@ -232,13 +230,13 @@
 			path = PocketDay;
 			sourceTree = "<group>";
 		};
-		5D2640E624E41A29001A97A2 /* LessonModalPreview */ = {
+		5D2640E624E41A29001A97A2 /* LessonInfoModalVC */ = {
 			isa = PBXGroup;
 			children = (
-				5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */,
-				5D2640E924E41A58001A97A2 /* LessonModalView.swift */,
+				5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */,
+				5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */,
 			);
-			path = LessonModalPreview;
+			path = LessonInfoModalVC;
 			sourceTree = "<group>";
 		};
 		5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */ = {
@@ -258,13 +256,13 @@
 			path = ModalViewController;
 			sourceTree = "<group>";
 		};
-		5D2ADF9E24D425C3006DACED /* TimetableFilter */ = {
+		5D2ADF9E24D425C3006DACED /* TimetableFilterModalVC */ = {
 			isa = PBXGroup;
 			children = (
 				5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */,
 				5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */,
 			);
-			path = TimetableFilter;
+			path = TimetableFilterModalVC;
 			sourceTree = "<group>";
 		};
 		5D2ADFA724D42918006DACED /* Extensions */ = {
@@ -284,6 +282,63 @@
 				5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		5D3D6C9324E42E6E007CE482 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		5D3D6C9624E42F31007CE482 /* FeedTabPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FeedTabPage;
+			sourceTree = "<group>";
+		};
+		5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DeadlinesTabPage;
+			sourceTree = "<group>";
+		};
+		5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */ = {
+			isa = PBXGroup;
+			children = (
+				5D2ADF9E24D425C3006DACED /* TimetableFilterModalVC */,
+				5D2640E624E41A29001A97A2 /* LessonInfoModalVC */,
+			);
+			path = ScheduleTabPage;
+			sourceTree = "<group>";
+		};
+		5D3D6C9924E42F77007CE482 /* InfoTabPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InfoTabPage;
+			sourceTree = "<group>";
+		};
+		5D3D6C9A24E42F82007CE482 /* SettingsTabPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingsTabPage;
+			sourceTree = "<group>";
+		};
+		5D3D6C9C24E42F99007CE482 /* TabBarPages */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D6C9A24E42F82007CE482 /* SettingsTabPage */,
+				5D3D6C9924E42F77007CE482 /* InfoTabPage */,
+				5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */,
+				5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */,
+				5D3D6C9624E42F31007CE482 /* FeedTabPage */,
+			);
+			path = TabBarPages;
 			sourceTree = "<group>";
 		};
 		5D3E08C224D4A4F100DF6DBD /* TutuorialScreen */ = {
@@ -308,10 +363,9 @@
 		5D633A0524DB1ACB00ACE561 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
-				5D2640E624E41A29001A97A2 /* LessonModalPreview */,
+				5D3D6C9C24E42F99007CE482 /* TabBarPages */,
+				5D3D6C9324E42E6E007CE482 /* MainTabBar */,
 				5D74FE2524E13E3700FC38B8 /* TimetableController */,
-				5D2ADF9E24D425C3006DACED /* TimetableFilter */,
-				5D95A62224D412AB000418B5 /* FirstScreen */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -369,15 +423,6 @@
 				5D633A0524DB1ACB00ACE561 /* Main App */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		5D95A62224D412AB000418B5 /* FirstScreen */ = {
-			isa = PBXGroup;
-			children = (
-				5D95A62324D412AB000418B5 /* FirstScreenView.swift */,
-				5D95A62524D412AB000418B5 /* FirstScreenViewController.swift */,
-			);
-			path = FirstScreen;
 			sourceTree = "<group>";
 		};
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
@@ -626,8 +671,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D95A63E24D412AC000418B5 /* Build configuration list for PBXNativeTarget "rasp.guap" */;
 			buildPhases = (
-				5DA10F7224DC458D00D09BD8 /* ShellScript */,
 				026171D9DAFEDFA3E8078B37 /* [CP] Check Pods Manifest.lock */,
+				5DA10F7224DC458D00D09BD8 /* ShellScript */,
 				5D95A61824D412AB000418B5 /* Sources */,
 				5D95A61924D412AB000418B5 /* Frameworks */,
 				5D95A61A24D412AB000418B5 /* Resources */,
@@ -783,12 +828,13 @@
 			files = (
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
+				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
-				5D2640EA24E41A58001A97A2 /* LessonModalView.swift in Sources */,
+				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
@@ -818,7 +864,7 @@
 				5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
-				5D2640E824E41A4F001A97A2 /* LessonModalViewController.swift in Sources */,
+				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
 				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
@@ -828,9 +874,7 @@
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
-				5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */,
 				5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */,
-				5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
@@ -968,12 +1012,13 @@
 		};
 		5D95A63F24D412AC000418B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45G7K48JJS;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -987,12 +1032,13 @@
 		};
 		5D95A64024D412AC000418B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45G7K48JJS;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

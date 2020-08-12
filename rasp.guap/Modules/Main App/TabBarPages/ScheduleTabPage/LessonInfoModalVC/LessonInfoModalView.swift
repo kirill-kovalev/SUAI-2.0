@@ -8,6 +8,6 @@
 
 import UIKit
 
-class LessonModalView: View {
+class LessonInfoModalView: View {
     
 }
