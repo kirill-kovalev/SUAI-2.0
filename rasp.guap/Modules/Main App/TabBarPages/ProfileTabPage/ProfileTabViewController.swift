@@ -1,5 +1,5 @@
 //
-//  FeedTabView.swift
+//  FeedTabViewController.swift
 //  rasp.guap
 //
 //  Created by Кирилл on 12.08.2020.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SettingsTabView:View {
+class ProfileTabViewController: ViewController<PrifilePTabView> {
     
 }

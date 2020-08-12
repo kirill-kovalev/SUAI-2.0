@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SettingsTabViewController: ViewController<SettingsTabView> {
+class ProfileTabViewController: ViewController<PrifilePTabView> {
     
 }

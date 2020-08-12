@@ -31,8 +31,8 @@
 		5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */; };
 		5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83724E4364E002630B5 /* InfoTabView.swift */; };
 		5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */; };
-		5D2BD83D24E43657002630B5 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83B24E43657002630B5 /* SettingsTabView.swift */; };
-		5D2BD83E24E43657002630B5 /* SettingsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */; };
+		5D2BD83D24E43657002630B5 /* PrifilePTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83B24E43657002630B5 /* PrifilePTabView.swift */; };
+		5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */; };
 		5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
@@ -130,8 +130,8 @@
 		5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
 		5D2BD83724E4364E002630B5 /* InfoTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabView.swift; sourceTree = "<group>"; };
 		5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabViewController.swift; sourceTree = "<group>"; };
-		5D2BD83B24E43657002630B5 /* SettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
-		5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD83B24E43657002630B5 /* PrifilePTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrifilePTabView.swift; sourceTree = "<group>"; };
+		5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
@@ -350,19 +350,19 @@
 			path = InfoTabPage;
 			sourceTree = "<group>";
 		};
-		5D3D6C9A24E42F82007CE482 /* SettingsTabPage */ = {
+		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
-				5D2BD83B24E43657002630B5 /* SettingsTabView.swift */,
-				5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */,
+				5D2BD83B24E43657002630B5 /* PrifilePTabView.swift */,
+				5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */,
 			);
-			path = SettingsTabPage;
+			path = ProfileTabPage;
 			sourceTree = "<group>";
 		};
 		5D3D6C9C24E42F99007CE482 /* TabBarPages */ = {
 			isa = PBXGroup;
 			children = (
-				5D3D6C9A24E42F82007CE482 /* SettingsTabPage */,
+				5D3D6C9A24E42F82007CE482 /* ProfileTabPage */,
 				5D3D6C9924E42F77007CE482 /* InfoTabPage */,
 				5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */,
 				5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */,
@@ -859,7 +859,7 @@
 				5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */,
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
-				5D2BD83E24E43657002630B5 /* SettingsTabViewController.swift in Sources */,
+				5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
@@ -914,7 +914,7 @@
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
 				5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */,
-				5D2BD83D24E43657002630B5 /* SettingsTabView.swift in Sources */,
+				5D2BD83D24E43657002630B5 /* PrifilePTabView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
