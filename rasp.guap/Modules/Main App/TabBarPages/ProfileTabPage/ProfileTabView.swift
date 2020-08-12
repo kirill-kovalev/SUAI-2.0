@@ -8,6 +8,6 @@
 
 import UIKit
 
-class FeedTabView: TabBarPageView {
+class ProfileTabView:TabBarPageView {
     
 }

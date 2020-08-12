@@ -7,7 +7,14 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
 class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
-    
+    required init() {
+        super.init()
+        self.tabBarItem = ESTabBarItem(DeadineCustomTabBarIcon(), title: nil/*"Дедлайны"*/, image: Asset.AppImages.TabBarImages.deadlines.image, selectedImage:nil, tag: 1)
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }

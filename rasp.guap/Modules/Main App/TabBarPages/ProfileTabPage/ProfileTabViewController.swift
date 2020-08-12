@@ -7,7 +7,14 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
-class ProfileTabViewController: ViewController<PrifilePTabView> {
-    
+class ProfileTabViewController: ViewController<ProfileTabView> {
+    required init() {
+        super.init()
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: nil/*"Настройки"*/, image: Asset.AppImages.TabBarImages.profile.image, tag: 4)
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }

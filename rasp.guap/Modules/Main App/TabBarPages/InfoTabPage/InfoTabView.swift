@@ -8,6 +8,6 @@
 
 import UIKit
 
-class InfoTabView:View {
+class InfoTabView:TabBarPageView {
     
 }

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ScheduleTabView:View {
+class ScheduleTabView:TabBarPageView{
     
 }

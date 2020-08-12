@@ -8,6 +8,6 @@
 
 import UIKit
 
-class PrifilePTabView:View {
+class ProfileTabView:View {
     
 }
