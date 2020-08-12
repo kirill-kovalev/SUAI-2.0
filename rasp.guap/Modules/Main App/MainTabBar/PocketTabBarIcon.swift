@@ -29,9 +29,7 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         titleLabel.sizeToFit()
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(28)
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview()
+            make.center.equalToSuperview()
             
         }
         titleLabel.snp.makeConstraints { (make) in
