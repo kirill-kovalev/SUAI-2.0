@@ -25,7 +25,7 @@ class FifthPageViewController : ViewController<FifthPageView> {
         self.rootView.containers[2].transform = CGAffineTransform(translationX: -size.width/2, y:  size.height/2)
         self.rootView.containers[3].transform = CGAffineTransform(translationX:  size.width/2, y:  size.height/2)
         
-        UIView.animateKeyframes(withDuration: 4, delay: 0, options: [.repeat,.autoreverse], animations: {
+        UIView.animateKeyframes(withDuration: 4, delay: 0, options: [.repeat], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.11) {
                 self.rootView.containers[3].transform = CGAffineTransform(translationX: -size.width/2, y: -size.height/2)
                 self.rootView.containers[0].transform = CGAffineTransform(translationX:  size.width/2, y: -size.height/2)
@@ -49,6 +49,7 @@ class FifthPageViewController : ViewController<FifthPageView> {
                 self.rootView.containers[1].transform = CGAffineTransform(translationX:  size.width/2, y: -size.height/2)
                 self.rootView.containers[2].transform = CGAffineTransform(translationX: -size.width/2, y:  size.height/2)
                 self.rootView.containers[3].transform = CGAffineTransform(translationX:  size.width/2, y:  size.height/2)
+                
             }
             
             UIView.addKeyframe(withRelativeStartTime: 0.99, relativeDuration: 0.01) {

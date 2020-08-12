@@ -16,7 +16,7 @@ class FifthPageView : TutorialPageView{
         PocketFAQCard(title: "Институты и\nфакультеты", image: Asset.AppImages.FAQImages.inst.image),
         PocketFAQCard(title: "Отделы \nуниверситета", image: Asset.AppImages.FAQImages.otd.image),
         PocketFAQCard(title: "Приемная \nкомиссия", image: Asset.AppImages.FAQImages.hat.image),
-        PocketFAQCard(title: "Иностранные\nстуденты", image: Asset.AppImages.FAQImages.inst.image)
+        PocketFAQCard(title: "Иностранные\nстуденты", image: Asset.AppImages.FAQImages.stu.image)
     ]
     lazy var containers = cards.map { (card)  in
         PocketDivView(content: card)
