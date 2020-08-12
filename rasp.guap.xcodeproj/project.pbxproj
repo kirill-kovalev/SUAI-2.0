@@ -23,6 +23,16 @@
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
 		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
+		5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80724E43576002630B5 /* FeedTabViewController.swift */; };
+		5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80924E4359A002630B5 /* FeedTabView.swift */; };
+		5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */; };
+		5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */; };
+		5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83324E43631002630B5 /* ScheduleTabView.swift */; };
+		5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */; };
+		5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83724E4364E002630B5 /* InfoTabView.swift */; };
+		5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */; };
+		5D2BD83D24E43657002630B5 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83B24E43657002630B5 /* SettingsTabView.swift */; };
+		5D2BD83E24E43657002630B5 /* SettingsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */; };
 		5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
@@ -112,6 +122,16 @@
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
 		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
+		5D2BD80724E43576002630B5 /* FeedTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD80924E4359A002630B5 /* FeedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabView.swift; sourceTree = "<group>"; };
+		5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadlinesTabView.swift; sourceTree = "<group>"; };
+		5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadlinesTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD83324E43631002630B5 /* ScheduleTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTabView.swift; sourceTree = "<group>"; };
+		5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD83724E4364E002630B5 /* InfoTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabView.swift; sourceTree = "<group>"; };
+		5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD83B24E43657002630B5 /* SettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabViewController.swift; sourceTree = "<group>"; };
 		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +315,8 @@
 		5D3D6C9624E42F31007CE482 /* FeedTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D2BD80724E43576002630B5 /* FeedTabViewController.swift */,
+				5D2BD80924E4359A002630B5 /* FeedTabView.swift */,
 			);
 			path = FeedTabPage;
 			sourceTree = "<group>";
@@ -302,6 +324,8 @@
 		5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */,
+				5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */,
 			);
 			path = DeadlinesTabPage;
 			sourceTree = "<group>";
@@ -309,6 +333,8 @@
 		5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D2BD83324E43631002630B5 /* ScheduleTabView.swift */,
+				5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */,
 				5D2ADF9E24D425C3006DACED /* TimetableFilterModalVC */,
 				5D2640E624E41A29001A97A2 /* LessonInfoModalVC */,
 			);
@@ -318,6 +344,8 @@
 		5D3D6C9924E42F77007CE482 /* InfoTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D2BD83724E4364E002630B5 /* InfoTabView.swift */,
+				5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */,
 			);
 			path = InfoTabPage;
 			sourceTree = "<group>";
@@ -325,6 +353,8 @@
 		5D3D6C9A24E42F82007CE482 /* SettingsTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D2BD83B24E43657002630B5 /* SettingsTabView.swift */,
+				5D2BD83C24E43657002630B5 /* SettingsTabViewController.swift */,
 			);
 			path = SettingsTabPage;
 			sourceTree = "<group>";
@@ -826,15 +856,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */,
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
+				5D2BD83E24E43657002630B5 /* SettingsTabViewController.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
+				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
+				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
@@ -845,6 +879,7 @@
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
+				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
@@ -853,6 +888,7 @@
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
 				5D26427124E41C57001A97A2 /* Timetable.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
+				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
 				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
 				5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */,
@@ -865,6 +901,8 @@
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
+				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
+				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
 				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
@@ -872,9 +910,11 @@
 				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
+				5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
 				5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */,
+				5D2BD83D24E43657002630B5 /* SettingsTabView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,

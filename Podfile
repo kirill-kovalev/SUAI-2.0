@@ -8,5 +8,6 @@ target 'rasp.guap' do
   # Pods for rasp.guap
   pod "SnapKit"
   pod 'iOSDropDown'
+  pod "ESTabBarController-swift"
 
 end

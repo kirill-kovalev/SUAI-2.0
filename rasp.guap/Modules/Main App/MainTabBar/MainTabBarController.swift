@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
-class MainTabBarController : UITabBarController{
+class MainTabBarController : ESTabBarController{
     override func viewDidLoad() {
-        //self.viewControllers =
+        
     }
 }
