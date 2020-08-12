@@ -32,6 +32,13 @@ internal enum Asset {
       internal static let stu = ImageAsset(name: "stu")
     }
     internal static let launchScreen = ImageAsset(name: "LaunchScreen")
+    internal enum TabBarImages {
+      internal static let calendarOutline281 = ImageAsset(name: "calendar_outline_28 1")
+      internal static let fireOutline281 = ImageAsset(name: "fire_outline_28 1")
+      internal static let infoOutline281 = ImageAsset(name: "info_outline_28 1")
+      internal static let newsfeed281 = ImageAsset(name: "newsfeed_28 1")
+      internal static let userCircleOutline281 = ImageAsset(name: "user_circle_outline_28 1")
+    }
     internal static let tutorialEipse = ImageAsset(name: "TutorialEipse")
     internal enum TutorialPreview {
       internal static let deadline = ImageAsset(name: "deadline")
