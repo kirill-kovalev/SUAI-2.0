@@ -85,3 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+
+extension UIApplication{
+    var appDelegate: AppDelegate{
+        return self.delegate as! AppDelegate
+    }
+}

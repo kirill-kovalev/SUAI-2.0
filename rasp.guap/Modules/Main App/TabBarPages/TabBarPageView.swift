@@ -11,7 +11,7 @@ import UIKit
 class TabBarPageView : View{
     required init() {
         super.init()
-        self.backgroundColor = Asset.PocketColors.pocketWhite.color
+        self.backgroundColor = Asset.PocketColors.pocketLightGray.color
     }
     required init?(coder: NSCoder) {
         super.init()

@@ -14,8 +14,8 @@ class DeadineCustomTabBarIcon: PocketTabBarIcon {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        highlightTextColor = Asset.PocketColors.pocketRedButtonText.color
-        highlightIconColor = Asset.PocketColors.pocketRedButtonText.color
+        highlightTextColor = Asset.PocketColors.pocketError.color
+        highlightIconColor = Asset.PocketColors.pocketError.color
     }
     
     public required init?(coder aDecoder: NSCoder) {
