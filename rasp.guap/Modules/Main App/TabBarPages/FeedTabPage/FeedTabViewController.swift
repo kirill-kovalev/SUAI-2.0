@@ -13,7 +13,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
     required init() {
         super.init()
         let tabImage = Asset.AppImages.TabBarImages.feed.image
-        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: nil/*"Новости"*/, image: tabImage , tag: 0)
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title:"Новости", image: tabImage , tag: 0)
+        self.rootView.setTitle(self.tabBarItem.title ?? "")
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)

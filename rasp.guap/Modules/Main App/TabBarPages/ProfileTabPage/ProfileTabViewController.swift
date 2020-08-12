@@ -12,7 +12,8 @@ import ESTabBarController_swift
 class ProfileTabViewController: ViewController<ProfileTabView> {
     required init() {
         super.init()
-        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: nil/*"Настройки"*/, image: Asset.AppImages.TabBarImages.profile.image, tag: 4)
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Настройки", image: Asset.AppImages.TabBarImages.profile.image, tag: 4)
+        self.rootView.setTitle(self.tabBarItem.title ?? "")
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)

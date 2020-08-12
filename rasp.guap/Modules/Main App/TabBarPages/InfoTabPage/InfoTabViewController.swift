@@ -11,10 +11,11 @@ import ESTabBarController_swift
 
 class InfoTabViewController: ViewController<InfoTabView> {
     required init() {
-           super.init()
-        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: nil/*"Справочник"*/, image: Asset.AppImages.TabBarImages.info.image, tag: 3)
-       }
-       required init?(coder: NSCoder) {
-           super.init(coder: coder)
-       }
+        super.init()
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Справочник", image: Asset.AppImages.TabBarImages.info.image, tag: 3)
+        self.rootView.setTitle(self.tabBarItem.title ?? "")
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }

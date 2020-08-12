@@ -11,10 +11,11 @@ import ESTabBarController_swift
 
 class ScheduleTabViewController: ViewController<ScheduleTabView> {
     required init() {
-           super.init()
-        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: nil/*"Расписание"*/, image: Asset.AppImages.TabBarImages.schedule.image, tag: 0)
-       }
-       required init?(coder: NSCoder) {
-           super.init(coder: coder)
-       }
+        super.init()
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Расписание", image: Asset.AppImages.TabBarImages.schedule.image, tag: 0)
+        self.rootView.setTitle(self.tabBarItem.title ?? "")
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }

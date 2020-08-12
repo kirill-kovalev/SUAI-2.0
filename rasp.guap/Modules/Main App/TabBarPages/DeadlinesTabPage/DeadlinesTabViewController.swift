@@ -13,6 +13,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     required init() {
         super.init()
         self.tabBarItem = ESTabBarItem(DeadineCustomTabBarIcon(), title: "Дедлайны", image: Asset.AppImages.TabBarImages.deadlines.image, selectedImage:nil, tag: 1)
+        self.rootView.setTitle(self.tabBarItem.title ?? "")
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
