@@ -14,9 +14,9 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         textColor = .clear
-        highlightTextColor = Asset.PocketColors.pocketDarkestBlue.color
+        highlightTextColor = Asset.PocketColors.pocketDarkBlue.color
         iconColor = Asset.PocketColors.pocketGray.color
-        highlightIconColor = Asset.PocketColors.pocketDarkestBlue.color
+        highlightIconColor = Asset.PocketColors.pocketDarkBlue.color
         
         
         //imageView.bounds.size = CGSize(width: 60 , height: 60)
@@ -25,7 +25,7 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     }
     override func updateLayout() {
         //super.updateLayout()
-        titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 11)
+        titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 12)
         titleLabel.sizeToFit()
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(28)
@@ -34,7 +34,9 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         }
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(10)
+            make.top.equalTo(imageView.snp.bottom).offset(3)
+//            make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide.snp.bottom)
+//            make.size.equalTo(CGSize.zero)
         }
         
     }
