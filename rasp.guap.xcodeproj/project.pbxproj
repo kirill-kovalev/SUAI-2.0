@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
+		5D2640E824E41A4F001A97A2 /* LessonModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */; };
+		5D2640EA24E41A58001A97A2 /* LessonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonModalView.swift */; };
+		5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426824E41C57001A97A2 /* Schedule.User.swift */; };
+		5D26427024E41C57001A97A2 /* Preps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426924E41C57001A97A2 /* Preps.swift */; };
+		5D26427124E41C57001A97A2 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426A24E41C57001A97A2 /* Timetable.swift */; };
+		5D26427224E41C57001A97A2 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426B24E41C57001A97A2 /* Grous.swift */; };
+		5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */; };
+		5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */; };
+		5D26427524E41C57001A97A2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426E24E41C57001A97A2 /* Schedule.swift */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
@@ -89,6 +98,15 @@
 
 /* Begin PBXFileReference section */
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
+		5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModalViewController.swift; sourceTree = "<group>"; };
+		5D2640E924E41A58001A97A2 /* LessonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModalView.swift; sourceTree = "<group>"; };
+		5D26426824E41C57001A97A2 /* Schedule.User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.User.swift; sourceTree = "<group>"; };
+		5D26426924E41C57001A97A2 /* Preps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preps.swift; sourceTree = "<group>"; };
+		5D26426A24E41C57001A97A2 /* Timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		5D26426B24E41C57001A97A2 /* Grous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grous.swift; sourceTree = "<group>"; };
+		5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.Lesson.swift; sourceTree = "<group>"; };
+		5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.JSONLesson.swift; sourceTree = "<group>"; };
+		5D26426E24E41C57001A97A2 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +232,15 @@
 			path = PocketDay;
 			sourceTree = "<group>";
 		};
+		5D2640E624E41A29001A97A2 /* LessonModalPreview */ = {
+			isa = PBXGroup;
+			children = (
+				5D2640E724E41A4F001A97A2 /* LessonModalViewController.swift */,
+				5D2640E924E41A58001A97A2 /* LessonModalView.swift */,
+			);
+			path = LessonModalPreview;
+			sourceTree = "<group>";
+		};
 		5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +308,7 @@
 		5D633A0524DB1ACB00ACE561 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
+				5D2640E624E41A29001A97A2 /* LessonModalPreview */,
 				5D74FE2524E13E3700FC38B8 /* TimetableController */,
 				5D2ADF9E24D425C3006DACED /* TimetableFilter */,
 				5D95A62224D412AB000418B5 /* FirstScreen */,
@@ -318,6 +346,7 @@
 		5D95A61E24D412AB000418B5 /* rasp.guap */ = {
 			isa = PBXGroup;
 			children = (
+				5DB9C5CC24E405770001F56C /* API */,
 				5D95A63624D412AC000418B5 /* Assets.xcassets */,
 				5DA10F5224DC25D500D09BD8 /* Resources */,
 				5D95A61F24D412AB000418B5 /* AppDelegate.swift */,
@@ -535,6 +564,36 @@
 			path = PagedView;
 			sourceTree = "<group>";
 		};
+		5DB9C5CC24E405770001F56C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5DB9C5D524E405CE0001F56C /* Pocket */,
+				5DB9C5CD24E4059A0001F56C /* Schedule */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5DB9C5CD24E4059A0001F56C /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				5D26426B24E41C57001A97A2 /* Grous.swift */,
+				5D26426924E41C57001A97A2 /* Preps.swift */,
+				5D26426E24E41C57001A97A2 /* Schedule.swift */,
+				5D26426824E41C57001A97A2 /* Schedule.User.swift */,
+				5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */,
+				5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */,
+				5D26426A24E41C57001A97A2 /* Timetable.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		5DB9C5D524E405CE0001F56C /* Pocket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pocket;
+			sourceTree = "<group>";
+		};
 		5DC4BC6B24DD808800E90BB3 /* PocketDeadline */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,15 +783,19 @@
 			files = (
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
+				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
+				5D2640EA24E41A58001A97A2 /* LessonModalView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
+				5D26427524E41C57001A97A2 /* Schedule.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
+				5D26427224E41C57001A97A2 /* Grous.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
@@ -742,16 +805,20 @@
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
+				5D26427124E41C57001A97A2 /* Timetable.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
 				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
+				5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
 				5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */,
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
+				5D26427024E41C57001A97A2 /* Preps.swift in Sources */,
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
+				5D2640E824E41A4F001A97A2 /* LessonModalViewController.swift in Sources */,
 				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
@@ -762,6 +829,7 @@
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
 				5D95A62624D412AB000418B5 /* FirstScreenViewController.swift in Sources */,
+				5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */,
 				5D95A62424D412AB000418B5 /* FirstScreenView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
@@ -834,7 +902,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -888,7 +956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -900,7 +968,6 @@
 		};
 		5D95A63F24D412AC000418B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
@@ -920,7 +987,6 @@
 		};
 		5D95A64024D412AC000418B5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;

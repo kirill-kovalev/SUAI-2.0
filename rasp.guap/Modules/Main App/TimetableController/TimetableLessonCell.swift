@@ -9,14 +9,18 @@
 import UIKit
 
 class TimetableLessonCell: UITableViewCell{
+    
+    var pocketLessonView:PocketDayView = PocketDayView.fromNib()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style:style,reuseIdentifier:reuseIdentifier)
         self.backgroundColor = .clear
-        let pocketLessonView = PocketDayView.fromNib()
         self.contentView.addSubview(pocketLessonView)
         pocketLessonView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
         }
+    }
+    func setLesson(lesson:Timetable.Lesson) {
+        let _ = self.pocketLessonView
     }
     
     required init?(coder: NSCoder) {

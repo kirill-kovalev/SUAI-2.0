@@ -22,13 +22,6 @@ class FirstScreenViewController: ViewController<FirstScreenView>{
             self.navigationController?.pushViewController(TutorialScreenViewController(), animated: true)
         }, for: .touchUpInside)
         
-        let timetable = TimetableViewController()
-        self.rootView.pocketDiv.addSubview(timetable.tableView)
-        timetable.tableView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
-            make.height.greaterThanOrEqualTo(270)
-        }
-        self.addChild(timetable)
-        timetable.didMove(toParent: self)
+        
 	}
 }
