@@ -43,6 +43,9 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     
     override func highlightAnimation(animated: Bool, completion: (() -> ())?) {
         showAnimation(show: true)
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
     }
     override func deselectAnimation(animated: Bool, completion: (() -> ())?) {
         showAnimation(show: false)
