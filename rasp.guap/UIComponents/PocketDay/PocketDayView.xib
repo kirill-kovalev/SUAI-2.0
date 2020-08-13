@@ -24,25 +24,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfE-ze-hKY">
-                    <rect key="frame" x="0.0" y="8" width="46" height="16.5"/>
+                    <rect key="frame" x="0.0" y="8" width="46" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="eHU-bE-Yvt"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операционные системы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-RC-tIi">
-                    <rect key="frame" x="61" y="8" width="261" height="16.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операционные системы Операционные системы" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-RC-tIi">
+                    <rect key="frame" x="61" y="8" width="253" height="33.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZa-4r-lXR">
-                    <rect key="frame" x="8" y="63" width="30.5" height="14"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZa-4r-lXR">
+                    <rect key="frame" x="0.0" y="63" width="46" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="xTe-Sn-1JC"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-KS-lCG">
-                    <rect key="frame" x="19" y="34.5" width="8" height="16.5"/>
+                    <rect key="frame" x="20" y="34" width="6.5" height="17"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_tag_border"/>
                     <nil key="highlightedColor"/>
@@ -52,7 +58,6 @@
                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="5" id="YuO-Sb-UWB"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="71" id="dBr-et-Ga6"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -60,46 +65,36 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поляк. М. Д. - старший преподаватель и еще что-то" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-nH-IFg">
-                    <rect key="frame" x="61" y="62" width="251" height="16.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Поляк. М. Д. - старший преподаватель и еще что-то" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-nH-IFg">
+                    <rect key="frame" x="61" y="61" width="253" height="17"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_gray"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYt-aq-V9z">
-                    <rect key="frame" x="61" y="30.5" width="251" height="24"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SpC-dU-hUb" customClass="PocketTagButton" customModule="SUAI_Pocket" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="251" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Б.М. 3204">
-                                <color key="titleColor" name="pocket_tag_border"/>
-                            </state>
-                        </button>
-                    </subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mYt-aq-V9z">
+                    <rect key="frame" x="61" y="47.5" width="251" height="7.5"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fZa-4r-lXR" firstAttribute="centerX" secondItem="KfE-ze-hKY" secondAttribute="centerX" id="6W4-PX-2JL"/>
-                <constraint firstItem="nl8-KS-lCG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Aur-ZN-1FT"/>
-                <constraint firstItem="mYt-aq-V9z" firstAttribute="centerY" secondItem="nl8-KS-lCG" secondAttribute="centerY" id="CRo-I3-TvA"/>
-                <constraint firstItem="mYt-aq-V9z" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="DaN-rs-zDY"/>
-                <constraint firstItem="KfE-ze-hKY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F9m-WS-zKs"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="ItP-gf-Ha2"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Pw4-hq-UhW"/>
-                <constraint firstItem="fZa-4r-lXR" firstAttribute="bottom" secondItem="m76-gE-7Cg" secondAttribute="bottom" constant="-2" id="QfI-vO-djF"/>
-                <constraint firstItem="nl8-KS-lCG" firstAttribute="centerX" secondItem="KfE-ze-hKY" secondAttribute="centerX" id="RbM-Px-ClP"/>
-                <constraint firstItem="KfE-ze-hKY" firstAttribute="trailing" secondItem="m76-gE-7Cg" secondAttribute="leading" id="Umq-dG-Etf"/>
-                <constraint firstItem="5Dv-nH-IFg" firstAttribute="centerY" secondItem="fZa-4r-lXR" secondAttribute="centerY" id="VYx-80-cTQ"/>
-                <constraint firstItem="5Dv-nH-IFg" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="X3l-0Z-b3S"/>
-                <constraint firstItem="VbT-RC-tIi" firstAttribute="firstBaseline" secondItem="KfE-ze-hKY" secondAttribute="firstBaseline" id="ath-d6-cdd"/>
-                <constraint firstItem="VbT-RC-tIi" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="ba5-pk-LF4"/>
-                <constraint firstItem="mYt-aq-V9z" firstAttribute="leading" secondItem="VbT-RC-tIi" secondAttribute="leading" id="fzs-7R-q2I"/>
-                <constraint firstItem="KfE-ze-hKY" firstAttribute="top" secondItem="m76-gE-7Cg" secondAttribute="top" constant="2" id="la1-Y9-AZU"/>
-                <constraint firstAttribute="trailing" secondItem="VbT-RC-tIi" secondAttribute="trailing" id="oox-T7-0f4"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-6" id="xOj-BY-R27"/>
-                <constraint firstItem="5Dv-nH-IFg" firstAttribute="leading" secondItem="VbT-RC-tIi" secondAttribute="leading" id="yG6-2k-dcs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fZa-4r-lXR" secondAttribute="bottom" constant="8" id="4Rp-ph-LWz"/>
+                <constraint firstItem="5Dv-nH-IFg" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="BCk-im-lyh"/>
+                <constraint firstAttribute="top" secondItem="m76-gE-7Cg" secondAttribute="top" constant="-6" id="FBP-3v-9GF"/>
+                <constraint firstItem="nl8-KS-lCG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FXR-yX-jtG"/>
+                <constraint firstItem="mYt-aq-V9z" firstAttribute="top" secondItem="VbT-RC-tIi" secondAttribute="bottom" constant="6" id="Fap-lJ-UT9"/>
+                <constraint firstAttribute="trailing" secondItem="VbT-RC-tIi" secondAttribute="trailing" constant="8" id="GCK-bf-cvq"/>
+                <constraint firstItem="m76-gE-7Cg" firstAttribute="leading" secondItem="KfE-ze-hKY" secondAttribute="trailing" id="H7K-bY-Rbe"/>
+                <constraint firstItem="5Dv-nH-IFg" firstAttribute="top" secondItem="mYt-aq-V9z" secondAttribute="bottom" constant="6" id="UcX-O7-sbM"/>
+                <constraint firstItem="fZa-4r-lXR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hb5-k0-pk7"/>
+                <constraint firstItem="VbT-RC-tIi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jf6-wR-SJj"/>
+                <constraint firstAttribute="trailing" secondItem="5Dv-nH-IFg" secondAttribute="trailing" constant="8" id="lXz-J9-Yla"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5Dv-nH-IFg" secondAttribute="bottom" constant="7" id="qe1-TJ-HQZ"/>
+                <constraint firstItem="mYt-aq-V9z" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="reN-Cz-she"/>
+                <constraint firstItem="KfE-ze-hKY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sYJ-Gh-cfz"/>
+                <constraint firstAttribute="bottom" secondItem="m76-gE-7Cg" secondAttribute="bottom" constant="6" id="tTa-bC-dZ9"/>
+                <constraint firstItem="nl8-KS-lCG" firstAttribute="centerX" secondItem="KfE-ze-hKY" secondAttribute="centerX" id="ttY-qB-Yk4"/>
+                <constraint firstItem="KfE-ze-hKY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="xh2-0a-5dZ"/>
+                <constraint firstItem="VbT-RC-tIi" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="ygw-ud-BaB"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
