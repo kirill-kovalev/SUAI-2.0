@@ -16,7 +16,7 @@ class FourthPageViewController : ViewController<FourthPageView> {
     }
     let preparedData:[Timetable.Lesson] = [
         Timetable.Lesson(name: "Линейная алгебра", lessonNum: 1, type: .lab, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"]),
-        Timetable.Lesson(name: "Дифференциальные уравнения", lessonNum: 2, type: .lecture, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"]),
+        Timetable.Lesson(name: "Дифференциальные уравнения", lessonNum: 2, type: .lecture, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Б.М. 12-10"]),
         Timetable.Lesson(name: "Линейная алгебра", lessonNum: 3, type: .practice, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"])
     ]
     override func viewDidLoad() {
@@ -27,11 +27,10 @@ class FourthPageViewController : ViewController<FourthPageView> {
         self.addChild(timetable)
         self.rootView.tableContainer.addSubview(timetable.view)
         
-        timetable.tableView.allowsSelection = false
+        
         
         timetable.tableView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
-            make.height.lessThanOrEqualTo(270)
+            make.top.left.right.bottom.equalToSuperview()
         }
         timetable.didMove(toParent: self)
     }
