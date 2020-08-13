@@ -21,8 +21,7 @@ class FourthPageViewController : ViewController<FourthPageView> {
     ]
     override func viewDidLoad() {
         let timetable = TimetableViewController(timetable: preparedData)
-        let someview = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        someview.backgroundColor = .red
+        timetable.view.isUserInteractionEnabled = false
         
         self.addChild(timetable)
         self.rootView.tableContainer.addSubview(timetable.view)

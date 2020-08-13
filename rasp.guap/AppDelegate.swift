@@ -20,9 +20,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //
-        startApp()
-        //showTutorialPages()
+        //startApp()
+        showTutorialPages()
+        //testRun()
         return true
+    }
+    func testRun(){
+        guard let user = Schedule.shared.groups.get(name: "1611") else{
+                                                                print("user not found")
+                                                                return
+                                                            }
+        let timetable = Schedule.shared.get(for: user )
+        let dayTimetable = timetable.get(week: .even, day: 0)
+        
+        let tt = TimetableViewController()
+        tt.setTimetable(timetable: dayTimetable)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tt
+        window?.makeKeyAndVisible()
+        
     }
     
     func showTutorialPages(){

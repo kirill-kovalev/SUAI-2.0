@@ -8,11 +8,8 @@
 
 import UIKit
 
-class TimetableViewController: UIViewController, TimetableLessonCellDelegate {
-    func didSelect(lesson: Timetable.Lesson) {
-        let modal = LessonInfoModalViewController()
-        self.present(modal, animated: true, completion:nil)
-    }
+class TimetableViewController: UIViewController {
+
     
     let timetable:[Timetable.Lesson]
     private var contentHeight:CGFloat = 0
@@ -34,19 +31,25 @@ class TimetableViewController: UIViewController, TimetableLessonCellDelegate {
         clearStack()
         for lesson in new {
             let newView = TimetableLessonCell(lesson: lesson)
-            newView.delegate = self
+            newView.addTarget(action: { (sender) in
+                let vc = LessonInfoModalViewController()
+                vc.lesson = lesson
+                self.present(vc, animated: true, completion: nil)
+            }, for: .touchUpInside)
             self.tableView.addArrangedSubview(newView)
         }
     }
+    
+    
+    
+    
+    
+    
     private func clearStack(){
         for view in self.tableView.arrangedSubviews{
             view.removeConstraints(view.constraints)
             view.removeFromSuperview()
         }
-    }
-    @objc func openModal(_ sender:UITapGestureRecognizer,lesson:Int){
-        let modal = LessonInfoModalViewController()
-        self.present(modal, animated: true, completion: nil)
     }
     
     

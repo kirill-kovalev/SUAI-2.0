@@ -9,27 +9,43 @@
 import UIKit
 
 
-class TimetableLessonCell: UIButton{
+class TimetableLessonCell: UIView{
     
-    var pocketLessonView:PocketDayView = PocketDayView.fromNib()
-    var lesson:Timetable.Lesson? = nil
-    var delegate:TimetableLessonCellDelegate? = nil
+    private var pocketLessonView:PocketDayView = PocketDayView.fromNib()
+    private var lesson:Timetable.Lesson? = nil
+    
+    private let btn:Button = {
+        let btn = Button(frame: .zero)
+        return btn
+    }()
+    
     init(lesson:Timetable.Lesson? = nil ) {
         super.init(frame:.zero)
-
+        
+        addViews()
+        setupConstraints()
+        
+        if lesson != nil {
+            setLesson(lesson: lesson!)
+        }
+    }
+    private func addViews(){
         self.addSubview(pocketLessonView)
+        self.addSubview(btn)
+    }
+    private func setupConstraints(){
         self.pocketLessonView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.left.right.equalToSuperview()
         }
-        
-        
-//        self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
-//        self.addTarget(self, action: #selector(touchUpInside(_:)), for: .touchUpInside)
-
-        if lesson != nil {
-            setLesson(lesson: lesson!)
+        self.btn.snp.makeConstraints { (make) in
+            make.top.bottom.left.right.equalToSuperview()
         }
+    }
+    
+    
+    func addTarget(action: @escaping (UIButton) -> Void, for controlEvents: UIControl.Event) {
+        self.btn.addTarget(action: action, for: controlEvents)
     }
     
     func setLesson(lesson:Timetable.Lesson) {
@@ -86,25 +102,8 @@ class TimetableLessonCell: UIButton{
         pocketLessonView.tagStack.addArrangedSubview(tag)
     }
     
-//    @objc private func touchDown(_ sender:UIButton){
-//        UIView.animate(withDuration: 0.15) {
-//            self.backgroundColor = Asset.PocketColors.pocketLightShadow.color
-//        }
-//    }
-//    @objc private func touchUpInside(_ sender:UIButton){
-//        UIView.animate(withDuration: 0.15) {
-//            self.backgroundColor = .clear
-//        }
-//        self.delegate?.didSelect(lesson: self.lesson!)
-//    }
-
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
 }
-protocol TimetableLessonCellDelegate {
-    func didSelect(lesson:Timetable.Lesson)
-}
-
