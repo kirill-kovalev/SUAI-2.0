@@ -29,10 +29,15 @@ class PocketTagButton: Button {
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
     }
     func setupSizeConstraints(){
+        self.snp.removeConstraints()
+        self.titleLabel?.snp.removeConstraints()
         self.snp.makeConstraints { (make) in
             make.height.equalTo(22)
-            make.width.equalTo(self.titleLabel!.snp.width).offset(20)
         }
+        self.titleLabel?.snp.makeConstraints({ (make) in
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().inset(8)
+        })
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
