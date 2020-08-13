@@ -9,9 +9,9 @@
 import UIKit
 
 class TabBarPageView : View{
-    private let header:UIView = {
+    let header:UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = Asset.PocketColors.pocketWhite.color
+        view.backgroundColor = Asset.PocketColors.headerBackground.color
         return view
     }()
     private let title : UILabel = {
@@ -45,7 +45,7 @@ class TabBarPageView : View{
     
     required init() {
         super.init()
-        self.backgroundColor = Asset.PocketColors.pocketLightGray.color
+        self.backgroundColor = Asset.PocketColors.backgroundPage.color
         
         addViews()
         setupConstraints()
