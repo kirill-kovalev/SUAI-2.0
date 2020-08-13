@@ -65,7 +65,7 @@ extension Timetable{
             }
             self.name = from.Disc
             self.type =  LessonType(rawValue: from.Type) ?? .lab
-            self.lessonNum = from.Less - 1
+            self.lessonNum = from.Less 
             if from.Build != nil { self.tags.append(from.Build!) }
             if from.Rooms != nil { self.tags.append(from.Rooms!) }
             

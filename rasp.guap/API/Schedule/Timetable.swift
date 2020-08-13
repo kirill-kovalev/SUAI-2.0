@@ -40,7 +40,7 @@ public class Timetable {
     
     public func get(week:Week,day:Int) -> [Lesson] {
         return self.timetable[week.rawValue][day].sorted { (l1, l2) -> Bool in
-            return l1.lessonNum > l2.lessonNum
+            return l1.lessonNum < l2.lessonNum
         }
     }
     

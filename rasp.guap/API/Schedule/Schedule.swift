@@ -21,6 +21,9 @@ public class Schedule{
     }
     
     public func get(for user: User ) -> Timetable {
+        if userTimetables[user] == nil {
+            self.load(for: user)
+        }
         return userTimetables[user] ?? Timetable()
     }
 }
