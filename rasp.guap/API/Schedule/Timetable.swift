@@ -9,6 +9,15 @@
 import Foundation
 
 public class Timetable {
+    public static let lessonHours:[[DateComponents]] = [
+        [.init(hour: 09, minute: 00),.init(hour: 10, minute: 30)],//1
+        [.init(hour: 10, minute: 40),.init(hour: 12, minute: 10)],//2
+        [.init(hour: 12, minute: 20),.init(hour: 13, minute: 50)],//3
+        [.init(hour: 14, minute: 10),.init(hour: 15, minute: 40)],//4
+        [.init(hour: 15, minute: 50),.init(hour: 17, minute: 20)],//5
+        [.init(hour: 17, minute: 30),.init(hour: 19, minute: 00)]//6
+        
+    ]
 
     public init(for user: Schedule.User) {
         load(for: user)

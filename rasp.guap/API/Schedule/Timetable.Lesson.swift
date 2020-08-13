@@ -23,7 +23,12 @@ extension Timetable{
         var groups:[Groups.Group] = []
         var prepods:[Preps.Prepod] = []
         var tags:[String] = []
-        
+        var startTime:DateComponents {
+            return Timetable.lessonHours[self.lessonNum - 1][0]
+        }
+        var endTime:DateComponents {
+            return Timetable.lessonHours[self.lessonNum - 1][1]
+        }
         
         init(name:String = "",
              lessonNum:Int = 1,
