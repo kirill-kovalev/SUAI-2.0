@@ -16,9 +16,10 @@ class ScheduleTabView:TabBarPageView{
         self.addSubview(pocketDiv)
         
         pocketDiv.snp.makeConstraints { (make) in
-            make.top.equalTo(self.header.snp.bottom).offset(10)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
+            make.bottom.lessThanOrEqualToSuperview()
         }
     }
     

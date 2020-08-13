@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarPageView : View{
+class TabBarPageView : View, UIScrollViewDelegate{
     let header:UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = Asset.PocketColors.headerBackground.color
@@ -21,11 +21,31 @@ class TabBarPageView : View{
         label.text = "Title"
         return label
     }()
+    private let scroll:UIScrollView = {
+        let view = UIScrollView(frame: .zero)
+        view.showsHorizontalScrollIndicator = false
+        //view.layer.masksToBounds = false
+        return view
+    }()
+    private let container:UIView = {
+        let view = UIView(frame: .zero)
+        return view
+    }()
     
     private func addViews(){
-        self.addSubview(header)
+        super.addSubview(header)
         header.addSubview(title)
+        
+        
+        super.addSubview(scroll)
+        scroll.addSubview(container)
+        
+        scroll.delegate = self
     }
+    override func addSubview(_ view: UIView) {
+        self.container.addSubview(view)
+    }
+    
     private func setupConstraints(){
         header.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top)
@@ -37,6 +57,20 @@ class TabBarPageView : View{
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
             make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.centerX.equalToSuperview()
+        }
+        
+        
+        scroll.snp.makeConstraints { (make) in
+            make.top.equalTo(header.snp.bottom).inset(30)
+            make.left.right.bottom.equalToSuperview()
+            
+        }
+        container.snp.makeConstraints { (make) in
+            make.width.equalTo(scroll.frameLayoutGuide)
+            make.top.equalTo(scroll.contentLayoutGuide).offset(30)
+            make.bottom.equalTo(scroll.contentLayoutGuide).inset(10)
+            //make.top.bottom.equalTo(scroll.safeAreaLayoutGuide)
+            //make.top.equalToSuperview()
         }
     }
     
@@ -53,5 +87,9 @@ class TabBarPageView : View{
     }
     required init?(coder: NSCoder) {
         super.init()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
     }
 }
