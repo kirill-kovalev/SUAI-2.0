@@ -21,6 +21,7 @@ class ScheduleTabView:TabBarPageView{
             make.width.equalToSuperview().inset(10)
         }
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
