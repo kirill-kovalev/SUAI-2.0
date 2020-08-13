@@ -45,7 +45,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
         let dayTimetable = timetable.get(week: .even, day: 0)
         
         self.rootView.setTitle(user.Name)
-        self.tt.setTimetable(timetable: dayTimetable)
+        self.tt.setTimetable(timetable: dayTimetable+dayTimetable+dayTimetable+dayTimetable+dayTimetable)
     }
 
     
