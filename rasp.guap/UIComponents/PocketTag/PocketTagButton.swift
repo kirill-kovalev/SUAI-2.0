@@ -27,6 +27,7 @@ class PocketTagButton: Button {
         self.setTitleColor(Asset.PocketColors.pocketTagBorder.color, for: .normal)
         self.layer.cornerRadius = 7
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        self.titleLabel?.textAlignment = .center
     }
     func setupSizeConstraints(){
         self.snp.removeConstraints()
