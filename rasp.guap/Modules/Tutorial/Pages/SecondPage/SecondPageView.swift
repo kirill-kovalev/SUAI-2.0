@@ -15,17 +15,14 @@ class SecondPageView: TutorialPageView{
     let newsFirst:PocketNewsView = PocketNewsView()
     let newsSecond:PocketNewsView = PocketNewsView()
     
-    var divFirst:PocketDivView?
-    var divSecond:PocketDivView?
+    lazy var divFirst:PocketDivView<PocketNewsView> = {return PocketDivView(content: newsFirst) }()
+    lazy var divSecond:PocketDivView<PocketNewsView> = {return PocketDivView(content: newsSecond) }()
     
     
     // MARK: - View setup
     
     required init() {
         super.init()
-        
-        divFirst = PocketDivView(content: newsFirst)
-        divSecond = PocketDivView(content: newsSecond)
         
         setupUI()
         addViews()
@@ -34,19 +31,19 @@ class SecondPageView: TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        self.addSubview(divFirst!)
-        self.addSubview(divSecond!)
+        self.addSubview(divFirst)
+        self.addSubview(divSecond)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        divFirst?.snp.makeConstraints({ (make) in
+        divFirst.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(12)
             make.bottom.equalTo(self.snp.centerY).inset(10)
         })
-        divSecond?.snp.makeConstraints({ (make) in
+        divSecond.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(12)
             make.top.equalTo(self.snp.centerY).offset(10)

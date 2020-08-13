@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PocketDivView : View {
+class PocketDivView<T:UIView> : View {
     
-     var content : UIView
+     var content : T
     
     required init() {
-        self.content = UIView(frame: .zero);
+        self.content = T(frame: .zero);
         super.init()
         
         setupView()
@@ -26,7 +26,7 @@ class PocketDivView : View {
     }
     
     
-    required init(content:UIView) {
+    required init(content:T) {
         self.content = content
         super.init()
         
