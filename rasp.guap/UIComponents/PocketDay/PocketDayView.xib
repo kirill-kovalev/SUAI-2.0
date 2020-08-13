@@ -33,16 +33,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операционные системы Операционные системы" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-RC-tIi">
-                    <rect key="frame" x="61" y="8" width="253" height="33.5"/>
+                    <rect key="frame" x="67" y="8" width="247" height="33.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZa-4r-lXR">
                     <rect key="frame" x="0.0" y="63" width="46" height="14"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="46" id="xTe-Sn-1JC"/>
-                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
@@ -54,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m76-gE-7Cg">
-                    <rect key="frame" x="46" y="6" width="5" height="73"/>
+                    <rect key="frame" x="52" y="6" width="5" height="73"/>
                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="5" id="YuO-Sb-UWB"/>
@@ -66,24 +63,25 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Поляк. М. Д. - старший преподаватель и еще что-то" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-nH-IFg">
-                    <rect key="frame" x="61" y="61" width="253" height="17"/>
+                    <rect key="frame" x="67" y="61" width="247" height="17"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_gray"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mYt-aq-V9z">
-                    <rect key="frame" x="61" y="47.5" width="251" height="7.5"/>
+                    <rect key="frame" x="67" y="47.5" width="245" height="7.5"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fZa-4r-lXR" secondAttribute="bottom" constant="8" id="4Rp-ph-LWz"/>
+                <constraint firstItem="fZa-4r-lXR" firstAttribute="width" secondItem="KfE-ze-hKY" secondAttribute="width" id="4W4-ag-mVk"/>
                 <constraint firstItem="5Dv-nH-IFg" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="BCk-im-lyh"/>
                 <constraint firstAttribute="top" secondItem="m76-gE-7Cg" secondAttribute="top" constant="-6" id="FBP-3v-9GF"/>
                 <constraint firstItem="nl8-KS-lCG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FXR-yX-jtG"/>
                 <constraint firstItem="mYt-aq-V9z" firstAttribute="top" secondItem="VbT-RC-tIi" secondAttribute="bottom" constant="6" id="Fap-lJ-UT9"/>
                 <constraint firstAttribute="trailing" secondItem="VbT-RC-tIi" secondAttribute="trailing" constant="8" id="GCK-bf-cvq"/>
-                <constraint firstItem="m76-gE-7Cg" firstAttribute="leading" secondItem="KfE-ze-hKY" secondAttribute="trailing" id="H7K-bY-Rbe"/>
+                <constraint firstItem="m76-gE-7Cg" firstAttribute="leading" secondItem="KfE-ze-hKY" secondAttribute="trailing" constant="6" id="H7K-bY-Rbe"/>
                 <constraint firstItem="5Dv-nH-IFg" firstAttribute="top" secondItem="mYt-aq-V9z" secondAttribute="bottom" constant="6" id="UcX-O7-sbM"/>
                 <constraint firstItem="fZa-4r-lXR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hb5-k0-pk7"/>
                 <constraint firstItem="VbT-RC-tIi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jf6-wR-SJj"/>
