@@ -56,19 +56,28 @@ class LessonInfoModalView: View {
     let prepStack:UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
+        stack.spacing = 6
         return stack
     }()
     
     let tagStack:UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
+        stack.spacing = 6
         return stack
     }()
     
-    let groupList : UICollectionView = {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collection.allowsSelection = false
+    let groupList : UIStackView = {
+        let collection = UIStackView(frame: .zero)
+        collection.axis = .horizontal
+        collection.spacing = 6
         return collection
+    }()
+    private let scroll:UIScrollView = {
+        let scroll = UIScrollView(frame: .zero)
+        scroll.showsHorizontalScrollIndicator = false
+        scroll.showsVerticalScrollIndicator = false
+        return scroll
     }()
     
     
@@ -87,7 +96,8 @@ class LessonInfoModalView: View {
         self.addSubview(prepSectionTitle)
         self.addSubview(prepStack)
         self.addSubview(groupsSectionTitle)
-        self.addSubview(groupList)
+        self.addSubview(scroll)
+        scroll.addSubview(groupList)
         self.addSubview(tagsSectionTitle)
         self.addSubview(tagStack)
         
@@ -97,39 +107,46 @@ class LessonInfoModalView: View {
         //making width Constraints
         for view in self.subviews {
             view.snp.makeConstraints { (make) in
-                make.left.right.equalToSuperview()
+                make.left.equalToSuperview()
+                make.right.lessThanOrEqualToSuperview()
             }
         }
+        
+        let spacing = 8
         nameSectionTitle.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
         }
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameSectionTitle.snp.bottom)
+            make.top.equalTo(nameSectionTitle.snp.bottom).offset(spacing)
         }
         timeSectionTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom).offset(spacing)
         }
         timeLabel.snp.makeConstraints { (make) in
-             make.top.equalTo(timeSectionTitle.snp.bottom)
+             make.top.equalTo(timeSectionTitle.snp.bottom).offset(spacing)
         }
         prepSectionTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(timeLabel.snp.bottom)
+            make.top.equalTo(timeLabel.snp.bottom).offset(spacing)
         }
         prepStack.snp.makeConstraints { (make) in
-            make.top.equalTo(prepSectionTitle.snp.bottom)
+            make.top.equalTo(prepSectionTitle.snp.bottom).offset(spacing)
         }
         groupsSectionTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(prepStack.snp.bottom)
+            make.top.equalTo(prepStack.snp.bottom).offset(spacing)
+        }
+        scroll.snp.makeConstraints { (make) in
+            make.top.equalTo(groupsSectionTitle.snp.bottom).offset(spacing)
+            make.height.equalTo(groupList)
         }
         groupList.snp.makeConstraints { (make) in
-            make.top.equalTo(groupsSectionTitle.snp.bottom)
+            make.top.bottom.left.right.equalTo(scroll.contentLayoutGuide)
         }
         tagsSectionTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(groupList.snp.bottom)
+            make.top.equalTo(scroll.snp.bottom).offset(spacing)
         }
         tagStack.snp.makeConstraints { (make) in
-            make.top.equalTo(tagsSectionTitle.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(tagsSectionTitle.snp.bottom).offset(spacing)
+            make.bottom.lessThanOrEqualToSuperview()
         }
         
         

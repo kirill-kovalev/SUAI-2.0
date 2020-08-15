@@ -33,38 +33,51 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         self.content.nameLabel.text = lesson.name
         
         
+        
         func hf(_ int:Int?)->String{ return String(format: "%.2i",  int ?? 0) }
         self.content.timeLabel.text = "\(hf(lesson.startTime.hour)):\(hf(lesson.startTime.minute)) - \(hf(lesson.endTime.hour)):\(hf(lesson.endTime.minute))"
         
+        
+        func stackElem(_ tagView:PocketTagButton) -> UIStackView{
+            let hs = UIStackView(arrangedSubviews: [tagView,UIView(frame: .zero)] )
+            hs.axis = .horizontal
+            return hs
+        }
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)
-            tagView.isActive = false
+            tagView.isActive = true
             tagView.addTarget(action: { (sender) in
-                //SOME CODE TO CHANGE CURRENT SCHEDULE USER
-                self.dismiss(animated: true, completion: nil)
+                self.setNewUser(user: prep)
             }, for: .touchUpInside)
-            self.content.prepStack.addArrangedSubview(tagView)
+            self.content.prepStack.addArrangedSubview(stackElem(tagView))
         }
         
+        for group in lesson.groups{
+            let tagView = PocketTagButton()
+            tagView.setTitle(group.Name, for: .normal)
+            tagView.isActive = true
+            tagView.addTarget(action: { (sender) in
+                self.setNewUser(user: group)
+            }, for: .touchUpInside)
+            self.content.groupList.addArrangedSubview(tagView)
+        }
+        
+        let typeTag = PocketTagButton()
+        typeTag.setTitle(lesson.type.rawValue, for: .normal)
+        self.content.tagStack.addArrangedSubview(typeTag)
+        
+        for tag in lesson.tags {
+            let lessonTag = PocketTagButton()
+            lessonTag.setTitle(tag, for: .normal)
+            self.content.tagStack.addArrangedSubview(lessonTag)
+        }
+
     }
     
-//        switch lesson.type {
-//        case .courseProject:
-//
-//            self.content.backgroundColor = Asset.PocketColors.pocketPurple.color
-//            break;
-//        case .lab:
-//            self.content.backgroundColor = Asset.PocketColors.pocketGreen.color
-//            break
-//        case .lecture:
-//            self.content.backgroundColor = Asset.PocketColors.pocketAqua.color
-//            break
-//
-//        case .practice:
-//            self.content.backgroundColor = Asset.PocketColors.pocketOrange.color
-//            break
-//
-//        }
-    //}
+    func setNewUser(user : Schedule.User){
+        //SOME CODE TO CHANGE CURRENT SCHEDULE USER
+        print(user)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
