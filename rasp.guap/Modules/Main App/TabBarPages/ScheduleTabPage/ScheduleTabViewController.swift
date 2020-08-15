@@ -9,22 +9,43 @@
 import UIKit
 import ESTabBarController_swift
 
-class ScheduleTabViewController: ViewController<ScheduleTabView> {
+class ScheduleTabViewController: ViewController<ScheduleTabView>{
+
+    
     required init() {
         super.init()
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Расписание", image: Asset.AppImages.TabBarImages.schedule.image, tag: 0)
     }
     
-    var tt:TimetableViewController = TimetableViewController(timetable: [])
+    var tableController:TimetableViewController = TimetableViewController(timetable: [])
+    var daySelectController = ScheduleDaySelectViewController()
+    
+    var timetable:Timetable! = nil
     
     override func loadView() {
         super.loadView()
-        self.addChild(tt)
-        self.rootView.pocketDiv.addSubview(tt.view)
-        self.tt.didMove(toParent: self)
-        self.tt.view.snp.removeConstraints()
-        self.tt.view.snp.makeConstraints { (make) in
+        
+        
+        self.addChild(tableController)
+        self.rootView.pocketDiv.addSubview(tableController.view)
+        self.tableController.didMove(toParent: self)
+        self.tableController.view.snp.removeConstraints()
+        self.tableController.view.snp.makeConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
+        }
+        
+        
+        
+        daySelectController.delegate = self
+        
+        self.addChild(daySelectController)
+        self.rootView.header.addSubview(daySelectController.view)
+        daySelectController.didMove(toParent: self)
+        daySelectController.view.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.lessThanOrEqualToSuperview()
+            make.top.equalTo(self.rootView.title.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         
@@ -39,23 +60,26 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
         
     }
     
-    func showTimetable(){
+    func showTimetable(week: Timetable.Week = .odd , day: Int = 0){
         DispatchQueue.main.async {
 
             self.rootView.loadingIndicator.startAnimating()
         }
-        guard let user = Schedule.shared.groups.get(name: "1611") else{
+        guard let user = Schedule.shared.groups.get(name: "1921") else{
                                                                 print("user not found")
                                                                 return
                                                             }
-        let timetable = Schedule.shared.get(for: user )
-        let dayTimetable = timetable.get(week: .even, day: 0)
+        self.timetable = Schedule.shared.get(for: user )
+        let dayTimetable = self.timetable.get(week: week, day: day)
         
         DispatchQueue.main.async {
             self.rootView.loadingIndicator.stopAnimating()
             self.rootView.setTitle(user.Name)
-            self.tt.setTimetable(timetable: dayTimetable)
+            self.tableController.setTimetable(timetable: dayTimetable)
+            self.daySelectController.update()
         }
+
+        
         
     }
 
@@ -63,4 +87,19 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+}
+
+extension ScheduleTabViewController:ScheduleDaySelectDelegate {
+    func scheduleDaySelect(didUpdate day: Int, week: Timetable.Week) {
+        showTimetable(week: week, day: day)
+    }
+    
+    func shouldShow(day: Int,week:Timetable.Week) -> Bool {
+        if week == .outOfTable {
+            return false
+        }
+        return !self.timetable.get(week: week, day: day).isEmpty
+        
+    }
+    
 }
