@@ -40,6 +40,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
     }
     
     func showTimetable(){
+        DispatchQueue.main.async {
+
+            self.rootView.loadingIndicator.startAnimating()
+        }
         guard let user = Schedule.shared.groups.get(name: "1611") else{
                                                                 print("user not found")
                                                                 return
@@ -48,6 +52,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
         let dayTimetable = timetable.get(week: .even, day: 0)
         
         DispatchQueue.main.async {
+            self.rootView.loadingIndicator.stopAnimating()
             self.rootView.setTitle(user.Name)
             self.tt.setTimetable(timetable: dayTimetable)
         }
