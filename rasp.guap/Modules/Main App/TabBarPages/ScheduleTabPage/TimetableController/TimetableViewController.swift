@@ -32,8 +32,7 @@ class TimetableViewController: UIViewController {
         for lesson in new {
             let newView = TimetableLessonCell(lesson: lesson)
             newView.addTarget(action: { (sender) in
-                let vc = LessonInfoModalViewController()
-                vc.lesson = lesson
+                let vc = LessonInfoModalViewController(lesson: lesson)
                 self.present(vc, animated: true, completion: nil)
             }, for: .touchUpInside)
             self.tableView.addArrangedSubview(newView)
