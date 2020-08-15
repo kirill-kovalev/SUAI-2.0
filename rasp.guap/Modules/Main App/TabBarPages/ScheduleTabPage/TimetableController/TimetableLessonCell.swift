@@ -50,7 +50,8 @@ class TimetableLessonCell: UIView{
     
     func setLesson(lesson:Timetable.Lesson) {
         self.lesson = lesson
-        pocketLessonView.prep.text = lesson.prepods[0].Name
+        
+        pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name
         pocketLessonView.lessonNum.text = "\(lesson.lessonNum)"
         pocketLessonView.title.text = lesson.name
         

@@ -75,7 +75,7 @@ public class Timetable {
                                 break
 
                             default: // вне сетки
-                                self.timetable[2][lesson.Day - 1].append(Lesson(from: lesson))
+                                self.timetable[2][0].append(Lesson(from: lesson))
                                 break
                         }
                     }

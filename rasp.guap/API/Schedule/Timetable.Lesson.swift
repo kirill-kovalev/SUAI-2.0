@@ -24,9 +24,15 @@ extension Timetable{
         var prepods:[Preps.Prepod] = []
         var tags:[String] = []
         var startTime:DateComponents {
+            if lessonNum == 0 {
+                return DateComponents(hour: 00, minute: 00)
+            }
             return Timetable.lessonHours[self.lessonNum - 1][0]
         }
         var endTime:DateComponents {
+            if lessonNum == 0 {
+                return DateComponents(hour: 00, minute: 00)
+            }
             return Timetable.lessonHours[self.lessonNum - 1][1]
         }
         
@@ -71,7 +77,10 @@ extension Timetable{
             self.name = from.Disc
             self.type =  LessonType(rawValue: from.Type) ?? .lab
             self.lessonNum = from.Less
-            self.tags.append((from.Build ?? "") + " " + (from.Rooms ?? "") )
+            if from.Build != nil ,from.Rooms != nil {
+                self.tags.append("\(from.Build!) \(from.Rooms!)" )
+            }
+            
             
         }
     }
