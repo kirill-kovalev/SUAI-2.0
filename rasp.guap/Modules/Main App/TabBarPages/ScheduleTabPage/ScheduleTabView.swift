@@ -34,6 +34,7 @@ class ScheduleTabView:TabBarPageView{
             make.top.greaterThanOrEqualToSuperview().offset(50)
             make.bottom.lessThanOrEqualToSuperview().inset(50)
         }
+        
     }
     
     required init?(coder: NSCoder) {
