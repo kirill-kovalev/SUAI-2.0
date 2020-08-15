@@ -98,6 +98,10 @@
 		5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */; };
 		5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
+		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
+		5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */; };
+		5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */; };
+		5DB5613224E8405E0072CD85 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5613124E8405E0072CD85 /* Settings.swift */; };
 		5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */; };
 		5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */; };
 		5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DCE2FE924E0282700CFF29A /* PocketDayView.xib */; };
@@ -202,6 +206,10 @@
 		5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivView.swift; sourceTree = "<group>"; };
 		5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketNewsView.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
+		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
+		5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectView.swift; sourceTree = "<group>"; };
+		5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectDelegate.swift; sourceTree = "<group>"; };
+		5DB5613124E8405E0072CD85 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
 		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		5DCE2FE924E0282700CFF29A /* PocketDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PocketDayView.xib; sourceTree = "<group>"; };
@@ -341,6 +349,7 @@
 		5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DB5612A24E83DB20072CD85 /* DaySelectController */,
 				5D74FE2524E13E3700FC38B8 /* TimetableController */,
 				5D2BD83324E43631002630B5 /* ScheduleTabView.swift */,
 				5D2BD83424E43631002630B5 /* ScheduleTabViewController.swift */,
@@ -648,6 +657,16 @@
 			path = PagedView;
 			sourceTree = "<group>";
 		};
+		5DB5612A24E83DB20072CD85 /* DaySelectController */ = {
+			isa = PBXGroup;
+			children = (
+				5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */,
+				5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */,
+				5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */,
+			);
+			path = DaySelectController;
+			sourceTree = "<group>";
+		};
 		5DB9C5CC24E405770001F56C /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +686,7 @@
 				5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */,
 				5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */,
 				5D26426A24E41C57001A97A2 /* Timetable.swift */,
+				5DB5613124E8405E0072CD85 /* Settings.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -869,6 +889,7 @@
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
 				5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */,
+				5DB5613224E8405E0072CD85 /* Settings.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
@@ -877,6 +898,7 @@
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
+				5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */,
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
@@ -896,7 +918,9 @@
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
+				5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */,
 				5D26427124E41C57001A97A2 /* Timetable.swift in Sources */,
+				5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
