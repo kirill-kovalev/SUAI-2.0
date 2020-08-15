@@ -64,13 +64,13 @@ class TimetableLessonCell: UIView{
         
         switch lesson.type {
         case .courseProject:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketPurple.color
+            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketGreen.color
             break;
         case .lab:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketGreen.color
+            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketAqua.color
             break
         case .lecture:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketAqua.color
+            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketPurple.color
             break
             
         case .practice:
