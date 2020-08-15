@@ -14,7 +14,7 @@ extension Timetable{
             case lab = "ЛР"
             case lecture = "Л"
             case courseProject = "КП"
-            case practice = "П"
+            case practice = "ПР"
         }
         
         let name:String
