@@ -13,6 +13,9 @@ public class Schedule{
     static let shared = Schedule()
     let preps = Preps()
     let groups = Groups()
+    let settings = ScheduleSettings.load()
+    
+    var curentUser:User? = nil
     
     private var userTimetables : [User:Timetable] = [:]
     
@@ -27,5 +30,6 @@ public class Schedule{
         return userTimetables[user] ?? Timetable()
     }
 }
+
 
 
