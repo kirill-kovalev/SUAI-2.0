@@ -21,7 +21,7 @@ class ModalView: View {
         container.translatesAutoresizingMaskIntoConstraints = false
         
         container.backgroundColor = Asset.PocketColors.pocketWhite.color
-        container.layer.cornerRadius = CornerRadius.default.rawValue
+        container.layer.cornerRadius = 10
         
         container.transform = ModalView.hiddenTransform
         return container;

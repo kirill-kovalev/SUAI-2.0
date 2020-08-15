@@ -19,6 +19,8 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         self.modalTransitionStyle = .crossDissolve
         self.rootView.setContent(content)
         
+        self.rootView.titleLabel.font = FontFamily.TTCommons.bold.font(size: 21)
+        
         setupCloseElements()
     }
     
