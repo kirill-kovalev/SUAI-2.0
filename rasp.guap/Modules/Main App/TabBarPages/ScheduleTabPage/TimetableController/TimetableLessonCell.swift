@@ -57,15 +57,10 @@ class TimetableLessonCell: UIView{
         addTag(text: lesson.type.rawValue)
         addTag(text: lesson.groups.count > 1 ? "\(lesson.groups.count) группы" : lesson.groups[0].Name)
         
-        var counter = 0
-        var place = ""
         for tag in lesson.tags{
-            if counter<2{
-                place += tag
-            }
-            counter += 1
+            addTag(text: tag)
         }
-        addTag(text: place)
+        
         
         switch lesson.type {
         case .courseProject:
