@@ -9,6 +9,12 @@
 import UIKit
 
 class PocketTagButton: Button {
+    var isActive:Bool = false {
+        didSet{
+            self.isEnabled = self.isActive
+            setupView()
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,9 +28,11 @@ class PocketTagButton: Button {
     }
     
     func setupView(){
-        self.layer.borderColor = Asset.PocketColors.pocketTagBorder.color.cgColor
+        let borderColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketTagBorder.color
+        let textColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketGray.color
+        self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = 1
-        self.setTitleColor(Asset.PocketColors.pocketTagBorder.color, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
         self.layer.cornerRadius = 7
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
         self.titleLabel?.textAlignment = .center
