@@ -25,9 +25,6 @@ class FourthPageViewController : ViewController<FourthPageView> {
         
         self.addChild(timetable)
         self.rootView.tableContainer.addSubview(timetable.view)
-        
-        
-        
         timetable.tableView.snp.makeConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
         }
