@@ -33,7 +33,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
     override func viewDidLoad() {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
         
-        showTimetable()
+        DispatchQueue.global(qos: .background).async {
+            self.showTimetable()
+        }
+        
     }
     
     func showTimetable(){
@@ -44,8 +47,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView> {
         let timetable = Schedule.shared.get(for: user )
         let dayTimetable = timetable.get(week: .even, day: 0)
         
-        self.rootView.setTitle(user.Name)
-        self.tt.setTimetable(timetable: dayTimetable)
+        DispatchQueue.main.async {
+            self.rootView.setTitle(user.Name)
+            self.tt.setTimetable(timetable: dayTimetable)
+        }
+        
     }
 
     
