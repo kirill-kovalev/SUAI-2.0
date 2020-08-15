@@ -20,7 +20,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     var tableController:TimetableViewController = TimetableViewController(timetable: [])
     var daySelectController = ScheduleDaySelectViewController()
     
-    var timetable:Timetable! = nil
+    var timetable:Timetable = Timetable()
     
     override func loadView() {
         super.loadView()
@@ -42,8 +42,9 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         self.rootView.header.addSubview(daySelectController.view)
         daySelectController.didMove(toParent: self)
         daySelectController.view.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.lessThanOrEqualToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(10)
+            
             make.top.equalTo(self.rootView.title.snp.bottom)
             make.bottom.equalToSuperview()
         }
@@ -65,7 +66,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 
             self.rootView.loadingIndicator.startAnimating()
         }
-        guard let user = Schedule.shared.groups.get(name: "1921") else{
+        guard let user = Schedule.shared.groups.get(name: "М911") else{
                                                                 print("user not found")
                                                                 return
                                                             }
@@ -95,11 +96,7 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     }
     
     func shouldShow(day: Int,week:Timetable.Week) -> Bool {
-        if week == .outOfTable {
-            return false
-        }
         return !self.timetable.get(week: week, day: day).isEmpty
-        
     }
     
 }

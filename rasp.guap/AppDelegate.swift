@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //
         //startApp()
-        showTutorialPages()
-        //testRun()
+        //showTutorialPages()
+        testRun()
         return true
     }
     func testRun(){
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tt = TimetableViewController()
         tt.setTimetable(timetable: dayTimetable)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tt
+        window?.rootViewController = ScheduleTabViewController()
         window?.makeKeyAndVisible()
         
     }
