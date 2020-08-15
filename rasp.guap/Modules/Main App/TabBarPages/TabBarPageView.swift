@@ -14,7 +14,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
         view.backgroundColor = Asset.PocketColors.headerBackground.color
         return view
     }()
-    private let title : UILabel = {
+    let title : UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.TTCommons.bold.font(size: 24)
         label.numberOfLines = 1
@@ -30,6 +30,11 @@ class TabBarPageView : View, UIScrollViewDelegate{
     private let container:UIView = {
         let view = UIView(frame: .zero)
         return view
+    }()
+    private let buttonContainer:UIStackView = {
+        let stack = UIStackView(frame: .zero)
+        
+        return stack
     }()
     
     private func addViews(){
@@ -61,7 +66,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
         
         
         scroll.snp.makeConstraints { (make) in
-            make.top.equalTo(header.snp.bottom).inset(30)
+            make.top.equalTo(header.snp.bottom)
             make.left.right.bottom.equalToSuperview()
             
         }
