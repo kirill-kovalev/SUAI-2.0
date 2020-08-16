@@ -31,9 +31,6 @@ class ScheduleTabView:TabBarPageView{
         addViews()
         setupConstraints()
         
-        
-        
-        
     }
     
     private func addViews(){

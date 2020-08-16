@@ -54,15 +54,23 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     
     override func viewDidLoad() {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
+        
+        self.rootView.selectButton.addTarget(action: { (sender) in
+            let vc = TimetableFilterViewConroller()
+            self.present(vc, animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
         Schedule.shared.current.user = Schedule.shared.groups.get(name: "М911")
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        showTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
+        Schedule.shared.current.delegate = self
+        setTimetable()
     }
     
-    func showTimetable(week: Timetable.Week = .odd , day: Int = 0){
+    
+    func setTimetable(week: Timetable.Week = .odd , day: Int = 0){
         self.rootView.loadingIndicator.startAnimating()
+        self.tableController.setTimetable(timetable: [])
+        
+        
         DispatchQueue.global(qos: .background).async {
                    guard let user = Schedule.shared.current.user else{
                                                                        print("user not set")
@@ -71,14 +79,19 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
                    self.timetable = Schedule.shared.get(for: user )
                    let dayTimetable = self.timetable.get(week: week, day: day)
                    
-                   DispatchQueue.main.async {
-                       self.rootView.loadingIndicator.stopAnimating()
-                       self.rootView.setTitle(user.shortName)
-                       self.tableController.setTimetable(timetable: dayTimetable)
-                       self.daySelectController.update()
-                   }
+                    DispatchQueue.main.async {
+                        self.rootView.loadingIndicator.stopAnimating()
+                        
+                        
+                        self.rootView.setTitle(user.shortName)
+                        self.tableController.setTimetable(timetable: dayTimetable)
+                        self.daySelectController.update()
+                        
+                    }
         }
     }
+    
+    
 
     
     required init?(coder: NSCoder) {
@@ -88,11 +101,17 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day: Int, week: Timetable.Week) {
-        showTimetable(week: week, day: day)
+        setTimetable(week: week, day: day)
     }
     
     func shouldShow(day: Int,week:Timetable.Week) -> Bool {
         return !self.timetable.get(week: week, day: day).isEmpty
     }
     
+}
+
+extension ScheduleTabViewController:scheduleTracker{
+    func didChange() {
+        setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
+    }
 }
