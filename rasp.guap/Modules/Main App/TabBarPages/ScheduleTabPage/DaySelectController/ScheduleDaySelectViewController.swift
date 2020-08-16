@@ -29,6 +29,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
                 self.curWeek = .odd
             }
             self.update()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             self.delegate?.scheduleDaySelect(didUpdate: self.curDay, week: self.curWeek)
         }, for: .touchUpInside)
         
@@ -37,6 +38,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
             button.addTarget(action: { (sender) in
                 self.curDay = i
                 self.update()
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 self.delegate?.scheduleDaySelect(didUpdate: self.curDay, week: self.curWeek)
             }, for: .touchUpInside)
         }
@@ -45,6 +47,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         outOfTable.addTarget(action: { (sender) in
             self.curDay = 6
             self.update()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             self.delegate?.scheduleDaySelect(didUpdate: 0, week: .outOfTable)
         }, for: .touchUpInside)
         
@@ -57,10 +60,15 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
         if widthDiff > 0{
             let offset =  self.rootView.scroll.contentOffset.x
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse], animations: {
-                self.rootView.scroll.contentOffset.x += 10
+            UIView.animateKeyframes(withDuration: 0.7, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5) {
+                    self.rootView.scroll.contentOffset.x = offset + 5
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+                    self.rootView.scroll.contentOffset.x = offset
+                }
             }, completion: nil)
-            self.rootView.scroll.contentOffset.x = offset
+            
         }
     }
     

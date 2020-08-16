@@ -62,7 +62,7 @@ class ScheduleDaySelectView: View {
         }
         scroll.snp.makeConstraints { (make) in
             make.top.right.bottom.equalToSuperview()
-            make.left.equalTo(weekBtn.snp.right).offset(5)
+            make.left.equalTo(weekBtn.snp.right).offset(10)
             make.height.equalTo(stack)
         }
         stack.snp.makeConstraints { (make) in
