@@ -10,7 +10,7 @@ import Foundation
 
 extension Calendar{
     static func convertToRU(_ day:Int)->Int{
-        let d = day - 1
+        let d = day - 2
         return d < 0 ? 6 : d
     }
     static func convertToUS(_ day:Int)->Int{
