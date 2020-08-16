@@ -13,6 +13,10 @@ extension Schedule{
     public struct User :Hashable, Codable{
         public let Name:String
         public let ItemId:Int
+        public var shortName:String {
+            let substr = self.Name.split(separator: "—")[0]
+            return String(substr)
+        }
     }
 }
 
