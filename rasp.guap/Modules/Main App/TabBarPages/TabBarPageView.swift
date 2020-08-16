@@ -79,7 +79,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
         }
         container.snp.makeConstraints { (make) in
             make.width.equalTo(scroll.frameLayoutGuide)
-            make.top.equalTo(scroll.contentLayoutGuide).offset(10)
+            make.top.equalTo(scroll.contentLayoutGuide)
             make.bottom.equalTo(scroll.contentLayoutGuide).inset(10)
         }
     }
