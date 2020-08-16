@@ -11,8 +11,8 @@ import UIKit
 class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     var delegate: ScheduleDaySelectDelegate?
     
-    private var curWeek:Timetable.Week = .odd
-    private var curDay:Int = 0
+    private(set) var week:Timetable.Week = .odd
+    private(set) var day:Int = 0
     
     override func loadView() {
         self.view = ScheduleDaySelectView()
@@ -23,29 +23,29 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
        
         self.rootView.weekBtn.addTarget(action: { (sender) in
-            if self.curWeek == .odd {
-                self.curWeek = .even
+            if self.week == .odd {
+                self.week = .even
             } else {
-                self.curWeek = .odd
+                self.week = .odd
             }
             self.update()
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-            self.delegate?.scheduleDaySelect(didUpdate: self.curDay, week: self.curWeek)
+            self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.week)
         }, for: .touchUpInside)
         
         for i in 0..<rootView.stack.arrangedSubviews.count-1{
             let button = rootView.stack.arrangedSubviews[i] as! Button
             button.addTarget(action: { (sender) in
-                self.curDay = i
+                self.day = i
                 self.update()
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                self.delegate?.scheduleDaySelect(didUpdate: self.curDay, week: self.curWeek)
+                self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.week)
             }, for: .touchUpInside)
         }
         
         let outOfTable = rootView.stack.arrangedSubviews.last as! Button
         outOfTable.addTarget(action: { (sender) in
-            self.curDay = 6
+            self.day = 6
             self.update()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             self.delegate?.scheduleDaySelect(didUpdate: 0, week: .outOfTable)
@@ -76,11 +76,11 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     func update(){
        
         
-        if self.curWeek == .even {
+        if self.week == .even {
             self.rootView.weekBtn.setTitle("Четная", for: .normal)
             self.rootView.weekBtn.backgroundColor = Asset.PocketColors.pocketBlue.color
             self.rootView.weekBtn.setTitleColor(Asset.PocketColors.buttonOutlineBorder.color, for: .normal)
-        } else if self.curWeek == .odd{
+        } else if self.week == .odd{
             self.rootView.weekBtn.setTitle("Нечетная", for: .normal)
             self.rootView.weekBtn.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
             self.rootView.weekBtn.setTitleColor(Asset.PocketColors.pocketRedButtonText.color, for: .normal)
@@ -90,9 +90,9 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
         for i in 0..<rootView.stack.arrangedSubviews.count{
             let button = rootView.stack.arrangedSubviews[i] as! Button
-            button.isHidden = !(delegate?.shouldShow(day: i,week:curWeek) ?? false)
-            button.backgroundColor = i == self.curDay ? Asset.PocketColors.pocketBlue.color : .clear
-            button.setTitleColor( i == self.curDay ? Asset.PocketColors.buttonOutlineBorder.color : Asset.PocketColors.pocketGray.color, for: .normal)
+            button.isHidden = !(delegate?.shouldShow(day: i,week:week) ?? false)
+            button.backgroundColor = i == self.day ? Asset.PocketColors.pocketBlue.color : .clear
+            button.setTitleColor( i == self.day ? Asset.PocketColors.buttonOutlineBorder.color : Asset.PocketColors.pocketGray.color, for: .normal)
         }
         
         let button = rootView.stack.arrangedSubviews.last as! Button

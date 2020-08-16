@@ -54,33 +54,30 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     
     override func viewDidLoad() {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
+        Schedule.shared.current.user = Schedule.shared.groups.get(name: "М911")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        showTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
     }
     
     func showTimetable(week: Timetable.Week = .odd , day: Int = 0){
-        DispatchQueue.main.async {
-
-            self.rootView.loadingIndicator.startAnimating()
+        self.rootView.loadingIndicator.startAnimating()
+        DispatchQueue.global(qos: .background).async {
+                   guard let user = Schedule.shared.current.user else{
+                                                                       print("user not set")
+                                                                       return
+                                                                   }
+                   self.timetable = Schedule.shared.get(for: user )
+                   let dayTimetable = self.timetable.get(week: week, day: day)
+                   
+                   DispatchQueue.main.async {
+                       self.rootView.loadingIndicator.stopAnimating()
+                       self.rootView.setTitle(user.shortName)
+                       self.tableController.setTimetable(timetable: dayTimetable)
+                       self.daySelectController.update()
+                   }
         }
-        guard let user = Schedule.shared.groups.get(name: "М911") else{
-                                                                print("user not found")
-                                                                return
-                                                            }
-        self.timetable = Schedule.shared.get(for: user )
-        let dayTimetable = self.timetable.get(week: week, day: day)
-        
-        DispatchQueue.main.async {
-            self.rootView.loadingIndicator.stopAnimating()
-            self.rootView.setTitle(user.Name)
-            self.tableController.setTimetable(timetable: dayTimetable)
-            self.daySelectController.update()
-        }
-
-        
-        
     }
 
     
