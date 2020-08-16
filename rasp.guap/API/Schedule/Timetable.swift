@@ -53,6 +53,17 @@ public class Timetable {
         }
     }
     
+    public var isEmpty:Bool{
+        var flag = true
+        for week in self.timetable{
+            for day in week{
+                if !day.isEmpty{
+                    flag = false
+                }
+            }
+        }
+        return flag
+    }
     
     
     
