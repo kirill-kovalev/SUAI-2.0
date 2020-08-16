@@ -54,6 +54,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         update()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let widthDiff =  self.rootView.stack.frame.width - self.rootView.scroll.frame.width
@@ -72,6 +73,11 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         }
     }
     
+    func set(day:Int,week:Timetable.Week){
+        self.day = day
+        self.week = (week != Timetable.Week.outOfTable) ? week : .even
+        update()
+    }
 
     func update(){
        
