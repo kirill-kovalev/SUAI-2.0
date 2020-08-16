@@ -51,6 +51,8 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
                 self.setNewUser(user: prep)
             }, for: .touchUpInside)
             self.content.prepStack.addArrangedSubview(stackElem(tagView))
+            
+            backgroundUserLoad(user: prep)
         }
         
         for group in lesson.groups{
@@ -61,6 +63,8 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
                 self.setNewUser(user: group)
             }, for: .touchUpInside)
             self.content.groupList.addArrangedSubview(tagView)
+            
+            backgroundUserLoad(user: group)
         }
         
         let typeTag = PocketTagButton()
@@ -80,5 +84,11 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         print(user)
         Schedule.shared.current.user = user
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func backgroundUserLoad(user:Schedule.User){
+        DispatchQueue.global(qos: .background).async {
+            Schedule.shared.load(for: user)
+        }
     }
 }
