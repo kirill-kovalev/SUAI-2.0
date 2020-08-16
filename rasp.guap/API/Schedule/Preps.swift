@@ -16,6 +16,10 @@ public class Preps{
     
     
     private var preps:[Prepod] = []
+    
+    public var count:Int {
+        return preps.count
+    }
         
     public init() {
         loadFromServer()

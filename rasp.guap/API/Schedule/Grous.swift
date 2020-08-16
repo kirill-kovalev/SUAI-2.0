@@ -15,6 +15,10 @@ public class Groups{
     
     
     private var groups:[Group] = []
+    
+    public var count:Int {
+        return groups.count
+    }
         
     public init() {
         loadFromServer()

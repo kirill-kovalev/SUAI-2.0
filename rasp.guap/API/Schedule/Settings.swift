@@ -17,6 +17,12 @@ struct ScheduleSettings:Codable {
     let IsWeekUp: Bool
     let IsWeekRed: Bool
     
+    var week:Timetable.Week{
+        return IsWeekOdd ? .odd : .even
+    }
+    
+    
+    
     static func load() -> ScheduleSettings?{
         let sem = DispatchSemaphore(value: 0)
         var loaded:ScheduleSettings?
