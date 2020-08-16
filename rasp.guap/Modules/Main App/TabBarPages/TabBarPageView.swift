@@ -24,7 +24,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
     private let scroll:UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.showsHorizontalScrollIndicator = false
-        //view.layer.masksToBounds = false
+        view.layer.masksToBounds = false
         return view
     }()
     private let container:UIView = {
@@ -33,13 +33,15 @@ class TabBarPageView : View, UIScrollViewDelegate{
     }()
     private let buttonContainer:UIStackView = {
         let stack = UIStackView(frame: .zero)
-        
+        stack.axis = .horizontal
+        stack.backgroundColor = .red
         return stack
     }()
     
     private func addViews(){
         super.addSubview(header)
         header.addSubview(title)
+        header.addSubview(buttonContainer)
         
         
         super.addSubview(scroll)
@@ -54,7 +56,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
     private func setupConstraints(){
         header.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top)
-            make.bottom.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.top).offset(35)
+            make.bottom.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.top)
             make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide.snp.top).offset(65)
             make.left.right.equalToSuperview()
         }
@@ -62,6 +64,11 @@ class TabBarPageView : View, UIScrollViewDelegate{
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
             make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.centerX.equalToSuperview()
+        }
+        buttonContainer.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.centerY.equalTo(title.snp.centerY)
+            make.right.lessThanOrEqualTo(title.snp.left).inset(10)
         }
         
         
@@ -72,15 +79,16 @@ class TabBarPageView : View, UIScrollViewDelegate{
         }
         container.snp.makeConstraints { (make) in
             make.width.equalTo(scroll.frameLayoutGuide)
-            make.top.equalTo(scroll.contentLayoutGuide).offset(30)
+            make.top.equalTo(scroll.contentLayoutGuide).offset(10)
             make.bottom.equalTo(scroll.contentLayoutGuide).inset(10)
-            //make.top.bottom.equalTo(scroll.safeAreaLayoutGuide)
-            //make.top.equalToSuperview()
         }
     }
     
     func setTitle(_ title:String) {
         self.title.text = title
+    }
+    func addHeaderButton(_ btn:UIButton){
+        self.buttonContainer.addArrangedSubview(btn)
     }
     
     required init() {

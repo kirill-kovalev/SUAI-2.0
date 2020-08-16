@@ -17,12 +17,31 @@ class ScheduleTabView:TabBarPageView{
         indicator.startAnimating()
         return indicator
     }()
+    let selectButton:Button = {
+        let btn = Button(frame: .zero)
+        btn.setImage(Asset.SystemIcons.scheduleFilter.image.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
+        return btn
+    }()
+    
+    
     
     required init() {
         super.init()
+        addViews()
+        setupConstraints()
+        
+        
+        
+        
+    }
+    
+    private func addViews(){
         self.addSubview(pocketDiv)
         pocketDiv.addSubview(loadingIndicator)
-        
+        self.addHeaderButton(selectButton)
+    }
+    private func setupConstraints(){
         pocketDiv.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -34,7 +53,9 @@ class ScheduleTabView:TabBarPageView{
             make.top.greaterThanOrEqualToSuperview().offset(50)
             make.bottom.lessThanOrEqualToSuperview().inset(50)
         }
-        
+        selectButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(24)
+        }
     }
     
     required init?(coder: NSCoder) {

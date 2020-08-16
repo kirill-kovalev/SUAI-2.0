@@ -45,7 +45,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
             
-            make.top.equalTo(self.rootView.title.snp.bottom)
+            make.top.equalTo(self.rootView.title.snp.bottom).offset(8)
             make.bottom.equalToSuperview()
         }
         
@@ -54,10 +54,9 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     
     override func viewDidLoad() {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
-        
-        DispatchQueue.global(qos: .background).async {
-            self.showTimetable()
-        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
