@@ -29,9 +29,9 @@ class PocketTagButton: Button {
     
     func setupView(){
         let borderColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketTagBorder.color
+        self.backgroundColor = self.isActive ? Asset.PocketColors.pocketBlue.color : Asset.PocketColors.pocketLightGray.color
         let textColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketGray.color
         self.layer.borderColor = borderColor.cgColor
-        self.layer.borderWidth = 1
         self.setTitleColor(textColor, for: .normal)
         self.layer.cornerRadius = 7
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
