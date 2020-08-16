@@ -46,7 +46,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)
-            tagView.isActive = true
+            tagView.isActive = (prep != Schedule.shared.current.user)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: prep)
             }, for: .touchUpInside)
@@ -56,7 +56,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         for group in lesson.groups{
             let tagView = PocketTagButton()
             tagView.setTitle(group.Name, for: .normal)
-            tagView.isActive = true
+            tagView.isActive = (group != Schedule.shared.current.user)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: group)
             }, for: .touchUpInside)
@@ -78,6 +78,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     func setNewUser(user : Schedule.User){
         //SOME CODE TO CHANGE CURRENT SCHEDULE USER
         print(user)
+        Schedule.shared.current.user = user
         self.dismiss(animated: true, completion: nil)
     }
 }
