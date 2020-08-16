@@ -16,8 +16,6 @@ public class Schedule{
     let settings = ScheduleSettings.load()
     let current = ScheduleCurrent()
     
-    var curentUser:User? = nil
-    
     private var userTimetables : [User:Timetable] = [:]
     
     func load(for user: User){
