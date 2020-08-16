@@ -91,6 +91,7 @@ internal enum Asset {
   internal enum SystemIcons {
     internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
+    internal static let scheduleFilter = ImageAsset(name: "ScheduleFilter")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
