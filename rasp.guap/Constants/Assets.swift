@@ -92,6 +92,7 @@ internal enum Asset {
     internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
     internal static let scheduleFilter = ImageAsset(name: "ScheduleFilter")
+    internal static let searchDropdown = ImageAsset(name: "searchDropdown")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
