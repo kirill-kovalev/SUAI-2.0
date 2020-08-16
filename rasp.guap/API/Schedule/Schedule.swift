@@ -14,6 +14,7 @@ public class Schedule{
     let preps = Preps()
     let groups = Groups()
     let settings = ScheduleSettings.load()
+    let current = ScheduleCurrent()
     
     var curentUser:User? = nil
     
