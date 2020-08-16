@@ -65,7 +65,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             self.daySelectController.set(day: today, week: Schedule.shared.settings!.week )
         }, for: .touchUpInside)
         
-        Schedule.shared.current.user = Schedule.shared.groups.get(name: "М911")
+        Schedule.shared.current.user = Schedule.shared.groups.get(name: "1621")
         Schedule.shared.current.delegate = self
         setTimetable()
     }
@@ -75,8 +75,12 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
         
+        
         self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
+        
+        self.rootView.showIndicator(show: true)
         self.rootView.loadingIndicator.startAnimating()
+        
         self.tableController.setTimetable(timetable: [])
         
         
@@ -92,16 +96,35 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
                                                                        print("user not set")
                                                                        return
                                                                    }
-                   self.timetable = Schedule.shared.get(for: user )
-                   let dayTimetable = self.timetable.get(week: week, day: day)
+                    self.timetable = Schedule.shared.get(for: user )
+                    
+                    if self.timetable.isEmpty{
+                        print("load error")
+                    }
+                    
+                    let dayTimetable = self.timetable.get(week: week, day: day)
                    
                     DispatchQueue.main.async {
-                        self.rootView.loadingIndicator.stopAnimating()
-                        
-                        
                         self.rootView.setTitle(user.shortName)
-                        self.tableController.setTimetable(timetable: dayTimetable)
-                        self.daySelectController.update()
+                        self.rootView.loadingIndicator.stopAnimating()
+                        self.rootView.showIndicator(show: false)
+                        
+                        if !self.timetable.isEmpty{
+                            self.tableController.tableView.isHidden = dayTimetable.isEmpty
+                            self.rootView.noLessonView.isHidden = !dayTimetable.isEmpty
+                            
+                            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
+                            
+                            
+                            self.rootView.showNoLesson(show: dayTimetable.isEmpty)
+                            
+                       
+                            self.tableController.setTimetable(timetable: dayTimetable)
+                            self.daySelectController.update()
+                        }
+                        
+                        
+                        
                         
                     }
         }

@@ -38,6 +38,32 @@ class ScheduleTabView:TabBarPageView{
         btn.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         return btn
     }()
+    let noLessonView:UIView={
+        let view = UIView(frame: .zero)
+        //view.isHidden = true
+        return view
+    }()
+    
+    let noLessonTitle:UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.semibold.font(size: 20)
+        label.textColor = Asset.PocketColors.pocketBlack.color
+        return label
+    }()
+    private let noLessonImage:UIImageView = {
+        let image = Asset.AppImages.TabBarImages.schedule.image.withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(image: image )
+        imageView.tintColor = Asset.PocketColors.accent.color
+        
+        return imageView
+    }()
+    private let noLessonSubtitle:UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
+        label.text = "Можно спать спокойно!"
+        return label
+    }()
     
     
     
@@ -55,6 +81,11 @@ class ScheduleTabView:TabBarPageView{
         self.addHeaderButton(selectButton)
         self.addSubview(dayLabel)
         self.addSubview(todayButton)
+        
+        pocketDiv.addSubview(noLessonView)
+        noLessonView.addSubview(noLessonImage)
+        noLessonView.addSubview(noLessonTitle)
+        noLessonView.addSubview(noLessonSubtitle)
     }
     private func setupConstraints(){
         dayLabel.snp.makeConstraints { (make) in
@@ -71,14 +102,53 @@ class ScheduleTabView:TabBarPageView{
             make.width.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualToSuperview()
         }
-        loadingIndicator.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview().offset(50)
-            make.bottom.lessThanOrEqualToSuperview().inset(50)
+        
+        noLessonView.snp.makeConstraints { (make) in
+            make.top.bottom.left.right.equalToSuperview()
         }
+        noLessonImage.snp.makeConstraints { (make) in
+            make.height.width.equalTo(56).priority(.medium)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(noLessonTitle.snp.top).inset(-10).priority(.medium)
+            make.top.greaterThanOrEqualToSuperview().offset(25).priority(.medium)
+        }
+        noLessonTitle.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        noLessonSubtitle.snp.makeConstraints { (make) in
+            make.top.equalTo(noLessonTitle.snp.bottom).offset(10).priority(.medium)
+            make.centerX.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview().inset(25).priority(.medium)
+        }
+        
         selectButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(24)
         }
+    }
+    
+    func showIndicator(show:Bool){
+        self.loadingIndicator.snp.removeConstraints()
+        if show {
+            loadingIndicator.snp.makeConstraints { (make) in
+                make.center.equalToSuperview()
+                make.top.greaterThanOrEqualToSuperview().offset(50)
+                make.bottom.lessThanOrEqualToSuperview().inset(50)
+            }
+        }
+        self.loadingIndicator.isHidden = !show
+    }
+    func showNoLesson(show:Bool){
+        self.noLessonView.snp.removeConstraints()
+        if show {
+            noLessonView.snp.makeConstraints { (make) in
+                make.top.bottom.left.right.equalToSuperview()
+            }
+        }else{
+            noLessonView.snp.makeConstraints { (make) in
+                make.height.equalTo(0).priority(.high)
+            }
+        }
+        self.noLessonView.isHidden = !show
     }
     
     required init?(coder: NSCoder) {

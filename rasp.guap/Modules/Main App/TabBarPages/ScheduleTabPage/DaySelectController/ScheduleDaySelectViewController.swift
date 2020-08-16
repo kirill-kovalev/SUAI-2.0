@@ -44,8 +44,9 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         }
         
         let outOfTable = rootView.stack.arrangedSubviews.last as! Button
+        
         outOfTable.addTarget(action: { (sender) in
-            self.day = 6
+            self.day = -1
             self.update()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             self.delegate?.scheduleDaySelect(didUpdate: 0, week: .outOfTable)
@@ -94,7 +95,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
         
         
-        for i in 0..<rootView.stack.arrangedSubviews.count{
+        for i in 0..<rootView.stack.arrangedSubviews.count-1{
             let button = rootView.stack.arrangedSubviews[i] as! Button
             button.isHidden = !(delegate?.shouldShow(day: i,week:week) ?? false)
             button.backgroundColor = i == self.day ? Asset.PocketColors.pocketBlue.color : .clear
@@ -103,7 +104,8 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
         let button = rootView.stack.arrangedSubviews.last as! Button
         button.isHidden = !(delegate?.shouldShow(day: 0,week:.outOfTable) ?? false)
-        
+        button.backgroundColor = self.day == -1 ? Asset.PocketColors.pocketBlue.color : .clear
+        button.setTitleColor( self.day == -1 ? Asset.PocketColors.buttonOutlineBorder.color : Asset.PocketColors.pocketGray.color, for: .normal)
     }
     
 }
