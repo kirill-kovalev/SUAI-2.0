@@ -59,43 +59,54 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             let vc = TimetableFilterViewConroller()
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
+        
         self.rootView.todayButton.addTarget(action: { (sender) in
-            let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
-            self.setTimetable(week: Schedule.shared.settings!.week, day: today )
-            self.daySelectController.set(day: today, week: Schedule.shared.settings!.week )
+            self.setToday()
         }, for: .touchUpInside)
         
         Schedule.shared.current.user = Schedule.shared.groups.get(name: "1621")
         Schedule.shared.current.delegate = self
+       
+        
         setTimetable()
+        setToday()
+    }
+    private func setToday(){
+        let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
+        setDay(week: Schedule.shared.settings!.week, day: today )
+    }
+    private func setDay(week: Timetable.Week = .odd , day: Int = 0){
+        self.setTimetable(week: week, day: day )
     }
     
-    
-    func setTimetable(week: Timetable.Week = .odd , day: Int = 0){
+    private func setTimetable(week: Timetable.Week = .odd , day: Int = 0){
+        
+        guard let user = Schedule.shared.current.user else{
+            print("user not set")
+            return
+        }
+        
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
-        
-        
         self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
         
         self.rootView.showIndicator(show: true)
         self.rootView.loadingIndicator.startAnimating()
         
         self.tableController.setTimetable(timetable: [])
+        self.rootView.setTitle(user.shortName)
         
         
-        if week == Schedule.shared.settings?.week, day == Calendar.convertToRU(calendar.dateComponents([.weekday], from: Date()).weekday!) {
-            self.rootView.todayButton.isHidden = true
-        }else{
-            self.rootView.todayButton.isHidden = false
-        }
+        let isToday:Bool = (
+            week == Schedule.shared.settings?.week &&
+            day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
+        )
         
-
+        
+        self.rootView.todayButton.isHidden = isToday
+        
         DispatchQueue.global(qos: .background).async {
-                   guard let user = Schedule.shared.current.user else{
-                                                                       print("user not set")
-                                                                       return
-                                                                   }
+                    
                     self.timetable = Schedule.shared.get(for: user )
                     
                     if self.timetable.isEmpty{
@@ -105,7 +116,6 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
                     let dayTimetable = self.timetable.get(week: week, day: day)
                    
                     DispatchQueue.main.async {
-                        self.rootView.setTitle(user.shortName)
                         self.rootView.loadingIndicator.stopAnimating()
                         self.rootView.showIndicator(show: false)
                         
