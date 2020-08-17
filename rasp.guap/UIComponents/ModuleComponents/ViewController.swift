@@ -62,7 +62,7 @@ class ViewController<ContentView:View>: UIViewController {
         
         UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
             self.rootView.layoutMargins.bottom -= changeInHeight
-            self.rootView.transform = .init(translationX: 0, y: -changeInHeight/2)
+            self.rootView.transform = .init(translationX: 0, y: -changeInHeight)
         })
     }
 
