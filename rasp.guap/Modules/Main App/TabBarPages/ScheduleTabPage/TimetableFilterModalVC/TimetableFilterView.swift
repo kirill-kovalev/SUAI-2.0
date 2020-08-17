@@ -19,6 +19,46 @@ class TimetableFilterView:UIView{
         return view
     }()
     
+    private func labelGenerator(_ title:String)->UILabel{
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketBlack.color
+        label.text = title
+        return label
+    }
+    private func buttonGenerator(_ title:String)->Button{
+        let btn = Button(frame: .zero)
+        btn.setImage(Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.backgroundColor = Asset.PocketColors.pocketGray.color
+        return btn
+    }
+    lazy var grouplabel = labelGenerator("Группа")
+    lazy var preplabel = labelGenerator("Преподаватель")
+    
+    let clearButton:Button = {
+        let btn = Button(frame: .zero)
+        btn.setTitle("Очистить", for: .normal)
+        btn.setTitleColor(Asset.PocketColors.pocketDarkBlue.color, for: .normal)
+        btn.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        return btn
+    }()
+    
+    let searchfield:UISearchBar = {
+        let s = UISearchBar(frame: .zero)
+        s.searchBarStyle = .minimal
+        return s
+    }()
+    
+    let selector:UIPickerView = {
+        let p = UIPickerView(frame: .zero)
+        
+        return p
+    }()
+    
+    
+    
+    
+    
     
     // MARK: - View setup
     
@@ -29,13 +69,26 @@ class TimetableFilterView:UIView{
     }
     
     func addViews() {
-        self.addSubview(color)
+        self.addSubview(grouplabel)
+        self.addSubview(preplabel)
+        self.addSubview(clearButton)
+        self.addSubview(selector)
+        self.addSubview(searchfield)
     }
     
     func setupConstraints() {
-        color.snp.makeConstraints { (make) in
-            make.top.bottom.leading.trailing.equalToSuperview()
+//        grouplabel.snp.makeConstraints { (make) in
+//            make.left.top.right.equalToSuperview()
+//        }
+        searchfield.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(44)
         }
+        selector.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalTo(searchfield.snp.bottom)
+        }
+        
     }
     
     
