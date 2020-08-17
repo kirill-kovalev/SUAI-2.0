@@ -23,6 +23,9 @@ public class Groups{
     public init() {
         loadFromServer()
     }
+    public init(groups:[Group]){
+        self.groups = groups
+    }
     
     public func loadFromServer(){
         let sem = DispatchSemaphore(value: 0)
@@ -59,5 +62,17 @@ public class Groups{
             return group.Name == name
         }.first
     }
+    
+    public func search(name:String) ->Groups{
+        let newGrouplist = self.groups.filter { (user) -> Bool in
+            return name.lowercased().contains(user.Name.lowercased())
+        }
+        return Groups(groups: newGrouplist)
+    }
+    
+    public func sorted(sort: (Schedule.User,Schedule.User)->Bool   ) -> Groups{
+        return Groups(groups: self.groups.sorted(by: sort))
+    }
+    
     
 }

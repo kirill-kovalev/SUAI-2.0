@@ -9,7 +9,7 @@
 import Foundation
 
 class ScheduleCurrent{
-    var delegate:scheduleTracker?
+    var delegate:ScheduleTrackerProtocol?
     var user:Schedule.User?{
         didSet{
             delegate?.didChange()
@@ -17,6 +17,6 @@ class ScheduleCurrent{
     }
     
 }
-protocol scheduleTracker {
+protocol ScheduleTrackerProtocol {
     func didChange()
 }

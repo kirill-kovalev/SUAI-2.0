@@ -149,7 +149,7 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     
 }
 
-extension ScheduleTabViewController:scheduleTracker{
+extension ScheduleTabViewController:ScheduleTrackerProtocol{
     func didChange() {
         setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
     }
