@@ -60,8 +60,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
+        
         self.rootView.todayButton.addTarget(action: { (sender) in
             self.setToday()
+            UINotificationFeedbackGenerator().notificationOccurred(.warning)
         }, for: .touchUpInside)
         
         Schedule.shared.current.user = Schedule.shared.groups.get(name: "1621")

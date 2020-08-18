@@ -123,6 +123,7 @@ class ScheduleTabView:TabBarPageView{
         
         selectButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(24)
+            make.centerY.equalTo(title)
         }
     }
     
