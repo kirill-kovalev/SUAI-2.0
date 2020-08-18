@@ -90,7 +90,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
-        self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
+        
+        if day >= 0 {
+            self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
+        }
         
         self.rootView.showIndicator(show: true)
         self.rootView.loadingIndicator.startAnimating()

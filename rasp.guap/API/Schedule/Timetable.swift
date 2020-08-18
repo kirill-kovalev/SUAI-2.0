@@ -26,9 +26,7 @@ public class Timetable {
         
     }
     
-    private var timetable = [Array(repeating: Array<Lesson>(), count: 7),//четная
-                     Array(repeating: Array<Lesson>(), count: 7),// нечетная
-                     Array(repeating: Array<Lesson>(), count: 7)]//Вне сетки
+    private var timetable = [Lesson]()//Вне сетки
     
     public func load(for user: Schedule.User){
         
@@ -44,27 +42,21 @@ public class Timetable {
     }
     
     public enum Week:Int {
-        case even = 0
+        case outOfTable = 0
         case odd = 1
-        case outOfTable = 2
+        case even = 2
     }
     
     public func get(week:Week,day:Int) -> [Lesson] {
-        return self.timetable[week.rawValue][day].sorted { (l1, l2) -> Bool in
+        return self.timetable.filter({ lesson in
+            return lesson.week == week && lesson.day == day
+        }).sorted { (l1, l2) -> Bool in
             return l1.lessonNum < l2.lessonNum
         }
     }
     
     public var isEmpty:Bool{
-        var flag = true
-        for week in self.timetable{
-            for day in week{
-                if !day.isEmpty{
-                    flag = false
-                }
-            }
-        }
-        return flag
+        return  self.timetable.isEmpty
     }
     
     
@@ -77,20 +69,7 @@ public class Timetable {
                     let decoded = try JSONDecoder().decode([JSONLesson].self, from: data!)
                     
                     decoded.forEach { (lesson) in
-                        
-                        switch lesson.Week {
-
-                            case 1: // нечетные
-                                self.timetable[1][lesson.Day - 1].append(Lesson(from: lesson))
-                                break
-                            case 2: // четные
-                                self.timetable[0][lesson.Day - 1].append(Lesson(from: lesson))
-                                break
-
-                            default: // вне сетки
-                                self.timetable[2][0].append(Lesson(from: lesson))
-                                break
-                        }
+                        self.timetable.append(Lesson(from: lesson))
                     }
                     
                 }catch{

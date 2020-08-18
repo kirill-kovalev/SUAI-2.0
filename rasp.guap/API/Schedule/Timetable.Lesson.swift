@@ -23,6 +23,11 @@ extension Timetable{
         var groups:[Groups.Group] = []
         var prepods:[Preps.Prepod] = []
         var tags:[String] = []
+        var week:Timetable.Week
+        var day:Int
+        var itemID: Int
+        
+        
         var startTime:DateComponents {
             if lessonNum == 0 {
                 return DateComponents(hour: 00, minute: 00)
@@ -41,7 +46,9 @@ extension Timetable{
              type:LessonType = .lab,
              prepod:Preps.Prepod?=nil,
              group:Groups.Group?=nil,
-             tags:[String]=[]
+             tags:[String]=[],
+             week:Timetable.Week = .even,
+             day:Int = 0
              ) {
             self.name = name
             self.lessonNum = lessonNum
@@ -49,7 +56,9 @@ extension Timetable{
             self.groups = group != nil ? [group!] : []
             self.prepods = prepod != nil ? [prepod!] : []
             self.tags = tags
-            
+            self.week = week
+            self.day = day
+            self.itemID = -1
         }
         
         init(from:JSONLesson) {
@@ -77,6 +86,9 @@ extension Timetable{
             self.name = from.Disc
             self.type =  LessonType(rawValue: from.Type) ?? .lab
             self.lessonNum = from.Less
+            self.week = Timetable.Week(rawValue: from.Week) ?? .odd
+            self.day = from.Day - 1
+            self.itemID = from.ItemId
             if from.Build != nil ,from.Rooms != nil {
                 self.tags.append("\(from.Build!) \(from.Rooms!)" )
             }
