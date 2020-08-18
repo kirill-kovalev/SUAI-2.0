@@ -31,7 +31,9 @@ public class Timetable {
                      Array(repeating: Array<Lesson>(), count: 7)]//Вне сетки
     
     public func load(for user: Schedule.User){
+        
         let type = user.Name.contains(" — ") ? "prep" : "group"
+        
         let url = URL(string: "https://api.guap.ru/rasp/custom/get-sem-rasp/\(type)\(user.ItemId)")!
         let sem = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: url) { (data, resp, err) in

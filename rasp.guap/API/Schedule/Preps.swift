@@ -15,10 +15,10 @@ public class Preps{
     
     
     
-    private var preps:[Prepod] = []
+    private var users:[Prepod] = []
     
     public var count:Int {
-        return preps.count
+        return users.count
     }
         
     public init() {
@@ -32,7 +32,7 @@ public class Preps{
                 if (resp as! HTTPURLResponse).statusCode == 200 {
                     do{
                         let decoded = try JSONDecoder().decode([Prepod].self, from: data!)
-                        self.preps = decoded
+                        self.users = decoded
                         
                     }catch{
                         print(error.localizedDescription)
@@ -46,18 +46,18 @@ public class Preps{
     }
     
     public func get(id:Int) -> Prepod?{
-        return self.preps.filter { (prep) -> Bool in
+        return self.users.filter { (prep) -> Bool in
             return prep.ItemId == id
         }.first
     }
     public func get(index:Int) -> Prepod?{
-        if index < self.preps.count, index>=0 {
-            return self.preps[index]
+        if index < self.users.count, index>=0 {
+            return self.users[index]
         }
         return nil
     }
     public func get(name:String) -> Prepod?{
-        return self.preps.filter { (prep) -> Bool in
+        return self.users.filter { (prep) -> Bool in
             return prep.Name == name
         }.first
     }

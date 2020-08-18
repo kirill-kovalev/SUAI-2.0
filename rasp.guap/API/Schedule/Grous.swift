@@ -14,17 +14,17 @@ public class Groups{
     public typealias Group = Schedule.User
     
     
-    private var groups:[Group] = []
+    private var users:[Group] = []
     
     public var count:Int {
-        return groups.count
+        return users.count
     }
         
     public init() {
         loadFromServer()
     }
     public init(groups:[Group]){
-        self.groups = groups
+        self.users = groups
     }
     
     public func loadFromServer(){
@@ -34,7 +34,7 @@ public class Groups{
                 if (resp as! HTTPURLResponse).statusCode == 200 {
                     do{
                         let decoded = try JSONDecoder().decode([Group].self, from: data!)
-                        self.groups = decoded
+                        self.users = decoded
                     }catch{
                         print(error.localizedDescription)
                     }
@@ -47,31 +47,31 @@ public class Groups{
     }
     
     public func get(id:Int) -> Group?{
-        return self.groups.filter { (group) -> Bool in
+        return self.users.filter { (group) -> Bool in
             return group.ItemId == id
         }.first
     }
     public func get(index:Int) -> Group?{
-        if index < self.groups.count, index>=0 {
-            return self.groups[index]
+        if index < self.users.count, index>=0 {
+            return self.users[index]
         }
         return nil
     }
     public func get(name:String) -> Group?{
-        return self.groups.filter { (group) -> Bool in
+        return self.users.filter { (group) -> Bool in
             return group.Name == name
         }.first
     }
     
     public func search(name:String) ->Groups{
-        let newGrouplist = self.groups.filter { (user) -> Bool in
-            return name.lowercased().contains(user.Name.lowercased())
+        let newGrouplist = self.users.filter { (user) -> Bool in
+            return user.Name.contains(name.lowercased())
         }
         return Groups(groups: newGrouplist)
     }
     
     public func sorted(sort: (Schedule.User,Schedule.User)->Bool   ) -> Groups{
-        return Groups(groups: self.groups.sorted(by: sort))
+        return Groups(groups: self.users.sorted(by: sort))
     }
     
     
