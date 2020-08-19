@@ -13,6 +13,8 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 
     private var userlist = SASchedule.shared.groups
     
+    var onSelect:((SAUsers.User?)->Void)?
+    
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         }, for: .touchUpInside)
     }
     
+    
 
 }
 extension TimetableFilterViewConroller:UISearchBarDelegate {
@@ -47,7 +50,7 @@ extension TimetableFilterViewConroller:UISearchBarDelegate {
 }
 extension TimetableFilterViewConroller:UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        SASchedule.shared.current.user = userlist.get(index: row)
+        self.onSelect?(userlist.get(index: row)) 
     }
 }
 extension TimetableFilterViewConroller:UIPickerViewDataSource{

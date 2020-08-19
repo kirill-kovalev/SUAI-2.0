@@ -62,7 +62,6 @@ class TabBarPageView : View, UIScrollViewDelegate{
         }
         title.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
-            make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.centerX.equalToSuperview()
         }
         buttonContainer.snp.makeConstraints { (make) in

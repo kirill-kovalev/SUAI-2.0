@@ -1,5 +1,5 @@
 //
-//  FeedTabViewController.swift
+//  ScheduleTabViewController.swift
 //  rasp.guap
 //
 //  Created by Кирилл on 12.08.2020.
@@ -59,6 +59,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         self.rootView.selectButton.addTarget(action: { (sender) in
             let vc = TimetableFilterViewConroller()
+            vc.onSelect = { user in
+                SASchedule.shared.current.user = user
+                self.setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
+            }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
@@ -72,12 +76,14 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             return
         }
         SASchedule.shared.current.user = SASchedule.shared.groups.get(name: groupName)
-        SASchedule.shared.current.delegate = self
+        
+        
        
         
         setTimetable()
         setToday()
     }
+
     private func setToday(){
         let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
         setDay(week: SASchedule.shared.settings?.week ?? .odd, day: today )
@@ -170,8 +176,3 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     
 }
 
-extension ScheduleTabViewController:ScheduleTrackerProtocol{
-    func didChange() {
-        setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
-    }
-}
