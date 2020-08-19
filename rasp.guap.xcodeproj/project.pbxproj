@@ -74,6 +74,9 @@
 		5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */; };
 		5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905224ED636E00930375 /* DeadlineListController.swift */; };
 		5D9D905624ED843D00930375 /* VKLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905524ED843D00930375 /* VKLoginPage.swift */; };
+		5D9D905924ED84BC00930375 /* DeadlineInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905824ED84BC00930375 /* DeadlineInfoModalViewController.swift */; };
+		5D9D905B24ED84C200930375 /* DeadlineInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905A24ED84C200930375 /* DeadlineInfoModalView.swift */; };
+		5D9D905D24ED8BAF00930375 /* DeadlineListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905C24ED8BAF00930375 /* DeadlineListCell.swift */; };
 		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
 		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
 		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
@@ -194,6 +197,9 @@
 		5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineGroupSelectControllerDelegate.swift; sourceTree = "<group>"; };
 		5D9D905224ED636E00930375 /* DeadlineListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineListController.swift; sourceTree = "<group>"; };
 		5D9D905524ED843D00930375 /* VKLoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginPage.swift; sourceTree = "<group>"; };
+		5D9D905824ED84BC00930375 /* DeadlineInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineInfoModalViewController.swift; sourceTree = "<group>"; };
+		5D9D905A24ED84C200930375 /* DeadlineInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineInfoModalView.swift; sourceTree = "<group>"; };
+		5D9D905C24ED8BAF00930375 /* DeadlineListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineListCell.swift; sourceTree = "<group>"; };
 		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
 		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
 		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
@@ -353,6 +359,7 @@
 		5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D905724ED848300930375 /* DeadlineModal */,
 				5D9D904D24ED57C900930375 /* DeadlineList */,
 				5D9D904C24ED57B900930375 /* DeadlineGroupSelector */,
 				5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */,
@@ -571,6 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9D905224ED636E00930375 /* DeadlineListController.swift */,
+				5D9D905C24ED8BAF00930375 /* DeadlineListCell.swift */,
 			);
 			path = DeadlineList;
 			sourceTree = "<group>";
@@ -581,6 +589,15 @@
 				5D9D905524ED843D00930375 /* VKLoginPage.swift */,
 			);
 			path = VKLogin;
+			sourceTree = "<group>";
+		};
+		5D9D905724ED848300930375 /* DeadlineModal */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D905824ED84BC00930375 /* DeadlineInfoModalViewController.swift */,
+				5D9D905A24ED84C200930375 /* DeadlineInfoModalView.swift */,
+			);
+			path = DeadlineModal;
 			sourceTree = "<group>";
 		};
 		5DA10F3D24DB44F200D09BD8 /* UIComponents */ = {
@@ -898,6 +915,7 @@
 			files = (
 				5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */,
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
+				5D9D905924ED84BC00930375 /* DeadlineInfoModalViewController.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
 				5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
@@ -924,6 +942,7 @@
 				5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */,
 				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
+				5D9D905D24ED8BAF00930375 /* DeadlineListCell.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
@@ -942,6 +961,7 @@
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
+				5D9D905B24ED84C200930375 /* DeadlineInfoModalView.swift in Sources */,
 				5DD24CB124E4547F0024F325 /* TabBarPageView.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,

@@ -17,6 +17,8 @@ class DeadlineListController: UIViewController {
     private var contentHeight:CGFloat = 0
     let tableView = UIStackView(frame: .zero)
     
+    var delegate:DeadlineListDelegate?
+    
     init(list:[SADeadline]? = nil) {
         self.list = list ?? []
         super.init(nibName: nil, bundle: nil)
@@ -32,7 +34,7 @@ class DeadlineListController: UIViewController {
     func setItems(list new:[SADeadline]){
         clearStack()
         for deadline in new {
-            let newView = PocketDeadlineView()
+            let newView = DeadlineListCell()
             newView.setLessonText(lesson: nil)
             newView.setDescriptionText(description: deadline.subjectname)
             
@@ -48,9 +50,16 @@ class DeadlineListController: UIViewController {
                 break
             }
             self.tableView.addArrangedSubview(newView)
+            
+            newView.onCheck { (cell) in
+                self.delegate?.deadlineDidChecked(deadline: deadline)
+            }
+            newView.onSelect { (cell) in
+                self.delegate?.deadlineDidSelected(deadline: deadline)
+            }
+            
         }
     }
-    
     
     
     
@@ -70,3 +79,8 @@ class DeadlineListController: UIViewController {
     }
 }
 
+
+protocol DeadlineListDelegate {
+    func deadlineDidSelected(deadline:SADeadline)
+    func deadlineDidChecked(deadline:SADeadline)
+}

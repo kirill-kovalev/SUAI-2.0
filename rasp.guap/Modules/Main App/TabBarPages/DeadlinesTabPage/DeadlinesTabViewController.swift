@@ -33,12 +33,14 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
         }
         groupSelector.delegate = self
         
+        
         self.addChild(deadlineList)
         self.rootView.pocketDiv.addSubview(deadlineList.view)
         deadlineList.didMove(toParent: self)
         deadlineList.view.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
         }
+        deadlineList.delegate = self
     }
     override func viewDidLoad() {
         print(SADeadlines.shared.open)
@@ -63,4 +65,16 @@ extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
             break
         }
     }
+}
+
+extension DeadlinesTabViewController:DeadlineListDelegate{
+    func deadlineDidSelected(deadline: SADeadline) {
+        
+    }
+    
+    func deadlineDidChecked(deadline: SADeadline) {
+        
+    }
+    
+    
 }
