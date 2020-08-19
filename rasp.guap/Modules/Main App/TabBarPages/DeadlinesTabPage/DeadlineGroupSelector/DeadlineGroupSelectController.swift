@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SUAI_API
 class DeadlineGroupSelectController: UIViewController {
     
     var stackView:UIStackView {
@@ -46,7 +46,7 @@ class DeadlineGroupSelectController: UIViewController {
     
     var delegate:DeadlineGroupSelectControllerDelegate?
     
-    private(set) var current = DeadlineGroup.nearest
+    private(set) var current = SADeadlineGroup.nearest
     
     override func viewDidLoad() {
         nearestButton.addTarget(action: { (sender) in

@@ -35,6 +35,18 @@ class DeadlineListController: UIViewController {
             let newView = PocketDeadlineView()
             newView.setLessonText(lesson: nil)
             newView.setDescriptionText(description: deadline.subjectname)
+            
+            switch deadline.type {
+            case .closed:
+                newView.setState(state: .closed)
+                break
+            case .open:
+                newView.setState(state: .open)
+                break
+            case .nearest:
+                newView.setState(state: .nearest)
+                break
+            }
             self.tableView.addArrangedSubview(newView)
         }
     }

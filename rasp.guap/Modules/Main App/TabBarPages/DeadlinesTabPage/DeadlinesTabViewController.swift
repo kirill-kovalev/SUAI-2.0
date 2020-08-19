@@ -31,6 +31,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             make.right.lessThanOrEqualToSuperview()
             make.bottom.equalToSuperview()
         }
+        groupSelector.delegate = self
         
         self.addChild(deadlineList)
         self.rootView.pocketDiv.addSubview(deadlineList.view)
@@ -45,5 +46,21 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+}
+
+extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
+    func didSelect(group: SADeadlineGroup) {
+        switch group {
+        case .closed:
+            self.deadlineList.setItems(list: SADeadlines.shared.closed)
+            break
+        case .nearest:
+            self.deadlineList.setItems(list: SADeadlines.shared.nearest)
+            break
+        case .open:
+            self.deadlineList.setItems(list: SADeadlines.shared.open)
+            break
+        }
     }
 }
