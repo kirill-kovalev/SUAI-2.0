@@ -24,7 +24,8 @@ class PocketAPI{
 
         
         let sem = DispatchSemaphore(value: 0)
-        URLSession(configuration: config ).dataTask(with: URL(string:"https://suaipocket.ru:8000/\(method)")!) { (data, response, err) in
+        let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
+        URLSession(configuration: config ).dataTask(with: url ) { (data, response, err) in
             if err == nil {
                 if data != nil {
                     completion(data!)

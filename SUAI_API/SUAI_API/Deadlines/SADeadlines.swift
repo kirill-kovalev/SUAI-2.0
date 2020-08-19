@@ -7,17 +7,35 @@
 //
 
 import Foundation
+public enum SADeadlineGroup{
+    case nearest
+    case open
+    case closed
+}
+
 public struct SADeadline: Codable {
-    let id: Int
-    let idsubject: Int?
-    let subjectname: String?
-    let closed: Int
-    let start: Date
-    let end: Date
-    let comment: String
+    public let id: Int
+    public let idsubject: Int?
+    public let subjectname: String?
+    public let closed: Int
+    public let start: Date
+    public let end: Date
+    public let comment: String
     
-    var lesson: String {
+    public var lesson: String {
         return ""
+    }
+    
+    public var type: SADeadlineGroup{
+        if self.closed == 1{
+            return .closed
+        }else{
+            if self.end < Date().addingTimeInterval(60*60*24*7){
+                return .nearest
+            }else{
+                return .open
+            }
+        }
     }
 }
 
@@ -29,17 +47,17 @@ public class SADeadlines{
     }
     public var nearest:[SADeadline] {
         return self.open.filter { (deadline) -> Bool in
-            return deadline.end < Date().addingTimeInterval(60*60*24*7)
+            return deadline.type == .nearest
         }
     }
     public var open:[SADeadline]{
         return self.deadlines.filter { (d) -> Bool in
-            return d.closed == 0
+            return d.type != .closed
         }
     }
     public var closed:[SADeadline]{
         return self.deadlines.filter { (d) -> Bool in
-            return d.closed == 1
+            return d.type == .closed
         }
     }
     
@@ -48,6 +66,7 @@ public class SADeadlines{
     public func loadFromServer(){
         PocketAPI.shared.syncDataTask(method: .getDeadlines ) { (data) in
             do {
+                print(data)
                 self.deadlines = try self.decodeDeadlines(data: data )
             }catch{
                 print(error)
