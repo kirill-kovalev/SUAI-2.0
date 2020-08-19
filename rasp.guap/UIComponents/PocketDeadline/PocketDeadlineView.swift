@@ -30,6 +30,7 @@ class PocketDeadlineView: View {
                 make.width.equalTo(20)
             }
         }
+        
     }
     public func setDescriptionText(description text:String?){
         if text == "" || text == nil {
@@ -41,6 +42,7 @@ class PocketDeadlineView: View {
                 make.width.equalTo(20)
             }
         }
+        self.titleLabel.text = text
     }
     public func setState(state:DedadlineState){
         switch state {
