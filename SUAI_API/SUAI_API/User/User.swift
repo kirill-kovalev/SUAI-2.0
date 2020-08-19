@@ -8,21 +8,26 @@
 
 import Foundation
 
-public class SAUser{
-    public struct Settings: Codable {
-        let group: String
-        let idtab: Int
-        let animations: Int
-        let building: Int
-        let banners: Int
-        let prologin: String
-        let propass: String
-    }
-    public init() {
-        
-    }
-    func loadFromServer(){
-        
-    }
+public class SAUserSettings: Codable {
+    public let group: String
+    public let idtab: Int
+    public let animations: Int
+    public let building: Int
+    public let banners: Int
+    public let prologin: String
+    public let propass: String
     
+    public static var shared = fromServer()
+    
+    static func fromServer() -> SAUserSettings?{
+        var settings:SAUserSettings?
+        PocketAPI.shared.syncDataTask(method: .getSettings) { (data) in
+            do{
+               settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
+            }catch{
+                print(error)
+            }
+        }
+        return settings
+    }
 }
