@@ -69,7 +69,7 @@ extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
 
 extension DeadlinesTabViewController:DeadlineListDelegate{
     func deadlineDidSelected(deadline: SADeadline) {
-        
+        self.present(DeadlineInfoModalViewController(deadline: deadline), animated: true, completion: nil)
     }
     
     func deadlineDidChecked(deadline: SADeadline) {

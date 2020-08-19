@@ -26,14 +26,15 @@ class DeadlineInfoModalView: View {
     }
     
     
-    lazy var nameSectionTitle:UILabel = sectionLabelGenerator("")
-    lazy var commentSectionTitle:UILabel = sectionLabelGenerator("")
-    lazy var dateSectionTitle:UILabel = sectionLabelGenerator("")
+    lazy var nameSectionTitle:UILabel = sectionLabelGenerator("Название дедлайна")
+    lazy var commentSectionTitle:UILabel = sectionLabelGenerator("Описание дедлайна")
+    lazy var dateSectionTitle:UILabel = sectionLabelGenerator("Дата дедлайна")
+    lazy var lessonSectionTitle:UILabel = sectionLabelGenerator("Предмет")
     
     lazy var nameLabel:UILabel = sectionTextGenerator()
-    
     lazy var commentLabel:UILabel = sectionTextGenerator()
     lazy var dateLabel:UILabel = sectionTextGenerator()
+    lazy var lessonLabel:UILabel = sectionTextGenerator()
     
     
     
@@ -52,6 +53,8 @@ class DeadlineInfoModalView: View {
         self.addSubview(nameLabel)
         self.addSubview(commentLabel)
         self.addSubview(dateLabel)
+        self.addSubview(lessonSectionTitle)
+        self.addSubview(lessonLabel)
         
     }
     func setupConstraints(){
@@ -77,8 +80,17 @@ class DeadlineInfoModalView: View {
         dateLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(dateSectionTitle.snp.bottom).offset(8)
+        }
+        lessonSectionTitle.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
+        }
+        lessonLabel.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(lessonSectionTitle.snp.bottom).offset(8)
             make.bottom.lessThanOrEqualToSuperview()
         }
+        
     }
     
     
