@@ -77,11 +77,12 @@ class TimetableFilterView:UIView{
     }
     
     func setupConstraints() {
-//        grouplabel.snp.makeConstraints { (make) in
-//            make.left.top.right.equalToSuperview()
-//        }
+        clearButton.snp.makeConstraints { (make) in
+            make.top.right.equalToSuperview()
+        }
         searchfield.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+            make.top.equalTo(clearButton.snp.bottom)
+            make.left.right.equalToSuperview()
             make.height.equalTo(44)
         }
         selector.snp.makeConstraints { (make) in

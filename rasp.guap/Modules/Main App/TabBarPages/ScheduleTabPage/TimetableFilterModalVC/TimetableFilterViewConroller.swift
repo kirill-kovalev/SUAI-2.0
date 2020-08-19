@@ -26,6 +26,11 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         self.content.selector.delegate = self
         
         self.content.searchfield.delegate = self
+        
+        self.content.clearButton.addTarget(action: { (sender) in
+            SASchedule.shared.current.user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group)
+            self.dismiss(animated: true, completion: nil)
+        }, for: .touchUpInside)
     }
     
 

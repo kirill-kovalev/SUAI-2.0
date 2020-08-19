@@ -67,8 +67,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             self.setToday()
             UINotificationFeedbackGenerator().notificationOccurred(.warning)
         }, for: .touchUpInside)
-        
-        SASchedule.shared.current.user = SASchedule.shared.groups.get(name: "1621")
+        guard let groupName = SAUserSettings.shared?.group else {
+            print("SAUserSettings.shared?.group is nil")
+            return
+        }
+        SASchedule.shared.current.user = SASchedule.shared.groups.get(name: groupName)
         SASchedule.shared.current.delegate = self
        
         
@@ -77,10 +80,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     }
     private func setToday(){
         let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
-        setDay(week: SASchedule.shared.settings!.week, day: today )
+        setDay(week: SASchedule.shared.settings?.week ?? .odd, day: today )
     }
     private func setDay(week: SATimetable.Week = .odd , day: Int = 0){
         self.setTimetable(week: week, day: day )
+        self.daySelectController.set(day: day, week: week)
     }
     
     private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
