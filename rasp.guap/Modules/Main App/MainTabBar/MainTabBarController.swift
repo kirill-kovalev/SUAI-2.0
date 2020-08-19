@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SUAI_API
 import ESTabBarController_swift
 
 class MainTabBarController : ESTabBarController{
@@ -18,6 +19,9 @@ class MainTabBarController : ESTabBarController{
          InfoTabViewController(),
          ProfileTabViewController()
         ]
+        
+        let startPage = SAUserSettings.shared?.idtab  ?? 3
+        self.selectedIndex = startPage - 1
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,8 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOffset = .zero
+        
+        
         
     }
     
