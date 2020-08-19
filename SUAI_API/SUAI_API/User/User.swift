@@ -19,7 +19,7 @@ public class SAUserSettings: Codable {
     
     public static var shared = fromServer()
     
-    static func fromServer() -> SAUserSettings?{
+    public static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
         PocketAPI.shared.syncDataTask(method: .getSettings) { (data) in
             do{
