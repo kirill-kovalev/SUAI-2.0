@@ -11,12 +11,15 @@
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
 		5D9D903A24EC78AD00930375 /* Preps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902C24EC782100930375 /* Preps.swift */; };
 		5D9D903B24EC78AD00930375 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902D24EC782100930375 /* Schedule.swift */; };
-		5D9D903C24EC78AD00930375 /* Schedule.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902E24EC782100930375 /* Schedule.User.swift */; };
+		5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902E24EC782100930375 /* SAUsers.swift */; };
 		5D9D903D24EC78AD00930375 /* Timetable.JSONLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902F24EC782100930375 /* Timetable.JSONLesson.swift */; };
 		5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903024EC782100930375 /* Timetable.Lesson.swift */; };
-		5D9D903F24EC78AD00930375 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903124EC782100930375 /* Timetable.swift */; };
+		5D9D903F24EC78AD00930375 /* SATimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903124EC782100930375 /* SATimetable.swift */; };
 		5D9D904024EC78AD00930375 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903224EC782100930375 /* Settings.swift */; };
 		5D9D904124EC78AD00930375 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903324EC782100930375 /* Current.swift */; };
+		5D9D904624ED39C500930375 /* SADeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904524ED39C500930375 /* SADeadlines.swift */; };
+		5D9D904924ED42E200930375 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904824ED42E200930375 /* User.swift */; };
+		5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904A24ED478D00930375 /* PocketAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,12 +29,15 @@
 		5D9D902B24EC782100930375 /* Grous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grous.swift; sourceTree = "<group>"; };
 		5D9D902C24EC782100930375 /* Preps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preps.swift; sourceTree = "<group>"; };
 		5D9D902D24EC782100930375 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		5D9D902E24EC782100930375 /* Schedule.User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.User.swift; sourceTree = "<group>"; };
+		5D9D902E24EC782100930375 /* SAUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAUsers.swift; sourceTree = "<group>"; };
 		5D9D902F24EC782100930375 /* Timetable.JSONLesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.JSONLesson.swift; sourceTree = "<group>"; };
 		5D9D903024EC782100930375 /* Timetable.Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.Lesson.swift; sourceTree = "<group>"; };
-		5D9D903124EC782100930375 /* Timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		5D9D903124EC782100930375 /* SATimetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SATimetable.swift; sourceTree = "<group>"; };
 		5D9D903224EC782100930375 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5D9D903324EC782100930375 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
+		5D9D904524ED39C500930375 /* SADeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadlines.swift; sourceTree = "<group>"; };
+		5D9D904824ED42E200930375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D9D904A24ED478D00930375 /* PocketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 		5D9D901C24EC77EF00930375 /* SUAI_API */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D904A24ED478D00930375 /* PocketAPI.swift */,
+				5D9D904724ED429100930375 /* User */,
 				5D9D904224ED25F400930375 /* Deadlines */,
 				5D9D903424EC782100930375 /* Schedule */,
 				5D9D901D24EC77EF00930375 /* SUAI_API.h */,
@@ -75,13 +83,9 @@
 		5D9D903424EC782100930375 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				5D9D902B24EC782100930375 /* Grous.swift */,
-				5D9D902C24EC782100930375 /* Preps.swift */,
+				5D9D904324ED2AFE00930375 /* Users */,
+				5D9D904424ED2B1800930375 /* Lessons */,
 				5D9D902D24EC782100930375 /* Schedule.swift */,
-				5D9D902E24EC782100930375 /* Schedule.User.swift */,
-				5D9D902F24EC782100930375 /* Timetable.JSONLesson.swift */,
-				5D9D903024EC782100930375 /* Timetable.Lesson.swift */,
-				5D9D903124EC782100930375 /* Timetable.swift */,
 				5D9D903224EC782100930375 /* Settings.swift */,
 				5D9D903324EC782100930375 /* Current.swift */,
 			);
@@ -91,8 +95,37 @@
 		5D9D904224ED25F400930375 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D904524ED39C500930375 /* SADeadlines.swift */,
 			);
 			path = Deadlines;
+			sourceTree = "<group>";
+		};
+		5D9D904324ED2AFE00930375 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D902B24EC782100930375 /* Grous.swift */,
+				5D9D902C24EC782100930375 /* Preps.swift */,
+				5D9D902E24EC782100930375 /* SAUsers.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		5D9D904424ED2B1800930375 /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D902F24EC782100930375 /* Timetable.JSONLesson.swift */,
+				5D9D903024EC782100930375 /* Timetable.Lesson.swift */,
+				5D9D903124EC782100930375 /* SATimetable.swift */,
+			);
+			path = Lessons;
+			sourceTree = "<group>";
+		};
+		5D9D904724ED429100930375 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D904824ED42E200930375 /* User.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,13 +209,16 @@
 			files = (
 				5D9D904124EC78AD00930375 /* Current.swift in Sources */,
 				5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */,
-				5D9D903C24EC78AD00930375 /* Schedule.User.swift in Sources */,
+				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
+				5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */,
+				5D9D904624ED39C500930375 /* SADeadlines.swift in Sources */,
 				5D9D904024EC78AD00930375 /* Settings.swift in Sources */,
 				5D9D903B24EC78AD00930375 /* Schedule.swift in Sources */,
 				5D9D903A24EC78AD00930375 /* Preps.swift in Sources */,
 				5D9D903D24EC78AD00930375 /* Timetable.JSONLesson.swift in Sources */,
 				5D9D903924EC78AD00930375 /* Grous.swift in Sources */,
-				5D9D903F24EC78AD00930375 /* Timetable.swift in Sources */,
+				5D9D903F24EC78AD00930375 /* SATimetable.swift in Sources */,
+				5D9D904924ED42E200930375 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
