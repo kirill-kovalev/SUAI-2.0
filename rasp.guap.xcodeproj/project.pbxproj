@@ -70,6 +70,9 @@
 		5D99B25F24DD600900D6C648 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B24D24DD600900D6C648 /* SFProDisplay-Light.ttf */; };
 		5D9D903624EC785900930375 /* SUAI_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D903524EC785900930375 /* SUAI_API.framework */; };
 		5D9D903724EC785900930375 /* SUAI_API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D903524EC785900930375 /* SUAI_API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D9D904F24ED57EB00930375 /* DeadlineGroupSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904E24ED57EB00930375 /* DeadlineGroupSelectController.swift */; };
+		5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */; };
+		5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905224ED636E00930375 /* DeadlineListController.swift */; };
 		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
 		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
 		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
@@ -186,6 +189,9 @@
 		5D99B24C24DD600900D6C648 /* SFProDisplay-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		5D99B24D24DD600900D6C648 /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
 		5D9D903524EC785900930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D9D904E24ED57EB00930375 /* DeadlineGroupSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineGroupSelectController.swift; sourceTree = "<group>"; };
+		5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineGroupSelectControllerDelegate.swift; sourceTree = "<group>"; };
+		5D9D905224ED636E00930375 /* DeadlineListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineListController.swift; sourceTree = "<group>"; };
 		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
 		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
 		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 		5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D904D24ED57C900930375 /* DeadlineList */,
+				5D9D904C24ED57B900930375 /* DeadlineGroupSelector */,
 				5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */,
 				5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */,
 				5DD24CAC24E44D860024F325 /* TabBarIcon.swift */,
@@ -545,6 +553,23 @@
 				5D99B21F24DD58CF00D6C648 /* TTCommons-Light.ttf */,
 			);
 			path = "TT Commons";
+			sourceTree = "<group>";
+		};
+		5D9D904C24ED57B900930375 /* DeadlineGroupSelector */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D904E24ED57EB00930375 /* DeadlineGroupSelectController.swift */,
+				5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */,
+			);
+			path = DeadlineGroupSelector;
+			sourceTree = "<group>";
+		};
+		5D9D904D24ED57C900930375 /* DeadlineList */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D905224ED636E00930375 /* DeadlineListController.swift */,
+			);
+			path = DeadlineList;
 			sourceTree = "<group>";
 		};
 		5DA10F3D24DB44F200D09BD8 /* UIComponents */ = {
@@ -870,9 +895,11 @@
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
+				5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
 				5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */,
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
+				5D9D904F24ED57EB00930375 /* DeadlineGroupSelectController.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
@@ -883,6 +910,7 @@
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
+				5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */,
 				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
