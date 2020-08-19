@@ -50,16 +50,22 @@ class PocketDeadlineView: View {
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
             imageView.tintColor = Asset.PocketColors.pocketRedButtonText.color
+            
+            checkbox.isChecked = false
             break;
         case .open:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketBlue.color
             imageView.tintColor = Asset.PocketColors.buttonOutlineBorder.color
+            
+            checkbox.isChecked = false
             break;
         case .closed:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineGreen.color
             imageView.tintColor = Asset.PocketColors.pocketGreenButtonText.color
+            
+            checkbox.isChecked = true
             break;
         }
     }

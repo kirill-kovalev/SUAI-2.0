@@ -20,10 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //
-        startApp()
-
-        //showTutorialPages()
         //testRun()
+        DispatchQueue.global(qos: .background).async {
+            if SAUserSettings.shared?.group != nil{
+                DispatchQueue.main.async {
+                    self.startApp()
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.showTutorialPages()
+                }
+            }
+        }
+
+        
         return true
     }
     
