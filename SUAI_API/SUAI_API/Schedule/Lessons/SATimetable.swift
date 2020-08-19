@@ -54,6 +54,20 @@ public class SATimetable {
             return l1.lessonNum < l2.lessonNum
         }
     }
+    public func get(itemID:Int) -> [SALesson]{
+        return self.timetable.filter({ lesson in
+            return lesson.itemID == itemID
+        }).sorted { (l1, l2) -> Bool in
+            return l1.lessonNum < l2.lessonNum
+        }
+    }
+    public func get(name:String) -> [SALesson]{
+        return self.timetable.filter({ lesson in
+            return lesson.name.contains(name)
+        }).sorted { (l1, l2) -> Bool in
+            return l1.lessonNum < l2.lessonNum
+        }
+    }
     
     public var isEmpty:Bool{
         return  self.timetable.isEmpty
