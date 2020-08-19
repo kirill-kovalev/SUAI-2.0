@@ -13,7 +13,12 @@ class InfoTabViewController: ViewController<InfoTabView> {
     required init() {
         super.init()
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Справочник", image: Asset.AppImages.TabBarImages.info.image, tag: 3)
+        
+    }
+    
+    override func viewDidLoad() {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
+        
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
