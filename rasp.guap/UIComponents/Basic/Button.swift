@@ -10,8 +10,8 @@ import UIKit
 
 class Button: UIButton {
 
-    private var actionHandler:(UIButton)->Void = {_ in}
-    func addTarget(action: @escaping (UIButton)->Void, for controlEvents: UIControl.Event) {
+    private var actionHandler:(Button)->Void = {_ in}
+    func addTarget(action: @escaping (Button)->Void, for controlEvents: UIControl.Event) {
         self.actionHandler = action
         super.addTarget(self, action: #selector(self.targetAction), for: controlEvents)
     }
