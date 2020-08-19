@@ -25,6 +25,22 @@ public struct SADeadline: Codable {
     public var lesson: String {
         return ""
     }
+    public init(id: Int = 0,
+                idsubject: Int? = 0,
+                subjectname: String? = "",
+                closed: Int = 0,
+                start: Date = Date(),
+                end: Date = Date(),
+                comment: String = ""
+    ){
+        self.id = id
+        self.idsubject = idsubject
+        self.subjectname = subjectname
+        self.closed = closed
+        self.start = start
+        self.end = end
+        self.comment = comment
+    }
     
     public var type: SADeadlineGroup{
         if self.closed == 1{

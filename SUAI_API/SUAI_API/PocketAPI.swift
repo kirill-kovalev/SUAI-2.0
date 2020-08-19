@@ -18,6 +18,11 @@ class PocketAPI{
         case getFeed = "GetFeed"
         case getSuper = "GetSuper"
     }
+    
+    public init(){
+        
+    }
+    
     public func syncDataTask(method: Methods,completion:@escaping (Data)->Void){
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = ["Referer":"https://dev.suaipocket.ru/?vk_access_token_settings=notify&vk_app_id=6895280&vk_are_notifications_enabled=0&vk_is_app_user=1&vk_is_favorite=0&vk_language=ru&vk_platform=desktop_web&vk_ref=other&vk_user_id=87478742&sign=XqVYJv8y4r6nn1bCSJHKLips3x8PDujYjD7OmNKJ15M"]
