@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Timetable{
+extension Lesson{
     struct JSONLesson : Codable{
         var ItemId: Int
         var Week: Int

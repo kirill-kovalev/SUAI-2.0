@@ -17,6 +17,10 @@ extension Schedule{
             let substr = self.Name.split(separator: "—")[0]
             return String(substr)
         }
+        public init(Name:String,ItemId:Int){
+            self.Name = Name
+            self.ItemId  = ItemId
+        }
     }
 }
 

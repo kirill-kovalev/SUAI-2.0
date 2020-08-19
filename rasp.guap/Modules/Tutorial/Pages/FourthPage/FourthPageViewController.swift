@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SUAI_API
 
 class FourthPageViewController : ViewController<FourthPageView> {
     
@@ -14,10 +15,10 @@ class FourthPageViewController : ViewController<FourthPageView> {
     override func loadView() {
         super.loadView()
     }
-    let preparedData:[Timetable.Lesson] = [
-        Timetable.Lesson(name: "Линейная алгебра", lessonNum: 1, type: .lab, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"]),
-        Timetable.Lesson(name: "Дифференциальные уравнения", lessonNum: 2, type: .lecture, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Б.М. 12-10"]),
-        Timetable.Lesson(name: "Линейная алгебра", lessonNum: 3, type: .practice, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"])
+    let preparedData:[Lesson] = [
+        Lesson(name: "Линейная алгебра", lessonNum: 1, type: .lab, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"]),
+        Lesson(name: "Дифференциальные уравнения", lessonNum: 2, type: .lecture, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Б.М. 12-10"]),
+        Lesson(name: "Линейная алгебра", lessonNum: 3, type: .practice, prepod: Preps.Prepod(Name: "Смирнов А.О.", ItemId: 0), group: Groups.Group(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"])
     ]
     override func viewDidLoad() {
         let timetable = TimetableViewController(timetable: preparedData)

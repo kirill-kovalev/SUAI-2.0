@@ -66,7 +66,7 @@ public class Timetable {
         if err == nil, data != nil {
             if (resp as! HTTPURLResponse).statusCode == 200 {
                 do{
-                    let decoded = try JSONDecoder().decode([JSONLesson].self, from: data!)
+                    let decoded = try JSONDecoder().decode([Lesson.JSONLesson].self, from: data!)
                     
                     decoded.forEach { (lesson) in
                         self.timetable.append(Lesson(from: lesson))

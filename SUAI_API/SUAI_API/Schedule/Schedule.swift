@@ -10,15 +10,15 @@ import Foundation
 
 public class Schedule{
     
-    static let shared = Schedule()
-    let preps = Preps()
-    let groups = Groups()
-    let settings = ScheduleSettings.load()
-    let current = ScheduleCurrent()
+    public static let shared = Schedule()
+    public let preps = Preps()
+    public let groups = Groups()
+    public let settings = ScheduleSettings.load()
+    public let current = ScheduleCurrent()
     
     private var userTimetables : [User:Timetable] = [:]
     
-    func load(for user: User){
+    public func load(for user: User){
         userTimetables[user] = Timetable(for: user)
     }
     

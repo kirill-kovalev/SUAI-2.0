@@ -7,7 +7,7 @@ target 'rasp.guap' do
 
   # Pods for rasp.guap
   pod "SnapKit"
-  pod 'iOSDropDown'
+  #pod 'iOSDropDown'
   pod "ESTabBarController-swift"
-
+  #pod "VK-ios-sdk"
 end

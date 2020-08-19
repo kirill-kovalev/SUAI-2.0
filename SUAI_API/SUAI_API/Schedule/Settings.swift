@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScheduleSettings:Codable {
+public struct ScheduleSettings:Codable {
     let Years: String
     let IsAutumn: Bool
     let Update: String
@@ -17,13 +17,13 @@ struct ScheduleSettings:Codable {
     let IsWeekUp: Bool
     let IsWeekRed: Bool
     
-    var week:Timetable.Week{
+    public var week:Timetable.Week{
         return IsWeekOdd ? .odd : .even
     }
     
     
     
-    static func load() -> ScheduleSettings?{
+    public static func load() -> ScheduleSettings?{
         let sem = DispatchSemaphore(value: 0)
         var loaded:ScheduleSettings?
         URLSession(configuration: .default).dataTask(with: URL(string:"https://api.guap.ru/rasp/custom/get-sem-info")!) { (data, resp, err) in

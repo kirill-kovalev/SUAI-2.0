@@ -10,13 +10,6 @@
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
-		5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426824E41C57001A97A2 /* Schedule.User.swift */; };
-		5D26427024E41C57001A97A2 /* Preps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426924E41C57001A97A2 /* Preps.swift */; };
-		5D26427124E41C57001A97A2 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426A24E41C57001A97A2 /* Timetable.swift */; };
-		5D26427224E41C57001A97A2 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426B24E41C57001A97A2 /* Grous.swift */; };
-		5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */; };
-		5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */; };
-		5D26427524E41C57001A97A2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26426E24E41C57001A97A2 /* Schedule.swift */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
@@ -75,6 +68,8 @@
 		5D99B25D24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B24B24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf */; };
 		5D99B25E24DD600900D6C648 /* SFProDisplay-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B24C24DD600900D6C648 /* SFProDisplay-SemiboldItalic.ttf */; };
 		5D99B25F24DD600900D6C648 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B24D24DD600900D6C648 /* SFProDisplay-Light.ttf */; };
+		5D9D903624EC785900930375 /* SUAI_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D903524EC785900930375 /* SUAI_API.framework */; };
+		5D9D903724EC785900930375 /* SUAI_API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D903524EC785900930375 /* SUAI_API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
 		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
 		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
@@ -98,12 +93,10 @@
 		5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */; };
 		5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
-		5DAEDFF424E9573E00B0B884 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDFF324E9573E00B0B884 /* Current.swift */; };
 		5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDFF524E9889D00B0B884 /* Calendar.swift */; };
 		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
 		5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */; };
 		5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */; };
-		5DB5613224E8405E0072CD85 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5613124E8405E0072CD85 /* Settings.swift */; };
 		5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */; };
 		5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */; };
 		5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DCE2FE924E0282700CFF29A /* PocketDayView.xib */; };
@@ -114,17 +107,24 @@
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5D9D903824EC785900930375 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5D9D903724EC785900930375 /* SUAI_API.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
-		5D26426824E41C57001A97A2 /* Schedule.User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.User.swift; sourceTree = "<group>"; };
-		5D26426924E41C57001A97A2 /* Preps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preps.swift; sourceTree = "<group>"; };
-		5D26426A24E41C57001A97A2 /* Timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
-		5D26426B24E41C57001A97A2 /* Grous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grous.swift; sourceTree = "<group>"; };
-		5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.Lesson.swift; sourceTree = "<group>"; };
-		5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.JSONLesson.swift; sourceTree = "<group>"; };
-		5D26426E24E41C57001A97A2 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +185,7 @@
 		5D99B24B24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
 		5D99B24C24DD600900D6C648 /* SFProDisplay-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		5D99B24D24DD600900D6C648 /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
+		5D9D903524EC785900930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
 		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
 		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
@@ -208,12 +209,10 @@
 		5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivView.swift; sourceTree = "<group>"; };
 		5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketNewsView.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
-		5DAEDFF324E9573E00B0B884 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
 		5DAEDFF524E9889D00B0B884 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
 		5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectView.swift; sourceTree = "<group>"; };
 		5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectDelegate.swift; sourceTree = "<group>"; };
-		5DB5613124E8405E0072CD85 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
 		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		5DCE2FE924E0282700CFF29A /* PocketDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PocketDayView.xib; sourceTree = "<group>"; };
@@ -232,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */,
+				5D9D903624EC785900930375 /* SUAI_API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +241,7 @@
 		2612D29CDE1D426FAFFD5273 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D903524EC785900930375 /* SUAI_API.framework */,
 				FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */,
 			);
 			name = Frameworks;
@@ -453,7 +454,6 @@
 		5D95A61E24D412AB000418B5 /* rasp.guap */ = {
 			isa = PBXGroup;
 			children = (
-				5DB9C5CC24E405770001F56C /* API */,
 				5D95A63624D412AC000418B5 /* Assets.xcassets */,
 				5DA10F5224DC25D500D09BD8 /* Resources */,
 				5D95A61F24D412AB000418B5 /* AppDelegate.swift */,
@@ -672,38 +672,6 @@
 			path = DaySelectController;
 			sourceTree = "<group>";
 		};
-		5DB9C5CC24E405770001F56C /* API */ = {
-			isa = PBXGroup;
-			children = (
-				5DB9C5D524E405CE0001F56C /* Pocket */,
-				5DB9C5CD24E4059A0001F56C /* Schedule */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		5DB9C5CD24E4059A0001F56C /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				5D26426B24E41C57001A97A2 /* Grous.swift */,
-				5D26426924E41C57001A97A2 /* Preps.swift */,
-				5D26426E24E41C57001A97A2 /* Schedule.swift */,
-				5D26426824E41C57001A97A2 /* Schedule.User.swift */,
-				5D26426D24E41C57001A97A2 /* Timetable.JSONLesson.swift */,
-				5D26426C24E41C57001A97A2 /* Timetable.Lesson.swift */,
-				5D26426A24E41C57001A97A2 /* Timetable.swift */,
-				5DB5613124E8405E0072CD85 /* Settings.swift */,
-				5DAEDFF324E9573E00B0B884 /* Current.swift */,
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
-		5DB9C5D524E405CE0001F56C /* Pocket */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pocket;
-			sourceTree = "<group>";
-		};
 		5DC4BC6B24DD808800E90BB3 /* PocketDeadline */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +710,7 @@
 				5D95A61924D412AB000418B5 /* Frameworks */,
 				5D95A61A24D412AB000418B5 /* Resources */,
 				788A4287CF2100560709D7E6 /* [CP] Embed Pods Frameworks */,
+				5D9D903824EC785900930375 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -895,9 +864,7 @@
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
 				5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */,
-				5DB5613224E8405E0072CD85 /* Settings.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
-				5D26427324E41C57001A97A2 /* Timetable.Lesson.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
@@ -911,9 +878,7 @@
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
-				5D26427524E41C57001A97A2 /* Schedule.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
-				5D26427224E41C57001A97A2 /* Grous.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
@@ -926,18 +891,15 @@
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
 				5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */,
-				5D26427124E41C57001A97A2 /* Timetable.swift in Sources */,
 				5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
 				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
-				5D26426F24E41C57001A97A2 /* Schedule.User.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
 				5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */,
 				5DA10F4D24DBFE3C00D09BD8 /* FirstPageViewController.swift in Sources */,
-				5D26427024E41C57001A97A2 /* Preps.swift in Sources */,
 				5DA10F8024DC5DF400D09BD8 /* GroupSelectPageViewController.swift in Sources */,
 				5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */,
 				5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */,
@@ -956,13 +918,11 @@
 				5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
-				5D26427424E41C57001A97A2 /* Timetable.JSONLesson.swift in Sources */,
 				5D2BD83D24E43657002630B5 /* ProfileTabView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
 				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
-				5DAEDFF424E9573E00B0B884 /* Current.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

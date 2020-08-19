@@ -8,7 +8,6 @@
 
 import Foundation
 
-extension Timetable{
     public struct Lesson{
         public enum LessonType :String {
             case lab = "ЛР"
@@ -17,31 +16,31 @@ extension Timetable{
             case practice = "ПР"
         }
         
-        let name:String
-        let lessonNum:Int
-        let type:LessonType
-        var groups:[Groups.Group] = []
-        var prepods:[Preps.Prepod] = []
-        var tags:[String] = []
+        public let name:String
+        public let lessonNum:Int
+        public let type:LessonType
+        public var groups:[Groups.Group] = []
+        public var prepods:[Preps.Prepod] = []
+        public var tags:[String] = []
         var week:Timetable.Week
         var day:Int
         var itemID: Int
         
         
-        var startTime:DateComponents {
+        public var startTime:DateComponents {
             if lessonNum == 0 {
                 return DateComponents(hour: 00, minute: 00)
             }
             return Timetable.lessonHours[self.lessonNum - 1][0]
         }
-        var endTime:DateComponents {
+        public var endTime:DateComponents {
             if lessonNum == 0 {
                 return DateComponents(hour: 00, minute: 00)
             }
             return Timetable.lessonHours[self.lessonNum - 1][1]
         }
         
-        init(name:String = "",
+        public init(name:String = "",
              lessonNum:Int = 1,
              type:LessonType = .lab,
              prepod:Preps.Prepod?=nil,
@@ -96,4 +95,4 @@ extension Timetable{
             
         }
     }
-}
+

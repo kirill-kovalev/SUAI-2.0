@@ -7,22 +7,23 @@
 //
 
 import UIKit
+import SUAI_API
 
 class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
-    var lesson:Timetable.Lesson
+    var lesson:Lesson
     
-    init(lesson:Timetable.Lesson?=nil) {
-        self.lesson = lesson ?? Timetable.Lesson()
+    init(lesson:Lesson?=nil) {
+        self.lesson = lesson ?? Lesson()
         super.init()
     }
     
     required init() {
-        self.lesson = Timetable.Lesson()
+        self.lesson = Lesson()
         super.init()
     }
     required init?(coder: NSCoder) {
-        self.lesson = Timetable.Lesson()
+        self.lesson = Lesson()
         super.init(coder:coder)
     }
     

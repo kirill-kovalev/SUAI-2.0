@@ -8,6 +8,8 @@
 
 import UIKit
 import ESTabBarController_swift
+import SUAI_API
+
 
 class ScheduleTabViewController: ViewController<ScheduleTabView>{
 

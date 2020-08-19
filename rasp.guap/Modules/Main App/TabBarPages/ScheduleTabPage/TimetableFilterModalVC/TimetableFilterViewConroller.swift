@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SUAI_API
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 

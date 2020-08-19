@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SUAI_API
 
 protocol ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day:Int,week:Timetable.Week)
