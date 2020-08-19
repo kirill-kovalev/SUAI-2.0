@@ -73,6 +73,7 @@
 		5D9D904F24ED57EB00930375 /* DeadlineGroupSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904E24ED57EB00930375 /* DeadlineGroupSelectController.swift */; };
 		5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */; };
 		5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905224ED636E00930375 /* DeadlineListController.swift */; };
+		5D9D905624ED843D00930375 /* VKLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D905524ED843D00930375 /* VKLoginPage.swift */; };
 		5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */; };
 		5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */; };
 		5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */; };
@@ -192,6 +193,7 @@
 		5D9D904E24ED57EB00930375 /* DeadlineGroupSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineGroupSelectController.swift; sourceTree = "<group>"; };
 		5D9D905024ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineGroupSelectControllerDelegate.swift; sourceTree = "<group>"; };
 		5D9D905224ED636E00930375 /* DeadlineListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineListController.swift; sourceTree = "<group>"; };
+		5D9D905524ED843D00930375 /* VKLoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginPage.swift; sourceTree = "<group>"; };
 		5DA10F3B24DB28EB00D09BD8 /* PagedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedViewDelegate.swift; sourceTree = "<group>"; };
 		5DA10F3E24DB452600D09BD8 /* BackgroundElipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundElipse.swift; sourceTree = "<group>"; };
 		5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesToRadiansConvertion.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 		5D95A62124D412AB000418B5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D905424ED802100930375 /* VKLogin */,
 				5D633A0424DB1AA700ACE561 /* Tutorial */,
 				5D633A0524DB1ACB00ACE561 /* Main App */,
 			);
@@ -570,6 +573,14 @@
 				5D9D905224ED636E00930375 /* DeadlineListController.swift */,
 			);
 			path = DeadlineList;
+			sourceTree = "<group>";
+		};
+		5D9D905424ED802100930375 /* VKLogin */ = {
+			isa = PBXGroup;
+			children = (
+				5D9D905524ED843D00930375 /* VKLoginPage.swift */,
+			);
+			path = VKLogin;
 			sourceTree = "<group>";
 		};
 		5DA10F3D24DB44F200D09BD8 /* UIComponents */ = {
@@ -946,6 +957,7 @@
 				5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
+				5D9D905624ED843D00930375 /* VKLoginPage.swift in Sources */,
 				5D2BD83D24E43657002630B5 /* ProfileTabView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
