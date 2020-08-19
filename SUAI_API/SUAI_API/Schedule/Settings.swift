@@ -17,7 +17,7 @@ public struct ScheduleSettings:Codable {
     let IsWeekUp: Bool
     let IsWeekRed: Bool
     
-    public var week:Timetable.Week{
+    public var week:SATimetable.Week{
         return IsWeekOdd ? .odd : .even
     }
     

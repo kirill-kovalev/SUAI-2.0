@@ -8,25 +8,25 @@
 
 import Foundation
 
-public class Schedule{
+public class SASchedule{
     
-    public static let shared = Schedule()
+    public static let shared = SASchedule()
     public let preps = Preps()
     public let groups = Groups()
     public let settings = ScheduleSettings.load()
     public let current = ScheduleCurrent()
     
-    private var userTimetables : [User:Timetable] = [:]
+    private var userTimetables : [SAUsers.User:SATimetable] = [:]
     
-    public func load(for user: User){
-        userTimetables[user] = Timetable(for: user)
+    public func load(for user: SAUsers.User){
+        userTimetables[user] = SATimetable(for: user)
     }
     
-    public func get(for user: User ) -> Timetable {
+    public func get(for user: SAUsers.User ) -> SATimetable {
         if userTimetables[user] == nil {
             self.load(for: user)
         }
-        return userTimetables[user] ?? Timetable()
+        return userTimetables[user] ?? SATimetable()
     }
 }
 

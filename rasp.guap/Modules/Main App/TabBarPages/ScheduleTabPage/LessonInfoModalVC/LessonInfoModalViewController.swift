@@ -11,19 +11,19 @@ import SUAI_API
 
 class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
-    var lesson:Lesson
+    var lesson:SALesson
     
-    init(lesson:Lesson?=nil) {
-        self.lesson = lesson ?? Lesson()
+    init(lesson:SALesson?=nil) {
+        self.lesson = lesson ?? SALesson()
         super.init()
     }
     
     required init() {
-        self.lesson = Lesson()
+        self.lesson = SALesson()
         super.init()
     }
     required init?(coder: NSCoder) {
-        self.lesson = Lesson()
+        self.lesson = SALesson()
         super.init(coder:coder)
     }
     
@@ -47,7 +47,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)
-            tagView.isActive = (prep != Schedule.shared.current.user)
+            tagView.isActive = (prep != SASchedule.shared.current.user)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: prep)
             }, for: .touchUpInside)
@@ -59,7 +59,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         for group in lesson.groups{
             let tagView = PocketTagButton()
             tagView.setTitle(group.Name, for: .normal)
-            tagView.isActive = (group != Schedule.shared.current.user)
+            tagView.isActive = (group != SASchedule.shared.current.user)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: group)
             }, for: .touchUpInside)
@@ -80,16 +80,16 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
 
     }
     
-    func setNewUser(user : Schedule.User){
+    func setNewUser(user : SAUsers.User){
         //SOME CODE TO CHANGE CURRENT SCHEDULE USER
         print(user)
-        Schedule.shared.current.user = user
+        SASchedule.shared.current.user = user
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func backgroundUserLoad(user:Schedule.User){
+    private func backgroundUserLoad(user:SAUsers.User){
         DispatchQueue.global(qos: .background).async {
-            Schedule.shared.load(for: user)
+            SASchedule.shared.load(for: user)
         }
     }
 }

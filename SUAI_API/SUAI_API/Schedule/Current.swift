@@ -10,7 +10,7 @@ import Foundation
 
 public class ScheduleCurrent{
     public var delegate:ScheduleTrackerProtocol?
-    public var user:Schedule.User?{
+    public var user:SAUsers.User?{
         didSet{
             delegate?.didChange()
         }

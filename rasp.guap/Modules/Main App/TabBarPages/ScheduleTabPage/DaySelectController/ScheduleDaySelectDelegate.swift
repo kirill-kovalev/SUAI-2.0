@@ -10,7 +10,7 @@ import UIKit
 import SUAI_API
 
 protocol ScheduleDaySelectDelegate {
-    func scheduleDaySelect(didUpdate day:Int,week:Timetable.Week)
+    func scheduleDaySelect(didUpdate day:Int,week:SATimetable.Week)
     
-    func shouldShow(day:Int,week:Timetable.Week)->Bool
+    func shouldShow(day:Int,week:SATimetable.Week)->Bool
 }

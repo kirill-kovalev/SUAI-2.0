@@ -12,7 +12,7 @@ import SUAI_API
 class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     var delegate: ScheduleDaySelectDelegate?
     
-    private(set) var week:Timetable.Week = .odd
+    private(set) var week:SATimetable.Week = .odd
     private(set) var day:Int = 0
     
     override func loadView() {
@@ -75,9 +75,9 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         }
     }
     
-    func set(day:Int,week:Timetable.Week){
+    func set(day:Int,week:SATimetable.Week){
         self.day = day
-        self.week = (week != Timetable.Week.outOfTable) ? week : .even
+        self.week = (week != SATimetable.Week.outOfTable) ? week : .even
         update()
     }
 

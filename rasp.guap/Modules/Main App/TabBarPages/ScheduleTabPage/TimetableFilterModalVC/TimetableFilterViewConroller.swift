@@ -11,15 +11,15 @@ import SUAI_API
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 
-    private var userlist = Schedule.shared.groups
+    private var userlist = SASchedule.shared.groups
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        Schedule.shared.preps.loadFromServer()
-        Schedule.shared.groups.loadFromServer()
+        SASchedule.shared.preps.loadFromServer()
+        SASchedule.shared.groups.loadFromServer()
         setTitle("Фильтр")
 //        self.content
         self.content.selector.dataSource = self
@@ -33,16 +33,16 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 extension TimetableFilterViewConroller:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            self.userlist = Schedule.shared.groups
+            self.userlist = SASchedule.shared.groups
         }else{
-            self.userlist = Schedule.shared.groups.search(name: searchText)
+            self.userlist = SASchedule.shared.groups.search(name: searchText)
         }
         self.content.selector.reloadAllComponents()
     }
 }
 extension TimetableFilterViewConroller:UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        Schedule.shared.current.user = userlist.get(index: row)
+        SASchedule.shared.current.user = userlist.get(index: row)
     }
 }
 extension TimetableFilterViewConroller:UIPickerViewDataSource{

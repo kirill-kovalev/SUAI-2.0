@@ -22,7 +22,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     var tableController:TimetableViewController = TimetableViewController(timetable: [])
     var daySelectController = ScheduleDaySelectViewController()
     
-    var timetable:Timetable = Timetable()
+    var timetable:SATimetable = SATimetable()
     
     override func loadView() {
         super.loadView()
@@ -68,8 +68,8 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             UINotificationFeedbackGenerator().notificationOccurred(.warning)
         }, for: .touchUpInside)
         
-        Schedule.shared.current.user = Schedule.shared.groups.get(name: "1621")
-        Schedule.shared.current.delegate = self
+        SASchedule.shared.current.user = SASchedule.shared.groups.get(name: "1621")
+        SASchedule.shared.current.delegate = self
        
         
         setTimetable()
@@ -77,15 +77,15 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     }
     private func setToday(){
         let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
-        setDay(week: Schedule.shared.settings!.week, day: today )
+        setDay(week: SASchedule.shared.settings!.week, day: today )
     }
-    private func setDay(week: Timetable.Week = .odd , day: Int = 0){
+    private func setDay(week: SATimetable.Week = .odd , day: Int = 0){
         self.setTimetable(week: week, day: day )
     }
     
-    private func setTimetable(week: Timetable.Week = .odd , day: Int = 0){
+    private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
         
-        guard let user = Schedule.shared.current.user else{
+        guard let user = SASchedule.shared.current.user else{
             print("user not set")
             return
         }
@@ -105,7 +105,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         
         let isToday:Bool = (
-            week == Schedule.shared.settings?.week &&
+            week == SASchedule.shared.settings?.week &&
             day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
         )
         
@@ -114,7 +114,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         DispatchQueue.global(qos: .background).async {
                     
-                    self.timetable = Schedule.shared.get(for: user )
+                    self.timetable = SASchedule.shared.get(for: user )
                     
                     if self.timetable.isEmpty{
                         print("load error")
@@ -156,11 +156,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 }
 
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
-    func scheduleDaySelect(didUpdate day: Int, week: Timetable.Week) {
+    func scheduleDaySelect(didUpdate day: Int, week: SATimetable.Week) {
         setTimetable(week: week, day: day)
     }
     
-    func shouldShow(day: Int,week:Timetable.Week) -> Bool {
+    func shouldShow(day: Int,week:SATimetable.Week) -> Bool {
         return !self.timetable.get(week: week, day: day).isEmpty
     }
     

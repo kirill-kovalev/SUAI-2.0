@@ -1,5 +1,5 @@
 //
-//  Timetable.swift
+//  SATimetable.swift
 //  API
 //
 //  Created by Кирилл on 12.08.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Timetable {
+public class SATimetable {
     public static let lessonHours:[[DateComponents]] = [
         [.init(hour: 09, minute: 00),.init(hour: 10, minute: 30)],//1
         [.init(hour: 10, minute: 40),.init(hour: 12, minute: 10)],//2
@@ -19,16 +19,16 @@ public class Timetable {
         
     ]
 
-    public init(for user: Schedule.User) {
+    public init(for user: SAUsers.User) {
         load(for: user)
     }
     public init() {
         
     }
     
-    private var timetable = [Lesson]()//Вне сетки
+    private var timetable = [SALesson]()//список пар
     
-    public func load(for user: Schedule.User){
+    public func load(for user: SAUsers.User){
         
         let type = user.Name.contains(" — ") ? "prep" : "group"
         
@@ -47,7 +47,7 @@ public class Timetable {
         case even = 2
     }
     
-    public func get(week:Week,day:Int) -> [Lesson] {
+    public func get(week:Week,day:Int) -> [SALesson] {
         return self.timetable.filter({ lesson in
             return lesson.week == week && lesson.day == day
         }).sorted { (l1, l2) -> Bool in
@@ -66,10 +66,10 @@ public class Timetable {
         if err == nil, data != nil {
             if (resp as! HTTPURLResponse).statusCode == 200 {
                 do{
-                    let decoded = try JSONDecoder().decode([Lesson.JSONLesson].self, from: data!)
+                    let decoded = try JSONDecoder().decode([SALesson.JSONLesson].self, from: data!)
                     
                     decoded.forEach { (lesson) in
-                        self.timetable.append(Lesson(from: lesson))
+                        self.timetable.append(SALesson(from: lesson))
                     }
                     
                 }catch{

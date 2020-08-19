@@ -9,20 +9,16 @@
 import Foundation
 
 
-public class Preps{
+public class Preps :SAUsers{
     
-    public typealias Prepod = Schedule.User
-    
-    
-    
-    private var users:[Prepod] = []
-    
-    public var count:Int {
-        return users.count
-    }
         
-    public init() {
+    public override init() {
+        super.init()
         loadFromServer()
+    }
+    
+    required init(users: [User]) {
+        super.init(users: users)
     }
     
     public func loadFromServer(){
@@ -31,7 +27,7 @@ public class Preps{
             if err == nil, data != nil {
                 if (resp as! HTTPURLResponse).statusCode == 200 {
                     do{
-                        let decoded = try JSONDecoder().decode([Prepod].self, from: data!)
+                        let decoded = try JSONDecoder().decode([User].self, from: data!)
                         self.users = decoded
                         
                     }catch{
@@ -45,21 +41,6 @@ public class Preps{
         let _ = sem.wait(timeout: .distantFuture)
     }
     
-    public func get(id:Int) -> Prepod?{
-        return self.users.filter { (prep) -> Bool in
-            return prep.ItemId == id
-        }.first
-    }
-    public func get(index:Int) -> Prepod?{
-        if index < self.users.count, index>=0 {
-            return self.users[index]
-        }
-        return nil
-    }
-    public func get(name:String) -> Prepod?{
-        return self.users.filter { (prep) -> Bool in
-            return prep.Name == name
-        }.first
-    }
+    
     
 }

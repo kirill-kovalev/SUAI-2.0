@@ -13,14 +13,14 @@ import SUAI_API
 class TimetableLessonCell: UIView{
     
     private var pocketLessonView:PocketDayView = PocketDayView.fromNib()
-    private var lesson:Lesson? = nil
+    private var lesson:SALesson? = nil
     
     private let btn:Button = {
         let btn = Button(frame: .zero)
         return btn
     }()
     
-    init(lesson:Lesson? = nil ) {
+    init(lesson:SALesson? = nil ) {
         super.init(frame:.zero)
         
         addViews()
@@ -49,7 +49,7 @@ class TimetableLessonCell: UIView{
         self.btn.addTarget(action: action, for: controlEvents)
     }
     
-    func setLesson(lesson:Lesson) {
+    func setLesson(lesson:SALesson) {
         self.lesson = lesson
         
         pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Lesson{
+extension SALesson{
     struct JSONLesson : Codable{
         var ItemId: Int
         var Week: Int

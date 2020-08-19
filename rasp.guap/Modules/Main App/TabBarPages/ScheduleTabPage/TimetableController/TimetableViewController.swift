@@ -12,11 +12,11 @@ import SUAI_API
 class TimetableViewController: UIViewController {
 
     
-    let timetable:[Lesson]
+    let timetable:[SALesson]
     private var contentHeight:CGFloat = 0
     let tableView = UIStackView(frame: .zero)
     
-    init(timetable:[Lesson]? = nil) {
+    init(timetable:[SALesson]? = nil) {
         self.timetable = timetable ?? []
         super.init(nibName: nil, bundle: nil)
         self.view = tableView
@@ -28,7 +28,7 @@ class TimetableViewController: UIViewController {
             self.setTimetable(timetable: timetable!)
         }
     }
-    func setTimetable(timetable new:[Lesson]){
+    func setTimetable(timetable new:[SALesson]){
         clearStack()
         for lesson in new {
             let newView = TimetableLessonCell(lesson: lesson)
