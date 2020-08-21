@@ -16,7 +16,7 @@ class TimetableViewController: UIViewController {
     private var contentHeight:CGFloat = 0
     let tableView = UIStackView(frame: .zero)
     
-    var cellDelegate:LessonModalDelegate?
+    var cellDelegate:UserChangeDelegate?
     
     init(timetable:[SALesson]? = nil) {
         self.timetable = timetable ?? []

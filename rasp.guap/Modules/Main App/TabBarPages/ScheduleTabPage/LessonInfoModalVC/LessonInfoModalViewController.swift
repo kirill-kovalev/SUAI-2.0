@@ -12,7 +12,7 @@ import SUAI_API
 class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
     var lesson:SALesson
-    var delegate:LessonModalDelegate?
+    var delegate:UserChangeDelegate?
     
     init(lesson:SALesson?=nil) {
         self.lesson = lesson ?? SALesson()
@@ -95,6 +95,6 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
 }
 
 
-protocol  LessonModalDelegate {
+protocol  UserChangeDelegate {
     func didSetUser(user : SAUsers.User)
 }

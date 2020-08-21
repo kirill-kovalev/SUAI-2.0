@@ -13,7 +13,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 
     private var userlist = SASchedule.shared.groups
     
-    var onSelect:((SAUsers.User?)->Void)?
+    var delegate:UserChangeDelegate?
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -30,7 +30,8 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         
         self.content.clearButton.addTarget(action: { (sender) in
             if SAUserSettings.shared != nil {
-                SASchedule.shared.current.user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group)
+                guard let user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group) else { return }
+                self.delegate?.didSetUser(user: user)
                 self.dismiss(animated: true, completion: nil)
             }
             
@@ -39,6 +40,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.global(qos: .background).async {
+            SAUserSettings.shared?.update()
             SASchedule.shared.preps.loadFromServer()
             SASchedule.shared.groups.loadFromServer()
             DispatchQueue.main.async {
@@ -63,7 +65,8 @@ extension TimetableFilterViewConroller:UISearchBarDelegate {
 }
 extension TimetableFilterViewConroller:UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.onSelect?(userlist.get(index: row)) 
+        guard let user = userlist.get(index: row) else { return }
+        self.delegate?.didSetUser(user: user)
     }
 }
 extension TimetableFilterViewConroller:UIPickerViewDataSource{

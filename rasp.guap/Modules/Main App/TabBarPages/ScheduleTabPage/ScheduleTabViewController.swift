@@ -61,10 +61,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         self.rootView.selectButton.addTarget(action: { (sender) in
             let vc = TimetableFilterViewConroller()
-            vc.onSelect = { user in
-                self.currentUser = user
-                self.setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
-            }
+            vc.delegate = self
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
@@ -178,7 +175,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day: Int, week: SATimetable.Week) {
         DispatchQueue.global(qos: .background).async {
-            self.setTimetable(week: week, day: day)
+            self.setDay(week: week, day: day)
         }
         
     }
@@ -189,7 +186,7 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     
 }
 
-extension ScheduleTabViewController:LessonModalDelegate{
+extension ScheduleTabViewController:UserChangeDelegate{
     func didSetUser(user: SAUsers.User) {
         self.currentUser = user
         self.setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
