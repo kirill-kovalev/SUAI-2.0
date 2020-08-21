@@ -30,11 +30,11 @@ class PocketAPI{
     
     let config = URLSessionConfiguration.default
     public init(){
-         config.httpAdditionalHeaders = ["Referer":"https://dev.suaipocket.ru/?vk_access_token_settings=notify&vk_app_id=6895280&vk_are_notifications_enabled=0&vk_is_app_user=1&vk_is_favorite=0&vk_language=ru&vk_platform=desktop_web&vk_ref=other&vk_user_id=87478742&sign=XqVYJv8y4r6nn1bCSJHKLips3x8PDujYjD7OmNKJ15M"]
+         config.httpAdditionalHeaders = ["Token":"c61580ed0358b5ff348f524042c8e4beb4f65d6904270f42409a52c7849e1ce7850c8d1ee106dff5ec66d"]
     }
     
     public func syncLoadTask(method: LoadMethods,completion:@escaping (Data)->Void){
-
+        
         let sem = DispatchSemaphore(value: 0)
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
         URLSession(configuration: config ).dataTask(with: url ) { (data, response, err) in
