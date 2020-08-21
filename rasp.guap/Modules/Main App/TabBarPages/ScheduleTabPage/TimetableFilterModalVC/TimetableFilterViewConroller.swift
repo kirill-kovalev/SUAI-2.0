@@ -20,8 +20,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        SASchedule.shared.preps.loadFromServer()
-        SASchedule.shared.groups.loadFromServer()
+        
         setTitle("Фильтр")
 //        self.content
         self.content.selector.dataSource = self
@@ -30,9 +29,23 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         self.content.searchfield.delegate = self
         
         self.content.clearButton.addTarget(action: { (sender) in
-            SASchedule.shared.current.user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group)
-            self.dismiss(animated: true, completion: nil)
+            if SAUserSettings.shared != nil {
+                SASchedule.shared.current.user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group)
+                self.dismiss(animated: true, completion: nil)
+            }
+            
         }, for: .touchUpInside)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.global(qos: .background).async {
+            SASchedule.shared.preps.loadFromServer()
+            SASchedule.shared.groups.loadFromServer()
+            DispatchQueue.main.async {
+                self.userlist = SASchedule.shared.groups
+                self.content.selector.reloadAllComponents()
+            }
+        }
     }
     
     

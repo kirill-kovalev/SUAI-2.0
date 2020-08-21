@@ -24,6 +24,8 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     
     var timetable:SATimetable = SATimetable()
     
+    var currentUser:SAUsers.User?
+    
     override func loadView() {
         super.loadView()
         
@@ -38,7 +40,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         
         
-        daySelectController.delegate = self
+        
         
         self.addChild(daySelectController)
         self.rootView.header.addSubview(daySelectController.view)
@@ -60,7 +62,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         self.rootView.selectButton.addTarget(action: { (sender) in
             let vc = TimetableFilterViewConroller()
             vc.onSelect = { user in
-                SASchedule.shared.current.user = user
+                self.currentUser = user
                 self.setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
             }
             self.present(vc, animated: true, completion: nil)
@@ -71,90 +73,98 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             self.setToday()
             UINotificationFeedbackGenerator().notificationOccurred(.warning)
         }, for: .touchUpInside)
-        guard let groupName = SAUserSettings.shared?.group else {
-            print("SAUserSettings.shared?.group is nil")
-            return
+        
+        daySelectController.delegate = self
+        tableController.cellDelegate = self
+        
+        DispatchQueue.global(qos: .background).async {
+            guard let groupName = SAUserSettings.shared?.group else {
+                print("SAUserSettings.shared?.group is nil")
+                return
+            }
+            self.currentUser = SASchedule.shared.groups.get(name: groupName)
+            self.setToday()
         }
-        SASchedule.shared.current.user = SASchedule.shared.groups.get(name: groupName)
         
         
-       
-        
-        setTimetable()
-        setToday()
     }
 
     private func setToday(){
         let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
-        setDay(week: SASchedule.shared.settings?.week ?? .odd, day: today )
-    }
-    private func setDay(week: SATimetable.Week = .odd , day: Int = 0){
-        self.setTimetable(week: week, day: day )
-        self.daySelectController.set(day: day, week: week)
-    }
-    
-    private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
-        
-        guard let user = SASchedule.shared.current.user else{
-            print("user not set")
-            return
+        DispatchQueue.global(qos: .background).async {
+            self.setDay(week: SASchedule.shared.settings?.week ?? .odd, day: today )
         }
         
+    }
+    
+    
+    private func setDay(week: SATimetable.Week = .odd , day: Int = 0){
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
         
-        if day >= 0 {
-            self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
+        DispatchQueue.main.async {
+            
+            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
+            if day >= 0 {
+                self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
+            }
         }
-        
-        self.rootView.showIndicator(show: true)
-        self.rootView.loadingIndicator.startAnimating()
-        
-        self.tableController.setTimetable(timetable: [])
-        self.rootView.setTitle(user.shortName)
-        
-        
+            
         let isToday:Bool = (
             week == SASchedule.shared.settings?.week &&
             day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
         )
         
-        
-        self.rootView.todayButton.isHidden = isToday
-        
-        DispatchQueue.global(qos: .background).async {
-                    
-                    self.timetable = SASchedule.shared.get(for: user )
-                    
-                    if self.timetable.isEmpty{
-                        print("load error")
-                    }
-                    
-                    let dayTimetable = self.timetable.get(week: week, day: day)
-                   
-                    DispatchQueue.main.async {
-                        self.rootView.loadingIndicator.stopAnimating()
-                        self.rootView.showIndicator(show: false)
-                        
-                        if !self.timetable.isEmpty{
-                            self.tableController.tableView.isHidden = dayTimetable.isEmpty
-                            self.rootView.noLessonView.isHidden = !dayTimetable.isEmpty
-                            
-                            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
-                            
-                            
-                            self.rootView.showNoLesson(show: dayTimetable.isEmpty)
-                            
-                       
-                            self.tableController.setTimetable(timetable: dayTimetable)
-                            self.daySelectController.update()
-                        }
-                        
-                        
-                        
-                        
-                    }
+        DispatchQueue.main.async {
+            self.rootView.todayButton.isHidden = isToday
+            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
         }
+        
+        
+        
+        self.setTimetable(week: week, day: day )
+        
+        DispatchQueue.main.async {
+            self.daySelectController.set(day: day, week: week)
+        }
+    }
+    
+    private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
+        
+        guard let user = self.currentUser else{
+            print("curUser is nil")
+            return
+        }
+
+        DispatchQueue.main.async {
+            self.rootView.showIndicator(show: true)
+            self.rootView.setTitle(user.shortName)
+            
+            self.tableController.tableView.isHidden = true
+        }
+        
+        
+        
+        self.timetable = SASchedule.shared.get(for: user )
+        let dayTimetable = self.timetable.get(week: week, day: day)
+        
+        DispatchQueue.main.async {
+            self.tableController.tableView.isHidden = dayTimetable.isEmpty
+            
+            self.rootView.showIndicator(show: false)
+            self.rootView.showNoLesson(show: dayTimetable.isEmpty)
+            
+            if !self.timetable.isEmpty{
+                self.tableController.setTimetable(timetable: dayTimetable)
+                self.daySelectController.update()
+            }
+            
+        }
+        
+        
+        
+        
+        
     }
     
     
@@ -167,7 +177,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day: Int, week: SATimetable.Week) {
-        setTimetable(week: week, day: day)
+        DispatchQueue.global(qos: .background).async {
+            self.setTimetable(week: week, day: day)
+        }
+        
     }
     
     func shouldShow(day: Int,week:SATimetable.Week) -> Bool {
@@ -176,3 +189,11 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     
 }
 
+extension ScheduleTabViewController:LessonModalDelegate{
+    func didSetUser(user: SAUsers.User) {
+        self.currentUser = user
+        self.setTimetable(week: self.daySelectController.week, day: self.daySelectController.day)
+    }
+    
+    
+}

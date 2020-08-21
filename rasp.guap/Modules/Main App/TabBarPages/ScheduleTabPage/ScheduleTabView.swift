@@ -40,7 +40,7 @@ class ScheduleTabView:TabBarPageView{
     }()
     let noLessonView:UIView={
         let view = UIView(frame: .zero)
-        //view.isHidden = true
+        view.isHidden = true
         return view
     }()
     
@@ -124,6 +124,10 @@ class ScheduleTabView:TabBarPageView{
         selectButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(24)
             make.centerY.equalTo(title)
+        }
+        
+        loadingIndicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
     }
     

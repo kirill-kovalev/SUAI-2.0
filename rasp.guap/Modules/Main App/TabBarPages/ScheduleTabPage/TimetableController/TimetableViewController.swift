@@ -16,6 +16,8 @@ class TimetableViewController: UIViewController {
     private var contentHeight:CGFloat = 0
     let tableView = UIStackView(frame: .zero)
     
+    var cellDelegate:LessonModalDelegate?
+    
     init(timetable:[SALesson]? = nil) {
         self.timetable = timetable ?? []
         super.init(nibName: nil, bundle: nil)
@@ -34,6 +36,7 @@ class TimetableViewController: UIViewController {
             let newView = TimetableLessonCell(lesson: lesson)
             newView.addTarget(action: { (sender) in
                 let vc = LessonInfoModalViewController(lesson: lesson)
+                vc.delegate = self.cellDelegate
                 self.present(vc, animated: true, completion: nil)
             }, for: .touchUpInside)
             self.tableView.addArrangedSubview(newView)

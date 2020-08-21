@@ -12,6 +12,7 @@ import SUAI_API
 class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
     var lesson:SALesson
+    var delegate:LessonModalDelegate?
     
     init(lesson:SALesson?=nil) {
         self.lesson = lesson ?? SALesson()
@@ -81,9 +82,8 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     }
     
     func setNewUser(user : SAUsers.User){
-        //SOME CODE TO CHANGE CURRENT SCHEDULE USER
-        print(user)
-        SASchedule.shared.current.user = user
+        
+        self.delegate?.didSetUser(user : user)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -92,4 +92,9 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
             SASchedule.shared.load(for: user)
         }
     }
+}
+
+
+protocol  LessonModalDelegate {
+    func didSetUser(user : SAUsers.User)
 }
