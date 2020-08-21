@@ -33,7 +33,7 @@ class PocketDeadlineView: View {
         
     }
     public func setDescriptionText(description text:String?){
-        if text == "" || text == nil {
+        if text == "" || text == nil || text == " " {
             self.articleIcon.snp.updateConstraints { (make) in
                 make.width.equalTo(0)
             }
@@ -42,6 +42,8 @@ class PocketDeadlineView: View {
                 make.width.equalTo(20)
             }
         }
+    }
+    public func setTitleText(description text:String?){
         self.titleLabel.text = text
     }
     public func setState(state:DedadlineState){

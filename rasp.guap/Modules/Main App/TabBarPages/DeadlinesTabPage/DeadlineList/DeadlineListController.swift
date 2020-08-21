@@ -36,8 +36,9 @@ class DeadlineListController: UIViewController {
         for deadline in new {
             let newView = DeadlineListCell()
             newView.setLessonText(lesson: nil)
-            newView.setDescriptionText(description: deadline.subjectname)
-            
+            newView.setTitleText(description: deadline.subjectname)
+            newView.setDescriptionText(description: deadline.comment)
+            print("desc: \(deadline.subjectname)")
             switch deadline.type {
             case .closed:
                 newView.setState(state: .closed)

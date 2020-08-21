@@ -35,7 +35,6 @@ class DeadlineListCell: PocketDeadlineView{
         
     required init() {
         super.init()
-        //self.checkbox.addTarget(self, action: #selector(self.checkHandler), for: .touchDown)
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.selectHandler(_:))))
     }
     

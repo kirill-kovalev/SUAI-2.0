@@ -16,6 +16,7 @@ class DeadineCustomTabBarIcon: PocketTabBarIcon {
         
         highlightTextColor = Asset.PocketColors.pocketError.color
         highlightIconColor = Asset.PocketColors.pocketError.color
+        self.badgeView = DeadineCustomTabBarItemBadgeView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -23,4 +24,13 @@ class DeadineCustomTabBarIcon: PocketTabBarIcon {
     }
     
 
+}
+class DeadineCustomTabBarItemBadgeView: ESTabBarItemBadgeView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.badgeValue = "3"
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
