@@ -9,25 +9,30 @@
 import Foundation
 
 public class SAUserSettings: Codable {
-    public let group: String
-    public let idtab: Int
-    public let animations: Int
-    public let building: Int
-    public let banners: Int
-//    public let prologin: String
-//    public let propass: String
+    public let group: String = "1611"
+    public let idtab: Int = 0
+    public let animations: Int = 1
+    public let building: Int = 0
+    public let banners: Int = 0
+    //    public let prologin: String
+    //    public let propass: String
     
     public static var shared = fromServer()
+    init() {
+        
+    }
     
     public static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
         PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
             do{
-               settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
+                settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
             }catch{
-                print(error)
+                settings = SAUserSettings()
+                
             }
         }
         return settings
     }
+    
 }

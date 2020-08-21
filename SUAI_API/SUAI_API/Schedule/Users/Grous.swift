@@ -38,7 +38,6 @@ public class Groups :SAUsers{
             }
             sem.signal()
         }.resume()
-        print(self.users)
         let _ = sem.wait(timeout: .distantFuture)
     }
     
