@@ -63,7 +63,7 @@ class PocketDeadlineView: View {
             checkbox.isChecked = false
             break;
         case .closed:
-            imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
+            imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.done.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineGreen.color
             imageView.tintColor = Asset.PocketColors.pocketGreenButtonText.color
             

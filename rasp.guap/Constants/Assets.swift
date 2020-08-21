@@ -40,6 +40,10 @@ internal enum Asset {
       internal static let schedule = ImageAsset(name: "schedule")
     }
     internal static let tutorialEipse = ImageAsset(name: "TutorialEipse")
+    internal enum DeadlineModal {
+      internal static let delete = ImageAsset(name: "delete")
+      internal static let edit = ImageAsset(name: "edit")
+    }
     internal enum DeadlineStateImages {
       internal static let article = ImageAsset(name: "article")
       internal static let calendar = ImageAsset(name: "calendar")
