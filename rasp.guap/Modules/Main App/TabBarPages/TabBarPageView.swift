@@ -102,6 +102,6 @@ class TabBarPageView : View, UIScrollViewDelegate{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
+        
     }
 }

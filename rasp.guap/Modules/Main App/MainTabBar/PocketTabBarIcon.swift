@@ -24,7 +24,7 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         
     }
     override func updateLayout() {
-        //super.updateLayout()
+        super.updateLayout()
         titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 12)
         titleLabel.sizeToFit()
         imageView.snp.makeConstraints { (make) in
@@ -35,8 +35,6 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(imageView.snp.bottom).offset(3)
-//            make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide.snp.bottom)
-//            make.size.equalTo(CGSize.zero)
         }
         
     }

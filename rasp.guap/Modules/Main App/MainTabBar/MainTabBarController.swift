@@ -13,11 +13,12 @@ import ESTabBarController_swift
 class MainTabBarController : ESTabBarController{
     init(){
         super.init(nibName: nil, bundle: nil)
-        self.viewControllers = [FeedTabViewController(),
-         DeadlinesTabViewController(),
-         ScheduleTabViewController(),
-         InfoTabViewController(),
-         ProfileTabViewController()
+        self.viewControllers = [
+            FeedTabViewController(),
+            DeadlinesTabViewController(),
+            ScheduleTabViewController(),
+            InfoTabViewController(),
+            ProfileTabViewController()
         ]
         
         let newUserSetting = SAUserSettings.fromServer()
