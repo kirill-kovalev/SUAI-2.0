@@ -43,19 +43,33 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
         deadlineList.delegate = self
     }
     override func viewDidLoad() {
-        deadlineList.setItems(list: SADeadlines.shared.open)
-        let icon = self.tabBarItem as! ESTabBarItem
-        icon.badgeValue = "\(SADeadlines.shared.nearest.count)"
-        icon.badgeColor = .green
+        super.viewDidLoad()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.global(qos: .background).async {
+            SADeadlines.shared.loadFromServer()
+            DispatchQueue.main.async {
+                self.reloadItems()
+            }
+        }
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-}
-
-extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
-    func didSelect(group: SADeadlineGroup) {
-        switch group {
+    
+    func reloadItems(){
+        if SADeadlines.shared.nearest.count > 0{
+            self.tabBarItem.badgeValue = "\(SADeadlines.shared.nearest.count)"
+        }else {
+            self.tabBarItem.badgeValue = nil
+        }
+        
+        
+        switch self.groupSelector.current {
         case .closed:
             self.deadlineList.setItems(list: SADeadlines.shared.closed)
             break
@@ -66,6 +80,13 @@ extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
             self.deadlineList.setItems(list: SADeadlines.shared.open)
             break
         }
+        
+    }
+}
+
+extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
+    func didSelect(group: SADeadlineGroup) {
+        reloadItems()
     }
 }
 
@@ -75,27 +96,18 @@ extension DeadlinesTabViewController:DeadlineListDelegate{
     }
     
     func deadlineDidChecked(deadline: SADeadline) {
-
+        
         DispatchQueue.global(qos: .background).async {
             if deadline.closed == 0 {
-                SADeadlines.shared.close(deadline: deadline)
+                let _ = SADeadlines.shared.close(deadline: deadline)
             }else
             {
-                SADeadlines.shared.reopen(deadline: deadline)
+                let _ = SADeadlines.shared.reopen(deadline: deadline)
             }
+            
             SADeadlines.shared.loadFromServer()
             DispatchQueue.main.async {
-                switch self.groupSelector.current {
-                case .closed:
-                    self.deadlineList.setItems(list: SADeadlines.shared.closed)
-                    break
-                case .nearest:
-                    self.deadlineList.setItems(list: SADeadlines.shared.nearest)
-                    break
-                case .open:
-                    self.deadlineList.setItems(list: SADeadlines.shared.open)
-                    break
-                }
+                self.reloadItems()
             }
         }
     }

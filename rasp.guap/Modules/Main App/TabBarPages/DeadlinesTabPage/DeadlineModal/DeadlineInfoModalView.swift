@@ -24,6 +24,19 @@ class DeadlineInfoModalView: View {
         label.text = text
         return label
     }
+    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> Button {
+        let color = Asset.PocketColors.pocketDarkBlue.color
+        let btn = Button(frame: .zero)
+        btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 12)
+        btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.imageView?.tintColor = color
+        btn.setTitleColor(color, for: .normal)
+        btn.layer.cornerRadius = 10
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = color.cgColor
+        return btn
+    }
+    
     
     
     lazy var nameSectionTitle:UILabel = sectionLabelGenerator("Название дедлайна")
@@ -37,6 +50,13 @@ class DeadlineInfoModalView: View {
     lazy var lessonLabel:UILabel = sectionTextGenerator()
     
     
+    
+    lazy var closeButton:Button = buttonGenerator("Закрыть дедлайн")
+    lazy var editButton:Button = buttonGenerator("Редактировать")
+    lazy var removeButton:Button = {
+        let btn = Button(frame: .zero)
+        return btn
+    }()
     
     
     
@@ -97,4 +117,8 @@ class DeadlineInfoModalView: View {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+}
+
+protocol DeadlinChangeDelegate {
+    
 }

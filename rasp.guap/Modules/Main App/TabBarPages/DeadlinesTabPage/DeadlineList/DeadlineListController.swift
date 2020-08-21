@@ -35,10 +35,14 @@ class DeadlineListController: UIViewController {
         clearStack()
         for deadline in new {
             let newView = DeadlineListCell()
-            newView.setLessonText(lesson: nil)
+            let user = SASchedule.shared.groups.get(name:SAUserSettings.shared?.group ?? "")
+            if user != nil {
+                let lesson = SASchedule.shared.get(for: user!).get(itemID: deadline.idsubject ?? 0 )
+                newView.setLessonText(lesson: lesson.first?.name)
+            }
+            
             newView.setTitleText(description: deadline.subjectname)
             newView.setDescriptionText(description: deadline.comment)
-            print("desc: \(deadline.subjectname)")
             switch deadline.type {
             case .closed:
                 newView.setState(state: .closed)

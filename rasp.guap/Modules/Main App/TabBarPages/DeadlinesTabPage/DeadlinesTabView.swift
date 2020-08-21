@@ -31,7 +31,7 @@ class DeadlinesTabView:TabBarPageView {
     }
     func setupConstraints(){
         pocketDiv.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualToSuperview()
