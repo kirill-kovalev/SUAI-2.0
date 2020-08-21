@@ -14,14 +14,14 @@ public class SAUserSettings: Codable {
     public let animations: Int
     public let building: Int
     public let banners: Int
-    public let prologin: String
-    public let propass: String
+//    public let prologin: String
+//    public let propass: String
     
     public static var shared = fromServer()
     
     public static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
-        PocketAPI.shared.syncDataTask(method: .getSettings) { (data) in
+        PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
             do{
                settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
             }catch{

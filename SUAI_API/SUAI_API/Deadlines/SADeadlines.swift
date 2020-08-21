@@ -80,14 +80,29 @@ public class SADeadlines{
     private var deadlines = [SADeadline]()
     
     public func loadFromServer(){
-        PocketAPI.shared.syncDataTask(method: .getDeadlines ) { (data) in
+        PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
             do {
-                print(data)
                 self.deadlines = try self.decodeDeadlines(data: data )
             }catch{
                 print(error)
             }
         }
+    }
+    public func close(deadline: SADeadline) -> Bool {
+        var success = false
+        PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
+            success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+        }
+        self.loadFromServer()
+        return success
+    }
+    public func reopen(deadline: SADeadline) -> Bool {
+        var success = false
+        PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
+             success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+        }
+        self.loadFromServer()
+        return success
     }
     private func decodeDeadlines(data:Data) throws  -> [SADeadline] {
         let decoder = JSONDecoder()
