@@ -27,13 +27,21 @@ class DeadlineInfoModalView: View {
     private func buttonGenerator(_ text:String,image:UIImage? = nil) -> Button {
         let color = Asset.PocketColors.pocketDarkBlue.color
         let btn = Button(frame: .zero)
+        btn.setTitle(text, for: .normal)
         btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 12)
         btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.imageView?.tintColor = color
-        btn.setTitleColor(color, for: .normal)
+        
         btn.layer.cornerRadius = 10
         btn.layer.borderWidth = 1
+        
+        btn.imageView?.tintColor = color
+        btn.setTitleColor(color, for: .normal)
         btn.layer.borderColor = color.cgColor
+        
+        btn.titleLabel?.snp.makeConstraints({ (make) in
+            
+            make.height.equalTo(40)
+        })
         return btn
     }
     
@@ -52,9 +60,15 @@ class DeadlineInfoModalView: View {
     
     
     lazy var closeButton:Button = buttonGenerator("Закрыть дедлайн")
-    lazy var editButton:Button = buttonGenerator("Редактировать")
-    lazy var removeButton:Button = {
-        let btn = Button(frame: .zero)
+    lazy var editButton:Button = buttonGenerator(" Редактировать",image: Asset.AppImages.DeadlineModal.edit.image)
+    lazy var deleteButton:Button = {
+        
+        let color = Asset.PocketColors.pocketError.color
+        
+        let btn = buttonGenerator(" Удалить",image: Asset.AppImages.DeadlineModal.delete.image)
+        btn.imageView?.tintColor = color
+        btn.setTitleColor(color, for: .normal)
+        btn.layer.borderColor = color.cgColor
         return btn
     }()
     
@@ -75,6 +89,10 @@ class DeadlineInfoModalView: View {
         self.addSubview(dateLabel)
         self.addSubview(lessonSectionTitle)
         self.addSubview(lessonLabel)
+        
+        self.addSubview(closeButton)
+        self.addSubview(editButton)
+        self.addSubview(deleteButton)
         
     }
     func setupConstraints(){
@@ -108,9 +126,25 @@ class DeadlineInfoModalView: View {
         lessonLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(lessonSectionTitle.snp.bottom).offset(8)
+        }
+        closeButton.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(lessonLabel.snp.bottom).offset(8)
+        }
+        editButton.snp.makeConstraints { (make) in
+            make.top.equalTo(closeButton.snp.bottom).offset(8)
+            make.left.equalToSuperview()
+            make.right.equalTo(self.snp.centerX)
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+        deleteButton.snp.makeConstraints { (make) in
+            make.top.equalTo(closeButton.snp.bottom).offset(8)
+            make.right.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2).inset(5)
             make.bottom.lessThanOrEqualToSuperview()
         }
         
+        //
     }
     
     
