@@ -20,7 +20,7 @@ public class SATimetable {
     ]
 
     public init(for user: SAUsers.User) {
-        load(for: user)
+        let _ = load(for: user)
     }
     public init() {
         
@@ -68,6 +68,10 @@ public class SATimetable {
         }).sorted { (l1, l2) -> Bool in
             return l1.lessonNum < l2.lessonNum
         }
+    }
+    public func list() -> [SALesson]{
+        return Set(self.timetable).sorted(by: {$0.name > $1.name})
+        
     }
     
     public var isEmpty:Bool{

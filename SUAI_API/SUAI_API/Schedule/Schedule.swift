@@ -25,7 +25,7 @@ public class SASchedule{
     
     public func get(for user: SAUsers.User ) -> SATimetable {
         if userTimetables[user] == nil {
-            self.load(for: user)
+            let _ = self.load(for: user)
         }
         return userTimetables[user] ?? SATimetable()
     }

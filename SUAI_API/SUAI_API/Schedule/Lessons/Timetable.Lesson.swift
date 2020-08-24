@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SALesson{
+public struct SALesson : Hashable{
     public enum LessonType :String {
         case lab = "ЛР"
         case lecture = "Л"
