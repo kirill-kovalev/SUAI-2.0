@@ -102,6 +102,9 @@ class TabBarPageView : View, UIScrollViewDelegate{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        print("did scroll")
     }
+}
+protocol TabPageContentUpdateDelegate{
+    func pageContentDidUpdate()
 }

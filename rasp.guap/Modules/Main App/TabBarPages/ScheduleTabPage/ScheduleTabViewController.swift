@@ -96,6 +96,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     
     
     private func setDay(week: SATimetable.Week = .odd , day: Int = 0){
+        
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
         
@@ -193,6 +194,16 @@ extension ScheduleTabViewController:UserChangeDelegate{
             self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
         }
     }
-    
-    
+}
+extension ScheduleTabViewController:TabPageContentUpdateDelegate{
+    func pageContentDidUpdate() {
+        if self.currentUser != nil{
+            DispatchQueue.global(qos: .background).async {
+                self.timetable = SASchedule.shared.load(for: self.currentUser!)
+                DispatchQueue.main.async {
+                    self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
+                }
+            }
+        }
+    }
 }

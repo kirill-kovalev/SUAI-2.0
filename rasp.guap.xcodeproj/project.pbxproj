@@ -362,6 +362,7 @@
 		5D3D6C9724E42F4D007CE482 /* DeadlinesTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D7D667424F3F4A100F39D59 /* DeadlineEditModal */,
 				5D9D905724ED848300930375 /* DeadlineModal */,
 				5D9D904D24ED57C900930375 /* DeadlineList */,
 				5D9D904C24ED57B900930375 /* DeadlineGroupSelector */,
@@ -451,6 +452,13 @@
 				5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */,
 			);
 			path = TimetableController;
+			sourceTree = "<group>";
+		};
+		5D7D667424F3F4A100F39D59 /* DeadlineEditModal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DeadlineEditModal;
 			sourceTree = "<group>";
 		};
 		5D95A61324D412AB000418B5 = {
