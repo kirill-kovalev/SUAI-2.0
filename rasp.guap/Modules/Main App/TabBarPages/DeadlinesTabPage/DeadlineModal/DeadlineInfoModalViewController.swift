@@ -13,6 +13,8 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
     
     var deadline:SADeadline
     
+    var onChange:(()->Void)?
+    
     init(deadline:SADeadline?=nil) {
         self.deadline = deadline ?? SADeadline()
         super.init()
@@ -41,18 +43,47 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         
         
         
-        self.content.lessonSectionTitle.isHidden = true
-        self.content.lessonLabel.isHidden = true
-        
         
         if deadline.subject_name  != nil {
-                self.content.lessonSectionTitle.isHidden = false
-                self.content.lessonLabel.isHidden = false
-
+            self.content.lessonSectionTitle.isHidden = false
+            self.content.lessonLabel.isHidden = false
             self.content.lessonLabel.text = deadline.subject_name!
-            
-            
+        }else{
+            self.content.lessonSectionTitle.isHidden = true
+            self.content.lessonLabel.isHidden = true
         }
+        
+        if self.deadline.closed == 0{
+            let color = Asset.PocketColors.pocketGreen.color
+            self.content.closeButton.setTitleColor(color, for: .normal)
+            self.content.closeButton.setTitle("Закрыть дедлайн", for: .normal)
+            self.content.closeButton.layer.borderColor = color.cgColor
+        }
+        
+        self.content.closeButton.addTarget(action: { (sender) in
+            if self.deadline.closed == 0{
+                let _ = SADeadlines.shared.close(deadline: self.deadline)
+            }else{
+                let _ = SADeadlines.shared.reopen(deadline: self.deadline)
+            }
+            
+            self.onChange?()
+            self.dismiss(animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        
+        self.content.editButton.addTarget(action: { (sender) in
+            
+        }, for: .touchUpInside)
+        
+        
+        self.content.deleteButton.addTarget(action: { (sender) in
+            let _ = SADeadlines.shared.delete(deadline: self.deadline)
+            self.onChange?()
+            self.dismiss(animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        
     }
     
     

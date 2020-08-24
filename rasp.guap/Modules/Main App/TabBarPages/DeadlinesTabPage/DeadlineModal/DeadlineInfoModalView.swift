@@ -59,7 +59,7 @@ class DeadlineInfoModalView: View {
     
     
     
-    lazy var closeButton:Button = buttonGenerator("Закрыть дедлайн")
+    lazy var closeButton:Button = buttonGenerator("Открыть дедлайн")
     lazy var editButton:Button = buttonGenerator(" Редактировать",image: Asset.AppImages.DeadlineModal.edit.image)
     lazy var deleteButton:Button = {
         
