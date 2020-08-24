@@ -89,7 +89,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
     private func backgroundUserLoad(user:SAUsers.User){
         DispatchQueue.global(qos: .background).async {
-            SASchedule.shared.load(for: user)
+            let _ = SASchedule.shared.load(for: user)
         }
     }
 }
