@@ -30,7 +30,7 @@ class PocketAPI{
     
     let config = URLSessionConfiguration.default
     public init(){
-         config.httpAdditionalHeaders = ["Token":"c61580ed0358b5ff348f524042c8e4beb4f65d6904270f42409a52c7849e1ce7850c8d1ee106dff5ec66d"]
+        config.httpAdditionalHeaders = ["Token":VKToken.token.rawValue]
     }
     
     public func syncLoadTask(method: LoadMethods,completion:@escaping (Data)->Void){

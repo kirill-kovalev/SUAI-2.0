@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667924F416E300F39D59 /* VKAUth.swift */; };
 		5D9D901F24EC77EF00930375 /* SUAI_API.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D9D901D24EC77EF00930375 /* SUAI_API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
 		5D9D903A24EC78AD00930375 /* Preps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902C24EC782100930375 /* Preps.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D7D667924F416E300F39D59 /* VKAUth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAUth.swift; sourceTree = "<group>"; };
 		5D9D901A24EC77EF00930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D901D24EC77EF00930375 /* SUAI_API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUAI_API.h; sourceTree = "<group>"; };
 		5D9D901E24EC77EF00930375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		5D9D901C24EC77EF00930375 /* SUAI_API */ = {
 			isa = PBXGroup;
 			children = (
+				5D7D667924F416E300F39D59 /* VKAUth.swift */,
 				5D9D904A24ED478D00930375 /* PocketAPI.swift */,
 				5D9D904724ED429100930375 /* User */,
 				5D9D904224ED25F400930375 /* Deadlines */,
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D9D904124EC78AD00930375 /* Current.swift in Sources */,
+				5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */,
 				5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */,
 				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
 				5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */,
