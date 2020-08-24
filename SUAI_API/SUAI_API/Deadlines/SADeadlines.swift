@@ -15,8 +15,8 @@ public enum SADeadlineGroup{
 
 public struct SADeadline: Codable {
     public let id: Int
-    public let idsubject: Int?
-    public let subjectname: String?
+    public let subject_name: String?
+    public let deadline_name: String?
     public let closed: Int
     public let start: Date
     public let end: Date
@@ -26,16 +26,16 @@ public struct SADeadline: Codable {
         return ""
     }
     public init(id: Int = 0,
-                idsubject: Int? = 0,
-                subjectname: String? = "",
+                subject_name: String = "",
+                deadline_name: String? = "",
                 closed: Int = 0,
                 start: Date = Date(),
                 end: Date = Date(),
                 comment: String = ""
     ){
         self.id = id
-        self.idsubject = idsubject
-        self.subjectname = subjectname
+        self.subject_name = subject_name
+        self.deadline_name = deadline_name
         self.closed = closed
         self.start = start
         self.end = end

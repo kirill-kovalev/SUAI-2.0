@@ -25,7 +25,7 @@ public class SAUserSettings: Codable {
         PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
             do{
                 settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
-                print(settings)
+               
             }catch{
                 settings = nil
                 print(error)

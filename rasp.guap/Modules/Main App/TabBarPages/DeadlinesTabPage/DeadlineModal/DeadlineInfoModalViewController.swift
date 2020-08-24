@@ -33,7 +33,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         self.rootView.titleLabel.text = "Карточка Дедлайна"
         
         self.content.commentLabel.text = deadline.comment
-        self.content.nameLabel.text = deadline.subjectname
+        self.content.nameLabel.text = deadline.deadline_name
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "RU")
         formatter.dateFormat = "dd MMMM"
@@ -44,19 +44,13 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         self.content.lessonSectionTitle.isHidden = true
         self.content.lessonLabel.isHidden = true
         
-        if deadline.idsubject != nil {
-            self.content.lessonLabel.text = "";
-            guard let groupName = SAUserSettings.shared?.group,
-                let user =  SASchedule.shared.groups.get(name: groupName)
-            else{return}
-            
-            let lessonName = SASchedule.shared.get(for: user).get(itemID: self.deadline.idsubject! ).first?.name
-            if lessonName != nil {
+        
+        if deadline.subject_name  != nil {
                 self.content.lessonSectionTitle.isHidden = false
                 self.content.lessonLabel.isHidden = false
 
-                self.content.lessonLabel.text = lessonName
-            }
+            self.content.lessonLabel.text = deadline.subject_name!
+            
             
         }
     }
