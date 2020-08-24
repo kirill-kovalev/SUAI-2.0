@@ -29,6 +29,8 @@ class TimetableFilterView:UIView{
     private func textFieldGenerator(_ title:String = "")->UITextField{
         let field = UITextField(frame: .zero)
         
+        field.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        
         let img = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
         field.rightView = img
         img.bounds = CGRect(x: 0, y: 0, width: img.bounds.width + 10, height: img.bounds.height)

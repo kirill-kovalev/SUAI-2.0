@@ -73,6 +73,7 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         }else{
             self.content.groupField.text = ""
         }
+        textFieldDidChange(textField)
         
         
         self.content.selector.snp.updateConstraints { (make) in
