@@ -88,6 +88,17 @@ public class SADeadlines{
             }
         }
     }
+    
+    private func decodeDeadlines(data:Data) throws  -> [SADeadline] {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode([SADeadline].self, from: data)
+    }
+    
+    
+    
     public func close(deadline: SADeadline) -> Bool {
         var success = false
         PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
@@ -96,6 +107,7 @@ public class SADeadlines{
         self.loadFromServer()
         return success
     }
+    
     public func reopen(deadline: SADeadline) -> Bool {
         var success = false
         PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
@@ -104,13 +116,30 @@ public class SADeadlines{
         self.loadFromServer()
         return success
     }
-    private func decodeDeadlines(data:Data) throws  -> [SADeadline] {
-        let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(formatter)
-        return try decoder.decode([SADeadline].self, from: data)
+    
+    public func create(deadline: SADeadline) -> Bool {
+        
+        return  false
     }
+    public func edit(deadline: SADeadline) -> Bool{
+        var success = false
+        PocketAPI.shared.syncSetTask(method: .editDeadline, params: ["id":deadline.id]) { (data) in
+             success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+        }
+        self.loadFromServer()
+        return success
+    }
+    public func delete(deadline: SADeadline) -> Bool{
+        var success = false
+        PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
+             success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+        }
+        self.loadFromServer()
+        return success
+    }
+    
+    
+    
 }
 
 

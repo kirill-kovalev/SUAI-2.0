@@ -18,8 +18,9 @@ public class SASchedule{
     
     private var userTimetables : [SAUsers.User:SATimetable] = [:]
     
-    public func load(for user: SAUsers.User){
+    public func load(for user: SAUsers.User) -> SATimetable {
         userTimetables[user] = SATimetable(for: user)
+        return userTimetables[user]!
     }
     
     public func get(for user: SAUsers.User ) -> SATimetable {

@@ -28,7 +28,7 @@ public class SATimetable {
     
     private var timetable = [SALesson]()//список пар
     
-    public func load(for user: SAUsers.User){
+    public func load(for user: SAUsers.User) -> Self{
         
         let type = user.Name.contains(" — ") ? "prep" : "group"
         
@@ -39,6 +39,7 @@ public class SATimetable {
             sem.signal()
         }.resume()
         let _ = sem.wait(timeout: .distantFuture)
+        return self
     }
     
     public enum Week:Int {
