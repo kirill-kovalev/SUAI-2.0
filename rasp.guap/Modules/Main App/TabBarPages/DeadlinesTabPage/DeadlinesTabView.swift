@@ -17,7 +17,15 @@ class DeadlinesTabView:TabBarPageView {
         return s
     }()
     
+    let addButton:Button = {
+        let btn = Button(frame: .zero)
+        btn.setImage(Asset.SystemIcons.add.image.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
+        return btn
+    }()
+    
     let pocketDiv = PocketDivView()
+    
     
     
     required init() {
@@ -27,6 +35,7 @@ class DeadlinesTabView:TabBarPageView {
     }
     func addViews(){
         self.header.addSubview(selectorStack)
+        self.addHeaderButton(addButton)
         self.addSubview(pocketDiv)
     }
     func setupConstraints(){

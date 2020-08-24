@@ -1,14 +1,14 @@
 //
-//  DeadlineInfoModalView.swift
+//  DeadlineEditModal.swift
 //  rasp.guap
 //
-//  Created by Кирилл on 19.08.2020.
+//  Created by Кирилл on 24.08.2020.
 //  Copyright © 2020 Kovalev K.A. All rights reserved.
 //
 
 import UIKit
 
-class DeadlineInfoModalView: View {
+class DeadlineEditModalView: View {
     private func sectionLabelGenerator(_ text:String) -> UILabel{
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -40,6 +40,26 @@ class DeadlineInfoModalView: View {
 
         return btn
     }
+    private func textFieldGenerator(_ title:String = "")->UITextField{
+        let field = UITextField(frame: .zero)
+        field.placeholder = title
+        field.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        
+        field.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+        field.rightViewMode = .always
+        
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+        field.leftViewMode = .always
+        
+        
+        field.layer.cornerRadius = 10
+        field.backgroundColor = Asset.PocketColors.pocketLightGray.color
+        field.textRect(forBounds: field.bounds.insetBy(dx: 5, dy: 5))
+        
+        
+        field.doneAccessory = true
+        return field
+    }
     
     
     
@@ -48,25 +68,70 @@ class DeadlineInfoModalView: View {
     lazy var dateSectionTitle:UILabel = sectionLabelGenerator("Дата дедлайна")
     lazy var lessonSectionTitle:UILabel = sectionLabelGenerator("Предмет")
     
-    lazy var nameLabel:UILabel = sectionTextGenerator()
-    lazy var commentLabel:UILabel = sectionTextGenerator()
-    lazy var dateLabel:UILabel = sectionTextGenerator()
-    lazy var lessonLabel:UILabel = sectionTextGenerator()
+    lazy var nameLabel:UITextField = textFieldGenerator("Выполнить лабораторную работу №1")
+    lazy var commentLabel:UITextView = {
+        let field = UITextView(frame: .zero)
+        field.layer.cornerRadius = 10
+        field.backgroundColor = Asset.PocketColors.pocketLightGray.color
+        
+        field.doneAccessory = true
+        return field
+    }()
+    
+    private lazy var formatter:DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "RU")
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter
+    }()
+    lazy var dateLabel:UITextField = {
+    
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dateCancelSeleceted))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dateSeleceted))
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.setItems([cancelButton,spacer,doneButton], animated: true)
+        
+        
+        let datePicker = UIDatePicker(frame: .zero)
+        
+        
+        let dateLabel = textFieldGenerator("")
+        
+        dateLabel.text = formatter.string(from: Date())
+        dateLabel.inputAccessoryView = toolbar
+        dateLabel.inputView = datePicker
+        return dateLabel
+    }()
+    
+    @objc private func dateSeleceted(){
+        guard let inputView = dateLabel.inputView as? UIDatePicker else {
+            dateLabel.resignFirstResponder()
+            return
+        }
+        self.dateLabel.text = formatter.string(from: inputView.date)
+        dateLabel.resignFirstResponder()
+    }
+    @objc private func dateCancelSeleceted(){
+        dateLabel.resignFirstResponder()
+    }
+    
+    
+    
+    lazy var lessonPicker = UIPickerView()
+    
+    lazy var lessonLabel:UITextField = {
+        let lessonLabel = textFieldGenerator("")
+        lessonLabel.inputView = lessonPicker
+        return lessonLabel
+    }()
     
     
     
     lazy var closeButton:Button = buttonGenerator("Открыть дедлайн")
-    lazy var editButton:Button = buttonGenerator(" Редактировать",image: Asset.AppImages.DeadlineModal.edit.image)
-    lazy var deleteButton:Button = {
-        
-        let color = Asset.PocketColors.pocketError.color
-        
-        let btn = buttonGenerator(" Удалить",image: Asset.AppImages.DeadlineModal.delete.image)
-        btn.imageView?.tintColor = color
-        btn.setTitleColor(color, for: .normal)
-        btn.layer.borderColor = color.cgColor
-        return btn
-    }()
+    
     
     
     
@@ -87,8 +152,6 @@ class DeadlineInfoModalView: View {
         self.addSubview(lessonLabel)
         
         self.addSubview(closeButton)
-        self.addSubview(editButton)
-        self.addSubview(deleteButton)
         
     }
     func setupConstraints(){
@@ -97,6 +160,7 @@ class DeadlineInfoModalView: View {
         }
         nameLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
+            make.height.equalTo(40)
             make.top.equalTo(nameSectionTitle.snp.bottom).offset(8)
         }
         commentSectionTitle.snp.makeConstraints { (make) in
@@ -105,6 +169,7 @@ class DeadlineInfoModalView: View {
         }
         commentLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
+            make.height.equalTo(120)
             make.top.equalTo(commentSectionTitle.snp.bottom).offset(8)
         }
         dateSectionTitle.snp.makeConstraints { (make) in
@@ -113,6 +178,7 @@ class DeadlineInfoModalView: View {
         }
         dateLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
+            make.height.equalTo(40)
             make.top.equalTo(dateSectionTitle.snp.bottom).offset(8)
         }
         lessonSectionTitle.snp.makeConstraints { (make) in
@@ -121,29 +187,16 @@ class DeadlineInfoModalView: View {
         }
         lessonLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
+            make.height.equalTo(40)
             make.top.equalTo(lessonSectionTitle.snp.bottom).offset(8)
         }
         closeButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(lessonLabel.snp.bottom).offset(8)
             make.height.equalTo(40)
-        }
-        editButton.snp.makeConstraints { (make) in
-            make.top.equalTo(closeButton.snp.bottom).offset(8)
-            make.left.equalToSuperview()
-            make.right.equalTo(self.snp.centerX)
+            
             make.bottom.lessThanOrEqualToSuperview()
-            make.height.equalTo(40)
         }
-        deleteButton.snp.makeConstraints { (make) in
-            make.top.equalTo(closeButton.snp.bottom).offset(8)
-            make.right.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(2).inset(5)
-            make.bottom.lessThanOrEqualToSuperview()
-            make.height.equalTo(40)
-        }
-        
-        //
     }
     
     
@@ -151,3 +204,5 @@ class DeadlineInfoModalView: View {
         super.init(coder: coder)
     }
 }
+
+

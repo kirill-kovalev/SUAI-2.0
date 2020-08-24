@@ -34,17 +34,24 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         super.viewDidLoad()
         self.rootView.titleLabel.text = "Карточка Дедлайна"
         
-        self.content.commentLabel.text = deadline.comment
+        
         self.content.nameLabel.text = deadline.deadline_name
+        
+        self.content.commentLabel.text = deadline.comment
+        self.content.commentSectionTitle.isHidden = deadline.comment.isEmpty
+        self.content.commentLabel.isHidden = deadline.comment.isEmpty
+        if deadline.comment.isEmpty {
+            self.content.commentSectionTitle.snp.makeConstraints {$0.height.equalTo(0)}
+            self.content.commentLabel.snp.makeConstraints {$0.height.equalTo(0)}
+        }
+        
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "RU")
         formatter.dateFormat = "dd MMMM"
         self.content.dateLabel.text = formatter.string(from: deadline.end)
         
-        
-        
-        
-        if deadline.subject_name  != nil {
+
+        if deadline.subject_name  != nil,deadline.subject_name  != "" {
             self.content.lessonSectionTitle.isHidden = false
             self.content.lessonLabel.isHidden = false
             self.content.lessonLabel.text = deadline.subject_name!
@@ -52,6 +59,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             self.content.lessonSectionTitle.isHidden = true
             self.content.lessonLabel.isHidden = true
         }
+        
         
         if self.deadline.closed == 0{
             let color = Asset.PocketColors.pocketGreen.color

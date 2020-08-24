@@ -45,6 +45,10 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.rootView.addButton.addTarget(action: { (sender) in
+            self.present(DeadlineEditModalViewControllerPrototype(), animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
         
     }
     
@@ -92,7 +96,11 @@ extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
 
 extension DeadlinesTabViewController:DeadlineListDelegate{
     func deadlineDidSelected(deadline: SADeadline) {
-        self.present(DeadlineInfoModalViewController(deadline: deadline), animated: true, completion: nil)
+        let vc = DeadlineInfoModalViewController(deadline: deadline)
+        vc.onChange = {
+            self.reloadItems()
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
     func deadlineDidChecked(deadline: SADeadline) {
