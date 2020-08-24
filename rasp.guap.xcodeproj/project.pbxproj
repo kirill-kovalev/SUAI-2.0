@@ -32,6 +32,7 @@
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
 		5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */; };
 		5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */; };
+		5D7D667324F3E34600F39D59 /* keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667224F3E34600F39D59 /* keyboard.swift */; };
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
@@ -154,6 +155,7 @@
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
+		5D7D667224F3E34600F39D59 /* keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboard.swift; sourceTree = "<group>"; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* SUAI Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUAI Pocket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +326,7 @@
 				5DA10F4024DB497700D09BD8 /* DegreesToRadiansConvertion.swift */,
 				5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */,
 				5DAEDFF524E9889D00B0B884 /* Calendar.swift */,
+				5D7D667224F3E34600F39D59 /* keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				5D9D905B24ED84C200930375 /* DeadlineInfoModalView.swift in Sources */,
 				5DD24CB124E4547F0024F325 /* TabBarPageView.swift in Sources */,
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
+				5D7D667324F3E34600F39D59 /* keyboard.swift in Sources */,
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,

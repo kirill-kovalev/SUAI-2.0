@@ -10,8 +10,11 @@ import UIKit
 import SUAI_API
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
-
-    private var userlist = SASchedule.shared.groups
+    
+    
+    private var userlist:SAUsers = SASchedule.shared.groups
+    
+    private var activeTF:UITextField? = nil
     
     var delegate:UserChangeDelegate?
     
@@ -22,11 +25,15 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         
         
         setTitle("Фильтр")
-//        self.content
         self.content.selector.dataSource = self
         self.content.selector.delegate = self
         
-        self.content.searchfield.delegate = self
+        self.content.groupField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.content.prepField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+        self.content.groupField.delegate = self
+        self.content.prepField.delegate = self
+        
         
         self.content.clearButton.addTarget(action: { (sender) in
             if SAUserSettings.shared != nil {
@@ -51,21 +58,64 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     }
     
     
-
+    
 }
 extension TimetableFilterViewConroller:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            self.userlist = SASchedule.shared.groups
+        
+    }
+}
+extension TimetableFilterViewConroller : UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTF = textField
+        if self.content.groupField == textField{
+            self.content.prepField.text = ""
         }else{
-            self.userlist = SASchedule.shared.groups.search(name: searchText)
+            self.content.groupField.text = ""
         }
+        
+        
+        self.content.selector.snp.updateConstraints { (make) in
+            make.height.equalTo(200)
+        }
+        
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeTF = nil
+        
+        self.content.selector.snp.updateConstraints { (make) in
+            make.height.equalTo(0)
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        var baseUserlist:SAUsers
+        if textField == self.content.groupField{
+            baseUserlist = SASchedule.shared.groups
+        }else{ // if textField == self.content.prepField
+            baseUserlist = SASchedule.shared.preps
+        }
+        
+        
+        let searchText = textField.text ?? ""
+        
+        if searchText == "" {
+            self.userlist = baseUserlist
+        }else{
+            self.userlist = baseUserlist.search(name: searchText)
+        }
+        
         self.content.selector.reloadAllComponents()
     }
 }
+
+
 extension TimetableFilterViewConroller:UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let user = userlist.get(index: row) else { return }
+        self.activeTF?.text = user.shortName
         self.delegate?.didSetUser(user: user)
     }
 }

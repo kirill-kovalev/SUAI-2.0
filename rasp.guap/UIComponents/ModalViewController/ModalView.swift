@@ -78,7 +78,7 @@ class ModalView: View {
     private func setupConstraints(){
         container.snp.makeConstraints { (make) in
             make.width.equalToSuperview().offset(-20)
-            make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
+            //make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
             make.centerX.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
