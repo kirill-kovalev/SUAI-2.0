@@ -75,23 +75,30 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
                 let _ = SADeadlines.shared.reopen(deadline: self.deadline)
             }
             
-            self.onChange?()
+            
             self.dismiss(animated: true, completion: nil)
         }, for: .touchUpInside)
         
         
         self.content.editButton.addTarget(action: { (sender) in
-            
+            let vc = DeadlineEditableModalViewController()
+            vc.deadline = self.deadline
+            self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
         
         self.content.deleteButton.addTarget(action: { (sender) in
             let _ = SADeadlines.shared.delete(deadline: self.deadline)
-            self.onChange?()
+            
             self.dismiss(animated: true, completion: nil)
         }, for: .touchUpInside)
         
         
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        self.onChange?()
+        super.dismiss(animated: flag, completion: completion)
     }
     
     

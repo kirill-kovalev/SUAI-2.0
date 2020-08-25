@@ -86,7 +86,7 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         }
         guard let user = userlist.get(index: 0) else { return }
         self.delegate?.didSetUser(user: user)
-        self.content.selector.reloadAllComponents()
+        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -107,7 +107,10 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
             self.userlist = baseUserlist.search(name: searchText)
         }
         
+        self.content.selector.reloadAllComponents()
+        
     }
+    
 }
 
 

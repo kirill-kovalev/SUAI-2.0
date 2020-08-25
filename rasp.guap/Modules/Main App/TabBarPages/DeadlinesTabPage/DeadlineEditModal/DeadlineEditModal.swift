@@ -1,3 +1,4 @@
+//FUCK MVC
 //
 //  DeadlineEditModal.swift
 //  rasp.guap
@@ -36,6 +37,7 @@ class DeadlineEditModalView: View {
         
         btn.imageView?.tintColor = color
         btn.setTitleColor(color, for: .normal)
+        btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
         btn.layer.borderColor = color.cgColor
 
         return btn
@@ -73,17 +75,24 @@ class DeadlineEditModalView: View {
         let field = UITextView(frame: .zero)
         field.layer.cornerRadius = 10
         field.backgroundColor = Asset.PocketColors.pocketLightGray.color
-        
+        field.font = FontFamily.SFProDisplay.regular.font(size: 16)
         field.doneAccessory = true
         return field
     }()
     
-    private lazy var formatter:DateFormatter = {
+    lazy var formatter:DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "RU")
         formatter.dateFormat = "YYYY-MM-dd"
         return formatter
     }()
+    lazy var datePicker:UIDatePicker = {
+        let datePicker = UIDatePicker(frame: .zero)
+        datePicker.locale = Locale(identifier: "Ru")
+        datePicker.datePickerMode = .date
+        return datePicker
+    }()
+    
     lazy var dateLabel:UITextField = {
     
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dateCancelSeleceted))
@@ -93,16 +102,12 @@ class DeadlineEditModalView: View {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         toolbar.setItems([cancelButton,spacer,doneButton], animated: true)
-        
-        
-        let datePicker = UIDatePicker(frame: .zero)
-        
-        
-        let dateLabel = textFieldGenerator("")
+
+        let dateLabel = textFieldGenerator("2012-01-01")
         
         dateLabel.text = formatter.string(from: Date())
         dateLabel.inputAccessoryView = toolbar
-        dateLabel.inputView = datePicker
+        dateLabel.inputView = self.datePicker
         return dateLabel
     }()
     
@@ -123,14 +128,19 @@ class DeadlineEditModalView: View {
     lazy var lessonPicker = UIPickerView()
     
     lazy var lessonLabel:UITextField = {
-        let lessonLabel = textFieldGenerator("")
+        let lessonLabel = textFieldGenerator("Не выбрано")
         lessonLabel.inputView = lessonPicker
+        
+        let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
+        image.tintColor = Asset.PocketColors.pocketGray.color
+        lessonLabel.rightView = image
+        lessonLabel.rightViewMode = .unlessEditing
         return lessonLabel
     }()
     
     
     
-    lazy var closeButton:Button = buttonGenerator("Открыть дедлайн")
+    lazy var closeButton:Button = buttonGenerator("Создать дедлайн")
     
     
     
@@ -144,13 +154,16 @@ class DeadlineEditModalView: View {
     func addViews(){
         self.addSubview(nameSectionTitle)
         self.addSubview(commentSectionTitle)
+        
         self.addSubview(dateSectionTitle)
         self.addSubview(nameLabel)
+        
         self.addSubview(commentLabel)
         self.addSubview(dateLabel)
+        
         self.addSubview(lessonSectionTitle)
         self.addSubview(lessonLabel)
-        
+
         self.addSubview(closeButton)
         
     }
@@ -169,7 +182,7 @@ class DeadlineEditModalView: View {
         }
         commentLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(100)
             make.top.equalTo(commentSectionTitle.snp.bottom).offset(8)
         }
         dateSectionTitle.snp.makeConstraints { (make) in
@@ -204,5 +217,7 @@ class DeadlineEditModalView: View {
         super.init(coder: coder)
     }
 }
+
+
 
 

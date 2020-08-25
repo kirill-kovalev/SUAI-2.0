@@ -46,7 +46,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
         super.viewDidLoad()
         
         self.rootView.addButton.addTarget(action: { (sender) in
-            self.present(DeadlineEditModalViewControllerPrototype(), animated: true, completion: nil)
+            self.present(DeadlineEditableModalViewController(), animated: true, completion: nil)
         }, for: .touchUpInside)
         
         
