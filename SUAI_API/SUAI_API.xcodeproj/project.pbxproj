@@ -30,13 +30,13 @@
 		5D9D901E24EC77EF00930375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D9D902B24EC782100930375 /* Grous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grous.swift; sourceTree = "<group>"; };
 		5D9D902C24EC782100930375 /* Preps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preps.swift; sourceTree = "<group>"; };
-		5D9D902D24EC782100930375 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		5D9D902E24EC782100930375 /* SAUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAUsers.swift; sourceTree = "<group>"; };
+		5D9D902D24EC782100930375 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 1; };
+		5D9D902E24EC782100930375 /* SAUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAUsers.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5D9D902F24EC782100930375 /* Timetable.JSONLesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.JSONLesson.swift; sourceTree = "<group>"; };
 		5D9D903024EC782100930375 /* Timetable.Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.Lesson.swift; sourceTree = "<group>"; };
 		5D9D903124EC782100930375 /* SATimetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SATimetable.swift; sourceTree = "<group>"; };
-		5D9D903224EC782100930375 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		5D9D903324EC782100930375 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
+		5D9D903224EC782100930375 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 1; };
+		5D9D903324EC782100930375 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 1; };
 		5D9D904524ED39C500930375 /* SADeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadlines.swift; sourceTree = "<group>"; };
 		5D9D904824ED42E200930375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D9D904A24ED478D00930375 /* PocketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPI.swift; sourceTree = "<group>"; };

@@ -70,7 +70,7 @@ public class SATimetable {
         }
     }
     public func list() -> [SALesson]{
-        return Set(self.timetable).sorted(by: {$0.name > $1.name})
+        return Array(Set(self.timetable))
         
     }
     

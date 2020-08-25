@@ -13,7 +13,7 @@ public class SAUsers{
     public struct User :Hashable, Codable{
         public let Name:String
         public let ItemId:Int
-
+        
         public var shortName:String {
             let substr = self.Name.split(separator: "—")[0]
             return String(substr)
@@ -56,7 +56,7 @@ public class SAUsers{
     }
     public func search(name:String) -> Self{
         let newUserlist = self.users.filter { (user) -> Bool in
-            return user.Name.contains(name.lowercased())
+            return user.Name.lowercased().contains(name.lowercased())
         }
         
         return Self(users: newUserlist)
