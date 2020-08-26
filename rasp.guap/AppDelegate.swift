@@ -21,19 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //
         //testRun()
-        DispatchQueue.global(qos: .background).async {
-            if SAUserSettings.shared?.group != nil{
-                DispatchQueue.main.async {
-                    self.startApp()
-                }
-            }else{
-                DispatchQueue.main.async {
-                    self.showTutorialPages()
-                }
-            }
-        }
-
-        
+        self.startApp()
         return true
     }
     
