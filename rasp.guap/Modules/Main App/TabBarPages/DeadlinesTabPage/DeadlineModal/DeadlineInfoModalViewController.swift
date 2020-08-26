@@ -34,7 +34,43 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         super.viewDidLoad()
         self.rootView.titleLabel.text = "Карточка Дедлайна"
         
+        setupContent()
         
+        
+        
+        self.content.closeButton.addTarget(action: { (sender) in
+            if self.deadline.closed == 0{
+                let _ = SADeadlines.shared.close(deadline: self.deadline)
+            }else{
+                let _ = SADeadlines.shared.reopen(deadline: self.deadline)
+            }
+            
+            
+            self.dismiss(animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        
+        self.content.editButton.addTarget(action: { (sender) in
+            let vc = DeadlineEditableModalViewController()
+            vc.deadline = self.deadline
+            vc.onChange = {
+                self.deadline = vc.deadline ?? self.deadline
+                self.setupContent()
+            }
+            self.present(vc, animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        
+        self.content.deleteButton.addTarget(action: { (sender) in
+            let _ = SADeadlines.shared.delete(deadline: self.deadline)
+            
+            self.dismiss(animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        
+    }
+    
+    func setupContent(){
         self.content.nameLabel.text = deadline.deadline_name
         
         self.content.commentLabel.text = deadline.comment
@@ -67,33 +103,6 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             self.content.closeButton.setTitle("Закрыть дедлайн", for: .normal)
             self.content.closeButton.layer.borderColor = color.cgColor
         }
-        
-        self.content.closeButton.addTarget(action: { (sender) in
-            if self.deadline.closed == 0{
-                let _ = SADeadlines.shared.close(deadline: self.deadline)
-            }else{
-                let _ = SADeadlines.shared.reopen(deadline: self.deadline)
-            }
-            
-            
-            self.dismiss(animated: true, completion: nil)
-        }, for: .touchUpInside)
-        
-        
-        self.content.editButton.addTarget(action: { (sender) in
-            let vc = DeadlineEditableModalViewController()
-            vc.deadline = self.deadline
-            self.present(vc, animated: true, completion: nil)
-        }, for: .touchUpInside)
-        
-        
-        self.content.deleteButton.addTarget(action: { (sender) in
-            let _ = SADeadlines.shared.delete(deadline: self.deadline)
-            
-            self.dismiss(animated: true, completion: nil)
-        }, for: .touchUpInside)
-        
-        
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {

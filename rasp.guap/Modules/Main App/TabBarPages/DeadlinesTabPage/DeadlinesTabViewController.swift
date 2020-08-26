@@ -44,10 +44,17 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        DispatchQueue.global(qos: .background).async {
+                   SADeadlines.shared.loadFromServer()
+        }
         self.rootView.addButton.addTarget(action: { (sender) in
-            self.present(DeadlineEditableModalViewController(), animated: true, completion: nil)
+            let vc = DeadlineEditableModalViewController()
+            vc.onChange = {
+                self.reloadItems()
+            }
+            self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
+        
         
         
     }
