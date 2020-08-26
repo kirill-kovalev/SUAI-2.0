@@ -1,13 +1,23 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+
+
+workspace 'rasp.guap'
+
+
 
 target 'rasp.guap' do
-  # Comment the next line if you don't want to use dynamic frameworks
+  platform :ios, '10.0'
+  project 'rasp.guap.xcodeproj'
+  use_frameworks!
+  pod "SnapKit"
+  pod "ESTabBarController-swift"
+  pod 'SwiftyVK'
+end
+
+target 'SUAI_API' do 
+  platform :ios, '10.0'
+  project 'SUAI_API/SUAI_API.xcodeproj'
   use_frameworks!
 
-  # Pods for rasp.guap
-  pod "SnapKit"
-  #pod 'iOSDropDown'
-  pod "ESTabBarController-swift"
-  #pod "VK-ios-sdk"
+  pod 'SwiftyVK'
 end
