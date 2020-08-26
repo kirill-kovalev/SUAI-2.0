@@ -23,8 +23,7 @@ class PocketAPI{
         case openDeadline = "OpenDeadline"
         case deleteDeadline = "DeleteDeadline"
         case editDeadline = "EditDeadline"
-        
-        case getSuper = "GetSuper"
+        case createDeadline = "SetDeadline"
     }
     
     
