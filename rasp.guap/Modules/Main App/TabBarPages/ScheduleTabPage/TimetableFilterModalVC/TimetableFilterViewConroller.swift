@@ -84,7 +84,7 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         self.content.selector.snp.updateConstraints { (make) in
             make.height.equalTo(0)
         }
-        guard let user = userlist.get(index: 0) else { return }
+        guard let user = userlist.get(name: textField.text ?? "") else { return }
         self.delegate?.didSetUser(user: user)
         
     }
@@ -118,6 +118,7 @@ extension TimetableFilterViewConroller:UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let user = userlist.get(index: row) else { return }
         self.activeTF?.text = user.shortName
+        print(user)
         self.delegate?.didSetUser(user: user)
     }
 }

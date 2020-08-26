@@ -35,6 +35,7 @@
 		5D7D667324F3E34600F39D59 /* keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667224F3E34600F39D59 /* keyboard.swift */; };
 		5D7D667624F4068D00F39D59 /* DeadlineEditModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667524F4068D00F39D59 /* DeadlineEditModal.swift */; };
 		5D7D667824F4070600F39D59 /* DeadlineEditableModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667724F4070600F39D59 /* DeadlineEditableModalViewController.swift */; };
+		5D7D667D24F6932500F39D59 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667C24F6932500F39D59 /* ASCollectionView.swift */; };
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
@@ -160,6 +161,7 @@
 		5D7D667224F3E34600F39D59 /* keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboard.swift; sourceTree = "<group>"; };
 		5D7D667524F4068D00F39D59 /* DeadlineEditModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEditModal.swift; sourceTree = "<group>"; };
 		5D7D667724F4070600F39D59 /* DeadlineEditableModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEditableModalViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		5D7D667C24F6932500F39D59 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* SUAI Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUAI Pocket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -703,6 +705,7 @@
 			children = (
 				5D7DF85B24D46B0E00CCD0AE /* Button.swift */,
 				5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */,
+				5D7D667C24F6932500F39D59 /* ASCollectionView.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
+				5D7D667D24F6932500F39D59 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
