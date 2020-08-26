@@ -40,7 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func LoggedInVK(){
         //print(VK.sessions.default.accessToken?.get())
-        if SAUserSettings.fromServer()?.group == nil {
+        let group = SAUserSettings.shared?.group
+        print("LoggedInVK/group = \(group)")
+        if group  == nil {
             self.firstRun()
         }else{
             self.defaultRun()
@@ -57,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
         }) { (err) in
-            
+            print(err)
         }
     }
     

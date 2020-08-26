@@ -12,6 +12,14 @@ import UIKit
 class GroupSelectPageView:TutorialPageView{
     
     // MARK: - Views
+    let select:Button = {
+        let button = Button(frame: .zero)
+        button.setTitle("Выбрать", for: .normal)
+        button.setTitleColor(Asset.PocketColors.pocketDarkestBlue.color, for: .normal)
+        button.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 24)
+        return button
+    }()
+    
     let button:Button = {
         let button = Button(frame: .zero)
         button.setTitle("Продолжить", for: .normal)
@@ -31,11 +39,18 @@ class GroupSelectPageView:TutorialPageView{
     }
     override func addViews() {
         super.addViews()
+        
         self.addSubview(button)
+        self.addSubview(select)
     }
     override func setupConstraints() {
         super.setupConstraints()
+        self.select.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.button.snp.top).inset(-30)
+            make.centerX.equalToSuperview()
+        }
         self.button.snp.makeConstraints { (make) in
+            
             make.center.equalToSuperview()
         }
     }

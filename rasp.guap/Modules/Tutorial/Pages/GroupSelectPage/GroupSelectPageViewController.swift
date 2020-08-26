@@ -7,17 +7,37 @@
 //
 
 import UIKit
-class GroupSelectPageViewController : ViewController<GroupSelectPageView> {
+import SUAI_API
+
+
+class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserChangeDelegate {
+    func didSetUser(user: SAUsers.User) {
+        self.rootView.select.setTitle(user.Name, for: .normal)
+        
+        
+    }
     
-     // MARK: - ViewController lifecycle
+    
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
-        self.rootView.button.addTarget(action: { (sender) in
-            //self.present(TimetableFilterViewConroller(), animated: true, completion: nil)
-            UIApplication.shared.appDelegate.startApp()
+        self.rootView.select.addTarget(action: { (sender) in
+            let vc = TimetableFilterViewConroller()
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }, for: .touchUpInside)
+        
+        self.rootView.button.addTarget(action: { (b) in
+            let user = self.rootView.select.titleLabel?.text ?? ""
+            if SASchedule.shared.groups.get(name: user) != nil {
+                SAUserSettings.shared?.group = user
+                print(SAUserSettings.shared?.update())
+                
+                UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+            }
         }, for: .touchUpInside)
     }
     
-     // MARK: - Actions
+    // MARK: - Actions
     
-
+    
 }
