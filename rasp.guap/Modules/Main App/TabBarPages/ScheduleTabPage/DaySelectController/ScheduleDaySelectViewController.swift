@@ -36,9 +36,12 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         
         for i in 0..<rootView.stack.arrangedSubviews.count-1{
             let button = rootView.stack.arrangedSubviews[i] as! Button
+            self.rootView.selectionBackground.frame = button.frame
             button.addTarget(action: { (sender) in
                 self.day = i
-                self.update()
+                UIView.animate(withDuration: 0.3) {
+                    self.update()
+                }
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.week)
             }, for: .touchUpInside)
@@ -53,7 +56,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
             self.delegate?.scheduleDaySelect(didUpdate: 0, week: .outOfTable)
         }, for: .touchUpInside)
         
-        update()
+        
     }
     
     
@@ -73,12 +76,17 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
             }, completion: nil)
             
         }
+        
+        update()
+        
     }
     
     func set(day:Int,week:SATimetable.Week){
         self.day = day
         self.week = (week != SATimetable.Week.outOfTable) ? week : .even
-        update()
+        UIView.animate(withDuration: 0.3) {
+            self.update()
+        }
     }
 
     func update(){
@@ -99,8 +107,11 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         for i in 0..<rootView.stack.arrangedSubviews.count-1{
             let button = rootView.stack.arrangedSubviews[i] as! Button
             button.isHidden = !(delegate?.shouldShow(day: i,week:week) ?? false)
-            button.backgroundColor = i == self.day ? Asset.PocketColors.pocketBlue.color : .clear
+            button.backgroundColor = .clear
             button.setTitleColor( i == self.day ? Asset.PocketColors.buttonOutlineBorder.color : Asset.PocketColors.pocketGray.color, for: .normal)
+            if i == self.day{
+                self.rootView.selectionBackground.frame = button.frame
+            }
         }
         
         let button = rootView.stack.arrangedSubviews.last as! Button
