@@ -78,7 +78,6 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         }
         
         update()
-        
     }
     
     func set(day:Int,week:SATimetable.Week){
