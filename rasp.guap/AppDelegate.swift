@@ -8,6 +8,7 @@
 
 import UIKit
 import SUAI_API
+import SwiftyVK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,14 +17,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    private let vkDelegate  = VKDelegate()
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        //
-        //testRun()
-        self.startApp()
+        VK.setUp(appId: "7578765", delegate: vkDelegate)
+        print(VK.sessions.default.state)
+        if VK.sessions.default.state != .authorized {
+            self.PresentVKLoginPage()
+        }else{
+            self.LoggedInVK()
+        }
+        
         return true
     }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let app = options[.sourceApplication] as? String
+        VK.handle(url: url, sourceApplication: app )
+        return true
+    }
+    
+    
+    func LoggedInVK(){
+        //print(VK.sessions.default.accessToken?.get())
+        if SAUserSettings.fromServer()?.group == nil {
+            self.firstRun()
+        }else{
+            self.defaultRun()
+        }
+    }
+    func firstRun(){
+        showTutorialPages()
+    }
+    func defaultRun(){
+        startApp()
+    }
+    
+    func PresentVKLoginPage(){
+        VK.sessions.default.logIn(onSuccess: { _ in
+            PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
+        }) { (err) in
+            
+        }
+    }
+    
+    
+    
     
     
     func testRun(){
