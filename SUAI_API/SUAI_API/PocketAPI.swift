@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import SwiftyVK
 
-class PocketAPI{
+public class PocketAPI{
     public static var shared = PocketAPI()
     
     public enum LoadMethods:String{
@@ -24,14 +25,17 @@ class PocketAPI{
         case deleteDeadline = "DeleteDeadline"
         case editDeadline = "EditDeadline"
         case createDeadline = "SetDeadline"
+        
+        case setSettings = "SetSettings"
     }
     
     
     let config = URLSessionConfiguration.default
+    
     public init(){
-        let token = VKToken.token.rawValue
-        print(token)
-        
+        config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get()]
+    }
+    public func setToken(_ token:String){
         config.httpAdditionalHeaders = ["Token":token]
     }
     

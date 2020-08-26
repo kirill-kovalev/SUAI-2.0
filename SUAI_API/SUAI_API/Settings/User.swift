@@ -9,7 +9,7 @@
 import Foundation
 
 public class SAUserSettings: Codable {
-    public var group: String
+    public var group: String?
     public var idtab: Int
     public var animations: Int
     public var building: Int
@@ -34,7 +34,7 @@ public class SAUserSettings: Codable {
         }
         return settings
     }
-    public func update(){
+    public func reload(){
         guard let settings = SAUserSettings.fromServer() else{
             return
         }
@@ -44,6 +44,19 @@ public class SAUserSettings: Codable {
         self.building = settings.building
         self.banners = settings.banners
         
+    }
+    public func update() -> Bool{
+        var success = false
+        PocketAPI.shared.syncSetTask(method: .setSettings , params: [
+            "group":self.group!,
+            "idtab":self.idtab,
+            "animations":self.animations,
+            "building":self.building,
+            "banners":self.banners
+        ]) { (data) in
+            success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+        }
+        return success
     }
     
 }

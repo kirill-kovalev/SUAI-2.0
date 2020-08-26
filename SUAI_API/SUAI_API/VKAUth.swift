@@ -7,7 +7,18 @@
 //
 
 import Foundation
-
-enum VKToken:String{
-    case token = ""
+import SwiftyVK
+public class VKDelegate:SwiftyVKDelegate{
+    public init() {
+        
+    }
+    public func vkNeedsScopes(for sessionId: String) -> Scopes {
+        return [.offline]
+    }
+    
+    public func vkNeedToPresent(viewController: VKViewController) {
+        
+    }
+    
+    
 }

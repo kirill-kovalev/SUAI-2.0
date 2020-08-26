@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C44EF103EAC490595ADB3A3 /* Pods_SUAI_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C755CF8EADE8BD74191C4E /* Pods_SUAI_API.framework */; };
 		5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667924F416E300F39D59 /* VKAUth.swift */; };
 		5D9D901F24EC77EF00930375 /* SUAI_API.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D9D901D24EC77EF00930375 /* SUAI_API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020C00B226CF2EB2D7C3F4DA /* Pods-SUAI_API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.debug.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.debug.xcconfig"; sourceTree = "<group>"; };
+		5232BC136A1F5F9C915C8E88 /* Pods-SUAI_API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.release.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.release.xcconfig"; sourceTree = "<group>"; };
 		5D7D667924F416E300F39D59 /* VKAUth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAUth.swift; sourceTree = "<group>"; };
 		5D9D901A24EC77EF00930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D901D24EC77EF00930375 /* SUAI_API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUAI_API.h; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		5D9D904524ED39C500930375 /* SADeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadlines.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5D9D904824ED42E200930375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D9D904A24ED478D00930375 /* PocketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPI.swift; sourceTree = "<group>"; };
+		C8C755CF8EADE8BD74191C4E /* Pods_SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +51,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C44EF103EAC490595ADB3A3 /* Pods_SUAI_API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33FAEFB46BFB7AE5D9D10AA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8C755CF8EADE8BD74191C4E /* Pods_SUAI_API.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		378434D8D92BCB23602A2321 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				020C00B226CF2EB2D7C3F4DA /* Pods-SUAI_API.debug.xcconfig */,
+				5232BC136A1F5F9C915C8E88 /* Pods-SUAI_API.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		5D9D901024EC77EF00930375 = {
 			isa = PBXGroup;
 			children = (
 				5D9D901C24EC77EF00930375 /* SUAI_API */,
 				5D9D901B24EC77EF00930375 /* Products */,
+				378434D8D92BCB23602A2321 /* Pods */,
+				33FAEFB46BFB7AE5D9D10AA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,7 +99,7 @@
 			children = (
 				5D7D667924F416E300F39D59 /* VKAUth.swift */,
 				5D9D904A24ED478D00930375 /* PocketAPI.swift */,
-				5D9D904724ED429100930375 /* User */,
+				5D9D904724ED429100930375 /* Settings */,
 				5D9D904224ED25F400930375 /* Deadlines */,
 				5D9D903424EC782100930375 /* Schedule */,
 				5D9D901D24EC77EF00930375 /* SUAI_API.h */,
@@ -123,12 +148,12 @@
 			path = Lessons;
 			sourceTree = "<group>";
 		};
-		5D9D904724ED429100930375 /* User */ = {
+		5D9D904724ED429100930375 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				5D9D904824ED42E200930375 /* User.swift */,
 			);
-			path = User;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +174,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D9D902224EC77EF00930375 /* Build configuration list for PBXNativeTarget "SUAI_API" */;
 			buildPhases = (
+				EE72F7643E522089717E7FB2 /* [CP] Check Pods Manifest.lock */,
 				5D9D901524EC77EF00930375 /* Headers */,
 				5D9D901624EC77EF00930375 /* Sources */,
 				5D9D901724EC77EF00930375 /* Frameworks */,
@@ -204,6 +230,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EE72F7643E522089717E7FB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SUAI_API-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D9D901624EC77EF00930375 /* Sources */ = {
@@ -351,6 +402,7 @@
 		};
 		5D9D902324EC77EF00930375 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 020C00B226CF2EB2D7C3F4DA /* Pods-SUAI_API.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -377,6 +429,7 @@
 		};
 		5D9D902424EC77EF00930375 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5232BC136A1F5F9C915C8E88 /* Pods-SUAI_API.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
