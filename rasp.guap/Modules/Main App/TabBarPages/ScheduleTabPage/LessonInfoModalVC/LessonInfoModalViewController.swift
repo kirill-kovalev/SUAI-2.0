@@ -56,11 +56,18 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
             
             backgroundUserLoad(user: prep)
         }
-        self.content.groupList.dataSource = self
-        self.content.groupList.delegate = self
-        self.content.groupList.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "groupCell")
-        self.content.groupList.reloadData()
         
+        for group in lesson.groups{
+            let tagView = PocketTagButton()
+            tagView.setTitle(group.Name, for: .normal)
+            tagView.isActive = (group != SASchedule.shared.current.user)
+            tagView.addTarget(action: { (sender) in
+                self.setNewUser(user: group)
+            }, for: .touchUpInside)
+            self.content.groupList.addArrangedSubview(tagView)
+            
+            backgroundUserLoad(user: group)
+        }
         
         let typeTag = PocketTagButton()
         typeTag.setTitle(lesson.type.rawValue, for: .normal)
@@ -73,9 +80,6 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         }
 
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     func setNewUser(user : SAUsers.User){
         
@@ -87,42 +91,6 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         DispatchQueue.global(qos: .background).async {
             let _ = SASchedule.shared.load(for: user)
         }
-    }
-}
-extension LessonInfoModalViewController : UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groupCell", for: indexPath)
-        
-        
-        let group = self.lesson.groups[indexPath.item]
-        let tagView = PocketTagButton()
-        tagView.setTitle(group.Name, for: .normal)
-        tagView.isActive = (group != SASchedule.shared.current.user)
-        tagView.addTarget(action: { (sender) in
-            self.setNewUser(user: group)
-        }, for: .touchUpInside)
-        
-        cell.addSubview(tagView)
-        tagView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.lesson.groups.count
-    }
-}
-extension LessonInfoModalViewController : UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let group = self.lesson.groups[indexPath.item]
-        let tagView = PocketTagButton()
-        tagView.setTitle(group.Name, for: .normal)
-        tagView.setNeedsLayout()
-        tagView.layoutIfNeeded()
-        
-        let size = tagView.systemLayoutSizeFitting(UIView.layoutFittingExpandedSize)
-        return CGSize(width: size.width, height: 22)
     }
 }
 
