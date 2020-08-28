@@ -11,13 +11,6 @@ import UIKit
 class ScheduleDaySelectView: View {
     let buttons  = ["Пн","Вт","Ср","Чт","Пт","Сб","Вне Сетки"]
     
-    lazy var selectionBackground:UIView = {
-        let v = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ))
-        v.backgroundColor = Asset.PocketColors.pocketBlue.color
-        v.layer.cornerRadius = 10
-        return v
-    }()
-    
     private func buttonGenerator(_ title:String)->Button{
         let btn = Button(frame: .zero)
         btn.setTitle(title, for: .normal)
@@ -59,7 +52,6 @@ class ScheduleDaySelectView: View {
         self.addSubview(weekBtn)
         self.addSubview(scroll)
         scroll.addSubview(stack)
-        stack.addSubview(selectionBackground)
         for b in buttons {
             stack.addArrangedSubview(buttonGenerator(b))
         }
