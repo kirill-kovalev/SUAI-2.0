@@ -13,11 +13,6 @@ class DeadlineGroupSelectController: UIViewController {
     var stackView:UIStackView {
         return self.view as! UIStackView
     }
-    var background : UIView = {
-        let v = UIView(frame: .zero)
-        v.layer.cornerRadius = 10
-        return v
-    }()
     
     private func buttonGenerator(_ title:String)->Button{
         let btn = Button(frame: .zero)
@@ -43,7 +38,6 @@ class DeadlineGroupSelectController: UIViewController {
         self.stackView.axis = .horizontal
         self.stackView.spacing = 6
         
-        self.stackView.addSubview(self.background)
         self.stackView.addArrangedSubview(nearestButton)
         self.stackView.addArrangedSubview(openButton)
         self.stackView.addArrangedSubview(closedButton)
@@ -56,54 +50,38 @@ class DeadlineGroupSelectController: UIViewController {
     
     override func viewDidLoad() {
         nearestButton.addTarget(action: { (sender) in
-            self.highlightButtonAnimated(btn: sender)
+            self.highlightButton(btn: sender)
             self.current = .nearest
             self.delegate?.didSelect(group: self.current)
         }, for: .touchUpInside)
         
         openButton.addTarget(action: { (sender) in
-            self.highlightButtonAnimated(btn: sender)
+            self.highlightButton(btn: sender)
             self.current = .open
             self.delegate?.didSelect(group: self.current)
         }, for: .touchUpInside)
         
         closedButton.addTarget(action: { (sender) in
-            self.highlightButtonAnimated(btn: sender)
+            self.highlightButton(btn: sender)
             self.current = .closed
             self.delegate?.didSelect(group: self.current)
         }, for: .touchUpInside)
         
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         self.highlightButton(btn: nearestButton)
     }
     
     private func highlightButton(btn:Button){
-        self.background.frame = btn.frame
         for b in self.buttons{
             b.backgroundColor = .clear
             b.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
         }
         if btn == nearestButton{
-            background.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
+            btn.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
             btn.setTitleColor(Asset.PocketColors.pocketRedButtonText.color, for: .normal)
         }else{
-            background.backgroundColor = Asset.PocketColors.pocketBlue.color
+            btn.backgroundColor = Asset.PocketColors.pocketBlue.color
             btn.setTitleColor(Asset.PocketColors.buttonOutlineBorder.color, for: .normal)
         }
     }
     
-    
-    private func highlightButtonAnimated(btn:Button){
-        UIView.animate(withDuration: 0.3) {
-            self.highlightButton(btn: btn)
-        }
-    }
-    
 }
-
-
-
-
