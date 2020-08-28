@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C44EF103EAC490595ADB3A3 /* Pods_SUAI_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C755CF8EADE8BD74191C4E /* Pods_SUAI_API.framework */; };
+		5D289FBD24F93A0B00643D54 /* SAFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FBC24F93A0B00643D54 /* SAFeed.swift */; };
+		5D289FBF24F93F9F00643D54 /* VKFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FBE24F93F9F00643D54 /* VKFeed.swift */; };
+		5D289FC124F93FF900643D54 /* FeedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC024F93FF900643D54 /* FeedElement.swift */; };
 		5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667924F416E300F39D59 /* VKAUth.swift */; };
 		5D9D901F24EC77EF00930375 /* SUAI_API.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D9D901D24EC77EF00930375 /* SUAI_API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		020C00B226CF2EB2D7C3F4DA /* Pods-SUAI_API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.debug.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.debug.xcconfig"; sourceTree = "<group>"; };
 		5232BC136A1F5F9C915C8E88 /* Pods-SUAI_API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.release.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.release.xcconfig"; sourceTree = "<group>"; };
+		5D289FBC24F93A0B00643D54 /* SAFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAFeed.swift; sourceTree = "<group>"; };
+		5D289FBE24F93F9F00643D54 /* VKFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeed.swift; sourceTree = "<group>"; };
+		5D289FC024F93FF900643D54 /* FeedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedElement.swift; sourceTree = "<group>"; };
 		5D7D667924F416E300F39D59 /* VKAUth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAUth.swift; sourceTree = "<group>"; };
 		5D9D901A24EC77EF00930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D901D24EC77EF00930375 /* SUAI_API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUAI_API.h; sourceTree = "<group>"; };
@@ -76,6 +82,16 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		5D289FBB24F939FD00643D54 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				5D289FBC24F93A0B00643D54 /* SAFeed.swift */,
+				5D289FBE24F93F9F00643D54 /* VKFeed.swift */,
+				5D289FC024F93FF900643D54 /* FeedElement.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		5D9D901024EC77EF00930375 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,7 @@
 		5D9D901C24EC77EF00930375 /* SUAI_API */ = {
 			isa = PBXGroup;
 			children = (
+				5D289FBB24F939FD00643D54 /* Feed */,
 				5D7D667924F416E300F39D59 /* VKAUth.swift */,
 				5D9D904A24ED478D00930375 /* PocketAPI.swift */,
 				5D9D904724ED429100930375 /* Settings */,
@@ -266,12 +283,15 @@
 				5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */,
 				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
 				5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */,
+				5D289FBD24F93A0B00643D54 /* SAFeed.swift in Sources */,
 				5D9D904624ED39C500930375 /* SADeadlines.swift in Sources */,
 				5D9D904024EC78AD00930375 /* Settings.swift in Sources */,
 				5D9D903B24EC78AD00930375 /* Schedule.swift in Sources */,
 				5D9D903A24EC78AD00930375 /* Preps.swift in Sources */,
+				5D289FC124F93FF900643D54 /* FeedElement.swift in Sources */,
 				5D9D903D24EC78AD00930375 /* Timetable.JSONLesson.swift in Sources */,
 				5D9D903924EC78AD00930375 /* Grous.swift in Sources */,
+				5D289FBF24F93F9F00643D54 /* VKFeed.swift in Sources */,
 				5D9D903F24EC78AD00930375 /* SATimetable.swift in Sources */,
 				5D9D904924ED42E200930375 /* User.swift in Sources */,
 			);

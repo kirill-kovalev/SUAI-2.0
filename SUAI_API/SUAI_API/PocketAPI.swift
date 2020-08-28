@@ -17,6 +17,7 @@ public class PocketAPI{
         case getSettings = "GetSettings"
         case getGroup = "GetGroup"
         case getFeed = "GetFeed"
+        case getFeedOrder = "GetFeedOrder"
         case getSuper = "GetSuper"
     }
     public enum SetMethods:String{
@@ -25,7 +26,6 @@ public class PocketAPI{
         case deleteDeadline = "DeleteDeadline"
         case editDeadline = "EditDeadline"
         case createDeadline = "SetDeadline"
-        
         case setSettings = "SetSettings"
     }
     
@@ -33,29 +33,35 @@ public class PocketAPI{
     let config = URLSessionConfiguration.default
     
     public init(){
-        config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get()]
+        //config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get()]
     }
     public func setToken(_ token:String){
         config.httpAdditionalHeaders = ["Token":token]
     }
     
-    public func syncLoadTask(method: LoadMethods,completion:@escaping (Data)->Void){
+    public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:],completion:((Data)->Void)? = nil ) -> Data?{
         
         let sem = DispatchSemaphore(value: 0)
-        let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
+
+        let urlParams = params.isEmpty ? "" : "?"+params.map{"\($0)=\($1)"}.joined(separator: "&")
+        let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)"+urlParams)!
+        
+        var returnData:Data? = nil
         URLSession(configuration: config ).dataTask(with: url ) { (data, response, err) in
             if err == nil {
                 if data != nil {
-                    completion(data!)
+                    returnData = data
+                    completion?(data!)
                 }
             }
             sem.signal()
         }.resume()
         sem.wait()
+        return returnData
     }
     
     
-    public func syncSetTask(method: SetMethods,params:[String:Any],completion:@escaping (Data)->Void){
+    public func syncSetTask(method: SetMethods,params:[String:Any] = [: ],completion: ((Data)->Void)? ) -> Data?{
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -64,16 +70,23 @@ public class PocketAPI{
             let queryValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             return queryKey+"="+queryValue
         }).joined(separator: "&")
+        
         request.httpBody = body.data(using: .utf8)
+        
         let sem = DispatchSemaphore(value: 0)
+        
+        var returnData:Data? = nil
         URLSession(configuration: config ).dataTask(with: request){ (data, response, err) in
             if err == nil {
                 if data != nil {
-                    completion(data!)
+                    returnData = data
+                    completion?(data!)
                 }
             }
             sem.signal()
         }.resume()
         sem.wait()
+        
+        return returnData
     }
 }
