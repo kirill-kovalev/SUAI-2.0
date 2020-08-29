@@ -84,7 +84,8 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         self.content.selector.snp.updateConstraints { (make) in
             make.height.equalTo(0)
         }
-        guard let user = userlist.get(index: 0) else { return }
+        guard let text = textField.text,
+              let user = userlist.search(name: text).get(index: 0) else { return }
         self.delegate?.didSetUser(user: user)
         
     }
