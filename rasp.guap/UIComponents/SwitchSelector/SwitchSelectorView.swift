@@ -68,6 +68,7 @@ public class SwitchSelector: UIScrollView {
         button.setTitle(element.title, for: .normal)
         button.addTarget(action: { (sender) in
             self.selectedIndex = index
+            self.switchDelegate?.didSelect(index)
         }, for: .touchUpInside)
         self.stack.addArrangedSubview(button)
         
