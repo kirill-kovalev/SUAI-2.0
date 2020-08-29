@@ -108,9 +108,7 @@ extension FeedListViewController:UIScrollViewDelegate{
             if !self.isLoading{
                 DispatchQueue.global(qos: .background).async {
                     self.isLoading = true
-                    print("loading next")
                     let feed = self.stream.next()
-                    print("loaded next")
                     DispatchQueue.main.async {
                         self.addFeed(elements: feed)
                         self.isLoading = false

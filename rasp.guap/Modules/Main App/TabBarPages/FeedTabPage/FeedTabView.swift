@@ -23,7 +23,9 @@ class FeedTabView: TabBarPageView {
     func setupConstraints(){
         sourceSelector.snp.makeConstraints { (make) in
             make.top.equalTo(self.title.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(8)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview()
         }      
     }
     
