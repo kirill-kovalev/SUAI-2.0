@@ -11,6 +11,7 @@
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
 		5D289FC624FA583600643D54 /* SwitchSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC524FA583600643D54 /* SwitchSelectorView.swift */; };
+		5D289FC924FA818300643D54 /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC824FA818300643D54 /* FeedListViewController.swift */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
@@ -137,6 +138,7 @@
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
 		5D289FC524FA583600643D54 /* SwitchSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchSelectorView.swift; sourceTree = "<group>"; };
+		5D289FC824FA818300643D54 /* FeedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +310,14 @@
 			path = SwitchSelector;
 			sourceTree = "<group>";
 		};
+		5D289FC724FA812F00643D54 /* Feedlist */ = {
+			isa = PBXGroup;
+			children = (
+				5D289FC824FA818300643D54 /* FeedListViewController.swift */,
+			);
+			path = Feedlist;
+			sourceTree = "<group>";
+		};
 		5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +377,7 @@
 		5D3D6C9624E42F31007CE482 /* FeedTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D289FC724FA812F00643D54 /* Feedlist */,
 				5D2BD80724E43576002630B5 /* FeedTabViewController.swift */,
 				5D2BD80924E4359A002630B5 /* FeedTabView.swift */,
 			);
@@ -953,6 +964,7 @@
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */,
+				5D289FC924FA818300643D54 /* FeedListViewController.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
 				5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */,
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,

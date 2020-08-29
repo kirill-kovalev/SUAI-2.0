@@ -13,32 +13,36 @@ import SUAI_API
 class FeedTabViewController: ViewController<FeedTabView> {
     
 
-    let Feed = SANews()
-    let pages = UIPageViewController()
+    let news = SANews()
+    let feedVC = FeedListViewController()
     
     override func viewDidLoad() {
         let tabImage = Asset.AppImages.TabBarImages.feed.image
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title:"Новости", image: tabImage , tag: 0)
         self.rootView.setTitle(self.tabBarItem.title ?? "")
         
-        Feed.loadSourceList()
+        news.loadSourceList()
         
-//        let btn = SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
-//        self.rootView.sourceSelector.add(btn)
-        
-        for s in Feed.sources{
+        for s in news.sources{
             let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
             self.rootView.sourceSelector.add(btn)
         }
         self.rootView.sourceSelector.switchDelegate = self
         
-
+        self.addChild(feedVC)
+        self.rootView.addSubview(feedVC.view)
+        feedVC.view.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+            
+        }
+        self.feedVC.didMove(toParent: self)
+        
     }
 
 }
 extension FeedTabViewController:SwitchSelectorDelegate {
     func didSelect(_ index: Int) {
-        print("selected: \(index)")
+        self.feedVC.stream = news.streams[index]
     }
 }
 

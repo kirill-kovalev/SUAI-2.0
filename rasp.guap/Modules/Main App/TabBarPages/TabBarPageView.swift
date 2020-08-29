@@ -21,12 +21,7 @@ class TabBarPageView : View, UIScrollViewDelegate{
         label.text = "Title"
         return label
     }()
-    private let scroll:UIScrollView = {
-        let view = UIScrollView(frame: .zero)
-        view.showsHorizontalScrollIndicator = false
-        view.layer.masksToBounds = false
-        return view
-    }()
+
     private let container:UIView = {
         let view = UIView(frame: .zero)
         return view
@@ -44,10 +39,8 @@ class TabBarPageView : View, UIScrollViewDelegate{
         header.addSubview(buttonContainer)
         
         
-        super.addSubview(scroll)
-        scroll.addSubview(container)
+        super.addSubview(container)
         
-        scroll.delegate = self
     }
     override func addSubview(_ view: UIView) {
         self.container.addSubview(view)
@@ -71,15 +64,10 @@ class TabBarPageView : View, UIScrollViewDelegate{
         }
         
         
-        scroll.snp.makeConstraints { (make) in
-            make.top.equalTo(header.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
-            
-        }
         container.snp.makeConstraints { (make) in
-            make.width.equalTo(scroll.frameLayoutGuide)
-            make.top.equalTo(scroll.contentLayoutGuide)
-            make.bottom.equalTo(scroll.contentLayoutGuide).inset(10)
+            make.top.equalTo(header.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
