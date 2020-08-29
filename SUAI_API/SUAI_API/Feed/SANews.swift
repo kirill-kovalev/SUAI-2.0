@@ -42,7 +42,7 @@ public class SANews{
         }
         return nil
     }
-    public var souces:[FeedSource]{
+    public var sources:[FeedSource]{
         self.streams.map{$0.source}
     }
     
