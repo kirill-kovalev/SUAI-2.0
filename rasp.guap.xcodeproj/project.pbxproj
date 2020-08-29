@@ -10,6 +10,7 @@
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
+		5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D289FCC24FA9E0400643D54 /* VkLogin.xib */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
@@ -135,6 +136,7 @@
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
+		5D289FCC24FA9E0400643D54 /* VkLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VkLogin.xib; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9D905524ED843D00930375 /* VKLoginPage.swift */,
+				5D289FCC24FA9E0400643D54 /* VkLogin.xib */,
 			);
 			path = VKLogin;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				5D99B25F24DD600900D6C648 /* SFProDisplay-Light.ttf in Resources */,
 				5D99B23A24DD58CF00D6C648 /* TTCommons-DemiBold.ttf in Resources */,
 				5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */,
+				5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */,
 				5D99B25D24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf in Resources */,
 				5D99B23824DD58CF00D6C648 /* TTCommons-Italic.ttf in Resources */,
 				5D99B23624DD58CF00D6C648 /* TTCommons-BoldItalic.ttf in Resources */,
