@@ -17,15 +17,15 @@ public class SAUserSettings: Codable {
     //    public let prologin: String
     //    public let propass: String
     
-    public static var shared = fromServer()
+    public static var shared = fromServer() ?? fromCache()
     
     
     public static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
-        PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
+        let _ = PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
             do{
                 settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
-               
+                UserDefaults.standard.set(data, forKey: "\(Self.self)" )
             }catch{
                 settings = nil
                 print(error)
@@ -34,6 +34,19 @@ public class SAUserSettings: Codable {
         }
         return settings
     }
+    public static func fromCache() -> SAUserSettings?{
+        var settings:SAUserSettings?
+        guard let data = UserDefaults.standard.data(forKey: "\(Self.self)" ) else {return nil }
+        do{
+            settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
+           
+        }catch{
+            settings = nil
+            print(error)
+        }
+        return settings
+    }
+    
     public func reload(){
         guard let settings = SAUserSettings.fromServer() else{
             return
@@ -47,7 +60,7 @@ public class SAUserSettings: Codable {
     }
     public func update() -> Bool{
         var success = false
-        PocketAPI.shared.syncSetTask(method: .setSettings , params: [
+        let _ = PocketAPI.shared.syncSetTask(method: .setSettings , params: [
             "group":self.group!,
             "idtab":self.idtab,
             "animations":self.animations,
