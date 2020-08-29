@@ -33,11 +33,15 @@ class FeedTabViewController: ViewController<FeedTabView> {
         self.rootView.addSubview(feedVC.view)
         feedVC.view.snp.makeConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
-            
         }
         self.feedVC.didMove(toParent: self)
         
+        
+        self.rootView.sourceSelector.selectedIndex = 0
+        self.didSelect(0)
     }
+    
+    
 
 }
 extension FeedTabViewController:SwitchSelectorDelegate {
