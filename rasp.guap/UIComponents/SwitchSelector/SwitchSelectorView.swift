@@ -40,6 +40,7 @@ public class SwitchSelector: UIScrollView {
     private var buttons:[SwitchSelectorButton] = []
     public var switchDelegate:SwitchSelectorDelegate?
     public var animated = true
+    public var feedback = true
     
     public var selectedIndex:Int {
         get{
@@ -50,6 +51,7 @@ public class SwitchSelector: UIScrollView {
             UIView.animate(withDuration: self.animated ? 0.3 : 0) {
                 self.updateView()
             }
+            if self.feedback { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }
     }
     public func add(_ element:SwitchSelectorButton){
@@ -74,21 +76,22 @@ public class SwitchSelector: UIScrollView {
         
     }
     public func updateView(){
-        self.selectBackground.frame = self.stack.arrangedSubviews[self.selectedIndex].frame
-        self.selectBackground.backgroundColor = self.buttons[selectedIndex].backgroundColor
-        
-        let selected = self.stack.arrangedSubviews[self.selectedIndex]
-        for view in self.stack.arrangedSubviews{
-            let button = view as? Button
-            if view == selected{
-                button?.setTitleColor(self.buttons[self.selectedIndex].selectedTitleColor, for: .normal)
-            }else{
-                button?.setTitleColor(self.buttons[self.selectedIndex].titleColor, for: .normal)
-            }
+        if self.selectedIndex >= 0 && self.selectedIndex < self.stack.arrangedSubviews.count && self.selectedIndex < self.buttons.count{
+            self.selectBackground.frame = self.stack.arrangedSubviews[self.selectedIndex].frame
+            self.selectBackground.backgroundColor = self.buttons[selectedIndex].backgroundColor
             
+            let selected = self.stack.arrangedSubviews[self.selectedIndex]
+            for view in self.stack.arrangedSubviews{
+                let button = view as? Button
+                if view == selected{
+                    button?.setTitleColor(self.buttons[self.selectedIndex].selectedTitleColor, for: .normal)
+                }else{
+                    button?.setTitleColor(self.buttons[self.selectedIndex].titleColor, for: .normal)
+                }
+                
+            }
         }
-        
-        
+
     }
     
     required init?(coder: NSCoder) {
