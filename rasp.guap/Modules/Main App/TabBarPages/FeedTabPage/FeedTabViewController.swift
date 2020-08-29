@@ -21,12 +21,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title:"Новости", image: tabImage , tag: 0)
         self.rootView.setTitle(self.tabBarItem.title ?? "")
         
-        news.loadSourceList()
-        
-        for s in news.sources{
-            let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
-            self.rootView.sourceSelector.add(btn)
-        }
+
         self.rootView.sourceSelector.switchDelegate = self
         
         self.addChild(feedVC)
@@ -36,9 +31,23 @@ class FeedTabViewController: ViewController<FeedTabView> {
         }
         self.feedVC.didMove(toParent: self)
         
+        DispatchQueue.global(qos: .default).async {
+            self.news.loadSourceList()
+            for s in self.news.sources{
+                let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
+                DispatchQueue.main.async { self.rootView.sourceSelector.add(btn) }
+            }
+            
+            DispatchQueue.main.async {
+                self.rootView.sourceSelector.selectedIndex = 0
+                self.didSelect(0)
+            }
+        }
         
-        self.rootView.sourceSelector.selectedIndex = 0
-        self.didSelect(0)
+        
+        
+            
+        
     }
     
     

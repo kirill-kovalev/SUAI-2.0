@@ -11,9 +11,7 @@ import SUAI_API
 
 class FeedListViewController: UIViewController {
     init() {
-        let news = SANews()
-        news.loadSourceList()
-        self._stream = news.get(index: 0)!
+        self._stream = .default
         super.init(nibName: nil, bundle: nil)
     }
     init(stream:SAFeedStream){
