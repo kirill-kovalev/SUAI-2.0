@@ -10,9 +10,7 @@ import Foundation
 
 public class SADeadlines{
 	public static let shared = SADeadlines()
-	public init() {
-		loadFromServer()
-	}
+	
 	public var nearest:[SADeadline] {
 		return self.open.filter { (deadline) -> Bool in
 			return deadline.type == .nearest
@@ -32,7 +30,7 @@ public class SADeadlines{
 	private var deadlines = [SADeadline]()
 	
 	public func loadFromServer(){
-		PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
+		let _ = PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 			}catch{
@@ -52,7 +50,7 @@ public class SADeadlines{
 	
 	public func close(deadline: SADeadline) -> Bool {
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()
@@ -61,7 +59,7 @@ public class SADeadlines{
 	
 	public func reopen(deadline: SADeadline) -> Bool {
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()
@@ -71,7 +69,7 @@ public class SADeadlines{
 	public func create(deadline: SADeadline) -> Bool {
 		
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
+		let _ = PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
 																		"deadline_name":deadline.deadline_name ?? "name",
 																		"subject_name":deadline.subject_name ?? "",
 																		"start":deadline.startDate,
@@ -86,7 +84,7 @@ public class SADeadlines{
 	}
 	public func edit(deadline: SADeadline) -> Bool{
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
+		let _ = PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
 																	"id":deadline.id,
 																	"deadline_name":deadline.deadline_name ?? "name",
 																	"subject_name":deadline.subject_name ?? "",
@@ -102,7 +100,7 @@ public class SADeadlines{
 	}
 	public func delete(deadline: SADeadline) -> Bool{
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()

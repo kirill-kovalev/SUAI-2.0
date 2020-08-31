@@ -14,6 +14,7 @@ public struct FeedSource{
 }
 
 public class SANews{
+    public static let shared = SANews()
     public var streams:[SAFeedStream] = []
     
     public func loadSourceList(){
@@ -44,9 +45,5 @@ public class SANews{
     }
     public var souces:[FeedSource]{
         self.streams.map{$0.source}
-    }
-    
-    public init(){
-        
     }
 }

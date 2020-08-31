@@ -26,7 +26,6 @@
 		5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903024EC782100930375 /* Timetable.Lesson.swift */; };
 		5D9D903F24EC78AD00930375 /* SATimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903124EC782100930375 /* SATimetable.swift */; };
 		5D9D904024EC78AD00930375 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903224EC782100930375 /* Settings.swift */; };
-		5D9D904124EC78AD00930375 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D903324EC782100930375 /* Current.swift */; };
 		5D9D904624ED39C500930375 /* SADeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904524ED39C500930375 /* SADeadlines.swift */; };
 		5D9D904924ED42E200930375 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904824ED42E200930375 /* User.swift */; };
 		5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D904A24ED478D00930375 /* PocketAPI.swift */; };
@@ -55,7 +54,6 @@
 		5D9D903024EC782100930375 /* Timetable.Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timetable.Lesson.swift; sourceTree = "<group>"; };
 		5D9D903124EC782100930375 /* SATimetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SATimetable.swift; sourceTree = "<group>"; };
 		5D9D903224EC782100930375 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 1; };
-		5D9D903324EC782100930375 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 1; };
 		5D9D904524ED39C500930375 /* SADeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadlines.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5D9D904824ED42E200930375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D9D904A24ED478D00930375 /* PocketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPI.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				5D9D904424ED2B1800930375 /* Lessons */,
 				5D9D902D24EC782100930375 /* Schedule.swift */,
 				5D9D903224EC782100930375 /* Settings.swift */,
-				5D9D903324EC782100930375 /* Current.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0BB9FC24FD6D3B000D8CBB /* BriefInfo.swift in Sources */,
-				5D9D904124EC78AD00930375 /* Current.swift in Sources */,
 				5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */,
 				5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */,
 				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
