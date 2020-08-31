@@ -10,11 +10,12 @@ import Foundation
 
 public struct SAFeedElement{
     public var date:Date
+    
     public var likes:Int
     public var comments:Int
     public var reposts:Int
     
-    public var imageURL:String
+    public var imageURL:String?
     
     public var title:String
     public var desc:String

@@ -33,7 +33,9 @@ public class PocketAPI{
     let config = URLSessionConfiguration.default
     
     public init(){
-        //config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get()]
+        if !VK.needToSetUp && VK.sessions.default.state == .authorized {
+            config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
+        }
     }
     public func setToken(_ token:String){
         config.httpAdditionalHeaders = ["Token":token]

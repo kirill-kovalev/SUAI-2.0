@@ -13,7 +13,7 @@ public struct FeedSource{
     public let owner_id:Int
 }
 
-public class SAFeed{
+public class SANews{
     public var sourcelist:[FeedSource] = []
     
     public func loadSourceList(){
@@ -29,6 +29,10 @@ public class SAFeed{
                 print(error)
             }
         }
+        
+    }
+    
+    public init(){
         
     }
 }
