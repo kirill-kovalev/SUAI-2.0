@@ -11,7 +11,7 @@ import SUAI_API
 
 class FeedListViewController: UIViewController {
     init() {
-        self._stream = .default
+        self._stream = .empty
         super.init(nibName: nil, bundle: nil)
     }
     init(stream:SAFeedStream){
