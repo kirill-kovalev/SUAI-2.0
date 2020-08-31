@@ -9,7 +9,7 @@
 import Foundation
 
 public class SAFeedStream{
-    public static let `default` = SAFeedStream(source: FeedSource(name: "default", owner_id: 0))
+    public static let empty = SAFeedStream()
     public let source:FeedSource
     public var feed:[SAFeedElement] = []
     public var offset:Int = 0
@@ -42,10 +42,13 @@ public class SAFeedStream{
             }
         }catch{
             print(error)
-            return [] 
+            return []
         }
         self.feed.append(contentsOf: new)
         return new
+    }
+    init() {
+        self.source = FeedSource(name: "default", owner_id: 0)
     }
     
     init(source : FeedSource){
