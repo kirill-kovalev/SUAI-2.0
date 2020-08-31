@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="TTCommons-DemiBold.ttf">
-            <string>TTCommons-DemiBold</string>
+        <array key="SFProDisplay-Semibold.ttf">
+            <string>SFProDisplay-Semibold</string>
         </array>
         <array key="TTCommons-Medium.ttf">
             <string>TTCommons-Medium</string>
@@ -29,14 +29,14 @@
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkt-zb-b91">
-                        <rect key="frame" x="40.666666666666657" y="642" width="293.66666666666674" height="68"/>
+                        <rect key="frame" x="40.666666666666657" y="666" width="293.33333333333337" height="44"/>
                         <color key="backgroundColor" name="pocket_darkest_blue"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Lkt-zb-b91" secondAttribute="height" multiplier="147:34" id="tXf-A8-0tt"/>
+                            <constraint firstAttribute="height" constant="44" id="AZR-MI-M2P"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="TTCommons-DemiBold" family="TT Commons" pointSize="30"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                         <state key="normal" title="Login via VK">
-                            <color key="titleColor" name="pocket_white"/>
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -48,7 +48,7 @@
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ошибка" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-BM-F3A">
-                        <rect key="frame" x="0.0" y="589" width="375" height="17"/>
+                        <rect key="frame" x="0.0" y="613" width="375" height="17"/>
                         <fontDescription key="fontDescription" name="TTCommons-Medium" family="TT Commons" pointSize="17"/>
                         <color key="textColor" name="pocket_error"/>
                         <nil key="highlightedColor"/>
@@ -57,11 +57,11 @@
                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="ZL0-gK-WcO" firstAttribute="trailing" secondItem="D3R-Fr-9in" secondAttribute="trailing" id="0Kg-wt-KSL"/>
+                    <constraint firstItem="Lkt-zb-b91" firstAttribute="leading" secondItem="D3R-Fr-9in" secondAttribute="leading" constant="40.666666666666657" id="1da-st-3pW"/>
+                    <constraint firstItem="D3R-Fr-9in" firstAttribute="trailing" secondItem="Lkt-zb-b91" secondAttribute="trailing" constant="41" id="9Nd-fR-wDV"/>
                     <constraint firstItem="D3R-Fr-9in" firstAttribute="trailing" secondItem="sgy-BM-F3A" secondAttribute="trailing" id="EWZ-c7-inv"/>
                     <constraint firstItem="D3R-Fr-9in" firstAttribute="bottom" secondItem="Lkt-zb-b91" secondAttribute="bottom" constant="68" id="J4j-vQ-jNJ"/>
                     <constraint firstItem="sgy-BM-F3A" firstAttribute="leading" secondItem="D3R-Fr-9in" secondAttribute="leading" id="OfF-VR-axY"/>
-                    <constraint firstItem="Lkt-zb-b91" firstAttribute="centerX" secondItem="SHW-Qu-kZG" secondAttribute="centerX" id="PX0-xV-hRI"/>
-                    <constraint firstItem="Lkt-zb-b91" firstAttribute="width" secondItem="ZL0-gK-WcO" secondAttribute="width" multiplier="0.782609" id="TNl-bM-Zzz"/>
                     <constraint firstItem="ZL0-gK-WcO" firstAttribute="leading" secondItem="D3R-Fr-9in" secondAttribute="leading" id="YGq-WP-c7M"/>
                     <constraint firstItem="Lkt-zb-b91" firstAttribute="top" secondItem="sgy-BM-F3A" secondAttribute="bottom" constant="36" id="pNv-cG-6ea"/>
                     <constraint firstAttribute="bottom" secondItem="ZL0-gK-WcO" secondAttribute="bottom" id="u7V-Oe-L43"/>
@@ -82,9 +82,6 @@
         </namedColor>
         <namedColor name="pocket_error">
             <color red="0.90196079015731812" green="0.27450981736183167" blue="0.27450981736183167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="pocket_white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
