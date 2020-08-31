@@ -67,12 +67,12 @@ class LessonInfoModalView: View {
         return stack
     }()
     
-    let groupList : UIStackView = {
-        let collection = UIStackView(frame: .zero)
-        collection.axis = .horizontal
-        collection.spacing = 6
+    let groupList : ASCollectionView = {
+        let collection = ASCollectionView(frame: CGRect(x: 0, y: 0, width: 100 , height: 80 ), collectionViewLayout: UICollectionViewFlowLayout())
+        collection.backgroundColor = .clear
         return collection
     }()
+    
     private let scroll:UIScrollView = {
         let scroll = UIScrollView(frame: .zero)
         scroll.showsHorizontalScrollIndicator = false
@@ -96,8 +96,7 @@ class LessonInfoModalView: View {
         self.addSubview(prepSectionTitle)
         self.addSubview(prepStack)
         self.addSubview(groupsSectionTitle)
-        self.addSubview(scroll)
-        scroll.addSubview(groupList)
+        self.addSubview(groupList)
         self.addSubview(tagsSectionTitle)
         self.addSubview(tagStack)
         
@@ -134,15 +133,12 @@ class LessonInfoModalView: View {
         groupsSectionTitle.snp.makeConstraints { (make) in
             make.top.equalTo(prepStack.snp.bottom).offset(spacing)
         }
-        scroll.snp.makeConstraints { (make) in
-            make.top.equalTo(groupsSectionTitle.snp.bottom).offset(spacing)
-            make.height.equalTo(groupList)
-        }
         groupList.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalTo(scroll.contentLayoutGuide)
+            make.top.equalTo(groupsSectionTitle.snp.bottom).offset(spacing)
+            make.height.greaterThanOrEqualTo(22)
         }
         tagsSectionTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(scroll.snp.bottom).offset(spacing)
+            make.top.equalTo(groupList.snp.bottom).offset(spacing)
         }
         tagStack.snp.makeConstraints { (make) in
             make.top.equalTo(tagsSectionTitle.snp.bottom).offset(spacing)
