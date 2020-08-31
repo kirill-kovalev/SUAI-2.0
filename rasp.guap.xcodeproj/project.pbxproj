@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */; };
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,14 @@
 				FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D0BBA0324FDA2F7000D8CBB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		5D0E335424DF2FA600B45143 /* Pages */ = {
@@ -492,6 +502,7 @@
 		5D95A61E24D412AB000418B5 /* rasp.guap */ = {
 			isa = PBXGroup;
 			children = (
+				5D0BBA0324FDA2F7000D8CBB /* Utils */,
 				5D95A63624D412AC000418B5 /* Assets.xcassets */,
 				5DA10F5224DC25D500D09BD8 /* Resources */,
 				5D95A61F24D412AB000418B5 /* AppDelegate.swift */,
@@ -1009,6 +1020,7 @@
 				5D2BD83D24E43657002630B5 /* ProfileTabView.swift in Sources */,
 				5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */,
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
+				5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
 				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
 			);
