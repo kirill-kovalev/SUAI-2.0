@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         VK.setUp(appId: "7578765", delegate: vkDelegate)
-        print(VK.sessions.default.state)
         if VK.sessions.default.state != .authorized {
             self.PresentVKLoginPage()
         }else{
@@ -39,15 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func LoggedInVK(){
-        //print(VK.sessions.default.accessToken?.get())
-        let group = SAUserSettings.shared?.group
-        print("LoggedInVK/group = \(group)")
+        PocketAPI.shared.setToken(VK.sessions.default.accessToken?.get() ?? "")
+        let settings = SAUserSettings.shared
+        let group = settings?.group
         if group  == nil {
             self.firstRun()
         }else{
             self.defaultRun()
         }
     }
+    
     func firstRun(){
         showTutorialPages()
     }
@@ -56,11 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func PresentVKLoginPage(){
-        VK.sessions.default.logIn(onSuccess: { _ in
-            PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
-        }) { (err) in
-            print(err)
-        }
+        VK.release()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
+        window?.makeKeyAndVisible()
+        
+
     }
     
     
@@ -68,19 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func testRun(){
-        guard let user = SASchedule.shared.groups.get(name: "1611") else{
-                                                                print("user not found")
-                                                                return
-                                                            }
-        let timetable = SASchedule.shared.get(for: user )
-        let dayTimetable = timetable.get(week: .even, day: 0)
-        
-        let tt = TimetableViewController()
-        tt.setTimetable(timetable: dayTimetable)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ScheduleTabViewController()
-        window?.makeKeyAndVisible()
-        
+               
     }
     
     func showTutorialPages(){

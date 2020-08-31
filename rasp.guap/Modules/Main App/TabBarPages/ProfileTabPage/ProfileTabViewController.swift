@@ -8,6 +8,7 @@
 
 import UIKit
 import ESTabBarController_swift
+import SwiftyVK
 
 class ProfileTabViewController: ViewController<ProfileTabView> {
     required init() {
@@ -18,4 +19,24 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    override func viewDidLoad(){
+
+        
+        let logoutButton = Button(frame: .zero)
+        logoutButton.setTitle("logout", for: .normal)
+        
+        self.rootView.addHeaderButton(logoutButton)
+        logoutButton.addTarget(action: { (sender) in
+            print("logout")
+            VK.sessions.default.logOut()
+            let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
+            vkVC.modalPresentationStyle = .fullScreen
+            vkVC.modalTransitionStyle = .flipHorizontal
+            self.present(vkVC, animated: true, completion: nil)
+        }, for: .touchUpInside)
+        self.rootView.title.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+        }
+    }
+    
 }

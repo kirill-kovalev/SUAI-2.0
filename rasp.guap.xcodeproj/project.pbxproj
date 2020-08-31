@@ -10,6 +10,7 @@
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
+		5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D289FCC24FA9E0400643D54 /* VkLogin.xib */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
 		5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9A24D42407006DACED /* ModalViewController.swift */; };
@@ -28,6 +29,7 @@
 		5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
+		5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F00F624FD007100C927A8 /* ASCollectionView.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
 		5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */; };
 		5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */; };
@@ -137,6 +139,7 @@
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
+		5D289FCC24FA9E0400643D54 /* VkLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VkLogin.xib; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
 		5D2ADF9A24D42407006DACED /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
+		5D6F00F624FD007100C927A8 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
@@ -626,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9D905524ED843D00930375 /* VKLoginPage.swift */,
+				5D289FCC24FA9E0400643D54 /* VkLogin.xib */,
 			);
 			path = VKLogin;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 			children = (
 				5D7DF85B24D46B0E00CCD0AE /* Button.swift */,
 				5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */,
+				5D6F00F624FD007100C927A8 /* ASCollectionView.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -864,6 +870,7 @@
 				5D99B25F24DD600900D6C648 /* SFProDisplay-Light.ttf in Resources */,
 				5D99B23A24DD58CF00D6C648 /* TTCommons-DemiBold.ttf in Resources */,
 				5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */,
+				5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */,
 				5D99B25D24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf in Resources */,
 				5D99B23824DD58CF00D6C648 /* TTCommons-Italic.ttf in Resources */,
 				5D99B23624DD58CF00D6C648 /* TTCommons-BoldItalic.ttf in Resources */,
@@ -974,6 +981,7 @@
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
+				5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
