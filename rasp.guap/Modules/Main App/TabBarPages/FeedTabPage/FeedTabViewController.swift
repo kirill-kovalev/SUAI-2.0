@@ -57,6 +57,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
             for stream in self.news.streams {
                 DispatchQueue.global(qos: .utility).async {
                     stream.reload()
+                    DispatchQueue.main.async { self.feedVC.updateView() }
                 }
             }
         }

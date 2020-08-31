@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct FeedSource{
+public struct FeedSource:Codable{
     public let name:String
-    public let owner_id:Int
+    public let id:Int
 }
 
 public class SANews{
@@ -20,10 +20,10 @@ public class SANews{
     public func loadSourceList(){
         guard let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder) else {return}
         do{
-            let a = try JSONDecoder().decode([String:Int].self, from: data)
+            let a = try JSONDecoder().decode([FeedSource].self, from: data)
             self.streams = []
-            for (key,value) in a{
-                let source = FeedSource(name: key, owner_id: value)
+            for (source) in a{
+                //let source = FeedSource(name: key, owner_id: value)
                 self.streams.append(SAFeedStream(source: source))
             }
         }catch{
