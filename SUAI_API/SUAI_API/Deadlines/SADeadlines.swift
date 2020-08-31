@@ -7,71 +7,10 @@
 //
 
 import Foundation
-public enum SADeadlineGroup{
-	case nearest
-	case open
-	case closed
-}
-
-public struct SADeadline: Codable {
-	public let id: Int
-	public let subject_name: String?
-	public let deadline_name: String?
-	public let closed: Int
-	public let start: Date
-	public let end: Date
-	public let comment: String
-	
-	public var lesson: String {
-		return ""
-	}
-	public init(id: Int = 0,
-				subject_name: String? = "",
-				deadline_name: String = "",
-				closed: Int = 0,
-				start: Date = Date(),
-				end: Date = Date(),
-				comment: String = ""
-	){
-		self.id = id
-		self.subject_name = subject_name
-		self.deadline_name = deadline_name
-		self.closed = closed
-		self.start = start
-		self.end = end
-		self.comment = comment
-	}
-	public var startDate:String{
-		return SADeadline.formatter.string(from: self.start)
-	}
-	public var endDate:String{
-		return SADeadline.formatter.string(from: self.end)
-	}
-	public static let formatter:DateFormatter = {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "yyyy-MM-dd"
-		return formatter
-	}()
-	
-	public var type: SADeadlineGroup{
-		if self.closed == 1{
-			return .closed
-		}else{
-			if self.end < Date().addingTimeInterval(60*60*24*7){
-				return .nearest
-			}else{
-				return .open
-			}
-		}
-	}
-}
-
 
 public class SADeadlines{
 	public static let shared = SADeadlines()
-	public init() {
-		loadFromServer()
-	}
+	
 	public var nearest:[SADeadline] {
 		return self.open.filter { (deadline) -> Bool in
 			return deadline.type == .nearest
@@ -91,7 +30,7 @@ public class SADeadlines{
 	private var deadlines = [SADeadline]()
 	
 	public func loadFromServer(){
-		PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
+		let _ = PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 			}catch{
@@ -111,7 +50,7 @@ public class SADeadlines{
 	
 	public func close(deadline: SADeadline) -> Bool {
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()
@@ -120,7 +59,7 @@ public class SADeadlines{
 	
 	public func reopen(deadline: SADeadline) -> Bool {
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()
@@ -130,7 +69,7 @@ public class SADeadlines{
 	public func create(deadline: SADeadline) -> Bool {
 		
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
+		let _ = PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
 																		"deadline_name":deadline.deadline_name ?? "name",
 																		"subject_name":deadline.subject_name ?? "",
 																		"start":deadline.startDate,
@@ -145,7 +84,7 @@ public class SADeadlines{
 	}
 	public func edit(deadline: SADeadline) -> Bool{
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
+		let _ = PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
 																	"id":deadline.id,
 																	"deadline_name":deadline.deadline_name ?? "name",
 																	"subject_name":deadline.subject_name ?? "",
@@ -161,7 +100,7 @@ public class SADeadlines{
 	}
 	public func delete(deadline: SADeadline) -> Bool{
 		var success = false
-		PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
+		let _ = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		self.loadFromServer()

@@ -14,7 +14,6 @@ public class SASchedule{
     public let preps = Preps()
     public let groups = Groups()
     public let settings = ScheduleSettings.load()
-    public let current = ScheduleCurrent()
     
     private var userTimetables : [SAUsers.User:SATimetable] = [:]
     

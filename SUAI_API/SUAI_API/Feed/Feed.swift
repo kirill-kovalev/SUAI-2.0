@@ -53,7 +53,5 @@ public class SAFeedStream{
     
     init(source : FeedSource){
         self.source = source
-        reload()
-        print("init \(source)")
     }
 }
