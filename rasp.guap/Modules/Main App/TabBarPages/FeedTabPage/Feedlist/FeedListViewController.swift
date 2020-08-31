@@ -85,13 +85,17 @@ class FeedListViewController: UIViewController {
             newsView.datetimeLabel.text = "\(element.date)"
             newsView.titleLabel.text = element.title
             
-            let url = URL(string: element.imageURL ?? "")
-            if url != nil {
-                URLSession.shared.dataTask(with: url! ) { (data, resp, err) in
-                    guard let data = data, let image = UIImage(data: data) else{ return }
-                    DispatchQueue.main.async{ newsView.imageView.image = image}
-                }.resume()
+            NetworkManager.dataTask(url: element.imageURL ?? "") { (result) in
+                switch(result){
+                    case .success(let data):
+                        guard let image = UIImage(data: data) else{ return }
+                        DispatchQueue.main.async{ newsView.imageView.image = image}
+                        break
+                    case .failure(let err):
+                        break
+                }
             }
+            
             self.stackView.addArrangedSubview(PocketDivView(content: newsView))
         }
 
