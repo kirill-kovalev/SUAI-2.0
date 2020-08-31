@@ -37,7 +37,7 @@ class NetworkManager{
                     }
                     
                 }
-            }
+            }.resume()
         }
         
        
