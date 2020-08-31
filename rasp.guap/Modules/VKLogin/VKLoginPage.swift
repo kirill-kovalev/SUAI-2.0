@@ -29,6 +29,7 @@ class VKLoginPageViewController: UIViewController {
         }
     }
     override func viewDidAppear(_ animated: Bool){
+        VK.release()
         VK.setUp(appId: "7578765", delegate: self)
         
     }
