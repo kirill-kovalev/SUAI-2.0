@@ -118,6 +118,10 @@
 		5DED6DA624FD371D0092F67D /* FeedTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */; };
 		5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA724FD37320092F67D /* SwitchSelectorView.swift */; };
 		5DED6DAA24FD37CF0092F67D /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA924FD37CF0092F67D /* FeedListViewController.swift */; };
+		5DED6DAD24FD63360092F67D /* FeedBriefInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */; };
+		5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */; };
+		5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB124FD67610092F67D /* RocketModalView.swift */; };
+		5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +252,10 @@
 		5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTabViewController.swift; sourceTree = "<group>"; };
 		5DED6DA724FD37320092F67D /* SwitchSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSelectorView.swift; sourceTree = "<group>"; };
 		5DED6DA924FD37CF0092F67D /* FeedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
+		5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefInfoViewController.swift; sourceTree = "<group>"; };
+		5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefInfoView.swift; sourceTree = "<group>"; };
+		5DED6DB124FD67610092F67D /* RocketModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalView.swift; sourceTree = "<group>"; };
+		5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalViewController.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,6 +389,7 @@
 		5D3D6C9624E42F31007CE482 /* FeedTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DED6DAB24FD63070092F67D /* BriefInfo */,
 				5D289FC724FA812F00643D54 /* Feedlist */,
 				5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */,
 				5D2BD80924E4359A002630B5 /* FeedTabView.swift */,
@@ -786,6 +795,25 @@
 			path = PocketTag;
 			sourceTree = "<group>";
 		};
+		5DED6DAB24FD63070092F67D /* BriefInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DB024FD668E0092F67D /* RocketModal */,
+				5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */,
+				5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */,
+			);
+			path = BriefInfo;
+			sourceTree = "<group>";
+		};
+		5DED6DB024FD668E0092F67D /* RocketModal */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DB124FD67610092F67D /* RocketModalView.swift */,
+				5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */,
+			);
+			path = RocketModal;
+			sourceTree = "<group>";
+		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +994,7 @@
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
+				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
@@ -998,6 +1027,7 @@
 				5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */,
 				5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
+				5DED6DAD24FD63360092F67D /* FeedBriefInfoViewController.swift in Sources */,
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
@@ -1035,6 +1065,8 @@
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
 				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
+				5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */,
+				5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

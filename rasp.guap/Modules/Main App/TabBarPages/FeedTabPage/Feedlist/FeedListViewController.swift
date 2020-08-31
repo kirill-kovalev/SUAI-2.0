@@ -39,6 +39,7 @@ class FeedListViewController: UIViewController {
         return stack
     }()
     private var scrollView:UIScrollView {self.view as! UIScrollView}
+    
     override func loadView() {
         self.view = UIScrollView()
         self.scrollView.delegate = self
