@@ -48,7 +48,7 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)
-            tagView.isActive = (prep != SASchedule.shared.current.user)
+//            tagView.isActive = (prep != SASchedule.shared.current.user)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: prep)
             }, for: .touchUpInside)
@@ -94,7 +94,7 @@ extension LessonInfoModalViewController : UICollectionViewDataSource{
         let group = self.lesson.groups[indexPath.item]
         let tagView = PocketTagButton()
         tagView.setTitle(group.Name, for: .normal)
-        tagView.isActive = (group != SASchedule.shared.current.user)
+//        tagView.isActive = (group != SASchedule.shared.current.user)
         tagView.addTarget(action: { (sender) in
             self.setNewUser(user: group)
         }, for: .touchUpInside)

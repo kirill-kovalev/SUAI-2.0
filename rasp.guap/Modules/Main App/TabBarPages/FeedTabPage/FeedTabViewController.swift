@@ -13,7 +13,7 @@ import SUAI_API
 class FeedTabViewController: ViewController<FeedTabView> {
     
 
-    let news = SANews()
+    let news = SANews.shared
     
     lazy var feedVC:FeedListViewController = {
         let feedVC = FeedListViewController()
