@@ -60,7 +60,7 @@ class FeedBriefInfoView: UIScrollView {
         }
         stack.snp.makeConstraints { (make) in
             make.top.equalTo(self.contentLayoutGuide)
-            make.bottom.equalTo(self.indicator.snp.top)
+            make.bottom.equalTo(self.indicator.snp.top).offset(-15)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
         }
