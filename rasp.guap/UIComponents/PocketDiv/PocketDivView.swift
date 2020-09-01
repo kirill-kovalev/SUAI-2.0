@@ -10,14 +10,22 @@ import UIKit
 
 class PocketDivView<T:UIView> : View {
     
-     var content : T
+    var content : T
+    var contentMask:UIView = {
+        let v = UIView(frame: .zero)
+        v.layer.masksToBounds = true
+        v.layer.cornerRadius = 10
+        return v
+    }()
+    
     
     required init() {
         self.content = T(frame: .zero);
         super.init()
         
         setupView()
-        super.addSubview(content)
+        super.addSubview(contentMask)
+        contentMask.addSubview(content)
         setupConstraints()
     }
     
@@ -31,7 +39,8 @@ class PocketDivView<T:UIView> : View {
         super.init()
         
         setupView()
-        super.addSubview(content)
+        super.addSubview(contentMask)
+        contentMask.addSubview(content)
         setupConstraints()
 
     }
@@ -88,6 +97,9 @@ class PocketDivView<T:UIView> : View {
     }
     
     private func setupConstraints(){
+        self.contentMask.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
         self.content.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(12)
             make.right.bottom.equalToSuperview().inset(12)
