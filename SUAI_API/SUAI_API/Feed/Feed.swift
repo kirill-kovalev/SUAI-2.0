@@ -14,7 +14,7 @@ public class SAFeedStream{
     public var feed:[SAFeedElement] = []
     public var offset:Int = 0
     
-    private let count = 20
+    public var count = 20
     
     public func reload(){
         self.offset = 0

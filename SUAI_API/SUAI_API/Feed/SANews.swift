@@ -14,6 +14,7 @@ public struct FeedSource:Codable{
 }
 
 public class SANews{
+    
     public static let shared = SANews()
     public var streams:[SAFeedStream] = []
     
@@ -45,5 +46,9 @@ public class SANews{
     }
     public var sources:[FeedSource]{
         self.streams.map{$0.source}
+    }
+    
+    public init(){
+        
     }
 }
