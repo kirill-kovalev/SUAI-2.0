@@ -15,6 +15,7 @@ class FeedBriefInfoView: UIScrollView {
     lazy var stack:UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
+        stack.spacing = 10
         return stack
     }()
     lazy var indicator:UIActivityIndicatorView = {
@@ -25,6 +26,24 @@ class FeedBriefInfoView: UIScrollView {
     }()
     init(){
         super.init(frame:.zero)
+        addViews()
+        setupConstraints()
+    }
+    func labelGenerator(title:String)->UILabel{
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.bold.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
+        label.text = title
+        return label
+    }
+    func addBlock(title:String?,view:UIView?){
+        if title != nil{
+            self.stack.addArrangedSubview(labelGenerator(title: title!))
+        }
+        if view != nil {
+            self.stack.addArrangedSubview(view!)
+        }
+        
     }
     override func addSubview(_ view: UIView) {
         self.stack.addArrangedSubview(view)
@@ -36,11 +55,14 @@ class FeedBriefInfoView: UIScrollView {
     }
     func setupConstraints(){
         indicator.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.lessThanOrEqualTo(self.contentLayoutGuide)
         }
         stack.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(self.contentLayoutGuide)
-            make.left.right.equalToSuperview()
+            make.top.equalTo(self.contentLayoutGuide)
+            make.bottom.equalTo(self.indicator.snp.top)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
         }
     }
     

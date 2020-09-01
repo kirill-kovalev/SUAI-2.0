@@ -26,8 +26,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
         return feedVC
     }()
     
-    lazy var briefVC:TimetableViewController = {
-        let briefVC = TimetableViewController()
+    lazy var briefVC:FeedBriefInfoViewController = {
+        let briefVC = FeedBriefInfoViewController()
         self.addChild(briefVC)
         self.rootView.addSubview(briefVC.view)
         briefVC.view.snp.makeConstraints { (make) in
@@ -62,7 +62,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
             }
         }
         
-        print("all")
+        showBrief()
     }
     
     override func viewDidAppear(_ animated: Bool) {
