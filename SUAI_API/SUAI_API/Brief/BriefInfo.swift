@@ -21,7 +21,7 @@ public class SABrief{
             self.briefInfo = a
         }catch{ print(error) }
     }
-    
+    public var isSub:Bool {self.briefInfo.is_sub}
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}
 }

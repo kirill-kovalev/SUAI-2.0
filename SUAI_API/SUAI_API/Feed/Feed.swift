@@ -14,7 +14,7 @@ public class SAFeedStream{
     public var feed:[SAFeedElement] = []
     public var offset:Int = 0
     
-    private let count = 20
+    public var count = 20
     
     public func reload(){
         self.offset = 0
@@ -25,7 +25,7 @@ public class SAFeedStream{
         var new:[SAFeedElement] = []
         
         guard let data = PocketAPI.shared.syncLoadTask(method: .getFeed, params:[
-            "owner_id":self.source.owner_id,
+            "owner_id":self.source.id,
             "count":self.count,
             "offset":self.offset,
         ]) else { return [] }
@@ -48,7 +48,7 @@ public class SAFeedStream{
         return new
     }
     init() {
-        self.source = FeedSource(name: "default", owner_id: 0)
+        self.source = FeedSource(name: "default", id: 0)
     }
     
     init(source : FeedSource){
