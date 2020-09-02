@@ -9,7 +9,11 @@
 import UIKit
 
 class PocketUserAvatar:UIView{
-    var color:UIColor = .red
+    var color:UIColor = .clear{
+        didSet{
+            self.layer.borderColor = self.color.cgColor
+        }
+    }
     let imageView:UIImageView = {
         let img = UIImageView(frame: .zero)
         img.layer.masksToBounds = true
@@ -19,7 +23,7 @@ class PocketUserAvatar:UIView{
     init() {
         super.init(frame: .zero)
         self.addSubview(imageView)
-        self.layer.borderColor = self.color.cgColor
+        
         self.layer.borderWidth = 2
     }
     
