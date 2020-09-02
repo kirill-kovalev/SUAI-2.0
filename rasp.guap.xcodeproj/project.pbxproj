@@ -126,6 +126,7 @@
 		5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB124FD67610092F67D /* RocketModalView.swift */; };
 		5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */; };
 		5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423BC25002F6A00565FB8 /* PocketAvatar.swift */; };
+		5DF423BF250039DF00565FB8 /* RocketUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423BE250039DF00565FB8 /* RocketUserView.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +265,7 @@
 		5DED6DB124FD67610092F67D /* RocketModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalView.swift; sourceTree = "<group>"; };
 		5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalViewController.swift; sourceTree = "<group>"; };
 		5DF423BC25002F6A00565FB8 /* PocketAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAvatar.swift; sourceTree = "<group>"; };
+		5DF423BE250039DF00565FB8 /* RocketUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketUserView.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -838,6 +840,7 @@
 			children = (
 				5DED6DB124FD67610092F67D /* RocketModalView.swift */,
 				5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */,
+				5DF423BE250039DF00565FB8 /* RocketUserView.swift */,
 			);
 			path = RocketModal;
 			sourceTree = "<group>";
@@ -1046,6 +1049,7 @@
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
+				5DF423BF250039DF00565FB8 /* RocketUserView.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
 				5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
