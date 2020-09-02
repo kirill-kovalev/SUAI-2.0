@@ -14,6 +14,7 @@ public struct SAFeedElement{
     public var likes:Int
     public var comments:Int
     public var reposts:Int
+    public var views:Int
     
     public var imageURL:String?
     
