@@ -73,8 +73,8 @@ class FeedBriefInfoViewController: UIViewController {
             stack.alignment = .fill
             stack.distribution = .fillEqually
             stack.spacing = 10
-            stack.snp.makeConstraints {$0.left.right.equalToSuperview()}
             self.rootView.addBlock(title: nil, view: stack )
+            stack.snp.makeConstraints {$0.left.right.equalToSuperview()}
             
             
             stack.addArrangedSubview(PocketDivView(content:BriefHalfScreenView(title: "\(temp)°", subtitle: conditions,
