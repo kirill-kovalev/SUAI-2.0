@@ -23,14 +23,29 @@ class PocketBannerView:UIView{
     }
     private let title:UILabel = {
         let label = UILabel(frame: .zero)
+        label.font = FontFamily.TTCommons.bold.font(size: 22)
+        label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
     private let subtitle:UILabel = {
         let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
     private let button:Button = {
         let btn = Button(frame: .zero)
+        btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 14)
+        btn.setTitleColor(Asset.PocketColors.buttonOutlineBorder.color, for: .normal)
+        btn.backgroundColor = Asset.PocketColors.pocketBlue.color
+        btn.layer.cornerRadius = 10
+        btn.layoutMargins = .init(top: 7, left: 15, bottom: 7, right: 15)
+        btn.titleLabel?.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview().offset(7)
+            make.left.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-7)
+            make.right.equalToSuperview().offset(-15)
+        })
         return btn
     }()
     private let image:UIImageView = {
@@ -50,12 +65,13 @@ class PocketBannerView:UIView{
             make.right.equalTo(image.snp.left).offset(-10)
         }
         subtitle.snp.makeConstraints { (make) in
-            make.top.equalTo(title.snp.bottom).offset(10)
+            make.top.equalTo(title.snp.bottom).offset(8)
             make.left.equalTo(title)
         }
         button.snp.makeConstraints { (make) in
-            make.top.equalTo(subtitle.snp.bottom)
+            make.top.equalTo(subtitle.snp.bottom).offset(8)
             make.left.equalTo(subtitle)
+            make.bottom.lessThanOrEqualToSuperview()
         }
         
         image.snp.makeConstraints { (make) in
