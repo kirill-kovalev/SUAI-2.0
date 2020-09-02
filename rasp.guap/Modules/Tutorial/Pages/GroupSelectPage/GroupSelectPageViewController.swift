@@ -30,9 +30,11 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
             let user = self.rootView.select.titleLabel?.text ?? ""
             if SASchedule.shared.groups.get(name: user) != nil {
                 SAUserSettings.shared?.group = user
-                print(SAUserSettings.shared?.update())
+                print()
+                if((SAUserSettings.shared?.update()) ?? false){
+                    let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+                }
                 
-                UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
             }
         }, for: .touchUpInside)
     }

@@ -17,7 +17,7 @@ class VKLoginPageViewController: UIViewController {
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
             DispatchQueue.main.async {
-                UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+                let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
             }
         }) { (err) in
             DispatchQueue.main.async {

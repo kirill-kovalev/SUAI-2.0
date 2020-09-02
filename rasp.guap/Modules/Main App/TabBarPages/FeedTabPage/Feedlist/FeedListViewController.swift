@@ -102,8 +102,7 @@ class FeedListViewController: UIViewController {
                         guard let image = UIImage(data: data) else{ return }
                         DispatchQueue.main.async{ newsView.imageView.image = image}
                         break
-                    case .failure(let err):
-                        break
+                    case .failure: break
                 }
             }
             
