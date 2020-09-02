@@ -52,6 +52,14 @@ internal enum Asset {
     }
     internal static let photoPlaceholder = ImageAsset(name: "photoPlaceholder")
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
+    internal enum WeatherImages {
+      internal static let clouds = ImageAsset(name: "clouds")
+      internal static let cloudy = ImageAsset(name: "cloudy")
+      internal static let drizzle = ImageAsset(name: "drizzle")
+      internal static let mist = ImageAsset(name: "mist")
+      internal static let snow = ImageAsset(name: "snow")
+      internal static let sunny = ImageAsset(name: "sunny")
+    }
   }
   internal enum PocketColors {
     internal static let accent = ColorAsset(name: "accent")
