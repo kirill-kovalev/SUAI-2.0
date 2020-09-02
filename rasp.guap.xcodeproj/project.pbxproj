@@ -12,6 +12,7 @@
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
+		5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */; };
 		5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D289FCC24FA9E0400643D54 /* VkLogin.xib */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
@@ -147,6 +148,7 @@
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
+		5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketBannerView.swift; sourceTree = "<group>"; };
 		5D289FCC24FA9E0400643D54 /* VkLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VkLogin.xib; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
@@ -324,6 +326,14 @@
 				5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */,
 			);
 			path = LessonInfoModalVC;
+			sourceTree = "<group>";
+		};
+		5D27457B24FFB35700F52D7A /* PocketBanner */ = {
+			isa = PBXGroup;
+			children = (
+				5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */,
+			);
+			path = PocketBanner;
 			sourceTree = "<group>";
 		};
 		5D289FC424FA581100643D54 /* SwitchSelector */ = {
@@ -563,6 +573,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5D27457B24FFB35700F52D7A /* PocketBanner */,
 				5D289FC424FA581100643D54 /* SwitchSelector */,
 				5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */,
 				5DCE2FEB24E03ACF00CFF29A /* PocketTag */,
@@ -1009,6 +1020,7 @@
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
+				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
