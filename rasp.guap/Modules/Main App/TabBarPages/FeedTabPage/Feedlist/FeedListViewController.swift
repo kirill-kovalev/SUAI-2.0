@@ -82,8 +82,14 @@ class FeedListViewController: UIViewController {
         for element in elements{
             let newsView = PocketNewsView()
             newsView.authorLabel.text = self.stream.source.name
-            newsView.datetimeLabel.text = "\(element.date)"
             newsView.titleLabel.text = element.title
+            newsView.likeLabel.text = "\(element.likes)"
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "Ru")
+            
+            formatter.dateFormat = "dd MMMM YYYY в HH:mm"
+            newsView.datetimeLabel.text = formatter.string(from: element.date)
             
             NetworkManager.dataTask(url: element.imageURL ?? "") { (result) in
                 switch(result){

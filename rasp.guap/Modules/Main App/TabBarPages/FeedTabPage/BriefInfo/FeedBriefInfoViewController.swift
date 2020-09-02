@@ -50,6 +50,8 @@ class FeedBriefInfoViewController: UIViewController {
                     div.isHidden = true
                     div.snp.makeConstraints { $0.size.equalTo(CGSize.zero)}
                 }
+                self.rootView.addBlock(title: nil, view: div )
+                
                 
             }
         }
@@ -152,19 +154,26 @@ class FeedBriefInfoViewController: UIViewController {
     }
     @objc func switchToDeadlines(){ self.tabBarController?.selectedIndex = 1 }
     
+    
+    
+    
+    
+    
+    
+    
     //MARK: - News
     func loadNews(){
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-        var feed = [PocketNewsView]()
+        var feed:[(SAFeedElement,FeedSource)] = []
         let news = SANews()
         news.loadSourceList()
         for stream in news.streams {
             stream.count = 5
             stream.reload()
             
-            DispatchQueue.main.async {
-                feed.append(contentsOf: stream.feed.map{self.generateNewsView(from: $0,source: stream.source.name)})
-            }
+            
+            feed.append(contentsOf: stream.feed.map{($0,stream.source)})
+            
         }
         
         
@@ -173,8 +182,9 @@ class FeedBriefInfoViewController: UIViewController {
             let stack = UIStackView(frame: .zero)
             stack.axis = .vertical
             stack.spacing = 15
-            feed.sorted { ($0.datetimeLabel.text ?? "") > ($1.datetimeLabel.text ?? "") }.forEach{
-                stack.addArrangedSubview($0)
+            let sorted = feed.sorted {  $0.0.date > $1.0.date}
+            for (element,source) in sorted {
+                stack.addArrangedSubview(self.generateNewsView(from: element, source: source.name))
             }
             
             let div = PocketDivView(content: stack)
@@ -184,13 +194,20 @@ class FeedBriefInfoViewController: UIViewController {
         }
         
     }
-    func generateNewsView(from:SAFeedElement,source:String = "") -> PocketNewsView{
+    func generateNewsView(from element:SAFeedElement,source:String = "") -> PocketNewsView{
         let newsView = PocketNewsView()
-        newsView.authorLabel.text = source
-        newsView.datetimeLabel.text = "\(from.date)"
-        newsView.titleLabel.text = from.title
         
-        NetworkManager.dataTask(url: from.imageURL ?? "") { (result) in
+        newsView.authorLabel.text = source
+        newsView.titleLabel.text = element.title
+        newsView.likeLabel.text = "\(element.likes)"
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "Ru")
+        
+        formatter.dateFormat = "dd MMMM YYYY в HH:mm"
+        newsView.datetimeLabel.text = formatter.string(from: element.date)
+        
+        NetworkManager.dataTask(url: element.imageURL ?? "") { (result) in
             switch(result){
             case .success(let data):
                 guard let image = UIImage(data: data) else{ return }

@@ -9,5 +9,7 @@
 import UIKit
 
 class RocketModalViewController: ModalViewController<RocketModalView> {
-    
+    override func viewDidLoad() {
+        self.rootView.titleLabel.text = ""
+    }
 }
