@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */; };
+		5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */; };
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
 		5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */; };
+		5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */; };
 		5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D289FCC24FA9E0400643D54 /* VkLogin.xib */; };
 		5D296EAE24E2E747006AAE13 /* DarkModeDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */; };
 		5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */; };
@@ -18,7 +20,6 @@
 		5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9C24D4242A006DACED /* ModalView.swift */; };
 		5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */; };
 		5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */; };
-		5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80724E43576002630B5 /* FeedTabViewController.swift */; };
 		5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80924E4359A002630B5 /* FeedTabView.swift */; };
 		5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */; };
 		5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */; };
@@ -117,6 +118,13 @@
 		5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD24CAC24E44D860024F325 /* TabBarIcon.swift */; };
 		5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD24CAE24E44E9B0024F325 /* PocketTabBarIcon.swift */; };
 		5DD24CB124E4547F0024F325 /* TabBarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD24CB024E4547F0024F325 /* TabBarPageView.swift */; };
+		5DED6DA624FD371D0092F67D /* FeedTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */; };
+		5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA724FD37320092F67D /* SwitchSelectorView.swift */; };
+		5DED6DAA24FD37CF0092F67D /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DA924FD37CF0092F67D /* FeedListViewController.swift */; };
+		5DED6DAD24FD63360092F67D /* FeedBriefInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */; };
+		5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */; };
+		5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB124FD67610092F67D /* RocketModalView.swift */; };
+		5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,9 +144,11 @@
 
 /* Begin PBXFileReference section */
 		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefViews.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
+		5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketBannerView.swift; sourceTree = "<group>"; };
 		5D289FCC24FA9E0400643D54 /* VkLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VkLogin.xib; sourceTree = "<group>"; };
 		5D296EAD24E2E747006AAE13 /* DarkModeDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeDetect.swift; sourceTree = "<group>"; };
 		5D296EB024E2EC11006AAE13 /* PocketFAQCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketFAQCard.swift; sourceTree = "<group>"; };
@@ -146,7 +156,6 @@
 		5D2ADF9C24D4242A006DACED /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		5D2ADF9F24D42663006DACED /* TimetableFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterView.swift; sourceTree = "<group>"; };
 		5D2ADFA524D42817006DACED /* TimetableFilterViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConroller.swift; sourceTree = "<group>"; };
-		5D2BD80724E43576002630B5 /* FeedTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabViewController.swift; sourceTree = "<group>"; };
 		5D2BD80924E4359A002630B5 /* FeedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabView.swift; sourceTree = "<group>"; };
 		5D2BD80B24E4361F002630B5 /* DeadlinesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadlinesTabView.swift; sourceTree = "<group>"; };
 		5D2BD80C24E4361F002630B5 /* DeadlinesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadlinesTabViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +255,13 @@
 		5DD24CAC24E44D860024F325 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
 		5DD24CAE24E44E9B0024F325 /* PocketTabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTabBarIcon.swift; sourceTree = "<group>"; };
 		5DD24CB024E4547F0024F325 /* TabBarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPageView.swift; sourceTree = "<group>"; };
+		5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTabViewController.swift; sourceTree = "<group>"; };
+		5DED6DA724FD37320092F67D /* SwitchSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSelectorView.swift; sourceTree = "<group>"; };
+		5DED6DA924FD37CF0092F67D /* FeedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
+		5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefInfoViewController.swift; sourceTree = "<group>"; };
+		5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefInfoView.swift; sourceTree = "<group>"; };
+		5DED6DB124FD67610092F67D /* RocketModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalView.swift; sourceTree = "<group>"; };
+		5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalViewController.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,6 +328,30 @@
 			path = LessonInfoModalVC;
 			sourceTree = "<group>";
 		};
+		5D27457B24FFB35700F52D7A /* PocketBanner */ = {
+			isa = PBXGroup;
+			children = (
+				5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */,
+			);
+			path = PocketBanner;
+			sourceTree = "<group>";
+		};
+		5D289FC424FA581100643D54 /* SwitchSelector */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DA724FD37320092F67D /* SwitchSelectorView.swift */,
+			);
+			path = SwitchSelector;
+			sourceTree = "<group>";
+		};
+		5D289FC724FA812F00643D54 /* Feedlist */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DA924FD37CF0092F67D /* FeedListViewController.swift */,
+			);
+			path = Feedlist;
+			sourceTree = "<group>";
+		};
 		5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,7 +411,9 @@
 		5D3D6C9624E42F31007CE482 /* FeedTabPage */ = {
 			isa = PBXGroup;
 			children = (
-				5D2BD80724E43576002630B5 /* FeedTabViewController.swift */,
+				5DED6DAB24FD63070092F67D /* BriefInfo */,
+				5D289FC724FA812F00643D54 /* Feedlist */,
+				5DED6DA524FD371D0092F67D /* FeedTabViewController.swift */,
 				5D2BD80924E4359A002630B5 /* FeedTabView.swift */,
 			);
 			path = FeedTabPage;
@@ -531,6 +573,8 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5D27457B24FFB35700F52D7A /* PocketBanner */,
+				5D289FC424FA581100643D54 /* SwitchSelector */,
 				5D296EAF24E2EBE9006AAE13 /* PocketFAQCard */,
 				5DCE2FEB24E03ACF00CFF29A /* PocketTag */,
 				5D0E335524E0103900B45143 /* PocketDay */,
@@ -775,6 +819,26 @@
 			path = PocketTag;
 			sourceTree = "<group>";
 		};
+		5DED6DAB24FD63070092F67D /* BriefInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DB024FD668E0092F67D /* RocketModal */,
+				5DED6DAC24FD63360092F67D /* FeedBriefInfoViewController.swift */,
+				5DED6DAE24FD63410092F67D /* FeedBriefInfoView.swift */,
+				5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */,
+			);
+			path = BriefInfo;
+			sourceTree = "<group>";
+		};
+		5DED6DB024FD668E0092F67D /* RocketModal */ = {
+			isa = PBXGroup;
+			children = (
+				5DED6DB124FD67610092F67D /* RocketModalView.swift */,
+				5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */,
+			);
+			path = RocketModal;
+			sourceTree = "<group>";
+		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,7 +1012,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2BD80824E43576002630B5 /* FeedTabViewController.swift in Sources */,
 				5D2ADFA024D42663006DACED /* TimetableFilterView.swift in Sources */,
 				5D9D905924ED84BC00930375 /* DeadlineInfoModalViewController.swift in Sources */,
 				5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */,
@@ -956,11 +1019,14 @@
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
+				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
+				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
+				5DED6DAA24FD37CF0092F67D /* FeedListViewController.swift in Sources */,
 				5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */,
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
 				5D9D904F24ED57EB00930375 /* DeadlineGroupSelectController.swift in Sources */,
@@ -987,6 +1053,7 @@
 				5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */,
 				5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */,
 				5DA10F7124DC41D300D09BD8 /* TutorialPageTemplate.swift in Sources */,
+				5DED6DAD24FD63360092F67D /* FeedBriefInfoViewController.swift in Sources */,
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
@@ -1003,9 +1070,11 @@
 				5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */,
 				5D7D667624F4068D00F39D59 /* DeadlineEditModal.swift in Sources */,
 				5D7D667324F3E34600F39D59 /* keyboard.swift in Sources */,
+				5DED6DA624FD371D0092F67D /* FeedTabViewController.swift in Sources */,
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
+				5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */,
 				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
@@ -1013,6 +1082,7 @@
 				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
+				5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */,
 				5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
@@ -1023,6 +1093,8 @@
 				5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
 				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
+				5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */,
+				5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
