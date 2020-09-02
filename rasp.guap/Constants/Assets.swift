@@ -50,6 +50,12 @@ internal enum Asset {
       internal static let done = ImageAsset(name: "done")
       internal static let recent = ImageAsset(name: "recent")
     }
+    internal enum Feed {
+      internal static let commentOutline24 = ImageAsset(name: "comment_outline_24")
+      internal static let likeOutline24 = ImageAsset(name: "like_outline_24")
+      internal static let shareOutline24 = ImageAsset(name: "share_outline_24")
+      internal static let viewOutline24 = ImageAsset(name: "view_outline_24")
+    }
     internal static let photoPlaceholder = ImageAsset(name: "photoPlaceholder")
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
     internal static let rocket = ImageAsset(name: "rocket")
