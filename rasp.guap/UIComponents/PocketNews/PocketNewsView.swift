@@ -108,7 +108,7 @@ class PocketNewsView: View {
         self.titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(authorLabel)
             make.top.equalTo(authorLabel.snp.bottom).offset(7)
-            make.right.equalTo(imageView.snp.left).inset(12)
+            make.right.equalTo(imageView.snp.left).inset(-12)
             make.bottom.lessThanOrEqualTo(likeLabel.snp.top)
         }
     }
