@@ -8,9 +8,6 @@
 
 import UIKit
 
-class GroupFollowView:UIView{
-    
-}
 
 class WeatherView: UIView {
     

@@ -34,13 +34,24 @@ class FeedBriefInfoViewController: UIViewController {
             let last_name: String
             let first_name: String
         }
+        
+        do{
+            guard let data = try VK.API.Users.get([.fields:"first_name"]).synchronously().send() else { return}
+            let resp = try JSONDecoder().decode([vkResponse].self, from: data)
+            DispatchQueue.main.async { self.rootView.addBlock(title: "Добро пожаловать, \(resp[0].first_name) \(resp[0].last_name)", view: nil ) }
+        }catch {}
+        
         if !SABrief.shared.isSub {
-            VK.API.Users.get([.fields:"first_name"]).onSuccess {
-                do{
-                    let resp = try JSONDecoder().decode([vkResponse].self, from: $0)
-                    DispatchQueue.main.async { self.rootView.addBlock(title: "Добро пожаловать, \(resp[0].first_name) \(resp[0].last_name)", view: nil ) }
-                }catch {}
-            }.send()
+            DispatchQueue.main.async {
+                let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.photoPlaceholder.image)
+                let div = PocketDivView(content: view)
+                view.setButton(title: "Вступить") { _ in
+                    div.snp.removeConstraints()
+                    div.isHidden = true
+                    div.snp.makeConstraints { $0.size.equalTo(CGSize.zero)}
+                }
+                self.rootView.addBlock(title: nil, view: div )
+            }
         }
         
         
