@@ -14,7 +14,7 @@ public class SAFeedStream{
     public var feed:[SAFeedElement] = []
     public var offset:Int = 0
     
-    public var count = 20
+    public var count = 7
     
     public func reload(){
         self.offset = 0
@@ -36,7 +36,7 @@ public class SAFeedStream{
                 let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
                 let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
                 
-                new.append(SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: ""))
+                new.append(SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: ""))
                 
                 self.offset += 1
             }
