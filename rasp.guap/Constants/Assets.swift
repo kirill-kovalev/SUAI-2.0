@@ -32,6 +32,7 @@ internal enum Asset {
       internal static let stu = ImageAsset(name: "stu")
     }
     internal static let launchScreen = ImageAsset(name: "LaunchScreen")
+    internal static let stickers = ImageAsset(name: "Stickers")
     internal enum TabBarImages {
       internal static let deadlines = ImageAsset(name: "deadlines")
       internal static let feed = ImageAsset(name: "feed")
