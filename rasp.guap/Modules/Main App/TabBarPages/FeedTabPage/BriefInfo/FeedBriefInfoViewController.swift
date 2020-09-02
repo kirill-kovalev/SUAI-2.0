@@ -50,7 +50,7 @@ class FeedBriefInfoViewController: UIViewController {
                     div.isHidden = true
                     div.snp.makeConstraints { $0.size.equalTo(CGSize.zero)}
                 }
-                self.rootView.addBlock(title: nil, view: div )
+                
             }
         }
         
@@ -59,8 +59,62 @@ class FeedBriefInfoViewController: UIViewController {
     
     //MARK: - Weather
     func loadWeatherAndRockets(){
-        
+        SABrief.shared.loadFromServer()
+        if !SABrief.shared.isSub {
+            DispatchQueue.main.async { self.rootView.addBlock(title: "Погода на сегодня", view: nil ) }
+        }
+        let temp = SABrief.shared.weather.temp
+        let icon = SABrief.shared.weather.id
+        let conditions = SABrief.shared.weather.conditions
+        let rockets = SABrief.shared.rockets.count
+        DispatchQueue.main.async {
+            let stack = UIStackView(frame: .zero)
+            stack.axis = .horizontal
+            stack.alignment = .fill
+            stack.distribution = .fillEqually
+            stack.spacing = 10
+            stack.snp.makeConstraints {$0.left.right.equalToSuperview()}
+            self.rootView.addBlock(title: nil, view: stack )
+            
+            
+            stack.addArrangedSubview(PocketDivView(content:BriefHalfScreenView(title: "\(temp)°", subtitle: conditions,
+                                                                               image: self.getWeatherImage(id: icon).0,
+                                                                               color: self.getWeatherImage(id: icon).1)))
+            
+            let rocketsDiv = PocketDivView(content:BriefHalfScreenView(title: "\(rockets)",subtitle: "рокетов за неделю",
+                                                                               image: Asset.AppImages.rocket.image))
+            stack.addArrangedSubview(rocketsDiv)
+            rocketsDiv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showRocketsModal)))
+            
+        }
     }
+    func getWeatherImage(id:Int) -> (UIImage,UIColor){
+        print(id)
+        switch (true) {
+              case id >= 200 && id <= 232:
+                return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.buttonOutlineBorder.color)
+              case id >= 300 && id <= 321:
+                return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.buttonOutlineBorder.color)
+              case id >= 500 && id <= 531:
+                return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.buttonOutlineBorder.color)
+              case id >= 600 && id <= 622:
+                return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.pocketGray.color)
+              case id >= 701 && id <= 781:
+                return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.pocketGray.color)
+              case id == 800:
+                return (Asset.AppImages.WeatherImages.sunny.image,Asset.PocketColors.pocketYellow.color)
+              case id == 801:
+                return (Asset.AppImages.WeatherImages.clouds.image,Asset.PocketColors.buttonOutlineBorder.color)
+              case id >= 802 && id <= 804:
+                return (Asset.AppImages.WeatherImages.cloudy.image,Asset.PocketColors.pocketBlack.color)
+              default:
+                return (Asset.AppImages.WeatherImages.clouds.image,Asset.PocketColors.pocketDarkBlue.color)
+        }
+    }
+    @objc func showRocketsModal(){ self.present(RocketModalViewController(), animated: true, completion: nil) }
+    
+    
+    
     //MARK: - Schedule
     func loadSchedule(){
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
