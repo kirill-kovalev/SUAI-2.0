@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PocketNewsView: View {
+class PocketNewsView: UIView {
     
     // MARK: - views
     
@@ -38,10 +38,18 @@ class PocketNewsView: View {
         return imageView
     }()
     
+    let datetimeLabel:UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
+        label.text = "4 декабря в 12:00"
+        return label
+    }()
+    
     let likeIcon:UIImageView = {
-        let icon = UIImageView(image: Asset.SystemIcons.likes.image )
+        let icon = UIImageView(image: Asset.AppImages.Feed.likeOutline24.image )
         icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
-        icon.tintColor = Asset.PocketColors.pocketGray.color
+        icon.tintColor = Asset.PocketColors.pocketError.color
         return icon
     }()
     
@@ -53,35 +61,89 @@ class PocketNewsView: View {
         return label
     }()
     
-    let datetimeLabel:UILabel = {
+    
+    let commentIcon:UIImageView = {
+        let icon = UIImageView(image: Asset.AppImages.Feed.commentOutline24.image )
+        icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
+        icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
+        return icon
+    }()
+    let commentLabel:UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
-        label.text = "4 декабря в 12:00"
+        label.text = "205"
+        return label
+    }()
+    
+    let repostIcon:UIImageView = {
+           let icon = UIImageView(image: Asset.AppImages.Feed.shareOutline24.image )
+           icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
+           icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
+           return icon
+   }()
+   let repostLabel:UILabel = {
+       let label = UILabel(frame: .zero)
+       label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+       label.textColor = Asset.PocketColors.pocketGray.color
+       label.text = "205"
+       return label
+   }()
+    
+    let viewsIcon:UIImageView = {
+            let icon = UIImageView(image: Asset.AppImages.Feed.viewOutline24.image )
+            icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
+            icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
+            return icon
+    }()
+    let viewsLabel:UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
+        label.text = "205"
         return label
     }()
     
     
-    
-    required init() {
-        super.init()
+    required init(big:Bool = false) {
+        super.init(frame:.zero)
         addViews()
-        setupConstraints()
+        if big{
+            self.imageView.layer.cornerRadius = 0
+            setupConstraintsBig()
+        }else{
+            for view in [repostLabel,repostIcon,commentLabel,commentIcon,viewsIcon,viewsLabel] {
+                view.isHidden = true
+            }
+            setupConstraintsSmall()
+        }
+        
     }
+    
     
     private func addViews(){
         
+        self.addSubview(imageView)
         self.addSubview(authorLabel)
         self.addSubview(titleLabel)
-        self.addSubview(imageView)
+        
+        self.addSubview(datetimeLabel)
         
         self.addSubview(likeIcon)
         self.addSubview(likeLabel)
         
-        self.addSubview(datetimeLabel)
+        self.addSubview(commentIcon)
+        self.addSubview(commentLabel)
+        
+        self.addSubview(repostIcon)
+        self.addSubview(repostLabel)
+        
+        self.addSubview(viewsIcon)
+        self.addSubview(viewsLabel)
+
     }
     
-    private func setupConstraints(){
+    private func setupConstraintsSmall(){
         self.imageView.snp.makeConstraints { (make) in
             make.height.width.equalTo(87)
             make.top.bottom.right.equalToSuperview()
@@ -110,6 +172,71 @@ class PocketNewsView: View {
             make.top.equalTo(authorLabel.snp.bottom).offset(7)
             make.right.equalTo(imageView.snp.left).inset(-12)
             make.bottom.lessThanOrEqualTo(likeLabel.snp.top)
+        }
+    }
+    
+    private func setupConstraintsBig(){
+        self.imageView.snp.makeConstraints { (make) in
+            make.height.equalTo(200)
+            make.top.left.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(10)
+        }
+        self.authorLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(imageView.snp.bottom).offset(12)
+            make.left.equalToSuperview()
+        }
+        self.datetimeLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(authorLabel)
+            make.right.equalToSuperview()
+        }
+        
+        
+        self.titleLabel.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.authorLabel.snp.bottom).offset(6)
+        }
+        
+        
+        self.likeIcon.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.left.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.bottom.equalToSuperview()
+        }
+        self.likeLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(likeIcon.snp.right).offset(7)
+            make.centerY.equalTo(likeIcon)
+        }
+        
+        self.commentIcon.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.left.equalTo(likeLabel.snp.right).offset(7)
+            make.centerY.equalTo(likeIcon)
+        }
+        self.commentLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(commentIcon.snp.right).offset(7)
+            make.centerY.equalTo(likeIcon)
+        }
+        
+        self.repostIcon.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.left.equalTo(commentLabel.snp.right).offset(7)
+            make.centerY.equalTo(likeIcon)
+        }
+        self.repostLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(repostIcon.snp.right).offset(7)
+            make.centerY.equalTo(likeIcon)
+        }
+        
+        self.viewsLabel.snp.makeConstraints { (make) in
+            
+            make.right.equalToSuperview()
+            make.centerY.equalTo(likeIcon)
+        }
+        self.viewsIcon.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.right.equalTo(self.viewsLabel.snp.left)
+            make.centerY.equalTo(likeIcon)
         }
     }
     
