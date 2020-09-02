@@ -79,7 +79,7 @@ class FeedBriefInfoViewController: UIViewController {
             stack.snp.makeConstraints {$0.left.right.equalToSuperview()}
             
             
-            stack.addArrangedSubview(PocketDivView(content:BriefHalfScreenView(title: "\(temp)°", subtitle: conditions,
+            stack.addArrangedSubview(PocketDivView(content:BriefHalfScreenView(title: "\(temp>0 ? "+" : "")\(Int(temp))°", subtitle: conditions,
                                                                                image: self.getWeatherImage(id: icon).0,
                                                                                color: self.getWeatherImage(id: icon).1)))
             
