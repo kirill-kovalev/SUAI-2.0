@@ -34,7 +34,7 @@ public class SADeadlines{
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 			}catch{
-				print(error)
+				print("Deadlines: \(error)")
 			}
 		}
 	}

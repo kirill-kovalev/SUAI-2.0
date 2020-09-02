@@ -28,8 +28,7 @@ public class SAUserSettings: Codable {
                 UserDefaults.standard.set(data, forKey: "\(Self.self)" )
             }catch{
                 settings = nil
-                print(error)
-                print(String(data: data, encoding: .utf8)!)
+                print("Settings Server: \(error)")
             }
         }
         return settings
@@ -42,7 +41,7 @@ public class SAUserSettings: Codable {
            
         }catch{
             settings = nil
-            print(error)
+            print("Settings Cache: \(error)")
         }
         return settings
     }

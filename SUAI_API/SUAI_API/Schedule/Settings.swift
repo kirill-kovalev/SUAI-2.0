@@ -33,7 +33,7 @@ public struct ScheduleSettings:Codable {
                         loaded = try JSONDecoder().decode(ScheduleSettings.self, from: data!)
                         
                     }catch{
-                        print(error.localizedDescription)
+                        print("chedule settings: \(error)")
                     }
                 } else {print("HTTPURLResponse Code != 200")}
             }else {print("err: \(err?.localizedDescription ?? "")")}

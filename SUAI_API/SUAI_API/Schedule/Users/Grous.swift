@@ -32,7 +32,7 @@ public class Groups :SAUsers{
                         let decoded = try JSONDecoder().decode([User].self, from: data!)
                         self.users = decoded
                     }catch{
-                        print(error.localizedDescription)
+                        print("Groups: \(error)")
                     }
                 }
             }

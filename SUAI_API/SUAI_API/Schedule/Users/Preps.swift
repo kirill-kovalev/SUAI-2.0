@@ -31,7 +31,7 @@ public class Preps :SAUsers{
                         self.users = decoded
                         
                     }catch{
-                        print(error.localizedDescription)
+                        print("Preps: \(error)")
                     }
                 }
             }

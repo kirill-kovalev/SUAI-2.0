@@ -28,7 +28,7 @@ public class SANews{
                 self.streams.append(SAFeedStream(source: source))
             }
         }catch{
-            print(error)
+            print("SANews source list: \(error)")
         }
         
     }

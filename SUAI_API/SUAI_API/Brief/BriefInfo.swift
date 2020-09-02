@@ -19,7 +19,7 @@ public class SABrief{
             decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
             let a = try decoder.decode(Brief.self, from: data)
             self.briefInfo = a
-        }catch{ print(error) }
+        }catch{print("Brief: \(error)") }
     }
     public var isSub:Bool {self.briefInfo.is_sub}
     public var weather: SAWeather { self.briefInfo.weather}

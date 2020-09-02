@@ -92,11 +92,11 @@ public class SATimetable {
                     }
                     
                 }catch{
-                    print(error.localizedDescription)
+                    print("SATimetable: \(error)")
                 }
                 
             } else {print("HTTPURLResponse Code != 200")}
-        }else {print("err: \(err?.localizedDescription ?? "")")}
+        }else {print("SATimetable: \(err?.localizedDescription ?? "")")}
     }
     
     
