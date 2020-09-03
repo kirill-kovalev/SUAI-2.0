@@ -9,7 +9,7 @@
 import UIKit
 
 /// Define RadioButtonCircleStyle
-public struct RadioButtonCircleStyle {
+public struct MBRadioButtonCircleStyle {
     
     let outer: CGFloat
     let inner: CGFloat

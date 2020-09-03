@@ -9,22 +9,22 @@
 import UIKit
 
 // MARK:- CheckboxButtonDelegate
-public protocol CheckboxButtonDelegate: class {
+public protocol MBCheckboxButtonDelegate: class {
     
     /// Delegate call when Checkbox is selected
     ///
     /// - Parameter button: CheckboxButton
-    func chechboxButtonDidSelect(_ button: CheckboxButton)
+    func chechboxButtonDidSelect(_ button: MBCheckboxButton)
     
     /// Delegate call when Checkbox is deselected
     ///
     /// - Parameter button: CheckboxButton
-    func chechboxButtonDidDeselect(_ button: CheckboxButton)
+    func chechboxButtonDidDeselect(_ button: MBCheckboxButton)
     
 }
 
 // MARK:- CheckboxButton
-public class CheckboxButton: RadioCheckboxBaseButton {
+public class MBCheckboxButton: MBRadioCheckboxBaseButton {
     
     private var outerLayer = CAShapeLayer()
     private var checkMarkLayer = CAShapeLayer()
@@ -33,10 +33,10 @@ public class CheckboxButton: RadioCheckboxBaseButton {
     private var radioButtonColorDidSetCall = false
     
     /// Set you delegate handler
-    public weak var delegate: CheckboxButtonDelegate?
+    public weak var delegate: MBCheckboxButtonDelegate?
     
     /// Set checkbox color to customise the buttons
-    public var checkBoxColor: CheckBoxColor! {
+    public var checkBoxColor: MBCheckBoxColor! {
         didSet {
             if radioButtonColorDidSetCall {
                 checkMarkLayer.strokeColor = checkBoxColor.checkMarkColor.cgColor
@@ -46,7 +46,7 @@ public class CheckboxButton: RadioCheckboxBaseButton {
     }
     
     /// Apply checkbox line to gcustomize checkbox button layout
-    public var checkboxLine = CheckboxLineStyle() {
+    public var checkboxLine = MBCheckboxLineStyle() {
         didSet {
             setupLayer()
         }
@@ -59,7 +59,7 @@ public class CheckboxButton: RadioCheckboxBaseButton {
     
     /// Set default color of chebox
     override internal func setup() {
-        checkBoxColor = CheckBoxColor(activeColor: tintColor, inactiveColor: UIColor.clear, inactiveBorderColor: UIColor.lightGray, checkMarkColor: UIColor.white)
+        checkBoxColor = MBCheckBoxColor(activeColor: tintColor, inactiveColor: UIColor.clear, inactiveBorderColor: UIColor.lightGray, checkMarkColor: UIColor.white)
         style = .rounded(radius: 2)
         super.setup()
         radioButtonColorDidSetCall = true

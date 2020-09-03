@@ -9,10 +9,10 @@
 import Foundation
 
 /// Hold all Radio Buttons
-public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
+public class MBRadioButtonContainer: MBRadioCheckboxBaseContainer<MBRadioButton> {
     
     /// Radio button delegate will be assigned to all button added in container
-    public weak var delegate: RadioButtonDelegate? {
+    public weak var delegate: MBRadioButtonDelegate? {
         didSet {
             allButtons.forEach { $0.delegate = delegate }
         }
@@ -38,7 +38,7 @@ public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
     }
     
     /// Deselecting previous selected button
-    override func selectionChangeObserver(_ button: RadioButton, _ change: NSKeyValueObservedChange<Bool>) {
+    override func selectionChangeObserver(_ button: MBRadioButton, _ change: NSKeyValueObservedChange<Bool>) {
         super.selectionChangeObserver(button, change)
         if button.isOn {
             // Deselect on selected button excepting current selected button
@@ -52,7 +52,7 @@ public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
     
     /// Set common color for all button added in container
     /// No guarantee for newly added buttons
-    public var radioButtonColor: RadioButtonColor? {
+    public var radioButtonColor: MBRadioButtonColor? {
         didSet {
             guard let color = radioButtonColor else { return }
             setEachRadioButtonColor { _ in return color }
@@ -61,7 +61,7 @@ public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
     
     /// Set common radio circel style for all button added in container
     /// No guarantee for newly added buttons
-    public var radioCircleStyle: RadioButtonCircleStyle? {
+    public var radioCircleStyle: MBRadioButtonCircleStyle? {
         didSet {
             guard let style =  radioCircleStyle else { return }
             setEachRadioButtonCircleStyle { _ in return style }
@@ -71,7 +71,7 @@ public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
     /// Set separate radio button color for each button
     ///
     /// - Parameter body: (RadioButton) -> RadioButtonColor
-    public func setEachRadioButtonColor(_ body: (Kind) -> RadioButtonColor) {
+    public func setEachRadioButtonColor(_ body: (Kind) -> MBRadioButtonColor) {
         allButtons.forEach {
                 $0.radioButtonColor = body($0)
         }
@@ -80,7 +80,7 @@ public class RadioButtonContainer: RadioCheckboxBaseContainer<RadioButton> {
     /// Set separate radio button circle style for each button
     ///
     /// - Parameter body: (RadioButton) -> RadioButtonCircleStyle
-    public func setEachRadioButtonCircleStyle(_ body: (Kind) -> RadioButtonCircleStyle) {
+    public func setEachRadioButtonCircleStyle(_ body: (Kind) -> MBRadioButtonCircleStyle) {
         allButtons.forEach {
                 $0.radioCircle = body($0)
         }

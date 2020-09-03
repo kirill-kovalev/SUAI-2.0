@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: CheckboxLineStyle
 /// Define Checkbox style
-public struct CheckboxLineStyle {
+public struct MBCheckboxLineStyle {
     
     let checkBoxHeight: CGFloat
     let checkmarkLineWidth: CGFloat

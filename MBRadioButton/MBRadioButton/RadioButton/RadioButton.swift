@@ -9,18 +9,18 @@
 import UIKit
 
 // MARK:- RadioButtonDelegate
-public protocol RadioButtonDelegate: class {
+public protocol MBRadioButtonDelegate: class {
     
     /// Delegate called when radio button is Selected
     ///
     /// - Parameter button: RadioButton
-    func radioButtonDidSelect(_ button: RadioButton)
+    func radioButtonDidSelect(_ button: MBRadioButton)
     
     /// Delegate called when radio button is deselected
     /// It will call automatically when user choose different radio button than selected
     ///
     /// - Parameter button: RadioButton
-    func radioButtonDidDeselect(_ button: RadioButton)
+    func radioButtonDidDeselect(_ button: MBRadioButton)
     
 }
 
@@ -34,7 +34,7 @@ internal class RadioLayer: CAShapeLayer {
 }
 
 // MARK:- RadioCheckboxBaseButton
-public class RadioButton: RadioCheckboxBaseButton {
+public class MBRadioButton: MBRadioCheckboxBaseButton {
     
     private var outerLayer = CAShapeLayer()
     private var innerLayer = RadioLayer()
@@ -42,15 +42,15 @@ public class RadioButton: RadioCheckboxBaseButton {
     private var sizeChangeObserver: NSKeyValueObservation?
     
     /// Set your delegate handler
-    public weak var delegate: RadioButtonDelegate?
+    public weak var delegate: MBRadioButtonDelegate?
     
     /// Apply RadioButtonCircleStyle
-    public var radioCircle = RadioButtonCircleStyle() {
+    public var radioCircle = MBRadioButtonCircleStyle() {
         didSet { setupLayer() }
     }
     
     /// Apply RadioButtonColor
-    public var radioButtonColor: RadioButtonColor! {
+    public var radioButtonColor: MBRadioButtonColor! {
         didSet {
             innerLayer.fillColor = radioButtonColor.active.cgColor
             outerLayer.strokeColor = isOn ? radioButtonColor.active.cgColor : radioButtonColor.inactive.cgColor
@@ -65,7 +65,7 @@ public class RadioButton: RadioCheckboxBaseButton {
     /// Do initial stuff here
     /// Setting default color style
     override internal func setup() {
-        radioButtonColor = RadioButtonColor(active: tintColor, inactive: UIColor.lightGray)
+        radioButtonColor = MBRadioButtonColor(active: tintColor, inactive: UIColor.lightGray)
         style = .circle
         super.setup()
     }
@@ -134,7 +134,7 @@ public class RadioButton: RadioCheckboxBaseButton {
 private extension UIBezierPath {
     
     /// Get outer circle layer
-    static func outerCircle(rect: CGRect, circle: RadioButtonCircleStyle, style: RadioCheckboxStyle) -> UIBezierPath {
+    static func outerCircle(rect: CGRect, circle: MBRadioButtonCircleStyle, style: RadioCheckboxStyle) -> UIBezierPath {
         let size = CGSize(width: circle.outer, height: circle.outer)
         let newRect = CGRect(origin: CGPoint(x: circle.lineWidth/2, y: rect.size.height/2-(circle.outer/2)), size: size)
         switch style {
@@ -145,7 +145,7 @@ private extension UIBezierPath {
     }
     
     /// Get inner circle layer
-    static func innerCircleActive(rect: CGRect, circle: RadioButtonCircleStyle, style: RadioCheckboxStyle) -> UIBezierPath {
+    static func innerCircleActive(rect: CGRect, circle: MBRadioButtonCircleStyle, style: RadioCheckboxStyle) -> UIBezierPath {
         let size = CGSize(width: circle.inner, height: circle.inner)
         let origon = CGPoint(x: rect.midX-size.width/2, y: rect.midY-size.height/2)
         let newRect = CGRect(origin: origon, size: size)

@@ -17,7 +17,7 @@ public enum RadioCheckboxStyle {
 
 // MARK: - RadioCheckboxBaseButton
 @IBDesignable
-public class RadioCheckboxBaseButton: UIButton {
+public class MBRadioCheckboxBaseButton: UIButton {
     
     /// Oberver frame change to update style
     private var sizeChangeObserver: NSKeyValueObservation?
@@ -69,8 +69,8 @@ public class RadioCheckboxBaseButton: UIButton {
     
     /// Action handler of button for internal use
     ///
-    /// - Parameter sender: RadioCheckboxBaseButton
-    @objc internal func selectionAction(_ sender: RadioCheckboxBaseButton) {
+    /// - Parameter sender: MBRadioCheckboxBaseButton
+    @objc internal func selectionAction(_ sender: MBRadioCheckboxBaseButton) {
         // If toggle enable, change selection state
         if allowDeselection {
             isOn = !isOn
@@ -107,13 +107,13 @@ public class RadioCheckboxBaseButton: UIButton {
 }
 
 // MARK:- frame change handler
-extension RadioCheckboxBaseButton {
+extension MBRadioCheckboxBaseButton {
     
     private func addObserverSizeChange() {
-        sizeChangeObserver = observe(\RadioCheckboxBaseButton.frame, changeHandler: sizeChangeObseveHandler)
+        sizeChangeObserver = observe(\MBRadioCheckboxBaseButton.frame, changeHandler: sizeChangeObseveHandler)
     }
     
-    private func sizeChangeObseveHandler(_ object: RadioCheckboxBaseButton, _ change: NSKeyValueObservedChange<CGRect>) {
+    private func sizeChangeObseveHandler(_ object: MBRadioCheckboxBaseButton, _ change: NSKeyValueObservedChange<CGRect>) {
         setupLayer()
     }
     

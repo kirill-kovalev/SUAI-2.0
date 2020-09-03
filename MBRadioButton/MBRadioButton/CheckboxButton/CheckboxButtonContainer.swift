@@ -9,10 +9,10 @@
 import Foundation
 
 /// Hold all CheckboxButton button
-public class CheckboxButtonContainer: RadioCheckboxBaseContainer<CheckboxButton> {
+public class MBCheckboxButtonContainer: MBRadioCheckboxBaseContainer<MBCheckboxButton> {
     
     /// Checkbox delegate will be assigned to all button added in container
-    public weak var delegate: CheckboxButtonDelegate? {
+    public weak var delegate: MBCheckboxButtonDelegate? {
         didSet {
             allButtons.forEach { $0.delegate = delegate }
         }
@@ -27,7 +27,7 @@ public class CheckboxButtonContainer: RadioCheckboxBaseContainer<CheckboxButton>
     
     /// Set common color for all button added in container
     /// No guarantee for newly added buttons
-    public var checkboxButtonColor: CheckBoxColor? {
+    public var checkboxButtonColor: MBCheckBoxColor? {
         didSet {
             guard let color = checkboxButtonColor else { return }
             setEachCheckboxButtonColor { _ in return color}
@@ -36,7 +36,7 @@ public class CheckboxButtonContainer: RadioCheckboxBaseContainer<CheckboxButton>
     
     /// Set common radio circel style for all button added in container
     /// No guarantee for newly added buttons
-    public var checkboxLineStyle: CheckboxLineStyle? {
+    public var checkboxLineStyle: MBCheckboxLineStyle? {
         didSet {
             guard let style =  checkboxLineStyle else { return }
             setEachCheckboxButtonLineStyle { _ in return style }
@@ -46,7 +46,7 @@ public class CheckboxButtonContainer: RadioCheckboxBaseContainer<CheckboxButton>
     /// Set separate color style for each checkbox button added in conatainer
     ///
     /// - Parameter body: (CheckboxButton) -> CheckBoxColor
-    public func setEachCheckboxButtonColor(_ body: (Kind) -> CheckBoxColor) {
+    public func setEachCheckboxButtonColor(_ body: (Kind) -> MBCheckBoxColor) {
         allButtons.forEach {
             $0.checkBoxColor = body($0)
         }
@@ -55,7 +55,7 @@ public class CheckboxButtonContainer: RadioCheckboxBaseContainer<CheckboxButton>
     /// Apply separate CheckboxLine style for each style added in container
     ///
     /// - Parameter body: (CheckboxButton) -> CheckboxLineStyle
-    public func setEachCheckboxButtonLineStyle(_ body: (Kind) -> CheckboxLineStyle) {
+    public func setEachCheckboxButtonLineStyle(_ body: (Kind) -> MBCheckboxLineStyle) {
         allButtons.forEach {
             $0.checkboxLine = body($0)
         }

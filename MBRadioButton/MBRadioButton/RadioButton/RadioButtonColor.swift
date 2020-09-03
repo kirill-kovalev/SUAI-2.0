@@ -10,7 +10,7 @@ import UIKit
 
 /// Define RadioButtonColor
 
-public struct RadioButtonColor {
+public struct MBRadioButtonColor {
     
     let active: UIColor
     let inactive: UIColor

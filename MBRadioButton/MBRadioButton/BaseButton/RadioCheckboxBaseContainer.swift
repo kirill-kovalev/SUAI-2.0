@@ -9,7 +9,7 @@
 import Foundation
 
 /// Struct to hold weak reference of a button
-struct WeakRef<T: RadioCheckboxBaseButton> {
+struct WeakRef<T: MBRadioCheckboxBaseButton> {
     
     private var selectionObservation: NSKeyValueObservation?
     weak var value: T?
@@ -20,7 +20,7 @@ struct WeakRef<T: RadioCheckboxBaseButton> {
     }
 }
 
-public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
+public class MBRadioCheckboxBaseContainer<T> where T: MBRadioCheckboxBaseButton {
     
     public typealias Kind = T
     
@@ -29,14 +29,14 @@ public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
     
     /// initializer with buttos
     ///
-    /// - Parameter buttons: Array<T: RadioCheckboxBaseButton>
+    /// - Parameter buttons: Array<T: MBRadioCheckboxBaseButton>
     public init(_ buttons: [T] = []) {
         addButtons(buttons)
     }
     
     /// Get buttons strutct object of specified button
     ///
-    /// - Parameter button: RadioCheckboxBaseButton
+    /// - Parameter button: MBRadioCheckboxBaseButton
     /// - Returns: WeakRef of specified button
     private func weakRefOf(button: T) -> WeakRef<T>? {
         return buttonContainer.first(where: { $0.value == button })
@@ -49,7 +49,7 @@ public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
     
     /// Add buttons into container
     ///
-    /// - Parameter buttons: RadioCheckboxBaseButton
+    /// - Parameter buttons: MBRadioCheckboxBaseButton
     public func addButtons(_ buttons: [T]) {
         buttons.forEach { addButton($0) }
     }
@@ -79,7 +79,7 @@ public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
     /// Add a new button to container on return confirm button is added or not.
     /// If button is already added then false will be return
     ///
-    /// - Parameter button: RadioCheckboxBaseButton
+    /// - Parameter button: MBRadioCheckboxBaseButton
     /// - Returns: Bool
     @discardableResult
     public func addButton(_ button: T) -> Bool {
@@ -95,7 +95,7 @@ public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
     
     /// Remove specified button from container, If button is not present then false will be return
     ///
-    /// - Parameter button: RadioCheckboxBaseButton
+    /// - Parameter button: MBRadioCheckboxBaseButton
     /// - Returns: Bool
     @discardableResult
     public func removeButton(_ button: T) -> Bool {
@@ -110,7 +110,7 @@ public class RadioCheckboxBaseContainer<T> where T: RadioCheckboxBaseButton {
     /// Child can override if wants to perform any action on selection state changes
     ///
     /// - Parameters:
-    ///   - button: RadioCheckboxBaseButton
+    ///   - button: MBRadioCheckboxBaseButton
     ///   - change: NSKeyValueObservedChange<Bool>
     internal func selectionChangeObserver(_ button: T, _ change: NSKeyValueObservedChange<Bool>) {
         
