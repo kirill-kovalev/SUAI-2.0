@@ -6,4 +6,10 @@
 //  Copyright © 2020 Kovalev K.A. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SuaiIDViewController: ViewController<SuaiIDView> {
+	override func viewDidLoad() {
+		self.keyboardReflective = false
+	}
+}
