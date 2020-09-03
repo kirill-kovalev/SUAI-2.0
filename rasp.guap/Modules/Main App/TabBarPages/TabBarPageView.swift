@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarPageView : View, UIScrollViewDelegate{
+class TabBarPageView : View{
     let header:UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = Asset.PocketColors.headerBackground.color
@@ -92,7 +92,4 @@ class TabBarPageView : View, UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("did scroll")
     }
-}
-protocol TabPageContentUpdateDelegate{
-    func pageContentDidUpdate()
 }

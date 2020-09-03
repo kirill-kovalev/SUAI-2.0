@@ -195,15 +195,3 @@ extension ScheduleTabViewController:UserChangeDelegate{
         }
     }
 }
-extension ScheduleTabViewController:TabPageContentUpdateDelegate{
-    func pageContentDidUpdate() {
-        if self.currentUser != nil{
-            DispatchQueue.global(qos: .background).async {
-                self.timetable = SASchedule.shared.load(for: self.currentUser!)
-                DispatchQueue.main.async {
-                    self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
-                }
-            }
-        }
-    }
-}
