@@ -28,6 +28,8 @@ class PocketTextField:UITextField{
 		self.textRect(forBounds: self.bounds.insetBy(dx: 5, dy: 5))
 		self.doneAccessory = true
 		traitCollectionDidChange(nil)
+		self.snp.removeConstraints()
+		self.snp.makeConstraints {$0.height.equalTo(40)}
 	}
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
