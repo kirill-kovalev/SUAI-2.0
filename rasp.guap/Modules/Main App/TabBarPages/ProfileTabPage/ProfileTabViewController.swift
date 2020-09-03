@@ -18,11 +18,24 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	}
 	required init?(coder: NSCoder) {fatalError()}
 	
+	let studentCard = StudentCardViewController()
+	let suaiID = SuaiIDViewController()
+	let settings = AppSettingsViewController()
 	override func viewDidLoad(){
+		self.keyboardReflective = false
 		#if DEBUG
 		setupLogoutButton()
 		#endif
 		
+		self.addBlock(title: "Карточка студента", vc:studentCard)
+		self.addBlock(title: "SUAI ID", vc: suaiID)
+		self.addBlock(title: "Основные настройки", vc: settings)
+		//self.addBlock(title: "О сервисе", view: nil)
+	}
+	func addBlock(title:String,vc:UIViewController) {
+		self.addChild(vc)
+		self.rootView.addBlock(title: title, view: PocketDivView(content: vc.view))
+		vc.didMove(toParent: self)
 	}
 	
 	

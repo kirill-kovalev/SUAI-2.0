@@ -134,6 +134,8 @@
 		5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */; };
 		5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */; };
 		5DF423D12501102200565FB8 /* PocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423D02501102200565FB8 /* PocketTextField.swift */; };
+		5DF424032501374900565FB8 /* MBRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF424022501374900565FB8 /* MBRadioButton.framework */; };
+		5DF424042501374900565FB8 /* MBRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF424022501374900565FB8 /* MBRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5D9D903724EC785900930375 /* SUAI_API.framework in Embed Frameworks */,
+				5DF424042501374900565FB8 /* MBRadioButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +283,7 @@
 		5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
 		5DF423D02501102200565FB8 /* PocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTextField.swift; sourceTree = "<group>"; };
+		5DF424022501374900565FB8 /* MBRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */,
+				5DF424032501374900565FB8 /* MBRadioButton.framework in Frameworks */,
 				5D9D903624EC785900930375 /* SUAI_API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +306,7 @@
 		2612D29CDE1D426FAFFD5273 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5DF424022501374900565FB8 /* MBRadioButton.framework */,
 				5D9D903524EC785900930375 /* SUAI_API.framework */,
 				FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */,
 			);
