@@ -132,7 +132,7 @@
 		5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C72500F9C400565FB8 /* SuaiIDView.swift */; };
 		5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */; };
 		5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */; };
-		5DF423CE2500F9EB00565FB8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettings.swift */; };
+		5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -277,7 +277,7 @@
 		5DF423C72500F9C400565FB8 /* SuaiIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDView.swift; sourceTree = "<group>"; };
 		5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDViewController.swift; sourceTree = "<group>"; };
 		5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
-		5DF423CD2500F9EB00565FB8 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -890,7 +890,7 @@
 			isa = PBXGroup;
 			children = (
 				5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */,
-				5DF423CD2500F9EB00565FB8 /* AppSettings.swift */,
+				5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */,
 			);
 			path = AppSettings;
 			sourceTree = "<group>";
@@ -1133,7 +1133,7 @@
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
 				5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
-				5DF423CE2500F9EB00565FB8 /* AppSettings.swift in Sources */,
+				5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
 				5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */,
 				5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */,
