@@ -41,7 +41,11 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	
 	func setupLogoutButton(){
 		let logoutButton = Button(frame: .zero)
-		logoutButton.setTitle("L/O", for: .normal)
+		logoutButton.setImage(Asset.AppImages.logout.image.withRenderingMode(.alwaysTemplate), for: .normal)
+		logoutButton.imageView?.tintColor = Asset.PocketColors.pocketDarkBlue.color
+		logoutButton.transform = CGAffineTransform(rotationAngle: 180.degreesToRadians)
+		logoutButton.imageView!.snp.makeConstraints{$0.size.equalTo(CGSize(width: 24, height: 24))}
+		
 		logoutButton.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
 		self.rootView.addHeaderButton(logoutButton)
 		logoutButton.addTarget(action: { (sender) in
