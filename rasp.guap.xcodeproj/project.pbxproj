@@ -133,6 +133,7 @@
 		5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */; };
 		5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */; };
 		5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */; };
+		5DF423D12501102200565FB8 /* PocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423D02501102200565FB8 /* PocketTextField.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -278,6 +279,7 @@
 		5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDViewController.swift; sourceTree = "<group>"; };
 		5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
+		5DF423D02501102200565FB8 /* PocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTextField.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,6 +594,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5DF423CF2501101000565FB8 /* PocketTextField */,
 				5DF423BB25002F5C00565FB8 /* PocketAvatar */,
 				5D27457B24FFB35700F52D7A /* PocketBanner */,
 				5D289FC424FA581100643D54 /* SwitchSelector */,
@@ -895,6 +898,14 @@
 			path = AppSettings;
 			sourceTree = "<group>";
 		};
+		5DF423CF2501101000565FB8 /* PocketTextField */ = {
+			isa = PBXGroup;
+			children = (
+				5DF423D02501102200565FB8 /* PocketTextField.swift */,
+			);
+			path = PocketTextField;
+			sourceTree = "<group>";
+		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,6 +1094,7 @@
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D9D905124ED5A4000930375 /* DeadlineGroupSelectControllerDelegate.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
+				5DF423D12501102200565FB8 /* PocketTextField.swift in Sources */,
 				5DED6DAA24FD37CF0092F67D /* FeedListViewController.swift in Sources */,
 				5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */,
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
