@@ -57,6 +57,7 @@ internal enum Asset {
       internal static let shareOutline24 = ImageAsset(name: "share_outline_24")
       internal static let viewOutline24 = ImageAsset(name: "view_outline_24")
     }
+    internal static let logout = ImageAsset(name: "logout")
     internal static let photoPlaceholder = ImageAsset(name: "photoPlaceholder")
     internal static let pocketpocketLogo = ImageAsset(name: "pocketpocket_logo")
     internal static let rocket = ImageAsset(name: "rocket")
