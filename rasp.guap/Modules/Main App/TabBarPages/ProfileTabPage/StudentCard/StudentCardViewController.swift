@@ -13,7 +13,16 @@ import SwiftyVK
 class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		self.keyboardReflective = false
+
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		loadData()
+	}
+	
+	func loadData(){
 		struct vkResponse:Codable{
             let last_name: String
             let first_name: String
@@ -22,6 +31,7 @@ class StudentCardViewController: ViewController<StudentCardView> {
 		
 		DispatchQueue.global().async {
 			guard let settings = SAUserSettings.shared,
+				  settings.update(),
 				  let group = settings.group,
 				  let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
 				  let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first
@@ -40,6 +50,6 @@ class StudentCardViewController: ViewController<StudentCardView> {
 				}
 			}
 		}
-		
+	//
 	}
 }
