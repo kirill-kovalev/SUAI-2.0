@@ -57,18 +57,18 @@ class StudentCardView: View {
 		}
 		name.snp.makeConstraints { (make) in
 			make.bottom.equalTo(avatar.snp.centerY)
-			make.left.equalTo(avatar.snp.right)
+			make.left.equalTo(avatar.snp.right).offset(8)
 		}
 		group.snp.makeConstraints { (make) in
 			make.top.equalTo(avatar.snp.centerY)
-			make.left.equalTo(avatar.snp.right)
+			make.left.equalTo(name)
 		}
 		suai.snp.makeConstraints { (make) in
-			make.right.equalToSuperview()
+			make.right.equalToSuperview().offset(-8)
 			make.centerY.equalToSuperview()
 		}
 		suaiImage.snp.makeConstraints { (make) in
-			make.right.equalTo(suai.snp.left)
+			make.right.equalTo(suai.snp.left).offset(-4)
 			make.size.equalTo(CGSize(width: 24, height: 24))
 			make.centerY.equalTo(suai)
 		}

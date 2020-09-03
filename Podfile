@@ -10,7 +10,9 @@ target 'rasp.guap' do
   project 'rasp.guap.xcodeproj'
   use_frameworks!
 	
-	pod 'MBRadioButton'
+#	pod 'MBRadioButton'
+#	pod 'KGRadioButton'
+#	pod 'RadioButton'
   pod "SnapKit"
   pod "ESTabBarController-swift"
   pod 'SwiftyVK'

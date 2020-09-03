@@ -14,7 +14,7 @@ class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.keyboardReflective = false
-
+		loadData()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -40,11 +40,12 @@ class StudentCardViewController: ViewController<StudentCardView> {
 				self.rootView.group.text = "Группа "+group
 				self.rootView.name.text = "\(resp.first_name) \(resp.last_name)"
 			}
+			
 			NetworkManager.dataTask(url: resp.photo_100) { (result) in
 				switch result{
 					case .success(let data):
 						guard let image = UIImage(data: data) else {break}
-						self.rootView.avatar.imageView.image = image
+						DispatchQueue.main.async { self.rootView.avatar.imageView.image = image }
 					break;
 					case .failure: break;
 				}

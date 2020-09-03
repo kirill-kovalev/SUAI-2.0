@@ -65,23 +65,23 @@ class AppSettingsView: View {
 		groupLabel.snp.makeConstraints { $0.top.left.equalToSuperview() }
 		groupSelector.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
-			make.top.equalTo(groupLabel.snp.bottom)
+			make.top.equalTo(groupLabel.snp.bottom).offset(12)
 		}
 		startscreenLabel.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
-			make.top.equalTo(groupSelector.snp.bottom)
+			make.top.equalTo(groupSelector.snp.bottom).offset(12)
 		}
 		startScreenSelector.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
-			make.top.equalTo(startscreenLabel.snp.bottom)
+			make.top.equalTo(startscreenLabel.snp.bottom).offset(12)
 		}
 		buildingLabel.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
-			make.top.equalTo(startScreenSelector.snp.bottom)
+			make.top.equalTo(startScreenSelector.snp.bottom).offset(12)
 		}
 		buildingSelector.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
-			make.top.equalTo(buildingLabel.snp.bottom)
+			make.top.equalTo(buildingLabel.snp.bottom).offset(12)
 			make.bottom.equalToSuperview()
 		}
 				

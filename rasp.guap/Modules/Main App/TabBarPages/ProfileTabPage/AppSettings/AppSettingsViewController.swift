@@ -8,42 +8,53 @@
 
 import UIKit
 import MBRadioButton
+import SUAI_API
 
 
 class AppSettingsViewController: ViewController<AppSettingsView> {
 	
+
+	// MARK: - Список табов
 	let startScreens:[String] = [
 		"Новости",
 		"Дедлайны",
 		"Расписание",
 		"Настройки"
 	]
+	// MARK: - Список зданий
 	let buildings:[String] = [
-		"Новости",
-		"Дедлайны",
-		"Расписание",
-		"Настройки"
+		"Большая морская 67",
+		"Гастелло 15",
+		"Ленсовета 14"
 	]
-
+	
+	
 	let screensRadioContainer = MBRadioButtonContainer([])
 	let buildingsRadioContainer = MBRadioButtonContainer([])
-
 	
-	override func viewDidLoad() {
-		self.keyboardReflective = false
-		setupStartScreens()
-		setupBuildingList()
+	// MARK: - создание radioButton
+	func createRadioButton(title:String)->MBRadioButton{
+		let button = MBRadioButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+		button.setTitle(title, for: .normal)
+
+		button.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
+		button.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+		
+		
+		let color = Asset.PocketColors.pocketDarkBlue.color
+		button.radioButtonColor = MBRadioButtonColor(active: color, inactive: color)
+		button.radioCircle = MBRadioButtonCircleStyle(outerCircle: 20, innerCircle: 14, outerCircleBorder: 2,contentPadding: 12)
+		
+		
+		button.snp.makeConstraints { $0.height.equalTo(30)}
+		return button
 	}
 	
 	func setupStartScreens(){
 		let buttons = self.startScreens.enumerated().map{ (offset,title) -> MBRadioButton in
-			let button = MBRadioButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+			let button = self.createRadioButton(title: title)
 			button.tag = offset
-			button.setTitle(title, for: .normal)
-			button.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
-			button.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
 			self.rootView.startScreenSelector.addArrangedSubview(button)
-			button.snp.makeConstraints { $0.height.equalTo(30)}
 			return button
 		}
 		screensRadioContainer.addButtons(buttons)
@@ -52,28 +63,134 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 	func setupBuildingList(){
 		let buttons = self.buildings.enumerated().map{ (offset,title) -> MBRadioButton in
-			let button = MBRadioButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-			button.tag = offset
-			button.setTitle(title, for: .normal)
-			button.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
-			button.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+			let button = self.createRadioButton(title: title)
+			button.tag = -offset
 			self.rootView.buildingSelector.addArrangedSubview(button)
-//			button.snp.makeConstraints { $0.height.equalTo(30)}
 			return button
 		}
 		buildingsRadioContainer.addButtons(buttons)
 		buildingsRadioContainer.delegate = self
 	}
-}
-extension AppSettingsViewController:MBRadioButtonDelegate{
-	func radioButtonDidSelect(_ button: MBRadioButton) {
-		
+
+	// MARK: - VС Lifecycle
+	override func viewDidLoad() {
+		self.keyboardReflective = false
+		self.rootView.groupSelector.delegate = self
+		setupStartScreens()
+		setupBuildingList()
+		update()
+	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		update()
 	}
 	
-	func radioButtonDidDeselect(_ button: MBRadioButton) {
+	// MARK: - content update from server
+	func update(){
+		DispatchQueue.global().async {
+			SAUserSettings.shared?.reload()
+			self.updateView()
+		}
+	}
+	func updateView(){
+		let idTab = (SAUserSettings.shared?.idtab ?? 1) - 1
+		let building = (SAUserSettings.shared?.building ?? 1) - 1
+		let group = SAUserSettings.shared?.group
+			
+		DispatchQueue.main.async {
+			self.rootView.groupSelector.text = group
+			if idTab >= 0 && idTab < self.screensRadioContainer.allButtons.count{
+				self.screensRadioContainer.selectedButton = self.screensRadioContainer.allButtons[idTab]
+			}
+			if building >= 0 && building < self.buildingsRadioContainer.allButtons.count{
+				self.buildingsRadioContainer.selectedButton = self.buildingsRadioContainer.allButtons[building]
+			}
+			
+		}
+	}
+	
+	
+	func setGroup(name:String){
+		DispatchQueue.global().async {
+			let originGroup = SAUserSettings.shared?.group
+			SAUserSettings.shared?.group = name
+			if SAUserSettings.shared?.update() ?? false {
+				print("set")
+			}else{
+				SAUserSettings.shared?.group = originGroup
+				DispatchQueue.main.async {
+					self.updateView()
+				}
+			}
+			
+		}
+	}
+	
+	func setBuilding(_ id:Int){
 		
+		DispatchQueue.global().async {
+			let originBuilding = SAUserSettings.shared?.building ?? 1
+			SAUserSettings.shared?.building = id + 1
+			if (SAUserSettings.shared?.update() ?? false){
+				print("set!")
+			}else{
+				SAUserSettings.shared?.building = originBuilding
+				self.updateView()
+			}
+		}
+	}
+	func setStartPage(_ id:Int){
+		DispatchQueue.global().async {
+			let originTab = SAUserSettings.shared?.idtab ?? 1
+			SAUserSettings.shared?.idtab = id + 1
+			if (SAUserSettings.shared?.update() ?? false){
+				print("set!")
+			}else{
+				SAUserSettings.shared?.idtab = originTab
+				self.updateView()
+			}
+		}
 	}
 	
 	
 }
 
+extension AppSettingsViewController : UITextFieldDelegate{
+	
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+		textField.resignFirstResponder()
+		let vc = TimetableFilterViewConroller()
+		vc.content.prepField.isHidden = true
+		vc.content.preplabel.isHidden = true
+		vc.content.prepField.snp.removeConstraints()
+		vc.content.prepField.snp.makeConstraints { (make) in
+			make.top.equalTo(vc.content.groupField.snp.bottom)
+			make.bottom.equalTo(vc.content.selector.snp.top)
+		}
+		vc.delegate = self
+		self.present(vc, animated: true)
+	}
+
+}
+extension AppSettingsViewController: UserChangeDelegate{
+	func didSetUser(user: SAUsers.User) {
+		self.rootView.groupSelector.text = user.Name
+		self.setGroup(name:user.Name)
+	}
+	
+	
+}
+
+extension AppSettingsViewController:MBRadioButtonDelegate{
+	func radioButtonDidDeselect(_ button: MBRadioButton) { }
+	
+	
+	func radioButtonDidSelect(_ button: MBRadioButton) {
+		if button.tag > 0 {
+			self.setStartPage(button.tag)
+		}else{
+			self.setBuilding(-button.tag)
+		}
+	}
+
+}
