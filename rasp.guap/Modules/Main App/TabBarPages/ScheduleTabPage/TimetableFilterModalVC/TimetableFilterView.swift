@@ -27,25 +27,13 @@ class TimetableFilterView:UIView{
         return label
     }
     private func textFieldGenerator(_ title:String = "")->UITextField{
-        let field = UITextField(frame: .zero)
-        
-        field.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		let field = PocketTextField(frame: .zero)
         
         let img = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
         field.rightView = img
         img.bounds = CGRect(x: 0, y: 0, width: img.bounds.width + 10, height: img.bounds.height)
         field.rightViewMode = .unlessEditing
-        
-        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
-        field.leftViewMode = .always
-        
-        
-        field.layer.cornerRadius = 10
-        field.backgroundColor = Asset.PocketColors.pocketLightGray.color
-        field.textRect(forBounds: field.bounds.insetBy(dx: 5, dy: 5))
-        
-        
-        field.doneAccessory = true
+
         return field
     }
     

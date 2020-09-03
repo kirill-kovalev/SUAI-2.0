@@ -32,7 +32,7 @@ class PocketTextField:UITextField{
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
-		self.layer.borderColor = Asset.PocketColors.pocketLightGray.color.cgColor
+		self.layer.borderColor = Asset.PocketColors.pocketGray.color.withAlphaComponent(0.4).cgColor
 		self.layer.borderWidth = 1
 	}
 	
