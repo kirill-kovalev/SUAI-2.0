@@ -13,7 +13,8 @@ class ViewController<ContentView:View>: UIViewController {
     var rootView:ContentView {
             return (self.view as! ContentView)
     }
-    
+	var keyboardReflective = true
+	
     
     required init() {
         super.init(nibName: nil, bundle: nil)
@@ -58,7 +59,7 @@ class ViewController<ContentView:View>: UIViewController {
         let userInfo = (notification as NSNotification).userInfo!
         let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let animationDurarion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
-        let changeInHeight = (keyboardFrame.height ) * (show ? 1 : 0)
+		let changeInHeight = (keyboardFrame.height ) * (show && self.keyboardReflective ? 1 : 0)
         
         UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
             self.rootView.layoutMargins.bottom -= changeInHeight
