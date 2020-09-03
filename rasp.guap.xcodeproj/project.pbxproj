@@ -127,6 +127,12 @@
 		5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */; };
 		5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423BC25002F6A00565FB8 /* PocketAvatar.swift */; };
 		5DF423BF250039DF00565FB8 /* RocketUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423BE250039DF00565FB8 /* RocketUserView.swift */; };
+		5DF423C42500F9A300565FB8 /* StudentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C32500F9A300565FB8 /* StudentCardView.swift */; };
+		5DF423C62500F9B000565FB8 /* StudentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C52500F9B000565FB8 /* StudentCardViewController.swift */; };
+		5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C72500F9C400565FB8 /* SuaiIDView.swift */; };
+		5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */; };
+		5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */; };
+		5DF423CE2500F9EB00565FB8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettings.swift */; };
 		D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,7 +172,7 @@
 		5D2BD83724E4364E002630B5 /* InfoTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabView.swift; sourceTree = "<group>"; };
 		5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabViewController.swift; sourceTree = "<group>"; };
 		5D2BD83B24E43657002630B5 /* ProfileTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
-		5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +272,12 @@
 		5DED6DB324FD676D0092F67D /* RocketModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModalViewController.swift; sourceTree = "<group>"; };
 		5DF423BC25002F6A00565FB8 /* PocketAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAvatar.swift; sourceTree = "<group>"; };
 		5DF423BE250039DF00565FB8 /* RocketUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketUserView.swift; sourceTree = "<group>"; };
+		5DF423C32500F9A300565FB8 /* StudentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCardView.swift; sourceTree = "<group>"; };
+		5DF423C52500F9B000565FB8 /* StudentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCardViewController.swift; sourceTree = "<group>"; };
+		5DF423C72500F9C400565FB8 /* SuaiIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDView.swift; sourceTree = "<group>"; };
+		5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDViewController.swift; sourceTree = "<group>"; };
+		5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
+		5DF423CD2500F9EB00565FB8 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
 		71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.debug.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.debug.xcconfig"; sourceTree = "<group>"; };
 		FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rasp_guap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -462,6 +474,9 @@
 		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DF423C22500F7C400565FB8 /* AppSettings */,
+				5DF423C12500F7A800565FB8 /* SUAI_ID */,
+				5DF423C02500F79B00565FB8 /* StudentCard */,
 				5D2BD83B24E43657002630B5 /* ProfileTabView.swift */,
 				5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */,
 			);
@@ -853,6 +868,33 @@
 			path = PocketAvatar;
 			sourceTree = "<group>";
 		};
+		5DF423C02500F79B00565FB8 /* StudentCard */ = {
+			isa = PBXGroup;
+			children = (
+				5DF423C32500F9A300565FB8 /* StudentCardView.swift */,
+				5DF423C52500F9B000565FB8 /* StudentCardViewController.swift */,
+			);
+			path = StudentCard;
+			sourceTree = "<group>";
+		};
+		5DF423C12500F7A800565FB8 /* SUAI_ID */ = {
+			isa = PBXGroup;
+			children = (
+				5DF423C72500F9C400565FB8 /* SuaiIDView.swift */,
+				5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */,
+			);
+			path = SUAI_ID;
+			sourceTree = "<group>";
+		};
+		5DF423C22500F7C400565FB8 /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */,
+				5DF423CD2500F9EB00565FB8 /* AppSettings.swift */,
+			);
+			path = AppSettings;
+			sourceTree = "<group>";
+		};
 		A235ABA9F81984ED9F89B1AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1074,7 @@
 				5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */,
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
+				5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
 				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
@@ -1062,6 +1105,7 @@
 				5D9D905D24ED8BAF00930375 /* DeadlineListCell.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
+				5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */,
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
@@ -1087,14 +1131,18 @@
 				5D7D667324F3E34600F39D59 /* keyboard.swift in Sources */,
 				5DED6DA624FD371D0092F67D /* FeedTabViewController.swift in Sources */,
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
+				5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
+				5DF423CE2500F9EB00565FB8 /* AppSettings.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
 				5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */,
 				5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */,
 				5D296EB124E2EC11006AAE13 /* PocketFAQCard.swift in Sources */,
+				5DF423C42500F9A300565FB8 /* StudentCardView.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
+				5DF423C62500F9B000565FB8 /* StudentCardViewController.swift in Sources */,
 				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
 				5DA10F8524DC7B2800D09BD8 /* SecondPageViewController.swift in Sources */,
