@@ -34,6 +34,7 @@ public class SwitchSelector: UIScrollView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateView()
+		super.layoutSubviews()
     }
     
     private var _selectedIndex = 0

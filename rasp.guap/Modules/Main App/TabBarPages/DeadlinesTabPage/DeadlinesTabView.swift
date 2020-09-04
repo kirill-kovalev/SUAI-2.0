@@ -23,6 +23,11 @@ class DeadlinesTabView:TabBarPageView {
         btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
         return btn
     }()
+	let deadlineListSelector:SwitchSelector = {
+		let s = SwitchSelector(frame: .zero)
+		
+		return s
+	}()
     
     let pocketDiv = PocketDivView()
     
@@ -35,6 +40,7 @@ class DeadlinesTabView:TabBarPageView {
     }
     func addViews(){
         self.header.addSubview(selectorStack)
+		self.header.addSubview(deadlineListSelector)
         self.addHeaderButton(addButton)
         self.addSubview(pocketDiv)
     }
@@ -44,6 +50,12 @@ class DeadlinesTabView:TabBarPageView {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualToSuperview()
+        }
+		deadlineListSelector.snp.makeConstraints { (make) in
+            make.top.equalTo(title.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

@@ -17,23 +17,12 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
         self.rootView.setTitle(self.tabBarItem.title ?? "")
     }
     
-    let groupSelector = DeadlineGroupSelectController()
+
     let deadlineList = DeadlineListController()
     
     override func loadView() {
         super.loadView()
-        self.addChild(groupSelector)
-        self.rootView.header.addSubview(groupSelector.stackView)
-        groupSelector.didMove(toParent: self)
-        groupSelector.stackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.rootView.title.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.lessThanOrEqualToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        groupSelector.delegate = self
-        
-        
+
         self.addChild(deadlineList)
         self.rootView.pocketDiv.addSubview(deadlineList.view)
         deadlineList.didMove(toParent: self)
@@ -41,6 +30,24 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             make.top.left.bottom.right.equalToSuperview()
         }
         deadlineList.delegate = self
+		
+		self.rootView.deadlineListSelector.switchDelegate = self
+		
+		
+		
+		let text = Asset.PocketColors.pocketGray.color
+		let blueText = Asset.PocketColors.buttonOutlineBorder.color
+		let redText = Asset.PocketColors.pocketRedButtonText.color
+		
+		let blue = Asset.PocketColors.pocketBlue.color
+		let red = Asset.PocketColors.pocketDeadlineRed.color
+		
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Ближайшие", titleColor: text, selectedTitleColor: redText, backgroundColor: red))
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Открытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue))
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Закрытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue))
+		
+
+		
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +61,12 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
-        
-        
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+		self.rootView.deadlineListSelector.updateView()
         DispatchQueue.global(qos: .background).async {
             SADeadlines.shared.loadFromServer()
             DispatchQueue.main.async {
@@ -80,25 +86,25 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
         }
         
         
-        switch self.groupSelector.current {
-        case .closed:
+		switch self.rootView.deadlineListSelector.selectedIndex {
+        case 2:
             self.deadlineList.setItems(list: SADeadlines.shared.closed)
             break
-        case .nearest:
-            self.deadlineList.setItems(list: SADeadlines.shared.nearest)
-            break
-        case .open:
+        case 1:
             self.deadlineList.setItems(list: SADeadlines.shared.open)
             break
+		default:
+			self.deadlineList.setItems(list: SADeadlines.shared.nearest)
+			break
         }
         
     }
 }
 
-extension DeadlinesTabViewController:DeadlineGroupSelectControllerDelegate{
-    func didSelect(group: SADeadlineGroup) {
-        reloadItems()
-    }
+extension DeadlinesTabViewController:SwitchSelectorDelegate{
+	func didSelect(_ index: Int) {
+		reloadItems()
+	}
 }
 
 extension DeadlinesTabViewController:DeadlineListDelegate{
