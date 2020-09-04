@@ -47,10 +47,39 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 			self.update()
 			
 		}else{
-			self.rootView.daySelector.selectedIndex = day
+			self.rootView.daySelector.selectedIndex = getIndex(day: day)
 		}
         
     }
+	// MARK: - Hotfix after SwitchSelector
+	func getIndex(day:Int)->Int{
+		let shouldShowDays = self.days.enumerated().filter{
+			self.delegate?.shouldShow(day: $0.offset, week: self.week) ?? false
+		}.map{$0.element}
+		let dayname = days[day]
+		for (index,name) in shouldShowDays.enumerated() {
+			if name == dayname{
+				print("(getIndex) weekday:\(day) index:\(index)")
+				return index
+			}
+		}
+		
+		return 0
+	}
+	private func getWeekDay(index:Int)->Int{
+		let shouldShowDays = self.days.enumerated().filter{
+			self.delegate?.shouldShow(day: $0.offset, week: self.week) ?? false
+		}
+		for (day,name) in self.days.enumerated() {
+			if name == shouldShowDays[index].element{
+				print("(getWeekDay) weekday:\(day) index:\(index)")
+				return day
+			}
+		}
+		
+		return 0
+	}
+	// MARK: - End of Hotfix after SwitchSelector
 
     func update(){
         
@@ -84,12 +113,14 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 }
 
 extension ScheduleDaySelectViewController:SwitchSelectorDelegate {
+	
 	func didSelect(_ index: Int) {
+		
 		
 		UIImpactFeedbackGenerator(style: .light).impactOccurred()
 		
 		if index < self.days.count {
-			self.day = index
+			self.day = getWeekDay(index: index)
 			self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.week)
 		}else{
 			self.day = -1
