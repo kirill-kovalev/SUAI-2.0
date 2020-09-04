@@ -13,9 +13,8 @@ import WebKit
 class InfoTabView:TabBarPageView {
     let webView:WKWebView = {
         let view = WKWebView(frame: .zero)
-		let color = CIColor(color: Asset.PocketColors.pocketWhite.color)
+		
 		view.allowsLinkPreview = false
-		view.evaluateJavaScript("document.body.style.backgroundColor = 'rgb(\(Int(color.red*255)),\(Int(color.green*255)),\(Int(color.blue*255))'", completionHandler: nil)
         return view
     }()
 	let indicator:UIActivityIndicatorView = {
@@ -41,6 +40,35 @@ class InfoTabView:TabBarPageView {
 		indicator.snp.makeConstraints{$0.center.equalToSuperview()}
 		
     }
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		super.traitCollectionDidChange(previousTraitCollection)
+		updateWebViewColors()
+	}
+	func updateWebViewColors(){
+		func jsRGB(color:UIColor)->String{
+			let color = CIColor(color: color)
+			return "\"rgb(\(Int(color.red*255)),\(Int(color.green*255)),\(Int(color.blue*255))\""
+		}
+		let background = Asset.PocketColors.pocketWhite.color
+		
+		webView.evaluateJavaScript("""
+			document.getElementById('bm-v').style.backgroundColor = \(jsRGB(color: background))
+			var children = document.getElementById('bm-v').children
+			for(i in children){
+				child = children[i]
+				if(child.children != undefined ){
+					if (child.children[0].children[0] != undefined){
+						child.children[0].children[0].style.fill = \(jsRGB(color: background))
+						if (child.children[0].children[0].children[0] != undefined){
+							child.children[0].children[0].children[0].style.fill = \(jsRGB(color: background))
+						}
+					}
+				}
+			}
+			
+			
+		""", completionHandler: nil)
+	}
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
