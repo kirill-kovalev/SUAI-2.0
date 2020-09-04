@@ -9,7 +9,7 @@
 import UIKit
 
 class ScheduleDaySelectView: View {
-    let buttons  = ["Пн","Вт","Ср","Чт","Пт","Сб","Вне Сетки"]
+    
     
     private func buttonGenerator(_ title:String)->Button{
         let btn = Button(frame: .zero)
@@ -25,19 +25,13 @@ class ScheduleDaySelectView: View {
         })
         return btn;
     }
-    let stack:UIStackView = {
-        let stack = UIStackView(frame: .zero)
-        stack.spacing = 0
-        stack.axis = .horizontal
-        return stack
-    }()
+    
     lazy var weekBtn = buttonGenerator("Четная")
-    let scroll:UIScrollView = {
-        let scroll = UIScrollView(frame: .zero)
-        scroll.showsVerticalScrollIndicator = false
-        scroll.showsHorizontalScrollIndicator = false
-        return scroll
-    }()
+	lazy var daySelector:SwitchSelector = {
+		let s = SwitchSelector(frame: .zero)
+		
+		return s
+	}()
     
     
     
@@ -50,23 +44,15 @@ class ScheduleDaySelectView: View {
     
     private func addViews(){
         self.addSubview(weekBtn)
-        self.addSubview(scroll)
-        scroll.addSubview(stack)
-        for b in buttons {
-            stack.addArrangedSubview(buttonGenerator(b))
-        }
+		self.addSubview(daySelector)
     }
     private func setupConstraints(){
         weekBtn.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
         }
-        scroll.snp.makeConstraints { (make) in
+        daySelector.snp.makeConstraints { (make) in
             make.top.right.bottom.equalToSuperview()
             make.left.equalTo(weekBtn.snp.right).offset(10)
-            make.height.equalTo(stack)
-        }
-        stack.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalTo(scroll.contentLayoutGuide)
         }
     }
     

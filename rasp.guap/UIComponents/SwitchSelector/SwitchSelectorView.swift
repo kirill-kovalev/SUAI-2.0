@@ -31,11 +31,8 @@ public class SwitchSelector: UIScrollView {
             make.top.left.right.bottom.equalTo(self.contentLayoutGuide)
         }
     }
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        updateView()
-		super.layoutSubviews()
-    }
+	
+	
     
     private var _selectedIndex = 0
     private var buttons:[SwitchSelectorButton] = []
@@ -43,18 +40,30 @@ public class SwitchSelector: UIScrollView {
     public var animated = true
     public var feedback = true
     
+	public var count:Int { self.buttons.count}
     public var selectedIndex:Int {
         get{
             return self._selectedIndex
         }
         set{
             self._selectedIndex = newValue < self.stack.arrangedSubviews.count ? newValue : 0
+			self.stack.layoutIfNeeded()
             UIView.animate(withDuration: self.animated ? 0.3 : 0) {
                 self.updateView()
             }
             if self.feedback { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }
     }
+	
+	
+	public func clear(){
+		for b in self.stack.arrangedSubviews{
+			b.removeFromSuperview()
+		}
+		self.buttons = []
+		self.selectBackground.frame = .zero
+	}
+	
     public func add(_ element:SwitchSelectorButton){
         let index = buttons.count
         buttons.append(element)
@@ -74,11 +83,13 @@ public class SwitchSelector: UIScrollView {
             self.switchDelegate?.didSelect(index)
         }, for: .touchUpInside)
         self.stack.addArrangedSubview(button)
-        
     }
+	
+	
     public func updateView(){
         if self.selectedIndex >= 0 && self.selectedIndex < self.stack.arrangedSubviews.count && self.selectedIndex < self.buttons.count{
-            self.selectBackground.frame = self.stack.arrangedSubviews[self.selectedIndex].frame
+            
+			self.selectBackground.frame = self.stack.arrangedSubviews[self.selectedIndex].frame
             self.selectBackground.backgroundColor = self.buttons[selectedIndex].backgroundColor
             
             let selected = self.stack.arrangedSubviews[self.selectedIndex]
@@ -91,6 +102,7 @@ public class SwitchSelector: UIScrollView {
                 }
                 
             }
+			
         }
 
     }
@@ -99,6 +111,8 @@ public class SwitchSelector: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
 public struct SwitchSelectorButton{
     public let title:String
     

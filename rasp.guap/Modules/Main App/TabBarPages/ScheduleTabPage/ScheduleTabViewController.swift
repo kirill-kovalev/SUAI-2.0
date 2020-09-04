@@ -73,7 +73,8 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         daySelectController.delegate = self
         tableController.cellDelegate = self
-        
+        daySelectController.update()
+		
         DispatchQueue.global(qos: .background).async {
             guard let groupName = SAUserSettings.shared?.group else {
                 print("SAUserSettings.shared?.group is nil")
@@ -154,7 +155,6 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             
             if !self.timetable.isEmpty{
                 self.tableController.setTimetable(timetable: dayTimetable)
-                self.daySelectController.update()
             }
             
         }
