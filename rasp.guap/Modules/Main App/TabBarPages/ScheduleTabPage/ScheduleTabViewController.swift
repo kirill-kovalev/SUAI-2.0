@@ -38,19 +38,14 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             make.top.left.right.bottom.equalToSuperview()
         }
         
-        
-        
-        
-        
         self.addChild(daySelectController)
         self.rootView.header.addSubview(daySelectController.view)
         daySelectController.didMove(toParent: self)
         daySelectController.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
-            
-            make.top.equalTo(self.rootView.title.snp.bottom).offset(8)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(self.rootView.title.snp.bottom).offset(10)
+			make.bottom.equalToSuperview().inset(8)
         }
         
         

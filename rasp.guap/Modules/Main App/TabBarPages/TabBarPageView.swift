@@ -50,7 +50,6 @@ class TabBarPageView : View{
         header.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top)
             make.bottom.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.top)
-            //make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide.snp.top).offset(85)
             make.left.right.equalToSuperview()
         }
         title.snp.makeConstraints { (make) in

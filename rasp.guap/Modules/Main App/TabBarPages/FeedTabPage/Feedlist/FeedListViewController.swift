@@ -50,10 +50,10 @@ class FeedListViewController: UIViewController {
         
         stackView.snp.makeConstraints { (make) in
             make.top.equalTo(self.scrollView.contentLayoutGuide).offset(20)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().inset(15)
+			make.centerX.equalToSuperview()
+			make.width.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualTo(self.loadIndicator.snp.top).offset(-15)
-            make.width.equalToSuperview().inset(15)
+            
         }
         loadIndicator.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()

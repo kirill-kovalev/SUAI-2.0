@@ -23,6 +23,11 @@ class DeadlinesTabView:TabBarPageView {
         btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
         return btn
     }()
+	let scroll:UIScrollView = {
+		let s = UIScrollView(frame: .zero)
+		s.showsHorizontalScrollIndicator = false
+		return s
+	}()
 	let deadlineListSelector:SwitchSelector = {
 		let s = SwitchSelector(frame: .zero)
 		
@@ -42,21 +47,28 @@ class DeadlinesTabView:TabBarPageView {
         self.header.addSubview(selectorStack)
 		self.header.addSubview(deadlineListSelector)
         self.addHeaderButton(addButton)
-        self.addSubview(pocketDiv)
+		self.addSubview(scroll)
+		self.scroll.addSubview(pocketDiv)
     }
     func setupConstraints(){
-        pocketDiv.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(16)
+		deadlineListSelector.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
-            make.bottom.lessThanOrEqualToSuperview()
+            make.top.equalTo(self.title.snp.bottom).offset(10)
+			make.bottom.equalToSuperview().inset(6)
         }
-		deadlineListSelector.snp.makeConstraints { (make) in
-            make.top.equalTo(title.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+		scroll.snp.makeConstraints { (make) in
+			make.top.equalToSuperview()
+			make.left.right.equalToSuperview()
+			make.bottom.equalToSuperview()
+		}
+        pocketDiv.snp.makeConstraints { (make) in
+			make.top.equalTo(scroll.contentLayoutGuide).offset(20)
+			make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(10)
+			make.bottom.lessThanOrEqualTo(scroll.contentLayoutGuide).inset(12)
         }
+		
     }
     
     required init?(coder: NSCoder) {

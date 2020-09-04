@@ -22,10 +22,10 @@ class FeedTabView: TabBarPageView {
     }
     func setupConstraints(){
         sourceSelector.snp.makeConstraints { (make) in
-            make.top.equalTo(self.title.snp.bottom)
-            make.bottom.equalToSuperview().offset(-8)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview()
+			make.top.equalTo(self.title.snp.bottom).offset(10)
+            make.bottom.equalToSuperview().inset(4)
+            make.left.equalToSuperview().offset(10)
+			make.right.equalToSuperview()
         }      
     }
     

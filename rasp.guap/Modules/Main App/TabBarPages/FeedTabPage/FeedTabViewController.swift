@@ -36,23 +36,44 @@ class FeedTabViewController: ViewController<FeedTabView> {
         briefVC.didMove(toParent: self)
         return briefVC
     }()
-    
-    override func viewDidLoad() {
-        let tabImage = Asset.AppImages.TabBarImages.feed.image
+	
+	required init() {
+		super.init()
+		let tabImage = Asset.AppImages.TabBarImages.feed.image
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title:"Новости", image: tabImage , tag: 0)
+	}
+	
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+	
+    override func viewDidLoad() {
+        
         self.rootView.setTitle(self.tabBarItem.title ?? "")
         
 
         self.rootView.sourceSelector.switchDelegate = self
-        self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
-        
-        
-        //async news load
-        DispatchQueue.global(qos: .default).async {
+		self.rootView.sourceSelector.selectedIndex = 0
+        reloadSources()
+        showBrief()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+		self.rootView.sourceSelector.updateView()
+		if news.sources.count == 0 {
+			reloadSources()
+		}
+    }
+	func reloadSources(){
+		self.rootView.sourceSelector.clear()
+		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+		DispatchQueue.global(qos: .default).async {
             self.news.loadSourceList()
             for s in self.news.sources{
                 let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
-                DispatchQueue.main.async { self.rootView.sourceSelector.add(btn) }
+                DispatchQueue.main.async {
+					self.rootView.sourceSelector.add(btn)
+					self.rootView.sourceSelector.updateView()
+				}
             }
             for stream in self.news.streams {
                 DispatchQueue.global(qos: .utility).async {
@@ -61,14 +82,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
                 }
             }
         }
-        
-        showBrief()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.rootView.sourceSelector.updateView()
-    }
+	}
     
     
     

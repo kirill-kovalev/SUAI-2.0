@@ -25,7 +25,7 @@ class DeadlineListController: UIViewController {
         self.view = tableView
         tableView.axis = .vertical
         tableView.layer.cornerRadius = 10
-        tableView.spacing = 8
+        tableView.spacing = 12
         
         if list != nil {
             self.setItems(list: list!)

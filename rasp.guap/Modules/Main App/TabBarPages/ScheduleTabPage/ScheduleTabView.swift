@@ -89,8 +89,9 @@ class ScheduleTabView:TabBarPageView{
     }
     private func setupConstraints(){
         dayLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(2)
             make.right.lessThanOrEqualToSuperview()
+			make.left.equalTo(pocketDiv)
         }
         todayButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(dayLabel)
@@ -102,7 +103,11 @@ class ScheduleTabView:TabBarPageView{
             make.width.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualToSuperview()
         }
-        
+		selectButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(24)
+            make.centerY.equalTo(title)
+        }
+		
         noLessonView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
         }
@@ -121,10 +126,7 @@ class ScheduleTabView:TabBarPageView{
             make.bottom.lessThanOrEqualToSuperview().inset(25).priority(.medium)
         }
         
-        selectButton.snp.makeConstraints { (make) in
-            make.width.height.equalTo(24)
-            make.centerY.equalTo(title)
-        }
+        
         
         loadingIndicator.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
