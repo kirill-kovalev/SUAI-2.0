@@ -41,6 +41,7 @@
 		5D7D667824F4070600F39D59 /* DeadlineEditableModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667724F4070600F39D59 /* DeadlineEditableModalViewController.swift */; };
 		5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */; };
 		5D7DF85C24D46B0E00CCD0AE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DF85B24D46B0E00CCD0AE /* Button.swift */; };
+		5D92A9AB2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D92A9AA2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift */; };
 		5D95A62024D412AB000418B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A61F24D412AB000418B5 /* AppDelegate.swift */; };
 		5D95A62A24D412AB000418B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62924D412AB000418B5 /* View.swift */; };
 		5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A62B24D412AB000418B5 /* ViewController.swift */; };
@@ -187,6 +188,7 @@
 		5D7D667724F4070600F39D59 /* DeadlineEditableModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEditableModalViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5D7DF85724D42FC400CCD0AE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		5D7DF85B24D46B0E00CCD0AE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		5D92A9AA2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableFilterViewConrollerExtension.swift; sourceTree = "<group>"; };
 		5D95A61C24D412AB000418B5 /* SUAI Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUAI Pocket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D95A61F24D412AB000418B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D95A62924D412AB000418B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -884,6 +886,7 @@
 		5DF423C22500F7C400565FB8 /* AppSettings */ = {
 			isa = PBXGroup;
 			children = (
+				5D92A9AA2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift */,
 				5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */,
 				5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */,
 			);
@@ -1098,6 +1101,7 @@
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
 				5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
+				5D92A9AB2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
