@@ -1059,7 +1059,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\npod install\ncd rasp.guap\nswiftgen\ncd ../\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd rasp.guap\nswiftgen\ncd ../\n";
 		};
 		788A4287CF2100560709D7E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
