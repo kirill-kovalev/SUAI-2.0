@@ -160,13 +160,7 @@ extension AppSettingsViewController : UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
 		textField.resignFirstResponder()
 		let vc = TimetableFilterViewConroller()
-		vc.content.prepField.isHidden = true
-		vc.content.preplabel.isHidden = true
-		vc.content.prepField.snp.removeConstraints()
-		vc.content.prepField.snp.makeConstraints { (make) in
-			make.top.equalTo(vc.content.groupField.snp.bottom)
-			make.bottom.equalTo(vc.content.selector.snp.top)
-		}
+		vc.hidePreps()
 		vc.delegate = self
 		self.present(vc, animated: true)
 	}
