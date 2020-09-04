@@ -12,19 +12,23 @@ import UIKit
 class GroupSelectPageView:TutorialPageView{
     
     // MARK: - Views
-    let select:Button = {
-        let button = Button(frame: .zero)
-        button.setTitle("Выбрать", for: .normal)
-        button.setTitleColor(Asset.PocketColors.pocketDarkestBlue.color, for: .normal)
-        button.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 24)
-        return button
+    let select:PocketTextField = {
+        let tf = PocketTextField(frame: .zero)
+		tf.placeholder = "М611"
+		let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
+		image.tintColor = Asset.PocketColors.pocketGray.color
+		image.snp.makeConstraints {$0.size.equalTo(CGSize(width: 30, height: 30))}
+		tf.rightViewMode = .always
+		tf.rightView = image
+        return tf
     }()
     
-    let button:Button = {
-        let button = Button(frame: .zero)
+    let button:PocketTagButton = {
+        let button = PocketTagButton(frame: .zero)
         button.setTitle("Продолжить", for: .normal)
         button.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
         button.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		button.isActive = false
         return button
     }()
     
@@ -46,12 +50,16 @@ class GroupSelectPageView:TutorialPageView{
     override func setupConstraints() {
         super.setupConstraints()
         self.select.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.button.snp.top).inset(-30)
+            make.bottom.equalTo(self.button.snp.top).inset(-20)
             make.centerX.equalToSuperview()
+			make.width.equalTo(250)
         }
+		self.button.snp.removeConstraints()
         self.button.snp.makeConstraints { (make) in
             
             make.center.equalToSuperview()
+			make.width.equalTo(select)
+			make.height.equalTo(40)
         }
     }
     

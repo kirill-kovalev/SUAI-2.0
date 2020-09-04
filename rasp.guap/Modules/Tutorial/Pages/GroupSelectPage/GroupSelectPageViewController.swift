@@ -12,28 +12,26 @@ import SUAI_API
 
 class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserChangeDelegate {
     func didSetUser(user: SAUsers.User) {
-        self.rootView.select.setTitle(user.Name, for: .normal)
-        
-        
+		self.rootView.select.text = user.Name
+		self.rootView.button.isActive = true
     }
     
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
-        self.rootView.select.addTarget(action: { (sender) in
-            let vc = TimetableFilterViewConroller()
-            vc.delegate = self
-            self.present(vc, animated: true, completion: nil)
-        }, for: .touchUpInside)
+		self.keyboardReflective = false
+		self.rootView.select.delegate = self
         
         self.rootView.button.addTarget(action: { (b) in
-            let user = self.rootView.select.titleLabel?.text ?? ""
+            let user = self.rootView.select.text ?? ""
             if SASchedule.shared.groups.get(name: user) != nil {
                 SAUserSettings.shared?.group = user
-                print()
+                
                 if((SAUserSettings.shared?.update()) ?? false){
                     let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-                }
+				}else{
+					print("error while setting group")
+				}
                 
             }
         }, for: .touchUpInside)
@@ -42,4 +40,16 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
     // MARK: - Actions
     
     
+}
+
+extension GroupSelectPageViewController : UITextFieldDelegate{
+	
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+		textField.resignFirstResponder()
+		let vc = TimetableFilterViewConroller()
+		vc.hidePreps()
+		vc.delegate = self
+		self.present(vc, animated: true)
+	}
+
 }
