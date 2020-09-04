@@ -37,6 +37,7 @@ class TimetableViewController: UIViewController {
             newView.addTarget(action: { (sender) in
                 let vc = LessonInfoModalViewController(lesson: lesson)
                 vc.delegate = self.cellDelegate
+				vc.curUser = (self.parent as? ScheduleTabViewController)?.currentUser
                 self.present(vc, animated: true, completion: nil)
             }, for: .touchUpInside)
             self.tableView.addArrangedSubview(newView)

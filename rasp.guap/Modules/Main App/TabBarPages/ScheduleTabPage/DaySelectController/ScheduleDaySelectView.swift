@@ -15,7 +15,8 @@ class ScheduleDaySelectView: View {
         let btn = Button(frame: .zero)
         btn.setTitle(title, for: .normal)
         btn.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
-        btn.backgroundColor = .red
+		btn.backgroundColor = .clear
+		btn.setTitleColor(.clear, for: .normal)
         btn.layer.cornerRadius = 10
         btn.titleLabel?.snp.makeConstraints({ (make) in
             make.left.equalToSuperview().offset(15)

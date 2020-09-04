@@ -13,6 +13,8 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
     
     var lesson:SALesson
     var delegate:UserChangeDelegate?
+	
+	public var curUser:SAUsers.User? = nil
     
     init(lesson:SALesson?=nil) {
         self.lesson = lesson ?? SALesson()
@@ -27,14 +29,18 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
         self.lesson = SALesson()
         super.init(coder:coder)
     }
+
     
     
     override func viewDidLoad() {
+		
         super.viewDidLoad()
+		
+
         self.rootView.titleLabel.text = "Карточка предмета"
         self.content.nameLabel.text = lesson.name
         
-        
+		
         
         func hf(_ int:Int?)->String{ return String(format: "%.2i",  int ?? 0) }
         self.content.timeLabel.text = "\(hf(lesson.startTime.hour)):\(hf(lesson.startTime.minute)) - \(hf(lesson.endTime.hour)):\(hf(lesson.endTime.minute))"
@@ -45,10 +51,11 @@ class LessonInfoModalViewController : ModalViewController<LessonInfoModalView>{
             hs.axis = .horizontal
             return hs
         }
+		
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)
-//            tagView.isActive = (prep != SASchedule.shared.current.user)
+            tagView.isActive = (prep != curUser)
             tagView.addTarget(action: { (sender) in
                 self.setNewUser(user: prep)
             }, for: .touchUpInside)
@@ -94,7 +101,7 @@ extension LessonInfoModalViewController : UICollectionViewDataSource{
         let group = self.lesson.groups[indexPath.item]
         let tagView = PocketTagButton()
         tagView.setTitle(group.Name, for: .normal)
-//        tagView.isActive = (group != SASchedule.shared.current.user)
+		tagView.isActive = (group != self.curUser)
         tagView.addTarget(action: { (sender) in
             self.setNewUser(user: group)
         }, for: .touchUpInside)
