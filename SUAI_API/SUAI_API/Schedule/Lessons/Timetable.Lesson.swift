@@ -92,7 +92,11 @@ public struct SALesson : Hashable{
         self.itemID = from.ItemId
         if from.Build != nil ,from.Rooms != nil {
             self.tags.append("\(from.Build!) \(from.Rooms!)" )
-        }
+		}else if from.Build != nil{
+			self.tags.append("\(from.Build!)" )
+		}else if from.Rooms != nil{
+			self.tags.append("\(from.Rooms!)" )
+		}
         
         
     }
