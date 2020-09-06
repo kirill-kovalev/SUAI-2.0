@@ -64,11 +64,12 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		}
     }
 	func reloadSources(){
-		
-		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
 		DispatchQueue.global(qos: .default).async {
             self.news.loadSourceList()
-			DispatchQueue.main.async{self.rootView.sourceSelector.clear()}
+			DispatchQueue.main.async{
+				self.rootView.sourceSelector.clear()
+				self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+			}
             for s in self.news.sources{
                 let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
                 DispatchQueue.main.async {

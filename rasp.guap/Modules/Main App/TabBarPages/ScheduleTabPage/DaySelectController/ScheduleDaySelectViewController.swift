@@ -16,7 +16,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     private(set) var day:Int = 0
     
 
-    private let days  = ["Пн","Вт","Ср","Чт","Пт","Сб"]
+    private let days  = ["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]
 	
     override func viewDidLoad() {
         super.viewDidLoad()
