@@ -78,16 +78,27 @@ class FeedListViewController: UIViewController {
         }
         
     }
+	
+	func convertoToK(_ num:Int)->String{
+		if num >= 1000 {
+			return String(format: "%iК", num/1000)
+		}
+		if num > 500  {
+			return String(format: "%.1fК", Float(num)/1000)
+		}
+		return "\(num)"
+	}
+	
     func addFeed(elements: [SAFeedElement]){
         for element in elements{
             let newsView = PocketNewsView(big: true)
             newsView.authorLabel.text = self.stream.source.name
             newsView.titleLabel.text = element.title
             
-            newsView.likeLabel.text = "\(element.likes)"
-            newsView.viewsLabel.text = "\(element.views)"
-            newsView.repostLabel.text = "\(element.reposts)"
-            newsView.commentLabel.text = "\(element.comments)"
+            newsView.likeLabel.text = "\(convertoToK(element.likes))"
+            newsView.viewsLabel.text = "\(convertoToK(element.views))"
+            newsView.repostLabel.text = "\(convertoToK(element.reposts))"
+            newsView.commentLabel.text = "\(convertoToK(element.comments))"
             
             
             let formatter = DateFormatter()
