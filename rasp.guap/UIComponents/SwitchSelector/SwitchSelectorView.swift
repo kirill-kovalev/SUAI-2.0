@@ -46,8 +46,8 @@ public class SwitchSelector: UIScrollView {
             return self._selectedIndex
         }
         set{
-            self._selectedIndex = newValue < self.stack.arrangedSubviews.count ? newValue : 0
 			self.stack.layoutIfNeeded()
+            self._selectedIndex = newValue // < self.stack.arrangedSubviews.count ? newValue : -1
             UIView.animate(withDuration: self.animated ? 0.3 : 0) {
                 self.updateView()
             }
@@ -93,17 +93,25 @@ public class SwitchSelector: UIScrollView {
             self.selectBackground.backgroundColor = self.buttons[selectedIndex].backgroundColor
             
             let selected = self.stack.arrangedSubviews[self.selectedIndex]
-            for view in self.stack.arrangedSubviews{
+			for (i,view) in self.stack.arrangedSubviews.enumerated(){
                 let button = view as? Button
                 if view == selected{
-                    button?.setTitleColor(self.buttons[self.selectedIndex].selectedTitleColor, for: .normal)
+                    button?.setTitleColor(self.buttons[i].selectedTitleColor, for: .normal)
                 }else{
-                    button?.setTitleColor(self.buttons[self.selectedIndex].titleColor, for: .normal)
+                    button?.setTitleColor(self.buttons[i].titleColor, for: .normal)
                 }
                 
             }
+		} else{
 			
-        }
+			for (i,view) in self.stack.arrangedSubviews.enumerated(){
+				(view as? Button)?.setTitleColor(self.buttons[i].titleColor, for: .normal)
+				
+			}
+			self.selectBackground.frame.origin.x += self.selectBackground.frame.size.width/2
+			self.selectBackground.frame.size.width = 0
+			self.selectBackground.backgroundColor = .clear
+		}
 
     }
     

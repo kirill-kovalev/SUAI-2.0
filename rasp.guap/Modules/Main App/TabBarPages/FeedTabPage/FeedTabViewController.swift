@@ -74,6 +74,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
                 let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
                 DispatchQueue.main.async {
 					self.rootView.sourceSelector.add(btn)
+					print("index: \(self.rootView.sourceSelector.selectedIndex)")
 					self.rootView.sourceSelector.updateView()
 				}
             }
