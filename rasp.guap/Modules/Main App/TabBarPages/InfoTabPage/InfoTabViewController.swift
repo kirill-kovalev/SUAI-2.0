@@ -23,6 +23,10 @@ class InfoTabViewController: ViewController<InfoTabView> {
 		self.rootView.webView.load(URLRequest(url: URL(string: "http://sputnik.guap.ru/nav/")!))
 		
     }
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.rootView.updateWebViewColors()
+	}
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
