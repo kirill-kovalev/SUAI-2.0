@@ -43,9 +43,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         self.day = day
 		if self.week != week {
 			self.week = (week != SATimetable.Week.outOfTable) ? week : .even
-			
 			self.update()
-			
 		}else{
 			self.rootView.daySelector.selectedIndex = getIndex(day: day)
 		}
@@ -64,7 +62,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 			}
 		}
 		
-		return 0
+		return -1
 	}
 	private func getWeekDay(index:Int)->Int{
 		let shouldShowDays = self.days.enumerated().filter{
@@ -77,7 +75,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 			}
 		}
 		
-		return 0
+		return -1
 	}
 	// MARK: - End of Hotfix after SwitchSelector
 
@@ -93,6 +91,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
             self.rootView.weekBtn.setTitleColor(Asset.PocketColors.pocketRedButtonText.color, for: .normal)
         }
 		
+		self.rootView.daySelector.animated = false
 		self.rootView.daySelector.clear()
 		
 		for(i,day) in self.days.enumerated() {
@@ -103,8 +102,8 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 		if (delegate?.shouldShow(day: -1,week:.outOfTable) ?? false) {
 			self.rootView.daySelector.add(SwitchSelectorButton(title: "Вне Сетки" , titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
 		}
-		self.rootView.daySelector.animated = false
-		self.rootView.daySelector.selectedIndex =  self.day > 0 ? self.day : self.days.count-1
+		
+		self.rootView.daySelector.selectedIndex =  self.getIndex(day: self.day) //> 0 ? self.day : self.days.count-1
 		self.rootView.daySelector.animated = true
     }
 	
