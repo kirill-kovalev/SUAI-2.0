@@ -119,19 +119,34 @@ class FeedBriefInfoViewController: UIViewController {
     
     //MARK: - Schedule
     func loadSchedule(){
+		
+		func nextDay(_ cur:Int)->Int {
+			if cur == 6 { return 0 }
+			return cur+1
+		}
+		
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
         guard let group = SAUserSettings.shared!.group,
               let user = SASchedule.shared.groups.get(name: group ) else {return}
         let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
         let today = Calendar.convertToRU(todayUS)
-        let timetable = SASchedule.shared.get(for: user).get(week: SASchedule.shared.settings?.week ?? .odd, day: today )
+		var day = today
+		var timetable:[SALesson]
+		repeat{
+			timetable = SASchedule.shared.get(for: user).get(week: SASchedule.shared.settings?.week ?? .odd, day: day )
+			if timetable.isEmpty {
+				day = nextDay(day)
+			}
+		}while(timetable.isEmpty)
+		
+		let weekdays = ["понедельник","вторник","среду","четверг","пятницу","субботу"]
         DispatchQueue.main.async {
             let timetableVC = TimetableViewController(timetable: timetable )
             timetableVC.view.isUserInteractionEnabled = false
             let div = PocketDivView(content: timetableVC.view)
             div.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.switchToShedule)))
             self.rootView.indicator.stopAnimating()
-            self.rootView.addBlock(title: "Расписание на сегодня", view: div )
+			self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: div )
         }
         
     }
