@@ -10,6 +10,13 @@ import Foundation
 import ESTabBarController_swift
 
 class PocketTabBarIcon: ESTabBarItemContentView {
+	
+	lazy var hideText:Bool = {
+		guard let window = UIApplication.shared.windows.first else {return true}
+		let insets = window.safeAreaInsets
+		
+		return insets.bottom == 0
+	}()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,6 +32,7 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     }
     override func updateLayout() {
         super.updateLayout()
+		self.titleLabel.layer.opacity = 0
         titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 12)
         titleLabel.sizeToFit()
         imageView.snp.makeConstraints { (make) in
@@ -32,10 +40,13 @@ class PocketTabBarIcon: ESTabBarItemContentView {
             make.center.equalToSuperview()
             
         }
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(3)
-        }
+		if !self.hideText{
+			titleLabel.snp.makeConstraints { (make) in
+				make.centerX.equalToSuperview()
+				make.top.equalTo(imageView.snp.bottom).offset(3)
+			}
+		}
+        
         
     }
     
@@ -51,15 +62,21 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     
     private func showAnimation(show:Bool){
         self.imageView.tintColor = !show ? self.highlightIconColor : self.iconColor
-        self.titleLabel.textColor = !show ? self.highlightTextColor : self.textColor
-        self.titleLabel.layer.opacity = !show ? 1 : 0
-        self.titleLabel.transform = !show ? .identity : CGAffineTransform(translationX: 0, y: 100)
+		self.titleLabel.transform = !show ? .identity : CGAffineTransform(translationX: 0, y: 100)
+		if !self.hideText{
+			self.titleLabel.textColor = !show ? self.highlightTextColor : self.textColor
+			self.titleLabel.layer.opacity = !show ? 1 : 0
+		}else{
+			self.titleLabel.layer.opacity = 0
+		}
         
         UIView.animate(withDuration: 0.3) {
             self.imageView.tintColor = show ? self.highlightIconColor : self.iconColor
-            self.titleLabel.textColor = show ? self.highlightTextColor : self.textColor
-            self.titleLabel.layer.opacity = show ? 1 : 0
-            self.titleLabel.transform = show ? .identity : CGAffineTransform(translationX: 0, y: 100)
+			if !self.hideText{
+				self.titleLabel.textColor = show ? self.highlightTextColor : self.textColor
+				self.titleLabel.layer.opacity = show ? 1 : 0
+				self.titleLabel.transform = show ? .identity : CGAffineTransform(translationX: 0, y: 100)
+			}
         }
     }
     
