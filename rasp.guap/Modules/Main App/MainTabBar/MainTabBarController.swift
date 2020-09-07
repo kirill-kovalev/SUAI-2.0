@@ -21,11 +21,11 @@ class MainTabBarController : ESTabBarController{
             ProfileTabViewController()
         ]
         
-        let newUserSetting = SAUserSettings.fromServer()
-        if newUserSetting != nil {
-            SAUserSettings.shared = newUserSetting
-        }
-        let startPage = SAUserSettings.shared?.idtab  ?? 3
+		guard let userSetting = SAUserSettings.shared else{
+			self.selectedIndex = 0
+			return
+		}
+        let startPage = userSetting.idtab
         self.selectedIndex = startPage - 1
     }
     override func viewDidLoad() {
@@ -36,7 +36,8 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOffset = .zero
-        
+		
+
         
         
     }

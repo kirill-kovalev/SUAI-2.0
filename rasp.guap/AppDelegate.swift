@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         VK.setUp(appId: "7578765", delegate: vkDelegate)
+		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
             self.PresentVKLoginPage()
         }else{

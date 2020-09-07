@@ -65,13 +65,16 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 		return -1
 	}
 	private func getWeekDay(index:Int)->Int{
+		
 		let shouldShowDays = self.days.enumerated().filter{
 			self.delegate?.shouldShow(day: $0.offset, week: self.week) ?? false
 		}
-		for (day,name) in self.days.enumerated() {
-			if name == shouldShowDays[index].element{
-				print("(getWeekDay) weekday:\(day) index:\(index)")
-				return day
+		if index >= 0 && index < shouldShowDays.count{
+			for (day,name) in self.days.enumerated() {
+				if name == shouldShowDays[index].element{
+					print("(getWeekDay) weekday:\(day) index:\(index)")
+					return day
+				}
 			}
 		}
 		
