@@ -41,6 +41,11 @@ internal enum Asset {
       internal static let schedule = ImageAsset(name: "schedule")
     }
     internal static let tutorialEipse = ImageAsset(name: "TutorialEipse")
+    internal enum Banners {
+      internal static let appBanner = ImageAsset(name: "AppBanner")
+      internal static let botBanner = ImageAsset(name: "BotBanner")
+      internal static let subscribeBanner = ImageAsset(name: "SubscribeBanner")
+    }
     internal enum DeadlineModal {
       internal static let delete = ImageAsset(name: "delete")
       internal static let edit = ImageAsset(name: "edit")
