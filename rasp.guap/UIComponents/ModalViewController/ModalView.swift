@@ -13,7 +13,7 @@ class ModalView: View {
     static let hiddenTransform: CGAffineTransform = {
         let positionTransform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height)
         let scaleTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        return scaleTransform.concatenating(positionTransform)
+        return positionTransform//scaleTransform.concatenating(positionTransform)
     }()
     
     let container:UIView = {
@@ -41,7 +41,7 @@ class ModalView: View {
     let titleLabel:UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = Asset.PocketColors.pocketBlack.color
-        label.text = "title"
+        label.text = ""
         label.textAlignment = .center
         return label
     }()
@@ -64,7 +64,8 @@ class ModalView: View {
         container.addSubview(contentView)
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(header.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview().inset(10)
+            make.leading.trailing.equalToSuperview().inset(10)
+			make.bottom.equalToSuperview().inset(25)
         }
     }
     
@@ -77,10 +78,10 @@ class ModalView: View {
     
     private func setupConstraints(){
         container.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().offset(-20)
+            make.width.equalToSuperview()//.offset(-20)
             //make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(safeAreaLayoutGuide)
+			make.bottom.equalTo(safeAreaLayoutGuide).offset(10)
         }
         header.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()

@@ -48,9 +48,11 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         let velocity = sender.velocity(in: self.rootView)
         let containerSize =  self.rootView.container.bounds
         if sender.state == .changed{
-            UIView.animate(withDuration: 0.01) {
-                self.rootView.container.transform = .init(translationX: 0, y: translation.y * 0.6 )
-            }
+			if (translation.y >= 0 ) {
+				UIView.animate(withDuration: 0.01) {
+					self.rootView.container.transform = .init(translationX: 0, y: translation.y * 0.6 )
+				}
+			}
         } else if sender.state == .ended{
             if (translation.y > containerSize.height * 3/6) || (velocity.y > 700)   {
                 self.dismiss(animated: true, completion: nil)
