@@ -43,7 +43,7 @@ class FeedBriefInfoViewController: UIViewController {
         
         if !SABrief.shared.isSub {
             DispatchQueue.main.async {
-                let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.photoPlaceholder.image)
+				let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.Banners.subscribeBanner.image)
                 let div = PocketDivView(content: view)
                 view.setButton(title: "Вступить") { _ in
                     div.snp.removeConstraints()

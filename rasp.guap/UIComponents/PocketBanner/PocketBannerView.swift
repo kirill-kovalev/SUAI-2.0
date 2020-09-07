@@ -50,7 +50,7 @@ class PocketBannerView:UIView{
     }()
     private let image:UIImageView = {
         let view = UIImageView(frame: .zero)
-        
+		view.contentMode = .scaleAspectFill
         return view
     }()
     private func addViews(){
@@ -77,6 +77,7 @@ class PocketBannerView:UIView{
         image.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(11)
             make.width.equalTo(image.snp.height)
+			make.height.lessThanOrEqualTo(self.snp.width).dividedBy(3)
             make.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(11)
         }
