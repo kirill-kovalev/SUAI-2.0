@@ -106,6 +106,7 @@
 		5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */; };
 		5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */; };
 		5DA7442425077B8C00403F6A /* PocketScalableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7442325077B8C00403F6A /* PocketScalableContainer.swift */; };
+		5DA744272507EB7500403F6A /* PocketDivPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDFF524E9889D00B0B884 /* Calendar.swift */; };
 		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
@@ -255,6 +256,7 @@
 		5DA10F8D24DC7D6500D09BD8 /* PocketDivView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivView.swift; sourceTree = "<group>"; };
 		5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketNewsView.swift; sourceTree = "<group>"; };
 		5DA7442325077B8C00403F6A /* PocketScalableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketScalableContainer.swift; sourceTree = "<group>"; };
+		5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivPlaceholder.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		5DAEDFF524E9889D00B0B884 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5DA744252507EB5F00403F6A /* Placeholder */,
 				5DA7442225077B7700403F6A /* ScalableContainer */,
 				5DF423CF2501101000565FB8 /* PocketTextField */,
 				5DF423BB25002F5C00565FB8 /* PocketAvatar */,
@@ -810,6 +813,14 @@
 				5DA7442325077B8C00403F6A /* PocketScalableContainer.swift */,
 			);
 			path = ScalableContainer;
+			sourceTree = "<group>";
+		};
+		5DA744252507EB5F00403F6A /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */,
+			);
+			path = Placeholder;
 			sourceTree = "<group>";
 		};
 		5DA7DD3524D4B8EA00176157 /* PagedView */ = {
@@ -1113,6 +1124,7 @@
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
 				5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
+				5DA744272507EB7500403F6A /* PocketDivPlaceholder.swift in Sources */,
 				5D92A9AB2502C3A000C4409A /* TimetableFilterViewConrollerExtension.swift in Sources */,
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
