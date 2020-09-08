@@ -18,9 +18,10 @@ class PocketDivPlaceholder:UIView{
     }()
     let titleLabel:UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = FontFamily.SFProDisplay.semibold.font(size: 20)
+        label.font = FontFamily.SFProDisplay.bold.font(size: 20)
         label.textColor = Asset.PocketColors.pocketBlack.color
 		label.textAlignment = .center
+		label.numberOfLines = 0
         return label
     }()
 	private let subtitleLabel:UILabel = {
@@ -28,6 +29,7 @@ class PocketDivPlaceholder:UIView{
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
 		label.textAlignment = .center
+		label.numberOfLines = 0
         return label
     }()
     private let imageView:UIImageView = {
@@ -75,16 +77,26 @@ class PocketDivPlaceholder:UIView{
 			}
 		}
 	}
-	public var imageTint:UIColor {imageView.tintColor}
+	public var imageTint:UIColor {
+		get{
+			imageView.tintColor
+		}
+		set{
+			imageView.tintColor = newValue
+		}
+		
+	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-	init(title:String?=nil,subtitle:String?=nil,image:UIImage?=nil){
+	init(title:String?=nil,subtitle:String?=nil,image:UIImage?=nil,tint:UIColor = Asset.PocketColors.accent.color){
 		super.init(frame:.zero)
 		addViews()
 		setupConstraints()
 		self.title = title
 		self.subtitle = subtitle
 		self.image = image
+		self.imageTint = tint
+		self.startLoading()
 	}
 	
 	
@@ -103,9 +115,11 @@ class PocketDivPlaceholder:UIView{
 	
 	private var heightConstraint: Constraint? = nil
 	func hide(){
+		self.isHidden = true
 		heightConstraint?.activate()
 	}
 	func show(){
+		self.isHidden = false
 		heightConstraint?.deactivate()
 	}
 	
@@ -122,7 +136,7 @@ class PocketDivPlaceholder:UIView{
 		loadingIndicator.snp.makeConstraints { (make) in
 			make.center.equalToSuperview()
 			make.top.greaterThanOrEqualToSuperview().offset(30).priority(.medium)
-			make.bottom.lessThanOrEqualToSuperview().inset(30)
+			make.bottom.lessThanOrEqualToSuperview().inset(30).priority(.medium)
 		}
 		imageView.snp.makeConstraints { (make) in
 			make.width.equalTo(imageView.snp.height)

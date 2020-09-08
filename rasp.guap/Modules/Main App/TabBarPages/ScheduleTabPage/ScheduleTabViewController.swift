@@ -100,11 +100,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             
             
             if day >= 0 {
-				self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
+				self.rootView.placeholder.title = calendar.weekdaysRu[day].capitalized + ", пар нет!"
                 self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
 			}else{
 				print("\(week) \(day)")
-				self.rootView.noLessonTitle.text = "Вне сетки пар нет!"
+				self.rootView.placeholder.title = "Вне сетки пар нет!"
                 self.rootView.dayLabel.text = ("Вне сетки")
 			}
         }
@@ -113,7 +113,12 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             week == SASchedule.shared.settings?.week &&
             day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
         )
-        
+		guard let user = self.currentUser else{
+			
+            print("curUser is nil")
+            return
+        }
+		//SASchedule.shared.load(for: user )
         DispatchQueue.main.async {
             self.rootView.todayButton.isHidden = isToday
 			self.setTimetable(week: week, day: day )
@@ -122,7 +127,9 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     }
     
     private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
-        
+		
+			
+		
         guard let user = self.currentUser else{
             print("curUser is nil")
             return
@@ -155,7 +162,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         
         
-        
+		
     }
     
     

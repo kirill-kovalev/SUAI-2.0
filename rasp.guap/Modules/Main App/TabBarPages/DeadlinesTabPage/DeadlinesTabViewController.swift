@@ -52,7 +52,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.global(qos: .background).async {
-                   SADeadlines.shared.loadFromServer()
+			   SADeadlines.shared.loadFromServer()
         }
         self.rootView.addButton.addTarget(action: { (sender) in
             let vc = DeadlineEditableModalViewController()
@@ -67,9 +67,12 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 		self.rootView.deadlineListSelector.updateView()
+		self.rootView.placeholder.show()
+		self.rootView.placeholder.startLoading()
         DispatchQueue.global(qos: .background).async {
             SADeadlines.shared.loadFromServer()
             DispatchQueue.main.async {
+				self.rootView.placeholder.stopLoading()
                 self.reloadItems()
             }
         }
@@ -85,18 +88,36 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             self.tabBarItem.badgeValue = nil
         }
         
-        
+		var source:[SADeadline]
 		switch self.rootView.deadlineListSelector.selectedIndex {
         case 2:
-            self.deadlineList.setItems(list: SADeadlines.shared.closed)
+			source = SADeadlines.shared.closed
+			self.rootView.placeholder.subtitle = "Ты пока не выполнил ни одного дедлайна, но все впереди!"
+			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketDarkBlue.color
+			self.rootView.placeholder.image = Asset.AppImages.DeadlineStateImages.done.image
             break
         case 1:
-            self.deadlineList.setItems(list: SADeadlines.shared.open)
+            source = SADeadlines.shared.open
+			self.rootView.placeholder.subtitle = "Ты выполнил все дедлайны! Это достойно уважения!"
+			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketError.color
+			self.rootView.placeholder.image = Asset.AppImages.TabBarImages.deadlines.image
             break
 		default:
-			self.deadlineList.setItems(list: SADeadlines.shared.nearest)
+			source = SADeadlines.shared.nearest
+			self.rootView.placeholder.subtitle = "Ты выполнил все срочные дедлайны!\n Отдохни немного и берись за\n остальные!"
+			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketError.color
+			self.rootView.placeholder.image = Asset.AppImages.TabBarImages.deadlines.image
 			break
         }
+		
+		if source.isEmpty {
+			self.rootView.placeholder.show()
+			self.deadlineList.view.isHidden = true
+		}else{
+			self.rootView.placeholder.hide()
+			self.deadlineList.view.isHidden = false
+			self.deadlineList.setItems(list: source)
+		}
         
     }
 }

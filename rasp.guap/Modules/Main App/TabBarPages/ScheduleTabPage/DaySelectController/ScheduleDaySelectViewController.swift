@@ -43,11 +43,10 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
         self.day = day
 		if self.week != week {
 			self.week = (week != SATimetable.Week.outOfTable) ? week : .even
-			
+			self.update()
 		}else{
 			self.rootView.daySelector.selectedIndex = getIndex(day: day)
 		}
-		self.update()
         
     }
 	// MARK: - Hotfix after SwitchSelector

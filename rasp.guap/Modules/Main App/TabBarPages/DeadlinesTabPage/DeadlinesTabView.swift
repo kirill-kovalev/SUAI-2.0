@@ -36,7 +36,7 @@ class DeadlinesTabView:TabBarPageView {
     
     let pocketDiv = PocketDivView()
     
-    
+	let placeholder = PocketDivPlaceholder(title: "Дедлайнов нет!", subtitle: "", image: Asset.AppImages.TabBarImages.deadlines.image, tint: Asset.PocketColors.pocketError.color) 
     
     required init() {
         super.init()
@@ -49,6 +49,7 @@ class DeadlinesTabView:TabBarPageView {
         self.addHeaderButton(addButton)
 		self.addSubview(scroll)
 		self.scroll.addSubview(pocketDiv)
+		self.pocketDiv.addSubview(placeholder)
     }
     func setupConstraints(){
 		deadlineListSelector.snp.makeConstraints { (make) in
@@ -68,6 +69,9 @@ class DeadlinesTabView:TabBarPageView {
             make.width.equalToSuperview().inset(10)
 			make.bottom.lessThanOrEqualTo(scroll.contentLayoutGuide).inset(12)
         }
+		placeholder.snp.makeConstraints { (make) in
+			make.top.left.right.bottom.equalToSuperview()
+		}
 		
     }
     
