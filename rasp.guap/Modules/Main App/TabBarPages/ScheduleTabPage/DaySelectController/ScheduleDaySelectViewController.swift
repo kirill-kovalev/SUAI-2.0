@@ -51,18 +51,21 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     }
 	// MARK: - Hotfix after SwitchSelector
 	func getIndex(day:Int)->Int{
+		
 		let shouldShowDays = self.days.enumerated().filter{
 			self.delegate?.shouldShow(day: $0.offset, week: self.week) ?? false
 		}.map{$0.element}
-		let dayname = days[day]
-		for (index,name) in shouldShowDays.enumerated() {
-			if name == dayname{
-				print("(getIndex) weekday:\(day) index:\(index)")
-				return index
+		if(day >= 0 ){
+			let dayname = days[day]
+			for (index,name) in shouldShowDays.enumerated() {
+				if name == dayname{
+					print("(getIndex) weekday:\(day) index:\(index)")
+					return index
+				}
 			}
 		}
-		
-		return -1
+
+		return shouldShowDays.count
 	}
 	private func getWeekDay(index:Int)->Int{
 		
@@ -102,7 +105,9 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 				self.rootView.daySelector.add(SwitchSelectorButton(title: day, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
 			}
 		}
+		
 		if (delegate?.shouldShow(day: -1,week:.outOfTable) ?? false) {
+			print("________________________________")
 			self.rootView.daySelector.add(SwitchSelectorButton(title: "Вне Сетки" , titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
 		}
 		
@@ -123,10 +128,10 @@ extension ScheduleDaySelectViewController:SwitchSelectorDelegate {
 		
 		if index < self.days.count {
 			self.day = getWeekDay(index: index)
-			self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.week)
+			self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.day>0 ? self.week : .outOfTable)
 		}else{
 			self.day = -1
-			self.delegate?.scheduleDaySelect(didUpdate: 0, week: .outOfTable)
+			self.delegate?.scheduleDaySelect(didUpdate: -1, week: .outOfTable)
 		}
 		
 		

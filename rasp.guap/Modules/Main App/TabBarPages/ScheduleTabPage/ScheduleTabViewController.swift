@@ -98,10 +98,15 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         DispatchQueue.main.async {
             
-            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
+            
             if day >= 0 {
+				self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
                 self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
-            }
+			}else{
+				print("\(week) \(day)")
+				self.rootView.noLessonTitle.text = "Вне сетки пар нет!"
+                self.rootView.dayLabel.text = ("Вне сетки")
+			}
         }
             
         let isToday:Bool = (
@@ -111,14 +116,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         DispatchQueue.main.async {
             self.rootView.todayButton.isHidden = isToday
-            self.rootView.noLessonTitle.text = calendar.weekdaysRu[day].capitalized + ", пар нет!"
-        }
-        
-        
-        
-        self.setTimetable(week: week, day: day )
-        
-        DispatchQueue.main.async {
+			self.setTimetable(week: week, day: day )
             self.daySelectController.set(day: day, week: week)
         }
     }
@@ -171,12 +169,14 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day: Int, week: SATimetable.Week) {
         DispatchQueue.global(qos: .background).async {
+			print("set week\(week); day \(day)")
             self.setDay(week: week, day: day)
         }
         
     }
     
     func shouldShow(day: Int,week:SATimetable.Week) -> Bool {
+		print("day: \(day); week: \(week) ; get:\(self.timetable.get(week: week, day: day).count)")
         return !self.timetable.get(week: week, day: day).isEmpty
     }
     
