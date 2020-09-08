@@ -1,0 +1,44 @@
+//
+//  PocketScalableContainer.swift
+//  rasp.guap
+//
+//  Created by Кирилл on 08.09.2020.
+//  Copyright © 2020 Kovalev K.A. All rights reserved.
+//
+
+import UIKit
+
+class PocketScalableContainer<T:UIView>:UIButton{
+	var content : T
+	
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+	
+	init(content:T) {
+        self.content = content
+		super.init(frame:.zero)
+        
+		self.content.snp.makeConstraints { (make) in
+			make.top.left.equalToSuperview()
+			make.right.bottom.equalToSuperview()
+		}
+		
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchCancel)
+		self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+    }
+	@objc private func touchDown(_ sender:Button){
+	
+		UIView.animate(withDuration: 0.3) {
+			self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+		}
+	
+	}
+	@objc private func touchUp(_ sender:Button){
+		UIView.animate(withDuration: 0.3) {
+			self.transform = .identity
+		}
+	}
+	
+	
+}
