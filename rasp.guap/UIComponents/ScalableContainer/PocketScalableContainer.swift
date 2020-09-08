@@ -8,27 +8,24 @@
 
 import UIKit
 
-class PocketScalableContainer<T:UIView>:UIButton{
+class PocketScalableContainer<T:UIView>:Button{
 	var content : T
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	init(content:T) {
         self.content = content
+		content.isUserInteractionEnabled = false
+		content.isExclusiveTouch = false
 		super.init(frame:.zero)
-        
+		self.addSubview(content)
 		self.content.snp.makeConstraints { (make) in
 			make.top.left.equalToSuperview()
 			make.right.bottom.equalToSuperview()
 		}
-		
-		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
-		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
-		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchCancel)
-		self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
     }
 	@objc private func touchDown(_ sender:Button){
-	
+		print("down")
 		UIView.animate(withDuration: 0.3) {
 			self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 		}
@@ -39,6 +36,15 @@ class PocketScalableContainer<T:UIView>:UIButton{
 			self.transform = .identity
 		}
 	}
+	override func didMoveToSuperview() {
+		superview?.didMoveToSuperview()
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchCancel)
+		self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+	}
 	
 	
 }
+
+
