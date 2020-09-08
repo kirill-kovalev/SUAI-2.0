@@ -52,6 +52,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
 
         self.rootView.sourceSelector.switchDelegate = self
 		self.rootView.sourceSelector.selectedIndex = 0
+		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
         reloadSources()
         showBrief()
     }

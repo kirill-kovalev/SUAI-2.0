@@ -115,7 +115,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			let originGroup = SAUserSettings.shared?.group
 			SAUserSettings.shared?.group = name
 			if SAUserSettings.shared?.update() ?? false {
-				print("set")
+				print("group set to \(name)")
 			}else{
 				SAUserSettings.shared?.group = originGroup
 				DispatchQueue.main.async {
@@ -132,7 +132,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			let originBuilding = SAUserSettings.shared?.building ?? 1
 			SAUserSettings.shared?.building = id + 1
 			if (SAUserSettings.shared?.update() ?? false){
-				print("set!")
+				print("building set to \(id+1)")
 			}else{
 				SAUserSettings.shared?.building = originBuilding
 				self.updateView()
@@ -144,7 +144,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			let originTab = SAUserSettings.shared?.idtab ?? 1
 			SAUserSettings.shared?.idtab = id + 1
 			if (SAUserSettings.shared?.update() ?? false){
-				print("set!")
+				print("start page set to \(id+1)")
 			}else{
 				SAUserSettings.shared?.idtab = originTab
 				self.updateView()

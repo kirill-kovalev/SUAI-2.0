@@ -9,6 +9,7 @@
 import UIKit
 import SUAI_API
 import SwiftyVK
+import SafariServices
 
 class FeedBriefInfoViewController: UIViewController {
     var rootView:FeedBriefInfoView {self.view as! FeedBriefInfoView}
@@ -199,7 +200,15 @@ class FeedBriefInfoViewController: UIViewController {
             stack.spacing = 15
             let sorted = feed.sorted {  $0.0.date > $1.0.date}
             for (element,source) in sorted {
-                stack.addArrangedSubview(self.generateNewsView(from: element, source: source.name))
+				let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: source.name))
+				tapContainer.addTarget(action: { _ in
+					let config = SFSafariViewController.Configuration()
+					print("url: \(element.postUrl)")
+					guard let url = URL(string: element.postUrl) else {return}
+					let vc = SFSafariViewController(url: url, configuration: config)
+					self.present(vc, animated: true, completion: nil)
+				}, for: .touchUpInside)
+                stack.addArrangedSubview(tapContainer)
             }
             
             let div = PocketDivView(content: stack)
