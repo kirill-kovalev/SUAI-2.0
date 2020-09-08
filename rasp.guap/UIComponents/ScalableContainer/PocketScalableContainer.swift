@@ -25,7 +25,6 @@ class PocketScalableContainer<T:UIView>:Button{
 		}
     }
 	@objc private func touchDown(_ sender:Button){
-		print("down")
 		UIView.animate(withDuration: 0.2) {
 			self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 		}

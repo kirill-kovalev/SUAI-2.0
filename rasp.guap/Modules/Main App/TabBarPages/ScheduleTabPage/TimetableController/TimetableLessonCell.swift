@@ -32,22 +32,14 @@ class TimetableLessonCell: UIView{
     }
     private func addViews(){
         self.addSubview(pocketLessonView)
-        self.addSubview(btn)
     }
     private func setupConstraints(){
         self.pocketLessonView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.left.right.equalToSuperview()
         }
-        self.btn.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
-        }
     }
     
-    
-    func addTarget(action: @escaping (UIButton) -> Void, for controlEvents: UIControl.Event) {
-        self.btn.addTarget(action: action, for: controlEvents)
-    }
     
     func setLesson(lesson:SALesson) {
         self.lesson = lesson

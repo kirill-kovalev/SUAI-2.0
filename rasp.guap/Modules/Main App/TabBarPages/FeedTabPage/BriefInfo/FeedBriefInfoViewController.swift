@@ -86,8 +86,12 @@ class FeedBriefInfoViewController: UIViewController {
             
             let rocketsDiv = PocketDivView(content:BriefHalfScreenView(title: "\(rockets)",subtitle: "рокетов за неделю",
                                                                                image: Asset.AppImages.rocket.image))
-            stack.addArrangedSubview(rocketsDiv)
-            rocketsDiv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showRocketsModal)))
+			let container = PocketScalableContainer(content: rocketsDiv)
+			container.addTarget(action: { _ in
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.present(RocketModalViewController(), animated: true, completion: nil) })
+			}, for: .touchUpInside)
+            stack.addArrangedSubview(container)
+            
             
         }
     }
@@ -114,7 +118,7 @@ class FeedBriefInfoViewController: UIViewController {
                 return (Asset.AppImages.WeatherImages.clouds.image,Asset.PocketColors.pocketDarkBlue.color)
         }
     }
-    @objc func showRocketsModal(){ self.present(RocketModalViewController(), animated: true, completion: nil) }
+    
     
     
     
@@ -145,13 +149,17 @@ class FeedBriefInfoViewController: UIViewController {
             let timetableVC = TimetableViewController(timetable: timetable )
             timetableVC.view.isUserInteractionEnabled = false
             let div = PocketDivView(content: timetableVC.view)
-            div.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.switchToShedule)))
+            
+			let container = PocketScalableContainer(content: div)
+			container.addTarget(action: { _ in
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 2 })
+			}, for: .touchUpInside)
+			
             self.rootView.indicator.stopAnimating()
-			self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: div )
+			self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: container )
         }
         
     }
-    @objc func switchToShedule(){ self.tabBarController?.selectedIndex = 2 }
     
     //MARK: - Deadlines
     func loadDeadlines(){
@@ -162,9 +170,13 @@ class FeedBriefInfoViewController: UIViewController {
             let deadlineListVC = DeadlineListController(list: deadlines)
             deadlineListVC.view.isUserInteractionEnabled = false
             let div = PocketDivView(content: deadlineListVC.view)
-            div.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.switchToDeadlines)))
+            let container = PocketScalableContainer(content: div)
+			container.addTarget(action: { _ in
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 1 })
+			}, for: .touchUpInside)
+			
             self.rootView.indicator.stopAnimating()
-            self.rootView.addBlock(title: "Ближайшие дедлайны", view: div )
+            self.rootView.addBlock(title: "Ближайшие дедлайны", view: container )
         }
         
     }
@@ -206,6 +218,7 @@ class FeedBriefInfoViewController: UIViewController {
 					print("url: \(element.postUrl)")
 					guard let url = URL(string: element.postUrl) else {return}
 					let vc = SFSafariViewController(url: url, configuration: config)
+					vc.modalPresentationStyle = .popover
 					self.present(vc, animated: true, completion: nil)
 				}, for: .touchUpInside)
                 stack.addArrangedSubview(tapContainer)

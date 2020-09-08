@@ -33,7 +33,7 @@ class TimetableViewController: UIViewController {
     func setTimetable(timetable new:[SALesson]){
         clearStack()
         for lesson in new {
-            let newView = TimetableLessonCell(lesson: lesson)
+            let newView = PocketScalableContainer(content: TimetableLessonCell(lesson: lesson))
             newView.addTarget(action: { (sender) in
                 let vc = LessonInfoModalViewController(lesson: lesson)
                 vc.delegate = self.cellDelegate

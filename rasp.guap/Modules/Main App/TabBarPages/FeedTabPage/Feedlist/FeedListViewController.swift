@@ -102,6 +102,7 @@ class FeedListViewController: UIViewController {
 				print("url: \(element.postUrl)")
 				guard let url = URL(string: element.postUrl) else {return}
 				let vc = SFSafariViewController(url: url, configuration: config)
+				vc.modalPresentationStyle = .popover
 				self.present(vc, animated: true, completion: nil)
 			}, for: .touchUpInside)
             self.stackView.addArrangedSubview(tapContainer)
