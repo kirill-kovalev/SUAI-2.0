@@ -37,7 +37,8 @@ public class SAFeedStream{
                 let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
                 let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
                 
-                new.append(SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: ""))
+				let url = "https://vk.com/wall\(item.from_id)_\(item.id)"
+                new.append(SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url))
                 
                 self.offset += 1
             }

@@ -1,6 +1,7 @@
 // MARK: - FeedElement
 public struct VKFeedElement:Codable {
     let from_id: Int
+	let id: Int
     let date: Int
     let text: String?
     let comments: VKCountable?
