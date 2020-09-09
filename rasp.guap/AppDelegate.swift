@@ -41,21 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func LoggedInVK(){
         PocketAPI.shared.setToken(VK.sessions.default.accessToken?.get() ?? "")
-        let settings = SAUserSettings.shared
-        let group = settings?.group
-        if group  == nil {
-            self.firstRun()
-        }else{
-            self.defaultRun()
-        }
+		window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = DataLoaderViewController()
+        window?.makeKeyAndVisible()
     }
     
-    func firstRun(){
-        showTutorialPages()
-    }
-    func defaultRun(){
-        startApp()
-    }
+    
     
     func PresentVKLoginPage(){
         VK.release()
@@ -68,23 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    
-    
-    func testRun(){
-               
-    }
-    
-    func showTutorialPages(){
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TutorialScreenViewController()
-        window?.makeKeyAndVisible()
-    }
-    func startApp(){
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let tabBar = MainTabBarController()
-        window?.rootViewController = tabBar
-        window?.makeKeyAndVisible()
-    }
+  
+   
     
 }
 
