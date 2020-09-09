@@ -47,9 +47,9 @@ public class PocketAPI{
 
         let urlParams = params.isEmpty ? "" : "?"+params.map{"\($0)=\($1)"}.joined(separator: "&")
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)"+urlParams)!
-        
+		let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 10)
         var returnData:Data? = nil
-        URLSession(configuration: config ).dataTask(with: url ) { (data, response, err) in
+        URLSession(configuration: config ).dataTask(with: request ) { (data, response, err) in
             if err == nil {
                 if data != nil {
                     returnData = data

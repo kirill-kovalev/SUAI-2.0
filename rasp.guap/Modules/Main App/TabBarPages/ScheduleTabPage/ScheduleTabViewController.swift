@@ -118,12 +118,12 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             print("curUser is nil")
             return
         }
-		//SASchedule.shared.load(for: user )
+		SASchedule.shared.load(for: user )
         DispatchQueue.main.async {
             self.rootView.todayButton.isHidden = isToday
-			self.setTimetable(week: week, day: day )
             self.daySelectController.set(day: day, week: week)
         }
+		self.setTimetable(week: week, day: day )
     }
     
     private func setTimetable(week: SATimetable.Week = .odd , day: Int = 0){
