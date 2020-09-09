@@ -51,41 +51,34 @@ class FeedTabViewController: ViewController<FeedTabView> {
         
 
         self.rootView.sourceSelector.switchDelegate = self
-		self.rootView.sourceSelector.selectedIndex = 0
-		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+		
         
         showBrief()
+		showSources()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-		self.rootView.sourceSelector.updateView()
+		showSources()
 		if news.sources.count == 0 {
 			reloadSources()
 		}
     }
 	func reloadSources(){
-		DispatchQueue.global(qos: .default).async {
-            self.news.loadSourceList()
-			DispatchQueue.main.async{
-				self.rootView.sourceSelector.clear()
-				self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
-			}
-            for s in self.news.sources{
-                let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
-                DispatchQueue.main.async {
-					self.rootView.sourceSelector.add(btn)
-					print("index: \(self.rootView.sourceSelector.selectedIndex)")
-					self.rootView.sourceSelector.updateView()
-				}
-            }
-            for stream in self.news.streams {
-                DispatchQueue.global(qos: .utility).async {
-                    stream.reload()
-                    DispatchQueue.main.async { self.feedVC.updateView() }
-                }
-            }
-        }
+		DispatchQueue.global().async {
+			self.news.loadSourceList()
+			DispatchQueue.main.async { self.showSources() }
+		}
+	}
+	func showSources(){
+		self.rootView.sourceSelector.clear()
+		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+		self.rootView.sourceSelector.selectedIndex += 0
+		for s in self.news.sources{
+			let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
+			self.rootView.sourceSelector.add(btn)
+		}
+		self.rootView.sourceSelector.updateView()
 	}
     
     
