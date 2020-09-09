@@ -51,9 +51,6 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.global(qos: .background).async {
-			   SADeadlines.shared.loadFromServer()
-        }
         self.rootView.addButton.addTarget(action: { (sender) in
             let vc = DeadlineEditableModalViewController()
             vc.onChange = {
@@ -61,14 +58,20 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
+		self.rootView.placeholder.stopLoading()
+		self.reloadItems()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 		self.rootView.deadlineListSelector.updateView()
-		self.rootView.placeholder.show()
-		self.rootView.placeholder.startLoading()
+		
+		
+		if self.deadlineList.tableView.arrangedSubviews.isEmpty {
+			self.rootView.placeholder.startLoading()
+			self.rootView.placeholder.show()
+		}
         DispatchQueue.global(qos: .background).async {
             SADeadlines.shared.loadFromServer()
             DispatchQueue.main.async {
