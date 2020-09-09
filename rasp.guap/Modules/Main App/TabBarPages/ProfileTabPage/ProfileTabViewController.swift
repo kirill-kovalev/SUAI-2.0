@@ -23,9 +23,9 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	let settings = AppSettingsViewController()
 	override func viewDidLoad(){
 		self.keyboardReflective = false
-		#if DEBUG
+		
 		setupLogoutButton()
-		#endif
+		
 		
 		self.addBlock(title: "Карточка студента", vc:studentCard)
 		self.addBlock(title: "SUAI ID", vc: suaiID)
