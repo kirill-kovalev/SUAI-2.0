@@ -26,6 +26,7 @@ class PocketTagButton: Button {
         setupView()
         setupSizeConstraints()
     }
+	
     
     func setupView(){
         let borderColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketTagBorder.color
@@ -54,4 +55,25 @@ class PocketTagButton: Button {
         self.setupView()
     }
 
+	@objc private func touchDown(_ sender:Button){
+		if self.isActive {
+			UIView.animate(withDuration: 0.1) {
+				self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+			}
+		}
+		
+	
+	}
+	@objc private func touchUp(_ sender:Button){
+		UIView.animate(withDuration: 0.1) {
+			self.transform = .identity
+		}
+	}
+	override func didMoveToSuperview() {
+		superview?.didMoveToSuperview()
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpInside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchUpOutside)
+		self.addTarget(self, action: #selector(touchUp(_:)), for: .touchCancel)
+		self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+	}
 }

@@ -59,13 +59,18 @@ public class SAUserSettings: Codable {
     }
     public func update() -> Bool{
         var success = false
-        let _ = PocketAPI.shared.syncSetTask(method: .setSettings , params: [
+		var params:[String : Any] = [
             "group":self.group!,
             "idtab":self.idtab,
             "animations":self.animations,
             "building":self.building,
             "banners":self.banners
-        ]) { (data) in
+			]
+		if self.propass != nil && self.prologin != nil {
+			params["prologin"] = self.prologin!
+			params["propass"] = self.propass!
+		}
+        let _ = PocketAPI.shared.syncSetTask(method: .setSettings , params: params ) { (data) in
             success = String(data: data, encoding: .utf8)?.contains("success") ?? false
         }
         return success

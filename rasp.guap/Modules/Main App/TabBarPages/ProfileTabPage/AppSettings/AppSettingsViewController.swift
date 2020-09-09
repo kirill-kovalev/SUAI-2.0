@@ -130,6 +130,8 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		let id = id + 1
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared?.building ?? 1
+			print("originBuilding : \(originBuilding)")
+			print("new building : \(id)")
 			if originBuilding != id {
 				SAUserSettings.shared?.building = id
 				if (SAUserSettings.shared?.update() ?? false){
@@ -145,6 +147,8 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		let id = id + 1
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared?.idtab ?? 1
+			print("origin tab : \(originTab)")
+			print("new tab : \(id)")
 			if originTab != id {
 				SAUserSettings.shared?.idtab = id
 				if (SAUserSettings.shared?.update() ?? false){
@@ -186,7 +190,7 @@ extension AppSettingsViewController:MBRadioButtonDelegate{
 	
 	
 	func radioButtonDidSelect(_ button: MBRadioButton) {
-		if button.tag > 0 {
+		if button.tag >= 0 {
 			self.setStartPage(button.tag)
 		}else{
 			self.setBuilding(-button.tag)
