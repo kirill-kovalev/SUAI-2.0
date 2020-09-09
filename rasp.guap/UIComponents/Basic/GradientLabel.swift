@@ -8,11 +8,13 @@
 
 import UIKit
 
+@IBDesignable
 class GradientLabel: UILabel {
     
     // MARK: - Colors to create gradient from
     @IBInspectable open var gradientFrom: UIColor?
     @IBInspectable open var gradientTo: UIColor?
+	@IBInspectable open var angle: CGFloat = 0
     
     override func draw(_ rect: CGRect) {
         // begin new image context to let the superclass draw the text in (so we can use it as a mask)
@@ -34,11 +36,61 @@ class GradientLabel: UILabel {
         // clip context to image
         ctx.clip(to: bounds, mask: img.cgImage!)
         // define your colors and locations
-        let colors: [CGColor] = [UIColor.orange.cgColor, UIColor.red.cgColor, UIColor.purple.cgColor, UIColor.blue.cgColor]
-        let locs: [CGFloat] = [0.0, 0.3, 0.6, 1.0]
+		//guard let gradientFrom = gradientFrom, let gradientTo = gradientTo else {return}
+		let colors: [CGColor] = [(gradientFrom ?? self.textColor).cgColor, (gradientTo  ?? self.textColor).cgColor]
+        let locs: [CGFloat] = [0.0, 1.0]
         // create your gradient
         guard let grad = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: locs) else { return }
         // draw gradient
-        ctx.drawLinearGradient(grad, start: CGPoint(x: 0, y: bounds.size.height*0.5), end: CGPoint(x:bounds.size.width, y: bounds.size.height*0.5), options: CGGradientDrawingOptions(rawValue: 0))
+		let (start,end) = calculatePoints(for: self.angle)
+		let size = self.bounds.size
+		let startPoint = CGPoint(x:size.width*start.x, y: size.height*start.y)
+		let endPoint = CGPoint(x:size.width*end.x, y: size.height*end.y)
+        ctx.drawLinearGradient(grad, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
+    }
+	
+	
+	private func calculatePoints(for angle: CGFloat) -> (CGPoint,CGPoint){
+
+
+        var ang = (-angle).truncatingRemainder(dividingBy: 360)
+
+        if ang < 0 { ang = 360 + ang }
+
+        let n: CGFloat = 0.5
+
+        switch ang {
+
+        case 0...45, 315...360:
+            let a = CGPoint(x: 0, y: n * tanx(ang) + n)
+            let b = CGPoint(x: 1, y: n * tanx(-ang) + n)
+            return (a,b)
+
+        case 45...135:
+            let a = CGPoint(x: n * tanx(ang - 90) + n, y: 1)
+            let b = CGPoint(x: n * tanx(-ang - 90) + n, y: 0)
+            return (a,b)
+
+        case 135...225:
+            let a = CGPoint(x: 1, y: n * tanx(-ang) + n)
+            let b = CGPoint(x: 0, y: n * tanx(ang) + n)
+            return (a,b)
+
+        case 225...315:
+            let a = CGPoint(x: n * tanx(-ang - 90) + n, y: 0)
+            let b = CGPoint(x: n * tanx(ang - 90) + n, y: 1)
+            return (a,b)
+
+        default:
+            let a = CGPoint(x: 0, y: n)
+            let b = CGPoint(x: 1, y: n)
+            return (a,b)
+
+        }
+    }
+
+    /// Private function to aid with the math when calculating the gradient angle
+    private func tanx(_ 𝜽: CGFloat) -> CGFloat {
+        return tan(𝜽 * CGFloat.pi / 180)
     }
 }
