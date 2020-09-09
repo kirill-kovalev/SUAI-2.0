@@ -15,7 +15,9 @@ public class SATimetable {
         [.init(hour: 12, minute: 20),.init(hour: 13, minute: 50)],//3
         [.init(hour: 14, minute: 10),.init(hour: 15, minute: 40)],//4
         [.init(hour: 15, minute: 50),.init(hour: 17, minute: 20)],//5
-        [.init(hour: 17, minute: 30),.init(hour: 19, minute: 00)]//6
+        [.init(hour: 17, minute: 30),.init(hour: 19, minute: 00)],//6
+		[.init(hour: 19, minute: 10),.init(hour: 21, minute: 40)],//7
+		[.init(hour: 21, minute: 50),.init(hour: 23, minute: 20)]//8
         
     ]
 

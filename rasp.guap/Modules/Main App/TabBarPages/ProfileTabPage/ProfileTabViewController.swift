@@ -27,10 +27,19 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		setupLogoutButton()
 		
 		
-		self.addBlock(title: "Карточка студента", vc:studentCard)
+		
+		let scalable = PocketScalableContainer(content: PocketDivView(content: studentCard.view))
+		scalable.addTarget(action: {_ in self.present(StudentCardViewController(), animated: true, completion: nil)}, for: .touchUpInside)
+		self.addChild(studentCard)
+		self.rootView.addBlock(title: "Карточка студента", view: scalable)
+		studentCard.didMove(toParent: self)
+		
+
 		self.addBlock(title: "SUAI ID", vc: suaiID)
 		self.addBlock(title: "Основные настройки", vc: settings)
 		//self.addBlock(title: "О сервисе", view: nil)
+		
+		
 	}
 	func addBlock(title:String,vc:UIViewController) {
 		self.addChild(vc)

@@ -28,7 +28,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
                 SAUserSettings.shared?.group = user
                 
                 if((SAUserSettings.shared?.update()) ?? false){
-                    let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+					self.present(DataLoaderViewController(), animated: true, completion: nil)
 				}else{
 					print("error while setting group")
 				}

@@ -62,10 +62,11 @@ class ModalView: View {
     
     func setContent(_ contentView:UIView){
         container.addSubview(contentView)
+		let bottomInset = UIWindow().safeAreaInsets.bottom
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(header.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
-			make.bottom.equalToSuperview().inset(25)
+			make.bottom.equalToSuperview().inset(10+bottomInset)
         }
     }
     
@@ -81,7 +82,7 @@ class ModalView: View {
             make.width.equalToSuperview()//.offset(-20)
             //make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
             make.centerX.equalToSuperview()
-			make.bottom.equalTo(safeAreaLayoutGuide).offset(10)
+			make.bottom.equalToSuperview().offset(10)
         }
         header.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
