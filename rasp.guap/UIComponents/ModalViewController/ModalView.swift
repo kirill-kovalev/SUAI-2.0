@@ -66,7 +66,7 @@ class ModalView: View {
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(header.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(10)
-			make.bottom.equalToSuperview().inset(10+bottomInset)
+			make.bottom.equalToSuperview().inset(20+bottomInset)
         }
     }
     
