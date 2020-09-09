@@ -107,6 +107,8 @@
 		5DA10F9124DCACE800D09BD8 /* PocketNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */; };
 		5DA7442425077B8C00403F6A /* PocketScalableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7442325077B8C00403F6A /* PocketScalableContainer.swift */; };
 		5DA744272507EB7500403F6A /* PocketDivPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */; };
+		5DA7442B25090CCA00403F6A /* DataLoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7442A25090CCA00403F6A /* DataLoaderViewController.swift */; };
+		5DA7442D25090CD500403F6A /* DataLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7442C25090CD500403F6A /* DataLoaderView.swift */; };
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDFF524E9889D00B0B884 /* Calendar.swift */; };
 		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
@@ -257,6 +259,8 @@
 		5DA10F9024DCACE800D09BD8 /* PocketNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketNewsView.swift; sourceTree = "<group>"; };
 		5DA7442325077B8C00403F6A /* PocketScalableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketScalableContainer.swift; sourceTree = "<group>"; };
 		5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDivPlaceholder.swift; sourceTree = "<group>"; };
+		5DA7442A25090CCA00403F6A /* DataLoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderViewController.swift; sourceTree = "<group>"; };
+		5DA7442C25090CD500403F6A /* DataLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderView.swift; sourceTree = "<group>"; };
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		5DAEDFF524E9889D00B0B884 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
@@ -591,6 +595,7 @@
 		5D95A62124D412AB000418B5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5DA7442925090CA600403F6A /* DataLoader */,
 				5D9D905424ED802100930375 /* VKLogin */,
 				5D633A0424DB1AA700ACE561 /* Tutorial */,
 				5D633A0524DB1ACB00ACE561 /* Main App */,
@@ -821,6 +826,15 @@
 				5DA744262507EB7500403F6A /* PocketDivPlaceholder.swift */,
 			);
 			path = Placeholder;
+			sourceTree = "<group>";
+		};
+		5DA7442925090CA600403F6A /* DataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				5DA7442A25090CCA00403F6A /* DataLoaderViewController.swift */,
+				5DA7442C25090CD500403F6A /* DataLoaderView.swift */,
+			);
+			path = DataLoader;
 			sourceTree = "<group>";
 		};
 		5DA7DD3524D4B8EA00176157 /* PagedView */ = {
@@ -1107,6 +1121,7 @@
 				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
 				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
+				5DA7442B25090CCA00403F6A /* DataLoaderViewController.swift in Sources */,
 				5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */,
 				5D2BD80E24E4361F002630B5 /* DeadlinesTabViewController.swift in Sources */,
 				5D2640EA24E41A58001A97A2 /* LessonInfoModalView.swift in Sources */,
@@ -1129,6 +1144,7 @@
 				5DA10F4124DB497700D09BD8 /* DegreesToRadiansConvertion.swift in Sources */,
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
+				5DA7442D25090CD500403F6A /* DataLoaderView.swift in Sources */,
 				5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */,
 				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
@@ -1326,6 +1342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1333,6 +1350,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
@@ -1346,6 +1364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1353,6 +1372,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
