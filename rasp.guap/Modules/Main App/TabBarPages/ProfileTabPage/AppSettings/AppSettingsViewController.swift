@@ -127,13 +127,13 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	}
 	
 	func setBuilding(_ id:Int){
-		
+		let id = id + 1
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared?.building ?? 1
 			if originBuilding != id {
-				SAUserSettings.shared?.building = id + 1
+				SAUserSettings.shared?.building = id
 				if (SAUserSettings.shared?.update() ?? false){
-					print("building set to \(id+1)")
+					print("building set to \(id)")
 				}else{
 					SAUserSettings.shared?.building = originBuilding
 					self.updateView()
@@ -142,12 +142,13 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		}
 	}
 	func setStartPage(_ id:Int){
+		let id = id + 1
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared?.idtab ?? 1
 			if originTab != id {
-				SAUserSettings.shared?.idtab = id + 1
+				SAUserSettings.shared?.idtab = id
 				if (SAUserSettings.shared?.update() ?? false){
-					print("start page set to \(id+1)")
+					print("start page set to \(id)")
 				}else{
 					SAUserSettings.shared?.idtab = originTab
 					self.updateView()

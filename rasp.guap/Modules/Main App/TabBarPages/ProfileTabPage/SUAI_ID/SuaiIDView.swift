@@ -28,9 +28,9 @@ class SuaiIDView: View {
 		tf.isSecureTextEntry = true
 		return tf
 	}()
-	let submitBtn:Button = {
+	let submitBtn:PocketTagButton = {
 		let btn = PocketTagButton()
-		btn.isActive = true
+		btn.isActive = false
 		btn.setTitle("Сохранить данные", for: .normal)
 		btn.snp.removeConstraints()
 		return btn

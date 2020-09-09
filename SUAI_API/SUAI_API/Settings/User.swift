@@ -14,8 +14,8 @@ public class SAUserSettings: Codable {
     public var animations: Int
     public var building: Int
     public var banners: Int
-    //    public let prologin: String
-    //    public let propass: String
+    public var prologin: String?
+    public var propass: String?
     
     public static var shared = fromServer() ?? fromCache()
     
