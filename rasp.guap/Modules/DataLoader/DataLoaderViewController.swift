@@ -34,8 +34,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 					self.setText("Загружаю расписание")
 					let _ = SASchedule.shared.load(for: user)
 					self.setText("Загружаю дедлайны")
-					SABrief.shared.loadFromServer()
+					SADeadlines.shared.loadFromServer()
 					self.setText("Загружаю новости")
+					SABrief.shared.loadFromServer()
 					SANews.shared.loadSourceList()
 					self.startApp()
 				}
