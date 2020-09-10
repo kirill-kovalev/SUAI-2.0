@@ -111,7 +111,11 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 			self.rootView.daySelector.add(SwitchSelectorButton(title: "Вне Сетки" , titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
 		}
 		
-		self.rootView.daySelector.selectedIndex =  self.getIndex(day: self.day) //> 0 ? self.day : self.days.count-1
+		let newIndex = self.getIndex(day: self.day)
+		if newIndex != self.rootView.daySelector.selectedIndex{
+			self.rootView.daySelector.selectedIndex =  newIndex //> 0 ? self.day : self.days.count-1
+		}
+		
 		self.rootView.daySelector.animated = true
     }
 	

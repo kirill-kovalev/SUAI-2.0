@@ -183,7 +183,7 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     }
     
     func shouldShow(day: Int,week:SATimetable.Week) -> Bool {
-		print("day: \(day); week: \(week) ; get:\(self.timetable.get(week: week, day: day).count)")
+		//print("day: \(day); week: \(week) ; get:\(self.timetable.get(week: week, day: day).count)")
         return !self.timetable.get(week: week, day: day).isEmpty
     }
     
