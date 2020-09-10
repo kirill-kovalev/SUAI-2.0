@@ -59,7 +59,6 @@ class FeedTabViewController: ViewController<FeedTabView> {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-		showSources()
 		if news.sources.count == 0 {
 			reloadSources()
 		}
@@ -72,8 +71,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
 	}
 	func showSources(){
 		self.rootView.sourceSelector.clear()
+		self.rootView.sourceSelector.layoutIfNeeded()
 		self.rootView.sourceSelector.add(SwitchSelectorButton(title: "Сводка", titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
-		self.rootView.sourceSelector.selectedIndex += 0
 		for s in self.news.sources{
 			let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
 			self.rootView.sourceSelector.add(btn)

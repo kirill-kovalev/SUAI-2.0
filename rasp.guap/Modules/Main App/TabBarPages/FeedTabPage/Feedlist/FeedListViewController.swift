@@ -72,7 +72,9 @@ class FeedListViewController: UIViewController {
         self.stackView.arrangedSubviews.forEach{$0.removeFromSuperview()}
         DispatchQueue.global(qos: .background).async {
             self.isLoading = true
-            let feed = self.stream.feed
+            var feed = self.stream.feed
+			if feed.isEmpty {self.stream.reload()}
+			feed = self.stream.feed
             DispatchQueue.main.async {
                 self.addFeed(elements: feed)
                 self.isLoading = false

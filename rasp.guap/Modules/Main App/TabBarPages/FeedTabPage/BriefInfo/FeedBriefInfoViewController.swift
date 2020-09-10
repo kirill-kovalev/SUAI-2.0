@@ -29,6 +29,11 @@ class FeedBriefInfoViewController: UIViewController {
         
         
     }
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		reloadDeadlines()
+		reloadSchedule()
+	}
     //MARK: - Weather
     func loadHello(){
         struct vkResponse:Codable{
@@ -123,6 +128,7 @@ class FeedBriefInfoViewController: UIViewController {
     
     
     //MARK: - Schedule
+	let timetableVC = TimetableViewController(timetable: [] )
     func loadSchedule(){
 		
 		func nextDay(_ cur:Int)->Int {
@@ -146,9 +152,8 @@ class FeedBriefInfoViewController: UIViewController {
 		
 		let weekdays = ["понедельник","вторник","среду","четверг","пятницу","субботу"]
         DispatchQueue.main.async {
-            let timetableVC = TimetableViewController(timetable: timetable )
-            timetableVC.view.isUserInteractionEnabled = false
-            let div = PocketDivView(content: timetableVC.view)
+			self.timetableVC.setTimetable(timetable: timetable)
+			let div = PocketDivView(content: self.timetableVC.view)
             
 			let container = PocketScalableContainer(content: div)
 			container.addTarget(action: { _ in
@@ -160,16 +165,39 @@ class FeedBriefInfoViewController: UIViewController {
         }
         
     }
+	func reloadSchedule(){
+		func nextDay(_ cur:Int)->Int {
+			if cur == 6 { return 0 }
+			return cur+1
+		}
+
+		DispatchQueue.global().async {
+			
+			guard let group = SAUserSettings.shared!.group,
+				  let user = SASchedule.shared.groups.get(name: group ) else {return}
+			let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
+			let today = Calendar.convertToRU(todayUS)
+			var day = today
+			var timetable:[SALesson]
+			repeat{
+				timetable = SASchedule.shared.get(for: user).get(week: SASchedule.shared.settings?.week ?? .odd, day: day )
+				if timetable.isEmpty {
+					day = nextDay(day)
+				}
+			}while(timetable.isEmpty)
+			
+			DispatchQueue.main.async { self.timetableVC.setTimetable(timetable: timetable) }
+		}
+	}
     
     //MARK: - Deadlines
+	let deadlineListVC = DeadlineListController(list: [])
     func loadDeadlines(){
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-        SADeadlines.shared.loadFromServer()
         let deadlines = SADeadlines.shared.nearest
         DispatchQueue.main.async {
-            let deadlineListVC = DeadlineListController(list: deadlines)
-            deadlineListVC.view.isUserInteractionEnabled = false
-            let div = PocketDivView(content: deadlineListVC.view)
+			self.deadlineListVC.setItems(list: deadlines)
+            let div = PocketDivView(content: self.deadlineListVC.view)
             let container = PocketScalableContainer(content: div)
 			container.addTarget(action: { _ in
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 1 })
@@ -181,7 +209,12 @@ class FeedBriefInfoViewController: UIViewController {
         
     }
     @objc func switchToDeadlines(){ self.tabBarController?.selectedIndex = 1 }
-    
+	func reloadDeadlines(){
+		DispatchQueue.global().async {
+			let deadlines = SADeadlines.shared.nearest
+			DispatchQueue.main.async { self.deadlineListVC.setItems(list: deadlines) }
+		}
+	}
     
     
     
