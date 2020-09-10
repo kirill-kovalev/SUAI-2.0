@@ -59,9 +59,11 @@ class FeedTabViewController: ViewController<FeedTabView> {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+		self.rootView.sourceSelector.updateView()
 		if news.sources.count == 0 {
 			reloadSources()
 		}
+		
     }
 	func reloadSources(){
 		DispatchQueue.global().async {
