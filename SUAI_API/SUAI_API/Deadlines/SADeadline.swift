@@ -10,12 +10,12 @@ import Foundation
 
 public struct SADeadline: Codable {
     public let id: Int
-    public let subject_name: String?
-    public let deadline_name: String?
-    public let closed: Int
+    public var subject_name: String?
+    public var deadline_name: String?
+    public var closed: Int
     public let start: Date
-    public let end: Date
-    public let comment: String
+    public var end: Date
+    public var comment: String
     
     public var lesson: String {
         return ""
