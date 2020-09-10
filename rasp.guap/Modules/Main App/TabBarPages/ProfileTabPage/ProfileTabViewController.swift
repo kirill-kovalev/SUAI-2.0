@@ -59,7 +59,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		self.rootView.addHeaderButton(logoutButton)
 		logoutButton.addTarget(action: { (sender) in
 			print("logout")
-			VK.sessions.default.logOut()
+			DispatchQueue.global().async { VK.sessions.default.logOut() }
 			let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
 			vkVC.modalPresentationStyle = .fullScreen
 			vkVC.modalTransitionStyle = .flipHorizontal
