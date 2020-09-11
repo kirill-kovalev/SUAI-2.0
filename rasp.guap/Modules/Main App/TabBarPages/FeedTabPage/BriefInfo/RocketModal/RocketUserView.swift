@@ -29,12 +29,19 @@ class RocketUserView:UIView{
         image.tintColor = Asset.PocketColors.pocketGray.color
         return image
     }()
+	let rocketBlock:UIView = {
+		let c = UIView(frame: .zero)
+		
+		return c
+	}()
     init() {
         super.init(frame:.zero)
         addSubview(avatar)
         addSubview(username)
-        addSubview(rocketCount)
-        addSubview(rocketImage)
+		addSubview(rocketBlock)
+		rocketBlock.addSubview(rocketCount)
+        rocketBlock.addSubview(rocketImage)
+		
         avatar.snp.makeConstraints { (make) in
             make.top.left.greaterThanOrEqualToSuperview()
             make.right.lessThanOrEqualToSuperview()
@@ -46,18 +53,20 @@ class RocketUserView:UIView{
             make.centerX.equalToSuperview()
             make.top.equalTo(avatar.snp.bottom).offset(6)
         }
+		rocketBlock.snp.makeConstraints { (make) in
+			make.top.equalTo(username.snp.bottom).offset(6)
+			make.centerX.equalToSuperview()
+			
+			make.bottom.equalToSuperview()
+		}
         rocketCount.snp.makeConstraints { (make) in
-            make.left.greaterThanOrEqualToSuperview()
-            make.top.equalTo(username.snp.bottom).offset(6)
-            make.bottom.equalToSuperview()
-            make.centerX.lessThanOrEqualTo(self.snp.centerX)
+			make.left.top.bottom.equalToSuperview()
         }
         rocketImage.snp.makeConstraints { (make) in
             make.centerY.equalTo(rocketCount)
             make.size.equalTo(CGSize(width: 16, height: 16))
-            make.left.equalTo(rocketCount.snp.right).offset(4)
-            make.centerX.greaterThanOrEqualTo(self.snp.centerX)
-            make.right.lessThanOrEqualToSuperview()
+            make.left.equalTo(rocketCount.snp.right).offset(6)
+            make.right.equalToSuperview()
         }
     }
     

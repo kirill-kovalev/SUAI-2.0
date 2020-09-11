@@ -23,9 +23,11 @@ class RocketModalView: ModalView {
     }()
     let subtitle:UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Пользуйся сервисом и получай рокеты! Лучших ждут\n стикеры еженедельно!"
-        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+        label.text = "Пользуйся сервисом и получай рокеты! Лучших ждут стикеры еженедельно!"
+        label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
+		label.numberOfLines = 0
+		label.textAlignment = .center
         return label
     }()
     let topTitle:UILabel = {
@@ -43,9 +45,9 @@ class RocketModalView: ModalView {
     }()
     let nextGiveaway:UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = ""
-        label.font = FontFamily.TTCommons.bold.font(size: 21)
-        label.textColor = Asset.PocketColors.pocketBlack.color
+        label.text = "(Следующий розыгрышь через дней)"
+		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+        label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
     required init() {
@@ -70,33 +72,33 @@ class RocketModalView: ModalView {
             make.size.equalTo(CGSize(width: 128, height: 128))
         }
         title.snp.makeConstraints { (make) in
-            make.top.equalTo(image.snp.bottom)
+			make.top.equalTo(image.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
             make.left.greaterThanOrEqualToSuperview().offset(10)
             make.right.lessThanOrEqualToSuperview().inset(10)
         }
         subtitle.snp.makeConstraints { (make) in
-            make.top.equalTo(title.snp.bottom)
+			make.top.equalTo(title.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
             make.left.greaterThanOrEqualToSuperview().offset(10)
             make.right.lessThanOrEqualToSuperview().inset(10)
         }
         topTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(subtitle.snp.bottom)
+            make.top.equalTo(subtitle.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
             make.left.greaterThanOrEqualToSuperview().offset(10)
             make.right.lessThanOrEqualToSuperview().inset(10)
         }
         stack.snp.makeConstraints { (make) in
-            make.top.equalTo(topTitle.snp.bottom)
+            make.top.equalTo(topTitle.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
             make.left.greaterThanOrEqualToSuperview().offset(10)
             make.right.lessThanOrEqualToSuperview().inset(10)
         }
         nextGiveaway.snp.makeConstraints { (make) in
-            make.top.equalTo(stack.snp.bottom)
+            make.top.equalTo(stack.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+			make.bottom.equalToSuperview().inset(8)
             make.left.greaterThanOrEqualToSuperview().offset(10)
             make.right.lessThanOrEqualToSuperview().inset(10)
         }

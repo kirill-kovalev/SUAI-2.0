@@ -26,4 +26,17 @@ class RocketModalViewController: ModalViewController<RocketModalView> {
             }
         }
     }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
+		let diff = 7 - today
+		switch diff {
+			case 1:
+				self.content.nextGiveaway.text = "(Следующий розыгрыш завтра)"
+			case 2,3,4:
+				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дня)"
+			default:
+				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дней)"
+		}
+	}
 }
