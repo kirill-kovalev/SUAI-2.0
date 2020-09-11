@@ -44,6 +44,11 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 			}
 		}
 		
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket", true))
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Bot", true))
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("pro.guap", false))
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket Android", false))
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket iOS", true))
 		
 	}
 	

@@ -34,6 +34,7 @@
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
 		5D57820325096BF200E3D384 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D57820225096BF200E3D384 /* GradientLabel.swift */; };
 		5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F00F624FD007100C927A8 /* ASCollectionView.swift */; };
+		5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
 		5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */; };
 		5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */; };
@@ -189,6 +190,7 @@
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
 		5D57820225096BF200E3D384 /* GradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
 		5D6F00F624FD007100C927A8 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
+		5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketServiceListItem.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 			children = (
 				5DA7442F25093A0400403F6A /* UserCardModalViewController.swift */,
 				5DA7443125093A0E00403F6A /* UserCardModalView.swift */,
+				5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */,
 			);
 			path = UserCardModal;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
 				5DA7442D25090CD500403F6A /* DataLoaderView.swift in Sources */,
 				5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */,
+				5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */,
 				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,
 				5D57820325096BF200E3D384 /* GradientLabel.swift in Sources */,
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,

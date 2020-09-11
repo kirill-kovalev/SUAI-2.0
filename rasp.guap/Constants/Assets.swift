@@ -122,6 +122,8 @@ internal enum Asset {
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
     internal static let scheduleFilter = ImageAsset(name: "ScheduleFilter")
     internal static let add = ImageAsset(name: "add")
+    internal static let cancelCircle = ImageAsset(name: "cancel_circle")
+    internal static let checkCircle = ImageAsset(name: "check_circle")
     internal static let searchDropdown = ImageAsset(name: "searchDropdown")
   }
 }
