@@ -87,6 +87,7 @@ internal enum Asset {
     internal static let headerBackground = ColorAsset(name: "header_background")
     internal static let iconSecondary = ColorAsset(name: "icon_secondary")
     internal static let placeholderIconForegroundPrimary = ColorAsset(name: "placeholder_icon_foreground_primary")
+    internal static let pocketSilver = ColorAsset(name: "pocketSilver")
     internal static let pocketAqua = ColorAsset(name: "pocket_aqua")
     internal static let pocketBlack = ColorAsset(name: "pocket_black")
     internal static let pocketBlue = ColorAsset(name: "pocket_blue")

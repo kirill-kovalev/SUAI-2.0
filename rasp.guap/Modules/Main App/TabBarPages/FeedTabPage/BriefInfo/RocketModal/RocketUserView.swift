@@ -64,7 +64,7 @@ class RocketUserView:UIView{
     func setPlace(_ place:Int){
         let avatarColors = [
             Asset.PocketColors.pocketYellow.color,
-            Asset.PocketColors.pocketLightGray.color,
+			Asset.PocketColors.pocketSilver.color,
             Asset.PocketColors.pocketOrange.color
         ]
         if place >= 0 && place < avatarColors.count{
