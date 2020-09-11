@@ -35,11 +35,12 @@ class ProfileTabView:TabBarPageView {
     func setupConstraints(){
 		scroll.snp.makeConstraints { (make) in
 			make.top.equalToSuperview().offset(12)
-			make.left.right.bottom.equalToSuperview()
+			make.left.right.equalToSuperview()
+			make.bottom.equalTo(self.safeAreaLayoutGuide)
 		}
         stack.snp.makeConstraints { (make) in
             make.top.equalTo(scroll.contentLayoutGuide)
-			make.bottom.lessThanOrEqualTo(scroll.contentLayoutGuide).offset(-20)
+			make.bottom.lessThanOrEqualTo(scroll.contentLayoutGuide).inset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().offset(-20)
         }
