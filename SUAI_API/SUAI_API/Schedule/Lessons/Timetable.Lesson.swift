@@ -39,6 +39,10 @@ public struct SALesson : Hashable{
         }
         return SATimetable.lessonHours[self.lessonNum - 1][1]
     }
+	
+	private func hf(_ int:Int?)->String{ String(format: "%.2i",  int ?? 0) }
+	public var start:String {"\(hf(self.startTime.hour)):\(hf(self.startTime.minute!))"}
+	public var end:String {"\(hf(self.endTime.hour!)):\(hf(self.endTime.minute!))"}
     
     public init(name:String = "",
                 lessonNum:Int = 1,
