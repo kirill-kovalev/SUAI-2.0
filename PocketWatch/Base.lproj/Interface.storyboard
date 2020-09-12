@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097.3" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="TTCommons-Bold.ttf">
+            <string>TTCommons-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="PocketWatch" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Расписание на сегодня" minimumScaleFactor="0.80000000000000004" id="QWe-CM-bVU">
+                            <color key="textColor" name="pocket_white"/>
+                            <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                        </label>
+                        <table alignment="left" id="7Hd-fu-jjA">
+                            <items>
+                                <tableRow identifier="shecduleItem" id="cHo-m8-LqS" customClass="TableRowController" customModule="PocketWatch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="24" alignment="left" id="rbd-yf-uU2">
+                                        <items>
+                                            <separator alignment="left" verticalAlignment="center" id="O2t-ec-lO8">
+                                                <color key="color" name="pocket_purple"/>
+                                            </separator>
+                                            <label alignment="left" verticalAlignment="center" text="Label" id="xWW-CR-ySs">
+                                                <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                            </label>
+                                        </items>
+                                        <connections>
+                                            <segue destination="s29-EE-rtr" kind="push" id="kpg-NQ-SBH"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="LessonNameLabel" destination="xWW-CR-ySs" id="a1Q-Ts-VrI"/>
+                                        <outlet property="lessonTypeColor" destination="O2t-ec-lO8" id="a5A-Nk-dWj"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="7Hd-fu-jjA" id="Lk4-6p-nY4"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="26" y="72"/>
+        </scene>
+        <!--Schedule Detail Controller-->
+        <scene sceneID="PAf-jm-Omf">
+            <objects>
+                <controller id="s29-EE-rtr" customClass="ScheduleDetailController" customModule="PocketWatch_Extension">
+                    <items>
+                        <label alignment="left" text="Предмет" id="Nam-iv-djd">
+                            <fontDescription key="font" name="TTCommons-Bold" family="TT Commons" pointSize="16"/>
+                        </label>
+                        <label alignment="left" text="Алгоритмы верчения на оси вращения всего и вся и главное чтоб еще много строк заняло" numberOfLines="0" id="DiV-hl-50u">
+                            <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                        </label>
+                        <label alignment="left" text="Время проведения" id="3Wb-FV-pgi">
+                            <fontDescription key="font" name="TTCommons-Bold" family="TT Commons" pointSize="16"/>
+                        </label>
+                        <label alignment="left" text="09:00 - 10:30" numberOfLines="0" id="JJk-6R-hVU">
+                            <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                        </label>
+                        <label alignment="left" text="Преподаватели" id="Y2c-dP-ojL">
+                            <fontDescription key="font" name="TTCommons-Bold" family="TT Commons" pointSize="16"/>
+                        </label>
+                        <label alignment="left" text="Иванов И.И." numberOfLines="0" id="bIh-rJ-kQO">
+                            <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                        </label>
+                        <label alignment="left" text="Доп. сведения" id="aG5-Q5-Ysg">
+                            <fontDescription key="font" name="TTCommons-Bold" family="TT Commons" pointSize="16"/>
+                        </label>
+                        <label alignment="left" text="Гастелло 15 11-04" numberOfLines="0" id="dYA-u3-NsW">
+                            <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                        </label>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="283" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="pocket_purple">
+            <color red="0.64313727617263794" green="0.47843137383460999" blue="0.92156863212585449" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pocket_white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
