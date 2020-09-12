@@ -76,7 +76,9 @@ class ScheduleTabView:TabBarPageView{
         }
 		
         placeholder.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
+			make.height.lessThanOrEqualToSuperview()
+			make.width.equalToSuperview()
+			make.center.equalToSuperview()
         }
     }
     
