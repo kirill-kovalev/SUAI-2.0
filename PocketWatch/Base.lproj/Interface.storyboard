@@ -27,15 +27,16 @@
                         <table alignment="left" id="7Hd-fu-jjA">
                             <items>
                                 <tableRow identifier="shecduleItem" id="cHo-m8-LqS" customClass="TableRowController" customModule="PocketWatch" customModuleProvider="target">
-                                    <group key="rootItem" width="1" height="24" alignment="left" id="rbd-yf-uU2">
+                                    <group key="rootItem" width="1" height="24" alignment="left" spacing="4" id="rbd-yf-uU2">
                                         <items>
-                                            <separator alignment="left" verticalAlignment="center" id="O2t-ec-lO8">
+                                            <separator height="33" alignment="left" verticalAlignment="center" id="O2t-ec-lO8">
                                                 <color key="color" name="pocket_purple"/>
                                             </separator>
-                                            <label alignment="left" verticalAlignment="center" text="Label" id="xWW-CR-ySs">
+                                            <label alignment="left" verticalAlignment="center" text="Label" baselineAdjustment="alignCenters" id="xWW-CR-ySs">
                                                 <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                             </label>
                                         </items>
+                                        <edgeInsets key="margins" left="7" right="0.0" top="0.0" bottom="0.0"/>
                                         <connections>
                                             <segue destination="s29-EE-rtr" kind="push" id="kpg-NQ-SBH"/>
                                         </connections>
@@ -85,6 +86,12 @@
                             <fontDescription key="font" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                         </label>
                     </items>
+                    <connections>
+                        <outlet property="PrepLabel" destination="bIh-rJ-kQO" id="oZt-Lp-bZt"/>
+                        <outlet property="TimeLabel" destination="JJk-6R-hVU" id="YlK-RA-jYN"/>
+                        <outlet property="lessonNameLabel" destination="DiV-hl-50u" id="kzS-LJ-r0O"/>
+                        <outlet property="roomsLabel" destination="dYA-u3-NsW" id="hZc-TL-vo6"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="283" y="72"/>
