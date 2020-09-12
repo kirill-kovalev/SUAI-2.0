@@ -9,6 +9,7 @@
 import UIKit
 import SUAI_API
 import SwiftyVK
+import WatchConnectivity
 
 class DataLoaderViewController:ViewController<DataLoaderView>{
 	override func viewDidLoad() {
@@ -33,6 +34,8 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 					}
 					self.setText("Загружаю расписание")
 					let _ = SASchedule.shared.load(for: user)
+					let timetable = SASchedule.shared.get(for: user)
+					self.setWatchTimetable(timetable)
 					self.setText("Загружаю дедлайны")
 					SADeadlines.shared.loadFromServer()
 					self.setText("Загружаю новости")
@@ -42,6 +45,26 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				}
 			}
 		}
+	}
+	
+	func setWatchTimetable(_ tt:SATimetable){
+		print("Setting Watch TT")
+		if WCSession.isSupported(){
+			if WCSession.default.activationState == .activated {
+				let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
+				let curWeek = SASchedule.shared.settings?.week ?? .odd
+				let timetable = tt.get(week: curWeek, day: today).map { lesson -> [String] in
+					let preps = lesson.prepods.map{$0.Name}.joined(separator: ",\n")
+					return [lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps]
+				}
+				
+				do{
+					let encoded = try JSONEncoder().encode(timetable)
+					try WCSession.default.updateApplicationContext(["timetable":encoded])
+				}catch{print(error)}
+			}
+		}
+		print("End of Setting Watch TT")
 	}
 	func setText(_ text:String){
 		DispatchQueue.main.async {

@@ -73,12 +73,9 @@ class TimetableLessonCell: UIView{
 
         }
        
-        func hf(_ int:Int?)->String{
-             return String(format: "%.2i",  int ?? 0)
-        }
-        
-        pocketLessonView.startTime.text = "\(hf(lesson.startTime.hour)):\(hf(lesson.startTime.minute!))"
-        pocketLessonView.endTime.text = "\(hf(lesson.endTime.hour!)):\(hf(lesson.endTime.minute!))"
+
+		pocketLessonView.startTime.text = lesson.start
+		pocketLessonView.endTime.text = lesson.end
 
         
         

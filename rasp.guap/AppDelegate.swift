@@ -9,6 +9,7 @@
 import UIKit
 import SUAI_API
 import SwiftyVK
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private let vkDelegate  = VKDelegate()
     
+	func setupWatchConnetivity(){
+		if WCSession.isSupported(){
+			let session = WCSession.default
+			session.delegate = self
+			session.activate()
+		}
+	}
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+         setupWatchConnetivity()
         VK.setUp(appId: "7578765", delegate: vkDelegate)
 		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
@@ -69,4 +77,22 @@ extension UIApplication{
     var appDelegate: AppDelegate{
         return self.delegate as! AppDelegate
     }
+}
+extension AppDelegate:WCSessionDelegate{
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		print(#function)
+		if let error = error {
+            fatalError("Can't activate session with error: \(error.localizedDescription)")
+        }
+        print("WC Session activated with state: \(activationState.rawValue)")
+	}
+	
+	func sessionDidBecomeInactive(_ session: WCSession) {
+		print(#function)
+	}
+	
+	func sessionDidDeactivate(_ session: WCSession) {
+		print(#function)
+	}
+	
 }
