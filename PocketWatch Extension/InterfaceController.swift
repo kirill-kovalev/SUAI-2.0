@@ -39,16 +39,23 @@ class InterfaceController: WKInterfaceController {
 		}
         // Configure interface objects here.
     }
+	
+	override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+		let lesson = self.lessons[rowIndex]
+		print(lesson)
+		return lesson
+	}
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-		
+		WCSession.default.sendMessage(["":""], replyHandler: nil, errorHandler: nil)
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+		WCSession.default.sendMessage(["":""], replyHandler: nil, errorHandler: nil)
     }
 	
 	func updateTable(){

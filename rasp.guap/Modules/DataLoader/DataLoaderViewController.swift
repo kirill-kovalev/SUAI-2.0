@@ -54,8 +54,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
 				let curWeek = SASchedule.shared.settings?.week ?? .odd
 				let timetable = tt.get(week: curWeek, day: today).map { lesson -> [String] in
-					let preps = lesson.prepods.map{$0.Name}.joined(separator: ",\n")
-					return [lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps]
+					let preps = lesson.prepods.map{$0.shortName}.joined(separator: ";\n")
+					let tags = lesson.tags.joined(separator: "; ")
+					return [lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps,tags]
 				}
 				
 				do{
