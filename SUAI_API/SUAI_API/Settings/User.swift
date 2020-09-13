@@ -55,7 +55,8 @@ public class SAUserSettings: Codable {
         self.animations = settings.animations
         self.building = settings.building
         self.banners = settings.banners
-        
+		self.prologin = settings .prologin
+		self.propass = settings.propass
     }
     public func update() -> Bool{
         var success = false

@@ -25,6 +25,12 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				if let group = settings?.group {
 					self.setText("Загружаю расписание")
 					SASchedule.shared.loadFromCache()
+					if SASchedule.shared.groups.count == 0{
+						SASchedule.shared.groups.loadFromServer()
+					}
+					if SASchedule.shared.preps.count == 0{
+						SASchedule.shared.preps.loadFromServer()
+					}
 					guard let user = SASchedule.shared.groups.get(name: group ) else {
 						self.setText("Не удалось получить расписание!")
 						return
