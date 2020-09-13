@@ -26,20 +26,37 @@ public class SADeadlines{
 			return d.type == .closed
 		}
 	}
+	public var all:[SADeadline]{
+		return self.deadlines
+	}
 	
 	private var deadlines = [SADeadline]()
 	private var lastUpdate = Date()
 	private var needUpdate:Bool {Date().timeIntervalSince(self.lastUpdate) > 60}
 	
+	
+	
+	private var userDefaultsKey:String {"\(Self.self)Cache"}
 	public func loadFromServer(){
 		let _ = PocketAPI.shared.syncLoadTask(method: .getDeadlines ) { (data) in
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 				self.lastUpdate = Date()
+				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
 			}catch{
 				print("Deadlines: \(error)")
 			}
 		}
+	}
+	public func loadFromCache(){
+		if let data = UserDefaults.standard.data(forKey: self.userDefaultsKey){
+			do {
+				self.deadlines = try self.decodeDeadlines(data: data )
+			}catch{
+				print("Deadlines.loadFromCache: \(error)")
+			}
+		}
+		
 	}
 	
 	private func decodeDeadlines(data:Data) throws  -> [SADeadline] {
