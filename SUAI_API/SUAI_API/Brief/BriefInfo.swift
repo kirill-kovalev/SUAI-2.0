@@ -13,14 +13,28 @@ public class SABrief{
     var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0))
     
     public func loadFromServer(){
-        guard let data = PocketAPI.shared.syncLoadTask(method: .getSuper) else {return}
-        do{
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
-            let a = try decoder.decode(Brief.self, from: data)
-            self.briefInfo = a
-        }catch{print("Brief: \(error)") }
+		if let data = PocketAPI.shared.syncLoadTask(method: .getSuper) {
+			do{
+				let decoder = JSONDecoder()
+				decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
+				let decodedData = try decoder.decode(Brief.self, from: data)
+				self.briefInfo = decodedData
+				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+			}catch{print("Brief: \(error)") }
+		}else{
+			do{
+				guard let data = UserDefaults.standard.data(forKey: self.userDefaultsKey) else { return}
+				let decoder = JSONDecoder()
+				decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
+				let decodedData = try decoder.decode(Brief.self, from: data)
+				self.briefInfo = decodedData
+			}catch{print("Brief: \(error)") }
+		}
+        
     }
+	private var userDefaultsKey:String {"\(Self.self)Cache"}
+	
+	
     public var isSub:Bool {self.briefInfo.is_sub}
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}

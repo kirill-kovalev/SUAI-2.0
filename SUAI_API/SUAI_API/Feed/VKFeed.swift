@@ -103,7 +103,12 @@ public struct VKFeedElement:Codable {
         return Date(timeIntervalSince1970: TimeInterval(self.date))
     }
     public func getText() ->String{
-        return self.text ?? self.attachments?.first?.link?.title ?? self.attachments?.first?.photo?.text ?? self.attachments?.first?.video?.title ?? self.attachments?.first?.doc?.title ?? ""
+		
+        return self.text ??
+			self.attachments?.first?.link?.title ??
+			self.attachments?.first?.photo?.text ??
+			self.attachments?.first?.video?.title ??
+			self.attachments?.first?.doc?.title ?? ""
     }
     
     

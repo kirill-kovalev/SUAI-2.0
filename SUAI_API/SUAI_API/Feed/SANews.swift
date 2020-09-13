@@ -14,22 +14,24 @@ public struct FeedSource:Codable{
 }
 
 public class SANews{
+	private var userDefaultsKey:String {"\(Self.self)Cache"}
     
     public static let shared = SANews()
     public var streams:[SAFeedStream] = []
     
     public func loadSourceList(){
-        guard let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder) else {return}
-        do{
-            let a = try JSONDecoder().decode([FeedSource].self, from: data)
-            self.streams = []
-            for (source) in a{
-                //let source = FeedSource(name: key, owner_id: value)
-                self.streams.append(SAFeedStream(source: source))
-            }
-        }catch{
-            print("SANews source list: \(error)")
-        }
+		if let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder) ?? UserDefaults.standard.data(forKey: self.userDefaultsKey){
+			do{
+				let decodedData  = try JSONDecoder().decode([FeedSource].self, from: data)
+				self.streams = []
+				for (source) in decodedData {
+					self.streams.append(SAFeedStream(source: source))
+				}
+				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+			}catch{
+				print("SANews source list: \(error)")
+			}
+		}
         
     }
     

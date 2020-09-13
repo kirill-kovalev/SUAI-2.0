@@ -22,6 +22,8 @@ public class SAFeedStream{
         self.feed = []
         let _ = next()
     }
+	
+	private var userDefaultsKey:String {"\(Self.self)\(self.source)Cache"}
     public func next() -> [SAFeedElement]{
         var new:[SAFeedElement] = []
         
@@ -32,20 +34,18 @@ public class SAFeedStream{
         ]) ?? Data()
         do{
             let feed = try JSONDecoder().decode([VKFeedElement].self, from: data)
-            for item in feed{
-                
-                let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
-                let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
-                
-				let url = "https://vk.com/wall\(item.from_id)_\(item.id)"
-                new.append(SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url))
-                
+			for item in feed{
+                new.append(generateSAFeed(item: item))
                 self.offset += 1
             }
+			UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
         }catch{
             if !(String(data: data, encoding: .utf8)?.contains("Internal") ?? false) { print("FeedStream: \(error)") }
             new = loadStraightFromVK()
         }
+		if new.isEmpty && offset < count {
+			new = loadFromCache()
+		}
         
         self.feed.append(contentsOf: new)
         return new
@@ -74,10 +74,24 @@ public class SAFeedStream{
             
         }catch{ print("FeedStream VK : \(error)"); return []}
     }
+	
+	private func loadFromCache() -> [SAFeedElement]{
+		guard let data = UserDefaults.standard.data(forKey: self.userDefaultsKey) else {return []}
+		do{
+			let feed = try JSONDecoder().decode([VKFeedElement].self, from: data)
+			return feed.map{generateSAFeed(item: $0)}
+		}catch{
+			return []
+		}
+	}
+	
+	
+	
     func generateSAFeed(item: VKFeedElement) -> SAFeedElement {
         let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
         let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
-        return SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: "")
+		let url = "https://vk.com/wall\(item.from_id)_\(item.id)"
+		return SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url)
     }
     init() {
         self.source = FeedSource(name: "default", id: 0)
