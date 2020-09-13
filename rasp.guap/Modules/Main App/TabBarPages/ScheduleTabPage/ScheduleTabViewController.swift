@@ -95,6 +95,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         var calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "Ru")
+		let isToday:Bool = (
+				   week == SASchedule.shared.settings?.week &&
+				   day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
+			   )
         
         DispatchQueue.main.async {
             if day >= 0 {
@@ -104,12 +108,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 				self.rootView.placeholder.title = "Вне сетки пар нет!"
                 self.rootView.dayLabel.text = ("Вне сетки")
 			}
+			self.rootView.todayButton.isHidden = isToday
         }
             
-        let isToday:Bool = (
-            week == SASchedule.shared.settings?.week &&
-            day == Calendar.convertToRU( calendar.dateComponents([.weekday], from: Date()).weekday! )
-        )
+       
 		guard let user = self.currentUser else{
 			
             print("curUser is nil")
@@ -117,7 +119,6 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         }
 		let _ = SASchedule.shared.load(for: user )
         DispatchQueue.main.async {
-            self.rootView.todayButton.isHidden = isToday
             self.daySelectController.set(day: day, week: week)
         }
 		self.setTimetable(week: week, day: day )
