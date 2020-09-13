@@ -14,7 +14,6 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 	lazy var hideText:Bool = {
 		guard let window = UIApplication.shared.windows.first else {return true}
 		let insets = window.safeAreaInsets
-		
 		return insets.bottom == 0
 	}()
 
@@ -28,17 +27,10 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         
         //imageView.bounds.size = CGSize(width: 60 , height: 60)
         
-        
-    }
-    override func updateLayout() {
-        super.updateLayout()
 		self.titleLabel.layer.opacity = 0
-        titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 12)
-        titleLabel.sizeToFit()
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(28)
             make.center.equalToSuperview()
-            
         }
 		if !self.hideText{
 			titleLabel.snp.makeConstraints { (make) in
@@ -47,7 +39,13 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 			}
 		}
         
+    }
+    override func updateLayout() {
         
+        super.updateLayout()
+        
+        titleLabel.font = FontFamily.SFProDisplay.semibold.font(size: 12)
+        titleLabel.sizeToFit()
     }
     
     override func highlightAnimation(animated: Bool, completion: (() -> ())?) {

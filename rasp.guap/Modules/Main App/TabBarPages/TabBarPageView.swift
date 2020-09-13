@@ -81,7 +81,6 @@ class TabBarPageView : View{
     required init() {
         super.init()
         self.backgroundColor = Asset.PocketColors.backgroundPage.color
-        
         addViews()
         setupConstraints()
     }
