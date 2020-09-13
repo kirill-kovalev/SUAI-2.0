@@ -55,6 +55,11 @@ class ScheduleTabView:TabBarPageView{
         pocketDiv.addSubview(placeholder)
     }
     private func setupConstraints(){
+		selectButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(24)
+            make.centerY.equalTo(title)
+        }
+		
         dayLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(2)
             make.right.lessThanOrEqualToSuperview()
@@ -68,17 +73,14 @@ class ScheduleTabView:TabBarPageView{
             make.top.equalTo(dayLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)
-            make.bottom.lessThanOrEqualToSuperview()
-        }
-		selectButton.snp.makeConstraints { (make) in
-            make.width.height.equalTo(24)
-            make.centerY.equalTo(title)
         }
 		
+		
         placeholder.snp.makeConstraints { (make) in
-			make.height.lessThanOrEqualToSuperview()
+			//make.height.lessThanOrEqualToSuperview()
 			make.width.equalToSuperview()
-			make.center.equalToSuperview()
+			make.top.equalToSuperview()
+			make.bottom.lessThanOrEqualToSuperview()
         }
     }
     

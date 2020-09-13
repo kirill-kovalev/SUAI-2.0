@@ -97,13 +97,10 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         calendar.locale = Locale(identifier: "Ru")
         
         DispatchQueue.main.async {
-            
-            
             if day >= 0 {
 				self.rootView.placeholder.title = calendar.weekdaysRu[day].capitalized + ", пар нет!"
                 self.rootView.dayLabel.text = (calendar.weekdaysRu[day].capitalized + ", \(week == .odd ? "не" : "")четная неделя")
 			}else{
-				print("\(week) \(day)")
 				self.rootView.placeholder.title = "Вне сетки пар нет!"
                 self.rootView.dayLabel.text = ("Вне сетки")
 			}
@@ -118,7 +115,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             print("curUser is nil")
             return
         }
-		SASchedule.shared.load(for: user )
+		let _ = SASchedule.shared.load(for: user )
         DispatchQueue.main.async {
             self.rootView.todayButton.isHidden = isToday
             self.daySelectController.set(day: day, week: week)
