@@ -43,8 +43,8 @@ class RocketUserView:UIView{
         rocketBlock.addSubview(rocketImage)
 		
         avatar.snp.makeConstraints { (make) in
-            make.top.left.greaterThanOrEqualToSuperview()
-            make.right.lessThanOrEqualToSuperview()
+            make.top.greaterThanOrEqualToSuperview()
+			make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 56, height: 56))
         }
         username.snp.makeConstraints { (make) in
