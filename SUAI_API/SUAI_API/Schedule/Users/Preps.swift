@@ -11,36 +11,13 @@ import Foundation
 
 public class Preps :SAUsers{
     
-        
+	override var source: String { "https://api.guap.ru/rasp/custom/get-sem-preps"}
     public override init() {
         super.init()
-        loadFromServer()
     }
     
     required init(users: [User]) {
         super.init(users: users)
     }
-    
-    public func loadFromServer(){
-        let sem = DispatchSemaphore(value: 0)
-        URLSession.shared.dataTask(with: URL(string: "https://api.guap.ru/rasp/custom/get-sem-preps")!) { (data, resp, err) in
-            if err == nil, data != nil {
-                if (resp as! HTTPURLResponse).statusCode == 200 {
-                    do{
-                        let decoded = try JSONDecoder().decode([User].self, from: data!)
-                        self.users = decoded
-                        
-                    }catch{
-                        print("Preps: \(error)")
-                    }
-                }
-            }
-            sem.signal()
-        }.resume()
-        
-        let _ = sem.wait(timeout: .distantFuture)
-    }
-    
-    
-    
+
 }

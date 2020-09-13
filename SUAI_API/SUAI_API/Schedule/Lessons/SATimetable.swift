@@ -27,7 +27,9 @@ public class SATimetable {
     public init() {
         
     }
-    
+	init(timetable:[SALesson]){
+		self.timetable = timetable
+	}
     private var timetable = [SALesson]()//список пар
     
     public func load(for user: SAUsers.User) -> Self{
@@ -43,8 +45,9 @@ public class SATimetable {
         let _ = sem.wait(timeout: .distantFuture)
         return self
     }
+
     
-    public enum Week:Int {
+	public enum Week:Int{
         case outOfTable = 0
         case odd = 1
         case even = 2

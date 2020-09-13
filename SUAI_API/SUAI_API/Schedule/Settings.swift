@@ -27,7 +27,7 @@ public struct ScheduleSettings:Codable {
         let sem = DispatchSemaphore(value: 0)
         var loaded:ScheduleSettings?
         URLSession(configuration: .default).dataTask(with: URL(string:"https://api.guap.ru/rasp/custom/get-sem-info")!) { (data, resp, err) in
-                        if err == nil, data != nil {
+			if err == nil, data != nil {
                 if (resp as! HTTPURLResponse).statusCode == 200 {
                     do{
                         loaded = try JSONDecoder().decode(ScheduleSettings.self, from: data!)

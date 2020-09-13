@@ -105,4 +105,6 @@ public struct SALesson : Hashable{
         
     }
 }
-
+extension SALesson.LessonType:Codable {}
+extension SALesson:Codable {}
+extension SATimetable.Week:Codable{}

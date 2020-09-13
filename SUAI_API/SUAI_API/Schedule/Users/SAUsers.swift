@@ -26,12 +26,12 @@ public class SAUsers{
     
     
     var users:[User] = []
+	var source:String {""}
     
     required init(users:[User]) {
         self.users = users
     }
     init() {
-        
     }
     
     public var count:Int {
@@ -65,5 +65,36 @@ public class SAUsers{
     public func sorted(sort: (SAUsers.User,SAUsers.User)->Bool   ) -> Self{
         return Self(users: self.users.sorted(by: sort))
     }
+	
+	private lazy var userDefaultsKey:String = {"\(Self.self)Cache"}()
+	public func loadFromServer(){
+        let sem = DispatchSemaphore(value: 0)
+        URLSession.shared.dataTask(with: URL(string: source)!) { (data, resp, err) in
+            if err == nil, data != nil {
+                if (resp as! HTTPURLResponse).statusCode == 200 {
+                    do{
+                        let decoded = try JSONDecoder().decode([User].self, from: data!)
+                        self.users = decoded
+						UserDefaults.standard.set(data!, forKey: self.userDefaultsKey)
+                    }catch{
+						print("\(Self.self) \(#function): \(error)")
+                    }
+                }
+            }
+            sem.signal()
+        }.resume()
+        
+        let _ = sem.wait(timeout: .distantFuture)
+    }
+	
+	public func loadFromCache(){
+		guard let data = UserDefaults.standard.data(forKey: self.userDefaultsKey) else {return}
+		do{
+			let decoded = try JSONDecoder().decode([User].self, from: data)
+			self.users = decoded
+		}catch{
+			print("\(Self.self) \(#function): \(error)")
+		}
+	}
 }
 
