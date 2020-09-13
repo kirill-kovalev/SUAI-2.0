@@ -48,7 +48,7 @@ class FirstPageView:TutorialPageView{
         let attributedString = NSMutableAttributedString(string: "тапни сюда", attributes: [
             NSAttributedString.Key.foregroundColor : Asset.PocketColors.accent.color
         ])
-        let text = NSMutableAttributedString(string: "Свайпни влево, если хочешь узнать \nособенности сервиса или ")
+        let text = NSMutableAttributedString(string: "Свайпни влево, если хочешь узнать \nособенности сервиса, или ")
         text.append(attributedString)
         text.append(NSMutableAttributedString(string: ",\n чтобы сразу перейти к выбору группы"))
         self.text.attributedText = text
