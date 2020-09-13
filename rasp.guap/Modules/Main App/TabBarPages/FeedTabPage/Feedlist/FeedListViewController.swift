@@ -84,13 +84,11 @@ class FeedListViewController: UIViewController {
     }
 	
 	func convertoToK(_ num:Int)->String{
-		if num >= 1000 {
-			return String(format: "%iК", num/1000)
-		}
-		if num > 500  {
+		if num > 999 {
 			return String(format: "%.1fК", Float(num)/1000)
+		}else{
+			return "\(num)"
 		}
-		return "\(num)"
 	}
 	
     func addFeed(elements: [SAFeedElement]){
