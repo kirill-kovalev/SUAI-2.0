@@ -235,7 +235,7 @@ class PocketNewsView: UIView {
         }
         self.viewsIcon.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 16, height: 16))
-            make.right.equalTo(self.viewsLabel.snp.left)
+			make.right.equalTo(self.viewsLabel.snp.left).inset(7)
             make.centerY.equalTo(likeIcon)
         }
     }
