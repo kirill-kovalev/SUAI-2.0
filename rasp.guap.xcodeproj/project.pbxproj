@@ -16,7 +16,6 @@
 		5D238B1F250D1ECE0042800F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D238B1E250D1ECE0042800F /* InterfaceController.swift */; };
 		5D238B21250D1ECE0042800F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D238B20250D1ECE0042800F /* ExtensionDelegate.swift */; };
 		5D238B23250D1ECE0042800F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D238B22250D1ECE0042800F /* Assets.xcassets */; };
-		5D238B27250D1ECE0042800F /* PocketWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5D238B0D250D1ECD0042800F /* PocketWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5D238B32250D1F540042800F /* ScheduleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D238B30250D1F540042800F /* ScheduleDetailController.swift */; };
 		5D238B33250D1F540042800F /* TableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D238B31250D1F540042800F /* TableRowController.swift */; };
 		5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */; };
@@ -180,7 +179,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				5D238B27250D1ECE0042800F /* PocketWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1668,7 +1666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1690,7 +1688,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
