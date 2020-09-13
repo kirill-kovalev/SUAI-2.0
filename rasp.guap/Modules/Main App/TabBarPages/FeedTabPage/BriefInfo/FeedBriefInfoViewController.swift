@@ -22,7 +22,6 @@ class FeedBriefInfoViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             self.loadHello()
             self.loadWeatherAndRockets()
-            self.loadSchedule()
             self.loadDeadlines()
             self.loadNews()
         }
@@ -173,7 +172,7 @@ class FeedBriefInfoViewController: UIViewController {
 
 		DispatchQueue.global().async {
 			
-			guard let group = SAUserSettings.shared!.group,
+			guard let group = SAUserSettings.shared?.group,
 				  let user = SASchedule.shared.groups.get(name: group ) else {return}
 			let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
 			let today = Calendar.convertToRU(todayUS)

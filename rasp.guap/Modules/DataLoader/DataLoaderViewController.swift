@@ -22,30 +22,88 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			if settings == nil {
 				self.setText("Не удалось получить настройки")
 			}else{
-				let group = settings?.group
-				if group  == nil {
-					self.setText("Загружаю список групп")
-					SASchedule.shared.groups.loadFromServer()
-					self.showTutorialPages()
-				}else{
-					guard let user = SASchedule.shared.groups.get(name: group! ) else {
+				if let group = settings?.group {
+					self.setText("Загружаю расписание")
+					SASchedule.shared.loadFromCache()
+					guard let user = SASchedule.shared.groups.get(name: group ) else {
 						self.setText("Не удалось получить расписание!")
 						return
 					}
-					self.setText("Загружаю расписание")
-					let _ = SASchedule.shared.load(for: user)
 					let timetable = SASchedule.shared.get(for: user)
 					self.setWatchTimetable(timetable)
+					
 					self.setText("Загружаю дедлайны")
-					SADeadlines.shared.loadFromServer()
+					SADeadlines.shared.loadFromCache()
+					if SADeadlines.shared.all.isEmpty{
+						SADeadlines.shared.loadFromServer()
+					}
 					self.setText("Загружаю новости")
 					SABrief.shared.loadFromServer()
 					SANews.shared.loadSourceList()
 					self.startApp()
+				}else{
+					self.setText("Загружаю список групп")
+					SASchedule.shared.groups.loadFromServer()
+					self.showTutorialPages()
 				}
+				
 			}
 		}
 	}
+	
+	/*
+	DispatchQueue.global().async {
+
+		self.setText("Загружаю настройки")
+		let settings = SAUserSettings.shared
+		if settings == nil {
+			self.setText("Не удалось получить настройки")
+		}else{
+			let group = settings?.group
+			if group  == nil {
+				self.setText("Загружаю список групп")
+				SASchedule.shared.groups.loadFromServer()
+				self.showTutorialPages()
+			}else{
+
+				self.setText("Загружаю группы")
+				if SASchedule.shared.groups.count == 0 {
+					self.setText("Загружаю с сервера c сервера")
+					SASchedule.shared.groups.loadFromServer()
+				}else{
+					//DispatchQueue.global().async {SASchedule.shared.groups.loadFromServer()}
+				}
+				
+				self.setText("Загружаю преподавателей")
+				if SASchedule.shared.preps.count == 0 {
+					self.setText("Загружаю преподавателей c сервера")
+					SASchedule.shared.preps.loadFromServer()
+				}else{
+					//DispatchQueue.global().async {SASchedule.shared.preps.loadFromServer()}
+				}
+				
+				guard let user = SASchedule.shared.groups.get(name: group! ) else {
+					self.setText("Не удалось найти вашу группу в расписании!")
+					return
+				}
+				
+				
+				self.setText("Загружаю расписание")
+				let timetable = SASchedule.shared.get(for: user)
+				//DispatchQueue.global().async {let _ = SASchedule.shared.load(for: user)}
+				self.setWatchTimetable(timetable)
+				self.setText("Загружаю дедлайны")
+				
+				SADeadlines.shared.loadFromServer()
+				
+				self.setText("Загружаю новости")
+				SABrief.shared.loadFromServer()
+				SANews.shared.loadSourceList()
+				self.startApp()
+			}
+		}
+	}
+	*/
 	
 	func setWatchTimetable(_ tt:SATimetable){
 		print("Setting Watch TT")
