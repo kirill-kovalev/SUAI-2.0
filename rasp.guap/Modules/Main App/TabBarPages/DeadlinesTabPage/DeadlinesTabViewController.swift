@@ -115,6 +115,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		
 		if source.isEmpty {
 			self.rootView.placeholder.show()
+			self.deadlineList.setItems(list: [])
 			self.deadlineList.view.isHidden = true
 		}else{
 			self.rootView.placeholder.hide()

@@ -154,7 +154,9 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
             
             if !self.timetable.isEmpty{
                 self.tableController.setTimetable(timetable: dayTimetable)
-            }
+			}else{
+				self.tableController.setTimetable(timetable: [])
+			}
             
         }
         
