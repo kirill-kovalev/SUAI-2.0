@@ -66,22 +66,20 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     
 
 	override func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
-		let responderView = responder
 		
-		let responderOrigin = responderView.convert(responderView.bounds, to: self.rootView.container)
-		let responderBottom = responderOrigin.origin.y+responderOrigin.size.height
 		
-		let screenHeight = self.view.frame.height - keyboardHeight
+		
+		let screenHeight = self.view.frame.height - keyboardHeight - self.view.safeAreaInsets.top
 		
 		
 		
 		
 		self.rootView.transform  = CGAffineTransform(translationX: 0, y: -keyboardHeight)
-		
+		let headerSize = self.content.convert(self.content.bounds, to: self.rootView.container)
 		
 		
 		self.content.selector.snp.updateConstraints { (make) in
-			make.height.equalTo(screenHeight-responderBottom-60)
+			make.height.equalTo(screenHeight-130)
 		}
 		
 	}
