@@ -55,6 +55,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
         
         showBrief()
 		showSources()
+		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)))
+		self.rootView.addGestureRecognizer(gesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +67,31 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		}
 		
     }
+	@objc func swipePages(_ sender :UIPanGestureRecognizer){
+		
+		let index = self.rootView.sourceSelector.selectedIndex
+		
+		if sender.state == .ended{
+			if (sender.translation(in: self.rootView).x > self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x > 15){
+				if ( index == 0){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+				self.rootView.sourceSelector.selectedIndex -= 1
+				self.didSelect(self.rootView.sourceSelector.selectedIndex)
+
+			} else if (sender.translation(in: self.rootView).x < -self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x < -15){
+				if (index == self.rootView.sourceSelector.count-1){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+					self.rootView.sourceSelector.selectedIndex += 1
+					self.didSelect(self.rootView.sourceSelector.selectedIndex)
+			}
+			if index == 0 || index > self.rootView.sourceSelector.count-1 {
+				
+			}
+			
+		}
+		
+	}
+	
+	
+	
 	func reloadSources(){
 		DispatchQueue.global().async {
 			self.news.loadSourceList()
@@ -110,3 +137,4 @@ extension FeedTabViewController:SwitchSelectorDelegate {
     }
 }
 
+extension FeedTabViewController:UIGestureRecognizerDelegate{}
