@@ -58,34 +58,34 @@ class ViewController<ContentView:View>: UIViewController {
 		if let responderView = (self.view.currentFirstResponder() as? UIView)  {
 			let userInfo = (notification as NSNotification).userInfo!
 			let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-			let animationDurarion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
-			let screenHeight = self.view.frame.height - keyboardFrame.height
-			
-			let responderOrigin = responderView.convert(responderView.bounds, to: self.view)
-			let responderBottom = responderOrigin.origin.y+responderOrigin.size.height
-			
-			let responderOverlapse = responderBottom + 15 - screenHeight
-			let responderOverlapses:Bool = responderOverlapse > 0
-			
-			
-			if (responderOverlapses && show && self.keyboardReflective){
-				keyboardDidOverlapse(ovelapseHeight: responderOverlapse)
-				return
+			if (show && self.keyboardReflective){
+				keyboardDidAppear(responder: responderView, keyboardHeight: keyboardFrame.height)
 			}
-			
-			
-			
-		}
+		}else{
 			self.rootView.transform = .identity
+		}
+		
 		
         
         
         
     }
-	func keyboardDidOverlapse(ovelapseHeight:CGFloat){
-		UIView.animate(withDuration: 0.2, animations: {
-			self.rootView.transform = .init(translationX: 0, y: -ovelapseHeight)
-		})
+	func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
+		let responderView = responder
+		let responderOrigin = responderView.convert(responderView.bounds, to: self.view)
+		let responderBottom = responderOrigin.origin.y+responderOrigin.size.height
+		let screenHeight = self.view.frame.height - keyboardHeight
+		let responderOverlapse = responderBottom + 15 - screenHeight
+		
+		
+		if (responderOverlapse > 0 ){
+			UIView.animate(withDuration: 0.2, animations: {
+				self.rootView.transform = .init(translationX: 0, y: -responderOverlapse)
+			})
+			return
+		}
+		self.rootView.transform = .identity
+		
 	}
 
 }
