@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFProDisplay-Semibold.ttf">
-            <string>SFProDisplay-Semibold</string>
+        <array key="TTCommons-DemiBold.ttf">
+            <string>TTCommons-DemiBold</string>
         </array>
         <array key="TTCommons-Medium.ttf">
             <string>TTCommons-Medium</string>
@@ -21,26 +21,32 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <viewController restorationIdentifier="VKLoginPageViewController" id="Hrv-on-Yh3" customClass="VKLoginPageViewController" customModule="SUAI_Pocket" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="SHW-Qu-kZG">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="ZL0-gK-WcO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkt-zb-b91">
-                        <rect key="frame" x="40.666666666666657" y="666" width="293.33333333333337" height="44"/>
-                        <color key="backgroundColor" name="pocket_darkest_blue"/>
+                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkt-zb-b91">
+                        <rect key="frame" x="40.5" y="448" width="238.5" height="52"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="AZR-MI-M2P"/>
+                            <constraint firstAttribute="height" constant="52" id="AZR-MI-M2P"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                        <state key="normal" title="Login via VK">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="TTCommons-DemiBold" family="TT Commons" pointSize="17"/>
+                        <state key="normal" title="   Войти через Вконтакте">
+                            <color key="titleColor" name="pocket_darkest_blue"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="BorderColor">
+                                <color key="value" name="pocket_darkest_blue"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -48,7 +54,7 @@
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ошибка" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-BM-F3A">
-                        <rect key="frame" x="0.0" y="613" width="375" height="17"/>
+                        <rect key="frame" x="0.0" y="399" width="320" height="20"/>
                         <fontDescription key="fontDescription" name="TTCommons-Medium" family="TT Commons" pointSize="17"/>
                         <color key="textColor" name="pocket_error"/>
                         <nil key="highlightedColor"/>
@@ -63,13 +69,14 @@
                     <constraint firstItem="D3R-Fr-9in" firstAttribute="bottom" secondItem="Lkt-zb-b91" secondAttribute="bottom" constant="68" id="J4j-vQ-jNJ"/>
                     <constraint firstItem="sgy-BM-F3A" firstAttribute="leading" secondItem="D3R-Fr-9in" secondAttribute="leading" id="OfF-VR-axY"/>
                     <constraint firstItem="ZL0-gK-WcO" firstAttribute="leading" secondItem="D3R-Fr-9in" secondAttribute="leading" id="YGq-WP-c7M"/>
-                    <constraint firstItem="Lkt-zb-b91" firstAttribute="top" secondItem="sgy-BM-F3A" secondAttribute="bottom" constant="36" id="pNv-cG-6ea"/>
+                    <constraint firstItem="Lkt-zb-b91" firstAttribute="top" secondItem="sgy-BM-F3A" secondAttribute="bottom" constant="29" id="pNv-cG-6ea"/>
                     <constraint firstAttribute="bottom" secondItem="ZL0-gK-WcO" secondAttribute="bottom" id="u7V-Oe-L43"/>
                     <constraint firstItem="ZL0-gK-WcO" firstAttribute="top" secondItem="SHW-Qu-kZG" secondAttribute="top" id="vuv-x2-PY6"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="D3R-Fr-9in"/>
             </view>
             <connections>
+                <outlet property="LoginButton" destination="Lkt-zb-b91" id="TSw-Sp-P9I"/>
                 <outlet property="errLabel" destination="sgy-BM-F3A" id="zIA-kD-MfY"/>
             </connections>
             <point key="canvasLocation" x="-815.20000000000005" y="79.802955665024641"/>
@@ -81,7 +88,7 @@
             <color red="0.23000000417232513" green="0.41200000047683716" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="pocket_error">
-            <color red="0.90196079015731812" green="0.27450981736183167" blue="0.27450981736183167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.90200001001358032" green="0.27500000596046448" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
