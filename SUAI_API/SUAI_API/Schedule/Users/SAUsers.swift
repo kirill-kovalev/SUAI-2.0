@@ -61,6 +61,14 @@ public class SAUsers{
         
         return Self(users: newUserlist)
     }
+	public func index(name:String) ->Int?{
+		if let user = self.get(name: name){
+			for (i,element) in self.users.enumerated() {
+				if element == user {return i}
+			}
+		}
+		return nil
+	}
     
     public func sorted(sort: (SAUsers.User,SAUsers.User)->Bool   ) -> Self{
         return Self(users: self.users.sorted(by: sort))
