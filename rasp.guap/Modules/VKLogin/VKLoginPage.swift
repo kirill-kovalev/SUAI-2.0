@@ -111,6 +111,10 @@ class VKLoginPageViewController: UIViewController {
 			make.centerY.equalToSuperview()
 			make.centerX.equalToSuperview().offset(6)
 		})
+		self.LoginButton.imageView?.snp.makeConstraints({ (make) in
+			make.width.height.equalTo(22)
+			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
+		})
 		
 	}
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -118,10 +122,7 @@ class VKLoginPageViewController: UIViewController {
 		self.LoginButton.layer.borderColor = self.LoginButton.titleLabel?.textColor.cgColor
 	}
     override func viewDidAppear(_ animated: Bool){
-		self.LoginButton.imageView?.snp.makeConstraints({ (make) in
-			make.width.height.equalTo(22)
-			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
-		})
+		
 		
         VK.release()
         VK.setUp(appId: "7578765", delegate: self)
