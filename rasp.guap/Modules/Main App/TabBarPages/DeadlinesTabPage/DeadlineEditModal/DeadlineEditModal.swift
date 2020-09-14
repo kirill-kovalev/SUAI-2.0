@@ -72,10 +72,12 @@ class DeadlineEditModalView: View {
     
     lazy var nameLabel:UITextField = textFieldGenerator("Выполнить лабораторную работу №1")
     lazy var commentLabel:UITextView = {
-        let field = UITextView(frame: .zero)
+        let field = UITextViewFixed(frame: .zero)
         field.layer.cornerRadius = 10
         field.backgroundColor = Asset.PocketColors.pocketLightGray.color
-        field.font = FontFamily.SFProDisplay.regular.font(size: 16)
+        field.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		field.placeholder = "Написать программу, сделать по ней отчет и защитить" 
+		field.contentOffset = .init(x: 12, y: 12)
         field.doneAccessory = true
         return field
     }()
@@ -221,3 +223,46 @@ class DeadlineEditModalView: View {
 
 
 
+@IBDesignable class UITextViewFixed: UITextView {
+	private class Delegate:NSObject,UITextViewDelegate{
+		func textViewDidChange(_ textView: UITextView) {
+			(textView as? UITextViewFixed)?.placehlderLabel.isHidden = (textView.text != "")
+		}
+	}
+	override init(frame: CGRect, textContainer: NSTextContainer?) {
+		super.init(frame:frame,textContainer:textContainer)
+		
+	}
+	public var placeholder:String{
+		get{self.placehlderLabel.text ?? ""}
+		set{self.placehlderLabel.text = newValue}
+	}
+	lazy var placehlderLabel:UILabel = {
+		let label = UILabel(frame: .zero)
+		label.numberOfLines = 0
+		label.font = self.font
+		label.textColor = UIColor(displayP3Red: 0.92, green: 0.92, blue: 0.96, alpha: 0.3) //R:0,92 G:0,92 B:0,96 A:0,3
+		label.contentMode = .topLeft
+		label.textAlignment = .left
+		label.text = "fgdfgdf"
+		return label
+	}()
+	private var editController = Delegate()
+	required init?(coder: NSCoder) {
+		super.init(coder:coder)
+		self.addSubview(placehlderLabel)
+	}
+	override func layoutSubviews() {
+        super.layoutSubviews()
+		print("layout")
+        setup()
+		self.delegate = self.editController
+		self.addSubview(placehlderLabel)
+		placehlderLabel.frame = self.bounds.inset(by: textContainerInset)
+		placehlderLabel.sizeToFit()
+    }
+    func setup() {
+        textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 12, right: 12)
+        textContainer.lineFragmentPadding = 0
+    }
+}
