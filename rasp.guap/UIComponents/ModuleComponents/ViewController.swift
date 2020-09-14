@@ -33,7 +33,6 @@ class ViewController<ContentView:View>: UIViewController {
         self.view = ContentView();
 	}
 
-
     
     
     // MARK: - default required init from coder
@@ -55,16 +54,48 @@ class ViewController<ContentView:View>: UIViewController {
         adjustingHeight(false, notification: notification)
     }
     private func adjustingHeight(_ show:Bool, notification:Notification) {
-    
-        let userInfo = (notification as NSNotification).userInfo!
-        let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let animationDurarion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
-		let changeInHeight = (keyboardFrame.height ) * (show && self.keyboardReflective ? 1 : 0)
+		
+		if let responderView = (self.view.currentFirstResponder() as? UIView)  {
+			let userInfo = (notification as NSNotification).userInfo!
+			let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+			let animationDurarion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+			let screenHeight = self.view.frame.height - keyboardFrame.height
+			
+			let responderOrigin = responderView.convert(responderView.bounds, to: self.view)
+			let responderBottom = responderOrigin.origin.y+responderOrigin.size.height
+			
+			let responderOverlapse = responderBottom + 15 - screenHeight
+			let responderOverlapses:Bool = responderOverlapse > 0
+			
+			
+			
+			let changeInHeight = (responderOverlapse) * (responderOverlapses && show && self.keyboardReflective ? 1 : 0)
+			
+			UIView.animate(withDuration: animationDurarion, animations: {
+					   self.rootView.transform = .init(translationX: 0, y: -changeInHeight)
+				   })
+		}else{
+			self.rootView.transform = .identity
+		}
         
-        UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
-            self.rootView.layoutMargins.bottom -= changeInHeight
-            self.rootView.transform = .init(translationX: 0, y: -changeInHeight)
-        })
+        
+        
     }
 
+}
+
+fileprivate extension UIView {
+    func currentFirstResponder() -> UIResponder? {
+		if self.isFirstResponder {
+            return self
+        }
+        
+        for view in self.subviews {
+            if let responder = view.currentFirstResponder() {
+                return responder
+            }
+        }
+        
+        return nil
+     }
 }
