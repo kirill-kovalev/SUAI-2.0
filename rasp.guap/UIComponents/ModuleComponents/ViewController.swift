@@ -60,10 +60,10 @@ class ViewController<ContentView:View>: UIViewController {
 			let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 			if (show && self.keyboardReflective){
 				keyboardDidAppear(responder: responderView, keyboardHeight: keyboardFrame.height)
+				return
 			}
-		}else{
-			self.rootView.transform = .identity
 		}
+		self.rootView.transform = .identity
 		
 		
         
