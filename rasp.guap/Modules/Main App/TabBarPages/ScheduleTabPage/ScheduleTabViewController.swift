@@ -57,6 +57,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         self.rootView.selectButton.addTarget(action: { (sender) in
             let vc = TimetableFilterViewConroller()
             vc.delegate = self
+			vc.currentUser = self.currentUser
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         

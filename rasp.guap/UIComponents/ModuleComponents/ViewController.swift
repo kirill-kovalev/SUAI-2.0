@@ -53,7 +53,7 @@ class ViewController<ContentView:View>: UIViewController {
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
         adjustingHeight(false, notification: notification)
     }
-    private func adjustingHeight(_ show:Bool, notification:Notification) {
+	func adjustingHeight(_ show:Bool, notification:Notification) {
 		
 		if let responderView = (self.view.currentFirstResponder() as? UIView)  {
 			let userInfo = (notification as NSNotification).userInfo!
@@ -68,19 +68,25 @@ class ViewController<ContentView:View>: UIViewController {
 			let responderOverlapses:Bool = responderOverlapse > 0
 			
 			
+			if (responderOverlapses && show && self.keyboardReflective){
+				keyboardDidOverlapse(ovelapseHeight: responderOverlapse)
+				return
+			}
 			
-			let changeInHeight = (responderOverlapse) * (responderOverlapses && show && self.keyboardReflective ? 1 : 0)
 			
-			UIView.animate(withDuration: animationDurarion, animations: {
-					   self.rootView.transform = .init(translationX: 0, y: -changeInHeight)
-				   })
-		}else{
-			self.rootView.transform = .identity
+			
 		}
+			self.rootView.transform = .identity
+		
         
         
         
     }
+	func keyboardDidOverlapse(ovelapseHeight:CGFloat){
+		UIView.animate(withDuration: 0.2, animations: {
+			self.rootView.transform = .init(translationX: 0, y: -ovelapseHeight)
+		})
+	}
 
 }
 
