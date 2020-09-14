@@ -121,6 +121,7 @@ internal enum Asset {
     internal static let likes = ImageAsset(name: "Likes")
     internal static let modalViewExitCross = ImageAsset(name: "ModalViewExitCross")
     internal static let scheduleFilter = ImageAsset(name: "ScheduleFilter")
+    internal static let vkMonochromeLogoTransparent = ImageAsset(name: "VK_Monochrome_Logo_transparent")
     internal static let add = ImageAsset(name: "add")
     internal static let cancelCircle = ImageAsset(name: "cancel_circle")
     internal static let checkCircle = ImageAsset(name: "check_circle")
