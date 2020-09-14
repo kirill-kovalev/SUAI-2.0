@@ -65,6 +65,27 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     }
     
 
+	override func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
+		let responderView = responder
+		
+		let responderOrigin = responderView.convert(responderView.bounds, to: self.rootView.container)
+		let responderBottom = responderOrigin.origin.y+responderOrigin.size.height
+		
+		let screenHeight = self.view.frame.height - keyboardHeight
+		
+		
+		
+		
+		self.rootView.transform  = CGAffineTransform(translationX: 0, y: -keyboardHeight)
+		
+		
+		
+		self.content.selector.snp.updateConstraints { (make) in
+			make.height.equalTo(screenHeight-responderBottom-60)
+		}
+		
+	}
+	
     
 }
 
@@ -75,8 +96,10 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         self.activeTF = textField
         if self.content.groupField == textField{
             self.content.prepField.text = ""
+			self.hidePreps()
         }else{
             self.content.groupField.text = ""
+			self.hideGroups()
         }
         textFieldDidChange(textField)
 		if let text = textField.text{
@@ -86,20 +109,16 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
 		}
 //		self.content.selector.resignFirstResponder()
 
-        
-		self.content.selector.snp.updateConstraints { (make) in
-            make.height.equalTo(250)
-        }
-		
 		
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTF = nil
-        
-        self.content.selector.snp.updateConstraints { (make) in
-            make.height.equalTo(0)
-        }
+
+		self.showAll()
+		self.rootView.transform = .identity
+		
+		
         guard let text = textField.text,
               let user = userlist.search(name: text).get(index: 0) else { return }
         self.delegate?.didSetUser(user: user)
@@ -157,4 +176,52 @@ extension TimetableFilterViewConroller:UIPickerViewDataSource{
 		return userlist.get(index: row-1)?.shortName
     }
    
+}
+
+
+
+extension TimetableFilterViewConroller{
+//	let prepFieldHeightConstraint
+	func hidePreps(){
+		self.content.prepField.isHidden = true
+		self.content.preplabel.isHidden = true
+		self.content.prepField.layer.opacity = 0
+		self.content.preplabel.layer.opacity = 0
+		self.content.prepField.snp.removeConstraints()
+		self.content.prepField.snp.makeConstraints { (make) in
+			make.top.equalTo(self.content.groupField.snp.bottom)
+			make.bottom.equalTo(self.content.selector.snp.top)
+		}
+	}
+	func hideGroups(){
+		self.content.groupField.isHidden = true
+		self.content.grouplabel.isHidden = true
+		self.content.groupField.layer.opacity = 0
+		self.content.grouplabel.layer.opacity = 0
+		self.content.groupField.snp.removeConstraints()
+		self.content.groupField.snp.makeConstraints { (make) in
+			make.top.equalToSuperview()
+			make.bottom.equalTo(self.content.preplabel.snp.top)
+		}
+	}
+	
+	func showAll(){
+		self.content.grouplabel.snp.removeConstraints()
+        self.content.groupField.snp.removeConstraints()
+        self.content.preplabel.snp.removeConstraints()
+        self.content.prepField.snp.removeConstraints()
+        self.content.selector.snp.removeConstraints()
+		self.content.setupConstraints()
+		self.content.groupField.isHidden = false
+		self.content.grouplabel.isHidden = false
+		self.content.prepField.isHidden = false
+		self.content.preplabel.isHidden = false
+		UIView.animate(withDuration: 0.3) {
+			self.content.groupField.layer.opacity = 1
+			self.content.grouplabel.layer.opacity = 1
+			self.content.prepField.layer.opacity = 1
+			self.content.preplabel.layer.opacity = 1
+		}
+		
+	}
 }
