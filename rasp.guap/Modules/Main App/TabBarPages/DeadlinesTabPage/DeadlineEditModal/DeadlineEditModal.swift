@@ -76,7 +76,7 @@ class DeadlineEditModalView: View {
         field.layer.cornerRadius = 10
         field.backgroundColor = Asset.PocketColors.pocketLightGray.color
         field.font = FontFamily.SFProDisplay.regular.font(size: 14)
-		field.placeholder = "Написать программу, сделать по ней отчет и защитить" 
+		field.placeholder = "Написать программу, сделать по ней отчет и защитить"
 		field.contentOffset = .init(x: 12, y: 12)
         field.doneAccessory = true
         return field
@@ -260,6 +260,7 @@ class DeadlineEditModalView: View {
 		self.addSubview(placehlderLabel)
 		placehlderLabel.frame = self.bounds.inset(by: textContainerInset)
 		placehlderLabel.sizeToFit()
+		placehlderLabel.isHidden = (self.text != "")
     }
     func setup() {
         textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 12, right: 12)
