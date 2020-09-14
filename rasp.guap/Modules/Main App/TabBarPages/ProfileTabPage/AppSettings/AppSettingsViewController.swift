@@ -144,6 +144,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		}
 	}
 	func setStartPage(_ id:Int){
+		print("set tab : \(id)")
 		let id = id + 1
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared?.idtab ?? 1
@@ -154,6 +155,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 				if (SAUserSettings.shared?.update() ?? false){
 					print("start page set to \(id)")
 				}else{
+					print("update Error")
 					SAUserSettings.shared?.idtab = originTab
 					self.updateView()
 				}

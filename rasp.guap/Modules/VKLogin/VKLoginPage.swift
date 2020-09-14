@@ -85,7 +85,7 @@ class VKLoginPageViewController: UIViewController {
 			case .authorizationUrlIsNil:
 				return ""
 			case .authorizationDenied:
-				return "Авторизация запрещена"
+				return "Ошибка доступа"
 			case .authorizationCancelled:
 				return "Авторизация отменена"
 			case .authorizationFailed:
@@ -122,7 +122,7 @@ class VKLoginPageViewController: UIViewController {
 		self.LoginButton.layer.borderColor = self.LoginButton.titleLabel?.textColor.cgColor
 	}
     override func viewDidAppear(_ animated: Bool){
-		
+		super.viewDidAppear(animated)
 		
         VK.release()
         VK.setUp(appId: "7578765", delegate: self)
