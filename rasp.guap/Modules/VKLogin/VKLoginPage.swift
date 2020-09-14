@@ -22,13 +22,82 @@ class VKLoginPageViewController: UIViewController {
             }
         }) { (err) in
             DispatchQueue.main.async {
-                self.errLabel.text = err.localizedDescription
+				self.errLabel.text = self.errorText(err: err)
                 self.errLabel.isHidden = false
             }
             
             print(err)
         }
     }
+	func errorText(err:VKError)->String{
+		switch err {
+			case .unknown(let error):
+				return error.localizedDescription
+			case .api(let apiError):
+				return "Code \(apiError.code): \(apiError.message)"
+			case .cantSaveToKeychain(_):
+				return "Can't save token to keychain"
+			case .vkDelegateNotFound:
+				return "Ошибка авторизации, бейте разработчика приложения"
+			case .cantParseTokenInfo(let str):
+				return "Не удалось получить токен!\n\(str)"
+			case .sessionAlreadyDestroyed(_):
+				return ""
+			case .sessionAlreadyAuthorized(let session):
+				session.logOut()
+				return "Повторите авторизацию"
+			case .sessionIsNotAuthorized(let session):
+				print("not authorized \(session)")
+				return ""
+			case .unexpectedResponse:
+				return ""
+			case .jsonNotParsed(_):
+				return ""
+			case .urlRequestError(let err):
+				print(err)
+				return "Ошибка авторизации, проверьте подключение к интернету"
+			case .captchaResultIsNil:
+				return ""
+			case .wrongUrl:
+				return "Некорректный URL"
+			case .cantAwaitOnMainThread:
+				return ""
+			case .cantAwaitRequestWithSettedCallbacks:
+				return ""
+			case .cantBuildWebViewUrl(let err):
+				return "Ошибка \(err)"
+			case .cantBuildVKAppUrl(_):
+				return "Не получилось отправить запрос приложению VK"
+			case .captchaPresenterTimedOut:
+				return ""
+			case .cantMakeCapthaImageUrl(_):
+				return ""
+			case .cantLoadCaptchaImage(_):
+				return ""
+			case .cantLoadCaptchaImageWithUnknownReason:
+				return ""
+			case .webPresenterTimedOut:
+				return "Таймаут авторизации, попробуйте снова"
+			case .webPresenterResultIsNil:
+				return ""
+			case .webControllerError(let err):
+				return "Ошибка веб-контроллера, попробуйте авторизоваться через приложение VK\n\(err.localizedDescription)"
+			case .authorizationUrlIsNil:
+				return ""
+			case .authorizationDenied:
+				return "Авторизация запрещена"
+			case .authorizationCancelled:
+				return "Авторизация отменена"
+			case .authorizationFailed:
+				return "Авторизация не удалась"
+			case .captchaWasDismissed:
+				return ""
+			case .sharingWasDismissed:
+				return ""
+			case .weakObjectWasDeallocated:
+				return ""
+		}
+	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let color = Asset.PocketColors.pocketDarkBlue.color
