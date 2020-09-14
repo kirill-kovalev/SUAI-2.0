@@ -22,6 +22,7 @@ class FeedBriefInfoViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             self.loadHello()
             self.loadWeatherAndRockets()
+			self.loadSchedule()
             self.loadDeadlines()
             self.loadNews()
         }
@@ -142,8 +143,11 @@ class FeedBriefInfoViewController: UIViewController {
         let today = Calendar.convertToRU(todayUS)
 		var day = today
 		var timetable:[SALesson]
+		let schedule = SASchedule.shared.get(for: user)
 		repeat{
-			timetable = SASchedule.shared.get(for: user).get(week: SASchedule.shared.settings?.week ?? .odd, day: day )
+			self.scheduleWeek = SASchedule.shared.settings?.week ?? .odd
+			self.scheduleDay = day
+			timetable = schedule.get(week: self.scheduleWeek, day: day )
 			if timetable.isEmpty {
 				day = nextDay(day)
 			}
@@ -156,6 +160,11 @@ class FeedBriefInfoViewController: UIViewController {
             
 			let container = PocketScalableContainer(content: div)
 			container.addTarget(action: { _ in
+				if let barControllers = self.tabBarController?.viewControllers,
+					let vc = (barControllers[2] as? ScheduleTabViewController){
+						vc.scheduleDaySelect(didUpdate: self.scheduleDay, week: self.scheduleWeek)
+					}
+				
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 2 })
 			}, for: .touchUpInside)
 			
@@ -164,6 +173,8 @@ class FeedBriefInfoViewController: UIViewController {
         }
         
     }
+	var scheduleDay = 0
+	var scheduleWeek:SATimetable.Week = .odd
 	func reloadSchedule(){
 		func nextDay(_ cur:Int)->Int {
 			if cur == 6 { return 0 }
@@ -178,8 +189,12 @@ class FeedBriefInfoViewController: UIViewController {
 			let today = Calendar.convertToRU(todayUS)
 			var day = today
 			var timetable:[SALesson]
+			let schedule = SASchedule.shared.load(for: user)
 			repeat{
-				timetable = SASchedule.shared.get(for: user).get(week: SASchedule.shared.settings?.week ?? .odd, day: day )
+				self.scheduleWeek = SASchedule.shared.settings?.week ?? .odd
+				self.scheduleDay = day
+				timetable = schedule.get(week: self.scheduleWeek , day: day )
+
 				if timetable.isEmpty {
 					day = nextDay(day)
 				}
