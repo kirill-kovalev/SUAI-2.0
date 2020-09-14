@@ -40,10 +40,12 @@ public class SAFeedStream{
             }
 			UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
         }catch{
-            if !(String(data: data, encoding: .utf8)?.contains("Internal") ?? false) { print("FeedStream: \(error)") }
+			let resp = String(data: data, encoding: .utf8)
+			print("FeedStream (\(self.source.name)): \(data) \n \n Error: \(error)")
             new = loadStraightFromVK()
         }
 		if new.isEmpty && offset < count {
+			print("FeedStream VK (\(self.source.name) : from cache")
 			new = loadFromCache()
 		}
         
