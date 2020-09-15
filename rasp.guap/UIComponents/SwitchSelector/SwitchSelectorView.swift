@@ -53,6 +53,12 @@ public class SwitchSelector: UIScrollView {
             }
         }
     }
+	public var selectedValue:Any? {
+		if self.selectedIndex >= 0 && self.selectedIndex < self.buttons.count{
+			return self.buttons[selectedIndex].value
+		}
+		return nil
+	}
 	
 	
 	public func clear(){
@@ -131,6 +137,14 @@ public struct SwitchSelectorButton{
     public let selectedTitleColor:UIColor
     
     public let backgroundColor:UIColor
+	public let value:Any?
+	init(title:String,titleColor:UIColor,selectedTitleColor:UIColor,backgroundColor:UIColor,value:Any? = nil) {
+		self.title = title
+		self.titleColor = titleColor
+		self.selectedTitleColor = selectedTitleColor
+		self.backgroundColor = backgroundColor
+		self.value = value
+	}
 }
 public protocol SwitchSelectorDelegate {
     func didSelect(_ index:Int)
