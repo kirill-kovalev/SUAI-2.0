@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func LoggedInVK(){
         PocketAPI.shared.setToken(VK.sessions.default.accessToken?.get() ?? "")
+		print(VK.sessions.default.accessToken?.get())
 		window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = DataLoaderViewController()
         window?.makeKeyAndVisible()

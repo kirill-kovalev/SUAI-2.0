@@ -66,23 +66,23 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
             }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
-		self.rootView.placeholder.stopLoading()
+		self.rootView.placeholder.startLoading()
 		self.reloadItems()
-
+		self.setupDeadlinegroupSelector()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 		self.rootView.deadlineListSelector.updateView()
 		
-		
+		self.rootView.placeholder.startLoading()
 		if self.deadlineList.tableView.arrangedSubviews.isEmpty {
-			self.rootView.placeholder.startLoading()
 			self.rootView.placeholder.show()
 		}
         DispatchQueue.global(qos: .background).async {
 			SAUserSettings.shared?.reload()
             SADeadlines.shared.loadFromServer()
+			print("pro\(SADeadlines.shared.pro)")
             DispatchQueue.main.async {
 				self.setupDeadlinegroupSelector()
 				self.rootView.placeholder.stopLoading()
