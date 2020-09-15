@@ -43,7 +43,7 @@ class DeadlineListController: UIViewController {
             case .closed:
                 newView.setState(state: .closed)
                 break
-            case .open:
+			case .open,.pro:
                 newView.setState(state: .open)
                 break
             case .nearest:

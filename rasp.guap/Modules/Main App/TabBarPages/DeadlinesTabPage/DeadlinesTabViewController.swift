@@ -34,7 +34,10 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		self.rootView.deadlineListSelector.switchDelegate = self
 		
 		
+		setupDeadlinegroupSelector()
 		
+    }
+	private func setupDeadlinegroupSelector(){
 		let text = Asset.PocketColors.pocketGray.color
 		let blueText = Asset.PocketColors.buttonOutlineBorder.color
 		let redText = Asset.PocketColors.pocketRedButtonText.color
@@ -42,13 +45,18 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		let blue = Asset.PocketColors.pocketBlue.color
 		let red = Asset.PocketColors.pocketDeadlineRed.color
 		
-		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Ближайшие", titleColor: text, selectedTitleColor: redText, backgroundColor: red))
-		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Открытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue))
-		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Закрытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue))
-		
-
-		
-    }
+		let index = self.rootView.deadlineListSelector.selectedIndex
+		self.rootView.deadlineListSelector.clear()
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Ближайшие", titleColor: text, selectedTitleColor: redText, backgroundColor: red,value: SADeadlineGroup.nearest))
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Открытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue,value: SADeadlineGroup.open))
+		if !SADeadlines.shared.pro.isEmpty{
+			self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "pro.guap", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue,value: SADeadlineGroup.pro))
+		}
+		self.rootView.deadlineListSelector.add(SwitchSelectorButton(title: "Закрытые", titleColor: text, selectedTitleColor: blueText, backgroundColor: blue,value: SADeadlineGroup.closed))
+		self.rootView.deadlineListSelector.selectedIndex = index
+	}
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rootView.addButton.addTarget(action: { (sender) in
@@ -73,8 +81,10 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 			self.rootView.placeholder.show()
 		}
         DispatchQueue.global(qos: .background).async {
+			SAUserSettings.shared?.reload()
             SADeadlines.shared.loadFromServer()
             DispatchQueue.main.async {
+				self.setupDeadlinegroupSelector()
 				self.rootView.placeholder.stopLoading()
                 self.reloadItems()
             }
@@ -86,28 +96,36 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     
     func reloadItems(){
         if SADeadlines.shared.nearest.count > 0{
-            self.tabBarItem.badgeValue = "\(SADeadlines.shared.nearest.count)"
+			self.tabBarItem.badgeValue = "\(SADeadlines.shared.nearest.count + SADeadlines.shared.pro.count)"
         }else {
             self.tabBarItem.badgeValue = nil
         }
         
 		var source:[SADeadline]
-		switch self.rootView.deadlineListSelector.selectedIndex {
-        case 2:
+		guard let group = (self.rootView.deadlineListSelector.selectedValue as? SADeadlineGroup) else {return}
+		switch group {
+			case .closed:
 			source = SADeadlines.shared.closed
 			self.rootView.placeholder.subtitle = "Ты пока не выполнил ни одного дедлайна, но все впереди!"
 			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketDarkBlue.color
 			self.rootView.placeholder.image = Asset.AppImages.DeadlineStateImages.done.image
             break
-        case 1:
+		case .open:
             source = SADeadlines.shared.open
 			self.rootView.placeholder.subtitle = "Ты выполнил все дедлайны! Это достойно уважения!"
 			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketError.color
 			self.rootView.placeholder.image = Asset.AppImages.TabBarImages.deadlines.image
             break
-		default:
+		case .nearest:
 			source = SADeadlines.shared.nearest
 			self.rootView.placeholder.subtitle = "Ты выполнил все срочные дедлайны!\n Отдохни немного и берись за\n остальные!"
+			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketError.color
+			self.rootView.placeholder.image = Asset.AppImages.TabBarImages.deadlines.image
+			break
+		case .pro:
+			source = SADeadlines.shared.pro
+			self.rootView.placeholder.title = "Заданий пока нет!"
+			self.rootView.placeholder.subtitle = "Преподаватели пока не задали тебе заданий в личном кабинете!"
 			self.rootView.placeholder.imageTint = Asset.PocketColors.pocketError.color
 			self.rootView.placeholder.image = Asset.AppImages.TabBarImages.deadlines.image
 			break

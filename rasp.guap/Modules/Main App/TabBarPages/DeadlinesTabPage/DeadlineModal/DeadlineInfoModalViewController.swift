@@ -84,7 +84,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "RU")
         formatter.dateFormat = "dd MMMM"
-        self.content.dateLabel.text = formatter.string(from: deadline.end)
+        self.content.dateLabel.text = formatter.string(from: deadline.end ?? Date())
         
 
         if deadline.subject_name  != nil,deadline.subject_name  != "" {
