@@ -16,6 +16,9 @@ public class SAUserSettings: Codable {
     public var banners: Int
     public var prologin: String?
     public var propass: String?
+	public var procookie:String?
+	
+	public var proSupport:Bool{return !(prologin?.isEmpty ?? true || propass?.isEmpty ?? true || procookie?.isEmpty ?? true)}
     
     public static var shared = fromServer() ?? fromCache()
     
