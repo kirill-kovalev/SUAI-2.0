@@ -93,7 +93,7 @@ public class SAFeedStream{
         let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
         let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
 		let url = "https://vk.com/wall\(item.from_id)_\(item.id)"
-		return SAFeedElement(date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url)
+		return SAFeedElement(source: self.source, date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url)
     }
     init() {
         self.source = FeedSource(name: "default", id: 0)

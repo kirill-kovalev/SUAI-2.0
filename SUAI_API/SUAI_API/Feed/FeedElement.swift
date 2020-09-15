@@ -9,6 +9,7 @@
 import Foundation
 
 public struct SAFeedElement{
+	public var source:FeedSource
     public var date:Date
     
     public var likes:Int
