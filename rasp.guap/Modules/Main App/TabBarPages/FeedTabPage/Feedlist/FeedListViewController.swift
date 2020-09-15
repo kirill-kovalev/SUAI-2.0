@@ -11,16 +11,18 @@ import SUAI_API
 import SafariServices
 
 
-class FeedListViewController: UIViewController {
+class FeedListViewController: UITableViewController {
     init() {
         self._stream = .empty
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .plain)
     }
     init(stream:SAFeedStream){
         self._stream = stream
-        super.init(nibName: nil, bundle: nil)
+		super.init(style: .plain)
     }
+	
     private var isLoading:Bool = false
+	
     private var _stream:SAFeedStream
     var stream:SAFeedStream{
         get{
@@ -34,56 +36,130 @@ class FeedListViewController: UIViewController {
     }
     
     private var loadIndicator = UIActivityIndicatorView(frame: .zero)
-    private var stackView:UIStackView =  {
-        let stack = UIStackView(frame: .zero)
-        stack.axis = .vertical
-        stack.spacing = 18
-        return stack
-    }()
-    private var scrollView:UIScrollView {self.view as! UIScrollView}
+	//private var images:[IndexPath:UIImage] = [:]
     
-    override func loadView() {
-        self.view = UIScrollView()
-        self.scrollView.delegate = self
-        
-        self.scrollView.addSubview(self.stackView)
-        self.scrollView.addSubview(self.loadIndicator)
-        
-        
-        stackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.scrollView.contentLayoutGuide).offset(20)
-			make.centerX.equalToSuperview()
-			make.width.equalToSuperview().inset(10)
-            make.bottom.lessThanOrEqualTo(self.loadIndicator.snp.top).offset(-15)
-            
-        }
-        loadIndicator.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.height.width.equalTo(40)
-            make.bottom.equalTo(self.scrollView.contentLayoutGuide)
-        }
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadIndicator.startAnimating()
+		self.tableView.register(FeedTableCell.self, forCellReuseIdentifier: "newsCell")
+		self.tableView.rowHeight = UITableView.automaticDimension
+		self.tableView.estimatedRowHeight = 500;
+		tableView.backgroundColor = .clear
+		tableView.separatorStyle = .none
     }
     func updateView(){
-        self.stackView.arrangedSubviews.forEach{$0.removeFromSuperview()}
+		self.tableView.reloadData()
         DispatchQueue.global(qos: .background).async {
             self.isLoading = true
-            var feed = self.stream.feed
-			if feed.isEmpty {self.stream.reload()}
-			feed = self.stream.feed
+			if self.stream.feed.isEmpty {self.stream.reload()}
             DispatchQueue.main.async {
-                self.addFeed(elements: feed)
+				self.tableView.reloadData()
+				self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 self.isLoading = false
             }
         }
-        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentSize.height <= (scrollView.contentOffset.y + scrollView.frame.height) {
+            if !self.isLoading{
+                DispatchQueue.global(qos: .background).async {
+                    self.isLoading = true
+                    let _ = self.stream.next()
+                    DispatchQueue.main.async {
+						self.tableView.reloadData()
+                        self.isLoading = false
+                    }
+                }
+            }
+        }
     }
 	
-	func convertoToK(_ num:Int)->String{
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if (indexPath.row == self.stream.feed.count ){
+			let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+			let indicator = UIActivityIndicatorView(frame: .zero)
+			indicator.startAnimating()
+			cell.contentView.addSubview(indicator)
+			indicator.snp.makeConstraints { (make) in
+				make.height.width.equalTo(30)
+				make.top.greaterThanOrEqualToSuperview()
+				make.bottom.lessThanOrEqualToSuperview()
+				make.center.equalToSuperview()
+			}
+			cell.contentView.backgroundColor = .clear
+			cell.backgroundColor = .clear
+			cell.setNeedsUpdateConstraints()
+			cell.updateConstraintsIfNeeded()
+			return cell
+		}
+		NetworkManager.dataTask(url: self.stream.feed[indexPath.row].imageURL ?? "") { (result) in
+			switch(result){
+				case .success(let data):
+					guard let image = UIImage(data: data) else{ return }
+					DispatchQueue.main.async{
+						(tableView.cellForRow(at: indexPath) as? FeedTableCell)?.newsView.imageView.image = image
+					}
+					break
+				case .failure: break
+			}
+		}
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! FeedTableCell
+		cell.setupView(element: self.stream.feed[indexPath.row])
+		cell.setNeedsUpdateConstraints()
+		cell.updateConstraintsIfNeeded()
+		cell.container.addTarget(action: { (_) in
+						let config = SFSafariViewController.Configuration()
+			guard let url = URL(string: self.stream.feed[indexPath.row].postUrl) else {return}
+						let vc = SFSafariViewController(url: url, configuration: config)
+						vc.modalPresentationStyle = .popover
+						self.present(vc, animated: true, completion: nil)
+		}, for: .touchUpInside)
+		return cell
+		
+	}
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return self.stream.feed.count+1
+	}
+	
+}
+
+
+
+
+
+
+
+class FeedTableCell:UITableViewCell{
+	let newsView:PocketNewsView = PocketNewsView(big: true)
+	lazy var container = PocketScalableContainer(content: PocketDivView(content: newsView))
+	private var url:String = ""
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		initSetup()
+	}
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		initSetup()
+	}
+	private func initSetup(){
+		print("init setup")
+		self.backgroundColor = .clear
+		self.contentView.addSubview(container)
+		container.snp.makeConstraints { (make) in
+			make.width.height.equalToSuperview().inset(10)
+			make.center.equalToSuperview()
+		}
+	}
+
+	private func convertoToK(_ num:Int)->String{
 		if num > 999 {
 			return String(format: "%.1fК", Float(num)/1000)
 		}else{
@@ -91,70 +167,24 @@ class FeedListViewController: UIViewController {
 		}
 	}
 	
-    func addFeed(elements: [SAFeedElement]){
-        for element in elements{
-			
-            let newsView = builNewsView(element: element)
-            let div = PocketDivView(content: newsView)
-			let tapContainer = PocketScalableContainer(content: div)
-			tapContainer.addTarget(action: { _ in
-				let config = SFSafariViewController.Configuration()
-				print("url: \(element.postUrl)")
-				guard let url = URL(string: element.postUrl) else {return}
-				let vc = SFSafariViewController(url: url, configuration: config)
-				vc.modalPresentationStyle = .popover
-				self.present(vc, animated: true, completion: nil)
-			}, for: .touchUpInside)
-            self.stackView.addArrangedSubview(tapContainer)
-        }
-
-    }
-	private func builNewsView(element:SAFeedElement) -> PocketNewsView{
-		let newsView = PocketNewsView(big: true)
-		newsView.authorLabel.text = self.stream.source.name
+	
+	
+	func setupView(element:SAFeedElement){
+		self.contentView.addSubview(container)
+		newsView.authorLabel.text = element.source.name
 		newsView.titleLabel.text = element.title
 		
 		newsView.likeLabel.text = "\(convertoToK(element.likes))"
 		newsView.viewsLabel.text = "\(convertoToK(element.views))"
 		newsView.repostLabel.text = "\(convertoToK(element.reposts))"
 		newsView.commentLabel.text = "\(convertoToK(element.comments))"
-		
+		self.newsView.imageView.image = nil
 		
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "Ru")
 		
 		formatter.dateFormat = "dd MMMM YYYY в HH:mm"
 		newsView.datetimeLabel.text = formatter.string(from: element.date)
-		
-		NetworkManager.dataTask(url: element.imageURL ?? "") { (result) in
-			switch(result){
-				case .success(let data):
-					guard let image = UIImage(data: data) else{ return }
-					DispatchQueue.main.async{ newsView.imageView.image = image}
-					break
-				case .failure: break
-			}
-		}
-		return newsView
+
 	}
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-extension FeedListViewController:UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentSize.height <= (scrollView.contentOffset.y + scrollView.frame.height) {
-            if !self.isLoading{
-                DispatchQueue.global(qos: .background).async {
-                    self.isLoading = true
-                    let feed = self.stream.next()
-                    DispatchQueue.main.async {
-                        self.addFeed(elements: feed)
-                        self.isLoading = false
-                    }
-                }
-            }
-        }
-    }
 }
