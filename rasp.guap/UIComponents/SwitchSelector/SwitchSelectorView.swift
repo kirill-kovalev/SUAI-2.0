@@ -33,7 +33,7 @@ public class SwitchSelector: UIScrollView {
     }
 	
 	
-    
+	private var justCleared:Bool = true
     private var _selectedIndex = 0
     private var buttons:[SwitchSelectorButton] = []
     public var switchDelegate:SwitchSelectorDelegate?
@@ -48,9 +48,10 @@ public class SwitchSelector: UIScrollView {
         set{
 			self.stack.layoutIfNeeded()
             self._selectedIndex = newValue // < self.stack.arrangedSubviews.count ? newValue : -1
-            UIView.animate(withDuration: self.animated ? 0.3 : 0) {
+            UIView.animate(withDuration: (self.animated && !justCleared) ? 0.3 : 0) {
                 self.updateView()
             }
+			justCleared = false
         }
     }
 	public var selectedValue:Any? {
@@ -67,6 +68,7 @@ public class SwitchSelector: UIScrollView {
 		}
 		self.buttons = []
 		self.selectBackground.frame = .zero
+		self.justCleared = true
 	}
 	
     public func add(_ element:SwitchSelectorButton){
