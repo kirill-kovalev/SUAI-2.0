@@ -18,7 +18,7 @@ public class SADeadlines{
 	}
 	public var open:[SADeadline]{
 		return self.deadlines.filter { (d) -> Bool in
-			return d.type != .closed
+			return d.type != .closed && d.type != .pro
 		}
 	}
 	public var closed:[SADeadline]{
