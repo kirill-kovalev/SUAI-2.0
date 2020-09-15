@@ -42,7 +42,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
     func set(day:Int,week:SATimetable.Week){
         self.day = day
 		if self.week != week {
-			self.week = (week != SATimetable.Week.outOfTable) ? week : .even
+			self.week = (week != SATimetable.Week.outOfTable) ? week : self.week
 			self.update()
 		}else{
 			self.rootView.daySelector.selectedIndex = getIndex(day: day)
@@ -100,15 +100,14 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 		self.rootView.daySelector.animated = false
 		self.rootView.daySelector.clear()
 		
-		for(i,day) in self.days.enumerated() {
-			if (delegate?.shouldShow(day: i,week:week) ?? false){
-				self.rootView.daySelector.add(SwitchSelectorButton(title: day, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+		for(day,dayName) in self.days.enumerated() {
+			if (delegate?.shouldShow(day: day,week:week) ?? false){
+				self.rootView.daySelector.add(SwitchSelectorButton(title: dayName, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color,value: day))
 			}
 		}
 		
 		if (delegate?.shouldShow(day: -1,week:.outOfTable) ?? false) {
-			print("________________________________")
-			self.rootView.daySelector.add(SwitchSelectorButton(title: "Вне Сетки" , titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color))
+			self.rootView.daySelector.add(SwitchSelectorButton(title: "Вне Сетки" , titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color,value: -1))
 		}
 		
 
@@ -130,7 +129,7 @@ extension ScheduleDaySelectViewController:SwitchSelectorDelegate {
 		UIImpactFeedbackGenerator(style: .light).impactOccurred()
 		
 		if index < self.days.count {
-			self.day = getWeekDay(index: index)
+			self.day = self.rootView.daySelector.selectedValue as? Int ?? getWeekDay(index: index)
 			self.delegate?.scheduleDaySelect(didUpdate: self.day, week: self.day >= 0 ? self.week : .outOfTable)
 		}else{
 			self.day = -1
