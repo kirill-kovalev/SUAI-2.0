@@ -24,14 +24,13 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		
 		DispatchQueue.global().async {
 			guard let settings = SAUserSettings.shared,
-				  let group = settings.group,
-				  let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
-				  let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first
-			else {return}
+				  let group = settings.group else {return}
 			DispatchQueue.main.async {
 				self.content.card.groupLabel.text = group
-				self.content.card.userLabel.text = "\(resp.first_name) \(resp.last_name)"
 			}
+			guard let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
+				let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first else {return}
+			DispatchQueue.main.async {self.content.card.userLabel.text = "\(resp.first_name) \(resp.last_name)"}
 			
 			NetworkManager.dataTask(url: resp.photo_100) { (result) in
 				switch result{
@@ -50,29 +49,61 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket Android", false))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket iOS", true))
 		
+		self.content.card.isUserInteractionEnabled = false
+		self.content.card.isExclusiveTouch = false
+		if( traitCollection.forceTouchCapability == .available){
+			registerForPreviewing(with: self, sourceView: self.content.serviceListLabel)
+		}else{
+			print("wtf no force touch?")
+		}
+		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
-		var start:CMDeviceMotion?
-
-		motionManager.deviceMotionUpdateInterval = 1/60
+	
+		var start:CMAttitude? = nil
+		motionManager.deviceMotionUpdateInterval = 1/4
 		motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
-			start = start ?? motion
-			guard let new = motion?.gravity else { print("new failed"); return}
-			guard let old = start?.gravity else { print("old failed"); return}
-			let diff = CMAcceleration(x: new.x-old.x, y: new.y-old.y, z: new.z-old.z)
-			let angle = Double(30.degreesToRadians)
-			self.rotateCard(x: diff.x*angle, y: diff.y*angle, z: diff.z*angle)
+			guard let new = motion?.attitude else {return}
+			start = start ?? new
+			
+			let pitch = (new.pitch - start!.pitch)
+			let roll = new.roll - start!.roll
+			let yaw = new.yaw - start!.yaw
+			
+			let coef_p = (pitch<0.8 && pitch > -0.5) ? 0.8 : 0.7
+			UIView.animateKeyframes(withDuration: self.motionManager.deviceMotionUpdateInterval, delay: 0, options: [.beginFromCurrentState], animations: {
+				self.rotateCard(x:pitch*coef_p, y:roll*0.07, z:yaw*0.07)
+			}, completion: nil)
+			
 		}
 		
 	}
 	func rotateCard(x:Double,y:Double,z:Double){
-		let rotX = CATransform3DRotate(CATransform3DIdentity, CGFloat(x)*0.3, 0, 0, -1)
-		let rotXY = CATransform3DRotate(rotX, CGFloat(y), -1, 0, 0)
-		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 0)
+		let rotX = CATransform3DRotate(CATransform3DIdentity, CGFloat(x),-1, 0, 0)
+		let rotXY = CATransform3DRotate(rotX, CGFloat(y), 0, -1, 0)
+		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 1)
 		
 		self.content.card.layer.transform = rotXYZ
 	}
+}
+
+extension UserCardModalViewController:UIViewControllerPreviewingDelegate{
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		let controller = UIAlertController(title: "RESET", message: "ломаем все к чертям?", preferredStyle: .actionSheet)
+		controller.addAction(UIAlertAction(title: "халк крушить", style: .destructive, handler: { (_) in
+			
+		}))
+		controller.addAction(UIAlertAction(title: "Боже упаси", style: .cancel, handler: { (_) in
+			controller.dismiss(animated: true, completion: nil)
+		}))
+		return controller
+	}
+	
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		self.present(viewControllerToCommit, animated: true, completion: nil)
+	}
+	
+	
 }
