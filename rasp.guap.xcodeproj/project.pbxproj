@@ -127,6 +127,7 @@
 		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
 		5DB5612E24E83E090072CD85 /* ScheduleDaySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */; };
 		5DB5613024E83E900072CD85 /* ScheduleDaySelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */; };
+		5DB8772C2512086B0081BE16 /* VectorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB8772B2512086B0081BE16 /* VectorClass.swift */; };
 		5DC4BC6D24DD80AC00E90BB3 /* PocketDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */; };
 		5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */; };
 		5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DCE2FE924E0282700CFF29A /* PocketDayView.xib */; };
@@ -333,6 +334,7 @@
 		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
 		5DB5612D24E83E090072CD85 /* ScheduleDaySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectView.swift; sourceTree = "<group>"; };
 		5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectDelegate.swift; sourceTree = "<group>"; };
+		5DB8772B2512086B0081BE16 /* VectorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorClass.swift; sourceTree = "<group>"; };
 		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
 		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		5DCE2FE924E0282700CFF29A /* PocketDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PocketDayView.xib; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */,
+				5DB8772B2512086B0081BE16 /* VectorClass.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1357,6 +1360,7 @@
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
+				5DB8772C2512086B0081BE16 /* VectorClass.swift in Sources */,
 				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
 				5DA7443225093A0E00403F6A /* UserCardModalView.swift in Sources */,
 				5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */,
