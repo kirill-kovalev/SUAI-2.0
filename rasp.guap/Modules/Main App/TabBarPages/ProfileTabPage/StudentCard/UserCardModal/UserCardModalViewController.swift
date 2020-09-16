@@ -24,14 +24,13 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		
 		DispatchQueue.global().async {
 			guard let settings = SAUserSettings.shared,
-				  let group = settings.group,
-				  let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
-				  let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first
-			else {return}
+				  let group = settings.group else {return}
 			DispatchQueue.main.async {
 				self.content.card.groupLabel.text = group
-				self.content.card.userLabel.text = "\(resp.first_name) \(resp.last_name)"
 			}
+			guard let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
+				let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first else {return}
+			DispatchQueue.main.async {self.content.card.userLabel.text = "\(resp.first_name) \(resp.last_name)"}
 			
 			NetworkManager.dataTask(url: resp.photo_100) { (result) in
 				switch result{
@@ -50,6 +49,14 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket Android", false))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket iOS", true))
 		
+		self.content.card.isUserInteractionEnabled = false
+		self.content.card.isExclusiveTouch = false
+		if( traitCollection.forceTouchCapability == .available){
+			registerForPreviewing(with: self, sourceView: self.content.serviceListLabel)
+		}else{
+			print("wtf no force touch?")
+		}
+		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +74,7 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 			
 			let coef_p = (pitch<0.8 && pitch > -0.5) ? 0.8 : 0.7
 			UIView.animateKeyframes(withDuration: self.motionManager.deviceMotionUpdateInterval, delay: 0, options: [.beginFromCurrentState], animations: {
-				self.rotateCard(x:pitch*coef_p, y:roll*0.12, z:yaw*0.12)
+				self.rotateCard(x:pitch*coef_p, y:roll*0.07, z:yaw*0.07)
 			}, completion: nil)
 			
 		}
@@ -80,4 +87,23 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		
 		self.content.card.layer.transform = rotXYZ
 	}
+}
+
+extension UserCardModalViewController:UIViewControllerPreviewingDelegate{
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		let controller = UIAlertController(title: "RESET", message: "ломаем все к чертям?", preferredStyle: .actionSheet)
+		controller.addAction(UIAlertAction(title: "халк крушить", style: .destructive, handler: { (_) in
+			
+		}))
+		controller.addAction(UIAlertAction(title: "Боже упаси", style: .cancel, handler: { (_) in
+			controller.dismiss(animated: true, completion: nil)
+		}))
+		return controller
+	}
+	
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		self.present(viewControllerToCommit, animated: true, completion: nil)
+	}
+	
+	
 }
