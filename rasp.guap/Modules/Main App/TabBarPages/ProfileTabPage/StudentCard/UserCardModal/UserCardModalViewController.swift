@@ -54,24 +54,29 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
-		var start:CMDeviceMotion?
-
-		motionManager.deviceMotionUpdateInterval = 1/60
+	
+		var start:CMAttitude? = nil
+		motionManager.deviceMotionUpdateInterval = 1/4
 		motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
-			start = start ?? motion
-			guard let new = motion?.gravity else { print("new failed"); return}
-			guard let old = start?.gravity else { print("old failed"); return}
-			let diff = CMAcceleration(x: new.x-old.x, y: new.y-old.y, z: new.z-old.z)
-			let angle = Double(30.degreesToRadians)
-			self.rotateCard(x: diff.x*angle, y: diff.y*angle, z: diff.z*angle)
+			guard let new = motion?.attitude else {return}
+			start = start ?? new
+			
+			let pitch = (new.pitch - start!.pitch)
+			let roll = new.roll - start!.roll
+			let yaw = new.yaw - start!.yaw
+			
+			let coef_p = (pitch<0.8 && pitch > -0.5) ? 0.8 : 0.7
+			UIView.animateKeyframes(withDuration: self.motionManager.deviceMotionUpdateInterval, delay: 0, options: [.beginFromCurrentState], animations: {
+				self.rotateCard(x:pitch*coef_p, y:roll*0.12, z:yaw*0.12)
+			}, completion: nil)
+			
 		}
 		
 	}
 	func rotateCard(x:Double,y:Double,z:Double){
-		let rotX = CATransform3DRotate(CATransform3DIdentity, CGFloat(x)*0.3, 0, 0, -1)
-		let rotXY = CATransform3DRotate(rotX, CGFloat(y), -1, 0, 0)
-		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 0)
+		let rotX = CATransform3DRotate(CATransform3DIdentity, CGFloat(x),-1, 0, 0)
+		let rotXY = CATransform3DRotate(rotX, CGFloat(y), 0, -1, 0)
+		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 1)
 		
 		self.content.card.layer.transform = rotXYZ
 	}
