@@ -10,17 +10,17 @@ import Foundation
 
 public class SATimetable {
     public static let lessonHours:[[DateComponents]] = [
-        [.init(hour: 09, minute: 00),.init(hour: 10, minute: 30)],//1
-        [.init(hour: 10, minute: 40),.init(hour: 12, minute: 10)],//2
-        [.init(hour: 12, minute: 20),.init(hour: 13, minute: 50)],//3
-        [.init(hour: 14, minute: 10),.init(hour: 15, minute: 40)],//4
-        [.init(hour: 15, minute: 50),.init(hour: 17, minute: 20)],//5
-        [.init(hour: 17, minute: 30),.init(hour: 19, minute: 00)],//6
-		[.init(hour: 19, minute: 10),.init(hour: 21, minute: 40)],//7
+        [.init(hour: 09, minute: 30),.init(hour: 11, minute: 00)],//1
+        [.init(hour: 11, minute: 10),.init(hour: 12, minute: 40)],//2
+        [.init(hour: 13, minute: 00),.init(hour: 14, minute: 30)],//3
+        [.init(hour: 15, minute: 00),.init(hour: 16, minute: 30)],//4
+        [.init(hour: 16, minute: 40),.init(hour: 18, minute: 10)],//5
+        [.init(hour: 18, minute: 30),.init(hour: 20, minute: 00)],//6
+		[.init(hour: 20, minute: 10),.init(hour: 21, minute: 40)],//7
 		[.init(hour: 21, minute: 50),.init(hour: 23, minute: 20)]//8
         
     ]
-
+	//['09:30-11:30', '11:10-12:40', '13:00-14:30', '15:00-16:30', '16:40-18:10', '18:30-20:00', '20:10-21:40']
     public init(for user: SAUsers.User) {
         let _ = load(for: user)
     }
