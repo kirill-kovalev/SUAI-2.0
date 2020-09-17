@@ -103,6 +103,11 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             self.content.closeButton.setTitle("Закрыть дедлайн", for: .normal)
             self.content.closeButton.layer.borderColor = color.cgColor
         }
+		if self.deadline.isPro{
+			self.content.editButton.isHidden = true
+			self.content.closeButton.isHidden = true
+			self.content.deleteButton.isHidden = true
+		}
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {

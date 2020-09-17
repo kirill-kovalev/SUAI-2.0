@@ -51,10 +51,14 @@ class DeadlineListController: UIViewController {
                 break
             }
             self.tableView.addArrangedSubview(newView)
+			if !deadline.isPro{
+				newView.onCheck { (cell) in
+					self.delegate?.deadlineDidChecked(deadline: deadline)
+				}
+			}else{
+				newView.checkbox.isHidden = true
+			}
             
-            newView.onCheck { (cell) in
-                self.delegate?.deadlineDidChecked(deadline: deadline)
-            }
             newView.onSelect { (cell) in
                 self.delegate?.deadlineDidSelected(deadline: deadline)
             }
