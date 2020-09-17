@@ -29,7 +29,12 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		
 		
 		let scalable = PocketScalableContainer(content: PocketDivView(content: studentCard.view))
-		scalable.addTarget(action: {_ in self.present(UserCardModalViewController(), animated: true, completion: nil)}, for: .touchUpInside)
+		scalable.addTarget(action: {_ in
+			let vc = UserCardModalViewController()
+			vc.content.card.profileImage.image = self.studentCard.rootView.avatar.imageView.image
+			vc.content.card.userLabel.text = self.studentCard.rootView.name.text
+			self.present(vc, animated: true, completion: nil)
+		}, for: .touchUpInside)
 		self.addChild(studentCard)
 		self.rootView.addBlock(title: "Карточка студента", view: scalable)
 		studentCard.didMove(toParent: self)
