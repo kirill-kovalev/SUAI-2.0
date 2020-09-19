@@ -41,7 +41,7 @@ class PocketCard: UIView {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 18)
 		label.textColor = .black
-		label.text = "Иван Иванов"
+		label.text = ""
 		return label
 	}()
 	let profileImage:UIImageView = {

@@ -73,7 +73,7 @@ class StudentCardView: View {
 		name.snp.makeConstraints { (make) in
 			make.bottom.equalTo(avatar.snp.centerY)
 			make.left.equalTo(avatar.snp.right).offset(8)
-			make.right.equalTo(suaiImage.snp.left).inset(-6)
+			make.right.lessThanOrEqualTo(suaiImage.snp.left).inset(-6)
 		}
 	}
 

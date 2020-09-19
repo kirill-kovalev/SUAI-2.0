@@ -72,9 +72,9 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 			let roll = new.roll - start!.roll
 			let yaw = new.yaw - start!.yaw
 			
-			let coef_p = (pitch<0.8 && pitch > -0.5) ? 0.8 : 0.7
+			let coef_p = (pitch<0.8 && pitch > -0.5) ? 0.6 : 0.4
 			UIView.animateKeyframes(withDuration: self.motionManager.deviceMotionUpdateInterval, delay: 0, options: [.beginFromCurrentState], animations: {
-				self.rotateCard(x:pitch*coef_p, y:roll*0.07, z:yaw*0.07)
+				self.rotateCard(x:pitch*coef_p, y:roll*0.1, z:yaw*0.07)
 			}, completion: nil)
 			
 		}
@@ -86,6 +86,8 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 1)
 		
 		self.content.card.layer.transform = rotXYZ
+		self.content.card.suaiLabel.angle = 268 + CGFloat(z.radiansToDegrees)*2
+		self.content.card.groupLabel.angle = self.content.card.suaiLabel.angle
 	}
 }
 
