@@ -40,7 +40,7 @@ class StudentCardViewController: ViewController<StudentCardView> {
 			else {return}
 			DispatchQueue.main.async {
 				self.rootView.group.text = "Группа "+group
-				self.rootView.name.text = "очень длинное имя прикиньте столько слов"//"\(resp.first_name) \(resp.last_name)"
+				self.rootView.name.text = "\(resp.first_name) \(resp.last_name)"
 			}
 			
 			NetworkManager.dataTask(url: resp.photo_100) { (result) in

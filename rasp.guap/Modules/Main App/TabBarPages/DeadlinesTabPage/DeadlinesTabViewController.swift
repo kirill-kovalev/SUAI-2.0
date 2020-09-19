@@ -87,14 +87,15 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		self.rootView.placeholder.startLoading()
 		if self.deadlineList.tableView.arrangedSubviews.isEmpty {
 			self.rootView.placeholder.show()
+		}else{
+			self.rootView.placeholder.hide()
 		}
         DispatchQueue.global(qos: .background).async {
 			SAUserSettings.shared.reload()
             SADeadlines.shared.loadFromServer()
-			print("pro\(SADeadlines.shared.pro)")
             DispatchQueue.main.async {
-				self.setupDeadlinegroupSelector()
 				self.rootView.placeholder.stopLoading()
+				self.setupDeadlinegroupSelector()
                 self.reloadItems()
             }
         }

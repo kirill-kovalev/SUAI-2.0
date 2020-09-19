@@ -64,11 +64,22 @@ class DeadlineEditModalView: View {
     }
     
     
-    
+
+	private func notRequiredGenerator()  -> UILabel{
+		let label = UILabel(frame: .zero)
+		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		label.textColor = Asset.PocketColors.pocketGray.color
+		label.text = "(необязательно)"
+		return label
+	}
+	
     lazy var nameSectionTitle:UILabel = sectionLabelGenerator("Название дедлайна")
     lazy var commentSectionTitle:UILabel = sectionLabelGenerator("Описание дедлайна")
     lazy var dateSectionTitle:UILabel = sectionLabelGenerator("Дата дедлайна")
     lazy var lessonSectionTitle:UILabel = sectionLabelGenerator("Предмет")
+	
+	lazy var commentNRLabel = notRequiredGenerator()
+	lazy var lessonNRLabel = notRequiredGenerator()
     
     lazy var nameLabel:UITextField = textFieldGenerator("Выполнить лабораторную работу №1")
     lazy var commentLabel:UITextView = {
@@ -156,6 +167,7 @@ class DeadlineEditModalView: View {
     func addViews(){
         self.addSubview(nameSectionTitle)
         self.addSubview(commentSectionTitle)
+		self.addSubview(commentNRLabel)
         
         self.addSubview(dateSectionTitle)
         self.addSubview(nameLabel)
@@ -164,6 +176,7 @@ class DeadlineEditModalView: View {
         self.addSubview(dateLabel)
         
         self.addSubview(lessonSectionTitle)
+		self.addSubview(lessonNRLabel)
         self.addSubview(lessonLabel)
 
         self.addSubview(closeButton)
@@ -179,9 +192,13 @@ class DeadlineEditModalView: View {
             make.top.equalTo(nameSectionTitle.snp.bottom).offset(8)
         }
         commentSectionTitle.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview()
             make.top.equalTo(nameLabel.snp.bottom).offset(8)
         }
+		commentNRLabel.snp.makeConstraints { (make) in
+			make.left.equalTo(commentSectionTitle.snp.right).offset(6)
+			make.centerY.equalTo(commentSectionTitle)
+		}
         commentLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(100)
@@ -200,6 +217,10 @@ class DeadlineEditModalView: View {
             make.left.right.equalToSuperview()
             make.top.equalTo(dateLabel.snp.bottom).offset(8)
         }
+		lessonNRLabel.snp.makeConstraints { (make) in
+			make.left.equalTo(lessonSectionTitle.snp.right).offset(6)
+			make.centerY.equalTo(lessonSectionTitle)
+		}
         lessonLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(40)
