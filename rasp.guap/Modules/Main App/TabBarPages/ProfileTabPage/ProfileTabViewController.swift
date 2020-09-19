@@ -63,16 +63,23 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		logoutButton.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
 		self.rootView.addHeaderButton(logoutButton)
 		logoutButton.addTarget(action: { (sender) in
-			print("logout")
-			DispatchQueue.global().async { VK.sessions.default.logOut() }
-			let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
-			vkVC.modalPresentationStyle = .fullScreen
-			vkVC.modalTransitionStyle = .flipHorizontal
-			self.present(vkVC, animated: true, completion: nil)
+			let alert = UIAlertController(title: "Выйти?", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { _ in self.logout()}))
+			alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in alert.dismiss(animated: true, completion: nil) }))
+			self.present(alert, animated: true, completion: nil)
 		}, for: .touchUpInside)
 		self.rootView.title.snp.makeConstraints { (make) in
 			make.bottom.equalToSuperview()
 		}
+	}
+	
+	private func logout(){
+		print("logout")
+		DispatchQueue.global().async { VK.sessions.default.logOut() }
+		let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
+		vkVC.modalPresentationStyle = .fullScreen
+		vkVC.modalTransitionStyle = .flipHorizontal
+		self.present(vkVC, animated: true, completion: nil)
 	}
 	
 }
