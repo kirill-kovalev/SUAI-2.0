@@ -14,10 +14,10 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 		self.keyboardReflective = false
 		
 		self.rootView.submitBtn.addTarget(action: { (sender) in
-			SAUserSettings.shared?.prologin = self.rootView.emailTF.text
-			SAUserSettings.shared?.propass = self.rootView.passTF.text
+			SAUserSettings.shared.prologin = self.rootView.emailTF.text
+			SAUserSettings.shared.propass = self.rootView.passTF.text
 			DispatchQueue.global().async {
-				if SAUserSettings.shared?.update() ?? false {
+				if SAUserSettings.shared.update() ?? false {
 					print("SUAI ID OK")
 				}else{
 					print("SUAI ID Err")
@@ -38,14 +38,14 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			SAUserSettings.shared?.reload()
+			SAUserSettings.shared.reload()
 			self.update()
 		}
 	}
 	
 	func update(){
-		let login = SAUserSettings.shared?.prologin
-		let pass = SAUserSettings.shared?.propass
+		let login = SAUserSettings.shared.prologin
+		let pass = SAUserSettings.shared.propass
 		DispatchQueue.main.async {
 			self.rootView.emailTF.text = login
 			self.rootView.passTF.text = pass

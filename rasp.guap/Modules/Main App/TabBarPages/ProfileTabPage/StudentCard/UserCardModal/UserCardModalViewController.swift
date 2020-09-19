@@ -23,8 +23,8 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
         }
 		
 		DispatchQueue.global().async {
-			guard let settings = SAUserSettings.shared,
-				  let group = settings.group else {return}
+			let settings = SAUserSettings.shared
+			guard let group = settings.group else {return}
 			DispatchQueue.main.async {
 				self.content.card.groupLabel.text = group
 			}

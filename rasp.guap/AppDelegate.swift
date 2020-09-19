@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func LoggedInVK(){
         PocketAPI.shared.setToken(VK.sessions.default.accessToken?.get() ?? "")
-		print(VK.sessions.default.accessToken?.get())
+		print(VK.sessions.default.accessToken?.get() ?? "failed to get token")
 		window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = DataLoaderViewController()
         window?.makeKeyAndVisible()
@@ -98,7 +98,7 @@ extension AppDelegate:WCSessionDelegate{
 	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
 		DispatchQueue.global().async {
 			let settings = SAUserSettings.shared
-			let group = settings?.group
+			let group = settings.group
 			
 			guard let user = SASchedule.shared.groups.get(name: group! ) else {return}
 			let _ = SASchedule.shared.load(for: user)

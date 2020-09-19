@@ -25,9 +25,9 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
         self.rootView.button.addTarget(action: { (b) in
             let user = self.rootView.select.text ?? ""
             if SASchedule.shared.groups.get(name: user) != nil {
-                SAUserSettings.shared?.group = user
+				SAUserSettings.shared.group = user
                 
-                if((SAUserSettings.shared?.update()) ?? false){
+				if((SAUserSettings.shared.update()) ?? false){
 					self.present(DataLoaderViewController(), animated: true, completion: nil)
 				}else{
 					print("error while setting group")

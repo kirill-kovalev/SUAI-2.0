@@ -35,14 +35,17 @@ public class PocketAPI{
     public init(){
         if !VK.needToSetUp && VK.sessions.default.state == .authorized {
             config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
-        }
+		}
     }
     public func setToken(_ token:String){
         config.httpAdditionalHeaders = ["Token":token]
     }
     
     public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:],completion:((Data)->Void)? = nil ) -> Data?{
-        
+        if !VK.needToSetUp && VK.sessions.default.state == .authorized {
+            config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
+		}
+		
         let sem = DispatchSemaphore(value: 0)
 
         let urlParams = params.isEmpty ? "" : "?"+params.map{"\($0)=\($1)"}.joined(separator: "&")
@@ -64,6 +67,10 @@ public class PocketAPI{
     
     
     public func syncSetTask(method: SetMethods,params:[String:Any] = [: ],completion: ((Data)->Void)? ) -> Data?{
+		if !VK.needToSetUp && VK.sessions.default.state == .authorized {
+            config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
+		}
+		
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

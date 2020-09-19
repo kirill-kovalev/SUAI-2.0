@@ -88,14 +88,14 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	// MARK: - content update from server
 	func update(){
 		DispatchQueue.global().async {
-			SAUserSettings.shared?.reload()
+			SAUserSettings.shared.reload()
 			self.updateView()
 		}
 	}
 	func updateView(){
-		let idTab = (SAUserSettings.shared?.idtab ?? 1) - 1
-		let building = (SAUserSettings.shared?.building ?? 1) - 1
-		let group = SAUserSettings.shared?.group
+		let idTab = (SAUserSettings.shared.idtab ?? 1) - 1
+		let building = (SAUserSettings.shared.building ?? 1) - 1
+		let group = SAUserSettings.shared.group
 			
 		DispatchQueue.main.async {
 			self.rootView.groupSelector.text = group
@@ -112,12 +112,12 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 	func setGroup(name:String){
 		DispatchQueue.global().async {
-			let originGroup = SAUserSettings.shared?.group
-			SAUserSettings.shared?.group = name
-			if SAUserSettings.shared?.update() ?? false {
+			let originGroup = SAUserSettings.shared.group
+			SAUserSettings.shared.group = name
+			if SAUserSettings.shared.update() ?? false {
 				print("group set to \(name)")
 			}else{
-				SAUserSettings.shared?.group = originGroup
+				SAUserSettings.shared.group = originGroup
 				DispatchQueue.main.async {
 					self.updateView()
 				}
@@ -129,15 +129,15 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	func setBuilding(_ id:Int){
 		let id = id + 1
 		DispatchQueue.global().async {
-			let originBuilding = SAUserSettings.shared?.building ?? 1
+			let originBuilding = SAUserSettings.shared.building
 			print("originBuilding : \(originBuilding)")
 			print("new building : \(id)")
 			if originBuilding != id {
-				SAUserSettings.shared?.building = id
-				if (SAUserSettings.shared?.update() ?? false){
+				SAUserSettings.shared.building = id
+				if (SAUserSettings.shared.update()){
 					print("building set to \(id)")
 				}else{
-					SAUserSettings.shared?.building = originBuilding
+					SAUserSettings.shared.building = originBuilding
 					self.updateView()
 				}
 			}
@@ -147,16 +147,16 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		print("set tab : \(id)")
 		let id = id + 1
 		DispatchQueue.global().async {
-			let originTab = SAUserSettings.shared?.idtab ?? 1
+			let originTab = SAUserSettings.shared.idtab
 			print("origin tab : \(originTab)")
 			print("new tab : \(id)")
 			if originTab != id {
-				SAUserSettings.shared?.idtab = id
-				if (SAUserSettings.shared?.update() ?? false){
+				SAUserSettings.shared.idtab = id
+				if (SAUserSettings.shared.update()){
 					print("start page set to \(id)")
 				}else{
 					print("update Error")
-					SAUserSettings.shared?.idtab = originTab
+					SAUserSettings.shared.idtab = originTab
 					self.updateView()
 				}
 			}

@@ -44,7 +44,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         
         self.content.clearButton.addTarget(action: { (sender) in
             if SAUserSettings.shared != nil {
-                guard let user = SASchedule.shared.groups.get(name: SAUserSettings.shared!.group!) else { return }
+                guard let user = SASchedule.shared.groups.get(name: SAUserSettings.shared.group!) else { return }
                 self.delegate?.didSetUser(user: user)
                 self.dismiss(animated: true, completion: nil)
             }
@@ -67,7 +67,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 		self.showAll()
 		
         DispatchQueue.global(qos: .background).async {
-            SAUserSettings.shared?.reload()
+            SAUserSettings.shared.reload()
             SASchedule.shared.preps.loadFromServer()
             SASchedule.shared.groups.loadFromServer()
         }

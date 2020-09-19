@@ -137,7 +137,7 @@ class FeedBriefInfoViewController: UIViewController {
 		}
 		
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-        guard let group = SAUserSettings.shared!.group,
+        guard let group = SAUserSettings.shared.group,
               let user = SASchedule.shared.groups.get(name: group ) else {return}
         let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
         let today = Calendar.convertToRU(todayUS)
@@ -183,7 +183,7 @@ class FeedBriefInfoViewController: UIViewController {
 
 		DispatchQueue.global().async {
 			
-			guard let group = SAUserSettings.shared?.group,
+			guard let group = SAUserSettings.shared.group,
 				  let user = SASchedule.shared.groups.get(name: group ) else {return}
 			let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
 			let today = Calendar.convertToRU(todayUS)

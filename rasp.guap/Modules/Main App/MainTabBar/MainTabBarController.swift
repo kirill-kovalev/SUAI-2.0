@@ -21,10 +21,7 @@ class MainTabBarController : ESTabBarController{
             ProfileTabViewController()
         ]
         
-		guard let userSetting = SAUserSettings.shared else{
-			self.selectedIndex = 0
-			return
-		}
+		let userSetting = SAUserSettings.shared
         let startPage = userSetting.idtab
         self.selectedIndex = startPage - 1
     }

@@ -20,10 +20,15 @@ public class SAUserSettings: Codable {
 	
 	public var proSupport:Bool{return !(prologin?.isEmpty ?? true || propass?.isEmpty ?? true || procookie?.isEmpty ?? true)}
     
-    public static var shared = fromServer() ?? fromCache()
+	public static var shared = SAUserSettings();
     
-    
-    public static func fromServer() -> SAUserSettings?{
+	private init(){
+		self.idtab = 1
+		self.animations = 1
+		self.building = 1
+		self.banners = 1
+	}
+    private static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
         let _ = PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
             do{

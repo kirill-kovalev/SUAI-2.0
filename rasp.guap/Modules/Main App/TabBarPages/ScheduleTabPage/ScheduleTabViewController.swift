@@ -72,7 +72,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         daySelectController.update()
 		
         DispatchQueue.global(qos: .background).async {
-            guard let groupName = SAUserSettings.shared?.group else {
+			guard let groupName = SAUserSettings.shared.group else {
                 print("SAUserSettings.shared?.group is nil")
                 return
             }

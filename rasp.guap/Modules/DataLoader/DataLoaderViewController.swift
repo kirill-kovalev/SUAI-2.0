@@ -22,7 +22,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			if settings == nil {
 				self.setText("Не удалось получить настройки")
 			}else{
-				if let group = settings?.group {
+				if let group = settings.group {
 					self.setText("Загружаю расписание")
 					SASchedule.shared.loadFromCache()
 					if SASchedule.shared.groups.count == 0{

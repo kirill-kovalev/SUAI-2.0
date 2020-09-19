@@ -43,7 +43,7 @@ public class SADeadlines{
 	
 	private var userDefaultsKey:String {"\(Self.self)Cache"}
 	public func loadFromServer(){
-		let params : [String:String] = (SAUserSettings.shared?.proSupport ?? true) ? ["need_proguap":"True"] : [:]
+		let params : [String:String] = (SAUserSettings.shared.proSupport ?? true) ? ["need_proguap":"True"] : [:]
 		let _ = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) { (data) in
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )

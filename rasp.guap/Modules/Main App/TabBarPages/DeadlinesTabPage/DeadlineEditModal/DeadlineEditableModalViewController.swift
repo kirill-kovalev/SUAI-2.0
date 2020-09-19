@@ -23,7 +23,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		picker.delegate = self
 		self.content.lessonLabel.inputView = picker
 		DispatchQueue.global(qos: .background).async {
-			self.lessonList = SASchedule.shared.get(for: SASchedule.shared.groups.get(name: SAUserSettings.shared?.group ?? "") ?? SAUsers.User(Name: "", ItemId: 0)).list()
+			self.lessonList = SASchedule.shared.get(for: SASchedule.shared.groups.get(name: SAUserSettings.shared.group ?? "") ?? SAUsers.User(Name: "", ItemId: 0)).list()
 			DispatchQueue.main.async {
 				picker.reloadAllComponents()
 			}

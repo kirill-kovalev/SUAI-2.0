@@ -59,17 +59,26 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rootView.addButton.addTarget(action: { (sender) in
-            let vc = DeadlineEditableModalViewController()
-            vc.onChange = {
-                self.reloadItems()
-            }
-            self.present(vc, animated: true, completion: nil)
-        }, for: .touchUpInside)
+        
 		self.rootView.placeholder.startLoading()
 		self.reloadItems()
 		self.setupDeadlinegroupSelector()
+		
+		self.rootView.addButton.addTarget(action: {_ in self.showAddModal() }, for: .touchUpInside)
+		self.rootView.placeholderContainer.addTarget(action: { (_) in
+			guard let group = (self.rootView.deadlineListSelector.selectedValue as? SADeadlineGroup) else {return}
+			if group != .pro {
+				self.showAddModal()
+			}
+		}, for: .touchUpInside)
     }
+	private func showAddModal(){
+		let vc = DeadlineEditableModalViewController()
+		vc.onChange = {
+			self.reloadItems()
+		}
+		self.present(vc, animated: true, completion: nil)
+	}
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -80,7 +89,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 			self.rootView.placeholder.show()
 		}
         DispatchQueue.global(qos: .background).async {
-			SAUserSettings.shared?.reload()
+			SAUserSettings.shared.reload()
             SADeadlines.shared.loadFromServer()
 			print("pro\(SADeadlines.shared.pro)")
             DispatchQueue.main.async {

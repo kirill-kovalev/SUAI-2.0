@@ -20,7 +20,7 @@ class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			if SAUserSettings.shared?.reload() != nil  {
+			if SAUserSettings.shared.reload() != nil  {
 				self.loadData()
 			}
 		}
@@ -34,8 +34,8 @@ class StudentCardViewController: ViewController<StudentCardView> {
         }
 		
 		DispatchQueue.global().async {
-			guard let settings = SAUserSettings.shared,
-				  let group = settings.group,
+			let settings = SAUserSettings.shared
+			guard let group = settings.group,
 				  let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
 				  let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first
 			else {return}
