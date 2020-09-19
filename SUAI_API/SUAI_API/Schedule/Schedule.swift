@@ -13,7 +13,7 @@ public class SASchedule{
     public static let shared = SASchedule()
     public let preps = Preps()
     public let groups = Groups()
-    public let settings = ScheduleSettings.load()
+    public var settings = ScheduleSettings.load()
     
     public var userTimetables : [SAUsers.User:SATimetable] = [:]
 	
@@ -27,12 +27,18 @@ public class SASchedule{
 	public func loadFromCache(){
 			if self.groups.count == 0 {self.groups.loadFromCache()}
 			if self.preps.count == 0 {self.preps.loadFromCache()}
+			//timetables
 			let cachedData = UserDefaults.standard.object(forKey: "SAScheduleCache") as? CachedSchedule
 			if let cachedData = cachedData{
 				self.userTimetables = decodeFromDefaults(cachedData)
 			}else{
-				print("err \(cachedData)")
+				print("err cachedData = nil")
 			}
+		//settings
+		if let cachedSettings = UserDefaults.standard.object(forKey: "SAScheduleSettingsCache") as? Data,
+			let decoded = try? JSONDecoder().decode(ScheduleSettings.self, from: cachedSettings) {
+			self.settings = decoded
+		}
 	}
 	
 	private func decodeFromDefaults(_ from: CachedSchedule) -> [SAUsers.User:SATimetable]{
@@ -40,25 +46,15 @@ public class SASchedule{
 		for (key,val) in from {
 			do{
 				let user = try JSONDecoder().decode(SAUsers.User.self, from: key.data(using: .utf8) ?? Data() )
-//				let newKey = self.preps.get(name: user.Name) ?? self.groups.get(name: user.Name)
 				let lessons = try JSONDecoder().decode([SALesson].self, from: val)
-//				if let newKey = newKey {
-//
-//				}
 				data[user] = SATimetable(timetable: lessons)
-				
 			}catch{print(error)}
-			
 		}
-//		print("\n\n\n\n\n\nFrom defaults:")
-//		print(data)
-//		print(self.get(for: self.groups.get(name: "1040М")!).list())
-//		print("______________________________\n\n\n\n\n\n")
-		
 		return data
 	}
 	
 	private func saveToDefaults(){
+		//timetables
 		var data:CachedSchedule = [:]
 		for (key,val) in self.userTimetables{
 			let timetable =  try? JSONEncoder().encode(val.list())
@@ -67,8 +63,12 @@ public class SASchedule{
 			data[strKey] = timetable
 			print("set \(strKey) : \(timetable)")
 		}
-		
 		UserDefaults.standard.set(data, forKey: "SAScheduleCache")
+		
+		//settings
+		if let encoded = try? JSONEncoder().encode(self.settings){
+			UserDefaults.standard.set(encoded, forKey: "SAScheduleSettingsCache")
+		}
 	}
     
     public func load(for user: SAUsers.User) -> SATimetable {
