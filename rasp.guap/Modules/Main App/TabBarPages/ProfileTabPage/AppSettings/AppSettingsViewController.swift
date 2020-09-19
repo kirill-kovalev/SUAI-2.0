@@ -19,7 +19,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		"Новости",
 		"Дедлайны",
 		"Расписание",
-		"Инфо"
+		"Справочник"
 	]
 	// MARK: - Список зданий
 	let buildings:[String] = [
