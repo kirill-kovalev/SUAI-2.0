@@ -20,7 +20,7 @@ public class SAUserSettings: Codable {
 	
 	public var proSupport:Bool{return !(prologin?.isEmpty ?? true || propass?.isEmpty ?? true || procookie?.isEmpty ?? true)}
     
-	public static var shared = SAUserSettings();
+	public static var shared = fromServer() ?? fromCache() ?? SAUserSettings();
     
 	private init(){
 		self.idtab = 1
@@ -41,7 +41,7 @@ public class SAUserSettings: Codable {
         }
         return settings
     }
-    public static func fromCache() -> SAUserSettings?{
+    private static func fromCache() -> SAUserSettings?{
         var settings:SAUserSettings?
         guard let data = UserDefaults.standard.data(forKey: "\(Self.self)" ) else {return nil }
         do{
