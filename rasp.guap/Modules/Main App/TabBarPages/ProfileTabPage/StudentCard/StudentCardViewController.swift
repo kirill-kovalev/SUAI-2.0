@@ -20,9 +20,8 @@ class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			if SAUserSettings.shared.reload() != nil  {
-				self.loadData()
-			}
+			SAUserSettings.shared.reload()
+			self.loadData()
 		}
 	}
 	
@@ -41,7 +40,7 @@ class StudentCardViewController: ViewController<StudentCardView> {
 			else {return}
 			DispatchQueue.main.async {
 				self.rootView.group.text = "Группа "+group
-				self.rootView.name.text = "\(resp.first_name) \(resp.last_name)"
+				self.rootView.name.text = "очень длинное имя прикиньте столько слов"//"\(resp.first_name) \(resp.last_name)"
 			}
 			
 			NetworkManager.dataTask(url: resp.photo_100) { (result) in

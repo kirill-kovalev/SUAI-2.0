@@ -44,20 +44,16 @@ class StudentCardView: View {
 	}
 	
 	func addViews(){
+		self.addSubview(suaiImage)
+		self.addSubview(suai)
 		self.addSubview(avatar)
 		self.addSubview(name)
 		self.addSubview(group)
-		self.addSubview(suaiImage)
-		self.addSubview(suai)
 	}
 	func setupConstraints(){
 		avatar.snp.makeConstraints { (make) in
 			make.top.left.bottom.equalToSuperview()
 			make.size.equalTo(CGSize(width: 60, height: 60))
-		}
-		name.snp.makeConstraints { (make) in
-			make.bottom.equalTo(avatar.snp.centerY)
-			make.left.equalTo(avatar.snp.right).offset(8)
 		}
 		group.snp.makeConstraints { (make) in
 			make.top.equalTo(avatar.snp.centerY)
@@ -65,12 +61,19 @@ class StudentCardView: View {
 		}
 		suai.snp.makeConstraints { (make) in
 			make.right.equalToSuperview().offset(-8)
+			
 			make.centerY.equalToSuperview()
 		}
 		suaiImage.snp.makeConstraints { (make) in
 			make.right.equalTo(suai.snp.left).offset(-4)
 			make.size.equalTo(CGSize(width: 24, height: 24))
 			make.centerY.equalTo(suai)
+		}
+		
+		name.snp.makeConstraints { (make) in
+			make.bottom.equalTo(avatar.snp.centerY)
+			make.left.equalTo(avatar.snp.right).offset(8)
+			make.right.equalTo(suaiImage.snp.left).inset(-6)
 		}
 	}
 
