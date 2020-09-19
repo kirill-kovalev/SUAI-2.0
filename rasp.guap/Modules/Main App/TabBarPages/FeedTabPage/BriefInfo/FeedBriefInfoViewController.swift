@@ -237,7 +237,12 @@ class FeedBriefInfoViewController: UIViewController {
 	func reloadDeadlines(){
 		DispatchQueue.global().async {
 			let deadlines = SADeadlines.shared.nearest
-			DispatchQueue.main.async { self.deadlineListVC.setItems(list: deadlines) }
+			if !deadlines.isEmpty{
+				DispatchQueue.main.async { self.deadlineListVC.setItems(list: deadlines) }
+			}else{
+				DispatchQueue.main.async { self.deadlineListVC.setItems(list: [SADeadline(id: 0, subject_name: nil, deadline_name: "Срочных дедлайнов нет", closed: 0, start: Date(), end: Date(), comment: "")]) }
+			}
+			
 		}
 	}
     

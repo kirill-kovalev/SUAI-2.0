@@ -20,7 +20,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
         self.addChild(feedVC)
         self.rootView.addSubview(feedVC.view)
         feedVC.view.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+			make.bottom.equalTo(self.rootView.safeAreaLayoutGuide)
         }
         feedVC.didMove(toParent: self)
         return feedVC
@@ -31,7 +32,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
         self.addChild(briefVC)
         self.rootView.addSubview(briefVC.view)
         briefVC.view.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+			make.bottom.equalTo(self.rootView.safeAreaLayoutGuide)
         }
         briefVC.didMove(toParent: self)
         return briefVC
