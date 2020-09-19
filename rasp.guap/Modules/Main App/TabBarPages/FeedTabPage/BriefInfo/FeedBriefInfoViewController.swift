@@ -66,6 +66,8 @@ class FeedBriefInfoViewController: UIViewController {
     }
     
     //MARK: - Weather
+	let rocketsView = BriefHalfScreenView(title: "",subtitle: "рокетов за неделю",
+	image: Asset.AppImages.rocket.image)
     func loadWeatherAndRockets(){
         SABrief.shared.loadFromServer()
         if !SABrief.shared.isSub {
@@ -89,8 +91,8 @@ class FeedBriefInfoViewController: UIViewController {
                                                                                image: self.getWeatherImage(id: icon).0,
                                                                                color: self.getWeatherImage(id: icon).1)))
             
-            let rocketsDiv = PocketDivView(content:BriefHalfScreenView(title: "\(rockets)",subtitle: "рокетов за неделю",
-                                                                               image: Asset.AppImages.rocket.image))
+			let rocketsDiv = PocketDivView(content:self.rocketsView)
+			self.rocketsView.title.text = "\(rockets)"
 			let container = PocketScalableContainer(content: rocketsDiv)
 			container.addTarget(action: { _ in
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.present(RocketModalViewController(), animated: true, completion: nil) })
@@ -100,6 +102,12 @@ class FeedBriefInfoViewController: UIViewController {
             
         }
     }
+	func updateRockets(){
+		SABrief.shared.loadFromServer()
+		let rockets = SABrief.shared.rockets.count
+		DispatchQueue.main.async { self.rocketsView.title.text = "\(rockets)" }
+	}
+	
     func getWeatherImage(id:Int) -> (UIImage,UIColor){
         print(id)
         switch (true) {

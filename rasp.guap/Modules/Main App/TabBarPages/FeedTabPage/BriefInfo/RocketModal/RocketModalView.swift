@@ -40,7 +40,8 @@ class RocketModalView: ModalView {
     let stack:UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
-        stack.spacing = 10
+        stack.spacing = 6
+		stack.distribution = .fillEqually
         return stack
     }()
     let nextGiveaway:UILabel = {

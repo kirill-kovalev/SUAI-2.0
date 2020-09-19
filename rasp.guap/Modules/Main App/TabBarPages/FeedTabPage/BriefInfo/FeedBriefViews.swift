@@ -27,19 +27,19 @@ class BriefHalfScreenView:UIView{
     required init?(coder: NSCoder) {
         super.init(frame:.zero)
     }
-    private let title:UILabel = {
+    let title:UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.TTCommons.bold.font(size: 22)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    private let subtitle:UILabel = {
+    let subtitle:UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
-    private let image:UIImageView = {
+    let image:UIImageView = {
         let view = UIImageView(frame: .zero)
         
         return view

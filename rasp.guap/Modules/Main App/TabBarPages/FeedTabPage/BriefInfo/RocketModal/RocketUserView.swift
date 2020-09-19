@@ -45,6 +45,8 @@ class RocketUserView:UIView{
         avatar.snp.makeConstraints { (make) in
             make.top.greaterThanOrEqualToSuperview()
 			make.centerX.equalToSuperview()
+			make.left.greaterThanOrEqualToSuperview()
+            make.right.lessThanOrEqualToSuperview()
             make.size.equalTo(CGSize(width: 56, height: 56))
         }
         username.snp.makeConstraints { (make) in
@@ -56,8 +58,9 @@ class RocketUserView:UIView{
 		rocketBlock.snp.makeConstraints { (make) in
 			make.top.equalTo(username.snp.bottom).offset(6)
 			make.centerX.equalToSuperview()
-			
 			make.bottom.equalToSuperview()
+			make.left.greaterThanOrEqualToSuperview()
+            make.right.lessThanOrEqualToSuperview()
 		}
         rocketCount.snp.makeConstraints { (make) in
 			make.left.top.bottom.equalToSuperview()
