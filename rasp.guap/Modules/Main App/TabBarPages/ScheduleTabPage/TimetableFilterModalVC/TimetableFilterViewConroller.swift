@@ -10,7 +10,11 @@ import UIKit
 import SUAI_API
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
-    
+	enum FilterTypes{
+		case all
+		case preps
+		case groups
+	}
     
     private var userlist:SAUsers = SASchedule.shared.groups
     
@@ -18,6 +22,8 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 	
 	var currentUser:SAUsers.User? = nil
     var delegate:UserChangeDelegate?
+	var filterTypes:FilterTypes = .all
+	
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -56,6 +62,9 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 				self.content.groupField.text = name
 			}
 		}
+		self.hidePreps()
+		self.hideGroups()
+		self.showAll()
 		
         DispatchQueue.global(qos: .background).async {
             SAUserSettings.shared?.reload()
@@ -66,17 +75,9 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     
 
 	override func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
-		
-		
-		
 		let screenHeight = self.view.frame.height - keyboardHeight - self.view.safeAreaInsets.top
-		
-		
-		
-		
 		self.rootView.transform  = CGAffineTransform(translationX: 0, y: -keyboardHeight)
-		let headerSize = self.content.convert(self.content.bounds, to: self.rootView.container)
-		
+		//let headerSize = self.content.convert(self.content.bounds, to: self.rootView.container)
 		
 		self.content.selector.snp.updateConstraints { (make) in
 			make.height.equalTo(screenHeight-130)
@@ -204,22 +205,29 @@ extension TimetableFilterViewConroller{
 	}
 	
 	func showAll(){
-		self.content.grouplabel.snp.removeConstraints()
-        self.content.groupField.snp.removeConstraints()
-        self.content.preplabel.snp.removeConstraints()
-        self.content.prepField.snp.removeConstraints()
-        self.content.selector.snp.removeConstraints()
-		self.content.setupConstraints()
-		self.content.groupField.isHidden = false
-		self.content.grouplabel.isHidden = false
-		self.content.prepField.isHidden = false
-		self.content.preplabel.isHidden = false
-		UIView.animate(withDuration: 0.3) {
-			self.content.groupField.layer.opacity = 1
-			self.content.grouplabel.layer.opacity = 1
-			self.content.prepField.layer.opacity = 1
-			self.content.preplabel.layer.opacity = 1
+		if self.filterTypes == .all || self.filterTypes == .groups{
+			self.content.grouplabel.snp.removeConstraints()
+			self.content.groupField.snp.removeConstraints()
+			self.content.groupField.isHidden = false
+			self.content.grouplabel.isHidden = false
+			UIView.animate(withDuration: 0.3) {
+				self.content.groupField.layer.opacity = 1
+				self.content.grouplabel.layer.opacity = 1
+			}
 		}
+		if self.filterTypes == .all || self.filterTypes == .preps{
+			self.content.preplabel.snp.removeConstraints()
+			self.content.prepField.snp.removeConstraints()
+			self.content.prepField.isHidden = false
+			self.content.preplabel.isHidden = false
+			UIView.animate(withDuration: 0.3) {
+				self.content.prepField.layer.opacity = 1
+				self.content.preplabel.layer.opacity = 1
+			}
+		}
+		self.content.selector.snp.removeConstraints()
+		self.content.setupConstraints()
+        
 		
 	}
 }

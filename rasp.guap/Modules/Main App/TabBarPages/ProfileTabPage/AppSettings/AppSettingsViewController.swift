@@ -172,7 +172,7 @@ extension AppSettingsViewController : UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
 		textField.resignFirstResponder()
 		let vc = TimetableFilterViewConroller()
-		vc.hidePreps()
+		vc.filterTypes = .groups
 		vc.delegate = self
 		self.present(vc, animated: true)
 	}
