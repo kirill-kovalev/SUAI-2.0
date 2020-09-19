@@ -67,7 +67,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		self.rootView.addButton.addTarget(action: {_ in self.showAddModal() }, for: .touchUpInside)
 		self.rootView.placeholderContainer.addTarget(action: { (_) in
 			guard let group = (self.rootView.deadlineListSelector.selectedValue as? SADeadlineGroup) else {return}
-			if group != .pro {
+			if group != .pro && !self.rootView.placeholder.loadingIndicator.isAnimating{
 				self.showAddModal()
 			}
 		}, for: .touchUpInside)
