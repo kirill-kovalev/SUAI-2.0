@@ -33,6 +33,7 @@ class FeedBriefInfoViewController: UIViewController {
 		super.viewDidAppear(animated)
 		reloadDeadlines()
 		reloadSchedule()
+		reloadRockets()
 	}
     //MARK: - Weather
     func loadHello(){
@@ -102,10 +103,12 @@ class FeedBriefInfoViewController: UIViewController {
             
         }
     }
-	func updateRockets(){
-		SABrief.shared.loadFromServer()
-		let rockets = SABrief.shared.rockets.count
-		DispatchQueue.main.async { self.rocketsView.title.text = "\(rockets)" }
+	func reloadRockets(){
+		DispatchQueue.global().async {
+			SABrief.shared.loadFromServer()
+			let rockets = SABrief.shared.rockets.count
+			DispatchQueue.main.async { self.rocketsView.title.text = "\(rockets)" }
+		}
 	}
 	
     func getWeatherImage(id:Int) -> (UIImage,UIColor){

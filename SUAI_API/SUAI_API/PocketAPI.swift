@@ -27,6 +27,7 @@ public class PocketAPI{
         case editDeadline = "EditDeadline"
         case createDeadline = "SetDeadline"
         case setSettings = "SetSettings"
+		case track = "stats/TrackUser"
     }
     
     

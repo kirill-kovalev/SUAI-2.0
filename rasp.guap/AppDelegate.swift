@@ -66,7 +66,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    
+	func applicationDidEnterBackground(_ application: UIApplication) {
+		SATracker.track("hide")
+	}
+	func applicationDidBecomeActive(_ application: UIApplication) {
+		SATracker.track("start")
+	}
+
+	
     
   
    
