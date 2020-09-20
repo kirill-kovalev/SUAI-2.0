@@ -77,7 +77,7 @@ public class SASchedule{
 			userTimetables[user] = newTT
 			saveToDefaults()
 		}
-        return userTimetables[user] ?? SATimetable()
+        return newTT
     }
     
     public func get(for user: SAUsers.User ) -> SATimetable {

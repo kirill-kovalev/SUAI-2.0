@@ -42,17 +42,19 @@ public class SADeadlines{
 	
 	
 	private var userDefaultsKey:String {"\(Self.self)Cache"}
-	public func loadFromServer(){
+	public func loadFromServer() -> Bool{
 		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
 		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) {
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 				self.lastUpdate = Date()
 				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+				return true
 			}catch{
 				print("Deadlines: \(error)")
 			}
 		}
+		return false
 	}
 	public func loadFromCache(){
 		if let data = UserDefaults.standard.data(forKey: self.userDefaultsKey){
@@ -84,7 +86,7 @@ public class SADeadlines{
 		self.deadlines[index].closed = 1
 		
 		var success = false
-		let _ = PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) { (data) in
+		if let data = PocketAPI.shared.syncSetTask(method: .closeDeadline, params: ["id":deadline.id]) {
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 0}
@@ -97,7 +99,7 @@ public class SADeadlines{
 		self.deadlines[index].closed = 0
 		
 		var success = false
-		let _ = PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) { (data) in
+		if let data = PocketAPI.shared.syncSetTask(method: .openDeadline, params: ["id":deadline.id]) {
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 1}
@@ -108,13 +110,13 @@ public class SADeadlines{
 	public func create(deadline: SADeadline) -> Bool {
 		
 		var success = false
-		let _ = PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
+		if let data = PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
 																		"deadline_name":deadline.deadline_name ?? "name",
 																		"subject_name":deadline.subject_name ?? "",
 																		"start":deadline.startDate,
 																		"end":deadline.endDate,
 																		"comment":deadline.comment,
-		]) { (data) in
+		]) {
 			//print(String(data: data, encoding: .utf8))
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
@@ -127,14 +129,14 @@ public class SADeadlines{
 		guard let index:Int = index(deadline: deadline) else {return false}
 		let old = self.deadlines[index]
 		self.deadlines[index] = deadline
-		let _ = PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
+		if let data = PocketAPI.shared.syncSetTask(method: .editDeadline, params: [
 																	"id":deadline.id,
 																	"deadline_name":deadline.deadline_name ?? "name",
 																	"subject_name":deadline.subject_name ?? "",
 																	"start":deadline.startDate,
 																	"end":deadline.endDate,
 																	"comment":deadline.comment
-		]) { (data) in
+		]) {
 			//print(String(data: data, encoding: .utf8))
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
@@ -144,10 +146,10 @@ public class SADeadlines{
 	}
 	public func delete(deadline: SADeadline) -> Bool{
 		var success = false
-		let _ = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { (data) in
+		if let data = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { 
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
-		self.loadFromServer()
+
 		return success
 	}
 	

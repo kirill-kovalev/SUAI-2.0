@@ -92,9 +92,12 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		}
         DispatchQueue.global(qos: .background).async {
 			SAUserSettings.shared.reload()
-            SADeadlines.shared.loadFromServer()
+			if SADeadlines.shared.loadFromServer(){
+				DispatchQueue.main.async {self.rootView.placeholder.stopLoading()}
+			}else{
+				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить дедлайны")
+			}
             DispatchQueue.main.async {
-				self.rootView.placeholder.stopLoading()
 				self.setupDeadlinegroupSelector()
                 self.reloadItems()
             }

@@ -37,17 +37,9 @@ class FeedBriefInfoViewController: UIViewController {
 	}
     //MARK: - Weather
     func loadHello(){
-        struct vkResponse:Codable{
-            let last_name: String
-            let first_name: String
-        }
-        
-        do{
-            guard let data = try VK.API.Users.get([.fields:"first_name"]).synchronously().send() else { return}
-            let resp = try JSONDecoder().decode([vkResponse].self, from: data)
-            DispatchQueue.main.async { self.rootView.addBlock(title: "Добро пожаловать, \(resp[0].first_name) \(resp[0].last_name)", view: nil ) }
-        }catch {}
-        
+        	
+		guard let name = SAUserSettings.shared.vkName else {return }
+		DispatchQueue.main.async { self.rootView.addBlock(title: "Добро пожаловать, \(name)", view: nil ) }
         if !SABrief.shared.isSub {
             DispatchQueue.main.async {
 				let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.Banners.subscribeBanner.image)
@@ -70,7 +62,9 @@ class FeedBriefInfoViewController: UIViewController {
 	let rocketsView = BriefHalfScreenView(title: "",subtitle: "рокетов за неделю",
 	image: Asset.AppImages.rocket.image)
     func loadWeatherAndRockets(){
-        SABrief.shared.loadFromServer()
+		if !SABrief.shared.loadFromServer(){
+			MainTabBarController.Snack(status: .err, text: "Не удалось загрузить данные ")
+		}
         if !SABrief.shared.isSub {
             DispatchQueue.main.async { self.rootView.addBlock(title: "Погода на сегодня", view: nil ) }
         }
@@ -105,7 +99,9 @@ class FeedBriefInfoViewController: UIViewController {
     }
 	func reloadRockets(){
 		DispatchQueue.global().async {
-			SABrief.shared.loadFromServer()
+			if !SABrief.shared.loadFromServer(){
+				MainTabBarController.Snack(status: .err, text: "Не удалось обновить рокеты")
+			}
 			let rockets = SABrief.shared.rockets.count
 			DispatchQueue.main.async { self.rocketsView.title.text = "\(rockets)" }
 		}
@@ -236,6 +232,9 @@ class FeedBriefInfoViewController: UIViewController {
     @objc func switchToDeadlines(){ self.tabBarController?.selectedIndex = 1 }
 	func reloadDeadlines(){
 		DispatchQueue.global().async {
+			if !SADeadlines.shared.loadFromServer(){
+				MainTabBarController.Snack(status: .err, text: "Не удалось обновить дедлайны")
+			}
 			let deadlines = SADeadlines.shared.nearest
 			if !deadlines.isEmpty{
 				DispatchQueue.main.async { self.deadlineListVC.setItems(list: deadlines) }
@@ -258,13 +257,13 @@ class FeedBriefInfoViewController: UIViewController {
         var feed:[(SAFeedElement,FeedSource)] = []
         let news = SANews()
         news.loadSourceList()
+		if news.sources.isEmpty{
+			MainTabBarController.Snack(status: .err, text: "Не удалось загрузить новости в сводке")
+		}
         for stream in news.streams {
-            stream.count = 5
+            stream.count = 3
             stream.reload()
-            
-            
             feed.append(contentsOf: stream.feed.map{($0,stream.source)})
-            
         }
         
         

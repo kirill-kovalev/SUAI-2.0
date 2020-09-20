@@ -12,7 +12,7 @@ public class SABrief{
     public static let shared = SABrief()
     var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0))
     
-    public func loadFromServer(){
+    public func loadFromServer() -> Bool{
 		if let data = PocketAPI.shared.syncLoadTask(method: .getSuper) {
 			do{
 				let decoder = JSONDecoder()
@@ -20,18 +20,22 @@ public class SABrief{
 				let decodedData = try decoder.decode(Brief.self, from: data)
 				self.briefInfo = decodedData
 				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+				return true
 			}catch{print("Brief: \(error)") }
 		}else{
-			do{
-				guard let data = UserDefaults.standard.data(forKey: self.userDefaultsKey) else { return}
-				let decoder = JSONDecoder()
-				decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
-				let decodedData = try decoder.decode(Brief.self, from: data)
-				self.briefInfo = decodedData
-			}catch{print("Brief: \(error)") }
+			self.loadFromCache()
 		}
-        
+        return false
     }
+	private func loadFromCache(){
+		do{
+			guard let data = UserDefaults.standard.data(forKey: self.userDefaultsKey) else { return}
+			let decoder = JSONDecoder()
+			decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
+			let decodedData = try decoder.decode(Brief.self, from: data)
+			self.briefInfo = decodedData
+		}catch{print("Brief: \(error)") }
+	}
 	private var userDefaultsKey:String {"\(Self.self)Cache"}
 	
 	

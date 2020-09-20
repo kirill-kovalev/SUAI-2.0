@@ -20,39 +20,41 @@ class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			SAUserSettings.shared.reload()
+			if !SAUserSettings.shared.reload(){
+				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить информацию о пользователе")
+			}
 			self.loadData()
 		}
 	}
 	
 	func loadData(){
-		struct vkResponse:Codable{
-            let last_name: String
-            let first_name: String
-			let photo_100:String
-        }
-		
+
 		DispatchQueue.global().async {
 			let settings = SAUserSettings.shared
-			guard let group = settings.group,
-				  let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
-				  let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first
-			else {return}
-			DispatchQueue.main.async {
-				self.rootView.group.text = "Группа "+group
-				self.rootView.name.text = "\(resp.first_name) \(resp.last_name)"
+			
+			if let group = settings.group,
+				let name = settings.vkName,
+				let photoUrl = settings.vkPhoto{
+				
+				
+				DispatchQueue.main.async {
+					self.rootView.group.text = "Группа "+(group)
+					self.rootView.name.text = "\(name)"
+				}
+				
+				NetworkManager.dataTask(url: photoUrl) { (result) in
+					switch result{
+						case .success(let data):
+							guard let image = UIImage(data: data) else {break}
+							DispatchQueue.main.async { self.rootView.avatar.imageView.image = image }
+						break;
+						case .failure: break;
+					}
+				}
+				
+				
 			}
 			
-			NetworkManager.dataTask(url: resp.photo_100) { (result) in
-				switch result{
-					case .success(let data):
-						guard let image = UIImage(data: data) else {break}
-						DispatchQueue.main.async { self.rootView.avatar.imageView.image = image }
-					break;
-					case .failure: break;
-				}
-			}
 		}
-	//
 	}
 }

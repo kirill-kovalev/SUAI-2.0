@@ -58,7 +58,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
         showBrief()
 		showSources()
 		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)))
-		self.rootView.addGestureRecognizer(gesture)
+		//self.rootView.addGestureRecognizer(gesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {

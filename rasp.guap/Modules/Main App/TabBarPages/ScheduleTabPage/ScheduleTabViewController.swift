@@ -74,6 +74,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         DispatchQueue.global(qos: .background).async {
 			guard let groupName = SAUserSettings.shared.group else {
                 print("SAUserSettings.shared?.group is nil")
+				let _ =	UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
                 return
             }
             self.currentUser = SASchedule.shared.groups.get(name: groupName)
@@ -82,6 +83,18 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         
     }
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		DispatchQueue.global(qos: .background).async {
+			if let user = self.currentUser{
+				if SASchedule.shared.load(for: user).isEmpty {
+					MainTabBarController.Snack(status: .err, text: "Не удалось обновить расписание")
+				}else{
+					
+				}
+			}
+        }
+	}
 
     private func setToday(){
         let today = Calendar.convertToRU(Calendar(identifier: .gregorian).dateComponents([.weekday], from: Date()).weekday!)
@@ -112,14 +125,9 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 			self.rootView.todayButton.isHidden = isToday
         }
             
-       
-		guard let user = self.currentUser else{
-			
-            print("curUser is nil")
-            return
-        }
-		let _ = SASchedule.shared.load(for: user )
+
         DispatchQueue.main.async {
+			self.daySelectController.update()
             self.daySelectController.set(day: day, week: week)
         }
 		self.setTimetable(week: week, day: day )
@@ -193,7 +201,6 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
 extension ScheduleTabViewController:UserChangeDelegate{
     func didSetUser(user: SAUsers.User) {
         self.currentUser = user
-		self.daySelectController.update()
         DispatchQueue.global(qos: .background).async {
             self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
         }
