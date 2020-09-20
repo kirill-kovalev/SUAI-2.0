@@ -17,13 +17,22 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 			SAUserSettings.shared.prologin = self.rootView.emailTF.text
 			SAUserSettings.shared.propass = self.rootView.passTF.text
 			
-			
-			
+			self.rootView.submitBtn.isActive = false
 			DispatchQueue.global().async {
 				if SAUserSettings.shared.update() {
 					print("SUAI ID OK")
+					NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
+						"status" : PocketSnackView.Status.ok,
+						"text" : "Настройки обновлены"
+					])
+					DispatchQueue.main.async {self.textFieldDidChange()}
 				}else{
 					print("SUAI ID Err")
+					NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
+						"status" : PocketSnackView.Status.err,
+						"text" : "Ошибка обновления настроек"
+					])
+					DispatchQueue.main.async {self.textFieldDidChange()}
 				}
 			}
 		}, for: .touchUpInside)
