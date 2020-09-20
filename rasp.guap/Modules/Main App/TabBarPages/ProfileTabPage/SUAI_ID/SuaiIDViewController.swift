@@ -21,17 +21,11 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 			DispatchQueue.global().async {
 				if SAUserSettings.shared.update() {
 					print("SUAI ID OK")
-					NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
-						"status" : PocketSnackView.Status.ok,
-						"text" : "Настройки обновлены"
-					])
+					MainTabBarController.Snack(status: .ok, text: "Настройки обновлены")
 					DispatchQueue.main.async {self.textFieldDidChange()}
 				}else{
 					print("SUAI ID Err")
-					NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
-						"status" : PocketSnackView.Status.err,
-						"text" : "Ошибка обновления настроек"
-					])
+					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					DispatchQueue.main.async {self.textFieldDidChange()}
 				}
 			}

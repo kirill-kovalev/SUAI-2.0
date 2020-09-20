@@ -116,8 +116,10 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			SAUserSettings.shared.group = name
 			if SAUserSettings.shared.update() {
 				print("group set to \(name)")
+				MainTabBarController.Snack(status: .ok, text: "Группа установлена")
 			}else{
 				SAUserSettings.shared.group = originGroup
+				MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 				DispatchQueue.main.async {
 					self.updateView()
 				}
@@ -136,8 +138,10 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 				SAUserSettings.shared.building = id
 				if (SAUserSettings.shared.update()){
 					print("building set to \(id)")
+					MainTabBarController.Snack(status: .ok, text: "Здание установлено")
 				}else{
 					SAUserSettings.shared.building = originBuilding
+					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					self.updateView()
 				}
 			}
@@ -154,8 +158,10 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 				SAUserSettings.shared.idtab = id
 				if (SAUserSettings.shared.update()){
 					print("start page set to \(id)")
+					MainTabBarController.Snack(status: .ok, text: "Начальная страница установлена")
 				}else{
 					print("update Error")
+					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					SAUserSettings.shared.idtab = originTab
 					self.updateView()
 				}

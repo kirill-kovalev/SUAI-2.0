@@ -39,6 +39,13 @@ class MainTabBarController : ESTabBarController{
 		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
     }
 
+	
+	public static func Snack(status:PocketSnackView.Status,text:String){
+		NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
+			"status" : status,
+			"text" : text
+		])
+	}
 	@objc func snackNotification(_ notif:Notification){
 		if let status = notif.userInfo?["status"] as? PocketSnackView.Status,
 			let text = notif.userInfo?["text"] as? String {
