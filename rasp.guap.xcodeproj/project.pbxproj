@@ -38,6 +38,7 @@
 		5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */; };
 		5D2BD83D24E43657002630B5 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83B24E43657002630B5 /* ProfileTabView.swift */; };
 		5D2BD83E24E43657002630B5 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */; };
+		5D3531C92517AEF200E26BDA /* PocketSnackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3531C82517AEF200E26BDA /* PocketSnackView.swift */; };
 		5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */; };
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
@@ -243,6 +244,7 @@
 		5D2BD83824E4364E002630B5 /* InfoTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabViewController.swift; sourceTree = "<group>"; };
 		5D2BD83B24E43657002630B5 /* ProfileTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		5D2BD83C24E43657002630B5 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		5D3531C82517AEF200E26BDA /* PocketSnackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketSnackView.swift; sourceTree = "<group>"; };
 		5D3D6C9424E42EA2007CE482 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
@@ -526,6 +528,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		5D3531C72517AEDC00E26BDA /* PocketSnack */ = {
+			isa = PBXGroup;
+			children = (
+				5D3531C82517AEF200E26BDA /* PocketSnackView.swift */,
+			);
+			path = PocketSnack;
+			sourceTree = "<group>";
+		};
 		5D3D6C9324E42E6E007CE482 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +717,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5D3531C72517AEDC00E26BDA /* PocketSnack */,
 				5DA7443325094D9B00403F6A /* PocketCard */,
 				5DA744252507EB5F00403F6A /* Placeholder */,
 				5DA7442225077B7700403F6A /* ScalableContainer */,
@@ -1325,6 +1336,7 @@
 				5D2BD83524E43631002630B5 /* ScheduleTabView.swift in Sources */,
 				5DA10F3C24DB28EB00D09BD8 /* PagedViewDelegate.swift in Sources */,
 				5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */,
+				5D3531C92517AEF200E26BDA /* PocketSnackView.swift in Sources */,
 				5DA7442425077B8C00403F6A /* PocketScalableContainer.swift in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
