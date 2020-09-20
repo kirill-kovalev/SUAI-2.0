@@ -42,7 +42,7 @@ public class PocketAPI{
         config.httpAdditionalHeaders = ["Token":token]
     }
     
-    public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:],completion:((Data)->Void)? = nil ) -> Data?{
+    public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:]) -> Data?{
         if !VK.needToSetUp && VK.sessions.default.state == .authorized {
             config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
 		}
@@ -57,7 +57,6 @@ public class PocketAPI{
             if err == nil {
                 if data != nil {
                     returnData = data
-                    completion?(data!)
                 }
             }
             sem.signal()

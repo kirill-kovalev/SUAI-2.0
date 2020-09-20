@@ -37,12 +37,7 @@ class MainTabBarController : ESTabBarController{
 		
 		
     }
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		showSnack(status: .ok, text: "alert")
-	}
 
-	
 	
 	
 	func showSnack(status:PocketSnackView.Status,text:String){

@@ -61,7 +61,7 @@ public class SASchedule{
 			let user = (try? JSONEncoder().encode(key)) ?? Data()
 			let strKey = String(data:user ,encoding: .utf8) ?? ""
 			data[strKey] = timetable
-			print("set \(strKey) : \(timetable)")
+
 		}
 		UserDefaults.standard.set(data, forKey: "SAScheduleCache")
 		

@@ -19,41 +19,39 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 
 			self.setText("Загружаю настройки")
 			let settings = SAUserSettings.shared
-			if settings == nil {
-				self.setText("Не удалось получить настройки")
-			}else{
-				if let group = settings.group {
-					self.setText("Загружаю расписание")
-					SASchedule.shared.loadFromCache()
-					if SASchedule.shared.groups.count == 0{
-						SASchedule.shared.groups.loadFromServer()
-					}
-					if SASchedule.shared.preps.count == 0{
-						SASchedule.shared.preps.loadFromServer()
-					}
-					guard let user = SASchedule.shared.groups.get(name: group ) else {
-						self.setText("Не удалось получить расписание!")
-						return
-					}
-					let timetable = SASchedule.shared.get(for: user)
-					self.setWatchTimetable(timetable)
-					
-					self.setText("Загружаю дедлайны")
-					SADeadlines.shared.loadFromCache()
-					if SADeadlines.shared.all.isEmpty{
-						SADeadlines.shared.loadFromServer()
-					}
-					self.setText("Загружаю новости")
-					SABrief.shared.loadFromServer()
-					SANews.shared.loadSourceList()
-					self.startApp()
-				}else{
-					self.setText("Загружаю список групп")
+			
+			if let group = settings.group {
+				self.setText("Загружаю расписание")
+				SASchedule.shared.loadFromCache()
+				if SASchedule.shared.groups.count == 0{
 					SASchedule.shared.groups.loadFromServer()
-					self.showTutorialPages()
 				}
+				if SASchedule.shared.preps.count == 0{
+					SASchedule.shared.preps.loadFromServer()
+				}
+				guard let user = SASchedule.shared.groups.get(name: group ) else {
+					self.setText("Не удалось получить расписание!")
+					return
+				}
+				let timetable = SASchedule.shared.get(for: user)
+				self.setWatchTimetable(timetable)
 				
+				self.setText("Загружаю дедлайны")
+				SADeadlines.shared.loadFromCache()
+				if SADeadlines.shared.all.isEmpty{
+					SADeadlines.shared.loadFromServer()
+				}
+				self.setText("Загружаю новости")
+				SABrief.shared.loadFromServer()
+				SANews.shared.loadSourceList()
+				self.startApp()
+			}else{
+				self.setText("Загружаю список групп")
+				SASchedule.shared.groups.loadFromServer()
+				self.showTutorialPages()
 			}
+				
+			
 		}
 	}
 	

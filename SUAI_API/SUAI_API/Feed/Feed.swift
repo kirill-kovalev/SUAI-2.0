@@ -40,7 +40,7 @@ public class SAFeedStream{
             }
 			UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
         }catch{
-			let resp = String(data: data, encoding: .utf8)
+			//let resp = String(data: data, encoding: .utf8)
 			print("FeedStream (\(self.source.name)): \(data) \n \n Error: \(error)")
             new = loadStraightFromVK()
         }

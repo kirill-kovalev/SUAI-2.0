@@ -27,7 +27,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
             if SASchedule.shared.groups.get(name: user) != nil {
 				SAUserSettings.shared.group = user
                 
-				if((SAUserSettings.shared.update()) ?? false){
+				if SAUserSettings.shared.update() {
 					self.present(DataLoaderViewController(), animated: true, completion: nil)
 				}else{
 					print("error while setting group")

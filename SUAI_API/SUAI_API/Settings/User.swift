@@ -30,7 +30,7 @@ public class SAUserSettings: Codable {
 	}
     private static func fromServer() -> SAUserSettings?{
         var settings:SAUserSettings?
-        let _ = PocketAPI.shared.syncLoadTask(method: .getSettings) { (data) in
+        if let data = PocketAPI.shared.syncLoadTask(method: .getSettings) { 
             do{
                 settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
                 UserDefaults.standard.set(data, forKey: "\(Self.self)" )

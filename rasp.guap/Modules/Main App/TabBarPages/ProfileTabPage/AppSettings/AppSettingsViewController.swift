@@ -93,8 +93,8 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		}
 	}
 	func updateView(){
-		let idTab = (SAUserSettings.shared.idtab ?? 1) - 1
-		let building = (SAUserSettings.shared.building ?? 1) - 1
+		let idTab = SAUserSettings.shared.idtab  - 1
+		let building = SAUserSettings.shared.building - 1
 		let group = SAUserSettings.shared.group
 			
 		DispatchQueue.main.async {
@@ -114,7 +114,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		DispatchQueue.global().async {
 			let originGroup = SAUserSettings.shared.group
 			SAUserSettings.shared.group = name
-			if SAUserSettings.shared.update() ?? false {
+			if SAUserSettings.shared.update() {
 				print("group set to \(name)")
 			}else{
 				SAUserSettings.shared.group = originGroup

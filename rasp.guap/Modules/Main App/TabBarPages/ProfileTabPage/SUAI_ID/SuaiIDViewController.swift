@@ -16,8 +16,11 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 		self.rootView.submitBtn.addTarget(action: { (sender) in
 			SAUserSettings.shared.prologin = self.rootView.emailTF.text
 			SAUserSettings.shared.propass = self.rootView.passTF.text
+			
+			
+			
 			DispatchQueue.global().async {
-				if SAUserSettings.shared.update() ?? false {
+				if SAUserSettings.shared.update() {
 					print("SUAI ID OK")
 				}else{
 					print("SUAI ID Err")
