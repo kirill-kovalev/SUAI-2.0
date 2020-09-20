@@ -35,36 +35,51 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOffset = .zero
 		
-		self.view.addSubview(self.snackContainer)
+		
+    }
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		showSnack(status: .ok, text: "alert")
+	}
+
+	
+	
+	
+	func showSnack(status:PocketSnackView.Status,text:String){
+		let snack = PocketSnackView(status: status, text: text)
+		let snackBarDiv = PocketDivView(content: snack)
+		let snackContainer = PocketScalableContainer(content: snackBarDiv)
+		
+		self.view.addSubview(snackContainer)
+		self.view.bringSubviewToFront(self.tabBar)
+		
 		snackContainer.snp.makeConstraints { (make) in
 			make.left.equalToSuperview().offset(10)
 			make.right.equalToSuperview().inset(10)
 			make.bottom.equalTo(self.tabBar.snp.top).offset(-15)
 		}
 		snackContainer.addTarget(action: {_ in
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {self.hideSnack()})
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+				self.hideSnack(snackContainer)
+			})
 		}, for: .touchUpInside)
-		hideSnack(animated: false)
-    }
-
-	
-	let snack = PocketSnackView()
-	lazy var snackBarDiv = PocketDivView(content: self.snack)
-	lazy var snackContainer = PocketScalableContainer(content: self.snackBarDiv)
-	
-	func showSnack(animated:Bool = true){
-		self.view.bringSubviewToFront(self.tabBar)
-		UIView.animate(withDuration: animated ? 0.3 : 0) {
-			self.snackContainer.transform = .identity
+		
+		let offset = self.view.frame.height-snack.frame.origin.y
+		snackContainer.transform = .init(translationX: 0, y: offset)
+		UIView.animate(withDuration: 0.3) {
+			snackContainer.transform = .identity
 		}
 		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-			self.hideSnack()
+			self.hideSnack(snackContainer)
 		}
 	}
-	func hideSnack(animated:Bool = true){
-		let offset = self.view.frame.height-snackBarDiv.frame.origin.y
-		UIView.animate(withDuration:  animated ? 0.3 : 0) {
-			self.snackContainer.transform = .init(translationX: 0, y: offset)
+	
+	func hideSnack(_ snack:UIView){
+		let offset = self.view.frame.height-snack.frame.origin.y
+		UIView.animate(withDuration: 0.3, animations: {
+			snack.transform = .init(translationX: 0, y: offset)
+		}) { (ended) in
+			snack.removeFromSuperview()
 		}
 	}
     
