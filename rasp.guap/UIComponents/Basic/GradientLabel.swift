@@ -46,7 +46,7 @@ class GradientLabel: UILabel {
 		let size = self.bounds.size
 		let startPoint = CGPoint(x:size.width*start.x, y: size.height*start.y)
 		let endPoint = CGPoint(x:size.width*end.x, y: size.height*end.y)
-        ctx.drawLinearGradient(grad, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
+		ctx.drawLinearGradient(grad, start: startPoint, end: endPoint, options: [CGGradientDrawingOptions.drawsBeforeStartLocation, .drawsAfterEndLocation])
     }
 	
 	
@@ -67,7 +67,7 @@ class GradientLabel: UILabel {
             return (a,b)
 
         case 45...135:
-            let a = CGPoint(x: n * tanx(ang - 90) + n, y: 1)
+			let a = CGPoint(x: n * tanx(ang - 90) + n, y: 1)
             let b = CGPoint(x: n * tanx(-ang - 90) + n, y: 0)
             return (a,b)
 
