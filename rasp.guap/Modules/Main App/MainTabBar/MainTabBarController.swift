@@ -11,6 +11,7 @@ import SUAI_API
 import ESTabBarController_swift
 
 class MainTabBarController : ESTabBarController{
+	public static let snackNotification = NSNotification.Name(rawValue: "MainTabBarController.snackNotification")
     init(){
         super.init(nibName: nil, bundle: nil)
         self.viewControllers = [
@@ -35,10 +36,17 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOffset = .zero
 		
-		
+		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
     }
 
-	
+	@objc func snackNotification(_ notif:Notification){
+		if let status = notif.userInfo?["status"] as? PocketSnackView.Status,
+			let text = notif.userInfo?["text"] as? String {
+			DispatchQueue.main.async {
+				self.showSnack(status: status, text: text)
+			}
+		}
+	}
 	
 	func showSnack(status:PocketSnackView.Status,text:String){
 		let snack = PocketSnackView(status: status, text: text)
