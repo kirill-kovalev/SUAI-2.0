@@ -123,7 +123,7 @@ class VKLoginPageViewController: UIViewController {
 	}
     override func viewDidAppear(_ animated: Bool){
 		super.viewDidAppear(animated)
-		
+		SAUserSettings.shared.reset()
         VK.release()
         VK.setUp(appId: "7578765", delegate: self)
 		VK.sessions.default.logOut()

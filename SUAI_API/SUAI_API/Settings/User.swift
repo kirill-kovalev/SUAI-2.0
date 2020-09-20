@@ -53,6 +53,13 @@ public class SAUserSettings: Codable {
         }
         return settings
     }
+	public func reset(){
+		self.group = nil
+		self.prologin = nil
+		self.propass = nil
+		self.procookie = nil
+		UserDefaults.standard.removeObject(forKey: "\(Self.self)")
+	}
     
     public func reload(){
         guard let settings = SAUserSettings.fromServer() else{
