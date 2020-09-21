@@ -76,30 +76,17 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
     }
     
     func setupContent(){
-        self.content.nameLabel.text = deadline.deadline_name
-        
-        self.content.commentLabel.text = deadline.comment
-        self.content.commentSectionTitle.isHidden = deadline.comment.isEmpty
-        self.content.commentLabel.isHidden = deadline.comment.isEmpty
-        if deadline.comment.isEmpty {
-            self.content.commentSectionTitle.snp.makeConstraints {$0.height.equalTo(0)}
-            self.content.commentLabel.snp.makeConstraints {$0.height.equalTo(0)}
-        }
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "RU")
-        formatter.dateFormat = "dd MMMM"
-        self.content.dateLabel.text = formatter.string(from: deadline.end ?? Date())
-        
-
-        if deadline.subject_name  != nil,deadline.subject_name  != "" {
-            self.content.lessonSectionTitle.isHidden = false
-            self.content.lessonLabel.isHidden = false
-            self.content.lessonLabel.text = deadline.subject_name!
-        }else{
-            self.content.lessonSectionTitle.isHidden = true
-            self.content.lessonLabel.isHidden = true
-        }
+		if let name =  deadline.deadline_name { self.content.addBlock(title: "Название дедлайна", text: name) }
+		if let type = self.deadline.type_name {self.content.addBlock(title: "Тип", text: type)}
+		if !deadline.comment.isEmpty { self.content.addBlock(title: "Описание дедлайна", text: deadline.comment) }
+		if let end =  deadline.end {
+			let formatter = DateFormatter()
+			formatter.locale = Locale(identifier: "RU")
+			formatter.dateFormat = "dd MMMM"
+			self.content.addBlock(title: "Дата дедлайна", text: formatter.string(from: end) )
+		}
+		if let subj =  deadline.subject_name, !subj.isEmpty { self.content.addBlock(title: "Предмет", text: subj) }
+		if let mark = self.deadline.markpoint {self.content.addBlock(title: "Баллы", text: mark)}
         
         
         if self.deadline.closed == 0{
@@ -108,10 +95,9 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             self.content.closeButton.setTitle("Закрыть дедлайн", for: .normal)
             self.content.closeButton.layer.borderColor = color.cgColor
         }
-		if self.deadline.isPro{
-			self.content.editButton.isHidden = true
-			self.content.closeButton.isHidden = true
-			self.content.deleteButton.isHidden = true
+		
+		if !self.deadline.isPro{
+			self.content.addArrangedSubview(self.content.buttonContainer)
 		}
     }
     
