@@ -36,6 +36,7 @@ class DataLoaderView:View {
 		super.init()
 		self.addSubview(image)
 		self.addSubview(label)
+		self.addSubview(reloadButton)
 		image.snp.makeConstraints{$0.bottom.left.top.right.equalToSuperview()}
 		label.snp.makeConstraints { (make) in
 			make.centerX.equalToSuperview()
