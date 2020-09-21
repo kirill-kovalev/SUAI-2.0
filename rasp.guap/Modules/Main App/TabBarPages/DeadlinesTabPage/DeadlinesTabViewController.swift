@@ -65,6 +65,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		self.setupDeadlinegroupSelector()
 		
 		self.rootView.addButton.addTarget(action: {_ in self.showAddModal() }, for: .touchUpInside)
+		
 		self.rootView.placeholderContainer.addTarget(action: { (_) in
 			guard let group = (self.rootView.deadlineListSelector.selectedValue as? SADeadlineGroup) else {return}
 			if group != .pro && !self.rootView.placeholder.loadingIndicator.isAnimating{
@@ -108,8 +109,9 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     }
     
     func reloadItems(){
-        if SADeadlines.shared.nearest.count > 0{
-			self.tabBarItem.badgeValue = "\(SADeadlines.shared.nearest.count + SADeadlines.shared.pro.count)"
+		let badgeCount = SADeadlines.shared.nearest.count + SADeadlines.shared.pro.count
+		if badgeCount > 0{
+			self.tabBarItem.badgeValue = "\(badgeCount)"
         }else {
             self.tabBarItem.badgeValue = nil
         }
@@ -176,12 +178,16 @@ extension DeadlinesTabViewController:DeadlineListDelegate{
         
         DispatchQueue.global(qos: .background).async {
             if deadline.closed == 0 {
-				if !SADeadlines.shared.close(deadline: deadline){ MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн") }
+				if !SADeadlines.shared.close(deadline: deadline){
+					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
+				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт") }
             }else{
-				if !SADeadlines.shared.reopen(deadline: deadline) { MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн") }
+				if !SADeadlines.shared.reopen(deadline: deadline) {
+					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
+				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
             }
             
-			if !SADeadlines.shared.loadFromServer(){ MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
+			if !SADeadlines.shared.loadFromServer(){ }//MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
 
 			DispatchQueue.main.async { self.reloadItems() }
         }

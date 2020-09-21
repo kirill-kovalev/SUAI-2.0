@@ -53,6 +53,8 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 				)
 				if !SADeadlines.shared.create(deadline: self.deadline!) {
 					MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
+				}else{
+					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
 				}
 				self.dismiss(animated: true)
 				

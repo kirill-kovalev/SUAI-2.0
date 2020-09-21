@@ -23,6 +23,7 @@ class  PocketSnackView: UIView {
 	let textLabel:UILabel = {
 		let view = UILabel(frame: .zero)
 		view.numberOfLines = 0
+		view.font = FontFamily.SFProDisplay.semibold.font(size: 15)
 		return view
 	}()
 	

@@ -42,11 +42,11 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 			if self.deadline.closed == 0 {
 				if !SADeadlines.shared.close(deadline: self.deadline){
 					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
-				}
+				}else{MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт") }
             }else{
 				if !SADeadlines.shared.reopen(deadline: self.deadline) {
 					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
-				}
+				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
             }
 			self.onChange?()
             self.dismiss(animated: true, completion: nil)
@@ -67,7 +67,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         self.content.deleteButton.addTarget(action: { (sender) in
 			if !SADeadlines.shared.delete(deadline: self.deadline) {
 				MainTabBarController.Snack(status: .err, text: "Не удалось удалить дедлайн")
-			}
+			}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален") }
             
             self.dismiss(animated: true, completion: nil)
         }, for: .touchUpInside)
