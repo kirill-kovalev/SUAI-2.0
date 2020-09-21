@@ -198,6 +198,7 @@ class DeadlineEditModalView: View {
 		commentNRLabel.snp.makeConstraints { (make) in
 			make.left.equalTo(commentSectionTitle.snp.right).offset(6)
 			make.centerY.equalTo(commentSectionTitle)
+			make.right.lessThanOrEqualToSuperview()
 		}
         commentLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -214,12 +215,13 @@ class DeadlineEditModalView: View {
             make.top.equalTo(dateSectionTitle.snp.bottom).offset(8)
         }
         lessonSectionTitle.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview()
             make.top.equalTo(dateLabel.snp.bottom).offset(8)
         }
 		lessonNRLabel.snp.makeConstraints { (make) in
 			make.left.equalTo(lessonSectionTitle.snp.right).offset(6)
 			make.centerY.equalTo(lessonSectionTitle)
+			make.right.lessThanOrEqualToSuperview()
 		}
         lessonLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()

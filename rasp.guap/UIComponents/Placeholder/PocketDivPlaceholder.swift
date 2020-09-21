@@ -43,12 +43,7 @@ class PocketDivPlaceholder:UIView{
 			self.titleLabel.text
 		}
 		set{
-			if newValue != nil{
-				self.titleLabel.text = (newValue!)
-				self.titleLabel.isHidden = false
-			}else{
-				self.titleLabel.isHidden = true
-			}
+			self.titleLabel.text = newValue
 		}
 	}
 	public var subtitle:String? {
@@ -56,12 +51,7 @@ class PocketDivPlaceholder:UIView{
 			self.subtitleLabel.text
 		}
 		set{
-			if newValue != nil{
-				self.subtitleLabel.text = newValue
-				self.subtitleLabel.isHidden = false
-			}else{
-				self.subtitleLabel.isHidden = true
-			}
+			self.subtitleLabel.text = newValue
 		}
 	}
 	public var image:UIImage?{
@@ -69,12 +59,7 @@ class PocketDivPlaceholder:UIView{
 			self.imageView.image
 		}
 		set{
-			if newValue != nil{
-				self.imageView.image = (newValue!).withRenderingMode(.alwaysTemplate)
-				self.imageView.isHidden = false
-			}else{
-				self.imageView.isHidden = true
-			}
+			self.imageView.image = newValue?.withRenderingMode(.alwaysTemplate)
 		}
 	}
 	public var imageTint:UIColor {
@@ -108,9 +93,9 @@ class PocketDivPlaceholder:UIView{
 	}
 	func stopLoading(){
 		self.loadingIndicator.stopAnimating()
-		self.title = self.title ?? nil
-		self.subtitle = subtitle ?? nil
-		self.image = image ?? nil
+		self.titleLabel.isHidden = false
+		self.subtitleLabel.isHidden = false
+		self.imageView.isHidden = false
 	}
 	
 	private var heightConstraint: Constraint? = nil
