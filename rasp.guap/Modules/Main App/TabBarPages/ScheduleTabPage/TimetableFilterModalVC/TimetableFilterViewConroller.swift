@@ -125,7 +125,7 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        
+		print(#function)
         var baseUserlist:SAUsers
         if textField == self.content.groupField{
             baseUserlist = SASchedule.shared.groups
@@ -141,7 +141,14 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
         }else{
             self.userlist = baseUserlist.search(name: searchText)
         }
-        
+		
+		
+		if let curName = self.currentUser?.shortName{
+			self.content.clearButton.isHidden = (searchText == curName)
+		}else{
+			self.content.clearButton.isHidden = true
+		}
+
         self.content.selector.reloadAllComponents()
         
     }
@@ -157,9 +164,8 @@ extension TimetableFilterViewConroller:UIPickerViewDelegate{
 			self.delegate?.didSetUser(user: user)
 		}else{
 			self.activeTF?.text = ""
-			if activeTF != nil {self.textFieldDidChange(activeTF!)}
-			
 		}
+		if activeTF != nil {self.textFieldDidChange(activeTF!)}
     }
 }
 extension TimetableFilterViewConroller:UIPickerViewDataSource{

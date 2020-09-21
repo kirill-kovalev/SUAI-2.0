@@ -45,6 +45,7 @@ class TimetableFilterView:UIView{
         btn.setTitle("Очистить", for: .normal)
         btn.setTitleColor(Asset.PocketColors.pocketDarkBlue.color, for: .normal)
         btn.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		btn.isHidden = true
         return btn
     }()
     
@@ -83,8 +84,8 @@ class TimetableFilterView:UIView{
         self.addSubview(groupField)
         self.addSubview(preplabel)
         self.addSubview(prepField)
-        self.addSubview(clearButton)
         self.addSubview(selector)
+        self.addSubview(clearButton)
     }
     
     func setupConstraints() {
@@ -112,7 +113,10 @@ class TimetableFilterView:UIView{
             make.height.equalTo(0)
             make.bottom.equalToSuperview()
         }
-        
+		clearButton.snp.makeConstraints { (make) in
+			make.right.equalToSuperview()
+			make.centerY.equalTo(grouplabel)
+		}
         
     }
     
