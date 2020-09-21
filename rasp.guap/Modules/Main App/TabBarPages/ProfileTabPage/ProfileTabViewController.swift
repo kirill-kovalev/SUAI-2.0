@@ -9,6 +9,7 @@
 import UIKit
 import ESTabBarController_swift
 import SwiftyVK
+import SUAI_API
 
 class ProfileTabViewController: ViewController<ProfileTabView> {
 	required init() {
@@ -75,6 +76,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	
 	private func logout(){
 		print("logout")
+		SAUserSettings.shared.reset()
 		DispatchQueue.global().async { VK.sessions.default.logOut() }
 		let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
 		vkVC.modalPresentationStyle = .fullScreen
