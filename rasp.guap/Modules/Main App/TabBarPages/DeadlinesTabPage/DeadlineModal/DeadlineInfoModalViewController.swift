@@ -76,6 +76,10 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
     }
     
     func setupContent(){
+		for v in self.content.arrangedSubviews{
+			self.content.removeArrangedSubview(v)
+			v.removeFromSuperview()
+		} // clear
 		if let name =  deadline.deadline_name { self.content.addBlock(title: "Название дедлайна", text: name) }
 		if let type = self.deadline.type_name {self.content.addBlock(title: "Тип", text: type)}
 		if !deadline.comment.isEmpty { self.content.addBlock(title: "Описание дедлайна", text: deadline.comment) }
