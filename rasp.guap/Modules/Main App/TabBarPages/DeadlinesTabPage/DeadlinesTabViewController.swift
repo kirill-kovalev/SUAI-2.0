@@ -91,7 +91,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 			self.rootView.placeholder.hide()
 		}
         DispatchQueue.global(qos: .background).async {
-			SAUserSettings.shared.reload()
+			let _  = SAUserSettings.shared.reload()
 			if SADeadlines.shared.loadFromServer(){
 				DispatchQueue.main.async {self.rootView.placeholder.stopLoading()}
 			}else{
@@ -176,16 +176,14 @@ extension DeadlinesTabViewController:DeadlineListDelegate{
         
         DispatchQueue.global(qos: .background).async {
             if deadline.closed == 0 {
-                let _ = SADeadlines.shared.close(deadline: deadline)
-            }else
-            {
-                let _ = SADeadlines.shared.reopen(deadline: deadline)
+				if !SADeadlines.shared.close(deadline: deadline){ MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн") }
+            }else{
+				if !SADeadlines.shared.reopen(deadline: deadline) { MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн") }
             }
             
-            SADeadlines.shared.loadFromServer()
-            DispatchQueue.main.async {
-                self.reloadItems()
-            }
+			if !SADeadlines.shared.loadFromServer(){ MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
+
+			DispatchQueue.main.async { self.reloadItems() }
         }
     }
     

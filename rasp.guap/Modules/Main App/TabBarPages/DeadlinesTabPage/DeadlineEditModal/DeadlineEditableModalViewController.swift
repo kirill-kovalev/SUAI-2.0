@@ -52,7 +52,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 																	   comment: self.content.commentLabel.text
 				)
 				if !SADeadlines.shared.create(deadline: self.deadline!) {
-					print("create err")
+					MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
 				}
 				self.dismiss(animated: true)
 				
@@ -77,7 +77,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 																		comment: self.content.commentLabel.text
 				)
 				if !SADeadlines.shared.edit(deadline: self.deadline!  ){
-					print("edit err")
+					MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайн")
 				}
 				self.dismiss(animated: true)
 			}, for: .touchUpInside)
