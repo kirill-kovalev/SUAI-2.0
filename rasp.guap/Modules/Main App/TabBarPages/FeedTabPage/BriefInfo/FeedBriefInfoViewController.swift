@@ -230,6 +230,7 @@ class FeedBriefInfoViewController: UIViewController {
 			
             self.rootView.indicator.stopAnimating()
             self.rootView.addBlock(title: "Ближайшие дедлайны", view: container )
+			self.reloadDeadlines()
         }
         
     }
@@ -242,7 +243,7 @@ class FeedBriefInfoViewController: UIViewController {
 			if !deadlines.isEmpty{
 				DispatchQueue.main.async { self.deadlineListVC.setItems(list:deadlines) }
 			}else{
-				DispatchQueue.main.async { self.deadlineListVC.setItems(list: [SADeadline(id: 0, subject_name: nil, deadline_name: "Срочных дедлайнов нет", closed: 0, start: Date(), end: Date(), comment: "")]) }
+				DispatchQueue.main.async { self.deadlineListVC.setItems(list: [SADeadline(proName:"Срочных дедлайнов нет")]) }
 			}
 			
 		}

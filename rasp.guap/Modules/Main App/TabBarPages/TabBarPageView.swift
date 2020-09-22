@@ -29,7 +29,6 @@ class TabBarPageView : View{
     private let buttonContainer:UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
-        stack.backgroundColor = .red
         return stack
     }()
     

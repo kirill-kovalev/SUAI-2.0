@@ -64,7 +64,8 @@ public struct SADeadline: Codable {
 				subject_name: String? = "",
 				comment: String = ""
 	){
-		self.init(id: 0, subject_name: subject_name, deadline_name: proName, closed: 0,comment: comment)
+		self.init(id: 0, subject_name: subject_name, deadline_name: proName, closed: 1,comment: comment)
+		self.is_our = 0
 	}
     public var startDate:String{
         return SADeadline.formatter.string(from: self.start)

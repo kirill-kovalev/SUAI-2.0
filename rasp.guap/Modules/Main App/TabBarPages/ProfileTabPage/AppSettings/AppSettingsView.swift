@@ -31,7 +31,6 @@ class AppSettingsView: View {
 	
 	lazy var startScreenSelector:UIStackView = {
 		let stack = UIStackView(frame: .zero)
-		stack.backgroundColor = .red
 		stack.spacing = 2
 		stack.axis = .vertical
 		return stack
@@ -39,7 +38,6 @@ class AppSettingsView: View {
 	
 	lazy var buildingSelector:UIStackView = {
 		let stack = UIStackView(frame: .zero)
-		stack.backgroundColor = .red
 		stack.spacing = 2
 		stack.axis = .vertical
 		return stack

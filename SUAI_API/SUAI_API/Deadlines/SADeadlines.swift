@@ -121,7 +121,7 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if success {self.deadlines.append(deadline)}
-		if needUpdate {self.loadFromServer()}
+		if needUpdate { let _ = self.loadFromServer()}
 		return success
 	}
 	public func edit(deadline: SADeadline) -> Bool{
@@ -141,7 +141,7 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index] = old}
-		if needUpdate {self.loadFromServer()}
+		if needUpdate { let _ = self.loadFromServer()}
 		return success
 	}
 	public func delete(deadline: SADeadline) -> Bool{

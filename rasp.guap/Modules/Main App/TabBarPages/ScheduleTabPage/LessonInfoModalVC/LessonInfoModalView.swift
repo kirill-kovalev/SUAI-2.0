@@ -142,7 +142,7 @@ class LessonInfoModalView: View {
         }
         tagStack.snp.makeConstraints { (make) in
             make.top.equalTo(tagsSectionTitle.snp.bottom).offset(spacing)
-            make.bottom.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
         }
         
         
