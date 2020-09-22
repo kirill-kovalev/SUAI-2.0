@@ -233,7 +233,7 @@ class DeadlineEditModalView: View {
             make.top.equalTo(lessonLabel.snp.bottom).offset(8)
             make.height.equalTo(40)
             
-            make.bottom.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

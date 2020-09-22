@@ -89,14 +89,14 @@ class DeadlineInfoModalView: UIStackView {
             make.top.equalTo(closeButton.snp.bottom).offset(8)
             make.left.equalToSuperview()
             make.right.equalTo(buttonContainer.snp.centerX)
-            make.bottom.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
             make.height.equalTo(40)
         }
         deleteButton.snp.makeConstraints { (make) in
             make.top.equalTo(closeButton.snp.bottom).offset(8)
             make.right.equalToSuperview()
             make.width.equalToSuperview().dividedBy(2).inset(5)
-            make.bottom.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
             make.height.equalTo(40)
         }
         

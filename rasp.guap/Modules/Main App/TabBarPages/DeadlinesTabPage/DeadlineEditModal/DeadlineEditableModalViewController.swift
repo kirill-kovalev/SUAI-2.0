@@ -43,6 +43,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 			self.setTitle("Создать дедлайн")
 			
 			self.content.closeButton.addTarget(action: { (btn) in
+				(btn as? PocketTagButton)?.isActive = false
 				self.deadline = SADeadline(id: 0,
 																	   subject_name: self.content.lessonLabel.text,
 																	   deadline_name: self.content.nameLabel.text ?? "",
@@ -56,10 +57,10 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 				}else{
 					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
 				}
+				self.onChange?()
 				self.dismiss(animated: true)
 				
 			}, for: .touchUpInside)
-			
 			
 		}else{ //Редактирование
 			self.setTitle("Редактировать дедлайн")
@@ -80,7 +81,10 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 				)
 				if !SADeadlines.shared.edit(deadline: self.deadline!  ){
 					MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайн")
+				}else{
+					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно обновлен")
 				}
+				self.onChange?()
 				self.dismiss(animated: true)
 			}, for: .touchUpInside)
 			

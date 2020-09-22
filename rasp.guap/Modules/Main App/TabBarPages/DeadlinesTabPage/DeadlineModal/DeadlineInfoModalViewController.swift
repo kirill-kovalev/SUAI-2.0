@@ -67,8 +67,10 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         self.content.deleteButton.addTarget(action: { (sender) in
 			if !SADeadlines.shared.delete(deadline: self.deadline) {
 				MainTabBarController.Snack(status: .err, text: "Не удалось удалить дедлайн")
-			}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален") }
-            
+			}else{
+				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален")
+			}
+			self.onChange?()
             self.dismiss(animated: true, completion: nil)
         }, for: .touchUpInside)
         

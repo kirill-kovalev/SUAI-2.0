@@ -149,7 +149,7 @@ public class SADeadlines{
 		if let data = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { 
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
-
+		if success {self.deadlines = self.deadlines.filter{$0.id != deadline.id} }
 		return success
 	}
 	
