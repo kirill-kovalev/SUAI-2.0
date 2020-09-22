@@ -43,8 +43,10 @@ public class PocketAPI{
     }
     
     public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:]) -> Data?{
-        if !VK.needToSetUp && VK.sessions.default.state == .authorized {
-            config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
+        if let token = VK.sessions.default.accessToken?.get() {
+            config.httpAdditionalHeaders = ["Token": token]
+		}else{
+			return nil
 		}
 		
         let sem = DispatchSemaphore(value: 0)
@@ -67,8 +69,10 @@ public class PocketAPI{
     
     
     public func syncSetTask(method: SetMethods,params:[String:Any] = [: ]) -> Data?{
-		if !VK.needToSetUp && VK.sessions.default.state == .authorized {
-            config.httpAdditionalHeaders = ["Token":VK.sessions.default.accessToken?.get() ?? ""]
+		if let token = VK.sessions.default.accessToken?.get() {
+            config.httpAdditionalHeaders = ["Token": token]
+		}else{
+			return nil
 		}
 		
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
