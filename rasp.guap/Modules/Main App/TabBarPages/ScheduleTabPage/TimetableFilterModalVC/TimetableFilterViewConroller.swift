@@ -45,8 +45,12 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         self.content.clearButton.addTarget(action: { (sender) in
 			if let group = SAUserSettings.shared.group {
                 guard let user = SASchedule.shared.groups.get(name: group) else { return }
+				self.currentUser = user
+				self.content.groupField.text = user.shortName
+				self.textFieldDidChange(self.content.groupField)
+				self.content.selector.selectRow(1, inComponent: 0, animated: true)
                 self.delegate?.didSetUser(user: user)
-                self.dismiss(animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
             }
             
         }, for: .touchUpInside)
@@ -67,7 +71,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 		self.showAll()
 		
         DispatchQueue.global(qos: .background).async {
-            SAUserSettings.shared.reload()
+            let _ = SAUserSettings.shared.reload()
             SASchedule.shared.preps.loadFromServer()
             SASchedule.shared.groups.loadFromServer()
         }
@@ -75,12 +79,11 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
     
 
 	override func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
-		let screenHeight = self.view.frame.height - keyboardHeight - self.view.safeAreaInsets.top
+		let screenHeight = self.view.frame.height - keyboardHeight - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0 )*1.2
 		self.rootView.transform  = CGAffineTransform(translationX: 0, y: -keyboardHeight)
-		//let headerSize = self.content.convert(self.content.bounds, to: self.rootView.container)
 		
 		self.content.selector.snp.updateConstraints { (make) in
-			make.height.equalTo(screenHeight-130)
+			make.height.equalTo(screenHeight-165)
 		}
 		
 	}
@@ -106,10 +109,7 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
 				self.content.selector.selectRow(row+1, inComponent: 0, animated: false)
 			}
 		}
-//		self.content.selector.resignFirstResponder()
 
-		
-        
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTF = nil

@@ -42,19 +42,13 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <integer key="value" value="15"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <integer key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="BorderColor">
-                                <color key="value" name="pocket_darkest_blue"/>
-                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="loginViaVK:forEvent:" destination="Hrv-on-Yh3" eventType="touchUpInside" id="E7s-Nf-Spf"/>
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ошибка" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-BM-F3A">
-                        <rect key="frame" x="0.0" y="402" width="320" height="17"/>
+                        <rect key="frame" x="0.0" y="399" width="320" height="20"/>
                         <fontDescription key="fontDescription" name="TTCommons-Medium" family="TT Commons" pointSize="17"/>
                         <color key="textColor" name="pocket_error"/>
                         <nil key="highlightedColor"/>
@@ -88,7 +82,7 @@
             <color red="0.23000000417232513" green="0.41200000047683716" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="pocket_error">
-            <color red="0.90200001001358032" green="0.27500000596046448" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.90196079015731812" green="0.27450981736183167" blue="0.27450981736183167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

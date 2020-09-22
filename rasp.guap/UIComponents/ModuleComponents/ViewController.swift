@@ -51,7 +51,7 @@ class ViewController<ContentView:View>: UIViewController {
     }
     
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
-        adjustingHeight(false, notification: notification)
+        adjustingHeight(true, notification: notification)
     }
 	func adjustingHeight(_ show:Bool, notification:Notification) {
 		
