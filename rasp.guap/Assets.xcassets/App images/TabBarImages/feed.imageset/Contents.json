@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "newsfeed_outline_28 1.png",
+      "filename" : "compass_outline_28.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "newsfeed_outline_28 1@2x.png",
+      "filename" : "compass_outline_28@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "newsfeed_outline_28 1@3x.png",
+      "filename" : "compass_outline_28@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
