@@ -43,6 +43,7 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("pro.guap", false))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket Android", false))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket iOS", true))
+
 		
 		self.content.card.isUserInteractionEnabled = false
 		self.content.card.isExclusiveTouch = false

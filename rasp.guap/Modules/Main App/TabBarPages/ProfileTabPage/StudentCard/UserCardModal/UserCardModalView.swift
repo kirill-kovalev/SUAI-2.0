@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserCardModalView: View {
+class UserCardModalView: UIView {
 	
 	let card = PocketCard()
 	
@@ -41,10 +41,15 @@ class UserCardModalView: View {
 		stack.spacing = 12
 		return stack
 	}()
+	let scroll:UIScrollView = {
+		let scroll = UIScrollView(frame: .zero)
+		
+		return scroll
+	}()
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	required init(){
-		super.init()
+		super.init(frame:.zero)
 		addViews()
 		setupConstraints()
 	}
@@ -54,11 +59,13 @@ class UserCardModalView: View {
 		addSubview(title)
         addSubview(subtitle)
         addSubview(serviceListLabel)
-		addSubview(serviceStack)
+		addSubview(scroll)
+		scroll.addSubview(serviceStack)
 	}
 	private func setupConstraints(){
 		card.snp.makeConstraints { (make) in
-			make.top.left.right.equalToSuperview()
+			make.top.equalToSuperview()
+			make.left.right.equalToSuperview()
 			make.bottom.lessThanOrEqualToSuperview()
 		}
 		title.snp.makeConstraints { (make) in
@@ -80,10 +87,15 @@ class UserCardModalView: View {
             make.right.lessThanOrEqualToSuperview().inset(10)
 			
         }
-		serviceStack.snp.makeConstraints { (make) in
+		scroll.snp.makeConstraints { (make) in
 			make.top.equalTo(serviceListLabel.snp.bottom).offset(12)
 			make.left.right.equalToSuperview()
 			make.bottom.equalToSuperview()
+			make.height.greaterThanOrEqualTo(serviceStack).priority(.medium)
+		}
+		serviceStack.snp.makeConstraints { (make) in
+			make.left.right.equalTo(scroll.frameLayoutGuide)
+			make.top.bottom.equalTo(scroll.contentLayoutGuide)
 		}
 	}
 }

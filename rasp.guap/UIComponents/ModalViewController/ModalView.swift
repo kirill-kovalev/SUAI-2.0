@@ -83,6 +83,7 @@ class ModalView: View {
             //make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
             make.centerX.equalToSuperview()
 			make.bottom.equalToSuperview().offset(10)
+			make.top.greaterThanOrEqualTo(safeAreaLayoutGuide)
         }
         header.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
