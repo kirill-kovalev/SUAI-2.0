@@ -57,6 +57,14 @@ class DeadlineListController: UIViewController {
 				}
 			}else{
 				newView.checkbox.isHidden = true
+				newView.articleIcon.isHidden = true
+				newView.calendarIcon.isHidden = true
+				newView.titleLabel.snp.remakeConstraints { (make) in
+					make.top.greaterThanOrEqualToSuperview()
+					make.left.equalTo(newView.imageView.snp.right).offset(12)
+					make.right.lessThanOrEqualToSuperview()
+					make.centerY.lessThanOrEqualToSuperview()
+				}
 			}
             
             newView.onSelect { (cell) in
