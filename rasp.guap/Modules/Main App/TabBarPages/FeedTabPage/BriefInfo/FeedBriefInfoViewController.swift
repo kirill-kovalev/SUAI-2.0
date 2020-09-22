@@ -215,9 +215,13 @@ class FeedBriefInfoViewController: UIViewController {
 	let deadlineListVC = DeadlineListController(list: [])
     func loadDeadlines(){
         DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-        let deadlines = SADeadlines.shared.nearest
+		if !SADeadlines.shared.loadFromServer() {
+			SADeadlines.shared.loadFromCache()
+		}
+		let deadlines = SADeadlines.shared.nearest.enumerated().filter { (index,_) in index < 5 }.map {$0.element}
         DispatchQueue.main.async {
-			self.deadlineListVC.setItems(list: deadlines)
+			
+			self.deadlineListVC.setItems(list: deadlines )
             let div = PocketDivView(content: self.deadlineListVC.view)
             let container = PocketScalableContainer(content: div)
 			container.addTarget(action: { _ in
@@ -229,15 +233,14 @@ class FeedBriefInfoViewController: UIViewController {
         }
         
     }
-    @objc func switchToDeadlines(){ self.tabBarController?.selectedIndex = 1 }
 	func reloadDeadlines(){
 		DispatchQueue.global().async {
 			if !SADeadlines.shared.loadFromServer(){
 				MainTabBarController.Snack(status: .err, text: "Не удалось обновить дедлайны")
 			}
-			let deadlines = SADeadlines.shared.nearest
+			let deadlines = SADeadlines.shared.nearest.enumerated().filter { (index,_) in index < 5 }.map {$0.element}
 			if !deadlines.isEmpty{
-				DispatchQueue.main.async { self.deadlineListVC.setItems(list: deadlines) }
+				DispatchQueue.main.async { self.deadlineListVC.setItems(list:deadlines) }
 			}else{
 				DispatchQueue.main.async { self.deadlineListVC.setItems(list: [SADeadline(id: 0, subject_name: nil, deadline_name: "Срочных дедлайнов нет", closed: 0, start: Date(), end: Date(), comment: "")]) }
 			}
