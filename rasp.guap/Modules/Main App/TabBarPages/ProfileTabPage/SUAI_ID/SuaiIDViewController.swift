@@ -44,8 +44,9 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			SAUserSettings.shared.reload()
-			self.update()
+			if SAUserSettings.shared.reload() {
+				self.update()
+			}
 		}
 	}
 	

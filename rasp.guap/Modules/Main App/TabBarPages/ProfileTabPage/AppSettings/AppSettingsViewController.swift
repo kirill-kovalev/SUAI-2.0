@@ -88,8 +88,9 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	// MARK: - content update from server
 	func update(){
 		DispatchQueue.global().async {
-			SAUserSettings.shared.reload()
-			self.updateView()
+			if SAUserSettings.shared.reload() {
+				self.updateView()
+			}
 		}
 	}
 	func updateView(){

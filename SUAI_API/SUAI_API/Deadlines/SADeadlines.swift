@@ -90,7 +90,7 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 0}
-		if needUpdate {self.loadFromServer()}
+		if needUpdate { let _ = self.loadFromServer()}
 		return success
 	}
 	
@@ -103,7 +103,7 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 1}
-		if needUpdate {self.loadFromServer()}
+		if needUpdate { let _ = self.loadFromServer()}
 		return success
 	}
 	

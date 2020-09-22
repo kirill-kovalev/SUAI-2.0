@@ -57,8 +57,9 @@ class FeedTabViewController: ViewController<FeedTabView> {
         
         showBrief()
 		showSources()
-		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)))
-		//self.rootView.addGestureRecognizer(gesture)
+		let gesture = UIScreenEdgePanGestureRecognizer(target: nil, action: #selector(self.swipePages(_:)))//UIPanGestureRecognizer(target: self, action: ))
+		gesture.edges = .right
+		self.rootView.addGestureRecognizer(gesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +70,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		}
 		
     }
-	@objc func swipePages(_ sender :UIPanGestureRecognizer){
+	@objc func swipePages(_ sender :UIScreenEdgePanGestureRecognizer){
 		
 		let index = self.rootView.sourceSelector.selectedIndex
 		
