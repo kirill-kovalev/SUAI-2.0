@@ -72,7 +72,34 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 				self.showAddModal()
 			}
 		}, for: .touchUpInside)
+		
+		
+		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)) )
+		self.rootView.addGestureRecognizer(gesture)
     }
+	
+	@objc func swipePages(_ sender :UIPanGestureRecognizer){
+		
+		let index = self.rootView.deadlineListSelector.selectedIndex
+		let translation = sender.translation(in: self.rootView)
+		if sender.state == .ended,
+		   abs(translation.x)/2 > abs(translation.y){
+			if (translation.x > self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x > 25){
+				if ( index == 0){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+				self.rootView.deadlineListSelector.selectedIndex -= 1
+				self.didSelect(self.rootView.deadlineListSelector.selectedIndex)
+
+			} else if (translation.x < -self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x < -25){
+				if (index == self.rootView.deadlineListSelector.count-1){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+					self.rootView.deadlineListSelector.selectedIndex += 1
+					self.didSelect(self.rootView.deadlineListSelector.selectedIndex)
+			}
+		}
+		
+	}
+	
+	
+	
 	private func showAddModal(){
 		let vc = DeadlineEditableModalViewController()
 		vc.onChange = {

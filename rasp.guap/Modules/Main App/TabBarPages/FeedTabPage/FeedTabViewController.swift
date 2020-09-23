@@ -48,7 +48,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
     override func viewDidLoad() {
-        
+		super.viewDidLoad()
         self.rootView.setTitle(self.tabBarItem.title ?? "")
         
 
@@ -57,8 +57,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
         
         showBrief()
 		showSources()
-		let gesture = UIScreenEdgePanGestureRecognizer(target: nil, action: #selector(self.swipePages(_:)))//UIPanGestureRecognizer(target: self, action: ))
-		gesture.edges = .right
+		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)) )
 		self.rootView.addGestureRecognizer(gesture)
     }
     
@@ -70,17 +69,18 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		}
 		
     }
-	@objc func swipePages(_ sender :UIScreenEdgePanGestureRecognizer){
+	@objc func swipePages(_ sender :UIPanGestureRecognizer){
 		
 		let index = self.rootView.sourceSelector.selectedIndex
-		
-		if sender.state == .ended{
-			if (sender.translation(in: self.rootView).x > self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x > 15){
+		let translation = sender.translation(in: self.rootView)
+		if sender.state == .ended,
+		   abs(translation.x)/2 > abs(translation.y){
+			if (translation.x > self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x > 25){
 				if ( index == 0){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
 				self.rootView.sourceSelector.selectedIndex -= 1
 				self.didSelect(self.rootView.sourceSelector.selectedIndex)
 
-			} else if (sender.translation(in: self.rootView).x < -self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x < -15){
+			} else if (translation.x < -self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x < -25){
 				if (index == self.rootView.sourceSelector.count-1){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
 					self.rootView.sourceSelector.selectedIndex += 1
 					self.didSelect(self.rootView.sourceSelector.selectedIndex)

@@ -82,7 +82,30 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         }
         
         
-    }
+		let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.swipePages(_:)) )
+		self.rootView.addGestureRecognizer(gesture)
+	}
+	
+	@objc func swipePages(_ sender :UIPanGestureRecognizer){
+		
+		let index = daySelectController.rootView.daySelector.selectedIndex
+		let translation = sender.translation(in: self.rootView)
+		if sender.state == .ended,
+		   abs(translation.x)/2 > abs(translation.y){
+			if (translation.x > self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x > 25){
+				if ( index == 0){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+				daySelectController.rootView.daySelector.selectedIndex -= 1
+			} else if (translation.x < -self.rootView.bounds.width/2 || sender.velocity(in: self.rootView).x < -25){
+				if (index == daySelectController.rootView.daySelector.count-1){UINotificationFeedbackGenerator().notificationOccurred(.error);return}
+					daySelectController.rootView.daySelector.selectedIndex += 1
+			}
+			self.daySelectController.didSelect(daySelectController.rootView.daySelector.selectedIndex)
+		}
+		
+	}
+	
+	
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global(qos: .background).async {
