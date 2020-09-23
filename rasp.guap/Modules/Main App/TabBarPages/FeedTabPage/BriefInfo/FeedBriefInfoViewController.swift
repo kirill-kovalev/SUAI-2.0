@@ -18,13 +18,15 @@ class FeedBriefInfoViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
         DispatchQueue.global(qos: .background).async {
+			DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
             self.loadHello()
             self.loadWeatherAndRockets()
 			self.loadSchedule()
             self.loadDeadlines()
             self.loadNews()
+			DispatchQueue.main.async { self.rootView.indicator.stopAnimating() }
         }
         
         
@@ -142,8 +144,7 @@ class FeedBriefInfoViewController: UIViewController {
 			if cur == 6 { return 0 }
 			return cur+1
 		}
-		
-        DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
+
         guard let group = SAUserSettings.shared.group,
               let user = SASchedule.shared.groups.get(name: group ) else {return}
         let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
@@ -175,7 +176,6 @@ class FeedBriefInfoViewController: UIViewController {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 2 })
 			}, for: .touchUpInside)
 			
-            self.rootView.indicator.stopAnimating()
 			self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: container )
         }
         
@@ -214,7 +214,6 @@ class FeedBriefInfoViewController: UIViewController {
     //MARK: - Deadlines
 	let deadlineListVC = DeadlineListController(list: [])
     func loadDeadlines(){
-        DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
 		if !SADeadlines.shared.loadFromServer() {
 			SADeadlines.shared.loadFromCache()
 		}
@@ -228,7 +227,6 @@ class FeedBriefInfoViewController: UIViewController {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 1 })
 			}, for: .touchUpInside)
 			
-            self.rootView.indicator.stopAnimating()
             self.rootView.addBlock(title: "Ближайшие дедлайны", view: container )
 			self.reloadDeadlines()
         }
@@ -257,7 +255,6 @@ class FeedBriefInfoViewController: UIViewController {
     
     //MARK: - News
     func loadNews(){
-        DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
         var feed:[(SAFeedElement,FeedSource)] = []
         let news = SANews()
         news.loadSourceList()
@@ -292,7 +289,6 @@ class FeedBriefInfoViewController: UIViewController {
             
             let div = PocketDivView(content: stack)
             
-            self.rootView.indicator.stopAnimating()
             self.rootView.addBlock(title: "Актуальные новости", view: div )
         }
         

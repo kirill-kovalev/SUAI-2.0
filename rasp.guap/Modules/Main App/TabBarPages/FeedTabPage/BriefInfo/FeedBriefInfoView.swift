@@ -19,7 +19,6 @@ class FeedBriefInfoView: UIScrollView {
     }()
     lazy var indicator:PocketActivityIndicatorView = {
         let indicator = PocketActivityIndicatorView(frame: .zero)
-        indicator.hidesWhenStopped = true
         indicator.startAnimating()
         return indicator
     }()
@@ -55,6 +54,7 @@ class FeedBriefInfoView: UIScrollView {
     func setupConstraints(){
         indicator.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
+			make.height.width.equalTo(45)
 			make.bottom.lessThanOrEqualTo(self.contentLayoutGuide).offset(-15)
         }
         stack.snp.makeConstraints { (make) in

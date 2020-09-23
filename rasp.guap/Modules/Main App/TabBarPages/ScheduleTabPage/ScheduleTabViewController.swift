@@ -113,7 +113,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 				if SASchedule.shared.load(for: user).isEmpty {
 					MainTabBarController.Snack(status: .err, text: "Не удалось обновить расписание")
 				}else{
-					self.daySelectController.update()
+					DispatchQueue.main.async{ self.daySelectController.update() }
 					self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
 				}
 			}
