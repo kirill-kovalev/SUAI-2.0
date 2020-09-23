@@ -136,6 +136,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
     }
     
     func reloadItems(){
+		self.rootView.scroll.contentOffset.y = 0
 		let badgeCount = SADeadlines.shared.nearest.count + SADeadlines.shared.pro.count
 		if badgeCount > 0{
 			self.tabBarItem.badgeValue = "\(badgeCount)"
