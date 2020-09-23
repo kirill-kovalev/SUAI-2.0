@@ -81,7 +81,12 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		let rotXY = CATransform3DRotate(rotX, CGFloat(y), 0, -1, 0)
 		let rotXYZ = CATransform3DRotate(rotXY, CGFloat(z), 0, 0, 1)
 		
-		self.content.card.layer.transform = rotXYZ
+		let translation = CATransform3DTranslate(rotXYZ, -15*CGFloat(y), -15*CGFloat(z), 0)
+		
+		self.content.card.layer.transform = translation
+		
+		
+		
 		self.content.card.suaiLabel.angle = 268 + CGFloat(y.radiansToDegrees)*2
 		self.content.card.groupLabel.angle = self.content.card.suaiLabel.angle
 	}
