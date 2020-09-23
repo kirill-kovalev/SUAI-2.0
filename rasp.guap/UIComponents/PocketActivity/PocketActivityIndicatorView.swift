@@ -79,12 +79,10 @@ class PocketActivityIndicatorView: UIView {
 	
 	
 	func startAnimating() {
-			layoutIfNeeded()
-			let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-			self.circleLayer.path = UIBezierPath(arcCenter: center, radius: self.radius, startAngle: -CGFloat.pi/2, endAngle: CGFloat.pi, clockwise: true).cgPath
-			show()
-			self.layer.add(rotateAnimation, forKey: "rotationAnimation")
 		
+		show()
+		self.layer.add(rotateAnimation, forKey: "rotationAnimation")
+	
 		self.isAnimating = true
 	}
 	
@@ -97,6 +95,12 @@ class PocketActivityIndicatorView: UIView {
 	}
 	func hide(){
 		circleLayer.add(hideAnimation, forKey: "hideAnimation")
+	}
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		layoutIfNeeded()
+		let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+		self.circleLayer.path = UIBezierPath(arcCenter: center, radius: self.radius, startAngle: -CGFloat.pi/2, endAngle: CGFloat.pi, clockwise: true).cgPath
 	}
 }
 
