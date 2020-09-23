@@ -35,12 +35,11 @@ class FeedListViewController: UITableViewController {
         }
     }
     
-    private var loadIndicator = UIActivityIndicatorView(frame: .zero)
+    
 	//private var images:[IndexPath:UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadIndicator.startAnimating()
 		self.tableView.register(FeedTableCell.self, forCellReuseIdentifier: "newsCell")
 		self.tableView.rowHeight = UITableView.automaticDimension
 		self.tableView.estimatedRowHeight = 500;
@@ -82,14 +81,14 @@ class FeedListViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if (indexPath.row == self.stream.feed.count ){
 			let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-			let indicator = UIActivityIndicatorView(frame: .zero)
+			let indicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
 			indicator.startAnimating()
 			cell.contentView.addSubview(indicator)
 			indicator.snp.makeConstraints { (make) in
-				make.height.width.equalTo(30)
-				make.top.greaterThanOrEqualToSuperview()
-				make.bottom.lessThanOrEqualToSuperview()
-				make.center.equalToSuperview()
+				make.height.width.equalTo(45)
+				make.top.equalToSuperview().offset(15)
+				make.bottom.equalToSuperview().inset(15)
+				make.centerX.equalToSuperview()
 			}
 			cell.contentView.backgroundColor = .clear
 			cell.backgroundColor = .clear

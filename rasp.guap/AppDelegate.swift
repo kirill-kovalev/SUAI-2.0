@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-         setupWatchConnetivity()
+		setupWatchConnetivity()
         VK.setUp(appId: "7578765", delegate: vkDelegate)
 		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             self.LoggedInVK()
         }
-        
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -66,12 +65,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-	func applicationDidEnterBackground(_ application: UIApplication) {
-		SATracker.track("hide")
-	}
-	func applicationDidBecomeActive(_ application: UIApplication) {
-		SATracker.track("start")
-	}
+//	func applicationDidEnterBackground(_ application: UIApplication) {
+//		if !VK.needToSetUp {
+//			SATracker.track("hide")
+//		}
+//	}
+//	func applicationDidBecomeActive(_ application: UIApplication) {
+//		if !VK.needToSetUp {
+//			SATracker.track("start")
+//		}
+//	}
 
 	
     

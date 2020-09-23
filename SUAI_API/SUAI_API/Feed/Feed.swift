@@ -47,6 +47,7 @@ public class SAFeedStream{
 		if new.isEmpty && offset < count {
 			print("FeedStream VK (\(self.source.name) : from cache")
 			new = loadFromCache()
+			offset += count
 		}
         
         self.feed.append(contentsOf: new)

@@ -10,7 +10,6 @@ import UIKit
 
 
 class FeedBriefInfoView: UIScrollView {
-    private var loadIndicator = UIActivityIndicatorView(frame: .zero)
     
     lazy var stack:UIStackView = {
         let stack = UIStackView(frame: .zero)
@@ -18,8 +17,8 @@ class FeedBriefInfoView: UIScrollView {
         stack.spacing = 10
         return stack
     }()
-    lazy var indicator:UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(frame: .zero)
+    lazy var indicator:PocketActivityIndicatorView = {
+        let indicator = PocketActivityIndicatorView(frame: .zero)
         indicator.hidesWhenStopped = true
         indicator.startAnimating()
         return indicator
@@ -56,7 +55,7 @@ class FeedBriefInfoView: UIScrollView {
     func setupConstraints(){
         indicator.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.lessThanOrEqualTo(self.contentLayoutGuide)
+			make.bottom.lessThanOrEqualTo(self.contentLayoutGuide).offset(30)
         }
         stack.snp.makeConstraints { (make) in
 			make.top.equalTo(self.contentLayoutGuide).offset(0)

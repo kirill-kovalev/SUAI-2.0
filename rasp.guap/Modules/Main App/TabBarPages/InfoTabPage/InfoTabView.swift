@@ -17,8 +17,8 @@ class InfoTabView:TabBarPageView {
 		view.allowsLinkPreview = false
         return view
     }()
-	let indicator:UIActivityIndicatorView = {
-		let indicator = UIActivityIndicatorView(frame: .zero)
+	let indicator:PocketActivityIndicatorView = {
+		let indicator = PocketActivityIndicatorView(frame: .zero)
 		indicator.hidesWhenStopped = true
 		indicator.startAnimating()
 		return indicator
