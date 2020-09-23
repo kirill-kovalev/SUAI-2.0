@@ -79,22 +79,31 @@ class PocketActivityIndicatorView: UIView {
 	
 	
 	func startAnimating() {
-		
-		show()
+		self.isHidden = false
+		if !self.isAnimating {
+			self.isAnimating = true
+			circleLayer.add(showAnimation, forKey: "showAnimation")
+		}
 		self.layer.add(rotateAnimation, forKey: "rotationAnimation")
-	
-		self.isAnimating = true
 	}
 	
 	func stopAnimating() {
-		hide()
-		self.isAnimating = false
-	}
-	func show(){
-		circleLayer.add(showAnimation, forKey: "showAnimation")
-	}
-	func hide(){
-		circleLayer.add(hideAnimation, forKey: "hideAnimation")
+		if self.isAnimating{
+			if hidesWhenStopped{
+				CATransaction.begin()
+				CATransaction.setCompletionBlock {
+					self.isAnimating = false
+					self.layer.removeAnimation(forKey: "rotationAnimation")
+				}
+				circleLayer.add(hideAnimation, forKey: "hideAnimation")
+				CATransaction.commit()
+			}else{
+				self.isAnimating = false
+				self.layer.removeAnimation(forKey: "rotationAnimation")
+			}
+			
+		}
+		
 	}
 	override func layoutSubviews() {
 		super.layoutSubviews()

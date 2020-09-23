@@ -113,6 +113,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 				if SASchedule.shared.load(for: user).isEmpty {
 					MainTabBarController.Snack(status: .err, text: "Не удалось обновить расписание")
 				}else{
+					self.daySelectController.update()
 					self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
 				}
 			}
@@ -175,18 +176,22 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
         
         
         self.timetable = SASchedule.shared.get(for: user )
+		
         let dayTimetable = self.timetable.get(week: week, day: day)
         
         DispatchQueue.main.async {
             self.tableController.tableView.isHidden = dayTimetable.isEmpty
             
-            self.rootView.showIndicator(show: false)
+            
             self.rootView.showNoLesson(show: dayTimetable.isEmpty)
             
             if !self.timetable.isEmpty{
                 self.tableController.setTimetable(timetable: dayTimetable)
+				self.rootView.showIndicator(show: false)
 			}else{
+				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить расписание")
 				self.tableController.setTimetable(timetable: [])
+				self.daySelectController.update()
 			}
             
         }

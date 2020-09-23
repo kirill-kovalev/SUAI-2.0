@@ -120,6 +120,7 @@ class PocketDivPlaceholder:UIView{
 	private func setupConstraints(){
 		loadingIndicator.snp.makeConstraints { (make) in
 			make.center.equalToSuperview()
+			make.height.width.equalTo(45)
 			make.top.equalTo(30).priority(.medium)
 			make.bottom.lessThanOrEqualToSuperview().inset(30).priority(.medium)
 		}
