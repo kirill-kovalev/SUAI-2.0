@@ -48,15 +48,14 @@ class PocketTabBarIcon: ESTabBarItemContentView {
         titleLabel.sizeToFit()
     }
     
-    override func highlightAnimation(animated: Bool, completion: (() -> ())?) {
-        showAnimation(show: true)
-        
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        
-    }
+
     override func deselectAnimation(animated: Bool, completion: (() -> ())?) {
         showAnimation(show: false)
     }
+	override func selectAnimation(animated: Bool, completion: (() -> ())?) {
+		showAnimation(show: true)
+		UIImpactFeedbackGenerator(style: .light).impactOccurred()
+	}
     
     private func showAnimation(show:Bool){
         self.imageView.tintColor = !show ? self.highlightIconColor : self.iconColor
