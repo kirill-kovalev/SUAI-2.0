@@ -16,6 +16,7 @@ class PocketActivityIndicatorView: UIView {
 		}
 	}
 	var hidesWhenStopped: Bool = true
+	var isAnimating:Bool = false
 	
 	private var radius:CGFloat{
 		if self.frame.height > self.frame.width{
@@ -25,7 +26,7 @@ class PocketActivityIndicatorView: UIView {
 		}
 	}
 	
-
+	lazy var rotationLayer = CALayer()
 	lazy var circleLayer:CAShapeLayer = {
 		let layer = CAShapeLayer()
 		layer.strokeColor = self.color.cgColor
@@ -67,19 +68,29 @@ class PocketActivityIndicatorView: UIView {
 	}
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.layer.addSublayer(circleLayer)
+		self.layer.addSublayer(rotationLayer)
+		layer.addSublayer(circleLayer)
 	}
+	convenience init(style:UIActivityIndicatorView.Style){
+		self.init(frame:.zero)
+	}
+	
 	
 	
 	func startAnimating() {
+		layoutIfNeeded()
+		let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+		self.circleLayer.path = UIBezierPath(arcCenter: center, radius: self.radius, startAngle: -CGFloat.pi/2, endAngle: CGFloat.pi, clockwise: true).cgPath
 		show()
 		self.layer.add(rotateAnimation, forKey: "rotationAnimation")
+		self.isAnimating = true
 	}
 	func stopAnimating() {
 		hide()
-		let transform = self.layer.presentation()?.transform
-		self.layer.removeAnimation(forKey: "rotationAnimation")
-		self.layer.transform = transform ?? self.layer.transform
+		let transform = self.rotationLayer.presentation()?.transform
+		self.rotationLayer.removeAnimation(forKey: "rotationAnimation")
+		self.rotationLayer.transform = transform ?? CATransform3D()
+		self.isAnimating = false
 	}
 	func show(){
 		circleLayer.add(showAnimation, forKey: "showAnimation")
@@ -87,8 +98,44 @@ class PocketActivityIndicatorView: UIView {
 	func hide(){
 		circleLayer.add(hideAnimation, forKey: "hideAnimation")
 	}
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		self.circleLayer.path = UIBezierPath(arcCenter: self.center, radius: self.radius, startAngle: -CGFloat.pi/2, endAngle: CGFloat.pi, clockwise: true).cgPath
-	}
 }
+
+
+class TestVC:UIViewController{
+
+	
+	let v = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		
+		let gest = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
+		view.addGestureRecognizer(gest)
+		view.backgroundColor = .white
+		
+		self.view.addSubview(v)
+		
+		v.snp.makeConstraints { (make) in
+			make.height.width.equalTo(40)
+			make.center.equalToSuperview()
+			
+		}
+		v.startAnimating()
+	}
+	
+
+	@objc func tap(_ sender:Any?){
+		print("tap")
+		if self.v.isAnimating {
+			self.v.stopAnimating()
+		}else{
+			self.v.startAnimating()
+		}
+	}
+	
+}
+//class PocketActivityIndicatorView:UIActivityIndicatorView{
+//	override func draw(_ rect: CGRect) {
+//
+//	}
+//}

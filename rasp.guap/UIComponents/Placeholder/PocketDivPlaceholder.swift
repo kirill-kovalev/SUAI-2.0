@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class PocketDivPlaceholder:UIView{
-	let loadingIndicator:UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .gray)
+	let loadingIndicator:PocketActivityIndicatorView = {
+        let indicator = PocketActivityIndicatorView(style: .gray)
         indicator.color = Asset.PocketColors.pocketGray.color
         indicator.hidesWhenStopped = true
         return indicator
