@@ -40,6 +40,7 @@ class FeedListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.tableView.allowsSelection = false
 		self.tableView.register(FeedTableCell.self, forCellReuseIdentifier: "newsCell")
 		self.tableView.rowHeight = UITableView.automaticDimension
 		self.tableView.estimatedRowHeight = 500;
