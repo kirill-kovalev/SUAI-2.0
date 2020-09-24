@@ -79,6 +79,13 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		setupStartScreens()
 		setupBuildingList()
 		update()
+		self.rootView.groupSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.groupSelectorTap)))
+	}
+	@objc private func groupSelectorTap(){
+		let vc = TimetableFilterViewConroller()
+		vc.filterTypes = .groups
+		vc.delegate = self
+		self.present(vc, animated: true)
 	}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -177,11 +184,14 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 extension AppSettingsViewController : UITextFieldDelegate{
 	
     func textFieldDidBeginEditing(_ textField: UITextField) {
+		
 		textField.resignFirstResponder()
-		let vc = TimetableFilterViewConroller()
-		vc.filterTypes = .groups
-		vc.delegate = self
-		self.present(vc, animated: true)
+//		let vc = TimetableFilterViewConroller()
+//		vc.filterTypes = .groups
+//		vc.delegate = self
+//		self.present(vc, animated: true) {
+//			NotificationCenter.default.post(name: UIResponder.keyboardWillShowNotification, object: nil)
+//		}
 	}
 
 }

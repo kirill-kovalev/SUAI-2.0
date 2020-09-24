@@ -25,7 +25,6 @@ class AppSettingsView: View {
 	
 	lazy var groupSelector:UITextField = {
 		let tf = PocketTextField(frame: .zero)
-		
 		return tf
 	}()
 	
