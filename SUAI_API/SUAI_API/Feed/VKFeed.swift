@@ -10,7 +10,7 @@ public struct VKFeedElement:Codable {
     let views: VKCountable?
     let attachments: [FeedAttachment]?
     let copy_history:[VKFeedElement]?
-    
+	let owner_id:Int?
     struct VKCountable:Codable {
         let count: Int
     }

@@ -13,6 +13,7 @@ struct Brief:Codable {
     public let is_sub: Bool
     public let rockets: Rockets
     public let weather: SAWeather
+	public let news: [VKFeedElement]
 }
 // MARK: - Weather
 public struct SAWeather:Codable {

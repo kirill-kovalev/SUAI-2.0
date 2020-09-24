@@ -10,7 +10,7 @@ import Foundation
 
 public class SABrief{
     public static let shared = SABrief()
-    var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0))
+	var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0), news: [])
     
     public func loadFromServer() -> Bool{
 		if let data = PocketAPI.shared.syncLoadTask(method: .getSuper) {
@@ -42,6 +42,17 @@ public class SABrief{
     public var isSub:Bool {self.briefInfo.is_sub}
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}
+	public var news : [SAFeedElement] {
+		func generateSAFeed(item: VKFeedElement) -> SAFeedElement {
+			let title = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").first ?? "") : ""
+			let desc = item.getText().contains("\n") ? String(item.getText().split(separator: "\n").last ?? "") : ""
+			let url = "https://vk.com/wall\(item.from_id)_\(item.id)"
+			
+			return SAFeedElement(source: FeedSource(name: "", id: item.owner_id ?? 0), date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), title: title, desc: desc, postUrl: url)
+		}
+		return self.briefInfo.news.map {generateSAFeed(item: $0)}
+		
+	}
 }
 
 public struct SARockets {

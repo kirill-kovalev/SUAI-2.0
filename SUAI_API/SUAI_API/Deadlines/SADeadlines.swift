@@ -120,9 +120,7 @@ public class SADeadlines{
 			//print(String(data: data, encoding: .utf8))
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
-		if success {self.deadlines.append(deadline)}
-		if needUpdate { let _ = self.loadFromServer()}
-		return success
+		return success && self.loadFromServer()
 	}
 	public func edit(deadline: SADeadline) -> Bool{
 		var success = false

@@ -43,11 +43,11 @@ public class PocketAPI{
     }
     
     public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:]) -> Data?{
-        if let token = VK.sessions.default.accessToken?.get() {
-            config.httpAdditionalHeaders = ["Token": token]
-		}else{
-			return nil
-		}
+//		if !VK.needToSetUp , let token = VK.sessions.default.accessToken?.get() {
+//            config.httpAdditionalHeaders = ["Token": token]
+//		}else{
+//			return nil
+//		}
 		
         let sem = DispatchSemaphore(value: 0)
 
