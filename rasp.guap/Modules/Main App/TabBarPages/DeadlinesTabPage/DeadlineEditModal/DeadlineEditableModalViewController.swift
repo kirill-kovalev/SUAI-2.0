@@ -43,7 +43,9 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 			self.setTitle("Создать дедлайн")
 			
 			self.content.closeButton.addTarget(action: { (btn) in
-				(btn as? PocketTagButton)?.isActive = false
+				(btn as? PocketTagButton)?.isHidden = true
+				
+				
 				self.deadline = SADeadline(id: 0,
 																	   subject_name: self.content.lessonLabel.text,
 																	   deadline_name: self.content.nameLabel.text ?? "",
@@ -52,13 +54,22 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 																	   end: self.content.datePicker.date,
 																	   comment: self.content.commentLabel.text
 				)
-				if !SADeadlines.shared.create(deadline: self.deadline!) {
-					MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
-				}else{
-					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
+				
+				DispatchQueue.global().async {
+	
+					let success = SADeadlines.shared.create(deadline: self.deadline!)
+					if !success{
+						MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
+					}else{
+						MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
+					}
+					DispatchQueue.main.async {
+						(btn as? PocketTagButton)?.isHidden = false
+						self.onChange?()
+						if success { self.dismiss(animated: true) }
+					}
 				}
-				self.onChange?()
-				self.dismiss(animated: true)
+				
 				
 			}, for: .touchUpInside)
 			
