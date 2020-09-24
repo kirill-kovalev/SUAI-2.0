@@ -103,6 +103,11 @@ class DeadlineEditModalView: View {
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.locale = Locale(identifier: "Ru")
         datePicker.datePickerMode = .date
+		if #available(iOS 13.4, *) {
+			datePicker.preferredDatePickerStyle = .wheels
+		}
+		datePicker.minimumDate = Date().addingTimeInterval(60*5)
+		datePicker.maximumDate = Date().addingTimeInterval(60*60*24*360)
         return datePicker
     }()
     
