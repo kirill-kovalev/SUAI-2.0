@@ -64,7 +64,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	func setupBuildingList(){
 		let buttons = self.buildings.enumerated().map{ (offset,title) -> MBRadioButton in
 			let button = self.createRadioButton(title: title)
-			button.tag = -offset
+			button.tag = -offset-1
 			self.rootView.buildingSelector.addArrangedSubview(button)
 			return button
 		}
@@ -137,7 +137,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	}
 	
 	func setBuilding(_ id:Int){
-		let id = id + 1
+//		let id = id + 1
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared.building
 			print("originBuilding : \(originBuilding)")
