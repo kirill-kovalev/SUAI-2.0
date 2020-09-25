@@ -24,28 +24,20 @@ class DeadlineInfoModalView: UIStackView {
         label.text = text
         return label
     }
-    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> Button {
-        let color = Asset.PocketColors.pocketDarkBlue.color
-        let btn = Button(frame: .zero)
-        btn.setTitle(text, for: .normal)
-        btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 12)
-        btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        
-        btn.layer.cornerRadius = 10
-        btn.layer.borderWidth = 1
-        
-        btn.imageView?.tintColor = color
-        btn.setTitleColor(color, for: .normal)
-        btn.layer.borderColor = color.cgColor
-
-        return btn
+    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> PocketLongActionButton {
+		let btn = PocketLongActionButton(frame: .zero)
+		btn.setTitle(text, for: .normal)
+		btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketDarkBlue.color, for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
+		return btn
     }
     
     
     
-    lazy var closeButton:Button = buttonGenerator("Открыть дедлайн")
+    lazy var closeButton:PocketLongActionButton = buttonGenerator("Открыть дедлайн")
     lazy var editButton:Button = buttonGenerator(" Редактировать",image: Asset.AppImages.DeadlineModal.edit.image)
-    lazy var deleteButton:Button = {
+    lazy var deleteButton:PocketLongActionButton = {
         
         let color = Asset.PocketColors.pocketError.color
         

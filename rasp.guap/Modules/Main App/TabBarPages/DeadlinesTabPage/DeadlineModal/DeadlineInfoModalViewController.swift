@@ -36,23 +36,6 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         
         setupContent()
         
-        
-        
-        self.content.closeButton.addTarget(action: { (sender) in
-			if self.deadline.closed == 0 {
-				if !SADeadlines.shared.close(deadline: self.deadline){
-					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
-				}else{MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт") }
-            }else{
-				if !SADeadlines.shared.reopen(deadline: self.deadline) {
-					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
-				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
-            }
-			self.onChange?()
-            self.dismiss(animated: true, completion: nil)
-        }, for: .touchUpInside)
-        
-        
         self.content.editButton.addTarget(action: { (sender) in
             let vc = DeadlineEditableModalViewController()
             vc.deadline = self.deadline
@@ -62,20 +45,86 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
+		
+        
+        self.content.closeButton.addTarget(action: { (sender) in
+			if self.deadline.closed == 0 {
+				self.closeDeadline()
+            }else{
+				self.reopenDeadline()
+            }
+			
+        }, for: .touchUpInside)
         
         
         self.content.deleteButton.addTarget(action: { (sender) in
-			if !SADeadlines.shared.delete(deadline: self.deadline) {
-				MainTabBarController.Snack(status: .err, text: "Не удалось удалить дедлайн")
-			}else{
-				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален")
+			(sender as? PocketLongActionButton)?.disable()
+			self.content.isUserInteractionEnabled = false
+			DispatchQueue.global().async {
+				let success = SADeadlines.shared.delete(deadline: self.deadline)
+				if !success {
+					MainTabBarController.Snack(status: .err, text: "Не удалось удалить дедлайн")
+				}else{
+					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален")
+				}
+				
+				DispatchQueue.main.async {
+					(sender as? PocketLongActionButton)?.enable()
+					self.content.isUserInteractionEnabled = false
+					
+					self.onChange?()
+					if success { self.dismiss(animated: true, completion: nil) }
+				}
 			}
-			self.onChange?()
-            self.dismiss(animated: true, completion: nil)
+			
         }, for: .touchUpInside)
         
         
     }
+	private func closeDeadline(){
+		self.content.closeButton.disable()
+		self.content.isUserInteractionEnabled = false
+		DispatchQueue.global().async {
+			let success = SADeadlines.shared.close(deadline: self.deadline)
+			if !success{
+				MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
+			}else{
+				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт")
+			}
+			DispatchQueue.main.async {
+				self.content.closeButton.enable()
+				self.content.isUserInteractionEnabled = true
+				if success {
+					self.onChange?()
+					self.dismiss(animated: true, completion: nil)
+				}
+			}
+			
+		}
+		
+	}
+	private func reopenDeadline(){
+		
+		self.content.closeButton.disable()
+		self.content.isUserInteractionEnabled = false
+		DispatchQueue.global().async {
+			let success = SADeadlines.shared.reopen(deadline: self.deadline)
+			if !success{
+				MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
+			}else{
+				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт")
+			}
+			DispatchQueue.main.async {
+				self.content.closeButton.enable()
+				self.content.isUserInteractionEnabled = true
+				if success {
+					self.onChange?()
+					self.dismiss(animated: true, completion: nil)
+				}
+			}
+			
+		}
+	}
     
     func setupContent(){
 		for v in self.content.arrangedSubviews{
