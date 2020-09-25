@@ -138,13 +138,16 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 	func setBuilding(_ id:Int){
 		let id = id + 1
-		self.rootView.isUserInteractionEnabled = false
-		self.rootView.layer.opacity = 0.5
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared.building
 			print("originBuilding : \(originBuilding)")
 			print("new building : \(id)")
 			if originBuilding != id {
+				DispatchQueue.main.async{
+					self.rootView.isUserInteractionEnabled = false
+					self.rootView.layer.opacity = 0.5
+				}
+				
 				SAUserSettings.shared.building = id
 				if (SAUserSettings.shared.update()){
 					print("building set to \(id)")
@@ -164,13 +167,17 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	func setStartPage(_ id:Int){
 		print("set tab : \(id)")
 		let id = id + 1
-		self.rootView.isUserInteractionEnabled = false
-		self.rootView.layer.opacity = 0.5
+		
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared.idtab
 			print("origin tab : \(originTab)")
 			print("new tab : \(id)")
 			if originTab != id {
+				DispatchQueue.main.async{
+					self.rootView.isUserInteractionEnabled = false
+					self.rootView.layer.opacity = 0.5
+				}
+				
 				SAUserSettings.shared.idtab = id
 				if (SAUserSettings.shared.update()){
 					print("start page set to \(id)")
