@@ -31,6 +31,7 @@ class DeadlineListController: UIViewController {
             self.setItems(list: list!)
         }
     }
+	var actionCounter = 0
     func setItems(list new:[SADeadline]){
         clearStack()
         for deadline in new {
@@ -88,6 +89,7 @@ class DeadlineListController: UIViewController {
 		cell.indicator.startAnimating()
 		
 		DispatchQueue.global(qos: .background).async {
+			self.actionCounter += 1
             if deadline.closed == 0 {
 				if !SADeadlines.shared.close(deadline: deadline){
 					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
@@ -97,7 +99,7 @@ class DeadlineListController: UIViewController {
 					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
 				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
             }
-            
+            self.actionCounter -= 1
 			//if !SADeadlines.shared.loadFromServer(){ }//MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
 
 			DispatchQueue.main.async {
@@ -106,7 +108,8 @@ class DeadlineListController: UIViewController {
 			}
 			DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
 				cell.isUserInteractionEnabled = true
-				self.delegate?.deadlineDidChecked(deadline: deadline)
+				if self.actionCounter == 0{ self.delegate?.deadlineDidChecked(deadline: deadline) }
+				
 			}
         }
 		
