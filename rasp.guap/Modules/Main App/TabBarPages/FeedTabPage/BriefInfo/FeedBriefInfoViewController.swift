@@ -18,24 +18,47 @@ class FeedBriefInfoViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-        DispatchQueue.global(qos: .background).async {
+		DispatchQueue.global(qos: .background).async {
 			DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-            self.loadHello()
-            self.loadWeatherAndRockets()
-			self.loadSchedule()
-            self.loadDeadlines()
-            self.loadNews()
+			self.reloadPage(needReload: true)
 			DispatchQueue.main.async { self.rootView.indicator.stopAnimating() }
         }
-        
-        
     }
+	func reloadPage(needReload:Bool = false){
+		var offset:CGPoint = .zero
+		if !needReload{ DispatchQueue.main.async {offset = self.rootView.contentOffset}}
+		if needReload{let _ = SAUserSettings.shared.reload()}
+		self.loadHello()
+		
+		if needReload,!SABrief.shared.loadFromServer(){ MainTabBarController.Snack(status: .err, text: "Не удалось загрузить сводку ") }
+		self.loadWeatherAndRockets()
+		
+		
+		self.loadSchedule()
+		
+		if needReload,!SADeadlines.shared.loadFromServer(){ MainTabBarController.Snack(status: .err, text: "Не удалось загрузить дедлайны ") }
+		self.loadDeadlines()
+		
+		self.loadNews()
+		if !needReload{ DispatchQueue.main.async {self.rootView.contentOffset = offset}}
+	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		reloadDeadlines()
-		reloadSchedule()
-		reloadRockets()
+		DispatchQueue.global(qos: .background).async {
+			if SABrief.shared.loadFromServer() &&
+				SADeadlines.shared.loadFromServer() &&
+				SAUserSettings.shared.reload() {
+				DispatchQueue.main.async {
+					for view in self.rootView.stack.arrangedSubviews{
+						self.rootView.stack.removeArrangedSubview(view)
+						view.removeFromSuperview()
+					}
+				}
+				
+				self.reloadPage()
+			}
+			
+        }
 	}
     //MARK: - Weather
     func loadHello(){
@@ -64,9 +87,7 @@ class FeedBriefInfoViewController: UIViewController {
 	let rocketsView = BriefHalfScreenView(title: "",subtitle: "рокетов за неделю",
 	image: Asset.AppImages.rocket.image)
     func loadWeatherAndRockets(){
-		if !SABrief.shared.loadFromServer(){
-			MainTabBarController.Snack(status: .err, text: "Не удалось загрузить данные ")
-		}
+		
         if !SABrief.shared.isSub {
             DispatchQueue.main.async { self.rootView.addBlock(title: "Погода на сегодня", view: nil ) }
         }
@@ -214,9 +235,7 @@ class FeedBriefInfoViewController: UIViewController {
     //MARK: - Deadlines
 	let deadlineListVC = DeadlineListController(list: [])
     func loadDeadlines(){
-		if !SADeadlines.shared.loadFromServer() {
-			SADeadlines.shared.loadFromCache()
-		}
+
 		let deadlines = SADeadlines.shared.nearest.enumerated().filter { (index,_) in index < 5 }.map {$0.element}
         DispatchQueue.main.async {
 			
@@ -255,27 +274,15 @@ class FeedBriefInfoViewController: UIViewController {
     
     //MARK: - News
     func loadNews(){
-        var feed:[(SAFeedElement,FeedSource)] = []
-        let news = SANews()
-        news.loadSourceList()
-		if news.sources.isEmpty{
-			MainTabBarController.Snack(status: .err, text: "Не удалось загрузить новости в сводке")
-		}
-        for stream in news.streams {
-            stream.count = 3
-            stream.reload()
-            feed.append(contentsOf: stream.feed.map{($0,stream.source)})
-        }
-        
-        
-        
+		let feed:[SAFeedElement] = SABrief.shared.news
+		
         DispatchQueue.main.async {
             let stack = UIStackView(frame: .zero)
             stack.axis = .vertical
             stack.spacing = 15
-            let sorted = feed.sorted {  $0.0.date > $1.0.date}
-            for (element,source) in sorted {
-				let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: source.name))
+            for element in feed {
+				
+				let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: element.source.name))
 				tapContainer.addTarget(action: { _ in
 					let config = SFSafariViewController.Configuration()
 					print("url: \(element.postUrl)")
