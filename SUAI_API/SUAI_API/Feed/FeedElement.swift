@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SAFeedElement{
+public struct SAFeedElement:Codable{
 	public var source:FeedSource
     public var date:Date
     

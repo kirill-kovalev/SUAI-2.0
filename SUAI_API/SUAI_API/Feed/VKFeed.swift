@@ -103,7 +103,7 @@ public struct VKFeedElement:Codable {
         return Date(timeIntervalSince1970: TimeInterval(self.date))
     }
 	func postText() ->String? {
-		if !self.text.isEmpty{ return self.text}
+		if self.text != "" { return self.text}
 		return self.attachments?.first?.link?.title ??
 		self.attachments?.first?.photo?.text ??
 		self.attachments?.first?.video?.title ??
