@@ -39,14 +39,15 @@ class FeedBriefInfoViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		if firstAppear {
-			self.firstAppear = false
 			DispatchQueue.global(qos: .background).async {
 				DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
 				self.reloadPage(needReload: true)
-				DispatchQueue.main.async { self.rootView.indicator.stopAnimating() }
+				self.firstAppear = false
+				DispatchQueue.main.async {self.rootView.indicator.stopAnimating() }
 			}
 			return
 		}
+		
 		DispatchQueue.global(qos: .background).async {
 			if SABrief.shared.loadFromServer() &&
 				SADeadlines.shared.loadFromServer() &&
