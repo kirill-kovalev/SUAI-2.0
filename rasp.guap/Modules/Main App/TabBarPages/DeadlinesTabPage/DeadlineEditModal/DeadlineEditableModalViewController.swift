@@ -107,11 +107,11 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 			)
 			DispatchQueue.global().async {
 				
-				let success = SADeadlines.shared.create(deadline: self.deadline!)
+				let success = SADeadlines.shared.edit(deadline: self.deadline!)
 				if !success{
-					MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
+					MainTabBarController.Snack(status: .err, text: "Не получилось отредактировать дедлайн")
 				}else{
-					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
+					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно отредактирован")
 				}
 				DispatchQueue.main.async {
 					self.content.closeButton.enable()
