@@ -75,8 +75,11 @@ public class SATimetable {
         }
     }
     public func list() -> [SALesson]{
-        return Array(Set(self.timetable))
-        
+		
+		let lessonNames = Array(Set(self.timetable.map{ $0.name}))
+		return lessonNames.compactMap { (name) in
+			self.timetable.filter {$0.name == name}.first
+		}
     }
     
     public var isEmpty:Bool{
