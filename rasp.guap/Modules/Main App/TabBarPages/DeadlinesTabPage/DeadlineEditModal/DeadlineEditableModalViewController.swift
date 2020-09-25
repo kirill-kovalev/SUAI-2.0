@@ -24,6 +24,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		self.content.lessonLabel.inputView = picker
 		DispatchQueue.global(qos: .background).async {
 			self.lessonList = SASchedule.shared.get(for: SASchedule.shared.groups.get(name: SAUserSettings.shared.group ?? "") ?? SAUsers.User(Name: "", ItemId: 0)).list()
+			
 			DispatchQueue.main.async {
 				picker.reloadAllComponents()
 			}
@@ -32,6 +33,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		for item in [self.content.lessonLabel, self.content.dateLabel,self.content.nameLabel]{
 			item.addTarget(self, action: #selector(self.textViewDidChange(_:)), for: .editingChanged)
 		}
+		
 		self.content.commentLabel.delegate = self
 		
 		
@@ -40,69 +42,91 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		if self.deadline == nil { // Создание
-			self.setTitle("Создать дедлайн")
-			
-			self.content.closeButton.addTarget(action: { (btn) in
-				(btn as? PocketTagButton)?.isHidden = true
-				
-				
-				self.deadline = SADeadline(id: 0,
-																	   subject_name: self.content.lessonLabel.text,
-																	   deadline_name: self.content.nameLabel.text ?? "",
-																	   closed: 0,
-																	   start: Date(),
-																	   end: self.content.datePicker.date,
-																	   comment: self.content.commentLabel.text
-				)
-				
-				DispatchQueue.global().async {
-	
-					let success = SADeadlines.shared.create(deadline: self.deadline!)
-					if !success{
-						MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
-					}else{
-						MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
-					}
-					DispatchQueue.main.async {
-						(btn as? PocketTagButton)?.isHidden = false
-						self.onChange?()
-						if success { self.dismiss(animated: true) }
-					}
-				}
-				
-				
-			}, for: .touchUpInside)
-			
+			setupForAdd()
 		}else{ //Редактирование
-			self.setTitle("Редактировать дедлайн")
-			self.content.closeButton.setTitle("Обновить дедлайн", for: .normal)
-			self.content.nameLabel.text = deadline!.deadline_name
-			self.content.commentLabel.text = deadline!.comment
-			self.content.dateLabel.text = self.content.formatter.string(from: deadline?.end ?? Date())
-			(self.content.dateLabel.inputView as? UIDatePicker)?.date = deadline?.end ?? Date()
-			
-			self.content.closeButton.addTarget(action: { (btn) in
-				self.deadline = SADeadline(id: self.deadline!.id,
-																		subject_name: self.content.lessonLabel.text,
-																		deadline_name: self.content.nameLabel.text ?? "",
-																		closed: 0,
-																		start: Date(),
-																		end: self.content.datePicker.date,
-																		comment: self.content.commentLabel.text
-				)
-				if !SADeadlines.shared.edit(deadline: self.deadline!  ){
-					MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайн")
-				}else{
-					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно обновлен")
-				}
-				self.onChange?()
-				self.dismiss(animated: true)
-			}, for: .touchUpInside)
-			
-			
+			setupForEdit()
 		}
 		self.textViewDidChange(self.content.commentLabel)
+		
 	}
+	
+	func setupForAdd(){
+		self.setTitle("Создать дедлайн")
+				self.content.closeButton.addTarget(action: { (btn) in
+					
+					self.content.closeButton.disable()
+					self.content.isUserInteractionEnabled = false
+					
+					self.deadline = SADeadline(id: 0,
+											   subject_name: self.content.lessonLabel.text,
+											   deadline_name: self.content.nameLabel.text ?? "",
+											   closed: 0,
+											   start: Date(),
+											   end: self.content.datePicker.date,
+											   comment: self.content.commentLabel.text
+					)
+					
+					DispatchQueue.global().async {
+		
+						let success = SADeadlines.shared.create(deadline: self.deadline!)
+						if !success{
+							MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
+						}else{
+							MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
+						}
+						DispatchQueue.main.async {
+							self.content.closeButton.enable()
+							self.content.isUserInteractionEnabled = true
+							self.onChange?()
+							if success { self.dismiss(animated: true) }
+						}
+					}
+					
+					
+				}, for: .touchUpInside)
+	}
+	func setupForEdit(){
+		self.setTitle("Редактировать дедлайн")
+		self.content.closeButton.setTitle("Обновить дедлайн", for: .normal)
+		self.content.nameLabel.text = deadline!.deadline_name
+		self.content.commentLabel.text = deadline!.comment
+		self.content.dateLabel.text = self.content.formatter.string(from: deadline?.end ?? Date())
+		(self.content.dateLabel.inputView as? UIDatePicker)?.date = deadline?.end ?? Date()
+		
+		self.content.closeButton.addTarget(action: { (btn) in
+			self.content.closeButton.disable()
+			self.content.isUserInteractionEnabled = false
+			
+			self.deadline = SADeadline(id: self.deadline!.id,
+										subject_name: self.content.lessonLabel.text,
+										deadline_name: self.content.nameLabel.text ?? "",
+										closed: 0,
+										start: Date(),
+										end: self.content.datePicker.date,
+										comment: self.content.commentLabel.text
+			)
+			DispatchQueue.global().async {
+				
+				let success = SADeadlines.shared.create(deadline: self.deadline!)
+				if !success{
+					MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
+				}else{
+					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
+				}
+				DispatchQueue.main.async {
+					self.content.closeButton.enable()
+					self.content.isUserInteractionEnabled = true
+					self.onChange?()
+					if success { self.dismiss(animated: true) }
+				}
+			}
+			
+		}, for: .touchUpInside)
+	}
+	
+	
+	
+	
 	
 	
 	func checkModal()->Bool{
@@ -134,6 +158,7 @@ extension DeadlineEditableModalViewController:UIPickerViewDataSource{
 extension DeadlineEditableModalViewController:UIPickerViewDelegate{
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		self.content.lessonLabel.text = row == 0 ? ""  : lessonList[row-1].name
+		self.content.closeButton.isEnabled = self.checkModal()
 	}
 }
 

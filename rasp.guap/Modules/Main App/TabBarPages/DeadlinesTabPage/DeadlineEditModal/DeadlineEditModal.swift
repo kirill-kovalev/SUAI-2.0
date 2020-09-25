@@ -25,21 +25,12 @@ class DeadlineEditModalView: View {
         label.text = text
         return label
     }
-    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> Button {
-        let color = Asset.PocketColors.pocketDarkBlue.color
-        let btn = Button(frame: .zero)
+    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> PocketLongActionButton {
+        let btn = PocketLongActionButton(frame: .zero)
         btn.setTitle(text, for: .normal)
-        btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 12)
         btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        
-        btn.layer.cornerRadius = 10
-        btn.layer.borderWidth = 1
-        
-        btn.imageView?.tintColor = color
-        btn.setTitleColor(color, for: .normal)
+        btn.setTitleColor(Asset.PocketColors.pocketDarkBlue.color, for: .normal)
         btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
-        btn.layer.borderColor = color.cgColor
-
         return btn
     }
     private func textFieldGenerator(_ title:String = "")->UITextField{
@@ -158,7 +149,7 @@ class DeadlineEditModalView: View {
     
     
     
-    lazy var closeButton:Button = buttonGenerator("Создать дедлайн")
+    lazy var closeButton:PocketLongActionButton = buttonGenerator("Создать дедлайн")
     
     
     
