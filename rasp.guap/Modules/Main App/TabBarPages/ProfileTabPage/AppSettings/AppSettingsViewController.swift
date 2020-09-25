@@ -138,6 +138,8 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 	func setBuilding(_ id:Int){
 		let id = id + 1
+		self.rootView.isUserInteractionEnabled = false
+		self.rootView.layer.opacity = 0.5
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared.building
 			print("originBuilding : \(originBuilding)")
@@ -152,12 +154,18 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					self.updateView()
 				}
+				DispatchQueue.main.async{
+					self.rootView.isUserInteractionEnabled = true
+					self.rootView.layer.opacity = 1
+				}
 			}
 		}
 	}
 	func setStartPage(_ id:Int){
 		print("set tab : \(id)")
 		let id = id + 1
+		self.rootView.isUserInteractionEnabled = false
+		self.rootView.layer.opacity = 0.5
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared.idtab
 			print("origin tab : \(originTab)")
@@ -172,6 +180,10 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					SAUserSettings.shared.idtab = originTab
 					self.updateView()
+				}
+				DispatchQueue.main.async{
+					self.rootView.isUserInteractionEnabled = true
+					self.rootView.layer.opacity = 1
 				}
 			}
 			
