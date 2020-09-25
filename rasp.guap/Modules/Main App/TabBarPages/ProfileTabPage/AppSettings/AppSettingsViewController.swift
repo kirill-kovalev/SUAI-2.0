@@ -120,6 +120,11 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 	func setGroup(name:String){
 		DispatchQueue.global().async {
+			DispatchQueue.main.async{
+				self.rootView.isUserInteractionEnabled = false
+				self.rootView.layer.opacity = 0.5
+			}
+			
 			let originGroup = SAUserSettings.shared.group
 			SAUserSettings.shared.group = name
 			if SAUserSettings.shared.update() {
@@ -131,6 +136,10 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 				DispatchQueue.main.async {
 					self.updateView()
 				}
+			}
+			DispatchQueue.main.async{
+				self.rootView.isUserInteractionEnabled = true
+				self.rootView.layer.opacity = 1
 			}
 			
 		}
