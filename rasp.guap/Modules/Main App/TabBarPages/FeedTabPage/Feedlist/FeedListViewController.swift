@@ -114,14 +114,22 @@ class FeedListViewController: UITableViewController {
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()
 		cell.container.addTarget(action: { (_) in
-						let config = SFSafariViewController.Configuration()
-			guard let url = URL(string: self.stream.feed[indexPath.row].postUrl) else {return}
-						let vc = SFSafariViewController(url: url, configuration: config)
-						vc.modalPresentationStyle = .popover
-						self.present(vc, animated: true, completion: nil)
+			let element = self.stream.feed[indexPath.row]
+			if let url = URL(string: "vk://\(element.postUrl)"){
+				UIApplication.shared.open(url, options: [:], completionHandler: { success in
+					if !success{ self.openPost(url: element.postUrl)}
+				})
+			} else { self.openPost(url: element.postUrl)}
 		}, for: .touchUpInside)
 		return cell
 		
+	}
+	func openPost(url:String){
+		let config = SFSafariViewController.Configuration()
+		guard let url = URL(string: "https://\(url)") else {return}
+		let vc = SFSafariViewController(url: url, configuration: config)
+		vc.modalPresentationStyle = .popover
+		self.present(vc, animated: true, completion: nil)
 	}
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.stream.feed.count+1

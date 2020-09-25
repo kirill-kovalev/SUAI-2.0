@@ -284,12 +284,13 @@ class FeedBriefInfoViewController: UIViewController {
 				
 				let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: element.source.name))
 				tapContainer.addTarget(action: { _ in
-					let config = SFSafariViewController.Configuration()
-					print("url: \(element.postUrl)")
-					guard let url = URL(string: element.postUrl) else {return}
-					let vc = SFSafariViewController(url: url, configuration: config)
-					vc.modalPresentationStyle = .popover
-					self.present(vc, animated: true, completion: nil)
+
+					if let url = URL(string: "vk://\(element.postUrl)"){
+						UIApplication.shared.open(url, options: [:], completionHandler: { success in
+							if !success{ self.openPost(url: element.postUrl)}
+						})
+					} else { self.openPost(url: element.postUrl)}
+					
 				}, for: .touchUpInside)
                 stack.addArrangedSubview(tapContainer)
             }
@@ -300,6 +301,13 @@ class FeedBriefInfoViewController: UIViewController {
         }
         
     }
+	func openPost(url:String){
+		let config = SFSafariViewController.Configuration()
+		guard let url = URL(string: "https://\(url)") else {return}
+		let vc = SFSafariViewController(url: url, configuration: config)
+		vc.modalPresentationStyle = .popover
+		self.present(vc, animated: true, completion: nil)
+	}
     func generateNewsView(from element:SAFeedElement,source:String = "") -> PocketNewsView{
         let newsView = PocketNewsView()
         
