@@ -97,8 +97,12 @@ class FeedTabViewController: ViewController<FeedTabView> {
 	
 	func reloadSources(){
 		DispatchQueue.global().async {
-			self.news.loadSourceList()
-			DispatchQueue.main.async { self.showSources() }
+			
+			if SANews.shared.loadSourceList(){
+				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить новости")
+				DispatchQueue.main.async { self.showSources() }
+			}
+			
 		}
 	}
 	func showSources(){

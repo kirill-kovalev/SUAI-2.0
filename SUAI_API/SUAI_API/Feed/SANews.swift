@@ -19,20 +19,23 @@ public class SANews{
     public static let shared = SANews()
     public var streams:[SAFeedStream] = []
     
-    public func loadSourceList(){
+    public func loadSourceList() ->Bool{
 		if let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder) ?? UserDefaults.standard.data(forKey: self.userDefaultsKey){
 			do{
 				let decodedData  = try JSONDecoder().decode([FeedSource].self, from: data)
-				self.streams = []
-				for (source) in decodedData {
-					self.streams.append(SAFeedStream(source: source))
+				if !decodedData.isEmpty{
+					self.streams = []
+					for (source) in decodedData {
+						self.streams.append(SAFeedStream(source: source))
+					}
+					UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+					return true
 				}
-				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
 			}catch{
 				print("SANews source list: \(error)")
 			}
 		}
-        
+        return false
     }
     
     public func get(name:String)->SAFeedStream?{
