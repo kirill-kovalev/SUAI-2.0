@@ -69,11 +69,11 @@ public class PocketAPI{
     
     
     public func syncSetTask(method: SetMethods,params:[String:Any] = [: ]) -> Data?{
-		if let token = VK.sessions.default.accessToken?.get() {
-            config.httpAdditionalHeaders = ["Token": token]
-		}else{
-			return nil
-		}
+//		if let token = VK.sessions.default.accessToken?.get() {
+//            config.httpAdditionalHeaders = ["Token": token]
+//		}else{
+//			return nil
+//		}
 		
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
         var request = URLRequest(url: url)

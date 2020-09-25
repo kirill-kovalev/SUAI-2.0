@@ -15,11 +15,23 @@ class VKLoginPageViewController: UIViewController {
 	@IBOutlet weak var LoginButton: UIButton!
 	@IBOutlet weak var errLabel: UILabel!
     @IBAction func loginViaVK(_ sender: UIButton, forEvent event: UIEvent) {
+		self.errLabel.text = ""
+		self.errLabel.isHidden = true
+		VK.sessions.default.logOut()
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
-            DispatchQueue.main.async {
-                let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-            }
+			SAUserSettings.shared.reset()
+			if SAUserSettings.shared.reload(){
+				DispatchQueue.main.async {
+					let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+				}
+			}else{
+				DispatchQueue.main.async {
+					self.errLabel.text = "Не удалось синхронизировать настройки.\nПерезйадите в приложение позже."
+					self.errLabel.isHidden = false
+				}
+			}
+            
         }) { (err) in
             DispatchQueue.main.async {
 				self.errLabel.text = self.errorText(err: err)
@@ -116,17 +128,14 @@ class VKLoginPageViewController: UIViewController {
 			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
 		})
 		
+		VK.release()
+        VK.setUp(appId: "7578765", delegate: self)
+		
 	}
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
 		self.LoginButton.layer.borderColor = self.LoginButton.titleLabel?.textColor.cgColor
 	}
-    override func viewDidAppear(_ animated: Bool){
-		super.viewDidAppear(animated)
-        VK.release()
-        VK.setUp(appId: "7578765", delegate: self)
-		VK.sessions.default.logOut()
-    }
 }
 extension VKLoginPageViewController:SwiftyVKDelegate{
     func vkNeedToPresent(viewController: VKViewController) {
