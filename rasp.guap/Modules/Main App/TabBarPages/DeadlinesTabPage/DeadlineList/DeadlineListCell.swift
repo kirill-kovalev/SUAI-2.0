@@ -10,6 +10,15 @@ import UIKit
 import SUAI_API
 
 class DeadlineListCell: PocketDeadlineView{
+	
+	lazy var indicator:PocketActivityIndicatorView = {
+		let indicator = PocketActivityIndicatorView(frame: .zero)
+		indicator.isHidden = true
+		indicator.stopAnimating()
+		indicator.color = self.checkbox.checkedBorderColor
+		return indicator
+	}()
+	
     public func onSelect( action: @escaping (DeadlineListCell)->Void){
         self.onSelectFunc = action
     }
@@ -21,7 +30,8 @@ class DeadlineListCell: PocketDeadlineView{
     private var onSelectFunc:((DeadlineListCell)->Void)?
     
     @objc private func selectHandler(_ sender: UITapGestureRecognizer){
-        if sender.location(in: self).x < self.checkbox.frame.minX {
+		
+		if !indicator.isAnimating, sender.location(in: self).x < self.checkbox.frame.minX {
             self.onSelectFunc?(self)
         }else{
             self.checkbox.isChecked.toggle()
@@ -35,6 +45,11 @@ class DeadlineListCell: PocketDeadlineView{
         
     required init() {
         super.init()
+		self.addSubview(indicator)
+		indicator.snp.makeConstraints { (make) in
+			make.height.width.equalTo(40)
+			make.center.equalTo(self.checkbox)
+		}
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.selectHandler(_:))))
     }
     

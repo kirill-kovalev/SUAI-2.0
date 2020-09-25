@@ -53,7 +53,7 @@ class DeadlineListController: UIViewController {
             self.tableView.addArrangedSubview(newView)
 			if !deadline.isPro{
 				newView.onCheck { (cell) in
-					self.delegate?.deadlineDidChecked(deadline: deadline)
+					self.didChecked(deadline: deadline,cell:newView)
 				}
 			}else{
 				newView.checkbox.isHidden = true
@@ -68,12 +68,50 @@ class DeadlineListController: UIViewController {
 			}
             
             newView.onSelect { (cell) in
-                self.delegate?.deadlineDidSelected(deadline: deadline)
+				self.didSelect(deadline: deadline,cell:newView)
             }
             
         }
     }
     
+	func didSelect(deadline:SADeadline,cell:DeadlineListCell){
+		let vc = DeadlineInfoModalViewController(deadline: deadline)
+        vc.onChange = {
+			self.delegate?.deadlineDidSelected(deadline: deadline)
+        }
+        self.present(vc, animated: true, completion: nil)
+	}
+	func didChecked(deadline:SADeadline,cell:DeadlineListCell){
+		cell.indicator.isHidden = false
+		cell.checkbox.isHidden = true
+		cell.isUserInteractionEnabled = false
+		cell.indicator.startAnimating()
+		
+		DispatchQueue.global(qos: .background).async {
+            if deadline.closed == 0 {
+				if !SADeadlines.shared.close(deadline: deadline){
+					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
+				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт") }
+            }else{
+				if !SADeadlines.shared.reopen(deadline: deadline) {
+					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
+				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
+            }
+            
+			//if !SADeadlines.shared.loadFromServer(){ }//MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
+
+			DispatchQueue.main.async {
+				cell.checkbox.isHidden = false
+				cell.indicator.stopAnimating()
+			}
+			DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+				cell.isUserInteractionEnabled = true
+				self.delegate?.deadlineDidChecked(deadline: deadline)
+			}
+        }
+		
+		
+	}
     
     
     

@@ -195,30 +195,11 @@ extension DeadlinesTabViewController:SwitchSelectorDelegate{
 
 extension DeadlinesTabViewController:DeadlineListDelegate{
     func deadlineDidSelected(deadline: SADeadline) {
-        let vc = DeadlineInfoModalViewController(deadline: deadline)
-        vc.onChange = {
-            self.reloadItems()
-        }
-        self.present(vc, animated: true, completion: nil)
+		self.reloadItems()
     }
     
     func deadlineDidChecked(deadline: SADeadline) {
-        
-        DispatchQueue.global(qos: .background).async {
-            if deadline.closed == 0 {
-				if !SADeadlines.shared.close(deadline: deadline){
-					MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
-				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт") }
-            }else{
-				if !SADeadlines.shared.reopen(deadline: deadline) {
-					MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
-				}else{ MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт") }
-            }
-            
-			if !SADeadlines.shared.loadFromServer(){ }//MainTabBarController.Snack(status: .err, text: "Не получилось обновить дедлайны") }
-
-			DispatchQueue.main.async { self.reloadItems() }
-        }
+		self.reloadItems()
     }
     
     
