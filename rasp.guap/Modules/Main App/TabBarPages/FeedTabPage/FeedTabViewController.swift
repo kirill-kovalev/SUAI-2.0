@@ -85,9 +85,6 @@ class FeedTabViewController: ViewController<FeedTabView> {
 					self.rootView.sourceSelector.selectedIndex += 1
 					self.didSelect(self.rootView.sourceSelector.selectedIndex)
 			}
-			if index == 0 || index > self.rootView.sourceSelector.count-1 {
-				
-			}
 			
 		}
 		
@@ -99,8 +96,13 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		DispatchQueue.global().async {
 			
 			if SANews.shared.loadSourceList(){
-				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить новости")
-				DispatchQueue.main.async { self.showSources() }
+				DispatchQueue.main.async {
+					
+					self.rootView.sourceSelector.updateView()
+					self.showSources()
+				}
+			}else{
+				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить список источников")
 			}
 			
 		}

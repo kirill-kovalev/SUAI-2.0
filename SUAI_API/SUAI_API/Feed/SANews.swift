@@ -19,8 +19,10 @@ public class SANews{
     public static let shared = SANews()
     public var streams:[SAFeedStream] = []
     
-    public func loadSourceList() ->Bool{
-		if let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder) ?? UserDefaults.standard.data(forKey: self.userDefaultsKey){
+	public func loadSourceList(default:Bool = false) ->Bool{
+		let params = `default` ? ["default":"true"] : [:]
+		
+		if let data = PocketAPI.shared.syncLoadTask(method: .getFeedOrder,params: params ) ?? UserDefaults.standard.data(forKey: self.userDefaultsKey){
 			do{
 				let decodedData  = try JSONDecoder().decode([FeedSource].self, from: data)
 				if !decodedData.isEmpty{
@@ -35,6 +37,7 @@ public class SANews{
 				print("SANews source list: \(error)")
 			}
 		}
+		if !`default` { return loadSourceList(default: true)}
         return false
     }
     
