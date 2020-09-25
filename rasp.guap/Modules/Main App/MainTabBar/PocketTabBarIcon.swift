@@ -20,9 +20,9 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         textColor = .clear
-        highlightTextColor = Asset.PocketColors.pocketDarkBlue.color
+        highlightTextColor = Asset.PocketColors.tabbarActiveIcon.color
         iconColor = Asset.PocketColors.pocketGray.color
-        highlightIconColor = Asset.PocketColors.pocketDarkBlue.color
+        highlightIconColor = Asset.PocketColors.tabbarActiveIcon.color
         
         
         //imageView.bounds.size = CGSize(width: 60 , height: 60)
@@ -67,14 +67,14 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 			self.titleLabel.layer.opacity = 0
 		}
         
-        UIView.animate(withDuration: 0.3) {
+        //UIView.animate(withDuration: 0.3) {
             self.imageView.tintColor = show ? self.highlightIconColor : self.iconColor
 			if !self.hideText{
 				self.titleLabel.textColor = show ? self.highlightTextColor : self.textColor
 				self.titleLabel.layer.opacity = show ? 1 : 0
 				self.titleLabel.transform = show ? .identity : CGAffineTransform(translationX: 0, y: 100)
 			}
-        }
+        //}
     }
     
     

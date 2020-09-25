@@ -116,6 +116,7 @@ internal enum Asset {
     internal static let searchBarFieldBackground = ColorAsset(name: "search_bar_field_background")
     internal static let searchBarFieldTint = ColorAsset(name: "search_bar_field_tint")
     internal static let separatorCommon = ColorAsset(name: "separator_common")
+    internal static let tabbarActiveIcon = ColorAsset(name: "tabbar_active_icon")
   }
   internal enum SystemIcons {
     internal static let likes = ImageAsset(name: "Likes")
