@@ -61,7 +61,7 @@ class DeadlinesTabView:TabBarPageView {
 		scroll.snp.makeConstraints { (make) in
 			make.top.equalToSuperview()
 			make.left.right.equalToSuperview()
-			make.bottom.equalToSuperview()
+			make.bottom.equalTo(safeAreaLayoutGuide)
 		}
         pocketDiv.snp.makeConstraints { (make) in
 			make.top.equalTo(scroll.contentLayoutGuide).offset(20)
