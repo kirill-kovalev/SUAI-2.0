@@ -12,35 +12,36 @@ class PocketLongActionButton: PocketButton {
 	let indicator:PocketActivityIndicatorView = PocketActivityIndicatorView(frame: .zero)
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+		
 		self.addSubview(indicator)
+		
+		indicator.isUserInteractionEnabled = false
+		indicator.snp.makeConstraints {
+			$0.height.width.equalTo(self.snp.height)
+			$0.center.equalToSuperview()
+		}
+		indicator.stopAnimating()
     }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-		self.addSubview(indicator)
-    }
+	
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+	
 
     override func setupView(){
 		super.setupView()
 		indicator.color = self.titleLabel?.textColor ?? .gray
-		indicator.frame = self.frame
-		indicator.setNeedsLayout()
-		indicator.layoutIfNeeded()
-		
     }
 	
 	func disable(){
 		self.isActive = false
-		self.titleLabel?.isOpaque = true
-		self.imageView?.isOpaque = true
+		self.titleLabel?.layer.opacity = 0
+		self.imageView?.layer.opacity = 0
 		self.indicator.startAnimating()
 	}
 	func enable(){
-		self.isActive = false
-		self.titleLabel?.isOpaque = false
-		self.imageView?.isOpaque = false
-		self.indicator.startAnimating()
+		self.isActive = true
+		self.titleLabel?.layer.opacity = 1
+		self.imageView?.layer.opacity = 1
+		self.indicator.stopAnimating()
 	}
     
 
