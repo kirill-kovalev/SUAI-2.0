@@ -9,6 +9,8 @@
 import Foundation
 
 public class SADeadlines{
+	private var sync = 0
+	
 	public static let shared = SADeadlines()
 	
 	public var nearest:[SADeadline] {
@@ -43,8 +45,12 @@ public class SADeadlines{
 	
 	private var userDefaultsKey:String {"\(Self.self)Cache"}
 	public func loadFromServer() -> Bool{
+		while self.sync > 0 {}
+		self.sync += 1
 		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
 		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) {
+			self.sync -= 1
+			
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
 				self.lastUpdate = Date()
@@ -54,6 +60,7 @@ public class SADeadlines{
 				print("Deadlines: \(error)")
 			}
 		}
+		self.sync -= 1
 		return false
 	}
 	public func loadFromCache(){
@@ -82,6 +89,9 @@ public class SADeadlines{
 	}
 	
 	public func close(deadline: SADeadline) -> Bool {
+		while self.sync > 0 {}
+		self.sync += 1
+		
 		guard let index:Int = index(deadline: deadline) else {return false}
 		self.deadlines[index].closed = 1
 		
@@ -90,11 +100,14 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 0}
-		if needUpdate { let _ = self.loadFromServer()}
-		return success
+		self.sync -= 1
+		return success && self.loadFromServer()
 	}
 	
 	public func reopen(deadline: SADeadline) -> Bool {
+		while self.sync > 0 {}
+		self.sync += 1
+		
 		guard let index:Int = index(deadline: deadline) else {return false}
 		self.deadlines[index].closed = 0
 		
@@ -103,11 +116,14 @@ public class SADeadlines{
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if !success {self.deadlines[index].closed = 1}
-		if needUpdate { let _ = self.loadFromServer()}
-		return success
+		self.sync -= 1
+		return success && self.loadFromServer()
 	}
 	
 	public func create(deadline: SADeadline) -> Bool {
+		while self.sync > 0 {}
+		self.sync += 1
+		
 		
 		var success = false
 		if let data = PocketAPI.shared.syncSetTask(method: .createDeadline, params: [
@@ -120,9 +136,13 @@ public class SADeadlines{
 			//print(String(data: data, encoding: .utf8))
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
+		self.sync -= 1
 		return success && self.loadFromServer()
 	}
 	public func edit(deadline: SADeadline) -> Bool{
+		while self.sync > 0 {}
+		self.sync += 1
+		
 		var success = false
 		guard let index:Int = index(deadline: deadline) else {return false}
 		let old = self.deadlines[index]
@@ -140,15 +160,21 @@ public class SADeadlines{
 		}
 		if !success {self.deadlines[index] = old}
 		if needUpdate { let _ = self.loadFromServer()}
-		return success
+		self.sync -= 1
+		return success && self.loadFromServer()
 	}
 	public func delete(deadline: SADeadline) -> Bool{
+		while self.sync > 0 {}
+		self.sync += 1
+		
 		var success = false
 		if let data = PocketAPI.shared.syncSetTask(method: .deleteDeadline, params: ["id":deadline.id]) { 
 			success = String(data: data, encoding: .utf8)?.contains("success") ?? false
 		}
 		if success {self.deadlines = self.deadlines.filter{$0.id != deadline.id} }
-		return success
+		
+		self.sync -= 1
+		return success && self.loadFromServer()
 	}
 	
 	
