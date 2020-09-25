@@ -16,14 +16,7 @@ class FeedBriefInfoViewController: UIViewController {
     override func loadView() {
         self.view = FeedBriefInfoView()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		DispatchQueue.global(qos: .background).async {
-			DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
-			self.reloadPage(needReload: true)
-			DispatchQueue.main.async { self.rootView.indicator.stopAnimating() }
-        }
-    }
+
 	func reloadPage(needReload:Bool = false){
 		var offset:CGPoint = .zero
 		if !needReload{ DispatchQueue.main.async {offset = self.rootView.contentOffset}}
@@ -42,8 +35,18 @@ class FeedBriefInfoViewController: UIViewController {
 		self.loadNews()
 		if !needReload{ DispatchQueue.main.async {self.rootView.contentOffset = offset}}
 	}
+	var firstAppear = true
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		if firstAppear {
+			self.firstAppear = false
+			DispatchQueue.global(qos: .background).async {
+				DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
+				self.reloadPage(needReload: true)
+				DispatchQueue.main.async { self.rootView.indicator.stopAnimating() }
+			}
+			return
+		}
 		DispatchQueue.global(qos: .background).async {
 			if SABrief.shared.loadFromServer() &&
 				SADeadlines.shared.loadFromServer() &&
