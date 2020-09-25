@@ -29,12 +29,12 @@ class MainTabBarController : ESTabBarController{
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBar.layer.cornerRadius = 10
+        self.tabBar.layer.cornerRadius = 10
         self.tabBar.layer.masksToBounds = true
         self.tabBar.barTintColor = Asset.PocketColors.pocketWhite.color
-//        self.tabBar.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
-//        self.tabBar.layer.shadowRadius = 10
-//        self.tabBar.layer.shadowOffset = .zero
+        self.tabBar.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
+        self.tabBar.layer.shadowRadius = 10
+        self.tabBar.layer.shadowOffset = .zero
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
     }
