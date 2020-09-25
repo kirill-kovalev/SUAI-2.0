@@ -38,7 +38,7 @@ class PocketTagButton: Button {
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
         self.titleLabel?.textAlignment = .center
     }
-    func setupSizeConstraints(){
+    private func setupSizeConstraints(){
         self.snp.removeConstraints()
         self.titleLabel?.snp.removeConstraints()
         self.snp.makeConstraints { (make) in
