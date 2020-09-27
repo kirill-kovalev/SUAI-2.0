@@ -13,29 +13,137 @@ import SUAI_API
 class NotficationManager{
 	static let shared = NotficationManager()
 	
-	private let center = UNUserNotificationCenter.current()
+	public let center = UNUserNotificationCenter.current()
 	
-	
-	init(){
-		center.requestAuthorization(options: []) { (didAllow, err) in
-			print("\(#function): \(err)")
+	public var isAuth:Bool {
+		var success = false
+		let sem = DispatchSemaphore(value: 0)
+		self.center.getNotificationSettings { (settings) in
+			success =  (settings.authorizationStatus == .authorized)
+		}
+		let _ = sem.wait(timeout: .distantFuture)
+		return success
+	}
+	public func auth() -> Bool{
+		var success = false
+		let sem = DispatchSemaphore(value: 0)
+		center.requestAuthorization(options: [.alert,.sound]) { (didAllow, err) in
+			print("\(#function): \(String(describing: err))")
 			print("\(#function): didAllow = \(didAllow)")
+			success = didAllow
+			sem.signal()
+		}
+		let _ = sem.wait(timeout: .distantFuture)
+		return success
+	}
+	public func add(request:UNNotificationRequest) -> Bool{
+		var success = false
+		let sem = DispatchSemaphore(value: 0)
+		center.add(request) { (err) in
+			if err == nil {
+				success = true
+			}else{
+				print(err as Any)
+			}
+			sem.signal()
+		}
+		let _ = sem.wait(timeout: .distantFuture)
+		return success
+	}
+	
+	public func clear(){
+		center.removeAllPendingNotificationRequests()
+		center.removeAllDeliveredNotifications()
+	}
+	
+	public func clearDeadlineNotifications(){
+		center.getPendingNotificationRequests { (requests) in
+			let lessonRequests = requests.filter { $0.identifier.contains("deadline") }
+			let identifiers = lessonRequests.map {$0.identifier}
+			self.center.removePendingNotificationRequests(withIdentifiers: identifiers)
+			for id in identifiers {
+				print("removed notification with id: \(id)")
+			}
+		}
+	}
+	public func clearLessonNotifications(){
+		center.getPendingNotificationRequests { (requests) in
+			let lessonRequests = requests.filter { $0.identifier.contains("lesson") }
+			let identifiers = lessonRequests.map {$0.identifier}
+			self.center.removePendingNotificationRequests(withIdentifiers: identifiers)
+			for id in identifiers {
+				print("removed notification with id: \(id)")
+			}
 		}
 	}
 	
-	func setNotification(){
-		
-		
-//		let notification =
+	public func createNotification(for:SALesson)->UNNotificationRequest{
+		let lesson = `for`
+		let offset = 5
+		let content = createContent(title: lesson.name, body: "Начало через \(offset) минут", badge: 0)
+		let trigger = createTrigger(weekday: lesson.day, hour: lesson.startTime.hour!, minute: lesson.startTime.minute!)
+		let request = UNNotificationRequest(identifier: "lesson_\(lesson)", content: content, trigger: trigger)
+		return request
+	}
+	public func createNotification(for:SADeadline)->UNNotificationRequest{
+		let deadline = `for`
+		let content = createContent(title: "Пора приступать за \(deadline.deadline_name ?? "")", body: "Дедлайн наступил", badge: 1)
+		let trigger = createTrigger(date: deadline.end ?? Date())
+		let request = UNNotificationRequest(identifier: "deadline_\(deadline)", content: content, trigger: trigger)
+		return request
 	}
 	
-	func createTrigger(weekday:Int,hour:Int,minutes:Int)->UNNotificationTrigger{
-		let dateComponents = DateComponents(calendar: .current, timeZone: .current,hour: hour, minute: minutes, second: 0, weekday: Calendar.convertToUS(weekday))
-		let triggerDate = Calendar.current.date(from: dateComponents) ?? Date()
-		let dateMatching = Calendar.current.dateComponents([.weekday,.hour,.minute], from: triggerDate)
+	private func createContent(title:String,body:String,badge:Int) -> UNMutableNotificationContent{
+		let notification = UNMutableNotificationContent()
+		notification.title = title
+		notification.body = body
+		notification.sound = .default
+		notification.badge = NSNumber(value: badge)
+		return notification
+	}
+	
+	private func createTrigger(weekday:Int,hour:Int,minute:Int,offset:Int = 0)->UNNotificationTrigger{
+		let hours = (minute-offset) < 0 ? hour-1 : hour
+		let hour = hours > 0 ? hours : 23
 		
-		let trigger = UNCalendarNotificationTrigger(dateMatching: dateMatching, repeats: true)
+		let minute = (minute-offset) < 0 ? (60-offset) : minute-offset
+		
+
+		let dateComponents = DateComponents(hour: hour, minute: minute,weekday: Calendar.convertToUS(weekday))
+		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 		
 		return trigger
+	}
+	
+	private func createTrigger(date:Date)->UNNotificationTrigger{
+		
+		let dateComponents = Calendar.current.dateComponents([.year,.month,.day], from: date)
+		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+		
+		return trigger
+	}
+	
+}
+
+extension SATimetable{
+	func setupNotifications() -> Bool{
+		var success = true
+		NotficationManager.shared.clearLessonNotifications()
+		for lesson in self.get(week: .current){
+			let request = NotficationManager.shared.createNotification(for: lesson)
+			if !NotficationManager.shared.add(request: request) {success = false}
+		}
+		return success
+	}
+}
+extension SADeadlines{
+	func setupNotifications() -> Bool{
+		var success = true
+		NotficationManager.shared.clearLessonNotifications()
+		for deadline in self.open {
+			let request = NotficationManager.shared.createNotification(for: deadline)
+			if !NotficationManager.shared.add(request: request) {success = false}
+		}
+		return success
 	}
 }
