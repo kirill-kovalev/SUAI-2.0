@@ -110,9 +110,11 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 		super.viewDidAppear(animated)
 		DispatchQueue.global(qos: .background).async {
 			if let user = self.currentUser{
-				if SASchedule.shared.load(for: user).isEmpty {
+				let newTimetable = SASchedule.shared.load(for: user)
+				if newTimetable.isEmpty {
 					MainTabBarController.Snack(status: .err, text: "Не удалось обновить расписание")
 				}else{
+					newTimetable.setupNotifications()
 					DispatchQueue.main.async{ self.daySelectController.update() }
 					self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
 				}

@@ -129,9 +129,17 @@ extension SATimetable{
 	func setupNotifications() -> Bool{
 		var success = true
 		NotificationManager.shared.clearLessonNotifications()
+		print(self.get(week: .current))
 		for lesson in self.get(week: .current){
 			let request = NotificationManager.shared.createNotification(for: lesson)
-			if !NotificationManager.shared.add(request: request) {success = false} else {print("created notif for timetable: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())")}
+			let c = (request.trigger as? UNCalendarNotificationTrigger)?.dateComponents
+			if !NotificationManager.shared.add(request: request) {
+				success = false
+				print("err : weekday = \(c?.weekday) ; h = \( c?.hour ); m = \(c?.minute) ; (\(request.content.title)")
+			} else {
+				print("created notif for timetable: weekday = \(c?.weekday) ; h = \( c?.hour ); m = \(c?.minute) ; (\(request.content.title))")
+				
+			}
 			
 		}
 		return success
