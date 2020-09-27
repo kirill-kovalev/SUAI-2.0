@@ -60,6 +60,7 @@ class FeedBriefInfoViewController: UIViewController {
 				}
 				
 				self.reloadPage()
+				self.firstAppear = false
 			}
 			
         }
