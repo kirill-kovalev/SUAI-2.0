@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		if !VK.needToSetUp {
 //			SATracker.track("start")
 //		}
-//		if !NotficationManager.shared.isAuth {
+//		if !NotificationManager.shared.isAuth {
 //			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
 //		}
 	}

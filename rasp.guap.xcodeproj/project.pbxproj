@@ -117,7 +117,7 @@
 		5DA7DD3724D4B8FB00176157 /* PagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7DD3624D4B8FB00176157 /* PagedView.swift */; };
 		5DAEA611251E48B4000A2924 /* PocketButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA610251E48B4000A2924 /* PocketButton.swift */; };
 		5DAEA613251E504C000A2924 /* PocketLongActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA612251E504C000A2924 /* PocketLongActionButton.swift */; };
-		5DAEA61525211096000A2924 /* NotficationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA61425211096000A2924 /* NotficationManager.swift */; };
+		5DAEA61525211096000A2924 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA61425211096000A2924 /* NotificationManager.swift */; };
 		5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDFF524E9889D00B0B884 /* Calendar.swift */; };
 		5DB46E1D251B5FC6009F6635 /* PocketActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB46E1C251B5FC6009F6635 /* PocketActivityIndicatorView.swift */; };
 		5DB5612C24E83E000072CD85 /* ScheduleDaySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */; };
@@ -297,7 +297,7 @@
 		5DA7DD3624D4B8FB00176157 /* PagedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedView.swift; sourceTree = "<group>"; };
 		5DAEA610251E48B4000A2924 /* PocketButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketButton.swift; sourceTree = "<group>"; };
 		5DAEA612251E504C000A2924 /* PocketLongActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketLongActionButton.swift; sourceTree = "<group>"; };
-		5DAEA61425211096000A2924 /* NotficationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotficationManager.swift; sourceTree = "<group>"; };
+		5DAEA61425211096000A2924 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5DAEDFF524E9889D00B0B884 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		5DB46E1C251B5FC6009F6635 /* PocketActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5DB5612B24E83E000072CD85 /* ScheduleDaySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectViewController.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */,
-				5DAEA61425211096000A2924 /* NotficationManager.swift */,
+				5DAEA61425211096000A2924 /* NotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1314,7 +1314,7 @@
 				5DA10F7824DC58A900D09BD8 /* FourthPageView.swift in Sources */,
 				5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */,
 				5D2ADF9B24D42407006DACED /* ModalViewController.swift in Sources */,
-				5DAEA61525211096000A2924 /* NotficationManager.swift in Sources */,
+				5DAEA61525211096000A2924 /* NotificationManager.swift in Sources */,
 				5D74FE2924E13E5B00FC38B8 /* TimetableViewController.swift in Sources */,
 				5DED6DB424FD676D0092F67D /* RocketModalViewController.swift in Sources */,
 				5DED6DB224FD67610092F67D /* RocketModalView.swift in Sources */,
@@ -1463,7 +1463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1485,7 +1485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

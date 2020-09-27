@@ -37,7 +37,7 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowOffset = .zero
 		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
 		
-		if !NotficationManager.shared.auth(){
+		if !NotificationManager.shared.auth(){
 			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
 		}
     }

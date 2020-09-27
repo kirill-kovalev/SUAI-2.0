@@ -1,5 +1,5 @@
 //
-//  NotficationManager.swift
+//  NotificationManager.swift
 //  rasp.guap
 //
 //  Created by Кирилл on 27.09.2020.
@@ -10,8 +10,8 @@ import Foundation
 import UserNotifications
 import SUAI_API
 
-class NotficationManager{
-	static let shared = NotficationManager()
+class NotificationManager{
+	static let shared = NotificationManager()
 	
 	public let center = UNUserNotificationCenter.current()
 	
@@ -128,10 +128,10 @@ class NotficationManager{
 extension SATimetable{
 	func setupNotifications() -> Bool{
 		var success = true
-		NotficationManager.shared.clearLessonNotifications()
+		NotificationManager.shared.clearLessonNotifications()
 		for lesson in self.get(week: .current){
-			let request = NotficationManager.shared.createNotification(for: lesson)
-			if !NotficationManager.shared.add(request: request) {success = false} else {print("created notif for timetable: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())")}
+			let request = NotificationManager.shared.createNotification(for: lesson)
+			if !NotificationManager.shared.add(request: request) {success = false} else {print("created notif for timetable: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())")}
 			
 		}
 		return success
@@ -140,10 +140,10 @@ extension SATimetable{
 extension SADeadlines{
 	func setupNotifications() -> Bool{
 		var success = true
-		NotficationManager.shared.clearLessonNotifications()
+		NotificationManager.shared.clearLessonNotifications()
 		for deadline in self.open {
-			let request = NotficationManager.shared.createNotification(for: deadline)
-			if !NotficationManager.shared.add(request: request) {success = false} else { print("created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())") }
+			let request = NotificationManager.shared.createNotification(for: deadline)
+			if !NotificationManager.shared.add(request: request) {success = false} else { print("created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())") }
 		}
 		return success
 	}
