@@ -14,8 +14,8 @@ extension Calendar{
         return d < 0 ? 6 : d
     }
     static func convertToUS(_ day:Int)->Int{
-        let d = day + 1
-        return d > 6 ? 0 : d
+        let d = day + 2
+        return d > 7 ? 1 : d
     }
     
     var weekdaysRu:[String] {
