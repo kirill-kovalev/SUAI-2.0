@@ -41,6 +41,12 @@ class FeedBriefInfoViewController: UIViewController {
 		if firstAppear {
 			DispatchQueue.global(qos: .background).async {
 				DispatchQueue.main.async { self.rootView.indicator.startAnimating() }
+				DispatchQueue.main.async {
+					for view in self.rootView.stack.arrangedSubviews{
+						self.rootView.stack.removeArrangedSubview(view)
+						view.removeFromSuperview()
+					}
+				}
 				self.reloadPage(needReload: true)
 				self.firstAppear = false
 				DispatchQueue.main.async {self.rootView.indicator.stopAnimating() }
