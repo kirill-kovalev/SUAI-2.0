@@ -115,7 +115,7 @@ public class SwitchSelector: UIScrollView {
 			if selected.frame.origin.x < self.contentOffset.x { self.contentOffset.x = selected.frame.origin.x}
 			let rightX = selected.frame.origin.x + selected.frame.width
 			let overflow = self.frame.width + self.contentOffset.x - rightX
-			if (rightX) > (self.frame.width) { self.contentOffset.x -= overflow}
+			if (rightX - self.contentOffset.x) > (self.frame.width) { self.contentOffset.x -= overflow}
 		} else{
 			
 			for (i,view) in self.stack.arrangedSubviews.enumerated(){
