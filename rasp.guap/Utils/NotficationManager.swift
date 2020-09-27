@@ -19,7 +19,7 @@ class NotficationManager{
 		var success = false
 		let sem = DispatchSemaphore(value: 0)
 		self.center.getNotificationSettings { (settings) in
-			success =  (settings.authorizationStatus == .authorized)
+			success =  (settings.authorizationStatus == .authorized) //|| (settings.authorizationStatus == .notDetermined)
 		}
 		let _ = sem.wait(timeout: .distantFuture)
 		return success
@@ -118,7 +118,7 @@ class NotficationManager{
 	private func createTrigger(date:Date)->UNNotificationTrigger{
 		
 		let dateComponents = Calendar.current.dateComponents([.year,.month,.day], from: date)
-		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 		
 		return trigger
 	}
@@ -131,7 +131,8 @@ extension SATimetable{
 		NotficationManager.shared.clearLessonNotifications()
 		for lesson in self.get(week: .current){
 			let request = NotficationManager.shared.createNotification(for: lesson)
-			if !NotficationManager.shared.add(request: request) {success = false}
+			if !NotficationManager.shared.add(request: request) {success = false} else {print("created notif for timetable: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())")}
+			
 		}
 		return success
 	}
@@ -142,8 +143,9 @@ extension SADeadlines{
 		NotficationManager.shared.clearLessonNotifications()
 		for deadline in self.open {
 			let request = NotficationManager.shared.createNotification(for: deadline)
-			if !NotficationManager.shared.add(request: request) {success = false}
+			if !NotficationManager.shared.add(request: request) {success = false} else { print("created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())") }
 		}
 		return success
 	}
 }
+// - MARK: УВедомления расписания!!!!!

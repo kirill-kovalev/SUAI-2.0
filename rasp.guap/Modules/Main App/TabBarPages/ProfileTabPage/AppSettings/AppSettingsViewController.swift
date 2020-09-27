@@ -127,9 +127,14 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			
 			let originGroup = SAUserSettings.shared.group
 			SAUserSettings.shared.group = name
-			if SAUserSettings.shared.update() {
+			if let group = SASchedule.shared.groups.get(name: name),
+			SAUserSettings.shared.update() {
 				print("group set to \(name)")
 				MainTabBarController.Snack(status: .ok, text: "Группа установлена")
+				// - MARK: УВедомления расписания!!!!!
+				if !SASchedule.shared.load(for: group).setupNotifications(){
+					print("Ошибка обновления уведомлений расписания")
+				}
 			}else{
 				SAUserSettings.shared.group = originGroup
 				MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")

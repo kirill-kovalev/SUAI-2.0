@@ -40,6 +40,13 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			}
 			if let user = SASchedule.shared.groups.get(name: group ){
 				let timetable = SASchedule.shared.get(for: user)
+				
+				
+				// - MARK: УВедомления расписания!!!!!
+				if !timetable.setupNotifications(), NotficationManager.shared.isAuth  {
+					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Расписания")}
+				}
+				
 				self.setWatchTimetable(timetable)
 			} else {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить расписание")}
@@ -52,11 +59,16 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить дедлайны")}
 				}
 			}
+			// - MARK: УВедомления дедлайнов!!!!!
+			if !SADeadlines.shared.setupNotifications(), NotficationManager.shared.isAuth {
+				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Дедлайнов")}
+			}
+			
 			self.setText("Загружаю новости")
 			if !SABrief.shared.loadFromServer() {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить сводку")}
 			}
-			SANews.shared.loadSourceList()
+			let _ = SANews.shared.loadSourceList()
 			self.startApp()
 		}else{
 			self.setText("Загружаю список групп")

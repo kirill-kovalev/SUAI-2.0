@@ -35,8 +35,11 @@ class MainTabBarController : ESTabBarController{
         self.tabBar.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOffset = .zero
-		
 		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
+		
+		if !NotficationManager.shared.auth(){
+			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
+		}
     }
 
 	

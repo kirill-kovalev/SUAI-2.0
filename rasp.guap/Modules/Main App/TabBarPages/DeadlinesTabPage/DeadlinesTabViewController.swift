@@ -182,6 +182,11 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 			self.deadlineList.view.isHidden = false
 			self.deadlineList.setItems(list: source)
 		}
+		
+		//
+		if !SADeadlines.shared.setupNotifications(){
+			print("Не получилось обновить уведомления делайнов")
+		}
         
     }
 }
