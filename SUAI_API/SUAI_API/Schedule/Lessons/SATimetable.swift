@@ -20,7 +20,6 @@ public class SATimetable {
 		[.init(hour: 21, minute: 50),.init(hour: 23, minute: 20)]//8
         
     ]
-	//['09:30-11:30', '11:10-12:40', '13:00-14:30', '15:00-16:30', '16:40-18:10', '18:30-20:00', '20:10-21:40']
     public init(for user: SAUsers.User) {
         let _ = load(for: user)
     }
@@ -51,15 +50,25 @@ public class SATimetable {
         case outOfTable = 0
         case odd = 1
         case even = 2
+		case current
     }
     
     public func get(week:Week,day:Int) -> [SALesson] {
-        return self.timetable.filter({ lesson in
-            return lesson.week == week && lesson.day == day
-        }).sorted { (l1, l2) -> Bool in
+        return self.get(week: week).filter({ lesson in
+			return lesson.day == day
+		}).sorted {(l1, l2) in
             return l1.lessonNum < l2.lessonNum
         }
     }
+	public func get(week:Week) -> [SALesson] {
+		let week = (week == .current) ? (
+		( SASchedule.shared.settings?.IsWeekOdd ?? false) ? .odd : .even
+		) : week
+		
+		return self.timetable.filter({ lesson in
+            return lesson.week == week
+        })
+	}
     public func get(itemID:Int) -> [SALesson]{
         return self.timetable.filter({ lesson in
             return lesson.itemID == itemID

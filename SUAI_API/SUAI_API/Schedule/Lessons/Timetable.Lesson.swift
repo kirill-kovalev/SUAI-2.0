@@ -22,8 +22,8 @@ public struct SALesson : Hashable{
     public var groups:[SAUsers.User] = []
     public var prepods:[SAUsers.User] = []
     public var tags:[String] = []
+	public var day:Int
     var week:SATimetable.Week
-    var day:Int
     var itemID: Int
     
     
