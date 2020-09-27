@@ -64,10 +64,21 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		logoutButton.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
 		self.rootView.addHeaderButton(logoutButton)
 		logoutButton.addTarget(action: { (sender) in
-			let alert = UIAlertController(title: "Выйти?", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { _ in self.logout()}))
-			alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in alert.dismiss(animated: true, completion: nil) }))
-			self.present(alert, animated: true, completion: nil)
+			
+			
+			if self.studentCard.rootView.name.text?.contains("Лола") ?? false {
+				let alert = UIAlertController(title: "Скоро рассвет", message: "Выхода нет", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "и полетели", style: .destructive, handler: { _ in self.logout()}))
+				alert.addAction(UIAlertAction(title: "Ключ поверни", style: .cancel, handler: { _ in alert.dismiss(animated: true, completion: nil) }))
+				self.present(alert, animated: true, completion: nil)
+			}else{
+				let alert = UIAlertController(title: "Выйти?", message: "Это действие отменить нельзя.", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { _ in self.logout()}))
+				alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in alert.dismiss(animated: true, completion: nil) }))
+				self.present(alert, animated: true, completion: nil)
+			}
+			
+			
 		}, for: .touchUpInside)
 		self.rootView.title.snp.makeConstraints { (make) in
 			make.bottom.equalToSuperview()
