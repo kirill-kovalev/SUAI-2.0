@@ -65,17 +65,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-//	func applicationDidEnterBackground(_ application: UIApplication) {
-//		if !VK.needToSetUp {
-//			SATracker.track("hide")
-//		}
-//	}
-//	func applicationDidBecomeActive(_ application: UIApplication) {
+
+	func applicationDidBecomeActive(_ application: UIApplication) {
 //		if !VK.needToSetUp {
 //			SATracker.track("start")
 //		}
-//	}
-
+//		if !NotficationManager.shared.isAuth {
+//			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
+//		}
+	}
+	func applicationWillResignActive(_ application: UIApplication) {
+//		if !VK.needToSetUp {
+//			SATracker.track("hide")
+//		}
+	}
 	
     
   
