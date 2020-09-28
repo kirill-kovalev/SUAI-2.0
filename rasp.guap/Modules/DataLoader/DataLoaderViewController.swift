@@ -32,15 +32,18 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
+			self.setText("Загружаю список групп")
 			if SASchedule.shared.groups.count == 0{
 				SASchedule.shared.groups.loadFromServer()
 			}
+			self.setText("Загружаю список преподавателей")
 			if SASchedule.shared.preps.count == 0{
 				SASchedule.shared.preps.loadFromServer()
 			}
+			self.setText("Ищу твою группу")
 			if let user = SASchedule.shared.groups.get(name: group ){
 				let timetable = SASchedule.shared.get(for: user)
-				
+				self.setText("Нашел группу")
 				
 				// - MARK: УВедомления расписания!!!!!
 				if AppSettings.isTimetableNotificationsEnabled,
@@ -48,7 +51,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 					!timetable.setupNotifications()  {
 					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Расписания")}
 				}
-				
+				self.setText("Синхронизируюсь с часами")
 				self.setWatchTimetable(timetable)
 			} else {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить расписание")}
