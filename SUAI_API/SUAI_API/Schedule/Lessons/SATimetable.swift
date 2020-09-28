@@ -83,8 +83,11 @@ public class SATimetable {
             return l1.lessonNum < l2.lessonNum
         }
     }
+
     public func list() -> [SALesson]{
-		
+		return Array(Set(self.timetable))
+    }
+	public func uniqueDispList() -> [SALesson]{
 		let lessonNames = Array(Set(self.timetable.map{ $0.name}))
 		return lessonNames.compactMap { (name) in
 			self.timetable.filter {$0.name == name}.first
