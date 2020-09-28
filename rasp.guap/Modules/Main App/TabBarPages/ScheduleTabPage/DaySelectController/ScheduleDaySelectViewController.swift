@@ -126,7 +126,7 @@ extension ScheduleDaySelectViewController:SwitchSelectorDelegate {
 	func didSelect(_ index: Int) {
 		
 		
-		UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//		UIImpactFeedbackGenerator(style: .light).impactOccurred()
 		
 		if index < self.days.count {
 			self.day = self.rootView.daySelector.selectedValue as? Int ?? getWeekDay(index: index)
