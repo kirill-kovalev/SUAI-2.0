@@ -22,7 +22,8 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 				if SAUserSettings.shared.update() {
 					print("SUAI ID OK")
 					MainTabBarController.Snack(status: .ok, text: "Настройки обновлены")
-					DispatchQueue.main.async {self.textFieldDidChange()}
+					DispatchQueue.main.async {self.rootView.submitBtn.isActive = false}
+					self.isTextEdited = false
 				}else{
 					print("SUAI ID Err")
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
@@ -38,13 +39,17 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 			self.update()
 		}
 	}
+	var isTextEdited = false
 	@objc func textFieldDidChange(){
+		self.isTextEdited = true
 		self.rootView.submitBtn.isActive = !(self.rootView.emailTF.text?.isEmpty ?? true) && !(self.rootView.passTF.text?.isEmpty ?? true)
 	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		
 		DispatchQueue.global().async {
-			if SAUserSettings.shared.reload() {
+			if !self.isTextEdited,
+				SAUserSettings.shared.reload() {
 				self.update()
 			}
 		}

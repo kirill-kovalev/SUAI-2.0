@@ -116,14 +116,27 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 			
 		}
 	}
+	func startLoading(){
+		DispatchQueue.main.async{
+			self.rootView.isUserInteractionEnabled = false
+			self.rootView.content.layer.opacity = 0.5
+			self.rootView.loadingIndidcator.isHidden = false
+			self.rootView.loadingIndidcator.startAnimating()
+		}
+	}
+	func stopLoading(){
+		DispatchQueue.main.async{
+			self.rootView.isUserInteractionEnabled = true
+			self.rootView.content.layer.opacity = 1
+			self.rootView.loadingIndidcator.stopAnimating()
+		}
+	}
 	
 	
 	func setGroup(name:String){
 		DispatchQueue.global().async {
-			DispatchQueue.main.async{
-				self.rootView.isUserInteractionEnabled = false
-				self.rootView.layer.opacity = 0.5
-			}
+			
+			self.startLoading()
 			
 			let originGroup = SAUserSettings.shared.group
 			SAUserSettings.shared.group = name
@@ -142,25 +155,19 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 					self.updateView()
 				}
 			}
-			DispatchQueue.main.async{
-				self.rootView.isUserInteractionEnabled = true
-				self.rootView.layer.opacity = 1
-			}
+			
+			self.stopLoading()
 			
 		}
 	}
 	
 	func setBuilding(_ id:Int){
-//		let id = id + 1
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared.building
 			print("originBuilding : \(originBuilding)")
 			print("new building : \(id)")
 			if originBuilding != id {
-				DispatchQueue.main.async{
-					self.rootView.isUserInteractionEnabled = false
-					self.rootView.layer.opacity = 0.5
-				}
+				self.startLoading()
 				
 				SAUserSettings.shared.building = id
 				if (SAUserSettings.shared.update()){
@@ -171,10 +178,7 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					self.updateView()
 				}
-				DispatchQueue.main.async{
-					self.rootView.isUserInteractionEnabled = true
-					self.rootView.layer.opacity = 1
-				}
+				self.stopLoading()
 			}
 		}
 	}
@@ -187,10 +191,7 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 			print("origin tab : \(originTab)")
 			print("new tab : \(id)")
 			if originTab != id {
-				DispatchQueue.main.async{
-					self.rootView.isUserInteractionEnabled = false
-					self.rootView.layer.opacity = 0.5
-				}
+				self.startLoading()
 				
 				SAUserSettings.shared.idtab = id
 				if (SAUserSettings.shared.update()){
@@ -202,10 +203,8 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 					SAUserSettings.shared.idtab = originTab
 					self.updateView()
 				}
-				DispatchQueue.main.async{
-					self.rootView.isUserInteractionEnabled = true
-					self.rootView.layer.opacity = 1
-				}
+				
+				self.stopLoading()
 			}
 			
 		}

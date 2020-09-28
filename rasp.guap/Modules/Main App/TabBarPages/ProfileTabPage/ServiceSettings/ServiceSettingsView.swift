@@ -41,7 +41,21 @@ class ServiceSettingsView: View {
 		stack.axis = .vertical
 		return stack
 	}()
-		
+	
+	lazy var loadingIndidcator:PocketActivityIndicatorView = {
+		let indicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+		indicator.color = Asset.PocketColors.accent.color
+		indicator.isHidden = true
+		indicator.stopAnimating()
+		return indicator
+	}()
+	
+	lazy var content:UIStackView = {
+		let stack = UIStackView(frame: .zero)
+		stack.axis = .vertical
+		stack.spacing = 12
+		return stack
+	}()
 	
 	
 	required init() {
@@ -50,36 +64,25 @@ class ServiceSettingsView: View {
 		setupConstraints()
 	}
 	func addViews(){
-		self.addSubview(groupLabel)
-		self.addSubview(groupSelector)
-		self.addSubview(startscreenLabel)
-		self.addSubview(startScreenSelector)
-		self.addSubview(buildingLabel)
-		self.addSubview(buildingSelector)
+		self.addSubview(content)
+		content.addArrangedSubview(groupLabel)
+		content.addArrangedSubview(groupSelector)
+		content.addArrangedSubview(startscreenLabel)
+		content.addArrangedSubview(startScreenSelector)
+		content.addArrangedSubview(buildingLabel)
+		content.addArrangedSubview(buildingSelector)
 		
+		
+		
+		self.addSubview(loadingIndidcator)
 	}
 	func setupConstraints(){
-		groupLabel.snp.makeConstraints { $0.top.left.equalToSuperview() }
-		groupSelector.snp.makeConstraints { (make) in
-			make.left.right.equalToSuperview()
-			make.top.equalTo(groupLabel.snp.bottom).offset(12)
+		content.snp.makeConstraints { (make) in
+			make.top.left.right.bottom.equalToSuperview()
 		}
-		startscreenLabel.snp.makeConstraints { (make) in
-			make.left.right.equalToSuperview()
-			make.top.equalTo(groupSelector.snp.bottom).offset(12)
-		}
-		startScreenSelector.snp.makeConstraints { (make) in
-			make.left.right.equalToSuperview()
-			make.top.equalTo(startscreenLabel.snp.bottom).offset(12)
-		}
-		buildingLabel.snp.makeConstraints { (make) in
-			make.left.right.equalToSuperview()
-			make.top.equalTo(startScreenSelector.snp.bottom).offset(12)
-		}
-		buildingSelector.snp.makeConstraints { (make) in
-			make.left.right.equalToSuperview()
-			make.top.equalTo(buildingLabel.snp.bottom).offset(12)
-			make.bottom.equalToSuperview()
+		loadingIndidcator.snp.makeConstraints { (make) in
+			make.height.width.equalTo(50)
+			make.center.equalToSuperview()
 		}
 				
 	}
