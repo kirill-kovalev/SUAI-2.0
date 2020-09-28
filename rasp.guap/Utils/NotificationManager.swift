@@ -19,7 +19,12 @@ class NotificationManager{
 		var success = false
 		let sem = DispatchSemaphore(value: 0)
 		self.center.getNotificationSettings { (settings) in
+			if (settings.authorizationStatus == .notDetermined) {
+				AppSettings.isDeadlineNotificationsEnabled = true
+				AppSettings.isTimetableNotificationsEnabled = true
+			}
 			success =  (settings.authorizationStatus == .authorized) //|| (settings.authorizationStatus == .notDetermined)
+			sem.signal()
 		}
 		let _ = sem.wait(timeout: .distantFuture)
 		return success
@@ -81,7 +86,7 @@ class NotificationManager{
 		let lesson = `for`
 		let offset = 5
 		let content = createContent(title: lesson.name, body: "Начало через \(offset) минут", badge: 0)
-		let trigger = createTrigger(weekday: lesson.day, hour: lesson.startTime.hour!, minute: lesson.startTime.minute!)
+		let trigger = createTrigger(weekday: lesson.day, hour: lesson.startTime.hour!, minute: lesson.startTime.minute!,offset: offset)
 		let request = UNNotificationRequest(identifier: "lesson_\(lesson)", content: content, trigger: trigger)
 		return request
 	}
