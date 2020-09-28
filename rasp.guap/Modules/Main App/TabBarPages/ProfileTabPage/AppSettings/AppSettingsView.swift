@@ -60,6 +60,7 @@ class AppSettingsBlock :UIStackView{
 	let toggle:UISwitch = {
 		let view = UISwitch(frame: .zero)
 		view.onTintColor = Asset.PocketColors.accent.color
+		view.isOn = true
 		return view
 	}()
 	
