@@ -17,6 +17,13 @@ class AppSettingsView:View{
 		return stack
 	}()
 	
+	lazy var clearCacheBtn:PocketButton = {
+		let btn = PocketButton(frame: .zero)
+		btn.setTitle("Очистить кэш", for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
+		return btn
+	}()
+	
 	lazy var deadlineNotifications = AppSettingsBlock(title: "Уведомления об открытых дедлайнах")
 	lazy var timetableNotifications = AppSettingsBlock(title: "Уведомления о занятиях")
 	
@@ -30,6 +37,8 @@ class AppSettingsView:View{
 		self.addSubview(content)
 		content.addArrangedSubview(deadlineNotifications)
 		content.addArrangedSubview(timetableNotifications)
+		
+		content.addArrangedSubview(clearCacheBtn)
 	}
 	
 	func setupConstraints(){

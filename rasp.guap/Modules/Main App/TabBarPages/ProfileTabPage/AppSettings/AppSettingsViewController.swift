@@ -10,4 +10,49 @@ import UIKit
 
 class AppSettingsViewController :ViewController<AppSettingsView>{
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.rootView.deadlineNotifications.toggle.addTarget(self, action: #selector(self.setupDeadlineNotifications), for: .valueChanged)
+		self.rootView.timetableNotifications.toggle.addTarget(self, action: #selector(self.setupTimetableNotifications), for: .valueChanged)
+		
+		self.rootView.clearCacheBtn.addTarget(action: { (_) in
+			AppSettings.clearCache()
+			let alert = UIAlertController(title: "Сброс кэша", message: "Приложение будет закрыто", preferredStyle: .actionSheet)
+			alert.addAction(UIAlertAction(title: "Продолжить", style: .destructive, handler: { (_) in
+				AppSettings.clearCache()
+				exit(0)
+			}))
+			alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { (_) in
+				alert.dismiss(animated: true, completion: nil)
+			}))
+			self.present(alert, animated: true, completion: nil)
+		}, for: .touchUpInside)
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.rootView.timetableNotifications.toggle.isOn = AppSettings.isTimetableNotificationsEnabled
+		self.rootView.deadlineNotifications.toggle.isOn = AppSettings.isDeadlineNotificationsEnabled
+	}
+	
+	@objc private func setupDeadlineNotifications(){
+		AppSettings.isDeadlineNotificationsEnabled = self.rootView.deadlineNotifications.toggle.isOn
+		
+		if self.rootView.deadlineNotifications.toggle.isOn {
+			MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
+		} else {
+			MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах выключены")
+			NotificationManager.shared.clearDeadlineNotifications()
+		}
+	}
+	
+	@objc private func setupTimetableNotifications(){
+		AppSettings.isTimetableNotificationsEnabled = self.rootView.timetableNotifications.toggle.isOn
+		
+		if self.rootView.timetableNotifications.toggle.isOn {
+			MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
+		} else {
+			MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях выключены")
+			NotificationManager.shared.clearLessonNotifications()
+		}
+	}
 }

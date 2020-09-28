@@ -19,7 +19,7 @@ struct AppSettings {
 		}
 	}
 	
-	static var isDimetableNotificationsEnabled:Bool{
+	static var isTimetableNotificationsEnabled:Bool{
 		get{
 			UserDefaults.standard.bool(forKey: "timetableNotifications")
 		}

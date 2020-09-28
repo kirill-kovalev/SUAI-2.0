@@ -22,6 +22,8 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	let studentCard = StudentCardViewController()
 	let suaiID = SuaiIDViewController()
 	let settings = ServiceSettingsViewController()
+	let appSettings = AppSettingsViewController()
+	
 	override func viewDidLoad(){
 		self.keyboardReflective = false
 		
@@ -43,6 +45,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 
 		self.addBlock(title: "SUAI ID", vc: suaiID)
 		self.addBlock(title: "Основные настройки", vc: settings)
+		self.addBlock(title: "Настройки приложения", vc: appSettings)
 		//self.addBlock(title: "О сервисе", view: nil)
 		
 		

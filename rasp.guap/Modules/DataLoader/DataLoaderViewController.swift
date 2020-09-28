@@ -43,7 +43,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				
 				
 				// - MARK: УВедомления расписания!!!!!
-				if !timetable.setupNotifications(), NotificationManager.shared.isAuth  {
+				if AppSettings.isTimetableNotificationsEnabled,
+					NotificationManager.shared.isAuth,
+					!timetable.setupNotifications()  {
 					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Расписания")}
 				}
 				
@@ -60,7 +62,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				}
 			}
 			// - MARK: УВедомления дедлайнов!!!!!
-			if !SADeadlines.shared.setupNotifications(), NotificationManager.shared.isAuth {
+			if AppSettings.isDeadlineNotificationsEnabled,
+			NotificationManager.shared.isAuth,
+			!SADeadlines.shared.setupNotifications(){
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Дедлайнов")}
 			}
 			

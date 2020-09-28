@@ -114,7 +114,12 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 				if newTimetable.isEmpty {
 					MainTabBarController.Snack(status: .err, text: "Не удалось обновить расписание")
 				}else{
-					newTimetable.setupNotifications()
+					if AppSettings.isTimetableNotificationsEnabled,
+						NotificationManager.shared.isAuth{
+						let _ = newTimetable.setupNotifications()
+					}
+					
+					
 					DispatchQueue.main.async{ self.daySelectController.update() }
 					self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
 				}

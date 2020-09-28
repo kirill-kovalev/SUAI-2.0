@@ -127,6 +127,7 @@ class NotificationManager{
 
 extension SATimetable{
 	func setupNotifications() -> Bool{
+		if !AppSettings.isTimetableNotificationsEnabled {return true}
 		var success = true
 		NotificationManager.shared.clearLessonNotifications()
 		print(self.get(week: .current))
@@ -147,6 +148,7 @@ extension SATimetable{
 }
 extension SADeadlines{
 	func setupNotifications() -> Bool{
+		if !AppSettings.isDeadlineNotificationsEnabled {return true}
 		var success = true
 		NotificationManager.shared.clearLessonNotifications()
 		for deadline in self.open {
