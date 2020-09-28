@@ -29,6 +29,14 @@ struct AppSettings {
 		}
 	}
 	static func clearCache(){
-		UserDefaults.resetStandardUserDefaults()
+		NotificationManager.shared.clear()
+		for (key,_) in UserDefaults.standard.dictionaryRepresentation() {
+			UserDefaults.standard.removeObject(forKey: key)
+		}
+		let domain = Bundle.main.bundleIdentifier ?? ""
+		UserDefaults.standard.removePersistentDomain(forName: domain)
+		
+		UserDefaults.standard.synchronize()
+		
 	}
 }
