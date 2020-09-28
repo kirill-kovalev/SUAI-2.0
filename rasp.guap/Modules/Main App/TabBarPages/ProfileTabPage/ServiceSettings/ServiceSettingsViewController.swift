@@ -1,5 +1,5 @@
 //
-//  AppSettingsViewController.swift
+//  ServiceSettingsViewController.swift
 //  rasp.guap
 //
 //  Created by Кирилл on 03.09.2020.
@@ -11,7 +11,7 @@ import MBRadioButton
 import SUAI_API
 
 
-class AppSettingsViewController: ViewController<AppSettingsView> {
+class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 	
 
 	// MARK: - Список табов
@@ -214,7 +214,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 	
 }
 
-extension AppSettingsViewController : UITextFieldDelegate{
+extension ServiceSettingsViewController : UITextFieldDelegate{
 	
     func textFieldDidBeginEditing(_ textField: UITextField) {
 		
@@ -228,7 +228,7 @@ extension AppSettingsViewController : UITextFieldDelegate{
 	}
 
 }
-extension AppSettingsViewController: UserChangeDelegate{
+extension ServiceSettingsViewController: UserChangeDelegate{
 	func didSetUser(user: SAUsers.User) {
 		self.rootView.groupSelector.text = user.Name
 		self.setGroup(name:user.Name)
@@ -237,7 +237,7 @@ extension AppSettingsViewController: UserChangeDelegate{
 	
 }
 
-extension AppSettingsViewController:MBRadioButtonDelegate{
+extension ServiceSettingsViewController:MBRadioButtonDelegate{
 	func radioButtonDidDeselect(_ button: MBRadioButton) { }
 	
 	

@@ -21,7 +21,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	
 	let studentCard = StudentCardViewController()
 	let suaiID = SuaiIDViewController()
-	let settings = AppSettingsViewController()
+	let settings = ServiceSettingsViewController()
 	override func viewDidLoad(){
 		self.keyboardReflective = false
 		

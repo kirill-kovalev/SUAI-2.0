@@ -143,8 +143,8 @@
 		5DF423C62500F9B000565FB8 /* StudentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C52500F9B000565FB8 /* StudentCardViewController.swift */; };
 		5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C72500F9C400565FB8 /* SuaiIDView.swift */; };
 		5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */; };
-		5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */; };
-		5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */; };
+		5DF423CC2500F9E200565FB8 /* ServiceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CB2500F9E200565FB8 /* ServiceSettingsViewController.swift */; };
+		5DF423CE2500F9EB00565FB8 /* ServiceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423CD2500F9EB00565FB8 /* ServiceSettingsView.swift */; };
 		5DF423D12501102200565FB8 /* PocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF423D02501102200565FB8 /* PocketTextField.swift */; };
 		5DF424032501374900565FB8 /* MBRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF424022501374900565FB8 /* MBRadioButton.framework */; };
 		5DF424042501374900565FB8 /* MBRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF424022501374900565FB8 /* MBRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -323,8 +323,8 @@
 		5DF423C52500F9B000565FB8 /* StudentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCardViewController.swift; sourceTree = "<group>"; };
 		5DF423C72500F9C400565FB8 /* SuaiIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDView.swift; sourceTree = "<group>"; };
 		5DF423C92500F9D500565FB8 /* SuaiIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuaiIDViewController.swift; sourceTree = "<group>"; };
-		5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
-		5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
+		5DF423CB2500F9E200565FB8 /* ServiceSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSettingsViewController.swift; sourceTree = "<group>"; };
+		5DF423CD2500F9EB00565FB8 /* ServiceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSettingsView.swift; sourceTree = "<group>"; };
 		5DF423D02501102200565FB8 /* PocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTextField.swift; sourceTree = "<group>"; };
 		5DF424022501374900565FB8 /* MBRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rasp.guap.release.xcconfig"; path = "Target Support Files/Pods-rasp.guap/Pods-rasp.guap.release.xcconfig"; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
-				5DF423C22500F7C400565FB8 /* AppSettings */,
+				5DF423C22500F7C400565FB8 /* ServiceSettings */,
 				5DF423C12500F7A800565FB8 /* SUAI_ID */,
 				5DF423C02500F79B00565FB8 /* StudentCard */,
 				5D2BD83B24E43657002630B5 /* ProfileTabView.swift */,
@@ -1023,13 +1023,13 @@
 			path = SUAI_ID;
 			sourceTree = "<group>";
 		};
-		5DF423C22500F7C400565FB8 /* AppSettings */ = {
+		5DF423C22500F7C400565FB8 /* ServiceSettings */ = {
 			isa = PBXGroup;
 			children = (
-				5DF423CB2500F9E200565FB8 /* AppSettingsViewController.swift */,
-				5DF423CD2500F9EB00565FB8 /* AppSettingsView.swift */,
+				5DF423CB2500F9E200565FB8 /* ServiceSettingsViewController.swift */,
+				5DF423CD2500F9EB00565FB8 /* ServiceSettingsView.swift */,
 			);
-			path = AppSettings;
+			path = ServiceSettings;
 			sourceTree = "<group>";
 		};
 		5DF423CF2501101000565FB8 /* PocketTextField */ = {
@@ -1259,7 +1259,7 @@
 				5D9D905D24ED8BAF00930375 /* DeadlineListCell.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
-				5DF423CC2500F9E200565FB8 /* AppSettingsViewController.swift in Sources */,
+				5DF423CC2500F9E200565FB8 /* ServiceSettingsViewController.swift in Sources */,
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
 				5D2ADF9D24D4242A006DACED /* ModalView.swift in Sources */,
 				5DA10F8724DC7B3300D09BD8 /* ThirdPageViewController.swift in Sources */,
@@ -1289,7 +1289,7 @@
 				5DA7443025093A0400403F6A /* UserCardModalViewController.swift in Sources */,
 				5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
-				5DF423CE2500F9EB00565FB8 /* AppSettingsView.swift in Sources */,
+				5DF423CE2500F9EB00565FB8 /* ServiceSettingsView.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
 				5DA7443525094DAF00403F6A /* PocketCard.swift in Sources */,
 				5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */,
