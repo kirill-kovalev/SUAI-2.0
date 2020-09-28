@@ -16,7 +16,8 @@ class PocketButton: Button {
         }
     }
 	
-
+	var borderWidth:CGFloat = 1
+	var cornerRadius:CGFloat = 10
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,8 +35,8 @@ class PocketButton: Button {
 		self.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 13)
 		let color = self.titleLabel?.textColor ?? .blue
         
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
+		self.layer.cornerRadius = self.cornerRadius
+		self.layer.borderWidth = self.borderWidth
         
         self.imageView?.tintColor = color
         self.layer.borderColor = color.cgColor

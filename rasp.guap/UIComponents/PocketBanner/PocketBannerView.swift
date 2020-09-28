@@ -33,10 +33,11 @@ class PocketBannerView:UIView{
         label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
-    private let button:Button = {
-        let btn = Button(frame: .zero)
+    private let button:PocketLongActionButton = {
+        let btn = PocketLongActionButton(frame: .zero)
         btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 14)
         btn.setTitleColor(Asset.PocketColors.buttonOutlineBorder.color, for: .normal)
+		btn.borderWidth = 0
         btn.backgroundColor = Asset.PocketColors.pocketBlue.color
         btn.layer.cornerRadius = 10
         btn.layoutMargins = .init(top: 7, left: 15, bottom: 7, right: 15)
@@ -61,7 +62,8 @@ class PocketBannerView:UIView{
     }
     private func setupConstraints(){
         title.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview()
+			make.top.equalToSuperview().offset(4)
+			make.left.equalToSuperview()
             make.right.equalTo(image.snp.left).offset(-10)
         }
         subtitle.snp.makeConstraints { (make) in

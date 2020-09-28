@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SUAI_API
 
 class AppSettingsViewController :ViewController<AppSettingsView>{
 	
@@ -38,7 +39,12 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		AppSettings.isDeadlineNotificationsEnabled = self.rootView.deadlineNotifications.toggle.isOn
 		
 		if self.rootView.deadlineNotifications.toggle.isOn {
-			MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
+			if SADeadlines.shared.setupNotifications() {
+				MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
+			}else{
+				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
+				self.rootView.deadlineNotifications.toggle.isOn = false
+			}
 		} else {
 			MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах выключены")
 			NotificationManager.shared.clearDeadlineNotifications()
@@ -49,7 +55,18 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		AppSettings.isTimetableNotificationsEnabled = self.rootView.timetableNotifications.toggle.isOn
 		
 		if self.rootView.timetableNotifications.toggle.isOn {
-			MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
+			
+			if let group = SAUserSettings.shared.group,
+			let user = SASchedule.shared.groups.get(name: group),
+			SASchedule.shared.get(for: user).setupNotifications(){
+				MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
+            }else{
+				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
+				self.rootView.timetableNotifications.toggle.isOn = false
+			}
+			
+			
+			
 		} else {
 			MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях выключены")
 			NotificationManager.shared.clearLessonNotifications()

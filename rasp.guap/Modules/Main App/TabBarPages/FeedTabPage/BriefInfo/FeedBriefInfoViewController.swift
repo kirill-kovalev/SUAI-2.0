@@ -80,19 +80,59 @@ class FeedBriefInfoViewController: UIViewController {
             DispatchQueue.main.async {
 				let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.Banners.subscribeBanner.image)
                 let div = PocketDivView(content: view)
-                view.setButton(title: "Вступить") { _ in
-                    div.snp.removeConstraints()
-                    div.isHidden = true
-                    div.snp.makeConstraints { $0.size.equalTo(CGSize.zero)}
+                view.setButton(title: "Вступить") { btn in
+					let btn = btn as! PocketLongActionButton
+					
+					
+					let alert = UIAlertController(title: "Подписаться?", message: nil, preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in alert.dismiss(animated: true, completion: nil)}))
+					alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { (_) in
+						btn.disable()
+						if !VK.needToSetUp{
+							VK.API.Groups.join([.groupId:"\(184800526)"]).onSuccess({ (data) in
+								DispatchQueue.main.async{
+									btn.enable()
+									div.removeFromSuperview()
+								}
+//								self.reloadPage(needReload: false)
+//								self.reloadRockets()
+//								self.reloadSchedule()
+//								self.reloadDeadlines()
+								
+							}).onError { (err) in
+								print(err)
+								DispatchQueue.main.async{
+									openGroupInVKApp()
+									btn.enable()
+								}
+							}.send()
+						}
+						
+						
+					}))
+					self.present(alert, animated: true, completion: nil)
+					
+					
+					
                 }
                 self.rootView.addBlock(title: nil, view: div )
                 
                 
             }
         }
-        
+		
+		func openGroupInVKApp(){
+		
+			UIApplication.shared.open(URL(string: "vk://vk.com/teampocket")!, options: [:]) { (success) in
+				if success { self.reloadPage(needReload: true) }
+				else { UIApplication.shared.open(URL(string: "https://vk.com/teampocket")!, options: [:]) { (success) in self.reloadPage(needReload: true) } }
+			}
+		
+			return
+		}
         
     }
+	
     
     //MARK: - Weather
 	let rocketsView = BriefHalfScreenView(title: "",subtitle: "рокетов за неделю",

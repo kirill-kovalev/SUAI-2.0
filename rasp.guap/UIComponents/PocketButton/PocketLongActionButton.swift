@@ -20,6 +20,7 @@ class PocketLongActionButton: PocketButton {
 			$0.height.width.equalTo(self.snp.height)
 			$0.center.equalToSuperview()
 		}
+		self.indicator.isHidden = true
 		indicator.stopAnimating()
     }
 	
@@ -33,6 +34,7 @@ class PocketLongActionButton: PocketButton {
 	
 	func disable(){
 		self.isActive = false
+		self.indicator.isHidden = false
 		self.titleLabel?.layer.opacity = 0
 		self.imageView?.layer.opacity = 0
 		self.indicator.startAnimating()
