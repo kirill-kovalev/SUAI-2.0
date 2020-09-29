@@ -24,13 +24,14 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 				exit(0)
 			}))
 			alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { (_) in
+				NotificationManager.shared.debugList()
 				alert.dismiss(animated: true, completion: nil)
 			}))
 			self.present(alert, animated: true, completion: nil)
 		}, for: .touchUpInside)
 	}
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		self.rootView.timetableNotifications.toggle.isOn = AppSettings.isTimetableNotificationsEnabled
 		self.rootView.deadlineNotifications.toggle.isOn = AppSettings.isDeadlineNotificationsEnabled
 	}

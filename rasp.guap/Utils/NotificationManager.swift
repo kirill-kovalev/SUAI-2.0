@@ -128,6 +128,30 @@ class NotificationManager{
 		return trigger
 	}
 	
+	public func debugList(){
+		center.getPendingNotificationRequests { (requests) in
+			let c = Calendar.current.dateComponents([.weekday,.hour,.minute,.month,.year], from: Date())
+			print("NotificationManager.list:  today : weekday = \(c.weekday) ; h = \( c.hour ); m = \(c.minute) has \(requests.count) requests ")
+			for request in requests{
+				if let t = (request.trigger as? UNCalendarNotificationTrigger){
+					let c = t.dateComponents
+					print("NotificationManager.list:  request \"\(request.content.title)\": day = \(c.day) ;   weekday = \(c.weekday) ;   h = \( c.hour );   m = \(c.minute) ")
+				}
+			}
+		}
+		center.getDeliveredNotifications { (notifications) in
+			let c = Calendar.current.dateComponents([.weekday,.hour,.minute,.month,.year], from: Date())
+			print("NotificationManager.list:  today : weekday = \(c.weekday) ; h = \( c.hour ); m = \(c.minute) has \(notifications.count) delivered notifications ")
+			for n in notifications {
+				let request = n.request
+				if let t = (request.trigger as? UNCalendarNotificationTrigger){
+					let c = t.dateComponents
+					print("NotificationManager.list:  notif \"\(request.content.title)\": day = \(c.day) ;   weekday = \(c.weekday) ;   h = \( c.hour );   m = \(c.minute) ")
+				}
+			}
+		}
+	}
+	
 }
 
 extension SATimetable{
