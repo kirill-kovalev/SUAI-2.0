@@ -20,7 +20,7 @@ class AppSettingsView:View{
 	lazy var clearCacheBtn:PocketButton = {
 		let btn = PocketButton(frame: .zero)
 		btn.setTitle("Очистить кэш", for: .normal)
-		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketDarkestBlue.color, for: .normal)
 		return btn
 	}()
 	

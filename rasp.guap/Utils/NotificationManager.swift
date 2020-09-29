@@ -23,7 +23,12 @@ class NotificationManager{
 				AppSettings.isDeadlineNotificationsEnabled = true
 				AppSettings.isTimetableNotificationsEnabled = true
 			}
-			success =  (settings.authorizationStatus == .authorized) //|| (settings.authorizationStatus == .notDetermined)
+			if (settings.authorizationStatus == .notDetermined){
+				AppSettings.isDeadlineNotificationsEnabled = true
+				AppSettings.isTimetableNotificationsEnabled = true
+			}
+			
+			success =  (settings.authorizationStatus == .authorized) //||
 			sem.signal()
 		}
 		let _ = sem.wait(timeout: .distantFuture)
@@ -93,7 +98,7 @@ class NotificationManager{
 	public func createNotification(for:SADeadline)->UNNotificationRequest{
 		let deadline = `for`
 		let content = createContent(title: "Пора приступать за \(deadline.deadline_name ?? "")", body: "Дедлайн наступил", badge: 1)
-		let trigger = createTrigger(date: deadline.end ?? Date())
+		let trigger = createTrigger(date: deadline.end?.addingTimeInterval(60*60*12+15) ?? Date())
 		let request = UNNotificationRequest(identifier: "deadline_\(deadline)", content: content, trigger: trigger)
 		return request
 	}
