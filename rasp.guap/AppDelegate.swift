@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    private let vkDelegate  = VKDelegate()
+    private let vkDelegate  = (UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController)
     
 	func setupWatchConnetivity(){
 		if WCSession.isSupported(){
@@ -29,13 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		setupWatchConnetivity()
+		
         VK.setUp(appId: "7578765", delegate: vkDelegate)
 		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
             self.PresentVKLoginPage()
         }else{
             self.LoggedInVK()
+			setupWatchConnetivity()
         }
         return true
     }
@@ -59,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func PresentVKLoginPage(){
         VK.release()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
+		window?.rootViewController = self.vkDelegate
         window?.makeKeyAndVisible()
         
 

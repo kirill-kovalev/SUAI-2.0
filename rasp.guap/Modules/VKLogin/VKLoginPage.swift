@@ -128,9 +128,12 @@ class VKLoginPageViewController: UIViewController {
 			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
 		})
 		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		VK.release()
         VK.setUp(appId: "7578765", delegate: self)
-		
 	}
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
@@ -142,7 +145,7 @@ extension VKLoginPageViewController:SwiftyVKDelegate{
         self.present(viewController, animated: true, completion: nil)
     }
     
-    func vkNeedsScopes(for sessionId: String) -> Scopes { [.offline,.stats] }
+	func vkNeedsScopes(for sessionId: String) -> Scopes { [.offline,.stats,.groups] }
     
     
 }

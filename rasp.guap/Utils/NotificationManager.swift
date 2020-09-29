@@ -135,7 +135,7 @@ extension SATimetable{
 		if !AppSettings.isTimetableNotificationsEnabled {return true}
 		var success = true
 		NotificationManager.shared.clearLessonNotifications()
-		print(self.get(week: .current))
+		//print(self.get(week: .current))
 		for lesson in self.get(week: .current){
 			let request = NotificationManager.shared.createNotification(for: lesson)
 			let c = (request.trigger as? UNCalendarNotificationTrigger)?.dateComponents
@@ -158,7 +158,7 @@ extension SADeadlines{
 		NotificationManager.shared.clearLessonNotifications()
 		for deadline in self.open {
 			let request = NotificationManager.shared.createNotification(for: deadline)
-			if !NotificationManager.shared.add(request: request) {success = false} else { print("created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate())") }
+			if !NotificationManager.shared.add(request: request) {success = false} else { print("created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate() )") }
 		}
 		return success
 	}
