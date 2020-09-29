@@ -19,7 +19,6 @@ class FeedBriefInfoView: UIScrollView {
     }()
     lazy var indicator:PocketActivityIndicatorView = {
         let indicator = PocketActivityIndicatorView(frame: .zero)
-        indicator.startAnimating()
         return indicator
     }()
     init(){
@@ -34,7 +33,7 @@ class FeedBriefInfoView: UIScrollView {
         label.text = title
         return label
     }
-    func addBlock(title:String?,view:UIView?){
+    func addBlock(title:String? = nil ,view:UIView? = nil){
         if title != nil{
             self.stack.addArrangedSubview(labelGenerator(title: title!))
         }
