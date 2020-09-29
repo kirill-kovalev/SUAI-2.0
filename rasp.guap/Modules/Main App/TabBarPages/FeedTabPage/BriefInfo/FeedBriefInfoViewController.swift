@@ -20,14 +20,16 @@ class FeedBriefInfoViewController: UIViewController {
 	
 	
 	var lastUpdate = Date()
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		loadPage()
-	}
+	var isFirstAppear = true
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		if isFirstAppear {
+			self.rootView.indicator.startAnimating();
+			loadPage()
+			isFirstAppear = false
+			return
+		}
 		if lastUpdate.addingTimeInterval(60) < Date(){
 			self.updatePage()
 		}
@@ -52,10 +54,7 @@ class FeedBriefInfoViewController: UIViewController {
 							}
 						}).onError { (err) in
 							print(err)
-							DispatchQueue.main.async{
-								
-								
-							}
+							
 						}.send()
 					}else{
 						
@@ -72,12 +71,10 @@ class FeedBriefInfoViewController: UIViewController {
 	}
 	
 	func loadPage(){
-		self.rootView.indicator.startAnimating()
 		DispatchQueue.global().async {
 			
 			let _ = SAUserSettings.shared.reload()
 			if let name = SAUserSettings.shared.vkName{DispatchQueue.main.async {
-					self.rootView.indicator.startAnimating();
 					self.rootView.addBlock(title: "Добро пожаловать, \(name)")
 			}}
 			
@@ -91,25 +88,41 @@ class FeedBriefInfoViewController: UIViewController {
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить сводку")
 			}
 			
-			if let (lessons,day) = self.getNearestTimetable() {
-				self.lessons = lessons
-				self.day = day
+			print("Brief: get tt")
+			
+			
+			if let group = SAUserSettings.shared.group,
+			let user = SASchedule.shared.groups.get(name: group ),
+			!SASchedule.shared.get(for: user).isEmpty{
+				
+				let timetable = SASchedule.shared.get(for: user)
+				let nearestDay = self.getNearestDay(for: timetable)
+				
+				self.lessons = timetable.get(week: .current, day: nearestDay)
+				self.day = nearestDay
+	//
 				DispatchQueue.main.async { self.addSchedule(timetable: self.lessons, day: self.day) }
 			}else{
+				print("Brief: err get tt")
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить расписание")
 			}
-			
+			print("Brief: end  get tt")
+
+			print("Brief: load deadlines")
 			if SADeadlines.shared.loadFromServer() {
+				print("Brief: add deadlines")
 				DispatchQueue.main.async { self.addDeadlines() }
+				print("Brief: end deadlines")
 			}else{
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить дедлайны")
 			}
-			
+			print("Brief: end load deadlines")
+
 			if !SABrief.shared.news.isEmpty{
 				DispatchQueue.main.async { self.addNews() }
 			}
-			
-			DispatchQueue.main.async {self.rootView.indicator.stopAnimating();self.rootView.contentSize.height -= self.rootView.frame.height }
+
+			DispatchQueue.main.async {self.rootView.indicator.stopAnimating()}
 		}
 	}
 	
@@ -120,10 +133,8 @@ class FeedBriefInfoViewController: UIViewController {
 			let _ = SABrief.shared.loadFromServer()
 			let _ = SADeadlines.shared.loadFromServer()
 			
-			if let (lessons,day) = self.getNearestTimetable(){
-				self.lessons = lessons
-				self.day = day
-			}
+			
+			
 			
 			
 			
@@ -137,7 +148,7 @@ class FeedBriefInfoViewController: UIViewController {
 				self.addWeatherAndRockets()
 				self.addSchedule(timetable: self.lessons, day: self.day)
 				self.addDeadlines()
-				 self.addNews()
+				self.addNews()
 				
 				self.lastUpdate = Date()
 				
@@ -205,58 +216,70 @@ class FeedBriefInfoViewController: UIViewController {
     //MARK: - Schedule
 	private var lessons:[SALesson] = []
 	private var day = 0
-	func getNearestTimetable() -> ([SALesson],Int)?{
+	func getNearestDay(for timetable:SATimetable) -> Int{
+		print("getNearestTimetable")
 		func nextDay(_ cur:Int)->Int {
 			if cur == 6 { return 0 }
 			return cur+1
 		}
+		let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
+		let today = Calendar.convertToRU(todayUS)
 
-		if let group = SAUserSettings.shared.group,
-			let user = SASchedule.shared.groups.get(name: group ),
-			!SASchedule.shared.get(for: user).isEmpty{
+		
 
-			let todayUS = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
-			var day = Calendar.convertToRU(todayUS)
+			
 
+		var day = today
+		
+		var lessons:[SALesson]
 
-			var lessons:[SALesson]
+		
+		let week = SASchedule.shared.settings?.week ?? .odd
+		
+		lessons = timetable.get(week: week, day: day )
+		
+		repeat{
 
-			let timetable = SASchedule.shared.get(for: user)
-			let week = SASchedule.shared.settings?.week ?? .odd
-			repeat{
+			lessons = timetable.get(week: week, day: day )
 
-				lessons = timetable.get(week: week, day: day )
-
-				if lessons.isEmpty { day = nextDay(day) }
-			}while(lessons.isEmpty)
-			return (lessons,day)
-		}else{
-			return nil
-		}
+			if lessons.isEmpty { day = nextDay(day) }
+		}while(lessons.isEmpty)
+		print("end of getNearestTimetable")
+		return day
+		
 	}
 	
+	
+	
 	func addSchedule(timetable:[SALesson],day:Int){
+		
 		let weekdays = ["понедельник","вторник","среду","четверг","пятницу","субботу"]
 		let today = Calendar.convertToRU(Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0)
+
+		let stack = UIStackView(arrangedSubviews: lessons.map {  TimetableLessonCell(lesson: $0) })
+		stack.axis = .vertical
 		
-		let timetableVC = TimetableViewController(timetable: [] )
+		
+		let div = PocketDivView(content: stack)
 
-		DispatchQueue.main.async {
-			timetableVC.setTimetable(timetable: timetable)
-			let div = PocketDivView(content: timetableVC.view)
+		let container = PocketScalableContainer(content: div)
+		container.addTarget(action: { _ in
+			if let barControllers = self.tabBarController?.viewControllers,
+				let vc = (barControllers[2] as? ScheduleTabViewController){
+				vc.scheduleDaySelect(didUpdate: day, week: .odd)
+				}
 
-			let container = PocketScalableContainer(content: div)
-			container.addTarget(action: { _ in
-				if let barControllers = self.tabBarController?.viewControllers,
-					let vc = (barControllers[2] as? ScheduleTabViewController){
-					vc.scheduleDaySelect(didUpdate: day, week: .odd)
-					}
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 2 })
+		}, for: .touchUpInside)
+//
+//		print("Brief: \(#function) add block")
+		print("Brief: \(timetable.count) add block")
+		
+		
 
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 2 })
-			}, for: .touchUpInside)
-
-			self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: container )
-		}
+									  
+		self.rootView.addBlock(title: "Расписание на \(today == day ? "сегодня" : weekdays[day] )", view: container )
+//		print("Brief: \(#function) added block")
 
 	}
 	
