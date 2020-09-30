@@ -12,11 +12,12 @@ import SwiftyVK
 
 class VKLoginPageViewController: UIViewController {
     
-	@IBOutlet weak var LoginButton: UIButton!
+	@IBOutlet weak var LoginButton: PocketLongActionButton!
 	@IBOutlet weak var errLabel: UILabel!
     @IBAction func loginViaVK(_ sender: UIButton, forEvent event: UIEvent) {
 		self.errLabel.text = ""
 		self.errLabel.isHidden = true
+		self.LoginButton.disable()
 		VK.sessions.default.logOut()
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
@@ -34,6 +35,7 @@ class VKLoginPageViewController: UIViewController {
             
         }) { (err) in
             DispatchQueue.main.async {
+				self.LoginButton.enable()
 				self.errLabel.text = self.errorText(err: err)
                 self.errLabel.isHidden = false
             }
@@ -112,6 +114,8 @@ class VKLoginPageViewController: UIViewController {
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		AppSettings.isDeadlineNotificationsEnabled = true
+		AppSettings.isTimetableNotificationsEnabled = true
 		let color = Asset.PocketColors.pocketDarkBlue.color
 		self.LoginButton.layer.borderWidth = 2
 		self.LoginButton.layer.borderColor = color.cgColor

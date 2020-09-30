@@ -24,7 +24,19 @@ class PocketLongActionButton: PocketButton {
 		indicator.stopAnimating()
     }
 	
-	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.addSubview(indicator)
+		
+		indicator.isUserInteractionEnabled = false
+		indicator.snp.makeConstraints {
+			$0.height.width.equalTo(self.snp.height)
+			$0.center.equalToSuperview()
+		}
+		self.indicator.isHidden = true
+		indicator.stopAnimating()
+	}
+	
 	
 
     override func setupView(){
