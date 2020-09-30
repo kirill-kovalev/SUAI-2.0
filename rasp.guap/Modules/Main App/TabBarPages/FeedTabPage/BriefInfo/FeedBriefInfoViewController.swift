@@ -57,7 +57,8 @@ class FeedBriefInfoViewController: UIViewController {
 					if !VK.needToSetUp{
 						VK.API.Groups.join([.groupId:"\(184800526)"]).onSuccess({ (data) in
 							DispatchQueue.main.async{
-								div.removeFromSuperview()
+								
+								self.rootView.stack.arrangedSubviews.first?.removeFromSuperview()
 								self.rootView.stack.arrangedSubviews.first?.removeFromSuperview()
 								self.updatePage()
 							}
