@@ -60,6 +60,7 @@ class PocketActivityIndicatorView: UIView {
 		rotation.toValue = 2*Double.pi
 		rotation.duration = 1
 		rotation.repeatCount = .infinity
+		rotation.isRemovedOnCompletion = false
 		return rotation
 	}()
 	
