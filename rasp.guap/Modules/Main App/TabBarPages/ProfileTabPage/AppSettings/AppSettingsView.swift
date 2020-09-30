@@ -24,7 +24,7 @@ class AppSettingsView:View{
 		return btn
 	}()
 	
-	lazy var deadlineNotifications = AppSettingsBlock(title: "Уведомления об открытых дедлайнах")
+	lazy var deadlineNotifications = AppSettingsBlock(title: "Уведомления о дедлайнах")
 	lazy var timetableNotifications = AppSettingsBlock(title: "Уведомления о занятиях")
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
