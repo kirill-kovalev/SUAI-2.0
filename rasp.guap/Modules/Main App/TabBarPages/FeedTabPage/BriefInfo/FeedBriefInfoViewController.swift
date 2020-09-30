@@ -35,6 +35,15 @@ class FeedBriefInfoViewController: UIViewController {
 		}
 	}
 	
+	private func openGroupInVKApp(){
+	
+		UIApplication.shared.open(URL(string: "vk://vk.com/teampocket")!, options: [:]) { (success) in
+			if success { self.updatePage() }
+			else { UIApplication.shared.open(URL(string: "https://vk.com/teampocket")!, options: [:]) { (_) in self.updatePage() } }
+		}
+
+	}
+	
 	func buildBanner() -> UIView{
 		let view = PocketBannerView(title: "Вступай в группу!", subtitle: "Узнай о новинках первым!", image: Asset.AppImages.Banners.subscribeBanner.image)
 		let div = PocketDivView(content: view)
@@ -53,8 +62,7 @@ class FeedBriefInfoViewController: UIViewController {
 								self.updatePage()
 							}
 						}).onError { (err) in
-							print(err)
-							
+							self.openGroupInVKApp()
 						}.send()
 					}else{
 						
