@@ -42,7 +42,7 @@ class InfoTabViewController: ViewController<InfoTabView> {
 		
 	}
 	func updateWebView(){
-		self.rootView.notReleasedLabel.isHidden = true
+//		self.rootView.indicator.startAnimating()
 		self.rootView.webView.backgroundColor = self.rootView.backgroundColor
 		if #available(iOS 12.0, *) {
 			if traitCollection.userInterfaceStyle == .dark {
@@ -72,10 +72,12 @@ extension InfoTabViewController:WKNavigationDelegate{
 		print("WEB: loaded url \(webView.url)")
 		if let url = webView.url {
 			URLSession.shared.dataTask(with: url) { (data, response, err) in
-				let resp = (response as! HTTPURLResponse)
-				if resp.statusCode == 200 {
+				
+				if let resp = (response as? HTTPURLResponse),
+				resp.statusCode == 200 {
 					DispatchQueue.main.async {
 						self.rootView.webView.isHidden = false
+						self.rootView.notReleasedLabel.isHidden = true
 						self.rootView.indicator.stopAnimating()
 					}
 				}else{
