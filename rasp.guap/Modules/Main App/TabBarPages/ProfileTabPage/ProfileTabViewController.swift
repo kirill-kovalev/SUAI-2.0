@@ -90,6 +90,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	
 	private func logout(){
 		print("logout")
+		AppSettings.clearCache()
 		SAUserSettings.shared.reset()
 		DispatchQueue.global().async { VK.sessions.default.logOut() }
 		let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
