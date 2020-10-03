@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import SwiftyVK
 
 public class SATracker{
 	public static func track(_ event:String){
-		DispatchQueue.global(qos: .utility).async {
-			let params = ["from":"iOS", "to":event]
-			if PocketAPI.shared.syncSetTask(method: .track, params: params) != nil {
-				print("Track: ", "\(params)")
-			}else{
-				print("Track Error; params: ", "\(params)")
+		if !VK.needToSetUp {
+			DispatchQueue.global(qos: .utility).async {
+				let params = ["from":"iOS", "to":event]
+				if PocketAPI.shared.syncSetTask(method: .track, params: params) != nil {
+					print("Track: ", "\(params)")
+				}else{
+					print("Track Error; params: ", "\(params)")
+				}
 			}
 		}
 		

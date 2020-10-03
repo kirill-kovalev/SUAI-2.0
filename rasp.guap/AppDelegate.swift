@@ -10,6 +10,7 @@ import UIKit
 import SUAI_API
 import SwiftyVK
 import WatchConnectivity
+import Tracker
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		
+		MyAppTracker.start()
         VK.setUp(appId: "7578765", delegate: vkDelegate)
 		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
@@ -48,8 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func LoggedInVK(){
-        PocketAPI.shared.setToken(VK.sessions.default.accessToken?.get() ?? "")
-		print(VK.sessions.default.accessToken?.get() ?? "failed to get token")
+		let token = VK.sessions.default.accessToken?.get()
+        PocketAPI.shared.setToken( token ?? "")
+		print(token ?? "failed to get token")
+		if let token = token {MyAppTracker.track(token) }
 		window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = DataLoaderViewController()
         window?.makeKeyAndVisible()
@@ -68,17 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
-//		if !VK.needToSetUp {
-//			SATracker.track("start")
-//		}
+		
+			SATracker.track("start")
+		
 //		if !NotificationManager.shared.isAuth {
 //			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
 //		}
 	}
 	func applicationWillResignActive(_ application: UIApplication) {
-//		if !VK.needToSetUp {
-//			SATracker.track("hide")
-//		}
+
+			SATracker.track("hide")
+		
 	}
 	
     
@@ -123,7 +126,9 @@ extension AppDelegate:WCSessionDelegate{
 	func setWatchTimetable(_ tt:SATimetable){
 		print("Setting Watch TT")
 		if WCSession.isSupported(){
+			MyAppTracker.track("watch Supported")
 			if WCSession.default.activationState == .activated {
+				MyAppTracker.track("watch acivated")
 				let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
 				let curWeek = SASchedule.shared.settings?.week ?? .odd
 				let timetable = tt.get(week: curWeek, day: today).map { lesson -> [String] in
@@ -139,6 +144,10 @@ extension AppDelegate:WCSessionDelegate{
 			}
 		}
 		print("End of Setting Watch TT")
+	}
+	
+	func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+		MyAppTracker.track("memory warning")
 	}
 	
 }

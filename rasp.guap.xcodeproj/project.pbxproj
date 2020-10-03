@@ -50,6 +50,8 @@
 		5D95A63524D412AB000418B5 /* rasp_guap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D95A63324D412AB000418B5 /* rasp_guap.xcdatamodeld */; };
 		5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63624D412AC000418B5 /* Assets.xcassets */; };
 		5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */; };
+		5D97D08C2528F66F00335D73 /* Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; };
+		5D97D08D2528F66F00335D73 /* Tracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */; };
 		5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */; };
 		5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */; };
@@ -172,6 +174,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5D9D903724EC785900930375 /* SUAI_API.framework in Embed Frameworks */,
+				5D97D08D2528F66F00335D73 /* Tracker.framework in Embed Frameworks */,
 				5DF424042501374900565FB8 /* MBRadioButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -234,6 +237,7 @@
 		5D95A63624D412AC000418B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D95A63924D412AC000418B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D95A63B24D412AC000418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D97D08B2528F66F00335D73 /* Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-LightItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C4069862CF69EA9619803B /* Pods_rasp_guap.framework in Frameworks */,
+				5D97D08C2528F66F00335D73 /* Tracker.framework in Frameworks */,
 				5DF424032501374900565FB8 /* MBRadioButton.framework in Frameworks */,
 				5D9D903624EC785900930375 /* SUAI_API.framework in Frameworks */,
 			);
@@ -355,6 +360,7 @@
 		2612D29CDE1D426FAFFD5273 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D97D08B2528F66F00335D73 /* Tracker.framework */,
 				5DF424022501374900565FB8 /* MBRadioButton.framework */,
 				5D9D903524EC785900930375 /* SUAI_API.framework */,
 				FED2C9769F1A697EA5B678E6 /* Pods_rasp_guap.framework */,
@@ -1483,7 +1489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1505,7 +1511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = FCXJCDV375;
 				INFOPLIST_FILE = rasp.guap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
