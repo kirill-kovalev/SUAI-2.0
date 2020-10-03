@@ -132,12 +132,21 @@ class VKLoginPageViewController: UIViewController {
 			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
 		})
 		
+		
+		if !VK.needToSetUp{
+			if VK.sessions.default.state == .authorized {
+				VK.sessions.default.logOut()
+			}
+			VK.release()
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		VK.release()
-        VK.setUp(appId: "7578765", delegate: self)
+		if VK.needToSetUp {
+			VK.setUp(appId: "7578765", delegate: self)
+		}
+		
 	}
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)

@@ -236,6 +236,7 @@ extension ScheduleTabViewController:ScheduleDaySelectDelegate {
 extension ScheduleTabViewController:UserChangeDelegate{
     func didSetUser(user: SAUsers.User) {
         self.currentUser = user
+		self.daySelectController.update()
         DispatchQueue.global(qos: .background).async {
             self.setDay(week: self.daySelectController.week, day: self.daySelectController.day)
         }
