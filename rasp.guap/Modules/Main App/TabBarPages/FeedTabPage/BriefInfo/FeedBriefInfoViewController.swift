@@ -152,7 +152,7 @@ class FeedBriefInfoViewController: UIViewController {
 				if let name = SAUserSettings.shared.vkName{self.rootView.addBlock(title: "Добро пожаловать, \(name)")}
 				if !SABrief.shared.isSub {
 					self.rootView.addBlock(view: self.buildBanner())
-					self.rootView.addBlock(title: "Погода на сегодня)" )
+					self.rootView.addBlock(title: "Погода на сегодня" )
 				}
 				self.addWeatherAndRockets()
 				self.addSchedule(timetable: self.lessons, day: self.day)
