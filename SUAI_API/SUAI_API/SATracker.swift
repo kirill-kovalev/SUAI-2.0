@@ -13,7 +13,7 @@ public class SATracker{
 	public static func track(_ event:String){
 		if !VK.needToSetUp {
 			DispatchQueue.global(qos: .utility).async {
-				let params = ["from":"iOS", "to":event]
+				let params = ["from":"IOS", "to":event]
 				if PocketAPI.shared.syncSetTask(method: .track, params: params) != nil {
 					print("Track: ", "\(params)")
 				}else{
