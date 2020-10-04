@@ -83,9 +83,11 @@ class FeedBriefInfoViewController: UIViewController {
 		DispatchQueue.global().async {
 			
 			let _ = SAUserSettings.shared.reload()
-			if let name = SAUserSettings.shared.vkName{DispatchQueue.main.async {
+			if let name = SAUserSettings.shared.vkFirstName{DispatchQueue.main.async {
 					self.rootView.addBlock(title: "Добро пожаловать, \(name)")
-			}}
+			}}else{DispatchQueue.main.async {
+				self.rootView.addBlock(title: "Добро пожаловать!")
+		   }}
 			
 			if SABrief.shared.loadFromServer() {
 				if !SABrief.shared.isSub {DispatchQueue.main.async {
@@ -149,7 +151,7 @@ class FeedBriefInfoViewController: UIViewController {
 			
 			DispatchQueue.main.async {
 				for v in self.rootView.stack.arrangedSubviews { v.removeFromSuperview() }
-				if let name = SAUserSettings.shared.vkName{self.rootView.addBlock(title: "Добро пожаловать, \(name)")}
+				if let name = SAUserSettings.shared.vkFirstName{self.rootView.addBlock(title: "Добро пожаловать, \(name)")}
 				if !SABrief.shared.isSub {
 					self.rootView.addBlock(view: self.buildBanner())
 					self.rootView.addBlock(title: "Погода на сегодня" )
