@@ -35,6 +35,21 @@ struct AppSettings {
 			Logger.print(from: #function, "isTimetableNotificationsEnabled set \(newValue)")
 		}
 	}
+	
+	static var isOldTimetableEnabled:Bool{
+		get{
+			UserDefaults.standard.synchronize()
+			let get = UserDefaults.standard.bool(forKey: "oldTimetable")
+			Logger.print(from: #function, "isOldTimetableEnabled get \(get)")
+			return get
+		}
+		set{
+			UserDefaults.standard.synchronize()
+			UserDefaults.standard.set(newValue, forKey: "oldTimetable")
+			Logger.print(from: #function, "isOldTimetableEnabled set \(newValue)")
+		}
+	}
+	
 	static func clearCache(){
 		NotificationManager.shared.clear()
 		for (key,_) in UserDefaults.standard.dictionaryRepresentation() {

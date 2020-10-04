@@ -99,4 +99,20 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		self.present(vkVC, animated: true, completion: nil)
 	}
 	
+	
+	private var shakeCount = 0
+	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+		Logger.print(from: #function, "shaked")
+		if motion == .motionShake{
+			if shakeCount > 5 {
+				let vc = UIViewController(nibName: nil, bundle: nil)
+				vc.modalPresentationStyle = .popover
+				self.present(vc, animated: false, completion: nil)
+			}
+			shakeCount += 1
+		}
+	}
+	
+	
+	
 }
