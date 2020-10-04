@@ -11,12 +11,12 @@ import UIKit
 class PocketDropdownView:UIView{
 	let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
 	init() {
-		super.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+		super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
 		
 		image.tintColor = Asset.PocketColors.pocketGray.color
 		self.addSubview(image)
 		image.snp.makeConstraints { make in
-			make.width.height.equalTo(30)
+			make.width.height.equalTo(25)
 			make.centerY.equalToSuperview()
 			make.right.equalToSuperview().inset(8)
 			make.left.equalToSuperview()
