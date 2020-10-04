@@ -44,12 +44,50 @@ class MainTabBarController : ESTabBarController{
         
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(snackNotification(_:)), name: Self.snackNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
 		
 		if !NotificationManager.shared.auth(){
 			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
 		}
     }
-
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		setupQuickActions()
+	}
+	
+	
+	private func setupQuickActions(){
+		UIApplication.shared.shortcutItems = self.viewControllers?.enumerated().compactMap { iterator in
+			if let barItem = iterator.element.tabBarItem as? ESTabBarItem {
+				var icon = UIApplicationShortcutIcon(type: .home)
+				if let name =  barItem.image?.accessibilityIdentifier,
+				   let _ = UIImage(named: name){
+					icon = UIApplicationShortcutIcon(templateImageName: name)
+				}
+				return UIApplicationShortcutItem(type: "tab\(iterator.offset)", localizedTitle: barItem.title ?? "", localizedSubtitle: "", icon: icon, userInfo: nil)
+			} else {return nil}
+		}
+		Logger.print(from: #function, UIApplication.shared.shortcutItems)
+	}
+	@objc func shortcutNotification(_ notif:Notification){
+		if let shortcut = notif.userInfo?.first?.value as? UIApplicationShortcutItem {
+			let type = shortcut.type
+			if type.contains("tab"){
+				let tabNumStr = type.filter{"1234567890".contains($0)}
+				let tabNum = Int(tabNumStr) ?? self.selectedIndex
+				if tabNum >= 0 , tabNum < (self.viewControllers?.count ?? 0){
+					self.selectedIndex = tabNum
+					Logger.print(from: #function, "performed quickAction; switched tab to \(tabNum)")
+				}
+			}
+			
+		}else{
+			Logger.print(from: #function, "can not cast recieved message")
+		}
+		
+	}
+	
+	
 	
 	public static func Snack(status:PocketSnackView.Status,text:String){
 		NotificationCenter.default.post(name: MainTabBarController.snackNotification, object: nil, userInfo: [
@@ -103,7 +141,9 @@ class MainTabBarController : ESTabBarController{
 			snack.removeFromSuperview()
 		}
 	}
-    
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

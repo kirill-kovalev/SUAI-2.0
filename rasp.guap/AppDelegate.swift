@@ -152,3 +152,10 @@ extension AppDelegate:WCSessionDelegate{
 	
 	
 }
+
+extension AppDelegate{
+	static let shortcutNotification = NSNotification.Name(rawValue: "AppDelegate.shortcutNotification")
+	func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+		NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+	}
+}

@@ -140,6 +140,8 @@ class VKLoginPageViewController: UIViewController {
 			}
 			VK.release()
 		}
+		
+		setupQuickActions()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -152,6 +154,23 @@ class VKLoginPageViewController: UIViewController {
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
 		self.LoginButton.layer.borderColor = self.LoginButton.titleLabel?.textColor.cgColor
+	}
+	
+	private func setupQuickActions(){
+		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
+		UIApplication.shared.shortcutItems = [UIApplicationShortcutItem(type: "vkLogin", localizedTitle: "Авторизоваться через VK", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: Asset.SystemIcons.vkLogo.name), userInfo: nil)]
+	}
+	@objc func shortcutNotification(_ notif:Notification){
+		if let shortcut = notif.userInfo?.first?.value as? UIApplicationShortcutItem {
+			let type = shortcut.type
+			if type.contains("vk"){
+				self.loginViaVK(self.LoginButton, forEvent: UIEvent())
+			}
+			
+		}else{
+			Logger.print(from: #function, "can not cast recieved message")
+		}
+		
 	}
 }
 extension VKLoginPageViewController:SwiftyVKDelegate{
