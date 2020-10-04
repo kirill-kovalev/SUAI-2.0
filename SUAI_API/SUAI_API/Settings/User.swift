@@ -21,7 +21,14 @@ public class SAUserSettings: Codable {
 	public var procookie:String?
 	public var proSupport:Bool{return !(prologin?.isEmpty ?? true || propass?.isEmpty ?? true || procookie?.isEmpty ?? true)}
 	
-	public var vkName:String?
+	public var vkName:String? {
+		get{
+			if vkFirstName == nil && vkLastName == nil { return nil}
+			return "\(vkFirstName ?? "") \(vkLastName ?? "")"
+		}
+	}
+	public var vkFirstName:String?
+	public var vkLastName:String?
 	public var vkPhoto:String?
     
 	public static var shared = fromServer() ?? fromCache() ?? SAUserSettings();
@@ -43,7 +50,8 @@ public class SAUserSettings: Codable {
 			let resp = try? JSONDecoder().decode([vkResponse].self, from: data),
 			let user = resp.first
 			else { return }
-		self.vkName = "\(user.first_name) \(user.last_name)"
+		self.vkFirstName = "\(user.first_name)"
+		self.vkLastName = "\(user.last_name)"
 		self.vkPhoto = user.photo_100
 	}
 	
@@ -93,7 +101,8 @@ public class SAUserSettings: Codable {
         self.banners = settings.banners
 		self.prologin = settings.prologin
 		self.propass = settings.propass
-		self.vkName = settings.vkName
+		self.vkFirstName = settings.vkFirstName
+		self.vkLastName = settings.vkLastName
 		self.vkPhoto = settings.vkPhoto
 		return true
     }
