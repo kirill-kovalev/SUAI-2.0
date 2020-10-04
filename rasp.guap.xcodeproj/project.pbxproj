@@ -53,6 +53,8 @@
 		5D97D08C2528F66F00335D73 /* Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; };
 		5D97D08D2528F66F00335D73 /* Tracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5D97D09C2529CACB00335D73 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09B2529CACB00335D73 /* Logger.swift */; };
+		5D97D09F2529D7B700335D73 /* DebugSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */; };
+		5D97D0A12529D7C300335D73 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */; };
 		5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */; };
 		5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */; };
 		5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */; };
@@ -240,6 +242,8 @@
 		5D95A63B24D412AC000418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D97D08B2528F66F00335D73 /* Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D97D09B2529CACB00335D73 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsView.swift; sourceTree = "<group>"; };
+		5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewController.swift; sourceTree = "<group>"; };
 		5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-LightItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
@@ -571,6 +575,7 @@
 		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D97D09D2529D79E00335D73 /* DebugSettings */,
 				5DAEA6162521EF3B000A2924 /* AppSettings */,
 				5DF423C22500F7C400565FB8 /* ServiceSettings */,
 				5DF423C12500F7A800565FB8 /* SUAI_ID */,
@@ -724,6 +729,15 @@
 				5D74FE2324E0993700FC38B8 /* NibView.swift */,
 			);
 			path = ModuleComponents;
+			sourceTree = "<group>";
+		};
+		5D97D09D2529D79E00335D73 /* DebugSettings */ = {
+			isa = PBXGroup;
+			children = (
+				5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */,
+				5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */,
+			);
+			path = DebugSettings;
 			sourceTree = "<group>";
 		};
 		5D99B20224DD58CF00D6C648 /* SF Pro */ = {
@@ -1249,6 +1263,7 @@
 				5D3D6C9524E42EA2007CE482 /* MainTabBarController.swift in Sources */,
 				5DA10F6B24DC2EE600D09BD8 /* Fonts.swift in Sources */,
 				5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */,
+				5D97D0A12529D7C300335D73 /* DebugSettingsViewController.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
 				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
 				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
@@ -1266,6 +1281,7 @@
 				5D3531C92517AEF200E26BDA /* PocketSnackView.swift in Sources */,
 				5DA7442425077B8C00403F6A /* PocketScalableContainer.swift in Sources */,
 				5DAEA613251E504C000A2924 /* PocketLongActionButton.swift in Sources */,
+				5D97D09F2529D7B700335D73 /* DebugSettingsView.swift in Sources */,
 				5D2ADFA624D42817006DACED /* TimetableFilterViewConroller.swift in Sources */,
 				5DA10F4F24DC1A7700D09BD8 /* FirstTutorialPageSkipDelegate.swift in Sources */,
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
