@@ -50,7 +50,7 @@ class FeedOrderSettingsView : View{
 			make.top.equalTo(stackContainer.snp.bottom).offset(12)
 			make.left.right.equalToSuperview()
 			make.height.equalTo(45)
-			make.bottom.lessThanOrEqualToSuperview()
+			make.bottom.equalToSuperview()
 		}
 	}
 	
