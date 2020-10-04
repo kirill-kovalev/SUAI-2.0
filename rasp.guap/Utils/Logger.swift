@@ -18,7 +18,7 @@ class Logger{
 		
 		let date = formatter.string(from: Date())
 		let string = "LOGGER - [\(date)] : \(items) \n____________________________________________________________________________________________________\n\n"
-		log.append(string)
+		log += string 
 		prnt(log: string)
 		UserDefaults.standard.synchronize()
 		UserDefaults.standard.setValue(self.log, forKey: "Logger.log")
@@ -31,6 +31,11 @@ fileprivate func prnt(log:Any?){
 	if let log = log{
 		print(log)
 	}
+}
+
+func fatalError(_ message:String)->Never{
+	Logger.print(from: "FATAL ERROR", message)
+	fatalError()
 }
 
 
