@@ -19,6 +19,6 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 	@objc private func setOldTimetable(){
 		AppSettings.isOldTimetableEnabled = self.content.oldimetable.toggle.isOn
 		Logger.print(from: "", "ВСЕ ОК, отчеты отклоню, оно не вылетает, а закрывается")
-		exit(0)
+		//exit(0)
 	}
 }
