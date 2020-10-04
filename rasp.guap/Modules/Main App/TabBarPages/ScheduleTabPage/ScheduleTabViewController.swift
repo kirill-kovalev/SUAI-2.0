@@ -17,6 +17,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
     required init() {
         super.init()
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Расписание", image: Asset.AppImages.TabBarImages.schedule.image, tag: 0)
+		self.tabBarItem.image?.accessibilityValue = Asset.AppImages.TabBarImages.schedule.name
     }
     
     var tableController:TimetableViewController = TimetableViewController(timetable: [])

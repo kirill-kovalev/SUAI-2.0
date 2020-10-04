@@ -14,6 +14,7 @@ class InfoTabViewController: ViewController<InfoTabView> {
     required init() {
         super.init()
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Справочник", image: Asset.AppImages.TabBarImages.info.image, tag: 3)
+		self.tabBarItem.image?.accessibilityValue = Asset.AppImages.TabBarImages.info.name
 		self.keyboardReflective = false
     }
     

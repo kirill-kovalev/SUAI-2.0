@@ -59,9 +59,11 @@ class MainTabBarController : ESTabBarController{
 	private func setupQuickActions(){
 		UIApplication.shared.shortcutItems = self.viewControllers?.enumerated().compactMap { iterator in
 			if let barItem = iterator.element.tabBarItem as? ESTabBarItem {
-				var icon = UIApplicationShortcutIcon(type: .home)
-				if let name =  barItem.image?.accessibilityIdentifier,
+				var icon = UIApplicationShortcutIcon(type: .play)
+				
+				if let name =  barItem.image?.accessibilityValue,
 				   let _ = UIImage(named: name){
+					Logger.print(from: "setupQuickActions", name)
 					icon = UIApplicationShortcutIcon(templateImageName: name)
 				}
 				return UIApplicationShortcutItem(type: "tab\(iterator.offset)", localizedTitle: barItem.title ?? "", localizedSubtitle: "", icon: icon, userInfo: nil)

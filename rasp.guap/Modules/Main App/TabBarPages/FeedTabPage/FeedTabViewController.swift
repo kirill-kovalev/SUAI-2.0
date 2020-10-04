@@ -43,6 +43,7 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		super.init()
 		let tabImage = Asset.AppImages.TabBarImages.feed.image
         self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title:"Новости", image: tabImage , tag: 0)
+		self.tabBarItem.image?.accessibilityValue = Asset.AppImages.TabBarImages.feed.name
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
