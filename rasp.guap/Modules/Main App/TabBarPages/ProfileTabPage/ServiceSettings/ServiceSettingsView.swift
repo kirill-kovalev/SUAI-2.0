@@ -23,6 +23,15 @@ class ServiceSettingsView: View {
 	lazy var startscreenLabel = self.labelGenerator(title:"Начальный экран")
 	lazy var buildingLabel = self.labelGenerator(title:"Корпус по умолчанию")
 	
+	let feedOrderButton:PocketButton = {
+		let btn = PocketButton()
+		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
+		btn.isActive = true
+		btn.setTitle("Фильтр новостей", for: .normal)
+		return btn
+	}()
+	
 	lazy var groupSelector:UITextField = {
 		let tf = PocketDropdownField(frame: .zero)
 		return tf
@@ -71,14 +80,19 @@ class ServiceSettingsView: View {
 		content.addArrangedSubview(startScreenSelector)
 		content.addArrangedSubview(buildingLabel)
 		content.addArrangedSubview(buildingSelector)
-		
-		
-		
+	
 		self.addSubview(loadingIndidcator)
+		
+		self.addSubview(feedOrderButton)
 	}
 	func setupConstraints(){
 		content.snp.makeConstraints { (make) in
-			make.top.left.right.bottom.equalToSuperview()
+			make.top.left.right.equalToSuperview()
+		}
+		feedOrderButton.snp.makeConstraints { (make) in
+			make.height.equalTo(40)
+			make.top.equalTo(content.snp.bottom).offset(8)
+			make.left.right.bottom.equalToSuperview()
 		}
 		loadingIndidcator.snp.makeConstraints { (make) in
 			make.height.width.equalTo(50)

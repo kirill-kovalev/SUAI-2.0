@@ -80,6 +80,7 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 		setupBuildingList()
 		update()
 		self.rootView.groupSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.groupSelectorTap)))
+		self.rootView.feedOrderButton.addTarget(action: {_ in self.present(FeedOrderSettingsViewController(), animated: true, completion: nil)}, for: .touchUpInside)
 	}
 	@objc private func groupSelectorTap(){
 		let vc = TimetableFilterViewConroller()

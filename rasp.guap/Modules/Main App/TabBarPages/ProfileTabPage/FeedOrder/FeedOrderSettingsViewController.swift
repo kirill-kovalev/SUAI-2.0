@@ -10,4 +10,8 @@ import UIKit
 
 class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView> {
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.setTitle("Фильтр новостей")
+	}
 }

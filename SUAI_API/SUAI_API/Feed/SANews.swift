@@ -18,6 +18,17 @@ public class SANews{
     
     public static let shared = SANews()
     public var streams:[SAFeedStream] = []
+	
+	public static func updateSorceList(sources:[FeedSource])->Bool{
+		if let sourceData = try? JSONEncoder().encode(sources),
+		   let jsonString = String(data: sourceData, encoding: .utf8),
+		   let data = PocketAPI.shared.syncSetTask(method: .setFeedOrder, params: ["order":jsonString]),
+		   (String(data: data, encoding: .utf8)?.contains("success") ?? false )
+		{
+			return shared.loadSourceList()
+		}
+		return false
+	}
     
 	public func loadSourceList(default:Bool = false) ->Bool{
 		let params = `default` ? ["default":"true"] : [:]
