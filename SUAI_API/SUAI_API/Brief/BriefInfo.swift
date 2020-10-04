@@ -50,7 +50,7 @@ public class SABrief{
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}
 	public var news : [SAFeedElement] {self.briefInfo.saNews ?? [] }
-	
+	public var events : [SAFeedElement] { [] }
 	
 	private func decodeNews(from:[VKFeedElement]) -> [SAFeedElement]{
 		return from.map { item in
