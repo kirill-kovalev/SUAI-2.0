@@ -89,7 +89,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	}
 	
 	private func logout(){
-		print("logout")
+		Logger.print(from: #function, "logout")
 		AppSettings.clearCache()
 		SAUserSettings.shared.reset()
 		DispatchQueue.global().async { VK.sessions.default.logOut() }

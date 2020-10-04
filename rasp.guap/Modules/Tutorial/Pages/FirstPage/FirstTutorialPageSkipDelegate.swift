@@ -13,6 +13,6 @@ protocol FirstTutorialPageSkipDelegate{
 }
 extension FirstTutorialPageSkipDelegate{
     func skipPages(){
-        print("FirstTutuorialPageSkipDelegate.skipPages() not defined")
+		Logger.print(from: #function, "FirstTutuorialPageSkipDelegate.skipPages() not defined")
     }
 }

@@ -100,9 +100,9 @@ extension AppDelegate:WCSessionDelegate{
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		print(#function)
 		if let error = error {
-            fatalError("Can't activate session with error: \(error.localizedDescription)")
+			Logger.print(from: #function, "Can't activate session with error: \(error.localizedDescription)")
         }
-        print("WC Session activated with state: \(activationState.rawValue)")
+		Logger.print(from: #function, "WC Session activated with state: \(activationState.rawValue)")
 	}
 	
 	func sessionDidBecomeInactive(_ session: WCSession) {

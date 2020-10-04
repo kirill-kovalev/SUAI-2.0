@@ -28,8 +28,10 @@ class SuaiIDView: View {
 		tf.isSecureTextEntry = true
 		return tf
 	}()
-	let submitBtn:PocketTagButton = {
-		let btn = PocketTagButton()
+	let submitBtn:PocketLongActionButton = {
+		let btn = PocketLongActionButton()
+		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
+		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
 		btn.isActive = false
 		btn.setTitle("Сохранить данные", for: .normal)
 		btn.snp.removeConstraints()

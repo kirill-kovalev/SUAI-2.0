@@ -273,7 +273,6 @@ class DeadlineEditModalView: View {
 	}
 	override func layoutSubviews() {
         super.layoutSubviews()
-		print("layout")
         setup()
 		self.delegate = self.editController
 		self.addSubview(placehlderLabel)

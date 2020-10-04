@@ -19,7 +19,7 @@ class ScheduleDetailController: WKInterfaceController {
 		super.awake(withContext: context)
 		//[lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps]
 		if let lesson = context as? [String]{
-			print(lesson)
+			
 			lessonNameLabel.setText(lesson.at(1))
 			TimeLabel.setText(lesson.at(2))
 			PrepLabel.setText(lesson.at(3))

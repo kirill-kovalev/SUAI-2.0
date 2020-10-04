@@ -50,7 +50,7 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 		if( traitCollection.forceTouchCapability == .available){
 			registerForPreviewing(with: self, sourceView: self.content.serviceListLabel)
 		}else{
-			print("wtf no force touch?")
+			Logger.print(from: #function, "wtf no force touch?")
 		}
 		
 	}

@@ -30,12 +30,12 @@ class InfoTabViewController: ViewController<InfoTabView> {
 	}
 	func loadWebView(darkMode:Bool = false){
 		if let url = URL(string: "https://suaipocket.ru/info\(darkMode ? "#dark" : "#light")"){
-			print("WEB: loading with url \(url)")
+			Logger.print(from: #function, "WEB: loading with url \(url)")
 			let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 15	)
 			if let _ = self.rootView.webView.load(request){
-				print("WEB: load returned object")
+				Logger.print(from: #function, "WEB: load returned object")
 			}else{
-				print("WEB: load returned nil")
+				Logger.print(from: #function, "WEB: load returned nil")
 			}
 		}
 		
@@ -69,7 +69,7 @@ extension InfoTabViewController:WKNavigationDelegate{
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		
 		
-		print("WEB: loaded url \(webView.url)")
+		Logger.print(from: #function, "WEB: loaded url \(webView.url)")
 		if let url = webView.url {
 			URLSession.shared.dataTask(with: url) { (data, response, err) in
 				
@@ -91,7 +91,7 @@ extension InfoTabViewController:WKNavigationDelegate{
 	}
 	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
 		self.rootView.notReleasedLabel.isHidden = false
-		print("WEB: failed nav \(navigation!) wit err \(error)")
+		Logger.print(from: #function, "WEB: failed nav \(navigation!) wit err \(error)")
 	}
 }
 //extension InfoTabViewController:WKUIDelegate{

@@ -187,7 +187,7 @@ class DeadlinesTabViewController: ViewController<DeadlinesTabView> {
 		if  AppSettings.isTimetableNotificationsEnabled,
 			NotificationManager.shared.isAuth,
 			!SADeadlines.shared.setupNotifications(){
-			print("Не получилось обновить уведомления делайнов")
+			Logger.print(from: #function, "Не получилось обновить уведомления делайнов")
 		}
         
     }

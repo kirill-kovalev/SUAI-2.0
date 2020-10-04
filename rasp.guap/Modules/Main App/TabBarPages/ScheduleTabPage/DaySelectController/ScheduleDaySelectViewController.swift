@@ -59,7 +59,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 			let dayname = days[day]
 			for (index,name) in shouldShowDays.enumerated() {
 				if name == dayname{
-					print("(getIndex) weekday:\(day) index:\(index)")
+					Logger.print(from: #function, "(getIndex) weekday:\(day) index:\(index)")
 					return index
 				}
 			}
@@ -75,7 +75,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 		if index >= 0 && index < shouldShowDays.count{
 			for (day,name) in self.days.enumerated() {
 				if name == shouldShowDays[index].element{
-					print("(getWeekDay) weekday:\(day) index:\(index)")
+					Logger.print(from: #function, "(getWeekDay) weekday:\(day) index:\(index)")
 					return day
 				}
 			}

@@ -20,12 +20,12 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 			self.rootView.submitBtn.isActive = false
 			DispatchQueue.global().async {
 				if SAUserSettings.shared.update() {
-					print("SUAI ID OK")
+					Logger.print(from: #function, "SUAI ID OK")
 					MainTabBarController.Snack(status: .ok, text: "Настройки обновлены")
 					DispatchQueue.main.async {self.rootView.submitBtn.isActive = false}
 					self.isTextEdited = false
 				}else{
-					print("SUAI ID Err")
+					Logger.print(from: #function, "SUAI ID Err")
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					DispatchQueue.main.async {self.textFieldDidChange()}
 				}

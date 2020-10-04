@@ -73,7 +73,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 		
         DispatchQueue.global(qos: .background).async {
 			guard let groupName = SAUserSettings.shared.group else {
-                print("SAUserSettings.shared?.group is nil")
+				Logger.print(from: #function, "SAUserSettings.shared?.group is nil")
 				let _ =	UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
                 return
             }
@@ -169,7 +169,7 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 			
 		
         guard let user = self.currentUser else{
-            print("curUser is nil")
+			Logger.print(from: #function, "curUser is nil")
             return
         }
 
@@ -220,14 +220,14 @@ class ScheduleTabViewController: ViewController<ScheduleTabView>{
 extension ScheduleTabViewController:ScheduleDaySelectDelegate {
     func scheduleDaySelect(didUpdate day: Int, week: SATimetable.Week) {
         DispatchQueue.global(qos: .background).async {
-			print("set week\(week); day \(day)")
+			Logger.print(from: #function, "set week\(week); day \(day)")
             self.setDay(week: week, day: day)
         }
         
     }
     
     func shouldShow(day: Int,week:SATimetable.Week) -> Bool {
-		//print("day: \(day); week: \(week) ; get:\(self.timetable.get(week: week, day: day).count)")
+		Logger.print(from: #function, "day: \(day); week: \(week) ; get:\(self.timetable.get(week: week, day: day).count)")
         return !self.timetable.get(week: week, day: day).isEmpty
     }
     

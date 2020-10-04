@@ -12,13 +12,13 @@ struct AppSettings {
 	static var isDeadlineNotificationsEnabled:Bool{
 		get{
 			let get = UserDefaults.standard.bool(forKey: "deadlineNotifications")
-			print("isDeadlineNotificationsEnabled get \(get)")
+			Logger.print(from: #function, "isDeadlineNotificationsEnabled get \(get)")
 			return get
 		}
 		set{
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "deadlineNotifications")
-			print("isDeadlineNotificationsEnabled set \(newValue)")
+			Logger.print(from: #function, "isDeadlineNotificationsEnabled set \(newValue)")
 		}
 	}
 	
@@ -26,13 +26,13 @@ struct AppSettings {
 		get{
 			UserDefaults.standard.synchronize()
 			let get = UserDefaults.standard.bool(forKey: "timetableNotifications")
-			print("isTimetableNotificationsEnabled get \(get)")
+			Logger.print(from: #function, "isTimetableNotificationsEnabled get \(get)")
 			return get
 		}
 		set{
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "timetableNotifications")
-			print("isTimetableNotificationsEnabled set \(newValue)")
+			Logger.print(from: #function, "isTimetableNotificationsEnabled set \(newValue)")
 		}
 	}
 	static func clearCache(){

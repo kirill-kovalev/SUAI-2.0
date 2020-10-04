@@ -158,7 +158,7 @@ class FeedTableCell:UITableViewCell{
 		initSetup()
 	}
 	private func initSetup(){
-		print("init setup")
+		Logger.print(from: #function, "init setup")
 		self.backgroundColor = .clear
 		self.contentView.addSubview(container)
 		container.snp.makeConstraints { (make) in

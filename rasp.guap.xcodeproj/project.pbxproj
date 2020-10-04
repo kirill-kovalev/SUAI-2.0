@@ -52,6 +52,7 @@
 		5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */; };
 		5D97D08C2528F66F00335D73 /* Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; };
 		5D97D08D2528F66F00335D73 /* Tracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D97D08B2528F66F00335D73 /* Tracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D97D09C2529CACB00335D73 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09B2529CACB00335D73 /* Logger.swift */; };
 		5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */; };
 		5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */; };
 		5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */; };
@@ -238,6 +239,7 @@
 		5D95A63924D412AC000418B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D95A63B24D412AC000418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D97D08B2528F66F00335D73 /* Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D97D09B2529CACB00335D73 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-LightItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */,
 				5DAEA61425211096000A2924 /* NotificationManager.swift */,
+				5D97D09B2529CACB00335D73 /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1268,6 +1271,7 @@
 				5DAEDFF624E9889D00B0B884 /* Calendar.swift in Sources */,
 				5DF423BF250039DF00565FB8 /* RocketUserView.swift in Sources */,
 				5DA10F6924DC2EDA00D09BD8 /* Assets.swift in Sources */,
+				5D97D09C2529CACB00335D73 /* Logger.swift in Sources */,
 				5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */,
 				5DD24CAF24E44E9B0024F325 /* PocketTabBarIcon.swift in Sources */,
 				5DA744272507EB7500403F6A /* PocketDivPlaceholder.swift in Sources */,

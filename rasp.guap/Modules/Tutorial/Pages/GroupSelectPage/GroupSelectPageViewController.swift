@@ -30,7 +30,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
 				if SAUserSettings.shared.update() {
 					self.present(DataLoaderViewController(), animated: true, completion: nil)
 				}else{
-					print("error while setting group")
+					Logger.print(from: #function, "error while setting group")
 				}
                 
             }

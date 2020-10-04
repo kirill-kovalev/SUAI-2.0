@@ -139,7 +139,6 @@ class TestVC:UIViewController{
 	
 
 	@objc func tap(_ sender:Any?){
-		print("tap")
 		if self.v.isAnimating {
 			self.v.stopAnimating()
 		}else{

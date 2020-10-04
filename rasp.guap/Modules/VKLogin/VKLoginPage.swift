@@ -40,7 +40,7 @@ class VKLoginPageViewController: UIViewController {
                 self.errLabel.isHidden = false
             }
             
-            print(err)
+			Logger.print(from: #function, err)
         }
     }
 	func errorText(err:VKError)->String{
@@ -61,14 +61,14 @@ class VKLoginPageViewController: UIViewController {
 				session.logOut()
 				return "Повторите авторизацию"
 			case .sessionIsNotAuthorized(let session):
-				print("not authorized \(session)")
-				return ""
+				Logger.print(from: #function, "not authorized \(session)")
+				return "Сессия не авторизована"
 			case .unexpectedResponse:
-				return ""
+				return "Неопознанный ответ сервера"
 			case .jsonNotParsed(_):
-				return ""
+				return "Ошибка расшифровки ответа"
 			case .urlRequestError(let err):
-				print(err)
+				Logger.print(from: #function, err)
 				return "Ошибка авторизации, проверьте подключение к интернету"
 			case .captchaResultIsNil:
 				return ""
@@ -79,6 +79,7 @@ class VKLoginPageViewController: UIViewController {
 			case .cantAwaitRequestWithSettedCallbacks:
 				return ""
 			case .cantBuildWebViewUrl(let err):
+				Logger.print(from: #function, err)
 				return "Ошибка \(err)"
 			case .cantBuildVKAppUrl(_):
 				return "Не получилось отправить запрос приложению VK"
