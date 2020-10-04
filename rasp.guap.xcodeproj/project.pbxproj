@@ -55,6 +55,7 @@
 		5D97D09C2529CACB00335D73 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09B2529CACB00335D73 /* Logger.swift */; };
 		5D97D09F2529D7B700335D73 /* DebugSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */; };
 		5D97D0A12529D7C300335D73 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */; };
+		5D97D0A72529EC8A00335D73 /* PocketDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */; };
 		5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */; };
 		5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */; };
 		5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */; };
@@ -244,6 +245,7 @@
 		5D97D09B2529CACB00335D73 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsView.swift; sourceTree = "<group>"; };
 		5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewController.swift; sourceTree = "<group>"; };
+		5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDropdownField.swift; sourceTree = "<group>"; };
 		5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-LightItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 		5D95A62724D412AB000418B5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5D97D0A52529EC7100335D73 /* PocketDropDownField */,
 				5DB46E1B251B5FB2009F6635 /* PocketActivity */,
 				5D3531C72517AEDC00E26BDA /* PocketSnack */,
 				5DA7443325094D9B00403F6A /* PocketCard */,
@@ -738,6 +741,14 @@
 				5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */,
 			);
 			path = DebugSettings;
+			sourceTree = "<group>";
+		};
+		5D97D0A52529EC7100335D73 /* PocketDropDownField */ = {
+			isa = PBXGroup;
+			children = (
+				5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */,
+			);
+			path = PocketDropDownField;
 			sourceTree = "<group>";
 		};
 		5D99B20224DD58CF00D6C648 /* SF Pro */ = {
@@ -1351,6 +1362,7 @@
 				5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */,
 				5D2BD80A24E4359A002630B5 /* FeedTabView.swift in Sources */,
 				5DCE2FED24E03AEC00CFF29A /* PocketTagButton.swift in Sources */,
+				5D97D0A72529EC8A00335D73 /* PocketDropdownField.swift in Sources */,
 				5DA10F4924DB556A00D09BD8 /* FirstPageView.swift in Sources */,
 				5D9D905624ED843D00930375 /* VKLoginPage.swift in Sources */,
 				5D2BD83D24E43657002630B5 /* ProfileTabView.swift in Sources */,
