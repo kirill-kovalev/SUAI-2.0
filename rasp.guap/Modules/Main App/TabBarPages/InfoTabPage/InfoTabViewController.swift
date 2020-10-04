@@ -69,7 +69,7 @@ extension InfoTabViewController:WKNavigationDelegate{
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		
 		
-		Logger.print(from: #function, "WEB: loaded url \(webView.url)")
+		Logger.print(from: #function, "WEB: loaded url \(webView.url as Any)")
 		if let url = webView.url {
 			URLSession.shared.dataTask(with: url) { (data, response, err) in
 				
@@ -94,6 +94,4 @@ extension InfoTabViewController:WKNavigationDelegate{
 		Logger.print(from: #function, "WEB: failed nav \(navigation!) wit err \(error)")
 	}
 }
-//extension InfoTabViewController:WKUIDelegate{
-//
-//}
+

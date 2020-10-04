@@ -136,22 +136,22 @@ class NotificationManager{
 	public func debugList(){
 		center.getPendingNotificationRequests { (requests) in
 			let c = Calendar.current.dateComponents([.weekday,.hour,.minute,.month,.year], from: Date())
-			Logger.print(from: #function, "NotificationManager.list:  today : weekday = \(c.weekday) ; h = \( c.hour ); m = \(c.minute) has \(requests.count) requests ")
+			Logger.print(from: #function, "NotificationManager.list:  today : weekday = \(c.weekday as Any) ; h = \( c.hour as Any ); m = \(c.minute as Any) has \(requests.count) requests ")
 			for request in requests{
 				if let t = (request.trigger as? UNCalendarNotificationTrigger){
 					let c = t.dateComponents
-					Logger.print(from: #function, "NotificationManager.list:  request \"\(request.content.title)\": day = \(c.day) ;   weekday = \(c.weekday) ;   h = \( c.hour );   m = \(c.minute) ")
+					Logger.print(from: #function, "NotificationManager.list:  request \"\(request.content.title)\": day = \(c.day as Any) ;   weekday = \(c.weekday as Any) ;   h = \( c.hour as Any );   m = \(c.minute as Any) ")
 				}
 			}
 		}
 		center.getDeliveredNotifications { (notifications) in
 			let c = Calendar.current.dateComponents([.weekday,.hour,.minute,.month,.year], from: Date())
-			Logger.print(from: #function, "NotificationManager.list:  today : weekday = \(c.weekday) ; h = \( c.hour ); m = \(c.minute) has \(notifications.count) delivered notifications ")
+			Logger.print(from: #function, "NotificationManager.list:  today : weekday = \(c.weekday as Any) ; h = \( c.hour as Any ); m = \(c.minute as Any) has \(notifications.count) delivered notifications ")
 			for n in notifications {
 				let request = n.request
 				if let t = (request.trigger as? UNCalendarNotificationTrigger){
 					let c = t.dateComponents
-					Logger.print(from: #function, "NotificationManager.list:  notif \"\(request.content.title)\": day = \(c.day) ;   weekday = \(c.weekday) ;   h = \( c.hour );   m = \(c.minute) ")
+					Logger.print(from: #function, "NotificationManager.list:  notif \"\(request.content.title as Any)\": day = \(c.day as Any) ;   weekday = \(c.weekday as Any) ;   h = \( c.hour  as Any );   m = \(c.minute as Any) ")
 				}
 			}
 		}
@@ -170,9 +170,9 @@ extension SATimetable{
 			let c = (request.trigger as? UNCalendarNotificationTrigger)?.dateComponents
 			if !NotificationManager.shared.add(request: request) {
 				success = false
-				Logger.print(from: #function, "err : weekday = \(c?.weekday) ; h = \( c?.hour ); m = \(c?.minute) ; (\(request.content.title)")
+				Logger.print(from: #function, "err : weekday = \(c?.weekday as Any) ; h = \( c?.hour as Any ); m = \(c?.minute as Any) ; (\(request.content.title)")
 			} else {
-				Logger.print(from: #function, "created notif for timetable: weekday = \(c?.weekday) ; h = \( c?.hour ); m = \(c?.minute) ; (\(request.content.title))")
+				Logger.print(from: #function, "created notif for timetable: weekday = \(c?.weekday as Any) ; h = \( c?.hour  as Any); m = \(c?.minute as Any) ; (\(request.content.title))")
 				
 			}
 			
@@ -187,7 +187,7 @@ extension SADeadlines{
 		NotificationManager.shared.clearLessonNotifications()
 		for deadline in self.open {
 			let request = NotificationManager.shared.createNotification(for: deadline)
-			if !NotificationManager.shared.add(request: request) {success = false} else { Logger.print(from: #function, "created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate() )") }
+			if !NotificationManager.shared.add(request: request) {success = false} else { Logger.print(from: #function, "created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate()  as Any)") }
 		}
 		return success
 	}
