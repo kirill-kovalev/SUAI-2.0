@@ -38,6 +38,8 @@
 		5D602ABE252A1F1F00ACE315 /* logoLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602ABC252A1F1F00ACE315 /* logoLight@2x.png */; };
 		5D602AC1252A1F5500ACE315 /* logoDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602ABF252A1F5500ACE315 /* logoDark@2x.png */; };
 		5D602AC2252A1F5500ACE315 /* logoDark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AC0252A1F5500ACE315 /* logoDark@3x.png */; };
+		5D602AD5252A37D900ACE315 /* FeedOrderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602AD4252A37D900ACE315 /* FeedOrderSettingsView.swift */; };
+		5D602AD7252A37E300ACE315 /* FeedOrderSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602AD6252A37E300ACE315 /* FeedOrderSettingsViewController.swift */; };
 		5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F00F624FD007100C927A8 /* ASCollectionView.swift */; };
 		5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
@@ -233,6 +235,8 @@
 		5D602ABC252A1F1F00ACE315 /* logoLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoLight@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconLight.appiconset/logoLight@2x.png"; sourceTree = SOURCE_ROOT; };
 		5D602ABF252A1F5500ACE315 /* logoDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoDark@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/logoDark@2x.png"; sourceTree = SOURCE_ROOT; };
 		5D602AC0252A1F5500ACE315 /* logoDark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoDark@3x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/logoDark@3x.png"; sourceTree = SOURCE_ROOT; };
+		5D602AD4252A37D900ACE315 /* FeedOrderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderSettingsView.swift; sourceTree = "<group>"; };
+		5D602AD6252A37E300ACE315 /* FeedOrderSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderSettingsViewController.swift; sourceTree = "<group>"; };
 		5D6F00F624FD007100C927A8 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
 		5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketServiceListItem.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
@@ -589,6 +593,7 @@
 		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D602AD3252A37BF00ACE315 /* FeedOrder */,
 				5D97D0A8252A035500335D73 /* AboutUs */,
 				5D97D09D2529D79E00335D73 /* DebugSettings */,
 				5DAEA6162521EF3B000A2924 /* AppSettings */,
@@ -648,6 +653,15 @@
 				5D602ABB252A1F1F00ACE315 /* logoLight@3x.png */,
 			);
 			path = AppIconsLight;
+			sourceTree = "<group>";
+		};
+		5D602AD3252A37BF00ACE315 /* FeedOrder */ = {
+			isa = PBXGroup;
+			children = (
+				5D602AD4252A37D900ACE315 /* FeedOrderSettingsView.swift */,
+				5D602AD6252A37E300ACE315 /* FeedOrderSettingsViewController.swift */,
+			);
+			path = FeedOrder;
 			sourceTree = "<group>";
 		};
 		5D633A0424DB1AA700ACE561 /* Tutorial */ = {
@@ -1330,6 +1344,7 @@
 				5DF423CA2500F9D500565FB8 /* SuaiIDViewController.swift in Sources */,
 				5D97D0A12529D7C300335D73 /* DebugSettingsViewController.swift in Sources */,
 				5DA10F7E24DC5D7D00D09BD8 /* GroupSelectPage.swift in Sources */,
+				5D602AD7252A37E300ACE315 /* FeedOrderSettingsViewController.swift in Sources */,
 				5DED6DAF24FD63410092F67D /* FeedBriefInfoView.swift in Sources */,
 				5D27457D24FFB36D00F52D7A /* PocketBannerView.swift in Sources */,
 				5D7DF85824D42FC400CCD0AE /* CornerRadius.swift in Sources */,
@@ -1401,6 +1416,7 @@
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
 				5DF423CE2500F9EB00565FB8 /* ServiceSettingsView.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
+				5D602AD5252A37D900ACE315 /* FeedOrderSettingsView.swift in Sources */,
 				5DA7443525094DAF00403F6A /* PocketCard.swift in Sources */,
 				5DF423BD25002F6A00565FB8 /* PocketAvatar.swift in Sources */,
 				5DED6DA824FD37320092F67D /* SwitchSelectorView.swift in Sources */,
