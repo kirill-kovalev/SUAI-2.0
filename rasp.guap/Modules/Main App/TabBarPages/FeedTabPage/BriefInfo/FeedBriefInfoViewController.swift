@@ -97,7 +97,7 @@ class FeedBriefInfoViewController: UIViewController {
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить сводку")
 			}
 			
-			print("Brief: get tt")
+			Logger.print(from: #function, "Brief: get tt")
 			
 			
 			if let group = SAUserSettings.shared.group,
@@ -112,20 +112,20 @@ class FeedBriefInfoViewController: UIViewController {
 	//
 				DispatchQueue.main.async { self.addSchedule(timetable: self.lessons, day: self.day) }
 			}else{
-				print("Brief: err get tt")
+				Logger.print(from: #function, "Brief: err get tt")
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить расписание")
 			}
-			print("Brief: end  get tt")
+			Logger.print(from: #function, "Brief: end  get tt")
 
-			print("Brief: load deadlines")
+			Logger.print(from: #function, "Brief: load deadlines")
 			if SADeadlines.shared.loadFromServer() {
-				print("Brief: add deadlines")
+				Logger.print(from: #function, "Brief: add deadlines")
 				DispatchQueue.main.async { self.addDeadlines() }
-				print("Brief: end deadlines")
+				Logger.print(from: #function, "Brief: end deadlines")
 			}else{
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить дедлайны")
 			}
-			print("Brief: end load deadlines")
+			Logger.print(from: #function, "Brief: end load deadlines")
 
 			if !SABrief.shared.news.isEmpty{
 				DispatchQueue.main.async { self.addNews() }
@@ -199,7 +199,7 @@ class FeedBriefInfoViewController: UIViewController {
 		
 	}
 	func getWeatherImage(id:Int) -> (UIImage,UIColor){
-		print(id)
+		Logger.print(from: #function, id)
 		switch (true) {
 			  case id >= 200 && id <= 232:
 				return (Asset.AppImages.WeatherImages.drizzle.image,Asset.PocketColors.accent.color)
@@ -226,7 +226,7 @@ class FeedBriefInfoViewController: UIViewController {
 	private var lessons:[SALesson] = []
 	private var day = 0
 	func getNearestDay(for timetable:SATimetable) -> Int{
-		print("getNearestTimetable")
+		Logger.print(from: #function, "getNearestTimetable")
 		func nextDay(_ cur:Int)->Int {
 			if cur == 6 { return 0 }
 			return cur+1
@@ -253,7 +253,7 @@ class FeedBriefInfoViewController: UIViewController {
 
 			if lessons.isEmpty { day = nextDay(day) }
 		}while(lessons.isEmpty)
-		print("end of getNearestTimetable")
+		Logger.print(from: #function, "end of getNearestTimetable")
 		return day
 		
 	}

@@ -146,7 +146,7 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 				MainTabBarController.Snack(status: .ok, text: "Группа установлена")
 				// - MARK: УВедомления расписания!!!!!
 				if !SASchedule.shared.load(for: group).setupNotifications(){
-					print("Ошибка обновления уведомлений расписания")
+					Logger.print(from: #function, "Ошибка обновления уведомлений расписания")
 				}
 			}else{
 				SAUserSettings.shared.group = originGroup
@@ -164,14 +164,14 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 	func setBuilding(_ id:Int){
 		DispatchQueue.global().async {
 			let originBuilding = SAUserSettings.shared.building
-			print("originBuilding : \(originBuilding)")
-			print("new building : \(id)")
+			Logger.print(from: #function, "originBuilding : \(originBuilding)")
+			Logger.print(from: #function, "new building : \(id)")
 			if originBuilding != id {
 				self.startLoading()
 				
 				SAUserSettings.shared.building = id
 				if (SAUserSettings.shared.update()){
-					print("building set to \(id)")
+					Logger.print(from: #function, "building set to \(id)")
 					MainTabBarController.Snack(status: .ok, text: "Здание установлено")
 				}else{
 					SAUserSettings.shared.building = originBuilding
@@ -183,22 +183,22 @@ class ServiceSettingsViewController: ViewController<ServiceSettingsView> {
 		}
 	}
 	func setStartPage(_ id:Int){
-		print("set tab : \(id)")
+		Logger.print(from: #function, "set tab : \(id)")
 		let id = id + 1
 		
 		DispatchQueue.global().async {
 			let originTab = SAUserSettings.shared.idtab
-			print("origin tab : \(originTab)")
-			print("new tab : \(id)")
+			Logger.print(from: #function, "origin tab : \(originTab)")
+			Logger.print(from: #function, "new tab : \(id)")
 			if originTab != id {
 				self.startLoading()
 				
 				SAUserSettings.shared.idtab = id
 				if (SAUserSettings.shared.update()){
-					print("start page set to \(id)")
+					Logger.print(from: #function, "start page set to \(id)")
 					MainTabBarController.Snack(status: .ok, text: "Начальная страница установлена")
 				}else{
-					print("update Error")
+					Logger.print(from: #function, "update Error")
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					SAUserSettings.shared.idtab = originTab
 					self.updateView()
