@@ -19,15 +19,16 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        textColor = .clear
+        
         highlightTextColor = Asset.PocketColors.tabbarActiveIcon.color
         iconColor = Asset.PocketColors.pocketGray.color
         highlightIconColor = Asset.PocketColors.tabbarActiveIcon.color
-        
+		textColor = AppSettings.isGoodTabBar ? .clear : iconColor
         
         //imageView.bounds.size = CGSize(width: 60 , height: 60)
         
-		self.titleLabel.layer.opacity = 0
+	
+		self.titleLabel.layer.opacity = AppSettings.isGoodTabBar ? 0 : 1
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(28)
             make.center.equalToSuperview()
@@ -50,11 +51,20 @@ class PocketTabBarIcon: ESTabBarItemContentView {
     
 
     override func deselectAnimation(animated: Bool, completion: (() -> ())?) {
-        showAnimation(show: false)
+		if AppSettings.isGoodTabBar{
+			showAnimation(show: false)
+		}else{
+			self.titleLabel.textColor =  self.iconColor
+		}
     }
 	override func selectAnimation(animated: Bool, completion: (() -> ())?) {
-		showAnimation(show: true)
 		UIImpactFeedbackGenerator(style: .light).impactOccurred()
+		if AppSettings.isGoodTabBar{
+			showAnimation(show: true)
+		}else{
+			self.titleLabel.textColor = self.highlightTextColor
+		}
+		
 	}
     
     private func showAnimation(show:Bool){
@@ -67,14 +77,17 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 			self.titleLabel.layer.opacity = 0
 		}
         
-        //UIView.animate(withDuration: 0.3) {
-            self.imageView.tintColor = show ? self.highlightIconColor : self.iconColor
+
+		UIView.animate(withDuration: 0.3) {
+			self.imageView.tintColor = show ? self.highlightIconColor : self.iconColor
 			if !self.hideText{
 				self.titleLabel.textColor = show ? self.highlightTextColor : self.textColor
 				self.titleLabel.layer.opacity = show ? 1 : 0
 				self.titleLabel.transform = show ? .identity : CGAffineTransform(translationX: 0, y: 100)
 			}
-        //}
+		}
+		
+        
     }
     
     

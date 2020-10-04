@@ -20,8 +20,9 @@ class Logger{
 		let string = "LOGGER - [\(date)] : \(items) \n____________________________________________________________________________________________________\n\n"
 		log += string 
 		prnt(log: string)
-		UserDefaults.standard.synchronize()
-		UserDefaults.standard.setValue(self.log, forKey: "Logger.log")
+//		UserDefaults.standard.synchronize()
+//		UserDefaults.standard.removeObject(forKey: "Logger.log")
+//		UserDefaults.standard.set(self.log, forKey: "Logger.log")
 	}
 	static func print(from:Any,_ items:Any?...){
 		Logger.print("\(from.self) \n \(items)")

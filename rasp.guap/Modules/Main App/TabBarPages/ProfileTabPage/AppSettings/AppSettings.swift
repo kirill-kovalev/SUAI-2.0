@@ -50,6 +50,20 @@ struct AppSettings {
 		}
 	}
 	
+	static var isGoodTabBar:Bool{
+		get{
+			UserDefaults.standard.synchronize()
+			let get = UserDefaults.standard.bool(forKey: "goodTabBar")
+			Logger.print(from: #function, "isGoodTabBar get \(get)")
+			return get
+		}
+		set{
+			UserDefaults.standard.synchronize()
+			UserDefaults.standard.set(newValue, forKey: "goodTabBar")
+			Logger.print(from: #function, "isGoodTabBar set \(newValue)")
+		}
+	}
+	
 	static func clearCache(){
 		NotificationManager.shared.clear()
 		for (key,_) in UserDefaults.standard.dictionaryRepresentation() {

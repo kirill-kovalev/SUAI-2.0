@@ -13,13 +13,16 @@ class DebugSettingsView: ModalView {
 		let s = UIStackView(frame: .zero)
 		s.axis = .vertical
 		s.alignment = .fill
+		s.spacing = 5
 		return s
 	}()
 	let textField = UITextViewFixed(frame: .zero)
 	let oldimetable = AppSettingsBlock(title: "Старое расписание")
+	let goodTB = AppSettingsBlock(title: "Правильный таб бар")
 	required init(){
 		super.init()
-		oldimetable.backgroundColor = .clear
+		
+		self.backgroundColor = .clear
 		self.addSubview(stack)
 		stack.snp.makeConstraints { (make) in
 			make.top.left.right.bottom.equalToSuperview()
@@ -27,6 +30,7 @@ class DebugSettingsView: ModalView {
 		}
 		
 		stack.addArrangedSubview(oldimetable)
+		stack.addArrangedSubview(goodTB)
 		stack.addArrangedSubview(textField)
 		
 	}
