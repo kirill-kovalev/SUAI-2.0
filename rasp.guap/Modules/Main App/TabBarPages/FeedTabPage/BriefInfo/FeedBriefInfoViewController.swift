@@ -82,7 +82,7 @@ class FeedBriefInfoViewController: UIViewController {
 	func loadPage(){
 		DispatchQueue.global().async {
 			
-			let _ = SAUserSettings.shared.reload()
+			if !SAUserSettings.shared.reload() {MainTabBarController.Snack(status: .err, text: "Не удалосб получить имя пользователя")}
 			if let name = SAUserSettings.shared.vkFirstName{DispatchQueue.main.async {
 					self.rootView.addBlock(title: "Добро пожаловать, \(name)")
 			}}else{DispatchQueue.main.async {
