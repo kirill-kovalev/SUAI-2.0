@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugSettingsView: ModalView {
+class DebugSettingsView: View {
 	let stack:UIStackView = {
 		let s = UIStackView(frame: .zero)
 		s.axis = .vertical

@@ -6,6 +6,28 @@
 	<string>Ru</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>logoDark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>logoDark</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>logoLight</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -66,31 +88,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	
-	
-	
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>logoLight</string>
-			</array>
-		</dict>
-		
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>logoDark</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>logoDark</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-		</dict>
-	</dict>
 </dict>
 </plist>
