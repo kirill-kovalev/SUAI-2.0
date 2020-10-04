@@ -15,6 +15,7 @@ class FeedOrderSettingsView : View{
 	let stack:UIStackView = {
 		let stack = UIStackView(frame: .zero)
 		stack.axis = .vertical
+		stack.spacing = 8
 		return stack
 	}()
 	lazy var stackContainer = PocketDivView(content: stack)

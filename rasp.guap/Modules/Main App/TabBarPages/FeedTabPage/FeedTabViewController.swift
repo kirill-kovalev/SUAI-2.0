@@ -66,6 +66,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		self.rootView.sourceSelector.updateView()
 		if news.sources.count == 0 {
 			reloadSources()
+		}else if news.sources.count != (SANews.shared.sources.count + 1){
+			showSources()
 		}
 		
     }
@@ -115,6 +117,8 @@ class FeedTabViewController: ViewController<FeedTabView> {
 			let btn = SwitchSelectorButton(title: s.name, titleColor: Asset.PocketColors.pocketGray.color, selectedTitleColor: Asset.PocketColors.buttonOutlineBorder.color, backgroundColor: Asset.PocketColors.pocketBlue.color)
 			self.rootView.sourceSelector.add(btn)
 		}
+		self.rootView.sourceSelector.setNeedsLayout()
+		self.rootView.sourceSelector.layoutIfNeeded()
 		self.rootView.sourceSelector.updateView()
 	}
     
