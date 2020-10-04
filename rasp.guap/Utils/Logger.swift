@@ -20,12 +20,15 @@ class Logger{
 		let string = "LOGGER - [\(date)] : \(items) \n____________________________________________________________________________________________________\n\n"
 		log += string 
 		prnt(log: string)
-//		UserDefaults.standard.synchronize()
-//		UserDefaults.standard.removeObject(forKey: "Logger.log")
-//		UserDefaults.standard.set(self.log, forKey: "Logger.log")
+
 	}
 	static func print(from:Any,_ items:Any?...){
 		Logger.print("\(from.self) \n \(items)")
+	}
+	static func save(){
+		UserDefaults.standard.synchronize()
+		UserDefaults.standard.removeObject(forKey: "Logger.log")
+		UserDefaults.standard.set(self.log, forKey: "Logger.log")
 	}
 }
 fileprivate func prnt(log:Any?){
@@ -36,6 +39,7 @@ fileprivate func prnt(log:Any?){
 
 func fatalError(_ message:String)->Never{
 	Logger.print(from: "FATAL ERROR", message)
+	Logger.save()
 	fatalError()
 }
 

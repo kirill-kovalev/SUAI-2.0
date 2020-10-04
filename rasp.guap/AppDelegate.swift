@@ -79,11 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		}
 	}
 	func applicationWillResignActive(_ application: UIApplication) {
-
-			SATracker.track("hide")
+		Logger.save()
+		SATracker.track("hide")
 		
 	}
-	
+	func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+		MyAppTracker.track("memory warning")
+		Logger.print("memory warning")
+		Logger.save()
+	}
     
   
    
@@ -146,8 +150,5 @@ extension AppDelegate:WCSessionDelegate{
 		print("End of Setting Watch TT")
 	}
 	
-	func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-		MyAppTracker.track("memory warning")
-	}
 	
 }
