@@ -20,7 +20,7 @@ class AppSettingsView:View{
 	lazy var clearCacheBtn:PocketButton = {
 		let btn = PocketButton(frame: .zero)
 		btn.setTitle("Очистить кэш", for: .normal)
-		btn.setTitleColor(Asset.PocketColors.pocketDarkestBlue.color, for: .normal)
+		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
 		return btn
 	}()
 	
@@ -44,7 +44,10 @@ class AppSettingsView:View{
 	func setupConstraints(){
 		content.snp.makeConstraints { (make) in
 			make.top.left.right.bottom.equalToSuperview()
-		}				
+		}
+		clearCacheBtn.snp.makeConstraints { (make) in
+			make.height.equalTo(40)
+		}
 	}
 }
 
