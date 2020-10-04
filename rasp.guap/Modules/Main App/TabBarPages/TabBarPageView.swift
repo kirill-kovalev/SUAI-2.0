@@ -16,7 +16,7 @@ class TabBarPageView : View{
     }()
     let title : UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = FontFamily.TTCommons.bold.font(size: 24)
+        label.font = FontFamily.TTCommons.bold.font(size: 22)
         label.numberOfLines = 1
         label.text = "Title"
         return label
