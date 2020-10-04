@@ -34,10 +34,10 @@
 		5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */; };
 		5D3E08C624D4A53400DF6DBD /* TutorialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */; };
 		5D57820325096BF200E3D384 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D57820225096BF200E3D384 /* GradientLabel.swift */; };
-		5D602AA5252A0C6400ACE315 /* Logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AA3252A0C6400ACE315 /* Logo@3x.png */; };
-		5D602AA6252A0C6400ACE315 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AA4252A0C6400ACE315 /* Logo@2x.png */; };
-		5D602AAD252A102100ACE315 /* DarkLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AAB252A102100ACE315 /* DarkLogo@3x.png */; };
-		5D602AAE252A102100ACE315 /* DarkLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AAC252A102100ACE315 /* DarkLogo@2x.png */; };
+		5D602ABD252A1F1F00ACE315 /* logoLight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602ABB252A1F1F00ACE315 /* logoLight@3x.png */; };
+		5D602ABE252A1F1F00ACE315 /* logoLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602ABC252A1F1F00ACE315 /* logoLight@2x.png */; };
+		5D602AC1252A1F5500ACE315 /* logoDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602ABF252A1F5500ACE315 /* logoDark@2x.png */; };
+		5D602AC2252A1F5500ACE315 /* logoDark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D602AC0252A1F5500ACE315 /* logoDark@3x.png */; };
 		5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F00F624FD007100C927A8 /* ASCollectionView.swift */; };
 		5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
@@ -229,10 +229,10 @@
 		5D3E08C324D4A51F00DF6DBD /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
 		5D3E08C524D4A53400DF6DBD /* TutorialScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenViewController.swift; sourceTree = "<group>"; };
 		5D57820225096BF200E3D384 /* GradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
-		5D602AA3252A0C6400ACE315 /* Logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo@3x.png"; path = "rasp.guap/Assets.xcassets/AppIconLight.appiconset/Logo@3x.png"; sourceTree = SOURCE_ROOT; };
-		5D602AA4252A0C6400ACE315 /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconLight.appiconset/Logo@2x.png"; sourceTree = SOURCE_ROOT; };
-		5D602AAB252A102100ACE315 /* DarkLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DarkLogo@3x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/DarkLogo@3x.png"; sourceTree = SOURCE_ROOT; };
-		5D602AAC252A102100ACE315 /* DarkLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DarkLogo@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/DarkLogo@2x.png"; sourceTree = SOURCE_ROOT; };
+		5D602ABB252A1F1F00ACE315 /* logoLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoLight@3x.png"; path = "rasp.guap/Assets.xcassets/AppIconLight.appiconset/logoLight@3x.png"; sourceTree = SOURCE_ROOT; };
+		5D602ABC252A1F1F00ACE315 /* logoLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoLight@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconLight.appiconset/logoLight@2x.png"; sourceTree = SOURCE_ROOT; };
+		5D602ABF252A1F5500ACE315 /* logoDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoDark@2x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/logoDark@2x.png"; sourceTree = SOURCE_ROOT; };
+		5D602AC0252A1F5500ACE315 /* logoDark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logoDark@3x.png"; path = "rasp.guap/Assets.xcassets/AppIconDark.appiconset/logoDark@3x.png"; sourceTree = SOURCE_ROOT; };
 		5D6F00F624FD007100C927A8 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
 		5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketServiceListItem.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
@@ -626,8 +626,8 @@
 		5D602A94252A0AA200ACE315 /* AppIconsDark */ = {
 			isa = PBXGroup;
 			children = (
-				5D602AAC252A102100ACE315 /* DarkLogo@2x.png */,
-				5D602AAB252A102100ACE315 /* DarkLogo@3x.png */,
+				5D602ABF252A1F5500ACE315 /* logoDark@2x.png */,
+				5D602AC0252A1F5500ACE315 /* logoDark@3x.png */,
 			);
 			path = AppIconsDark;
 			sourceTree = "<group>";
@@ -644,8 +644,8 @@
 		5D602AA2252A0C4B00ACE315 /* AppIconsLight */ = {
 			isa = PBXGroup;
 			children = (
-				5D602AA4252A0C6400ACE315 /* Logo@2x.png */,
-				5D602AA3252A0C6400ACE315 /* Logo@3x.png */,
+				5D602ABC252A1F1F00ACE315 /* logoLight@2x.png */,
+				5D602ABB252A1F1F00ACE315 /* logoLight@3x.png */,
 			);
 			path = AppIconsLight;
 			sourceTree = "<group>";
@@ -1213,7 +1213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D602AAD252A102100ACE315 /* DarkLogo@3x.png in Resources */,
 				5D99B25024DD600900D6C648 /* SFProDisplay-UltralightItalic.ttf in Resources */,
 				5DCE2FEA24E0282700CFF29A /* PocketDayView.xib in Resources */,
 				5D99B24E24DD600900D6C648 /* SFProDisplay-BlackItalic.ttf in Resources */,
@@ -1223,33 +1222,34 @@
 				5D99B23524DD58CF00D6C648 /* TTCommons-Bold.ttf in Resources */,
 				5D99B25324DD600900D6C648 /* SFProDisplay-Regular.ttf in Resources */,
 				5D99B25624DD600900D6C648 /* SFProDisplay-MediumItalic.ttf in Resources */,
-				5D602AA5252A0C6400ACE315 /* Logo@3x.png in Resources */,
 				5D99B25724DD600900D6C648 /* SFProDisplay-Bold.ttf in Resources */,
 				5D99B25F24DD600900D6C648 /* SFProDisplay-Light.ttf in Resources */,
 				5D99B23A24DD58CF00D6C648 /* TTCommons-DemiBold.ttf in Resources */,
 				5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */,
+				5D602ABD252A1F1F00ACE315 /* logoLight@3x.png in Resources */,
 				5D289FCD24FA9E0400643D54 /* VkLogin.xib in Resources */,
+				5D602AC1252A1F5500ACE315 /* logoDark@2x.png in Resources */,
 				5D99B25D24DD600900D6C648 /* SFProDisplay-BoldItalic.ttf in Resources */,
 				5D99B23824DD58CF00D6C648 /* TTCommons-Italic.ttf in Resources */,
 				5D99B23624DD58CF00D6C648 /* TTCommons-BoldItalic.ttf in Resources */,
 				5D99B23B24DD58CF00D6C648 /* TTCommons-Light.ttf in Resources */,
 				5DA10F8224DC5EBE00D09BD8 /* swiftgen.yml in Resources */,
 				5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */,
-				5D602AAE252A102100ACE315 /* DarkLogo@2x.png in Resources */,
 				5D99B25424DD600900D6C648 /* SFProDisplay-Ultralight.ttf in Resources */,
 				5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */,
 				5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */,
 				5D99B25824DD600900D6C648 /* SFProDisplay-Thin.ttf in Resources */,
 				5D99B25B24DD600900D6C648 /* SFProDisplay-HeavyItalic.ttf in Resources */,
+				5D602AC2252A1F5500ACE315 /* logoDark@3x.png in Resources */,
 				5D95A63A24D412AC000418B5 /* LaunchScreen.storyboard in Resources */,
 				5D99B25E24DD600900D6C648 /* SFProDisplay-SemiboldItalic.ttf in Resources */,
+				5D602ABE252A1F1F00ACE315 /* logoLight@2x.png in Resources */,
 				5D99B25524DD600900D6C648 /* SFProDisplay-Semibold.ttf in Resources */,
 				5D99B23924DD58CF00D6C648 /* TTCommons-DemiBoldItalic.ttf in Resources */,
 				5D99B25124DD600900D6C648 /* SFProDisplay-LightItalic.ttf in Resources */,
 				5D99B24F24DD600900D6C648 /* SFProDisplay-Black.ttf in Resources */,
 				5D99B25224DD600900D6C648 /* SFProDisplay-Medium.ttf in Resources */,
 				5D99B25924DD600900D6C648 /* SFProDisplay-ThinItalic.ttf in Resources */,
-				5D602AA6252A0C6400ACE315 /* Logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

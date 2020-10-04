@@ -75,17 +75,17 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Logo</string>
+				<string>logoLight</string>
 			</array>
 		</dict>
 		
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>DarkLogo</key>
+			<key>logoDark</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>DarkLogo</string>
+					<string>logoDark</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

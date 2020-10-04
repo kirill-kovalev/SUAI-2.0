@@ -1,25 +1,25 @@
 {
   "images" : [
     {
-      "filename" : "Logo_notif@2x.png",
+      "filename" : "40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Logo_notif@3x.png",
+      "filename" : "60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "Logo_settings@2x.png",
+      "filename" : "58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Logo_settings@3x.png",
+      "filename" : "87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
@@ -31,25 +31,25 @@
       "size" : "40x40"
     },
     {
-      "filename" : "120.png",
+      "filename" : "120-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "Logo@2x.png",
+      "filename" : "logoLight@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Logo@3x.png",
+      "filename" : "logoLight@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "Logoappstore.png",
+      "filename" : "1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

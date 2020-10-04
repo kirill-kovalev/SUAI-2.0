@@ -43,7 +43,7 @@ class AboutUsViewController:ViewController<AboutUsView>{
 	
 	func switchIcon(){
 		if UIApplication.shared.alternateIconName == nil {
-			UIApplication.shared.setAlternateIconName("DarkLogo") { (err) in
+			UIApplication.shared.setAlternateIconName("logoDark") { (err) in
 				Logger.print(err)
 				self.updateViewImage()
 			}
