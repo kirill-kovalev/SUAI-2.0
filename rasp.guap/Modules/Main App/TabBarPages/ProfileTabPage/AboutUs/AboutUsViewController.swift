@@ -24,6 +24,11 @@ class AboutUsViewController:ViewController<AboutUsView>{
 				Logger.print("Not supports alternate icon")
 			}
 		}, for: .touchUpInside)
+		self.rootView.vkButton.addTarget(action: { (_) in
+			UIApplication.shared.open(URL(string: "vk://vk.com/teampocket")!, options: [:]) { (success) in
+				if !success { UIApplication.shared.open(URL(string: "https://vk.com/teampocket")!, options: [:]) }
+			}
+		}, for: .touchUpInside)
 	}
 	
 	func updateViewImage(){

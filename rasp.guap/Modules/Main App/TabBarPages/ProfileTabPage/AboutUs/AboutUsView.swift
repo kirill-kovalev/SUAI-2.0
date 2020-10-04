@@ -16,6 +16,21 @@ class AboutUsView:View{
 		view.image = UIImage(named: "AppIconLight")
 		return view
 	}()
+	let title:UILabel = {
+		let label = UILabel(frame: .zero)
+		label.text = "Версия 1.0.1"
+		label.textColor = Asset.PocketColors.pocketBlack.color
+		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		return label
+	}()
+	let vkButton:Button = {
+		let label = Button(frame: .zero)
+		label.setTitle("Группа Вконтакте", for: .normal)
+		label.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
+		label.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		return label
+	}()
+	
 	lazy var imageContainer = PocketScalableContainer(content: image)
 	required init() {
 		super.init()
@@ -24,12 +39,21 @@ class AboutUsView:View{
 	}
 	func addViews(){
 		self.addSubview(imageContainer)
-		
+		self.addSubview(title)
+		self.addSubview(vkButton)
 	}
 	func setupConstraints(){
 		imageContainer.snp.makeConstraints { (make) in
 			make.top.left.bottom.equalToSuperview()
 			make.width.height.equalTo(55)
+		}
+		title.snp.makeConstraints { (make) in
+			make.left.equalTo(imageContainer.snp.right).offset(12)
+			make.bottom.equalTo(imageContainer.snp.centerY).offset(-2)
+		}
+		vkButton.snp.makeConstraints { (make) in
+			make.left.equalTo(title)
+			make.top.equalTo(imageContainer.snp.centerY).offset(-2)
 		}
 	}
 	
