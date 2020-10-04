@@ -19,6 +19,7 @@ class PocketDropdownView:UIView{
 			make.width.height.equalTo(30)
 			make.centerY.equalToSuperview()
 			make.right.equalToSuperview().inset(8)
+			make.left.equalToSuperview()
 		}
 	}
 	
