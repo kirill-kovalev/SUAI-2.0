@@ -23,24 +23,10 @@ class UserCardModalViewController: ModalViewController<UserCardModalView> {
 				self.content.card.groupLabel.text = group
 			}
 		}
-//			guard let vkData = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
-//				let resp = try? JSONDecoder().decode([vkResponse].self, from: vkData).first else {return}
-//			DispatchQueue.main.async {self.content.card.userLabel.text = "\(resp.first_name) \(resp.last_name)"}
-//
-//			NetworkManager.dataTask(url: resp.photo_100) { (result) in
-//				switch result{
-//					case .success(let data):
-//						guard let image = UIImage(data: data) else {break}
-//						DispatchQueue.main.async {self.content.card.profileImage.image = image }
-//					break;
-//					case .failure: break;
-//				}
-//			}
-//		}
-		
+
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket", true))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Bot", true))
-		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("pro.guap", false))
+		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("pro.guap", SAUserSettings.shared.proSupport))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket Android", false))
 		self.content.serviceStack.addArrangedSubview(PocketServiceListItem("SUAI Pocket iOS", true))
 
