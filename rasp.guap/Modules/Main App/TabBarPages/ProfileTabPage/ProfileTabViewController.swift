@@ -105,8 +105,8 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		Logger.print(from: #function, "shaked")
 		if motion == .motionShake{
 			if shakeCount > 5 {
-				let vc = UIViewController(nibName: nil, bundle: nil)
-				vc.modalPresentationStyle = .popover
+				let vc = DebugSettingsViewController()
+				vc.modalPresentationStyle = .overCurrentContext
 				self.present(vc, animated: false, completion: nil)
 			}
 			shakeCount += 1
