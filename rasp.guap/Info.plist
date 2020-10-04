@@ -66,24 +66,26 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	
+	
+	
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIconLight</string>
+				<string>Logo</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<false/>
 		</dict>
+		
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>AppIcon-2</key>
+			<key>DarkLogo</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconDark</string>
+					<string>DarkLogo</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

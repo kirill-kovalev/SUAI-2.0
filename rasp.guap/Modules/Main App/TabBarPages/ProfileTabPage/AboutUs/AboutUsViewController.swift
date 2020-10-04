@@ -27,15 +27,18 @@ class AboutUsViewController:ViewController<AboutUsView>{
 	}
 	
 	func updateViewImage(){
-		if UIApplication.shared.supportsAlternateIcons,
-		   let iconName = UIApplication.shared.alternateIconName{
-			self.rootView.image.image = UIImage(named: iconName)
+		if UIApplication.shared.supportsAlternateIcons{
+			let iconName = UIApplication.shared.alternateIconName ?? "AppIconLight"
+			UIView.animate(withDuration: 0.3) {
+				self.rootView.image.image = UIImage(named: iconName)
+			}
+			
 		}
 	}
 	
 	func switchIcon(){
 		if UIApplication.shared.alternateIconName == nil {
-			UIApplication.shared.setAlternateIconName("AppIconDark") { (err) in
+			UIApplication.shared.setAlternateIconName("DarkLogo") { (err) in
 				Logger.print(err)
 				self.updateViewImage()
 			}
