@@ -56,6 +56,8 @@
 		5D97D09F2529D7B700335D73 /* DebugSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */; };
 		5D97D0A12529D7C300335D73 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */; };
 		5D97D0A72529EC8A00335D73 /* PocketDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */; };
+		5D97D0AA252A036700335D73 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0A9252A036700335D73 /* AboutUsView.swift */; };
+		5D97D0AC252A037400335D73 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97D0AB252A037400335D73 /* AboutUsViewController.swift */; };
 		5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */; };
 		5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */; };
 		5D99B23424DD58CF00D6C648 /* TTCommons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */; };
@@ -246,6 +248,8 @@
 		5D97D09E2529D7B700335D73 /* DebugSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsView.swift; sourceTree = "<group>"; };
 		5D97D0A02529D7C300335D73 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewController.swift; sourceTree = "<group>"; };
 		5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDropdownField.swift; sourceTree = "<group>"; };
+		5D97D0A9252A036700335D73 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		5D97D0AB252A037400335D73 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		5D99B21624DD58CF00D6C648 /* TTCommons-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-LightItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21724DD58CF00D6C648 /* TTCommons-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5D99B21824DD58CF00D6C648 /* TTCommons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTCommons-Regular.ttf"; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 		5D3D6C9A24E42F82007CE482 /* ProfileTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5D97D0A8252A035500335D73 /* AboutUs */,
 				5D97D09D2529D79E00335D73 /* DebugSettings */,
 				5DAEA6162521EF3B000A2924 /* AppSettings */,
 				5DF423C22500F7C400565FB8 /* ServiceSettings */,
@@ -749,6 +754,15 @@
 				5D97D0A62529EC8A00335D73 /* PocketDropdownField.swift */,
 			);
 			path = PocketDropDownField;
+			sourceTree = "<group>";
+		};
+		5D97D0A8252A035500335D73 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				5D97D0A9252A036700335D73 /* AboutUsView.swift */,
+				5D97D0AB252A037400335D73 /* AboutUsViewController.swift */,
+			);
+			path = AboutUs;
 			sourceTree = "<group>";
 		};
 		5D99B20224DD58CF00D6C648 /* SF Pro */ = {
@@ -1354,7 +1368,9 @@
 				5DF423C42500F9A300565FB8 /* StudentCardView.swift in Sources */,
 				5DC4BC6F24DDCCFF00E90BB3 /* CheckBox.swift in Sources */,
 				5DA10F8E24DC7D6500D09BD8 /* PocketDivView.swift in Sources */,
+				5D97D0AC252A037400335D73 /* AboutUsViewController.swift in Sources */,
 				5D3E08C424D4A51F00DF6DBD /* TutorialScreenView.swift in Sources */,
+				5D97D0AA252A036700335D73 /* AboutUsView.swift in Sources */,
 				5DF423C62500F9B000565FB8 /* StudentCardViewController.swift in Sources */,
 				5D95A62A24D412AB000418B5 /* View.swift in Sources */,
 				5DA10F3F24DB452600D09BD8 /* BackgroundElipse.swift in Sources */,
