@@ -24,7 +24,7 @@ class ServiceSettingsView: View {
 	lazy var buildingLabel = self.labelGenerator(title:"Корпус по умолчанию")
 	
 	lazy var groupSelector:UITextField = {
-		let tf = PocketTextField(frame: .zero)
+		let tf = PocketDropdownField(frame: .zero)
 		return tf
 	}()
 	

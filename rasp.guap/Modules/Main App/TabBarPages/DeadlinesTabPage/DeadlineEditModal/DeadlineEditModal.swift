@@ -34,7 +34,7 @@ class DeadlineEditModalView: View {
         return btn
     }
     private func textFieldGenerator(_ title:String = "")->UITextField{
-        let field = UITextField(frame: .zero)
+        let field = PocketTextField(frame: .zero)
         field.placeholder = title
         field.font = FontFamily.SFProDisplay.regular.font(size: 14)
         
@@ -43,12 +43,6 @@ class DeadlineEditModalView: View {
         
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
         field.leftViewMode = .always
-        
-        
-        field.layer.cornerRadius = 10
-        field.backgroundColor = Asset.PocketColors.pocketLightGray.color
-        field.textRect(forBounds: field.bounds.insetBy(dx: 5, dy: 5))
-        
         
         field.doneAccessory = true
         return field
@@ -137,13 +131,10 @@ class DeadlineEditModalView: View {
     lazy var lessonPicker = UIPickerView()
     
     lazy var lessonLabel:UITextField = {
-        let lessonLabel = textFieldGenerator("Не выбрано")
+		let lessonLabel = PocketDropdownField(frame: .zero)
+		lessonLabel.text = "Не выбрано"
         lessonLabel.inputView = lessonPicker
         
-        let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-        image.tintColor = Asset.PocketColors.pocketGray.color
-        lessonLabel.rightView = image
-        lessonLabel.rightViewMode = .unlessEditing
         return lessonLabel
     }()
     

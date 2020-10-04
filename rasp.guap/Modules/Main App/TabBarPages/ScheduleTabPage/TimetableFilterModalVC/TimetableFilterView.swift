@@ -27,11 +27,7 @@ class TimetableFilterView:UIView{
         return label
     }
     private func textFieldGenerator(_ title:String = "")->UITextField{
-		let field = PocketTextField(frame: .zero)
-        
-        let img = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-        field.rightView = img
-        img.bounds = CGRect(x: 0, y: 0, width: img.bounds.width + 10, height: img.bounds.height)
+		let field = PocketDropdownField(frame: .zero)
         field.rightViewMode = .unlessEditing
 
         return field

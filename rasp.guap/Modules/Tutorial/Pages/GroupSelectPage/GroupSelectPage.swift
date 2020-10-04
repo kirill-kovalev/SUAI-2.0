@@ -12,14 +12,9 @@ import UIKit
 class GroupSelectPageView:TutorialPageView{
     
     // MARK: - Views
-    let select:PocketTextField = {
-        let tf = PocketTextField(frame: .zero)
+    let select:PocketDropdownField = {
+        let tf = PocketDropdownField(frame: .zero)
 		tf.placeholder = "М611"
-		let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-		image.tintColor = Asset.PocketColors.pocketGray.color
-		image.snp.makeConstraints {$0.size.equalTo(CGSize(width: 30, height: 30))}
-		tf.rightViewMode = .always
-		tf.rightView = image
         return tf
     }()
     
