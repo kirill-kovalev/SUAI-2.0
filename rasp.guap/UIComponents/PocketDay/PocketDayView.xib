@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операционные системы Операционные системы" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-RC-tIi">
-                    <rect key="frame" x="67" y="8" width="247" height="33"/>
+                    <rect key="frame" x="67" y="8" width="247" height="33.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_black"/>
                     <nil key="highlightedColor"/>
@@ -45,14 +46,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-KS-lCG">
-                    <rect key="frame" x="19" y="34" width="8" height="17"/>
+                    <rect key="frame" x="20" y="34" width="6.5" height="17"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                     <color key="textColor" name="pocket_tag_border"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m76-gE-7Cg">
                     <rect key="frame" x="52" y="6" width="5" height="73"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="5" id="YuO-Sb-UWB"/>
                     </constraints>
@@ -69,12 +70,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mYt-aq-V9z">
-                    <rect key="frame" x="67" y="47" width="245" height="8"/>
+                    <rect key="frame" x="67" y="47.5" width="245" height="7.5"/>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fZa-4r-lXR" secondAttribute="bottom" constant="8" id="4Rp-ph-LWz"/>
+                <constraint firstAttribute="bottom" secondItem="fZa-4r-lXR" secondAttribute="bottom" constant="8" id="4Rp-ph-LWz"/>
                 <constraint firstItem="fZa-4r-lXR" firstAttribute="width" secondItem="KfE-ze-hKY" secondAttribute="width" id="4W4-ag-mVk"/>
                 <constraint firstItem="5Dv-nH-IFg" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="BCk-im-lyh"/>
                 <constraint firstAttribute="top" secondItem="m76-gE-7Cg" secondAttribute="top" constant="-6" id="FBP-3v-9GF"/>
@@ -86,7 +88,7 @@
                 <constraint firstItem="fZa-4r-lXR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hb5-k0-pk7"/>
                 <constraint firstItem="VbT-RC-tIi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jf6-wR-SJj"/>
                 <constraint firstAttribute="trailing" secondItem="5Dv-nH-IFg" secondAttribute="trailing" constant="8" id="lXz-J9-Yla"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5Dv-nH-IFg" secondAttribute="bottom" constant="7" id="qe1-TJ-HQZ"/>
+                <constraint firstAttribute="bottom" secondItem="5Dv-nH-IFg" secondAttribute="bottom" constant="7" id="qe1-TJ-HQZ"/>
                 <constraint firstItem="mYt-aq-V9z" firstAttribute="leading" secondItem="m76-gE-7Cg" secondAttribute="trailing" constant="10" id="reN-Cz-she"/>
                 <constraint firstItem="KfE-ze-hKY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sYJ-Gh-cfz"/>
                 <constraint firstAttribute="bottom" secondItem="m76-gE-7Cg" secondAttribute="bottom" constant="6" id="tTa-bC-dZ9"/>
@@ -97,7 +99,6 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="endTime" destination="fZa-4r-lXR" id="Hr2-wQ-lXu"/>
                 <outlet property="lessonNum" destination="nl8-KS-lCG" id="ylz-5b-Tbp"/>
@@ -112,13 +113,16 @@
     </objects>
     <resources>
         <namedColor name="pocket_black">
-            <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="pocket_gray">
-            <color red="0.58039218187332153" green="0.58039218187332153" blue="0.60392159223556519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.57999998331069946" green="0.57999998331069946" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="pocket_tag_border">
-            <color red="0.81960785388946533" green="0.81960785388946533" blue="0.85490196943283081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81999999284744263" green="0.81999999284744263" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
