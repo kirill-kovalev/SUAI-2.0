@@ -49,12 +49,27 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 		self.rootView.table.dataSource = self
 		self.rootView.table.register(NewScheduleTabTableCell.self, forCellReuseIdentifier: "dayTimetable")
 	}
+	func loadSchedule(){
+		self.timetable = SATimetable()
+		self.rootView.table.reloadData()
+		DispatchQueue.global().async {
+			
+			if let user = self.currentUser{
+				let timetable = SASchedule.shared.get(for: user)
+				self.timetable = timetable
+				DispatchQueue.main.async {
+					self.rootView.title.text = user.shortName
+					self.rootView.table.reloadData()
+				}
+			}
+		}
+	}
 	
 }
 extension NewScheduleTabViewController:UserChangeDelegate{
     func didSetUser(user: SAUsers.User) {
         self.currentUser = user
-		
+		self.loadSchedule()
     }
 }
 
