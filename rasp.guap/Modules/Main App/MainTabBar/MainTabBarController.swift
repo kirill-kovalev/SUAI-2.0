@@ -14,7 +14,7 @@ class MainTabBarController : ESTabBarController{
 	public static let snackNotification = NSNotification.Name(rawValue: "MainTabBarController.snackNotification")
     init(){
         super.init(nibName: nil, bundle: nil)
-		let scheduleVC = AppSettings.isOldTimetableEnabled ? ScheduleTabViewController() : NewScheduleTabViewController()
+		let scheduleVC = !AppSettings.isOldTimetableEnabled ? ScheduleTabViewController() : NewScheduleTabViewController()
         self.viewControllers = [
             FeedTabViewController(),
             DeadlinesTabViewController(),
