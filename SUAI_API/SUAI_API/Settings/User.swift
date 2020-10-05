@@ -123,6 +123,11 @@ public class SAUserSettings: Codable {
 		}
         if let data = PocketAPI.shared.syncSetTask(method: .setSettings , params: params ) { 
             success = String(data: data, encoding: .utf8)?.contains("success") ?? false
+			if !success {
+				self.propass = nil
+				self.prologin = nil
+				self.procookie = nil
+			}
         }
         return success
     }
