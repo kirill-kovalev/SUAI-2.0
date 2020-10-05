@@ -141,11 +141,11 @@ class VKLoginPageViewController: UIViewController {
 			VK.release()
 		}
 		
-		setupQuickActions()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		setupQuickActions()
 		if VK.needToSetUp {
 			VK.setUp(appId: "7578765", delegate: self)
 		}
@@ -171,6 +171,9 @@ class VKLoginPageViewController: UIViewController {
 			Logger.print(from: #function, "can not cast recieved message")
 		}
 		
+	}
+	deinit {
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 extension VKLoginPageViewController:SwiftyVKDelegate{
