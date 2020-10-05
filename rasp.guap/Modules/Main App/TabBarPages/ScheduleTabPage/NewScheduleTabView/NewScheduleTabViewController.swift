@@ -144,7 +144,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 	func generateViewForHeader(isUp:Bool, isEven:Bool)->UIView{
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
 		let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-		image.tintColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : Asset.PocketColors.pocketRedButtonText.color
+		image.tintColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : .red //Asset.PocketColors.pocketRedButtonText.color
 		image.transform = isUp ? .init(rotationAngle: CGFloat.pi) : .identity
 		view.addSubview(image)
 		

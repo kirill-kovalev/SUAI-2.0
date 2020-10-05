@@ -50,7 +50,7 @@ class NewScheduleTabTableCell:UITableViewCell{
 		}
 		placeholder.snp.makeConstraints { (make) in
 			make.left.right.top.equalTo(container)
-			make.bottom.equalToSuperview()
+			make.bottom.equalToSuperview().inset(8)
 		}
 	}
 	typealias CellDelegate = UIViewController & UserChangeDelegate
