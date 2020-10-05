@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 
@@ -19,6 +20,25 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 		
 		self.content.goodTB.toggle.isOn = AppSettings.isGoodTabBar
 		self.content.goodTB.toggle.addTarget(self, action: #selector(self.setGoodTabBar), for: .valueChanged)
+		
+		self.content.listNotificationsBtn.setTitle("List  notifications", for: .normal)
+		self.content.listNotificationsBtn.addTarget(action: { (_) in
+			UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+				DispatchQueue.main.async {
+					
+					
+					if requests.isEmpty {
+						self.content.textField.text = "no pending notifications "
+					}else{
+						self.content.textField.text = ""
+					}
+					for r in requests {
+						let trigger = r.trigger as? UNCalendarNotificationTrigger
+						self.content.textField.text += "\(r.content.title) at \(trigger?.dateComponents)\n\n"
+					}
+				}
+			}
+		}, for: .touchUpInside)
 	}
 	@objc private func setOldTimetable(){
 		AppSettings.isOldTimetableEnabled = self.content.oldimetable.toggle.isOn
