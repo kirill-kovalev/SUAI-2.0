@@ -29,7 +29,6 @@ class NewScheduleTabView:TabBarPageView{
 	let table:UITableView = {
 		let table = UITableView(frame: .zero)
 		table.allowsSelection = false
-		table.isExclusiveTouch = false
 		table.estimatedRowHeight = 130
 		table.separatorStyle = .none
 		return table

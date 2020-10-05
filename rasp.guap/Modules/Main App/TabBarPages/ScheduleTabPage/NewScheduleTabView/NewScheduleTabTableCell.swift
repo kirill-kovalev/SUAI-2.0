@@ -30,7 +30,7 @@ class NewScheduleTabTableCell:UITableViewCell{
 	private func initSetup(){
 		Logger.print(from: #function, "\(Self.self) init setup")
 		let container = PocketDivView(content: controller.view)
-		self.contentView.isExclusiveTouch = false
+
 		self.contentView.addSubview(container)
 		self.contentView.addSubview(dayLabel)
 		dayLabel.snp.makeConstraints { (make) in

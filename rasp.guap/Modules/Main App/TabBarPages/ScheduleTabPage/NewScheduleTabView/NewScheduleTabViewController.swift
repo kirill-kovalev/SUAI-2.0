@@ -98,7 +98,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "dayTimetable", for: indexPath)
-		cell.contentView.isUserInteractionEnabled = false
+		
 		if let cell = cell as? NewScheduleTabTableCell {
 			cell.controller.setTimetable(timetable: [])
 			
