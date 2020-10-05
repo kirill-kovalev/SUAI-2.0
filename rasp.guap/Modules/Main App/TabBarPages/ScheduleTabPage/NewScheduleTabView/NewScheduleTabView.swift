@@ -13,7 +13,7 @@ class NewScheduleTabView:TabBarPageView{
 
     let selectButton:Button = {
         let btn = Button(frame: .zero)
-        btn.setImage(Asset.SystemIcons.scheduleFilter.image.withRenderingMode(.alwaysTemplate), for: .normal)
+		btn.setImage(Asset.SystemIcons.searchLense.image.withRenderingMode(.alwaysTemplate), for: .normal)
         btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
         return btn
     }()

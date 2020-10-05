@@ -54,7 +54,7 @@ class TabBarPageView : View{
         title.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
             make.centerX.equalToSuperview()
-			make.bottom.lessThanOrEqualToSuperview()
+			make.bottom.lessThanOrEqualToSuperview().offset(-5)
         }
         buttonContainer.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(10)
