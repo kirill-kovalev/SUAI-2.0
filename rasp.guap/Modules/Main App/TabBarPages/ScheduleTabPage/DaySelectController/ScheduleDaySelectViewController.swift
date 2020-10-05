@@ -63,6 +63,7 @@ class ScheduleDaySelectViewController: ViewController<ScheduleDaySelectView> {
 					return index
 				}
 			}
+			return -1
 		}
 
 		return shouldShowDays.count
