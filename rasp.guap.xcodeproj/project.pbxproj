@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D03F321252B29B200607764 /* NewScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */; };
+		5D03F322252B29B200607764 /* NewScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F320252B29B200607764 /* NewScheduleTabView.swift */; };
 		5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */; };
 		5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */; };
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
@@ -196,6 +198,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabViewController.swift; sourceTree = "<group>"; };
+		5D03F320252B29B200607764 /* NewScheduleTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabView.swift; sourceTree = "<group>"; };
 		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefViews.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
@@ -341,8 +345,6 @@
 		5DB5612F24E83E900072CD85 /* ScheduleDaySelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaySelectDelegate.swift; sourceTree = "<group>"; };
 		5DC4BC6C24DD80AC00E90BB3 /* PocketDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDeadlineView.swift; sourceTree = "<group>"; };
 		5DC4BC6E24DDCCFF00E90BB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
-		5DC775D6252B278200989103 /* NewScheduleTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleTabView.swift; sourceTree = "<group>"; };
-		5DC775D7252B278200989103 /* NewScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleTabViewController.swift; sourceTree = "<group>"; };
 		5DCE2FE924E0282700CFF29A /* PocketDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PocketDayView.xib; sourceTree = "<group>"; };
 		5DCE2FEC24E03AEC00CFF29A /* PocketTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketTagButton.swift; sourceTree = "<group>"; };
 		5DD24CAC24E44D860024F325 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 		5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */ = {
 			isa = PBXGroup;
 			children = (
+				5DC775D5252B277100989103 /* NewScheduleTabView */,
 				5DB5612A24E83DB20072CD85 /* DaySelectController */,
 				5D74FE2524E13E3700FC38B8 /* TimetableController */,
 				5DC775D4252B276800989103 /* Old */,
@@ -612,7 +615,6 @@
 		5D3D6C9C24E42F99007CE482 /* TabBarPages */ = {
 			isa = PBXGroup;
 			children = (
-				5DC775D5252B277100989103 /* NewScheduleTabView */,
 				5D3D6C9A24E42F82007CE482 /* ProfileTabPage */,
 				5D3D6C9924E42F77007CE482 /* InfoTabPage */,
 				5D3D6C9824E42F5C007CE482 /* ScheduleTabPage */,
@@ -1097,8 +1099,8 @@
 		5DC775D5252B277100989103 /* NewScheduleTabView */ = {
 			isa = PBXGroup;
 			children = (
-				5DC775D6252B278200989103 /* NewScheduleTabView.swift */,
-				5DC775D7252B278200989103 /* NewScheduleTabViewController.swift */,
+				5D03F320252B29B200607764 /* NewScheduleTabView.swift */,
+				5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */,
 			);
 			path = NewScheduleTabView;
 			sourceTree = "<group>";
@@ -1417,6 +1419,7 @@
 				5DD24CAD24E44D860024F325 /* TabBarIcon.swift in Sources */,
 				5D2BD80D24E4361F002630B5 /* DeadlinesTabView.swift in Sources */,
 				5DA10F7424DC4FB300D09BD8 /* ThirdPageView.swift in Sources */,
+				5D03F321252B29B200607764 /* NewScheduleTabViewController.swift in Sources */,
 				5D74FE2B24E13FBF00FC38B8 /* TimetableLessonCell.swift in Sources */,
 				5DA7443225093A0E00403F6A /* UserCardModalView.swift in Sources */,
 				5DAEA6182521EF52000A2924 /* AppSettingsView.swift in Sources */,
@@ -1437,6 +1440,7 @@
 				5D2640E824E41A4F001A97A2 /* LessonInfoModalViewController.swift in Sources */,
 				5DA7443025093A0400403F6A /* UserCardModalViewController.swift in Sources */,
 				5DF423C82500F9C400565FB8 /* SuaiIDView.swift in Sources */,
+				5D03F322252B29B200607764 /* NewScheduleTabView.swift in Sources */,
 				5D2BD83624E43631002630B5 /* ScheduleTabViewController.swift in Sources */,
 				5DF423CE2500F9EB00565FB8 /* ServiceSettingsView.swift in Sources */,
 				5D2BD83A24E4364E002630B5 /* InfoTabViewController.swift in Sources */,
