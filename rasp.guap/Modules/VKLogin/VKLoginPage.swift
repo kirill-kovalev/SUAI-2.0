@@ -22,13 +22,13 @@ class VKLoginPageViewController: UIViewController {
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
 			SAUserSettings.shared.reset()
-			if SAUserSettings.shared.reload(){
+			if SAUserSettings.shared.reload() {
 				DispatchQueue.main.async {
 					let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
 				}
 			}else{
 				DispatchQueue.main.async {
-					self.errLabel.text = "Не удалось синхронизировать настройки.\nПерезйадите в приложение позже."
+					self.errLabel.text = "Не удалось синхронизировать настройки.\nПерезайдите в приложение позже."
 					self.errLabel.isHidden = false
 				}
 			}
