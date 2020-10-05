@@ -106,7 +106,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
 		Logger.print(from: #function, "shaked")
 		if motion == .motionShake{
-			if shakeCount > 2 {
+			if shakeCount > 1 {
 				let vc = DebugSettingsViewController()
 				vc.modalPresentationStyle = .overCurrentContext
 				self.present(vc, animated: false, completion: nil)

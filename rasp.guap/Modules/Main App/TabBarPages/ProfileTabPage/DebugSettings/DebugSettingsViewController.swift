@@ -12,7 +12,7 @@ import UserNotifications
 class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 
 	override func viewDidLoad() {
-//		self.rootView.textField.text = Logger.log
+		self.setTitle("DEBUG")
 		self.content.textField.text = Logger.log
 		self.content.oldimetable.toggle.isOn = AppSettings.isOldTimetableEnabled
 		self.content.oldimetable.toggle.addTarget(self, action: #selector(self.setOldTimetable), for: .valueChanged)
