@@ -47,7 +47,7 @@ class PocketDivView<T:UIView> : View {
     
     private func setupView(){
         
-        self.backgroundColor = Asset.PocketColors.pocketModalBackground.color
+        self.backgroundColor = Asset.PocketColors.pocketWhite.color
         
         self.layer.cornerRadius = 10
         

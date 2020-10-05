@@ -39,7 +39,8 @@ class MainTabBarController : ESTabBarController{
 			self.tabBar.layer.shadowRadius = 10
 			self.tabBar.layer.shadowOffset = .zero
 		}else{
-			self.tabBar.backgroundColor = Asset.PocketColors.pocketModalBackground.color
+			self.tabBar.barTintColor = Asset.PocketColors.pocketWhite.color
+			self.tabBar.isTranslucent = false
 		}
         
 		
