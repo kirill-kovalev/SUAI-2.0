@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D03F321252B29B200607764 /* NewScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */; };
 		5D03F322252B29B200607764 /* NewScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F320252B29B200607764 /* NewScheduleTabView.swift */; };
+		5D03F324252B34DF00607764 /* NewScheduleTabTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */; };
 		5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */; };
 		5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */; };
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
@@ -200,6 +201,7 @@
 /* Begin PBXFileReference section */
 		5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabViewController.swift; sourceTree = "<group>"; };
 		5D03F320252B29B200607764 /* NewScheduleTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabView.swift; sourceTree = "<group>"; };
+		5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleTabTableCell.swift; sourceTree = "<group>"; };
 		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefViews.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 			children = (
 				5D03F320252B29B200607764 /* NewScheduleTabView.swift */,
 				5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */,
+				5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */,
 			);
 			path = NewScheduleTabView;
 			sourceTree = "<group>";
@@ -1400,6 +1403,7 @@
 				5D95A62C24D412AB000418B5 /* ViewController.swift in Sources */,
 				5DA10F7A24DC58B300D09BD8 /* FifthPageView.swift in Sources */,
 				5DA7442D25090CD500403F6A /* DataLoaderView.swift in Sources */,
+				5D03F324252B34DF00607764 /* NewScheduleTabTableCell.swift in Sources */,
 				5D9D905324ED636E00930375 /* DeadlineListController.swift in Sources */,
 				5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */,
 				5D2BD83924E4364E002630B5 /* InfoTabView.swift in Sources */,

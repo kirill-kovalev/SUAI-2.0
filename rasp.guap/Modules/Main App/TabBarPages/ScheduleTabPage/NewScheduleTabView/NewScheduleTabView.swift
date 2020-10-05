@@ -26,11 +26,12 @@ class NewScheduleTabView:TabBarPageView{
         return label
     }()
     
-	let stack:UIStackView = {
-		let s = UIStackView(frame:.zero)
-		s.axis = .vertical
-		s.spacing = 8
-		return s
+	let table:UITableView = {
+		let table = UITableView(frame: .zero)
+		table.allowsSelection = false
+		table.isExclusiveTouch = false
+		table.estimatedRowHeight = 130
+		return table
 	}()
 	
 	
@@ -44,15 +45,17 @@ class NewScheduleTabView:TabBarPageView{
     
     private func addViews(){
         self.addHeaderButton(selectButton)
-        self.addSubview(stack)
+		self.addSubview(table)
     }
     private func setupConstraints(){
 		selectButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(24)
             make.centerY.equalTo(title)
         }
-		stack.snp.makeConstraints { (make) in
-			make.top.left.right.bottom.equalTo(safeAreaLayoutGuide)
+		table.snp.makeConstraints { (make) in
+			make.top.left.right.equalToSuperview()
+			make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide)
+			make.height.equalTo(self).priority(.low)
 		}
     }
     
