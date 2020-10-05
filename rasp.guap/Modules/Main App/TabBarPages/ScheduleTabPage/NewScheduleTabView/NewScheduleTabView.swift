@@ -31,6 +31,7 @@ class NewScheduleTabView:TabBarPageView{
 		table.allowsSelection = false
 		table.estimatedRowHeight = 130
 		table.separatorStyle = .none
+		table.backgroundColor = .clear
 		return table
 	}()
 	

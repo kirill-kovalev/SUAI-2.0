@@ -35,7 +35,8 @@ class NewScheduleTabTableCell:UITableViewCell{
 		self.contentView.addSubview(placeholder)
 		self.contentView.addSubview(container)
 		self.contentView.addSubview(dayLabel)
-		
+		self.backgroundColor = .clear
+		self.contentView.backgroundColor = .clear
 		
 	
 		dayLabel.snp.makeConstraints { (make) in
