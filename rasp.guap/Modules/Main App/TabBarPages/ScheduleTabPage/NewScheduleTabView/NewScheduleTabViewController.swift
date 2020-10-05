@@ -103,25 +103,30 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			cell.controller.setTimetable(timetable: [])
 			
 			let formatter = DateFormatter()
-			formatter.dateStyle = .long
+			formatter.formattingContext = .beginningOfSentence
 			formatter.locale = Locale(identifier: "ru")
-			formatter.dateFormat = "E, d MMMM"
+			formatter.dateFormat = "EEEE, d MMMM"
+			
 			
 			if indexPath.section == 0{
 				cell.setupCell(self, timetable: self.timetable.get(week: .current, day: indexPath.row))
 				let date = Date().addingTimeInterval(Double(3600*24*indexPath.row))
 				cell.dayLabel.text = formatter.string(from: date)
+				formatter.dateFormat = "EEEE, пар нет!"
+				cell.placeholder.content.titleLabel.text = formatter.string(from: date)
+				
 				
 			}else if indexPath.section == 1{
 				let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
 				let date = Date().addingTimeInterval(Double(firstSectionCount + 3600*24*indexPath.row))
 				cell.dayLabel.text = formatter.string(from: date)
-				
 				if self.timetable.get(week: .current) == self.timetable.get(week: .even) { // Текущая  - Четная; следующая - нечетная
 					cell.setupCell(self, timetable: self.timetable.get(week: .odd, day: indexPath.row))
 				}else{// Текущая  - нечетная; следующая - четная
 					cell.setupCell(self, timetable: self.timetable.get(week: .even, day: indexPath.row))
 				}
+				formatter.dateFormat = "EEEE, пар нет!"
+				cell.placeholder.content.titleLabel.text = formatter.string(from: date)
 			}else{
 				cell.dayLabel.text = "Вне сетки"
 				cell.setupCell(self, timetable: self.timetable.get(week: .outOfTable))

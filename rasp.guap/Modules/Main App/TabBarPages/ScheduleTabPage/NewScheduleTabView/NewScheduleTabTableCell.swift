@@ -22,6 +22,8 @@ class NewScheduleTabTableCell:UITableViewCell{
 		label.text = "Понедельник"
 		return label
 	}()
+	let placeholder = PocketDivView(content: NewScheduleDayPlaceholder())
+	lazy var container = PocketDivView(content: controller.view)
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
@@ -29,10 +31,13 @@ class NewScheduleTabTableCell:UITableViewCell{
 	}
 	private func initSetup(){
 		Logger.print(from: #function, "\(Self.self) init setup")
-		let container = PocketDivView(content: controller.view)
-
+		
+		self.contentView.addSubview(placeholder)
 		self.contentView.addSubview(container)
 		self.contentView.addSubview(dayLabel)
+		
+		
+	
 		dayLabel.snp.makeConstraints { (make) in
 			make.top.equalToSuperview().offset(8)
 			make.left.equalToSuperview().offset(8)
@@ -41,11 +46,18 @@ class NewScheduleTabTableCell:UITableViewCell{
 		container.snp.makeConstraints { make in
 			make.top.equalTo(dayLabel.snp.bottom).offset(8)
 			make.left.right.equalTo(dayLabel)
-			make.bottom.equalToSuperview().inset(8)
+			make.bottom.lessThanOrEqualToSuperview().inset(8)
+		}
+		placeholder.snp.makeConstraints { (make) in
+			make.left.right.top.equalTo(container)
+			make.bottom.equalToSuperview()
 		}
 	}
 	typealias CellDelegate = UIViewController & UserChangeDelegate
 	public func setupCell(_ cellDelegate:CellDelegate,timetable:[SALesson]){
+		placeholder.isHidden = !timetable.isEmpty
+		container.isHidden = !placeholder.isHidden
+		
 		cellDelegate.addChild(self.controller)
 		controller.didMove(toParent: cellDelegate)
 		self.controller.setTimetable(timetable: timetable)

@@ -10,6 +10,7 @@
 		5D03F321252B29B200607764 /* NewScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */; };
 		5D03F322252B29B200607764 /* NewScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F320252B29B200607764 /* NewScheduleTabView.swift */; };
 		5D03F324252B34DF00607764 /* NewScheduleTabTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */; };
+		5D03F326252B6A7800607764 /* NewScheduleDayPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F325252B6A7800607764 /* NewScheduleDayPlaceholder.swift */; };
 		5D0BBA0524FDA318000D8CBB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */; };
 		5D0BBA0724FEC079000D8CBB /* FeedBriefViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */; };
 		5D0E336424E018FD00B45143 /* PocketDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E336224E018FD00B45143 /* PocketDayView.swift */; };
@@ -202,6 +203,7 @@
 		5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabViewController.swift; sourceTree = "<group>"; };
 		5D03F320252B29B200607764 /* NewScheduleTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleTabView.swift; sourceTree = "<group>"; };
 		5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleTabTableCell.swift; sourceTree = "<group>"; };
+		5D03F325252B6A7800607764 /* NewScheduleDayPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleDayPlaceholder.swift; sourceTree = "<group>"; };
 		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefViews.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 				5D03F320252B29B200607764 /* NewScheduleTabView.swift */,
 				5D03F31F252B29B200607764 /* NewScheduleTabViewController.swift */,
 				5D03F323252B34DF00607764 /* NewScheduleTabTableCell.swift */,
+				5D03F325252B6A7800607764 /* NewScheduleDayPlaceholder.swift */,
 			);
 			path = NewScheduleTabView;
 			sourceTree = "<group>";
@@ -1411,6 +1414,7 @@
 				5DA10F8B24DC7B4900D09BD8 /* FifthPageViewController.swift in Sources */,
 				5D9D905D24ED8BAF00930375 /* DeadlineListCell.swift in Sources */,
 				5DA10F8924DC7B3E00D09BD8 /* FourthPageViewController.swift in Sources */,
+				5D03F326252B6A7800607764 /* NewScheduleDayPlaceholder.swift in Sources */,
 				5DA10F6D24DC412600D09BD8 /* SecondPageView.swift in Sources */,
 				5DF423CC2500F9E200565FB8 /* ServiceSettingsViewController.swift in Sources */,
 				5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */,
