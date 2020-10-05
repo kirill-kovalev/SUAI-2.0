@@ -184,7 +184,7 @@ extension SADeadlines{
 	func setupNotifications() -> Bool{
 		if !AppSettings.isDeadlineNotificationsEnabled {return true}
 		var success = true
-		NotificationManager.shared.clearLessonNotifications()
+		NotificationManager.shared.clearDeadlineNotifications()
 		for deadline in self.open {
 			let request = NotificationManager.shared.createNotification(for: deadline)
 			if !NotificationManager.shared.add(request: request) {success = false} else { Logger.print(from: #function, "created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate()  as Any)") }
