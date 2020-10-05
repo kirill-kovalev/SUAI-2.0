@@ -59,6 +59,14 @@ class InfoTabViewController: ViewController<InfoTabView> {
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
 		updateWebView()
+		updateColorScheme()
+		
+	}
+	func updateColorScheme(){
+		if #available(iOS 12.0, *) {
+			let scheme = traitCollection.userInterfaceStyle == .dark ? "client_dark" : "client_light"
+			self.rootView.webView.evaluateJavaScript("document.body.setAttribute('scheme','\(scheme)')", completionHandler: nil)
+		}
 	}
 	
 	
@@ -80,6 +88,7 @@ extension InfoTabViewController:WKNavigationDelegate{
 						self.rootView.webView.isHidden = false
 						self.rootView.notReleasedLabel.isHidden = true
 						self.rootView.indicator.stopAnimating()
+						self.updateColorScheme()
 					}
 				}else{
 					DispatchQueue.main.async {

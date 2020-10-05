@@ -35,7 +35,7 @@ class InfoTabView:View {
     
     required init() {
         super.init()
-		self.backgroundColor = Asset.PocketColors.pocketWhite.color
+		self.backgroundColor = Asset.PocketColors.backgroundPage.color
         super.addSubview(webView)
 		super.addSubview(indicator)
         webView.snp.makeConstraints { (make) in
