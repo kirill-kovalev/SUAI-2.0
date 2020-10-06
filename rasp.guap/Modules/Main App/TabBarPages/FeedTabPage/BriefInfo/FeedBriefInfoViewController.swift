@@ -306,7 +306,14 @@ class FeedBriefInfoViewController: UIViewController {
             let div = PocketDivView(content: deadlineListVC.view)
             let container = PocketScalableContainer(content: div)
 			container.addTarget(action: { _ in
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.tabBarController?.selectedIndex = 1 })
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+					self.tabBarController?.selectedIndex = 1
+					if let barControllers = self.tabBarController?.viewControllers,
+						let vc = (barControllers[1] as? DeadlinesTabViewController){
+							vc.rootView.deadlineListSelector.selectedIndex = 0
+							vc.reloadItems()
+						}
+				})
 			}, for: .touchUpInside)
 
             self.rootView.addBlock(title: "Ближайшие дедлайны", view: container )
