@@ -25,7 +25,7 @@ class AboutUsView:View{
 	}()
 	let vkButton:Button = {
 		let label = Button(frame: .zero)
-		label.setTitle("Группа Вконтакте", for: .normal)
+		label.setTitle("Группа ВКонтакте", for: .normal)
 		label.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
 		label.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		return label
