@@ -115,8 +115,6 @@ class VKLoginPageViewController: UIViewController {
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		AppSettings.isDeadlineNotificationsEnabled = true
-		AppSettings.isTimetableNotificationsEnabled = true
 		let color = Asset.PocketColors.pocketDarkBlue.color
 		self.LoginButton.layer.borderWidth = 2
 		self.LoginButton.layer.borderColor = color.cgColor
@@ -145,6 +143,8 @@ class VKLoginPageViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		AppSettings.isDeadlineNotificationsEnabled = true
+		AppSettings.isTimetableNotificationsEnabled = true
 		setupQuickActions()
 		if VK.needToSetUp {
 			VK.setUp(appId: "7578765", delegate: self)
