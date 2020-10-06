@@ -37,11 +37,11 @@ class NotificationManager{
 	public func auth() -> Bool{
 		var success = false
 		let sem = DispatchSemaphore(value: 0)
+		self.center.delegate = UIApplication.shared.appDelegate
 		center.requestAuthorization(options: [.alert,.sound]) { (didAllow, err) in
 			Logger.print("\(#function): \(String(describing: err))")
 			Logger.print("\(#function): didAllow = \(didAllow)")
 			success = didAllow
-			self.center.delegate = UIApplication.shared.appDelegate
 			sem.signal()
 		}
 		let _ = sem.wait(timeout: .distantFuture)
