@@ -39,7 +39,7 @@ struct AppSettings {
 	static var isOldTimetableEnabled:Bool{
 		get{
 			UserDefaults.standard.synchronize()
-			let get = UserDefaults.standard.bool(forKey: "oldTimetable")
+			let get = UserDefaults.standard.bool(forKey: "oldTimetable") &&
 			Logger.print(from: #function, "isOldTimetableEnabled get \(get)")
 			return get
 		}

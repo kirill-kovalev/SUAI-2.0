@@ -408,6 +408,7 @@
 				5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */,
 				5DAEA61425211096000A2924 /* NotificationManager.swift */,
 				5D97D09B2529CACB00335D73 /* Logger.swift */,
+				5DAEA61B2521F4CC000A2924 /* AppSettings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1060,7 +1061,6 @@
 			children = (
 				5DAEA6172521EF52000A2924 /* AppSettingsView.swift */,
 				5DAEA6192521EF6B000A2924 /* AppSettingsViewController.swift */,
-				5DAEA61B2521F4CC000A2924 /* AppSettings.swift */,
 			);
 			path = AppSettings;
 			sourceTree = "<group>";
