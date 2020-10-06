@@ -28,7 +28,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 		}
 		self.setText("Загружаю настройки")
 		let settings = SAUserSettings.shared
-		
+		if !settings.reload(){
+			DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить настройки")}
+		  }
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
@@ -49,7 +51,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 				if AppSettings.isTimetableNotificationsEnabled,
 					NotificationManager.shared.isAuth,
 					!timetable.setupNotifications()  {
-					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Расписания")}
+					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления расписания")}
 				}
 				self.setText("Синхронизируюсь с часами")
 				self.setWatchTimetable(timetable)
