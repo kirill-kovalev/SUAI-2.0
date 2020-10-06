@@ -19,16 +19,22 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 		}
 	}
 	var selection:[Int:Bool] = [:]
-	
+	static let news = SANews()
+	var news:SANews {Self.news}
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.setTitle("Фильтр новостей")
-		self.sources = SANews.shared.sources
+		if self.news.sources.isEmpty{
+			self.sources = SANews.shared.sources
+		}else{
+			self.sources = self.news.sources
+		}
+		
 		
 		DispatchQueue.global().async {
-			let news = SANews()
-			if news.loadSourceList(default: true){
-				self.sources = news.sources
+			
+			if self.news.loadSourceList(default: true){
+				self.sources = self.news.sources
 			}else{
 				self.sources = SANews.shared.sources
 			}

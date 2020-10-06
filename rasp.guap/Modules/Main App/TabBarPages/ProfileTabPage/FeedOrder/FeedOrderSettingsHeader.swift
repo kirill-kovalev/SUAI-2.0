@@ -20,7 +20,7 @@ class FeedOrderSettingsHeader:UIStackView{
 	}()
 	let text:UILabel = {
 		let label = UILabel(frame: .zero)
-		label.text = "В SUAI Pocket размещено большое количество тематических пабликов, но мы прекрасно понимаем, что неоторые из них не нужны.\nПоэтому от них можно легко отказаться, оставив только самые необходимые!"
+		label.text = "В SUAI Pocket размещено большое количество тематических пабликов, но мы прекрасно понимаем, что некоторые из них не нужны.\nПоэтому от них можно легко отказаться, оставив только самые необходимые!"
 		label.numberOfLines = 0
 		label.font = FontFamily.SFProDisplay.regular.font(size: 13)
 		label.textColor = Asset.PocketColors.pocketGray.color
