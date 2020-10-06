@@ -132,15 +132,7 @@ class VKLoginPageViewController: UIViewController {
 			make.width.height.equalTo(22)
 			make.right.equalTo(self.LoginButton.titleLabel!.snp.left).offset(-5)
 		})
-		
-		
-		if !VK.needToSetUp{
-			if VK.sessions.default.state == .authorized {
-				VK.sessions.default.logOut()
-			}
-			VK.release()
-		}
-		
+
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +140,13 @@ class VKLoginPageViewController: UIViewController {
 		AppSettings.isDeadlineNotificationsEnabled = true
 		AppSettings.isTimetableNotificationsEnabled = true
 		setupQuickActions()
-		if VK.needToSetUp {
+		
+		if !VK.needToSetUp{
+			if VK.sessions.default.state == .authorized {
+				VK.sessions.default.logOut()
+			}
+			VK.release()
+		}else{
 			VK.setUp(appId: "7578765", delegate: self)
 		}
 		
