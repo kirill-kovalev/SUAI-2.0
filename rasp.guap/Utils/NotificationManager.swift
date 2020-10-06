@@ -6,7 +6,7 @@
 //  Copyright © 2020 Kovalev K.A. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import UserNotifications
 import SUAI_API
 
@@ -41,6 +41,7 @@ class NotificationManager{
 			Logger.print("\(#function): \(String(describing: err))")
 			Logger.print("\(#function): didAllow = \(didAllow)")
 			success = didAllow
+			self.center.delegate = UIApplication.shared.appDelegate
 			sem.signal()
 		}
 		let _ = sem.wait(timeout: .distantFuture)

@@ -11,6 +11,7 @@ import SUAI_API
 import SwiftyVK
 import WatchConnectivity
 import Tracker
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -161,5 +162,22 @@ extension AppDelegate{
 		NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
 		
 		
+	}
+}
+extension AppDelegate : UNUserNotificationCenterDelegate{
+	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+		Logger.print(from: "UNNotifications", "start")
+		let identifier = response.notification.request.identifier
+		Logger.print(from: "UNNotifications identifier", identifier)
+		if identifier.contains("Lesson") {
+			let shortcutItem = UIApplicationShortcutItem(type: "tab2", localizedTitle: "")
+			Self.lastShortcut = shortcutItem
+			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+		}else if identifier.contains("Deadline"){
+			let shortcutItem = UIApplicationShortcutItem(type: "tab1", localizedTitle: "")
+			Self.lastShortcut = shortcutItem
+			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+		}
+		completionHandler()
 	}
 }
