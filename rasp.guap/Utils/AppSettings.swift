@@ -11,7 +11,7 @@ import Foundation
 struct AppSettings {
 	static var isDeadlineNotificationsEnabled:Bool{
 		get{
-			let get = UserDefaults.standard.bool(forKey: "deadlineNotifications")
+			let get = UserDefaults.standard.bool(forKey: "deadlineNotifications") && NotificationManager.shared.isAuth
 			Logger.print(from: #function, "isDeadlineNotificationsEnabled get \(get)")
 			return get
 		}
@@ -25,7 +25,7 @@ struct AppSettings {
 	static var isTimetableNotificationsEnabled:Bool{
 		get{
 			UserDefaults.standard.synchronize()
-			let get = UserDefaults.standard.bool(forKey: "timetableNotifications")
+			let get = UserDefaults.standard.bool(forKey: "timetableNotifications") && NotificationManager.shared.isAuth
 			Logger.print(from: #function, "isTimetableNotificationsEnabled get \(get)")
 			return get
 		}
@@ -39,7 +39,7 @@ struct AppSettings {
 	static var isOldTimetableEnabled:Bool{
 		get{
 			UserDefaults.standard.synchronize()
-			let get = UserDefaults.standard.bool(forKey: "oldTimetable") &&
+			let get = UserDefaults.standard.bool(forKey: "oldTimetable")
 			Logger.print(from: #function, "isOldTimetableEnabled get \(get)")
 			return get
 		}

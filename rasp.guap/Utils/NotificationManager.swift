@@ -177,7 +177,7 @@ extension SATimetable{
 			}
 			
 		}
-		return success
+		return success && NotificationManager.shared.isAuth
 	}
 }
 extension SADeadlines{
@@ -189,7 +189,7 @@ extension SADeadlines{
 			let request = NotificationManager.shared.createNotification(for: deadline)
 			if !NotificationManager.shared.add(request: request) {success = false} else { Logger.print(from: #function, "created notif for deadlines: \((request.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate()  as Any)") }
 		}
-		return success
+		return success && NotificationManager.shared.isAuth
 	}
 }
 // - MARK: УВедомления расписания!!!!!
