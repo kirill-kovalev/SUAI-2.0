@@ -15,6 +15,8 @@ class VKLoginPageViewController: UIViewController {
 	@IBOutlet weak var LoginButton: PocketLongActionButton!
 	@IBOutlet weak var errLabel: UILabel!
     @IBAction func loginViaVK(_ sender: UIButton, forEvent event: UIEvent) {
+		
+		UIApplication.shared.shortcutItems = nil
 		self.errLabel.text = ""
 		self.errLabel.isHidden = true
 		self.LoginButton.disable()
