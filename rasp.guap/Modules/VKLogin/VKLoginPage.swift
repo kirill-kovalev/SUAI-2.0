@@ -20,20 +20,23 @@ class VKLoginPageViewController: UIViewController {
 		self.errLabel.text = ""
 		self.errLabel.isHidden = true
 		self.LoginButton.disable()
-		VK.sessions.default.logOut()
+		Logger.print(from: "VK Login", "start")
         VK.sessions.default.logIn(onSuccess: { _ in
             PocketAPI.shared.setToken(VK.sessions.default.accessToken!.get()!)
-			SAUserSettings.shared.reset()
+			Logger.print(from: "VK Login", "set token")
 			if SAUserSettings.shared.reload() {
+				Logger.print(from: "VK Login", "reload ok")
 				DispatchQueue.main.async {
 					let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
 				}
 			}else{
+				Logger.print(from: "VK Login", "reload err")
 				DispatchQueue.main.async {
 					self.errLabel.text = "Не удалось синхронизировать настройки.\nПерезайдите в приложение позже."
 					self.errLabel.isHidden = false
 				}
 			}
+			Logger.print(from: "VK Login", "reload end")
             
         }) { (err) in
             DispatchQueue.main.async {
@@ -42,7 +45,7 @@ class VKLoginPageViewController: UIViewController {
                 self.errLabel.isHidden = false
             }
             
-			Logger.print(from: #function, err)
+			Logger.print(from: "VK Login", err)
         }
     }
 	func errorText(err:VKError)->String{
@@ -141,14 +144,12 @@ class VKLoginPageViewController: UIViewController {
 		AppSettings.isTimetableNotificationsEnabled = true
 		setupQuickActions()
 		
+		SAUserSettings.shared.reset()
 		if !VK.needToSetUp{
-			if VK.sessions.default.state == .authorized {
-				VK.sessions.default.logOut()
-			}
+			VK.sessions.default.logOut()
 			VK.release()
-		}else{
-			VK.setUp(appId: "7578765", delegate: self)
 		}
+		VK.setUp(appId: "7578765", delegate: self)
 		
 	}
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
