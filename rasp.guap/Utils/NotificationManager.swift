@@ -98,8 +98,8 @@ class NotificationManager{
 	}
 	public func createNotification(for:SADeadline)->UNNotificationRequest{
 		let deadline = `for`
-		let content = createContent(title: "Пора приступать за \(deadline.deadline_name ?? "")", body: "Дедлайн наступил", badge: 1)
-		let trigger = createTrigger(date: deadline.end?.addingTimeInterval(60*60*12+15) ?? Date())
+		let content = createContent(title: "Пора приступать за \(deadline.deadline_name ?? "")", body: "Дедлайн просрочен", badge: 1)
+		let trigger = createTrigger(date: deadline.end?.addingTimeInterval(60*60*8) ?? Date())
 		let request = UNNotificationRequest(identifier: "deadline_\(deadline)", content: content, trigger: trigger)
 		return request
 	}
@@ -128,7 +128,7 @@ class NotificationManager{
 	
 	private func createTrigger(date:Date)->UNNotificationTrigger{
 		
-		let dateComponents = Calendar.current.dateComponents([.year,.month,.day], from: date)
+		let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
 		let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 		
 		return trigger
