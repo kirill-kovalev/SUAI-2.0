@@ -43,6 +43,7 @@ public class SAFeedStream{
 			//let resp = String(data: data, encoding: .utf8)
 			print("FeedStream (\(self.source.name)): \(data) \n \n Error: \(error)")
             new = loadStraightFromVK()
+			self.offset += new.count
         }
 		if new.isEmpty && offset < count {
 			print("FeedStream VK (\(self.source.name) : from cache")
