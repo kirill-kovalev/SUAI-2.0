@@ -18,8 +18,8 @@ class GroupSelectPageView:TutorialPageView{
         return tf
     }()
     
-    let button:PocketTagButton = {
-        let button = PocketTagButton(frame: .zero)
+    let button:PocketLongActionButton = {
+        let button = PocketLongActionButton(frame: .zero)
         button.setTitle("Продолжить", for: .normal)
         button.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
         button.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)

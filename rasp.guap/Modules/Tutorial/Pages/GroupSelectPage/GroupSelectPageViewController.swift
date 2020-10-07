@@ -22,23 +22,34 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
 		self.keyboardReflective = false
 		self.rootView.select.delegate = self
         
-        self.rootView.button.addTarget(action: { (b) in
-            let user = self.rootView.select.text ?? ""
-            if SASchedule.shared.groups.get(name: user) != nil {
-				SAUserSettings.shared.group = user
-                
-				if SAUserSettings.shared.update() {
-					self.present(DataLoaderViewController(), animated: true, completion: nil)
-				}else{
-					Logger.print(from: #function, "error while setting group")
-				}
-                
-            }
-        }, for: .touchUpInside)
+		self.rootView.button.addTarget(self, action: #selector(self.groupSelected), for: .touchUpInside)
     }
     
     // MARK: - Actions
-    
+	@objc private func groupSelected(){
+		let user = self.rootView.select.text ?? ""
+		self.rootView.button.disable()
+		
+		DispatchQueue.global().async {
+			if SASchedule.shared.groups.get(name: user) != nil {
+				SAUserSettings.shared.group = user
+				if SAUserSettings.shared.update() {
+					DispatchQueue.main.async {
+						self.rootView.button.enable()
+						self.present(DataLoaderViewController(), animated: true, completion: nil)
+					}
+
+				}else{
+					DispatchQueue.main.async {
+						self.rootView.button.enable()
+					}
+					Logger.print(from: #function, "error while setting group")
+				}
+
+			}
+		}
+		
+	}
     
 }
 
