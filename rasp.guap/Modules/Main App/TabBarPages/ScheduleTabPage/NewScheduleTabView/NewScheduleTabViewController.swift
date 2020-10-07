@@ -42,6 +42,14 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
+		setCurrentUser()
+		
+		self.rootView.table.delegate = self
+		self.rootView.table.dataSource = self
+		self.rootView.table.register(NewScheduleTabTableCell.self, forCellReuseIdentifier: "dayTimetable")
+	}
+	
+	func setCurrentUser(){
 		if let name = SAUserSettings.shared.group,
 		   let user = SASchedule.shared.groups.get(name: name){
 			self.currentUser = user
@@ -50,9 +58,6 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 				self.timetable = timetable
 			}
 		}
-		self.rootView.table.delegate = self
-		self.rootView.table.dataSource = self
-		self.rootView.table.register(NewScheduleTabTableCell.self, forCellReuseIdentifier: "dayTimetable")
 	}
 	
 	func loadSchedule(){
@@ -83,22 +88,22 @@ extension NewScheduleTabViewController:UITableViewDelegate{
 
 }
 extension NewScheduleTabViewController:UITableViewDataSource{
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		if self.timetable.get(week: .outOfTable).isEmpty {
-			return 2
-		}else{
 			return 3
+		}else{
+			return 4
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
-			let curWeekDay = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
-			return (7 - curWeekDay)
-		}else if section == 1{
-			return 7
-		}else{
-			return 1
+		let curWeekDay = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
+		switch section {
+			case 0: return (7 - curWeekDay)
+			case 1: return 7
+			case 2: return curWeekDay
+			default: return 1
 		}
 	}
 	
@@ -114,27 +119,33 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			formatter.dateFormat = "EEEE, d MMMM"
 			
 			
-			if indexPath.section == 0{
-				cell.setupCell(self, timetable: self.timetable.get(week: .current, day: indexPath.row))
-				let date = Date().addingTimeInterval(Double(3600*24*indexPath.row))
-				cell.dayLabel.text = formatter.string(from: date)
-				formatter.dateFormat = "EEEE, пар нет!"
-				cell.placeholder.content.titleLabel.text = formatter.string(from: date)
-				
-				
-			}else if indexPath.section == 1{
-				let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
-				let date = Date().addingTimeInterval(Double(firstSectionCount + 3600*24*indexPath.row))
-				cell.dayLabel.text = formatter.string(from: date)
-				cell.setupCell(self, timetable: self.timetable.get(week: self.nextWeek, day: indexPath.row))
-				formatter.dateFormat = "EEEE, пар нет!"
-				cell.placeholder.content.titleLabel.text = formatter.string(from: date)
-			}else{
-				cell.dayLabel.text = "Вне сетки"
-				cell.setupCell(self, timetable: self.timetable.get(week: .outOfTable))
+
+			switch indexPath.section {
+				case 0:
+					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
+					
+					let date = Date().addingTimeInterval(Double(3600*24*indexPath.row))
+					cell.dayLabel.text = formatter.string(from: date)
+				case 1:
+					cell.setupCell(self, timetable: self.timetable.get(week: self.nextWeek, day: indexPath.row))
+					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
+					let day = Double(firstSectionCount + indexPath.row)
+					let date = Date().addingTimeInterval(3600*24*day)
+					cell.dayLabel.text = formatter.string(from: date)
+				case 2:
+					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
+					let day = Double(firstSectionCount + indexPath.row + 7 )
+					let date = Date().addingTimeInterval(3600*24*day)
+					cell.dayLabel.text = formatter.string(from: date)
+					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
+				default:
+					cell.dayLabel.text = "Вне сетки"
+					cell.setupCell(self, timetable: self.timetable.get(week: .outOfTable))
 			}
 			
+			
 		}
+		
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()
 		cell.setNeedsLayout()
@@ -166,22 +177,63 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			make.centerY.equalToSuperview()
 			make.height.equalToSuperview().inset(4)
 		}
-		view.backgroundColor = Asset.PocketColors.pocketWhite.color
+		view.backgroundColor = Asset.PocketColors.headerBackground.color
 		return view
 	}
-	func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat { section == 1 ? 30 : 0 }
-	func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat { section == 0 ? 30 : 0 }
-	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		if section == 1{
-			return generateViewForHeader(isUp: true, isEven: currentWeek == .even)
+	func generateTodayLabel() -> Button{
+		let button = Button(frame: .zero)
+		let week = self.currentWeek == .even ? "четная" : "нечетная"
+		
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "ru")
+		formatter.dateFormat = "d MMMM"
+		
+		button.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 14)
+		button.contentHorizontalAlignment = .left
+		
+		button.backgroundColor = Asset.PocketColors.headerBackground.color
+		
+		button.addTarget(action: { (_) in self.setCurrentUser() }, for: .touchUpInside)
+		
+		
+		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+		
+		if let curUser = self.currentUser,
+		   let settingsGroup = SAUserSettings.shared.group{
+			if curUser.Name == settingsGroup{
+	
+				button.isEnabled = false
+				button.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
+				button.setTitle("\(formatter.string(from: Date())), \(week) неделя", for: .disabled)
+				return button
+			}
+			
 		}
-		return UIView(frame: .zero)
+		
+		button.isEnabled = true
+		button.setTitle("Вернуться к расписанию \(SAUserSettings.shared.group ?? "")", for: .normal)
+		button.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
+		
+		return button
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat { [0,1,2].contains(section) ? 35 : 0}
+	func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat { [0,1].contains(section) ? 35 : 0}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		switch section{
+			case 0 : return generateTodayLabel()
+			case 1 : return generateViewForHeader(isUp: true, isEven: currentWeek == .even)
+			case 2 : return generateViewForHeader(isUp: true, isEven: nextWeek == .even)
+			default: return nil
+		}
 	}
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		if section == 0 {
-			return generateViewForHeader(isUp: false, isEven: nextWeek == .even)
+		switch section{
+			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek == .even)
+			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek == .even)
+			default: return nil
 		}
-		return UIView(frame: .zero)
 
 	}
 	
