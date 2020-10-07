@@ -125,6 +125,7 @@ internal enum Asset {
     internal static let add = ImageAsset(name: "add")
     internal static let cancelCircle = ImageAsset(name: "cancel_circle")
     internal static let checkCircle = ImageAsset(name: "check_circle")
+    internal static let reload = ImageAsset(name: "reload")
     internal static let searchDropdown = ImageAsset(name: "searchDropdown")
     internal static let searchLense = ImageAsset(name: "searchLense")
     internal static let vkLogo = ImageAsset(name: "vkLogo")
