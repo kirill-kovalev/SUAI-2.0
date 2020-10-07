@@ -25,7 +25,8 @@ class DataLoaderView:View {
 	}()
 	let reloadButton:Button = {
 		let btn = Button(frame: .zero)
-		btn.setImage(Asset.SystemIcons.cancelCircle.image, for: .normal)
+		btn.setImage(Asset.SystemIcons.reload.image.withRenderingMode(.alwaysTemplate), for: .normal)
+		btn.imageView?.tintColor = Asset.PocketColors.pocketDarkBlue.color
 		btn.isHidden = true
 		return btn
 	}()
@@ -40,12 +41,12 @@ class DataLoaderView:View {
 		image.snp.makeConstraints{$0.bottom.left.top.right.equalToSuperview()}
 		label.snp.makeConstraints { (make) in
 			make.centerX.equalToSuperview()
-			make.bottom.lessThanOrEqualToSuperview().inset(40)
+			make.bottom.lessThanOrEqualToSuperview().inset(60)
 			make.left.greaterThanOrEqualToSuperview()
 			make.right.lessThanOrEqualToSuperview()
 		}
 		reloadButton.snp.makeConstraints { (make) in
-			make.bottom.equalTo(label.snp.top).inset(15)
+			make.bottom.equalTo(label.snp.top).inset(-15)
 			make.centerX.equalToSuperview()
 			make.height.width.equalTo(30)
 		}

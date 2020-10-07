@@ -18,14 +18,33 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 		DispatchQueue.global().async {
 			self.loadData()
 		}
-		self.rootView.reloadButton.addTarget(action: { (_) in
-			DispatchQueue.global().async { self.loadData()}
+		self.rootView.reloadButton.addTarget(action: { (btn) in
+			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut]) {
+				btn.transform = .init(rotationAngle: 180.degreesToRadians)
+				btn.transform = .init(rotationAngle: 360.degreesToRadians)
+			} completion: { (_) in
+				DispatchQueue.global().async { self.loadData()}
+				btn.transform = . identity
+			}
+
+
 		}, for: .touchUpInside)
 	}
 	func loadData(){
 		DispatchQueue.main.async {
 			self.rootView.reloadButton.isHidden = true
 		}
+		DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+			self.setText("Что-то долго ...")
+		}
+		DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+			self.setText("Что-то долго .....................")
+		}
+		DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
+			self.setText("Кажется проблемки,\n но ждать не долго")
+			self.showSnack(status: .err, text: "ДАНЯ! Что со временем ответов сервера!")
+		}
+		
 		self.setText("Загружаю настройки")
 		let settings = SAUserSettings.shared
 		if !settings.reload(){
