@@ -14,7 +14,7 @@ class MainTabBarController : ESTabBarController{
 	public static let snackNotification = NSNotification.Name(rawValue: "MainTabBarController.snackNotification")
     init(){
         super.init(nibName: nil, bundle: nil)
-		let scheduleVC = !AppSettings.isOldTimetableEnabled ? ScheduleTabViewController() : NewScheduleTabViewController()
+		let scheduleVC = AppSettings.isOldTimetableEnabled ? ScheduleTabViewController() : NewScheduleTabViewController()
         self.viewControllers = [
             FeedTabViewController(),
             DeadlinesTabViewController(),
@@ -39,7 +39,7 @@ class MainTabBarController : ESTabBarController{
 			self.tabBar.layer.shadowRadius = 10
 			self.tabBar.layer.shadowOffset = .zero
 		}else{
-			self.tabBar.barTintColor = Asset.PocketColors.pocketWhite.color
+			self.tabBar.barTintColor = Asset.PocketColors.headerBackground.color
 			self.tabBar.isTranslucent = false
 		}
         
