@@ -110,7 +110,7 @@ public struct VKFeedElement:Codable {
 		self.attachments?.first?.doc?.title
 	}
     public func getText() ->String{
-		return self.postText() ?? self.copy_history?.first?.postText() ?? ""
+		return self.postText() ?? self.copy_history?.first?.postText() ?? "Без заголовка"
     }
     
     
