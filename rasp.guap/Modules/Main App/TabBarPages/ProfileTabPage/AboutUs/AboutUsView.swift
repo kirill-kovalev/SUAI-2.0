@@ -17,8 +17,10 @@ class AboutUsView:View{
 		return view
 	}()
 	let title:UILabel = {
+		let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+		
 		let label = UILabel(frame: .zero)
-		label.text = "Версия 1.0.2"
+		label.text = "Версия \(appVersion ?? "1.0")"
 		label.textColor = Asset.PocketColors.pocketBlack.color
 		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		return label
