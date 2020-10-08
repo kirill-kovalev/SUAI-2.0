@@ -68,8 +68,14 @@ public class SABrief{
 	private func eventsGetDate(_ from:String) -> Date?{
 		let df = DateFormatter()
 		df.locale = Locale(identifier: "ru")
+		
 		df.dateFormat = "d MMMM в HH:mm"
-		return df.date(from: from)
+		if let date =  df.date(from: from){ return date }
+		
+		df.dateFormat = "d MMMM HH:mm"
+		if let date =  df.date(from: from){ return date }
+
+		return nil
 	}
 	private func eventsParse(_ text:String, pattern:String)->String?{
 		let range = NSRange(location: 0,length: text.count)
