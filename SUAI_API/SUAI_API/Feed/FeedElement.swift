@@ -44,7 +44,7 @@ public struct SAFeedElement:Codable{
 		
 		
 		
-		var element = SAFeedElement(source: FeedSource(name: "", id: item.owner_id ?? 0) , date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), text: item.getText(), postUrl: url)
+		var element = SAFeedElement(source: FeedSource(name: "", id: item.owner_id ?? 0) , date: item.getDate(), likes: item.getLikes(), comments: item.getComments(), reposts: item.getReposts(), views: item.getViews(), imageURL: item.getPhoto(), text: parseLinks(item.getText()), postUrl: url)
 		
 		if let source = sources.filter({ abs($0.id) == abs(item.owner_id ?? 0 )}).first {
 			element.source = source
@@ -63,11 +63,12 @@ public struct SAFeedElement:Codable{
 		return element
 		
 	}
-	static private func parseLinks(){
-		let pattern = "[]"
-		if let regexp = try? NSRegularExpression(pattern: pattern, options: .allowCommentsAndWhitespace){
-			
+	static private func parseLinks(_ text:String) -> String{
+		let range = NSRange(location: 0,length: text.count)
+		let pattern = "\\[((id\\d+)|club(\\d+))\\|(.*?)]"
+		if let regexp = try? NSRegularExpression(pattern: pattern, options: []){
+			return regexp.stringByReplacingMatches(in: text, options: [], range: range, withTemplate: "$4")
 		}
-		
+		return text
 	}
 }
