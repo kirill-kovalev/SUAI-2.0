@@ -22,16 +22,25 @@ public struct VKFeedElement:Codable {
         let link: Link?
         let video: Video?
         let doc:Doc?
+		let album:Album?
     }
     // MARK: - Photo
     struct Photo:Codable {
         let sizes: [Size]
         let text: String?
     }
+	// MARK: - Album
+	struct Album:Codable {
+		let thumb: Photo
+		let description: String?
+	}
+	
     // MARK: - Doc
     struct Doc:Codable {
         let preview: Preview?
         let title: String?
+		let ext:String?
+		let url:String?
     }
     struct Preview:Codable{
         let photo: Photo?
@@ -62,20 +71,24 @@ public struct VKFeedElement:Codable {
         let attachs = self.attachments
         if attachs != nil {
             for attach in attachs! {
-                if attach.type == "photo"{
-                    let url = attach.photo?.sizes.last?.url
-                    if url != nil { return url}
-                } else if attach.type == "link"{
-                    let url = attach.link?.photo?.sizes.last?.url
-                    if url != nil { return url}
-                } else if attach.type == "video"{
-                    let url = attach.video?.image.last?.url
-                    if url != nil { return url}
-                }
-                else if attach.type == "doc"{
-                    let url = attach.doc?.preview?.photo?.sizes.last?.src
-                    if url != nil { return url}
-                }
+				switch attach.type {
+					case "photo":
+						if let url = attach.photo?.sizes.last?.url { return url}
+					case "link":
+						if let url = attach.link?.photo?.sizes.last?.url { return url}
+					case "video":
+						if let url = attach.video?.image.last?.url { return url}
+					case "doc":
+						if let ext = attach.doc?.ext,
+						   let url = attach.doc?.url,
+						   "jpg jpeg png bmp".contains(ext){
+							return url
+						}
+					case "album":
+						if let url = attach.album?.thumb.sizes.last?.url { return url}
+					default: break
+				}
+
             }
         }
         if self.copy_history != nil {
@@ -107,7 +120,8 @@ public struct VKFeedElement:Codable {
 		return self.attachments?.first?.link?.title ??
 		self.attachments?.first?.photo?.text ??
 		self.attachments?.first?.video?.title ??
-		self.attachments?.first?.doc?.title
+		self.attachments?.first?.doc?.title ??
+		self.attachments?.first?.album?.thumb.text
 	}
     public func getText() ->String{
 		return self.postText() ?? self.copy_history?.first?.postText() ?? "Без заголовка"
