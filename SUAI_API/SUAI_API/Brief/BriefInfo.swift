@@ -55,11 +55,12 @@ public class SABrief{
 	public var events : [SAFeedElement] {
 		(self.briefInfo.saEvents ?? []).map { (post) in
 			var event = post
-			let eventTag = String(eventsParse(event.text, pattern: "Метка: (.*?) \n").dropFirst("Метка: ".count))
+			let tag = eventsParse(event.text, pattern: "Метка: (.*?) \n") ?? "Метка: Ошибка"
+			let eventTag = String(tag.dropFirst("Метка: ".count))
 			event.source = FeedSource(name: eventTag, id: 0)
-			event.text = eventsParse(event.text, pattern: "Название: (.*?) \n")
-			event.postUrl = eventsParse(event.text, pattern: "Ссылка: (.*?) \n")
-			event.date = eventsGetDate(eventsParse(event.text, pattern: "Время: (.*?) \n")) ?? Date().addingTimeInterval(-3600*24*10)
+			event.text = eventsParse(event.text, pattern: "Название: (.*?) \n") ?? "Ошибка"
+			event.postUrl = eventsParse(event.text, pattern: "Ссылка: (.*?) \n") ?? ""
+			event.date = eventsGetDate(eventsParse(event.text, pattern: "Время: (.*?) \n") ?? "") ?? Date().addingTimeInterval(-3600*24*10)
 			return event
 		}
 		
@@ -70,16 +71,15 @@ public class SABrief{
 		df.dateFormat = "d MMMM в HH:mm"
 		return df.date(from: from)
 	}
-	private func eventsParse(_ text:String, pattern:String)->String{
+	private func eventsParse(_ text:String, pattern:String)->String?{
 		let range = NSRange(location: 0,length: text.count)
 		if let regexp = try? NSRegularExpression(pattern: pattern, options: []),
 			let range = regexp.firstMatch(in: text, options: [], range: range)?.range{
 			let foundString = String(text[Range(range, in: text)!])
-	//		return foundString
 			return regexp.stringByReplacingMatches(in: foundString, options: [], range: NSRange(location: 0, length: foundString.count), withTemplate: "$1")
 			
 		}
-		return "err"
+		return nil
 	}
 	
 	private func decodeNews(from:[VKFeedElement]) -> [SAFeedElement]{
