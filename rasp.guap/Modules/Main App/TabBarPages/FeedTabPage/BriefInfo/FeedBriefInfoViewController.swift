@@ -82,7 +82,7 @@ class FeedBriefInfoViewController: UIViewController {
 	func loadPage(){
 		DispatchQueue.global().async {
 			
-			if !SAUserSettings.shared.reload() {MainTabBarController.Snack(status: .err, text: "Не удалосб получить имя пользователя")}
+			if !SAUserSettings.shared.reload() {MainTabBarController.Snack(status: .err, text: "Не удалось получить имя пользователя")}
 			if let name = SAUserSettings.shared.vkFirstName{DispatchQueue.main.async {
 					self.rootView.addBlock(title: "Добро пожаловать, \(name)")
 			}}else{DispatchQueue.main.async {
@@ -111,7 +111,7 @@ class FeedBriefInfoViewController: UIViewController {
 				
 				self.lessons = timetable.get(week: .current, day: nearestDay)
 				self.day = nearestDay
-	//
+				Logger.print("NEAREST DAY: \(nearestDay)")
 				DispatchQueue.main.async { self.addSchedule(timetable: self.lessons, day: self.day) }
 			}else{
 				Logger.print(from: #function, "Brief: err get tt")
@@ -165,10 +165,10 @@ class FeedBriefInfoViewController: UIViewController {
 				
 				
 				if !SABrief.shared.events.isEmpty{
-					DispatchQueue.main.async { self.addEvents() }
+					self.addEvents()
 				}
 				if !SABrief.shared.news.isEmpty{
-					DispatchQueue.main.async { self.addNews() }
+					self.addNews()
 				}
 				
 				self.lastUpdate = Date()
@@ -259,12 +259,14 @@ class FeedBriefInfoViewController: UIViewController {
 		
 		lessons = timetable.get(week: week, day: day )
 		
+		
+		var safeCounter = 7
 		repeat{
-
 			lessons = timetable.get(week: week, day: day )
-
 			if lessons.isEmpty { day = nextDay(day) }
-		}while(lessons.isEmpty)
+			safeCounter -= 1
+		}while(lessons.isEmpty && safeCounter > 0)
+		self.lessons = lessons
 		Logger.print(from: #function, "end of getNearestTimetable")
 		return day
 		
