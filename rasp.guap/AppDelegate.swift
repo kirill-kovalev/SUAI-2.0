@@ -52,8 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func LoggedInVK(){
 		let token = VK.sessions.default.accessToken?.get()
         PocketAPI.shared.setToken( token ?? "")
-		print(token ?? "failed to get token")
-		if let token = token {MyAppTracker.track(token) }
 		window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = DataLoaderViewController()
         window?.makeKeyAndVisible()
