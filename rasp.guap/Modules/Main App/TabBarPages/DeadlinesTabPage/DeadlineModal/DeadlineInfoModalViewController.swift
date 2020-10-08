@@ -142,6 +142,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 		}
 		if let subj =  deadline.subject_name, !subj.isEmpty { self.content.addBlock(title: "Предмет", text: subj) }
 		if let mark = self.deadline.markpoint {self.content.addBlock(title: "Баллы", text: mark)}
+		if let status = self.deadline.status_name {self.content.addBlock(title: "Статус", text: status)}
         
         
         if self.deadline.closed == 0{
