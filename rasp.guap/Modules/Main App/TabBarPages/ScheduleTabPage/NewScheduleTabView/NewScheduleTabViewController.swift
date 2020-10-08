@@ -118,28 +118,35 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			formatter.locale = Locale(identifier: "ru")
 			formatter.dateFormat = "EEEE, d MMMM"
 			
-			
-
 			switch indexPath.section {
 				case 0:
 					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
-					
 					let date = Date().addingTimeInterval(Double(3600*24*indexPath.row))
 					cell.dayLabel.text = formatter.string(from: date)
+					
+					formatter.dateFormat = "EEEE"
+					cell.placeholder.content.titleLabel.text = "\(formatter.string(from: date)), пар нет!"
 				case 1:
 					cell.setupCell(self, timetable: self.timetable.get(week: self.nextWeek, day: indexPath.row))
 					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
 					let day = Double(firstSectionCount + indexPath.row)
 					let date = Date().addingTimeInterval(3600*24*day)
 					cell.dayLabel.text = formatter.string(from: date)
+					
+					formatter.dateFormat = "EEEE"
+					cell.placeholder.content.titleLabel.text = "\(formatter.string(from: date)), пар нет!"
 				case 2:
+					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
 					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
 					let day = Double(firstSectionCount + indexPath.row + 7 )
 					let date = Date().addingTimeInterval(3600*24*day)
 					cell.dayLabel.text = formatter.string(from: date)
-					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
+					
+					formatter.dateFormat = "EEEE"
+					cell.placeholder.content.titleLabel.text = "\(formatter.string(from: date)), пар нет!"
 				default:
 					cell.dayLabel.text = "Вне сетки"
+					cell.placeholder.content.titleLabel.text = "Вне сетки, пар нет!"
 					cell.setupCell(self, timetable: self.timetable.get(week: .outOfTable))
 			}
 			
