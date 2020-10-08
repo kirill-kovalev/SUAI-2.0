@@ -25,9 +25,10 @@ public class SABrief{
 				self.saveToCache()
 				return true
 			}catch{print("Brief: \(error)") }
-		}else{
-			self.loadFromCache()
 		}
+		
+		self.loadFromCache()
+		
         return false
     }
 	private func saveToCache(){
@@ -51,7 +52,35 @@ public class SABrief{
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}
 	public var news : [SAFeedElement] {self.briefInfo.saNews ?? [] }
-	public var events : [SAFeedElement] { self.briefInfo.saEvents ?? [] }
+	public var events : [SAFeedElement] {
+		(self.briefInfo.saEvents ?? []).map { (post) in
+			var event = post
+			let eventTag = String(eventsParse(event.text, pattern: "Метка: (.*?) \n").dropFirst("Метка: ".count))
+			event.source = FeedSource(name: eventTag, id: 0)
+			event.text = eventsParse(event.text, pattern: "Название: (.*?) \n")
+			event.postUrl = eventsParse(event.text, pattern: "Ссылка: (.*?) \n")
+			event.date = eventsGetDate(eventsParse(event.text, pattern: "Время: (.*?) \n")) ?? Date().addingTimeInterval(-3600*24*10)
+			return event
+		}
+		
+	}
+	private func eventsGetDate(_ from:String) -> Date?{
+		let df = DateFormatter()
+		df.locale = Locale(identifier: "ru")
+		df.dateFormat = "d MMMM в HH:mm"
+		return df.date(from: from)
+	}
+	private func eventsParse(_ text:String, pattern:String)->String{
+		let range = NSRange(location: 0,length: text.count)
+		if let regexp = try? NSRegularExpression(pattern: pattern, options: []),
+			let range = regexp.firstMatch(in: text, options: [], range: range)?.range{
+			let foundString = String(text[Range(range, in: text)!])
+	//		return foundString
+			return regexp.stringByReplacingMatches(in: foundString, options: [], range: NSRange(location: 0, length: foundString.count), withTemplate: "$1")
+			
+		}
+		return "err"
+	}
 	
 	private func decodeNews(from:[VKFeedElement]) -> [SAFeedElement]{
 		return from.map { item in
