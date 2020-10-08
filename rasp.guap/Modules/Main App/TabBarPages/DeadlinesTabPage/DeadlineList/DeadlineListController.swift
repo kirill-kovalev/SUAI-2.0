@@ -34,7 +34,8 @@ class DeadlineListController: UIViewController {
 	var actionCounter = 0
     func setItems(list new:[SADeadline]){
         clearStack()
-        for deadline in new {
+		let deadlines = new.enumerated().filter({ $0.offset < 25}) .map({$0.element})
+        for deadline in deadlines {
             let newView = DeadlineListCell()
             
             newView.setLessonText(lesson: deadline.subject_name)
