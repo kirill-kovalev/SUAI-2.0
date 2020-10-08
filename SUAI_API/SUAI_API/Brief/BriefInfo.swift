@@ -55,17 +55,18 @@ public class SABrief{
 	public var events : [SAFeedElement] {
 		(self.briefInfo.saEvents ?? []).map { (post) in
 			var event = post
-			let tag = eventsParse(event.text, pattern: "Метка: (.*?) \n") ?? "Метка: Ошибка"
+			let tag = eventsParse(post.text, pattern: "Метка: (.*?) \n") ?? "Метка: Ошибка"
 			let eventTag = String(tag.dropFirst("Метка: ".count))
 			event.source = FeedSource(name: eventTag, id: 0)
-			event.text = eventsParse(event.text, pattern: "Название: (.*?) \n") ?? "Ошибка"
-			event.postUrl = eventsParse(event.text, pattern: "Ссылка: (.*?) \n") ?? ""
-			event.date = eventsGetDate(eventsParse(event.text, pattern: "Время: (.*?) \n") ?? "") ?? Date().addingTimeInterval(-3600*24*10)
+			event.text = eventsParse(post.text, pattern: "Название: (.*?) \n") ?? "Ошибка"
+			event.postUrl = eventsParse(post.text, pattern: "Ссылка: (.*?) \n") ?? ""
+			event.date = eventsGetDate(eventsParse(post.text, pattern: "Время: (.*?) \n") ?? "") ?? Date().addingTimeInterval(-3600*24*10)
 			return event
 		}
 		
 	}
 	private func eventsGetDate(_ from:String) -> Date?{
+		
 		let df = DateFormatter()
 		df.locale = Locale(identifier: "ru")
 		
@@ -75,15 +76,19 @@ public class SABrief{
 		df.dateFormat = "d MMMM HH:mm"
 		if let date =  df.date(from: from){ return date }
 
+		if let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.allSystemTypes.rawValue),
+		   let date = detector.firstMatch(in: from, options: [.withTransparentBounds], range: NSRange(location: 0, length: from.count))?.date
+		{ return date }
+		
 		return nil
 	}
+	
 	private func eventsParse(_ text:String, pattern:String)->String?{
 		let range = NSRange(location: 0,length: text.count)
 		if let regexp = try? NSRegularExpression(pattern: pattern, options: []),
 			let range = regexp.firstMatch(in: text, options: [], range: range)?.range{
 			let foundString = String(text[Range(range, in: text)!])
 			return regexp.stringByReplacingMatches(in: foundString, options: [], range: NSRange(location: 0, length: foundString.count), withTemplate: "$1")
-			
 		}
 		return nil
 	}
