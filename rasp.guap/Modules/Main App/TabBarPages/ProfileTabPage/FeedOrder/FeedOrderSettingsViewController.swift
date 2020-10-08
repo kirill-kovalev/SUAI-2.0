@@ -31,6 +31,7 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 		}
 		
 		
+		self.content.activityIndicator.startAnimating()
 		DispatchQueue.global().async {
 			
 			if self.news.loadSourceList(default: true){
@@ -38,6 +39,7 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 			}else{
 				self.sources = SANews.shared.sources
 			}
+			DispatchQueue.main.async { self.content.activityIndicator.removeFromSuperview() }
 		}
 		self.content.submitButton.addTarget(action: { (_) in
 			self.content.submitButton.disable()
@@ -49,15 +51,18 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 	}
 	
 	func sendToServer(){
-		self.content.activityIndicator.startAnimating()
 		DispatchQueue.global().async {
 			let newSources = self.sources.enumerated().filter { (iterator) -> Bool in
 				self.selection[iterator.offset] ?? true
 			}.compactMap { $0.element }
 			if SANews.updateSorceList(sources: newSources) {
 				Logger.print(from: #function, "update success")
+				MainTabBarController.Snack(status: .ok, text: "Список источников обновлен")
+				UINotificationFeedbackGenerator().notificationOccurred(.success)
 			}else{
+				MainTabBarController.Snack(status: .err, text: "Ошибка обновления списка источников")
 				Logger.print(from: #function, "update err")
+				UINotificationFeedbackGenerator().notificationOccurred(.error)
 			}
 			
 			let news = SANews()
@@ -66,7 +71,6 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 			}
 
 			DispatchQueue.main.async {
-				self.content.activityIndicator.removeFromSuperview()
 				self.content.submitButton.enable()
 			}
 		}
