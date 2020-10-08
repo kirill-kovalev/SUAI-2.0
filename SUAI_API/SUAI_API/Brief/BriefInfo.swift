@@ -55,12 +55,13 @@ public class SABrief{
 	public var events : [SAFeedElement] {
 		(self.briefInfo.saEvents ?? []).map { (post) in
 			var event = post
-			let tag = eventsParse(post.text, pattern: "Метка: (.*?) \n") ?? "Метка: Ошибка"
+			let text = "\n\n" + post.text + "\n\n"
+			let tag = eventsParse(text, pattern: "Метка: (.*?)\n") ?? "Метка: "
 			let eventTag = String(tag.dropFirst("Метка: ".count))
 			event.source = FeedSource(name: eventTag, id: 0)
-			event.text = eventsParse(post.text, pattern: "Название: (.*?) \n") ?? "Ошибка"
-			event.postUrl = eventsParse(post.text, pattern: "Ссылка: (.*?) \n") ?? ""
-			event.date = eventsGetDate(eventsParse(post.text, pattern: "Время: (.*?) \n") ?? "") ?? Date().addingTimeInterval(-3600*24*10)
+			event.text = eventsParse(text, pattern: "Название: (.*?)\n") ?? ""
+			event.postUrl = eventsParse(text, pattern: "Ссылка: (.*?)\n") ?? ""
+			event.date = eventsGetDate(eventsParse(text, pattern: "Время: (.*?)\n") ?? "") ?? Date().addingTimeInterval(-3600*24*10)
 			return event
 		}
 		

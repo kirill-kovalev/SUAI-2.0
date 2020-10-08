@@ -376,7 +376,7 @@ class FeedBriefInfoViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "Ru")
 
-        formatter.dateFormat = "dd MMMM YYYY в HH:mm"
+        formatter.dateFormat = "dd MMMM в HH:mm"
         newsView.datetimeLabel.text = formatter.string(from: element.date)
 
         NetworkManager.dataTask(url: element.imageURL ?? "") { (result) in
@@ -418,7 +418,7 @@ class FeedBriefInfoViewController: UIViewController {
 			stack.addArrangedSubview(tapContainer)
 		}
 
-		self.rootView.addBlock(title: "Актуальные новости", view: PocketDivView(content: stack) )
+		self.rootView.addBlock(title: "Предстоящие события", view: PocketDivView(content: stack) )
 		
 
 	}
