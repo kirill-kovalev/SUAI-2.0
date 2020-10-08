@@ -50,13 +50,17 @@ class MainTabBarController : ESTabBarController{
 		if !NotificationManager.shared.auth(){
 			MainTabBarController.Snack(status: .err, text: "Уведомления недоступны")
 		}
+		
+		
+    }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setupQuickActions()
 		if let shortcutItem = AppDelegate.lastShortcut{
 			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+		}else{
+			Logger.print("NO SHORTCUT ITEM")
 		}
-    }
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		setupQuickActions()
 	}
 	
 	
