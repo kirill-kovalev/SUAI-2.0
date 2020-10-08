@@ -14,7 +14,10 @@ struct Brief:Codable {
     public let rockets: Rockets
     public let weather: SAWeather
 	public let news: [VKFeedElement]
+	public let events: [VKFeedElement]
+	
 	internal var saNews:[SAFeedElement]? = []
+	internal var saEvents:[SAFeedElement]? = []
 }
 // MARK: - Weather
 public struct SAWeather:Codable {

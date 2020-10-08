@@ -11,7 +11,7 @@ import SwiftyVK
 
 public class SABrief{
     public static let shared = SABrief()
-	var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0), news: [])
+	var briefInfo = Brief(is_sub: false, rockets: Rockets(rockets: 0, top: []), weather: SAWeather(id: 0, conditions: "", temp: 0, temp_min: 0, temp_max: 0), news: [], events: [])
     
     public func loadFromServer() -> Bool{
 		if let data = PocketAPI.shared.syncLoadTask(method: .getSuper) {
@@ -21,6 +21,7 @@ public class SABrief{
 				let decodedData = try decoder.decode(Brief.self, from: data)
 				self.briefInfo = decodedData
 				self.briefInfo.saNews = decodeNews( from: self.briefInfo.news)
+				self.briefInfo.saEvents = decodeNews( from: self.briefInfo.events)
 				self.saveToCache()
 				return true
 			}catch{print("Brief: \(error)") }
@@ -50,7 +51,7 @@ public class SABrief{
     public var weather: SAWeather { self.briefInfo.weather}
     public var rockets: SARockets { SARockets(from: self.briefInfo.rockets)}
 	public var news : [SAFeedElement] {self.briefInfo.saNews ?? [] }
-	public var events : [SAFeedElement] { [] }
+	public var events : [SAFeedElement] { self.briefInfo.saEvents ?? [] }
 	
 	private func decodeNews(from:[VKFeedElement]) -> [SAFeedElement]{
 		return from.map { item in
