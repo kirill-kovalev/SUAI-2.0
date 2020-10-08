@@ -14,6 +14,7 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 	lazy var hideText:Bool = {
 		guard let window = UIApplication.shared.windows.first else {return true}
 		let insets = window.safeAreaInsets
+		Logger.print("HIDETEXT: \(insets.bottom)")
 		return insets.bottom == 0
 	}()
 
@@ -38,6 +39,9 @@ class PocketTabBarIcon: ESTabBarItemContentView {
 				make.centerX.equalToSuperview()
 				make.top.equalTo(imageView.snp.bottom).offset(3)
 			}
+		}else{
+			titleLabel.isHidden = true
+			titleLabel.layer.opacity = 0
 		}
         
     }
