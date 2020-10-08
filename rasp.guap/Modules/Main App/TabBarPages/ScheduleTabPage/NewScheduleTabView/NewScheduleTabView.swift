@@ -34,6 +34,7 @@ class NewScheduleTabView:TabBarPageView{
 		table.backgroundColor = .clear
 		return table
 	}()
+	let activityIndicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 	
 	
 	
@@ -46,9 +47,14 @@ class NewScheduleTabView:TabBarPageView{
     
     private func addViews(){
         self.addHeaderButton(selectButton)
+		self.addSubview(activityIndicator)
 		self.addSubview(table)
     }
     private func setupConstraints(){
+		activityIndicator.snp.makeConstraints { (make) in
+			make.height.width.equalTo(40)
+			make.center.equalTo(table)
+		}
 		selectButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(24)
             make.centerY.equalTo(title)

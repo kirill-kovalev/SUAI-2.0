@@ -62,7 +62,9 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 	
 	func loadSchedule(){
 		self.timetable = SATimetable()
+		self.rootView.table.isHidden = true
 		self.rootView.table.reloadData()
+		self.rootView.activityIndicator.startAnimating()
 		DispatchQueue.global().async {
 			
 			if let user = self.currentUser{
@@ -70,7 +72,9 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 				self.timetable = timetable
 				DispatchQueue.main.async {
 					self.rootView.title.text = user.shortName
+					self.rootView.activityIndicator.stopAnimating()
 					self.rootView.table.reloadData()
+					self.rootView.table.isHidden = false
 					self.rootView.table.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
 				}
 			}
