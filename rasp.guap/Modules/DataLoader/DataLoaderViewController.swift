@@ -19,12 +19,12 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			self.loadData()
 		}
 		self.rootView.reloadButton.addTarget(action: { (btn) in
-			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut]) {
+			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
 				btn.transform = .init(rotationAngle: 180.degreesToRadians)
 				btn.transform = .init(rotationAngle: 360.degreesToRadians)
-			} completion: { (_) in
+			}) { (_) in
 				DispatchQueue.global().async { self.loadData()}
-				btn.transform = . identity
+				btn.transform = .identity
 			}
 
 
