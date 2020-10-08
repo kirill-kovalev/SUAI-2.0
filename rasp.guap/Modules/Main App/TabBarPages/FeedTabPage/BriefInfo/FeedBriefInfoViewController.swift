@@ -129,6 +129,9 @@ class FeedBriefInfoViewController: UIViewController {
 			}
 			Logger.print(from: #function, "Brief: end load deadlines")
 
+			if !SABrief.shared.events.isEmpty{
+				DispatchQueue.main.async { self.addEvents() }
+			}
 			if !SABrief.shared.news.isEmpty{
 				DispatchQueue.main.async { self.addNews() }
 			}
@@ -159,7 +162,14 @@ class FeedBriefInfoViewController: UIViewController {
 				self.addWeatherAndRockets()
 				self.addSchedule(timetable: self.lessons, day: self.day)
 				self.addDeadlines()
-				self.addNews()
+				
+				
+				if !SABrief.shared.events.isEmpty{
+					DispatchQueue.main.async { self.addEvents() }
+				}
+				if !SABrief.shared.news.isEmpty{
+					DispatchQueue.main.async { self.addNews() }
+				}
 				
 				self.lastUpdate = Date()
 				
@@ -380,5 +390,40 @@ class FeedBriefInfoViewController: UIViewController {
         }
         return newsView
     }
+	
+	
+	//	MARK: - Events
+
+	func addEvents(){
+		let feed:[SAFeedElement] = SABrief.shared.events
+		
+		let stack = UIStackView(frame: .zero)
+		stack.axis = .vertical
+		stack.spacing = 15
+		for element in feed {
+			let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: element.source.name))
+			if element.postUrl.isEmpty {
+				tapContainer.isUserInteractionEnabled = false
+				tapContainer.isEnabled = false
+			}
+			tapContainer.addTarget(action: { _ in
+
+				if let url = URL(string: "vk://\(element.postUrl)"){
+					UIApplication.shared.open(url, options: [:], completionHandler: { success in
+						if !success{ self.openPost(url: element.postUrl)}
+					})
+				} else { self.openPost(url: element.postUrl)}
+
+			}, for: .touchUpInside)
+			stack.addArrangedSubview(tapContainer)
+		}
+
+		self.rootView.addBlock(title: "Актуальные новости", view: PocketDivView(content: stack) )
+		
+
+	}
+
+	
+	
 	
 }
