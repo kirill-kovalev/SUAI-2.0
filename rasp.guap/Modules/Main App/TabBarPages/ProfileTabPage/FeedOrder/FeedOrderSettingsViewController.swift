@@ -49,6 +49,7 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 	}
 	
 	func sendToServer(){
+		self.content.activityIndicator.startAnimating()
 		DispatchQueue.global().async {
 			let newSources = self.sources.enumerated().filter { (iterator) -> Bool in
 				self.selection[iterator.offset] ?? true
@@ -65,6 +66,7 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 			}
 
 			DispatchQueue.main.async {
+				self.content.activityIndicator.removeFromSuperview()
 				self.content.submitButton.enable()
 			}
 		}

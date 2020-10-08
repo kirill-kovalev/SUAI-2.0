@@ -26,17 +26,20 @@ class FeedOrderSettingsView : View{
 		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
 		return btn
 	}()
+	let activityIndicator = PocketActivityIndicatorView(frame: CGRect(x: 30, y: 30, width: 40, height: 40))
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	required init() {
 		super.init()
 		addViews()
 		setupConstraints()
+		activityIndicator.startAnimating()
 	}
 	func addViews(){
 		self.addSubview(headerBlock)
 		self.addSubview(stackContainer)
 		self.addSubview(submitButton)
+		stack.addArrangedSubview(activityIndicator)
 	}
 	func setupConstraints(){
 		headerBlock.snp.makeConstraints { (make) in
@@ -51,6 +54,9 @@ class FeedOrderSettingsView : View{
 			make.left.right.equalToSuperview()
 			make.height.equalTo(45)
 			make.bottom.equalToSuperview()
+		}
+		activityIndicator.snp.makeConstraints { (make) in
+			make.height.width.equalTo(40)
 		}
 	}
 	
