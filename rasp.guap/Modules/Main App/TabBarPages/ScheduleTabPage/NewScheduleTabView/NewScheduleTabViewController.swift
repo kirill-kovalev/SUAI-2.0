@@ -97,8 +97,9 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 		}
 	}
 	
+	var curWeekDay:Int{ Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))}
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let curWeekDay = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
+		
 		switch section {
 			case 0: return (7 - curWeekDay)
 			case 1: return 7
@@ -120,7 +121,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			
 			switch indexPath.section {
 				case 0:
-					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
+					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: curWeekDay + indexPath.row))
 					let date = Date().addingTimeInterval(Double(3600*24*indexPath.row))
 					cell.dayLabel.text = formatter.string(from: date)
 					
