@@ -92,7 +92,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		self.content.commentLabel.text = deadline!.comment
 		self.content.dateLabel.text = self.content.formatter.string(from: deadline?.end ?? Date())
 		(self.content.dateLabel.inputView as? UIDatePicker)?.date = deadline?.end ?? Date()
-		
+		self.content.lessonLabel.text = deadline?.subject_name
 		self.content.closeButton.addTarget(action: { (btn) in
 			self.content.closeButton.disable()
 			self.content.isUserInteractionEnabled = false
