@@ -18,7 +18,7 @@ class AboutUsView:View{
 	}()
 	let title:UILabel = {
 		let label = UILabel(frame: .zero)
-		label.text = "Версия 1.0.1"
+		label.text = "Версия 1.0.2"
 		label.textColor = Asset.PocketColors.pocketBlack.color
 		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		return label
