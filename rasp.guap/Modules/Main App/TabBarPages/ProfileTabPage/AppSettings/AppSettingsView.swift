@@ -26,6 +26,7 @@ class AppSettingsView:View{
 	
 	lazy var deadlineNotifications = AppSettingsBlock(title: "Уведомления о дедлайнах")
 	lazy var timetableNotifications = AppSettingsBlock(title: "Уведомления о занятиях")
+	lazy var oldTimetable = AppSettingsBlock(title: "Старое расписание")
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	required init() {
@@ -37,7 +38,9 @@ class AppSettingsView:View{
 		self.addSubview(content)
 		content.addArrangedSubview(deadlineNotifications)
 		content.addArrangedSubview(timetableNotifications)
-		
+//		content.addArrangedSubview(UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 10)))
+		content.addArrangedSubview(oldTimetable)
+//		content.addArrangedSubview(UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 10)))
 		content.addArrangedSubview(clearCacheBtn)
 	}
 	

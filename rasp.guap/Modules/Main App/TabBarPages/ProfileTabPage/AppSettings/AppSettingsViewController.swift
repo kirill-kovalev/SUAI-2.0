@@ -15,7 +15,7 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		super.viewDidLoad()
 		self.rootView.deadlineNotifications.toggle.addTarget(self, action: #selector(self.setupDeadlineNotifications), for: .valueChanged)
 		self.rootView.timetableNotifications.toggle.addTarget(self, action: #selector(self.setupTimetableNotifications), for: .valueChanged)
-		
+		self.rootView.oldTimetable.toggle.addTarget(self, action: #selector(self.setOldTimetable), for: .valueChanged)
 		self.rootView.clearCacheBtn.addTarget(action: { (_) in
 			AppSettings.clearCache()
 			let alert = UIAlertController(title: "Сброс кэша", message: "Приложение будет закрыто", preferredStyle: .actionSheet)
@@ -34,6 +34,8 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		super.viewWillAppear(animated)
 		self.rootView.timetableNotifications.toggle.isOn = AppSettings.isTimetableNotificationsEnabled
 		self.rootView.deadlineNotifications.toggle.isOn = AppSettings.isDeadlineNotificationsEnabled
+		self.rootView.oldTimetable.toggle.isOn = AppSettings.isOldTimetableEnabled
+		
 	}
 	
 	@objc private func setupDeadlineNotifications(){
@@ -66,11 +68,14 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 				self.rootView.timetableNotifications.toggle.isOn = false
 			}
 			
-			
-			
 		} else {
 			MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях выключены")
 			NotificationManager.shared.clearLessonNotifications()
 		}
+	}
+	
+	@objc private func setOldTimetable(){
+		AppSettings.isOldTimetableEnabled = self.rootView.oldTimetable.toggle.isOn
+		MainTabBarController.Snack(status: .ok, text: "Изменения станут активны при следующем запуске приложения")
 	}
 }
