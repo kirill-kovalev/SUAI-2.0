@@ -42,7 +42,13 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		
 		if self.rootView.deadlineNotifications.toggle.isOn {
 			if SADeadlines.shared.setupNotifications() {
-				MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
+				
+				if NotificationManager.shared.isAuth {
+					MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
+				}else{
+					MainTabBarController.Snack(status: .err, text: "Нет доступа, разрешите уведомления для приложения в настройках iOS")
+					self.rootView.deadlineNotifications.toggle.isOn = false
+				}
 			}else{
 				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
 				self.rootView.deadlineNotifications.toggle.isOn = false
@@ -61,7 +67,13 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 			if let group = SAUserSettings.shared.group,
 			let user = SASchedule.shared.groups.get(name: group),
 			SASchedule.shared.get(for: user).setupNotifications(){
-				MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
+				if NotificationManager.shared.isAuth {
+					MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
+				}else{
+					MainTabBarController.Snack(status: .err, text: "Нет доступа, разрешите уведомления для приложения в настройках iOS")
+					self.rootView.timetableNotifications.toggle.isOn = false
+				}
+				
             }else{
 				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
 				self.rootView.timetableNotifications.toggle.isOn = false
