@@ -20,6 +20,7 @@ class DebugSettingsView: View {
 	let oldimetable = AppSettingsBlock(title: "Старое расписание")
 	let goodTB = AppSettingsBlock(title: "Правильный таб бар")
 	let listNotificationsBtn = PocketButton(type: .roundedRect)
+	let checkVK = PocketButton(type: .roundedRect)
 	required init(){
 		super.init()
 		
@@ -34,6 +35,7 @@ class DebugSettingsView: View {
 		stack.addArrangedSubview(oldimetable)
 		stack.addArrangedSubview(goodTB)
 		stack.addArrangedSubview(listNotificationsBtn)
+		stack.addArrangedSubview(checkVK)
 		stack.addArrangedSubview(textField)
 		
 		

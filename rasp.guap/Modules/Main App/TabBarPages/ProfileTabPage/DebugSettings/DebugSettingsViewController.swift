@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import SwiftyVK
 
 class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 
@@ -34,9 +35,25 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 					}
 					for r in requests {
 						let trigger = r.trigger as? UNCalendarNotificationTrigger
-						self.content.textField.text += "\(r.content.title) at \(trigger?.dateComponents)\n\n"
+						self.content.textField.text += "\(r.content.title) at \(trigger?.dateComponents as Any)\n\n"
 					}
 				}
+			}
+		}, for: .touchUpInside)
+		
+		self.content.checkVK.setTitle("VK Autch Check", for: .normal)
+		self.content.checkVK.addTarget(action: { (_) in
+			Logger.print("VK: start check")
+			if VK.needToSetUp {
+				Logger.print("VK: needsToSetup")
+			}else{
+				Logger.print("VK: set up ok")
+				Logger.print("VK: session status \(VK.sessions.default.state)")
+				VK.API.Users.get([.fields:"photo_100"]).onError { (err) in
+					Logger.print("VK: Error - \(err)")
+				}.onSuccess { (data) in
+					Logger.print("VK: success - \(data)")
+				}.send()
 			}
 		}, for: .touchUpInside)
 	}
