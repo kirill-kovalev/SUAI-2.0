@@ -30,8 +30,10 @@ class DeadlineListCell: PocketDeadlineView{
     private var onSelectFunc:((DeadlineListCell)->Void)?
     
     @objc private func selectHandler(_ sender: UITapGestureRecognizer){
-		
-		if !indicator.isAnimating, sender.location(in: self).x < self.checkbox.frame.minX {
+		Logger.print("checkbox \(self.checkbox.frame.origin)")
+		Logger.print("sender \(sender.location(in: self))")
+		guard !indicator.isAnimating else {return}
+		if sender.location(in: self).x < self.checkbox.frame.origin.x {
             self.onSelectFunc?(self)
         }else{
             self.checkbox.isChecked.toggle()
@@ -50,8 +52,11 @@ class DeadlineListCell: PocketDeadlineView{
 			make.height.width.equalTo(40)
 			make.center.equalTo(self.checkbox)
 		}
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.selectHandler(_:))))
     }
+	override func didMoveToSuperview() {
+		super.didMoveToSuperview()
+		self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.selectHandler(_:))))
+	}
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
