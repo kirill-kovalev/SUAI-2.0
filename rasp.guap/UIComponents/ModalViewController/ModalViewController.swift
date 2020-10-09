@@ -71,12 +71,14 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
     
     
     override func viewWillAppear(_ animated: Bool) {
+		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
         if animated {
             dispalyAnimation(show: true)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+		NotificationCenter.default.removeObserver(self)
         if animated {
             dispalyAnimation(show: false)
         }
@@ -101,7 +103,9 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
     
     
     
-    
+	@objc func shortcutNotification(_ notif:Notification){
+		self.dismiss(animated: true, completion: nil)
+	}
     
     
     
