@@ -44,12 +44,11 @@ public class PocketAPI{
     }
     
     public func syncLoadTask(method: LoadMethods,params: [String:Any] = [:]) -> Data?{
-		if !VK.needToSetUp , let token = VK.sessions.default.accessToken?.get() {
-            config.httpAdditionalHeaders = ["Token": token]
-		}else{
-			NotificationCenter.default.post(name: Self.logoutNotification, object: nil)
-			return nil
-		}
+//		if !VK.needToSetUp , let token = VK.sessions.default.accessToken?.get() {
+//            config.httpAdditionalHeaders = ["Token": token]
+//		}else{
+//			return nil
+//		}
 		
         let sem = DispatchSemaphore(value: 0)
 
@@ -58,7 +57,6 @@ public class PocketAPI{
 		let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15)
         var returnData:Data? = nil
         URLSession(configuration: config ).dataTask(with: request ) { (data, response, err) in
-			self.checkResponse(response)
             if err == nil {
                 if data != nil {
                     returnData = data
@@ -72,12 +70,11 @@ public class PocketAPI{
     
     
     public func syncSetTask(method: SetMethods,params:[String:Any] = [: ]) -> Data?{
-		if let token = VK.sessions.default.accessToken?.get() {
-            config.httpAdditionalHeaders = ["Token": token]
-		}else{
-			NotificationCenter.default.post(name: Self.logoutNotification, object: nil)
-			return nil
-		}
+//		if let token = VK.sessions.default.accessToken?.get() {
+//            config.httpAdditionalHeaders = ["Token": token]
+//		}else{
+//			return nil
+//		}
 		
         let url = URL(string:"https://suaipocket.ru:8000/\(method.rawValue)")!
         var request = URLRequest(url: url)
@@ -94,7 +91,6 @@ public class PocketAPI{
         
         var returnData:Data? = nil
         URLSession(configuration: config ).dataTask(with: request){ (data, response, err) in
-			self.checkResponse(response)
             if err == nil {
                 if data != nil {
                     returnData = data
@@ -106,20 +102,4 @@ public class PocketAPI{
         
         return returnData
     }
-	
-	
-	public static let logoutNotification = NSNotification.Name(rawValue: "API.VK.logout")
-	private var errCounter = 0
-	private func checkResponse(_ response:URLResponse?){
-		if let response = response as? HTTPURLResponse {
-			if response.statusCode == 403 {
-				errCounter += 1
-			}
-			if errCounter >= 3 {
-				NotificationCenter.default.post(name: Self.logoutNotification, object: nil)
-				self.errCounter = 0
-			}
-		}
-	}
-	
 }
