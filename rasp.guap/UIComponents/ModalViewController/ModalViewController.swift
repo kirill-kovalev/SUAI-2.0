@@ -22,6 +22,8 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         self.rootView.titleLabel.font = FontFamily.TTCommons.bold.font(size: 21)
         
         setupCloseElements()
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
     }
     
     private func setupCloseElements(){
@@ -71,14 +73,12 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
     
     
     override func viewWillAppear(_ animated: Bool) {
-		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
         if animated {
             dispalyAnimation(show: true)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-		NotificationCenter.default.removeObserver(self)
         if animated {
             dispalyAnimation(show: false)
         }
@@ -114,4 +114,5 @@ class ModalViewController<ContentView:UIView>: ViewController<ModalView>{
         fatalError("init(coder:) has not been implemented")
     }
     
+	deinit { NotificationCenter.default.removeObserver(self) }
 }
