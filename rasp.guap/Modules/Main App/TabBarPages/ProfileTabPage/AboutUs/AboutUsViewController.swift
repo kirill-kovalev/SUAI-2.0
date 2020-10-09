@@ -33,7 +33,7 @@ class AboutUsViewController:ViewController<AboutUsView>{
 	
 	func updateViewImage(){
 		if UIApplication.shared.supportsAlternateIcons{
-			let iconName = UIApplication.shared.alternateIconName ?? "AppIconLight"
+			let iconName = UIApplication.shared.alternateIconName ?? "logoLight"
 			UIView.animate(withDuration: 0.3) {
 				self.rootView.image.image = UIImage(named: iconName)
 			}

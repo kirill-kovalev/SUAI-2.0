@@ -48,7 +48,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		self.addBlock(title: "SUAI ID", vc: suaiID)
 		self.addBlock(title: "Основные настройки", vc: settings)
 		self.addBlock(title: "Настройки приложения", vc: appSettings)
-		self.addBlock(title: "О сервисе", vc: abotUs)
+		self.addBlock(title: "О приложении", vc: abotUs)
 		
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(self.logout), name: PocketAPI.logoutNotification, object: nil)
