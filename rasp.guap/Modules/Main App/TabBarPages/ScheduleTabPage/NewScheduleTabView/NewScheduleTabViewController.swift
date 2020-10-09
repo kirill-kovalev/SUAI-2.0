@@ -48,6 +48,10 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 		self.rootView.table.dataSource = self
 		self.rootView.table.register(NewScheduleTabTableCell.self, forCellReuseIdentifier: "dayTimetable")
 	}
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.rootView.table.reloadData()
+	}
 	
 	func setCurrentUser(){
 		if let name = SAUserSettings.shared.group,
