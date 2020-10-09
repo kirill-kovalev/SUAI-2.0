@@ -105,15 +105,44 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		switch section {
-			case 0: return (7 - curWeekDay)
-			case 1: return 7
+			case 0: return (7 - curWeekDay) + 1
+			case 1: return 7 + 1
 			case 2: return curWeekDay
 			default: return 1
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let separatorView = UIView(frame: .zero)
+		separatorView.backgroundColor = Asset.PocketColors.pocketGray.color.withAlphaComponent(0.3)
+		separatorView.layer.cornerRadius = 1
+		separatorView.layer.opacity = 0.3
+		
+		if indexPath.section == 0 ,indexPath.row == (7 - curWeekDay) {
+			let cell = self.generateViewForHeader(isUp: true, isEven: currentWeek == .even)
+			cell.addSubview(separatorView)
+			separatorView.snp.makeConstraints { (make) in
+				make.centerX.bottom.equalToSuperview()
+				make.width.equalToSuperview().inset(8)
+				make.height.equalTo(2)
+			}
+			return cell
+		}
+		if indexPath.section == 1 ,indexPath.row == 7 {
+			let cell = self.generateViewForHeader(isUp: true, isEven: nextWeek == .even)
+			cell.addSubview(separatorView)
+			separatorView.snp.makeConstraints { (make) in
+				make.centerX.bottom.equalToSuperview()
+				make.width.equalToSuperview().inset(12)
+				make.height.equalTo(1)
+			}
+			return cell
+		}
+		
+		
+		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "dayTimetable", for: indexPath)
+		
 		
 		if let cell = cell as? NewScheduleTabTableCell {
 			cell.controller.setTimetable(timetable: [])
@@ -133,7 +162,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 					cell.placeholder.content.titleLabel.text = "\(formatter.string(from: date)), пар нет!"
 				case 1:
 					cell.setupCell(self, timetable: self.timetable.get(week: self.nextWeek, day: indexPath.row))
-					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
+					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)-1
 					let day = Double(firstSectionCount + indexPath.row)
 					let date = Date().addingTimeInterval(3600*24*day)
 					cell.dayLabel.text = formatter.string(from: date)
@@ -142,7 +171,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 					cell.placeholder.content.titleLabel.text = "\(formatter.string(from: date)), пар нет!"
 				case 2:
 					cell.setupCell(self, timetable: self.timetable.get(week: self.currentWeek, day: indexPath.row))
-					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)
+					let firstSectionCount = self.tableView(tableView, numberOfRowsInSection:0)-1
 					let day = Double(firstSectionCount + indexPath.row + 7 )
 					let date = Date().addingTimeInterval(3600*24*day)
 					cell.dayLabel.text = formatter.string(from: date)
@@ -164,32 +193,37 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 		cell.layoutIfNeeded()
 		return cell
 	}
-	func generateViewForHeader(isUp:Bool, isEven:Bool)->UIView{
-		let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-		let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-		image.tintColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : .red //Asset.PocketColors.pocketRedButtonText.color
-		image.transform = isUp ? .init(rotationAngle: CGFloat.pi) : .identity
-		view.addSubview(image)
+	func generateViewForHeader(isUp:Bool, isEven:Bool)->UITableViewCell{
+		let view = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+		let image = UIView(frame: .zero)//UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
+		image.backgroundColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : .red //Asset.PocketColors.pocketRedButtonText.color
+		//image.transform = isUp ? .init(rotationAngle: CGFloat.pi) : .identity
+		image.layer.cornerRadius = 2.5
 		
 		let label = UILabel(frame: .zero)
-		label.font = FontFamily.SFProDisplay.semibold.font(size: 15)
+		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+		
 		label.textColor = Asset.PocketColors.pocketGray.color
 		label.text = isEven ? "Четная неделя" : "Нечетная неделя"
 		
-		view.addSubview(label)
 		
+		
+		view.addSubview(image)
 		image.snp.makeConstraints { (make) in
 			make.centerY.equalToSuperview()
-			make.left.equalToSuperview().offset(8)
-			make.width.height.equalTo(20)
+			make.left.equalToSuperview().offset(10)
+			make.width.height.equalTo(5)
 		}
-		
+		view.addSubview(label)
 		label.snp.makeConstraints { (make) in
-			make.left.equalTo(image.snp.right).offset(3)
+			make.left.equalTo(image.snp.right).offset(8)
 			make.centerY.equalToSuperview()
 			make.height.equalToSuperview().inset(4)
 		}
 		view.backgroundColor = Asset.PocketColors.headerBackground.color
+//		view.contentView.snp.makeConstraints { (make) in
+//			make.height.equalTo(35)
+//		}
 		return view
 	}
 	func generateTodayLabel() -> Button{
@@ -230,7 +264,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat { [0,1,2].contains(section) ? 35 : 0}
-	func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat { [0,1].contains(section) ? 35 : 0}
+//	func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat { [0,1].contains(section) ? 35 : 0}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		switch section{
@@ -240,13 +274,13 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 			default: return nil
 		}
 	}
-	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		switch section{
-			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek != .even)
-			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek != .even)
-			default: return nil
-		}
-
-	}
+//	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//		switch section{
+//			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek != .even)
+//			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek != .even)
+//			default: return nil
+//		}
+//
+//	}
 	
 }

@@ -29,7 +29,7 @@ class NewScheduleTabView:TabBarPageView{
 	let table:UITableView = {
 		let table = UITableView(frame: .zero)
 		table.allowsSelection = false
-		table.estimatedRowHeight = 130
+		table.estimatedRowHeight = 35
 		table.separatorStyle = .none
 		table.backgroundColor = .clear
 		return table
