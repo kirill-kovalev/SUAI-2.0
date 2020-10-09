@@ -51,6 +51,8 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		self.addBlock(title: "О сервисе", vc: abotUs)
 		
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.logout), name: PocketAPI.logoutNotification, object: nil)
+		
 	}
 	func addBlock(title:String,vc:UIViewController) {
 		self.addChild(vc)
@@ -90,15 +92,15 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		}
 	}
 	
-	private func logout(){
+	@objc private func logout(){
 		Logger.print(from: #function, "logout")
 		AppSettings.clearCache()
 		SAUserSettings.shared.reset()
 		DispatchQueue.global().async { VK.sessions.default.logOut() }
-		let vkVC = UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController
-		vkVC.modalPresentationStyle = .fullScreen
-		vkVC.modalTransitionStyle = .flipHorizontal
-		self.present(vkVC, animated: true, completion: nil)
+		DispatchQueue.main.async {
+			UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+		}
+		
 	}
 	
 	

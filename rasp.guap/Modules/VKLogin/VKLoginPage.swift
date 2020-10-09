@@ -36,6 +36,7 @@ class VKLoginPageViewController: UIViewController {
 					self.errLabel.isHidden = false
 				}
 			}
+			DispatchQueue.main.async {self.LoginButton.enable()}
 			Logger.print(from: "VK Login", "reload end")
             
         }) { (err) in
@@ -167,7 +168,6 @@ class VKLoginPageViewController: UIViewController {
 			if type.contains("vk"){
 				self.loginViaVK(self.LoginButton, forEvent: UIEvent())
 			}
-			
 		}else{
 			Logger.print(from: #function, "can not cast recieved message")
 		}
