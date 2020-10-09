@@ -104,7 +104,7 @@ class ProGuap{
 		var success = false
 		Self.GET("https://pro.guap.ru/exters/") { (data, resp, err) in
 			if let resp = resp,
-			   let cookie = resp.value(forHTTPHeaderField: "Set-Cookie")?.split(separator: ";").first{
+			   let cookie = (resp.allHeaderFields["Set-Cookie"] as? String)?.split(separator: ";").first{
 				let sesCookie = String(cookie)
 				print(sesCookie)
 				let params:[String:String] = [
@@ -115,7 +115,7 @@ class ProGuap{
 				
 				Self.POST("https://pro.guap.ru/user/login_check", params: params, headers: ["Cookie":sesCookie]) { (data, resp, err) in
 					if let resp = resp,
-					   let cookie = resp.value(forHTTPHeaderField: "Set-Cookie")?.split(separator: ";").first{
+					   let cookie = (resp.allHeaderFields["Set-Cookie"] as? String)?.split(separator: ";").first{
 						self.AUTH_COOKIE = String(cookie)
 						UserDefaults(suiteName: "pro_guap")?.setValue(self.AUTH_COOKIE, forKey: "phpCookie")
 						success = true
