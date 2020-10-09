@@ -17,6 +17,7 @@
 		5D289FC124F93FF900643D54 /* FeedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC024F93FF900643D54 /* FeedElement.swift */; };
 		5D289FC324F95DCB00643D54 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC224F95DCB00643D54 /* Feed.swift */; };
 		5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667924F416E300F39D59 /* VKAUth.swift */; };
+		5D8F19BB2530D97700A2D5AD /* guapApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19BA2530D97700A2D5AD /* guapApi.swift */; };
 		5D98B419251636A80055C898 /* SATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98B418251636A80055C898 /* SATracker.swift */; };
 		5D9D901F24EC77EF00930375 /* SUAI_API.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D9D901D24EC77EF00930375 /* SUAI_API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
@@ -44,6 +45,7 @@
 		5D289FC024F93FF900643D54 /* FeedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedElement.swift; sourceTree = "<group>"; };
 		5D289FC224F95DCB00643D54 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		5D7D667924F416E300F39D59 /* VKAUth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAUth.swift; sourceTree = "<group>"; };
+		5D8F19BA2530D97700A2D5AD /* guapApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guapApi.swift; sourceTree = "<group>"; };
 		5D98B418251636A80055C898 /* SATracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATracker.swift; sourceTree = "<group>"; };
 		5D9D901A24EC77EF00930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D901D24EC77EF00930375 /* SUAI_API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUAI_API.h; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		5D8F19B92530D95A00A2D5AD /* pro.guap */ = {
+			isa = PBXGroup;
+			children = (
+				5D8F19BA2530D97700A2D5AD /* guapApi.swift */,
+			);
+			path = pro.guap;
+			sourceTree = "<group>";
+		};
 		5D9D901024EC77EF00930375 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		5D9D901C24EC77EF00930375 /* SUAI_API */ = {
 			isa = PBXGroup;
 			children = (
+				5D8F19B92530D95A00A2D5AD /* pro.guap */,
 				5D0BB9FA24FD6D22000D8CBB /* Brief */,
 				5D289FBB24F939FD00643D54 /* Feed */,
 				5D7D667924F416E300F39D59 /* VKAUth.swift */,
@@ -304,6 +315,7 @@
 				5D0BB9FC24FD6D3B000D8CBB /* BriefInfo.swift in Sources */,
 				5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */,
 				5D9D903E24EC78AD00930375 /* Timetable.Lesson.swift in Sources */,
+				5D8F19BB2530D97700A2D5AD /* guapApi.swift in Sources */,
 				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
 				5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */,
 				5D289FBD24F93A0B00643D54 /* SANews.swift in Sources */,
