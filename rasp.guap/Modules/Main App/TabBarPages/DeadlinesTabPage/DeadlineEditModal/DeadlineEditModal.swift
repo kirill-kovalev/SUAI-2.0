@@ -75,6 +75,7 @@ class DeadlineEditModalView: View {
 		field.placeholder = "Написать программу, сделать по ней отчет и защитить"
 		field.contentOffset = .init(x: 12, y: 12)
         field.doneAccessory = true
+		field.textContainer.maximumNumberOfLines = 8
         return field
     }()
     
@@ -134,7 +135,6 @@ class DeadlineEditModalView: View {
 		let lessonLabel = PocketDropdownField(frame: .zero)
 		lessonLabel.text = "Не выбрано"
         lessonLabel.inputView = lessonPicker
-        
         return lessonLabel
     }()
     
