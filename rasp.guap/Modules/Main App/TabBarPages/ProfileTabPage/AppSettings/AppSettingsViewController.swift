@@ -17,7 +17,6 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		self.rootView.timetableNotifications.toggle.addTarget(self, action: #selector(self.setupTimetableNotifications), for: .valueChanged)
 		self.rootView.oldTimetable.toggle.addTarget(self, action: #selector(self.setOldTimetable), for: .valueChanged)
 		self.rootView.clearCacheBtn.addTarget(action: { (_) in
-			AppSettings.clearCache()
 			let alert = UIAlertController(title: "Сброс кэша", message: "Приложение будет закрыто", preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Продолжить", style: .destructive, handler: { (_) in
 				AppSettings.clearCache()
