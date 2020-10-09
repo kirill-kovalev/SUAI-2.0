@@ -172,7 +172,7 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 		view.addSubview(image)
 		
 		let label = UILabel(frame: .zero)
-		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+		label.font = FontFamily.SFProDisplay.semibold.font(size: 15)
 		label.textColor = Asset.PocketColors.pocketGray.color
 		label.text = isEven ? "Четная неделя" : "Нечетная неделя"
 		
@@ -180,12 +180,12 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 		
 		image.snp.makeConstraints { (make) in
 			make.centerY.equalToSuperview()
-			make.left.equalToSuperview().offset(4)
-			make.width.height.equalTo(27)
+			make.left.equalToSuperview().offset(8)
+			make.width.height.equalTo(20)
 		}
 		
 		label.snp.makeConstraints { (make) in
-			make.left.equalTo(image.snp.right).offset(8)
+			make.left.equalTo(image.snp.right).offset(3)
 			make.centerY.equalToSuperview()
 			make.height.equalToSuperview().inset(4)
 		}
@@ -235,15 +235,15 @@ extension NewScheduleTabViewController:UITableViewDataSource{
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		switch section{
 			case 0 : return generateTodayLabel()
-			case 1 : return generateViewForHeader(isUp: true, isEven: currentWeek == .even)
-			case 2 : return generateViewForHeader(isUp: true, isEven: nextWeek == .even)
+			case 1 : return generateViewForHeader(isUp: true, isEven: currentWeek != .even)
+			case 2 : return generateViewForHeader(isUp: true, isEven: nextWeek != .even)
 			default: return nil
 		}
 	}
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 		switch section{
-			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek == .even)
-			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek == .even)
+			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek != .even)
+			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek != .even)
 			default: return nil
 		}
 
