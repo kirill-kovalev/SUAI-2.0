@@ -94,6 +94,7 @@ public class ProGuap{
 	
 	var AUTH_COOKIE:String? = nil
 	public var needsToAuth:Bool {AUTH_COOKIE == nil}
+	var user:GuapUser? = nil
 	
 	init(){
 		self.AUTH_COOKIE = UserDefaults(suiteName: "pro_guap")?.value(forKey: "phpCookie") as? String

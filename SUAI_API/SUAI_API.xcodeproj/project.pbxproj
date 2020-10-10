@@ -18,6 +18,11 @@
 		5D289FC324F95DCB00643D54 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D289FC224F95DCB00643D54 /* Feed.swift */; };
 		5D7D667A24F416E300F39D59 /* VKAUth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D667924F416E300F39D59 /* VKAUth.swift */; };
 		5D8F19BB2530D97700A2D5AD /* guapApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19BA2530D97700A2D5AD /* guapApi.swift */; };
+		5D8F19BE253203F100A2D5AD /* ProGuapUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19BD253203F100A2D5AD /* ProGuapUser.swift */; };
+		5D8F19C12532073900A2D5AD /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19C02532073900A2D5AD /* auth.swift */; };
+		5D8F19C4253207A900A2D5AD /* getUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19C3253207A900A2D5AD /* getUser.swift */; };
+		5D8F19C725322C5A00A2D5AD /* getTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19C625322C5A00A2D5AD /* getTasks.swift */; };
+		5D8F19CA25322D3900A2D5AD /* ProGuapTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F19C925322D3900A2D5AD /* ProGuapTask.swift */; };
 		5D98B419251636A80055C898 /* SATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98B418251636A80055C898 /* SATracker.swift */; };
 		5D9D901F24EC77EF00930375 /* SUAI_API.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D9D901D24EC77EF00930375 /* SUAI_API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9D903924EC78AD00930375 /* Grous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D902B24EC782100930375 /* Grous.swift */; };
@@ -46,6 +51,11 @@
 		5D289FC224F95DCB00643D54 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		5D7D667924F416E300F39D59 /* VKAUth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAUth.swift; sourceTree = "<group>"; };
 		5D8F19BA2530D97700A2D5AD /* guapApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guapApi.swift; sourceTree = "<group>"; };
+		5D8F19BD253203F100A2D5AD /* ProGuapUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProGuapUser.swift; sourceTree = "<group>"; };
+		5D8F19C02532073900A2D5AD /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
+		5D8F19C3253207A900A2D5AD /* getUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getUser.swift; sourceTree = "<group>"; };
+		5D8F19C625322C5A00A2D5AD /* getTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTasks.swift; sourceTree = "<group>"; };
+		5D8F19C925322D3900A2D5AD /* ProGuapTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProGuapTask.swift; sourceTree = "<group>"; };
 		5D98B418251636A80055C898 /* SATracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATracker.swift; sourceTree = "<group>"; };
 		5D9D901A24EC77EF00930375 /* SUAI_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUAI_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D901D24EC77EF00930375 /* SUAI_API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUAI_API.h; sourceTree = "<group>"; };
@@ -118,6 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				5D8F19BA2530D97700A2D5AD /* guapApi.swift */,
+				5D8F19BD253203F100A2D5AD /* ProGuapUser.swift */,
+				5D8F19C02532073900A2D5AD /* auth.swift */,
+				5D8F19C3253207A900A2D5AD /* getUser.swift */,
+				5D8F19C625322C5A00A2D5AD /* getTasks.swift */,
+				5D8F19C925322D3900A2D5AD /* ProGuapTask.swift */,
 			);
 			path = pro.guap;
 			sourceTree = "<group>";
@@ -319,6 +334,7 @@
 				5D9D904B24ED478D00930375 /* PocketAPI.swift in Sources */,
 				5D9D903C24EC78AD00930375 /* SAUsers.swift in Sources */,
 				5D289FBD24F93A0B00643D54 /* SANews.swift in Sources */,
+				5D8F19C12532073900A2D5AD /* auth.swift in Sources */,
 				5D9D904624ED39C500930375 /* SADeadlines.swift in Sources */,
 				5D9D904024EC78AD00930375 /* Settings.swift in Sources */,
 				5D289FC324F95DCB00643D54 /* Feed.swift in Sources */,
@@ -326,14 +342,18 @@
 				5D9D903A24EC78AD00930375 /* Preps.swift in Sources */,
 				5D289FC124F93FF900643D54 /* FeedElement.swift in Sources */,
 				5D0BBA0224FD725D000D8CBB /* APIDataTypes.swift in Sources */,
+				5D8F19C725322C5A00A2D5AD /* getTasks.swift in Sources */,
 				5D9D903D24EC78AD00930375 /* Timetable.JSONLesson.swift in Sources */,
 				5D9D903924EC78AD00930375 /* Grous.swift in Sources */,
 				5D289FBF24F93F9F00643D54 /* VKFeed.swift in Sources */,
 				5D0BB9FE24FD6FED000D8CBB /* SADeadlineGroup.swift in Sources */,
+				5D8F19C4253207A900A2D5AD /* getUser.swift in Sources */,
 				5D0BBA0024FD6FF9000D8CBB /* SADeadline.swift in Sources */,
 				5D9D903F24EC78AD00930375 /* SATimetable.swift in Sources */,
 				5D98B419251636A80055C898 /* SATracker.swift in Sources */,
 				5D9D904924ED42E200930375 /* User.swift in Sources */,
+				5D8F19BE253203F100A2D5AD /* ProGuapUser.swift in Sources */,
+				5D8F19CA25322D3900A2D5AD /* ProGuapTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

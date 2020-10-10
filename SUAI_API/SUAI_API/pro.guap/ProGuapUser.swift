@@ -9,26 +9,26 @@
 import Foundation
 
 
-struct GuapUser :Codable{
-	let id: String?
-	let user_id: String?
-	let lastname: String?
-	let firstname: String?
-	let middlename: String?
-	let email: String?
-	let phone: String?
-	let auditorium: String?
-	let image: String?
-	let academic_title: String
-	let degree: String?
-	let STID: String?
-	let eid: String?
-	let eduIDEP: String?
-	let GraduateDate: String?
-	let status: String?
-	let grIDEP: String?
-	let grid: String?
-	let currentSemester: String?
+public struct GuapUser :Codable{
+	public let id: String?
+	public let user_id: String?
+	public let lastname: String?
+	public let firstname: String?
+	public let middlename: String?
+	public let email: String?
+	public let phone: String?
+	public let auditorium: String?
+	public let image: String?
+	public let academic_title: String
+	public let degree: String?
+	public let STID: String?
+	public let eid: String?
+	public let eduIDEP: String?
+	public let GraduateDate: String?
+	public let status: String?
+	public let grIDEP: String?
+	public let grid: String?
+	public let currentSemester: String?
 	
 	static func parse(_ text:String) -> GuapUser? {
 		if let regexp = try? NSRegularExpression(pattern: "\\{\"user\":\\[(.+)\\]", options: []){
