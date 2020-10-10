@@ -26,7 +26,7 @@ public extension ProGuap{
 			stringResponse = String(data:data ?? Data(),encoding: .utf8) ?? ""
 			semaphore.signal()
 		}
-		semaphore.wait(timeout: .distantFuture)
+		let _ = semaphore.wait(timeout: .distantFuture)
 		
 		if let user = GuapUser.parse(stringResponse) {
 			self.user = self.user ?? user

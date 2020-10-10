@@ -16,26 +16,20 @@ public struct ProTask:Codable{
 	let dateupdate: Date
 	let name: String
 	let description: String
-	let type: String
-	let ttName: String
 	let `public`: String
 	let semester: String
 	let markpoint: String
 	let reportRequired: String
 	let url: String?
-	let ordernum: String
+	let ordernum: String?
 	let expulsionLine: String
 	let plenty: String
 	let harddeadline: String?
-	let grid: String
-	var subject: String
-	var subjectName: String
-	let hash: String
-	let filename: String
-	let semesterName: String
-	let typeName: String
-	let status: String?
+	var subject_name: String
+	let hash: String?
+	let filename: String?
+	let type_name: String
 	let curPoints: String?
-	let statusName: String?
+	let status_name: String?
 	
 }

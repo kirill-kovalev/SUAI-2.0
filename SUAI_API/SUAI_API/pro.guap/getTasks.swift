@@ -9,7 +9,7 @@
 import Foundation
 
 public extension ProGuap{
-	public func getTasks() -> [ProTask]?{
+	func getTasks() -> [ProTask]?{
 		if let user = self.user,
 		   let id = user.user_id{
 			var headers : [String:String] = [:]
@@ -32,7 +32,7 @@ public extension ProGuap{
 				}
 				semaphore.signal()
 			}
-			semaphore.wait(timeout: .distantFuture)
+			let _ = semaphore.wait(timeout: .distantFuture)
 			
 			return deadlines
 		}
@@ -50,7 +50,14 @@ public extension ProGuap{
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .formatted(formatter)
 		
-		let response = try? decoder.decode(ProGuapDeadlinesResponse.self, from: data)
-		return response?.tasks
+		do{
+			let response = try decoder.decode(ProGuapDeadlinesResponse.self, from: data)
+			return response.tasks
+		}catch{
+			print(error)
+		}
+		return nil
+		
+//		return response?.tasks
 	}
 }

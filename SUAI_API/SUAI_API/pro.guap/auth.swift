@@ -9,7 +9,7 @@
 import Foundation
 
 public extension ProGuap{
-	public func auth(login:String, pass:String) -> Bool{
+	func auth(login:String, pass:String) -> Bool{
 		let semaphore = DispatchSemaphore(value: 0)
 		var success = false
 		Self.GET("https://pro.guap.ru/exters/") { (data, resp, err) in
@@ -34,8 +34,10 @@ public extension ProGuap{
 				}
 				
 				
+			}else{
+				semaphore.signal()
 			}
-			semaphore.signal()
+			
 		}
 		let _ = semaphore.wait(timeout: .distantFuture)
 		return success
