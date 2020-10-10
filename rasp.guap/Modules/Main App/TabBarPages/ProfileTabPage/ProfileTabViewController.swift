@@ -50,9 +50,25 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 		self.addBlock(title: "Настройки приложения", vc: appSettings)
 		self.addBlock(title: "О приложении", vc: abotUs)
 		
-		if !VK.needToSetUp , VK.sessions.default.state != .authorized {
-			self.logout()
+		
+		//weird vk login check
+		if let url = URL(string: "https://api.vk.com/method/users.get?access_token=\(VK.sessions.default.accessToken?.get() ?? "_")&v=5.124"){
+			URLSession.shared.dataTask(with: url) { (data, resp, err) in
+				if let data = data,
+					err == nil,
+					let resp = resp as? HTTPURLResponse,
+					resp.statusCode == 200,
+					let strResponse = String(data: data, encoding: .utf8),
+					strResponse.contains("User authorization failed: invalid session")
+				{
+					DispatchQueue.main.async {self.logout()}
+				}
+
+			}.resume()
+		}else{
+			Logger.print("VK: url failed")
 		}
+		
 	}
 	func addBlock(title:String,vc:UIViewController) {
 		self.addChild(vc)
@@ -101,6 +117,7 @@ class ProfileTabViewController: ViewController<ProfileTabView> {
 			VK.sessions.default.logOut()
 		}
 		DispatchQueue.main.async {
+			self.tabBarController?.dismiss(animated: false, completion: nil)
 			let _ = UIApplication.shared.appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
 		}
 		
