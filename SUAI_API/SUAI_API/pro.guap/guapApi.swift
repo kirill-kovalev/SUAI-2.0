@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProGuap{
+public class ProGuap{
 	private static let defaultHeaders:[String:String] = {
 		var defaultHeaders:[String:String] = [:]
 		defaultHeaders["Sec-Fetch-Site"] = "same-origin"
@@ -72,7 +72,7 @@ class ProGuap{
 	}
 	
 	
-	private static func GET(_ url:String,
+	internal static func GET(_ url:String,
 			 params:[String:String] = [:],
 			 headers:[String:String] = [:],
 			 completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)){
@@ -81,7 +81,7 @@ class ProGuap{
 		
 	}
 
-	private static func POST(_ url:String,
+	internal static func POST(_ url:String,
 			  params:[String:String] = [:],
 			  headers:[String:String] = [:],
 			  completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)){
@@ -98,37 +98,6 @@ class ProGuap{
 	init(){
 		self.AUTH_COOKIE = UserDefaults(suiteName: "pro_guap")?.value(forKey: "phpCookie") as? String
 	}
-	
-	public func auth(login:String, pass:String) -> Bool{
-		let semaphore = DispatchSemaphore(value: 0)
-		var success = false
-		Self.GET("https://pro.guap.ru/exters/") { (data, resp, err) in
-			if let resp = resp,
-			   let cookie = (resp.allHeaderFields["Set-Cookie"] as? String)?.split(separator: ";").first{
-				let sesCookie = String(cookie)
-				print(sesCookie)
-				let params:[String:String] = [
-					"_username":login,
-					"_password":pass
-				]
-				
-				
-				Self.POST("https://pro.guap.ru/user/login_check", params: params, headers: ["Cookie":sesCookie]) { (data, resp, err) in
-					if let resp = resp,
-					   let cookie = (resp.allHeaderFields["Set-Cookie"] as? String)?.split(separator: ";").first{
-						self.AUTH_COOKIE = String(cookie)
-						UserDefaults(suiteName: "pro_guap")?.setValue(self.AUTH_COOKIE, forKey: "phpCookie")
-						success = true
-					}
-					semaphore.signal()
-				}
-				
-				
-			}
-			semaphore.signal()
-		}
-		let _ = semaphore.wait(timeout: .distantFuture)
-		return success
-	}
+
 	
 }
