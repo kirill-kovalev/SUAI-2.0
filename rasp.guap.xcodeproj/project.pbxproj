@@ -45,6 +45,7 @@
 		5D602AD5252A37D900ACE315 /* FeedOrderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602AD4252A37D900ACE315 /* FeedOrderSettingsView.swift */; };
 		5D602AD7252A37E300ACE315 /* FeedOrderSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602AD6252A37E300ACE315 /* FeedOrderSettingsViewController.swift */; };
 		5D602AD9252A3BAB00ACE315 /* FeedOrderSettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602AD8252A3BAB00ACE315 /* FeedOrderSettingsHeader.swift */; };
+		5D6B929325333E0100C2F7D1 /* NewPocketDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B929225333E0100C2F7D1 /* NewPocketDayView.xib */; };
 		5D6F00F724FD007100C927A8 /* ASCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F00F624FD007100C927A8 /* ASCollectionView.swift */; };
 		5D738A31250C0DF90069ECF1 /* PocketServiceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */; };
 		5D74FE2424E0993700FC38B8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D74FE2324E0993700FC38B8 /* NibView.swift */; };
@@ -247,6 +248,7 @@
 		5D602AD4252A37D900ACE315 /* FeedOrderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderSettingsView.swift; sourceTree = "<group>"; };
 		5D602AD6252A37E300ACE315 /* FeedOrderSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderSettingsViewController.swift; sourceTree = "<group>"; };
 		5D602AD8252A3BAB00ACE315 /* FeedOrderSettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderSettingsHeader.swift; sourceTree = "<group>"; };
+		5D6B929225333E0100C2F7D1 /* NewPocketDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPocketDayView.xib; sourceTree = "<group>"; };
 		5D6F00F624FD007100C927A8 /* ASCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCollectionView.swift; sourceTree = "<group>"; };
 		5D738A30250C0DF90069ECF1 /* PocketServiceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketServiceListItem.swift; sourceTree = "<group>"; };
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		5D0E335524E0103900B45143 /* PocketDay */ = {
 			isa = PBXGroup;
 			children = (
+				5D6B929225333E0100C2F7D1 /* NewPocketDayView.xib */,
 				5D0E336224E018FD00B45143 /* PocketDayView.swift */,
 				5DCE2FE924E0282700CFF29A /* PocketDayView.xib */,
 			);
@@ -1282,6 +1285,7 @@
 				5D99B23324DD58CF00D6C648 /* TTCommons-MediumItalic.ttf in Resources */,
 				5D99B25424DD600900D6C648 /* SFProDisplay-Ultralight.ttf in Resources */,
 				5D95A63724D412AC000418B5 /* Assets.xcassets in Resources */,
+				5D6B929325333E0100C2F7D1 /* NewPocketDayView.xib in Resources */,
 				5D99B23224DD58CF00D6C648 /* TTCommons-LightItalic.ttf in Resources */,
 				5D99B25824DD600900D6C648 /* SFProDisplay-Thin.ttf in Resources */,
 				5D99B25B24DD600900D6C648 /* SFProDisplay-HeavyItalic.ttf in Resources */,

@@ -12,7 +12,10 @@ import SUAI_API
 
 class TimetableLessonCell: UIView{
     
-    private var pocketLessonView:PocketDayView = PocketDayView.fromNib()
+	private var pocketLessonView:PocketDayView = {
+		if AppSettings.isOldTimetableEnabled {return PocketDayView.fromNib()}
+		else {return PocketDayView.fromNib(named: "NewPocketDayView")} 
+	}()
     private var lesson:SALesson? = nil
     
     private let btn:Button = {
