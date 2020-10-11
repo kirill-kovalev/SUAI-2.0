@@ -42,7 +42,9 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
         
-		setCurrentUser()
+		DispatchQueue.global().async {
+			self.setCurrentUser()
+		}
 		
 		self.rootView.table.delegate = self
 		self.rootView.table.dataSource = self
@@ -57,18 +59,20 @@ class NewScheduleTabViewController: ViewController<NewScheduleTabView>{
 		if let name = SAUserSettings.shared.group,
 		   let user = SASchedule.shared.groups.get(name: name){
 			self.currentUser = user
-			let timetable = SASchedule.shared.get(for: user)
-			if !timetable.isEmpty {
-				self.timetable = timetable
-			}
+//			let timetable = SASchedule.shared.get(for: user)
+//			if !timetable.isEmpty {
+//				self.timetable = timetable
+//			}
 		}
 	}
 	
 	func loadSchedule(){
 		self.timetable = SATimetable()
-		self.rootView.table.isHidden = true
-		self.rootView.table.reloadData()
-		self.rootView.activityIndicator.startAnimating()
+		DispatchQueue.main.async {
+			self.rootView.table.isHidden = true
+			self.rootView.table.reloadData()
+			self.rootView.activityIndicator.startAnimating()
+		}
 		DispatchQueue.global().async {
 			
 			if let user = self.currentUser{

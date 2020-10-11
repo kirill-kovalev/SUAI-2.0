@@ -12,7 +12,7 @@ import SUAI_API
 
 class TimetableLessonCell: UIView{
     
-	private var pocketLessonView:PocketDayView = {
+	let pocketLessonView:PocketDayView = {
 		if AppSettings.isOldTimetableEnabled {return PocketDayView.fromNib()}
 		else {return PocketDayView.fromNib(named: "NewPocketDayView")} 
 	}()
@@ -132,9 +132,7 @@ class TimetableLessonCell: UIView{
             break
 
         }
-       
-		pocketLessonView.startTime.text = lesson.start
-		pocketLessonView.endTime.text = lesson.end
+ 
         
     }
 	
