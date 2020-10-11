@@ -42,47 +42,110 @@ class TimetableLessonCell: UIView{
             make.left.right.equalToSuperview()
         }
     }
-    
-    
-    func setLesson(lesson:SALesson) {
+	
+	private func wordCase(_ n:Int) -> String{
+		let words = ["группа","группы","групп"]
+		guard words.count >= 3 else { return ""}
+		var n = n
+		if (n >= 5 && n <= 20) {
+		  return words[2];
+		}
+		n = n % 10;
+		if (n == 1) {
+		  return  words[0];
+		}
+		if (n >= 2 && n <= 4) {
+		  return  words[1];
+		}
+		return  words[2];
+	}
+	
+	private func oldSetLesson(lesson:SALesson) {
+		self.lesson = lesson
+		
+		pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name
+		pocketLessonView.lessonNum.text = "\(lesson.lessonNum)"
+		pocketLessonView.title.text = lesson.name
+		
+		addTag(text: lesson.type.rawValue)
+		addTag(text: lesson.groups.count > 1 ? "\(lesson.groups.count) \(wordCase(lesson.groups.count))" : lesson.groups[0].Name)
+		
+		for tag in lesson.tags{
+			addTag(text: tag)
+		}
+		pocketLessonView.startTime.text = lesson.start == "00:00" ? "НЕТ" : lesson.start
+		pocketLessonView.endTime.text = lesson.end  == "00:00" ? "НЕТ" : lesson.end
+		
+		
+		switch lesson.type {
+		case .courseProject:
+			pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketGreen.color
+			break;
+		case .lab:
+			pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketAqua.color
+			break
+		case .lecture:
+			pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketPurple.color
+			break
+			
+		case .practice:
+			pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketOrange.color
+			break
+
+		}
+	}
+	
+	private func newSetLesson(lesson:SALesson) {
         self.lesson = lesson
         
         pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name
         pocketLessonView.lessonNum.text = "\(lesson.lessonNum)"
         pocketLessonView.title.text = lesson.name
         
-        addTag(text: lesson.type.rawValue)
-        addTag(text: lesson.groups.count > 1 ? "\(lesson.groups.count) группы" : lesson.groups[0].Name)
         
-        for tag in lesson.tags{
-            addTag(text: tag)
-        }
+        addTag(text: lesson.groups.count > 1 ? "\(lesson.groups.count) \(wordCase(lesson.groups.count))" : lesson.groups[0].Name)
+		
+		for tag in lesson.tags{
+			addTag(text: tag)
+		}
+		pocketLessonView.startTime.text = lesson.start == "00:00" ? "НЕТ" : lesson.start
+		pocketLessonView.endTime.text = lesson.end  == "00:00" ? "НЕТ" : lesson.end
         
         
         switch lesson.type {
         case .courseProject:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketGreen.color
+            pocketLessonView.lessonType?.textColor = Asset.PocketColors.pocketGreen.color
+			pocketLessonView.lessonType?.text = "Курсовой проект"
             break;
         case .lab:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketAqua.color
+            pocketLessonView.lessonType?.textColor = Asset.PocketColors.pocketAqua.color
+			pocketLessonView.lessonType?.text = "Лабораторная"
             break
         case .lecture:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketPurple.color
+            pocketLessonView.lessonType?.textColor = Asset.PocketColors.pocketPurple.color
+			pocketLessonView.lessonType?.text = "Лекция"
             break
             
         case .practice:
-            pocketLessonView.verticalLine.backgroundColor = Asset.PocketColors.pocketOrange.color
+            pocketLessonView.lessonType?.textColor = Asset.PocketColors.pocketOrange.color
+			pocketLessonView.lessonType?.text = "Практика"
             break
 
         }
        
-
 		pocketLessonView.startTime.text = lesson.start
 		pocketLessonView.endTime.text = lesson.end
-
         
-        
-        
+    }
+	
+    
+    
+    func setLesson(lesson:SALesson) {
+		if AppSettings.isOldTimetableEnabled {
+			oldSetLesson(lesson: lesson)
+		}else{
+			newSetLesson(lesson: lesson)
+		}
     }
     private func addTag(text: String){
         let tag = PocketTagButton()
