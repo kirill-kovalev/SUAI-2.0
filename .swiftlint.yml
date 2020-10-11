@@ -1,0 +1,10 @@
+excluded:
+- Carthage
+- Pods
+- SUAI_API/*
+
+disabled_rules:
+- identifier_name
+- force_cast
+- line_length
+- shorthand_operator

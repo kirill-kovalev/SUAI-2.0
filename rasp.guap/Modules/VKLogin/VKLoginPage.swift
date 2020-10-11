@@ -49,6 +49,7 @@ class VKLoginPageViewController: UIViewController {
 			Logger.print(from: "VK Login", err)
         }
     }
+	// swiftlint:disable cyclomatic_complexity
 	func errorText(err:VKError)->String{
 		switch err {
 			case .unknown(let error):
@@ -119,6 +120,7 @@ class VKLoginPageViewController: UIViewController {
 				return ""
 		}
 	}
+	// swiftlint:enable cyclomatic_complexity
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let color = Asset.PocketColors.pocketDarkBlue.color
