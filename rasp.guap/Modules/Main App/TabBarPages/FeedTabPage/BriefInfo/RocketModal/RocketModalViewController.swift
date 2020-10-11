@@ -26,17 +26,47 @@ class RocketModalViewController: ModalViewController<RocketModalView> {
             }
         }
     }
+	
+	private func wordCase(_ n:Int) -> String{
+		let words = ["день","дня","дней"]
+		guard words.count >= 3 else { return ""}
+		var n = n
+		if (n >= 5 && n <= 20) {
+		  return words[2];
+		}
+		n = n % 10;
+		if (n == 1) {
+		  return  words[0];
+		}
+		if (n >= 2 && n <= 4) {
+		  return  words[1];
+		}
+		return  words[2];
+	}
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
-		let diff = 7 - today
-		switch diff {
-			case 1:
+		var todayComponents = Calendar.current.dateComponents([.year,.month], from: Date())
+		todayComponents.month = (todayComponents.month ?? 0) + 1
+		if let nextPlay = Calendar.current.date(from: todayComponents){
+			var diff:Int = Int(nextPlay.timeIntervalSince(Date()) / (3600*24))
+			if diff < 2{
 				self.content.nextGiveaway.text = "(Следующий розыгрыш завтра)"
-			case 2,3,4:
-				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дня)"
-			default:
-				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дней)"
+			}else {
+			    self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) \(wordCase(diff))"
+			}
+			
 		}
+		
+//		let
+//		let diff = 7 - today
+//		switch diff {
+//			case 1:
+//				self.content.nextGiveaway.text = "(Следующий розыгрыш завтра)"
+//			case 2,3,4:
+//				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дня)"
+//			default:
+//				self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) дней)"
+//		}
 	}
 }

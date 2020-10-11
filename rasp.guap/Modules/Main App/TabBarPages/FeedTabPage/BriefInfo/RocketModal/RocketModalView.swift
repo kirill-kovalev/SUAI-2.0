@@ -32,7 +32,7 @@ class RocketModalView: ModalView {
     }()
     let topTitle:UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Топ-3 недели"
+        label.text = "Топ-3 месяца"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
