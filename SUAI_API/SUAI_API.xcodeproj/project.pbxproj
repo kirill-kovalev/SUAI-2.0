@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C44EF103EAC490595ADB3A3 /* Pods_SUAI_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C755CF8EADE8BD74191C4E /* Pods_SUAI_API.framework */; };
+		5D0810ED2535092200614652 /* getDetailedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0810EC2535092200614652 /* getDetailedTask.swift */; };
 		5D0BB9FC24FD6D3B000D8CBB /* BriefInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BB9FB24FD6D3B000D8CBB /* BriefInfo.swift */; };
 		5D0BB9FE24FD6FED000D8CBB /* SADeadlineGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BB9FD24FD6FED000D8CBB /* SADeadlineGroup.swift */; };
 		5D0BBA0024FD6FF9000D8CBB /* SADeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BB9FF24FD6FF9000D8CBB /* SADeadline.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		020C00B226CF2EB2D7C3F4DA /* Pods-SUAI_API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.debug.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.debug.xcconfig"; sourceTree = "<group>"; };
 		5232BC136A1F5F9C915C8E88 /* Pods-SUAI_API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUAI_API.release.xcconfig"; path = "Target Support Files/Pods-SUAI_API/Pods-SUAI_API.release.xcconfig"; sourceTree = "<group>"; };
+		5D0810EC2535092200614652 /* getDetailedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDetailedTask.swift; sourceTree = "<group>"; };
 		5D0BB9FB24FD6D3B000D8CBB /* BriefInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefInfo.swift; sourceTree = "<group>"; };
 		5D0BB9FD24FD6FED000D8CBB /* SADeadlineGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadlineGroup.swift; sourceTree = "<group>"; };
 		5D0BB9FF24FD6FF9000D8CBB /* SADeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SADeadline.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				5D8F19C3253207A900A2D5AD /* getUser.swift */,
 				5D8F19C625322C5A00A2D5AD /* getTasks.swift */,
 				5D8F19C925322D3900A2D5AD /* ProGuapTask.swift */,
+				5D0810EC2535092200614652 /* getDetailedTask.swift */,
 			);
 			path = pro.guap;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				5D9D903A24EC78AD00930375 /* Preps.swift in Sources */,
 				5D289FC124F93FF900643D54 /* FeedElement.swift in Sources */,
 				5D0BBA0224FD725D000D8CBB /* APIDataTypes.swift in Sources */,
+				5D0810ED2535092200614652 /* getDetailedTask.swift in Sources */,
 				5D8F19C725322C5A00A2D5AD /* getTasks.swift in Sources */,
 				5D9D903D24EC78AD00930375 /* Timetable.JSONLesson.swift in Sources */,
 				5D9D903924EC78AD00930375 /* Grous.swift in Sources */,
