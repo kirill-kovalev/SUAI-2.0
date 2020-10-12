@@ -22,8 +22,8 @@ class InterfaceController: WKInterfaceController {
 		}
 	}
 	var _lessons: [[String]] = []
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
+	override func awake(withContext context: Any?) {
+		super.awake(withContext: context)
 		if let payload = UserDefaults.standard.data(forKey: "timetable") {
 			do {
 				self.lessons =  try JSONDecoder().decode([[String]].self, from: payload)
@@ -36,26 +36,26 @@ class InterfaceController: WKInterfaceController {
 			session.activate()
 			decodeFromContext(applicationContext: WCSession.default.applicationContext)
 		}
-        // Configure interface objects here.
-    }
+		// Configure interface objects here.
+	}
 	
 	override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
 		let lesson = self.lessons[rowIndex]
 		print(lesson)
 		return lesson
 	}
-    
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+	
+	override func willActivate() {
+		// This method is called when watch view controller is about to be visible to user
+		super.willActivate()
 		WCSession.default.sendMessage(["": ""], replyHandler: nil, errorHandler: nil)
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+	}
+	
+	override func didDeactivate() {
+		// This method is called when watch view controller is no longer visible
+		super.didDeactivate()
 		WCSession.default.sendMessage(["": ""], replyHandler: nil, errorHandler: nil)
-    }
+	}
 	
 	func updateTable() {
 		print(#function)
@@ -65,11 +65,13 @@ class InterfaceController: WKInterfaceController {
 				switch lesson[0] {
 					case "Л":
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_purple"))
+					
 					case "ЛР":
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_aqua"))
+					
 					case "ПР":
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_orange"))
-
+					
 					default:
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_green"))
 				}
@@ -96,8 +98,8 @@ class InterfaceController: WKInterfaceController {
 extension InterfaceController: WCSessionDelegate {
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		if let error = error {
-            fatalError("Can't activate session with error: \(error.localizedDescription)")
-        }
+			fatalError("Can't activate session with error: \(error.localizedDescription)")
+		}
 		print("WC Session activated with state: \(activationState.rawValue)")
 	}
 	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
