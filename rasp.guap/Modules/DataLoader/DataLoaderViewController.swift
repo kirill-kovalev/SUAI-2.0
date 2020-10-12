@@ -29,7 +29,7 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 
 		}, for: .touchUpInside)
 	}
-	// swiftlint:disable cyclomatic_complexity
+	
 	func loadData() {
 		DispatchQueue.main.async {
 			self.rootView.reloadButton.isHidden = true
@@ -53,14 +53,12 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
+			self.setText("Синхронизирую недели")
+			SASchedule.shared.reloadSettings()
 			self.setText("Загружаю список групп")
-			if SASchedule.shared.groups.count == 0 {
-				SASchedule.shared.groups.loadFromServer()
-			}
+			SASchedule.shared.groups.loadFromServer()
 			self.setText("Загружаю список преподавателей")
-			if SASchedule.shared.preps.count == 0 {
-				SASchedule.shared.preps.loadFromServer()
-			}
+			SASchedule.shared.preps.loadFromServer()
 			self.setText("Ищу твою группу")
 			if let user = SASchedule.shared.groups.get(name: group ) {
 				let timetable = SASchedule.shared.get(for: user)
@@ -112,7 +110,7 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 			
 		}
 	}
-	// swiftlint:enable cyclomatic_complexity
+	
 	func setWatchTimetable(_ tt: SATimetable) {
 		Logger.print(from: #function, "Setting Watch TT")
 		if WCSession.isSupported() {

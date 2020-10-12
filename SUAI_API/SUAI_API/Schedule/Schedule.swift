@@ -24,6 +24,11 @@ public class SASchedule{
 	init() {
 
 	}
+	public func reloadSettings(){
+		if let settings = ScheduleSettings.load(){
+			self.settings =  settings
+		}
+	}
 	public func loadFromCache(){
 		let _ = UserDefaults.standard.synchronize()
 		if self.groups.count == 0 {self.groups.loadFromCache()}
