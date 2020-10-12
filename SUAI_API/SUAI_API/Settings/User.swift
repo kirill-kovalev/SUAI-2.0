@@ -63,6 +63,10 @@ public class SAUserSettings: Codable {
                 let settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
 				settings.getVk()
 				settings.saveToCache()
+				if let proLogin =  settings.prologin,
+					let proPass = settings.propass {
+					let _ = ProGuap.shared.auth(login: proLogin, pass: proPass)
+				}
 				return settings
             }catch{
                 print("Settings Server: \(error)")
@@ -71,15 +75,13 @@ public class SAUserSettings: Codable {
 		return nil
     }
     private static func fromCache() -> SAUserSettings?{
-        var settings:SAUserSettings?
         guard let data = UserDefaults.standard.data(forKey: "\(Self.self)" ) else {return nil }
         do{
-            settings = try JSONDecoder().decode(SAUserSettings.self, from: data)
+            return try JSONDecoder().decode(SAUserSettings.self, from: data)
         }catch{
-            settings = nil
             print("Settings Cache: \(error)")
+            return nil
         }
-        return settings
     }
 	private func saveToCache(){
 		if let data = try? JSONEncoder().encode(self){
