@@ -37,4 +37,55 @@ class NetworkManager {
         }
         
     }
+	
+	private static func parseFilename(header content: String) -> String? {
+		if let regexp = try? NSRegularExpression(pattern: "(.*?)filename=\"(.*)\"", options: []) {
+			return regexp.stringByReplacingMatches(in: content, options: .withTransparentBounds, range: NSRange(location: 0, length: content.count), withTemplate: "$2")
+		}
+		return nil
+	}
+// swiftlint:disable opening_brace
+// Потому что иначе уродливо
+	public static func downloadFile(url: String, delegate: URLSessionDelegate? = nil, completion: @escaping ((Result<URL, Error>) -> Void)) {
+		guard let downloadURL = URL(string: url),
+			let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+		else {return}
+		
+		if let cacheData = cache.object(forKey: downloadURL.absoluteString as NSString) {
+			let fileURLString = String(data: cacheData.data, encoding: .utf8)
+			let fileURL = URL(string: fileURLString!)
+			FileManager.default.fileExists(atPath: fileURLString!)
+			print("from cache")
+			completion(.success(fileURL!))
+		} else {
+			let downloadSession = URLSession(configuration: .default, delegate: delegate, delegateQueue: OperationQueue.main)
+			downloadSession.downloadTask(with: downloadURL) { (fileUrl, response, err) in
+				print("start downloading")
+				if let fileUrl = fileUrl,
+					let response = response as? HTTPURLResponse,
+					let contentHeader = response.allHeaderFields["Content-Disposition"] as? String,
+					let filename = parseFilename(header: contentHeader)
+				{
+					let destinationURL = documentsFolder.appendingPathComponent(filename)
+					print(destinationURL.absoluteString)
+					
+					try? FileManager.default.removeItem(at: destinationURL)
+					do {
+						try FileManager.default.copyItem(at: fileUrl, to: destinationURL)
+						if let encodedFilePath = destinationURL.absoluteString.data(using: .utf8) {
+							cache.setObject(CData(encodedFilePath), forKey: downloadURL.absoluteString as NSString)
+						}
+						completion(.success(destinationURL))
+					} catch {
+						completion(.failure(error))
+					}
+				}
+				if let err = err {
+					completion(.failure(err))
+				}
+			}.resume()
+			
+		}
+	}
+	
 }
