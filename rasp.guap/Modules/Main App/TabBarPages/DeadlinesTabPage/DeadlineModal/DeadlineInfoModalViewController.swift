@@ -135,8 +135,24 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
 			self.content.addBlock(title: "Дата дедлайна", text: formatter.string(from: end) )
 		}
 		if let subj =  deadline.subject_name, !subj.isEmpty { self.content.addBlock(title: "Предмет", text: subj) }
-		if let mark = self.deadline.markpoint {self.content.addBlock(title: "Баллы", text: mark)}
-		if let status = self.deadline.status_name {self.content.addBlock(title: "Статус", text: status)}
+		if let mark = self.deadline.markpoint {
+			self.content.addArrangedSubview(self.content.sectionLabelGenerator("Баллы"))
+			let btn = PocketTagButton(frame: .zero)
+			btn.setTitle(mark, for: .normal)
+			btn.isActive = false
+			let s = UIStackView(arrangedSubviews: [btn, UIView(frame: .zero)])
+			self.content.addArrangedSubview(s)
+			
+		}
+		if let status = self.deadline.status_name {
+			self.content.addArrangedSubview(self.content.sectionLabelGenerator("Статус"))
+			let btn = PocketTagButton(frame: .zero)
+			btn.setTitle(status, for: .normal)
+			btn.isActive = false
+			let s = UIStackView(arrangedSubviews: [btn, UIView(frame: .zero)])
+			self.content.addArrangedSubview(s)
+			
+		}
         
         if self.deadline.closed == 0 {
             let color = Asset.PocketColors.pocketGreen.color

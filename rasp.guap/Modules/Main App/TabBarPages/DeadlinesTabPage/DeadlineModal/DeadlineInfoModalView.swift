@@ -9,14 +9,14 @@
 import UIKit
 
 class DeadlineInfoModalView: UIStackView {
-    private func sectionLabelGenerator(_ text: String) -> UILabel {
+    func sectionLabelGenerator(_ text: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = text
         return label
     }
-    private func sectionTextGenerator(_ text: String = "") -> UILabel {
+    func sectionTextGenerator(_ text: String = "") -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
