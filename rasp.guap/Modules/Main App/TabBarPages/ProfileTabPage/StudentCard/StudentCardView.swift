@@ -10,24 +10,24 @@ import UIKit
 
 class StudentCardView: View {
 	let avatar = PocketUserAvatar()
-	let name:UILabel = {
+	let name: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketBlack.color
 		return label
 	}()
-	let group:UILabel = {
+	let group: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketGray.color
 		return label
 	}()
-	let suaiImage:UIImageView = {
+	let suaiImage: UIImageView = {
 		let image = UIImageView(image: Asset.AppImages.suaiCard.image.withRenderingMode(.alwaysTemplate))
 		image.tintColor = Asset.PocketColors.pocketDarkBlue.color
 		return image
 	}()
-	let suai:UILabel = {
+	let suai: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.text = "SUAI ID"
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -43,14 +43,14 @@ class StudentCardView: View {
 		avatar.color = .clear
 	}
 	
-	func addViews(){
+	func addViews() {
 		self.addSubview(suaiImage)
 		self.addSubview(suai)
 		self.addSubview(avatar)
 		self.addSubview(name)
 		self.addSubview(group)
 	}
-	func setupConstraints(){
+	func setupConstraints() {
 		avatar.snp.makeConstraints { (make) in
 			make.top.left.bottom.equalToSuperview()
 			make.size.equalTo(CGSize(width: 60, height: 60))

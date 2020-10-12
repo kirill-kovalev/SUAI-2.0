@@ -8,16 +8,15 @@
 
 import UIKit
 
-class AppSettingsView:View{
-	
-	lazy var content:UIStackView = {
+class AppSettingsView: View {
+	lazy var content: UIStackView = {
 		let stack = UIStackView(frame: .zero)
 		stack.axis = .vertical
 		stack.spacing = 12
 		return stack
 	}()
 	
-	lazy var clearCacheBtn:PocketButton = {
+	lazy var clearCacheBtn: PocketButton = {
 		let btn = PocketButton(frame: .zero)
 		btn.setTitle("Очистить кэш", for: .normal)
 		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
@@ -34,7 +33,7 @@ class AppSettingsView:View{
 		addViews()
 		setupConstraints()
 	}
-	func addViews(){
+	func addViews() {
 		self.addSubview(content)
 		content.addArrangedSubview(deadlineNotifications)
 		content.addArrangedSubview(timetableNotifications)
@@ -44,7 +43,7 @@ class AppSettingsView:View{
 		content.addArrangedSubview(clearCacheBtn)
 	}
 	
-	func setupConstraints(){
+	func setupConstraints() {
 		content.snp.makeConstraints { (make) in
 			make.top.left.right.bottom.equalToSuperview()
 		}
@@ -54,16 +53,15 @@ class AppSettingsView:View{
 	}
 }
 
-class AppSettingsBlock :UIStackView{
-	
-	func labelGenerator(title:String)->UILabel{
+class AppSettingsBlock: UIStackView {
+	func labelGenerator(title: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = title
         return label
     }
-	let toggle:UISwitch = {
+	let toggle: UISwitch = {
 		let view = UISwitch(frame: .zero)
 		view.onTintColor = Asset.PocketColors.accent.color
 		view.isOn = true
@@ -73,8 +71,8 @@ class AppSettingsBlock :UIStackView{
 	lazy var label = labelGenerator(title: "")
 	
 	required init(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-	init(title:String) {
-		super.init(frame:.zero)
+	init(title: String) {
+		super.init(frame: .zero)
 		self.axis = .horizontal
 		self.distribution = .equalCentering
 		self.addArrangedSubview(label)

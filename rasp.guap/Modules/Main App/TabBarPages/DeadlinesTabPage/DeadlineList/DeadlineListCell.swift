@@ -9,9 +9,8 @@
 import UIKit
 import SUAI_API
 
-class DeadlineListCell: PocketDeadlineView{
-	
-	lazy var indicator:PocketActivityIndicatorView = {
+class DeadlineListCell: PocketDeadlineView {
+	lazy var indicator: PocketActivityIndicatorView = {
 		let indicator = PocketActivityIndicatorView(frame: .zero)
 		indicator.isHidden = true
 		indicator.stopAnimating()
@@ -19,31 +18,30 @@ class DeadlineListCell: PocketDeadlineView{
 		return indicator
 	}()
 	
-    public func onSelect( action: @escaping (DeadlineListCell)->Void){
+    public func onSelect( action: @escaping (DeadlineListCell) -> Void) {
         self.onSelectFunc = action
     }
-    public func onCheck(action: @escaping (DeadlineListCell)->Void){
+    public func onCheck(action: @escaping (DeadlineListCell) -> Void) {
         self.onCheckFunc = action
     }
     
-    private var onCheckFunc:((DeadlineListCell)->Void)?
-    private var onSelectFunc:((DeadlineListCell)->Void)?
+    private var onCheckFunc: ((DeadlineListCell) -> Void)?
+    private var onSelectFunc: ((DeadlineListCell) -> Void)?
     
-    @objc private func selectHandler(_ sender: UITapGestureRecognizer){
+    @objc private func selectHandler(_ sender: UITapGestureRecognizer) {
 		Logger.print("checkbox \(self.checkbox.frame.origin)")
 		Logger.print("sender \(sender.location(in: self))")
 		guard !indicator.isAnimating else {return}
 		if sender.location(in: self).x < self.checkbox.frame.origin.x {
             self.onSelectFunc?(self)
-        }else{
+        } else {
             self.checkbox.isChecked.toggle()
             self.onCheckFunc?(self)
         }
     }
-    @objc private func checkHandler(){
+    @objc private func checkHandler() {
         self.onCheckFunc?(self)
     }
-    
         
     required init() {
         super.init()

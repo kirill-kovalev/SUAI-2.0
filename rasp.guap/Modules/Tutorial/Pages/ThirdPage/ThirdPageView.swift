@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ThirdPageView : TutorialPageView{
-    
+class ThirdPageView: TutorialPageView {
     // MARK: - Views
     
     let deadlines: [PocketDivView] = {
@@ -47,8 +46,7 @@ class ThirdPageView : TutorialPageView{
         }
     }
     
-    private func setupText(){
-        
+    private func setupText() {
         self.title.text = "Дедлайны"
         self.text.text = "Контролируй учебный процесс, ставь \nзадачи и выполняй их в срок"
     }

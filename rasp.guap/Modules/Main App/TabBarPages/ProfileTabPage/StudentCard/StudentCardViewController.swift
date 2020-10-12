@@ -20,38 +20,34 @@ class StudentCardViewController: ViewController<StudentCardView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.global().async {
-			if !SAUserSettings.shared.reload(){
+			if !SAUserSettings.shared.reload() {
 				MainTabBarController.Snack(status: .err, text: "Не удалось загрузить информацию о пользователе")
 			}
 			self.loadData()
 		}
 	}
 	
-	func loadData(){
-
+	func loadData() {
 		DispatchQueue.global().async {
 			let settings = SAUserSettings.shared
 			
 			if let group = settings.group,
 				let name = settings.vkName,
-				let photoUrl = settings.vkPhoto{
-				
-				
+				let photoUrl = settings.vkPhoto {
 				DispatchQueue.main.async {
 					self.rootView.group.text = "Группа "+(group)
 					self.rootView.name.text = "\(name)"
 				}
 				
 				NetworkManager.dataTask(url: photoUrl) { (result) in
-					switch result{
+					switch result {
 						case .success(let data):
 							guard let image = UIImage(data: data) else {break}
 							DispatchQueue.main.async { self.rootView.avatar.imageView.image = image }
-						break;
-						case .failure: break;
+
+						case .failure: break
 					}
 				}
-				
 				
 			}
 			

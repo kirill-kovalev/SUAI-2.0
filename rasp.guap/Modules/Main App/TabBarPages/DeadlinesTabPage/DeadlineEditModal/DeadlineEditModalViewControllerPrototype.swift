@@ -9,11 +9,10 @@
 import UIKit
 import SUAI_API
 
-class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModalView>{
+class DeadlineEditableModalViewController: ModalViewController<DeadlineEditModalView> {
+    var deadline: SADeadline?
     
-    var deadline:SADeadline?
-    
-    var onChange:(()->Void)?
+    var onChange:(() -> Void)?
     
     var lessonList = SASchedule.shared.get(for: SASchedule.shared.groups.get(name: SAUserSettings.shared?.group ?? "") ?? SAUsers.User(Name: "", ItemId: 0)).list()
     
@@ -27,7 +26,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
         super.viewWillAppear(animated)
         if self.deadline == nil { // Создание
             self.setTitle("Создать дедлайн")
-        }else{ //Редактирование
+        } else { //Редактирование
             self.setTitle("Редактировать дедлайн")
             self.content.nameLabel.text = deadline!.deadline_name
             self.content.commentLabel.text = deadline!.comment
@@ -36,7 +35,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
         }
     }
 }
-extension DeadlineEditableModalViewController:UIPickerViewDataSource{
+extension DeadlineEditableModalViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { self.lessonList.count+1 }
@@ -46,7 +45,7 @@ extension DeadlineEditableModalViewController:UIPickerViewDataSource{
     }
 }
 
-extension DeadlineEditableModalViewController:UIPickerViewDelegate{
+extension DeadlineEditableModalViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.content.lessonLabel.text = row == 0 ? ""  : lessonList[row-1].name
     }

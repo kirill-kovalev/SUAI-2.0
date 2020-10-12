@@ -9,48 +9,41 @@
 import UIKit
 
 class ModalView: View {
-    
     static let hiddenTransform: CGAffineTransform = {
         let positionTransform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height)
         let scaleTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         return positionTransform//scaleTransform.concatenating(positionTransform)
     }()
     
-    let container:UIView = {
-        let container = UIView();
+    let container: UIView = {
+        let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
         
         container.backgroundColor = Asset.PocketColors.pocketWhite.color
         container.layer.cornerRadius = 10
         
         container.transform = ModalView.hiddenTransform
-        return container;
+        return container
     }()
     
-    let header:UIView = {
+    let header: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
     
-    let closeButton:Button = {
+    let closeButton: Button = {
         let btn = Button(frame: .zero)
         btn.setImage(Asset.SystemIcons.modalViewExitCross.image, for: .normal)
         return btn
     }()
-    let titleLabel:UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = ""
         label.textAlignment = .center
         return label
     }()
-    
-    
-    
-    
-    
-    
 
     required init() {
         super.init()
@@ -60,7 +53,7 @@ class ModalView: View {
         setupConstraints()
     }
     
-    func setContent(_ contentView:UIView){
+    func setContent(_ contentView: UIView) {
         container.addSubview(contentView)
 		let bottomInset = UIWindow().safeAreaInsets.bottom
         contentView.snp.makeConstraints { (make) in
@@ -70,14 +63,14 @@ class ModalView: View {
         }
     }
     
-    private func addViews(){
+    private func addViews() {
         self.addSubview(container)
         container.addSubview(header)
         header.addSubview(closeButton)
         header.addSubview(titleLabel)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         container.snp.makeConstraints { (make) in
             make.width.equalToSuperview()//.offset(-20)
             //make.height.greaterThanOrEqualToSuperview().multipliedBy(0.5)
@@ -100,7 +93,6 @@ class ModalView: View {
         }
         
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -8,12 +8,11 @@
 
 import UIKit
 
-extension UITraitCollection{
+extension UITraitCollection {
     static var isDarkMode: Bool {
         if #available(iOS 13.0, *) {
             return UITraitCollection.current.userInterfaceStyle == .dark
-        }
-        else {
+        } else {
             return false
         }
     }

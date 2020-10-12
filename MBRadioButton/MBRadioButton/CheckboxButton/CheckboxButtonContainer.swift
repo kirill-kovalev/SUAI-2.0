@@ -10,7 +10,6 @@ import Foundation
 
 /// Hold all CheckboxButton button
 public class MBCheckboxButtonContainer: MBRadioCheckboxBaseContainer<MBCheckboxButton> {
-    
     /// Checkbox delegate will be assigned to all button added in container
     public weak var delegate: MBCheckboxButtonDelegate? {
         didSet {

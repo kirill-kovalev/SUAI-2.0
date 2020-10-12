@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CornerRadius:CGFloat{
+enum CornerRadius: CGFloat {
     case small = 15
     case `default` = 20
     case big = 30

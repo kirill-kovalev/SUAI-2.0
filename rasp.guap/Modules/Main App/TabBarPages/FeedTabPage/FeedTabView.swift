@@ -9,7 +9,6 @@
 import UIKit
 
 class FeedTabView: TabBarPageView {
-       
     let sourceSelector = SwitchSelector(frame: .zero)
     
     required init() {
@@ -17,10 +16,10 @@ class FeedTabView: TabBarPageView {
         addViews()
         setupConstraints()
     }
-    func addViews(){
+    func addViews() {
         self.header.addSubview(sourceSelector)
     }
-    func setupConstraints(){
+    func setupConstraints() {
         sourceSelector.snp.makeConstraints { (make) in
 			make.top.equalTo(self.title.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(4)

@@ -9,13 +9,13 @@
 import UIKit
 import SUAI_API
 
-class NewScheduleTabTableCell:UITableViewCell{
+class NewScheduleTabTableCell: UITableViewCell {
 	let controller = TimetableViewController(timetable: [])
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		initSetup()
 	}
-	let dayLabel:UILabel = {
+	let dayLabel: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketGray.color
@@ -29,7 +29,7 @@ class NewScheduleTabTableCell:UITableViewCell{
 		super.init(coder: coder)
 		initSetup()
 	}
-	private func initSetup(){
+	private func initSetup() {
 		Logger.print(from: #function, "\(Self.self) init setup")
 		
 		self.contentView.addSubview(placeholder)
@@ -37,7 +37,6 @@ class NewScheduleTabTableCell:UITableViewCell{
 		self.contentView.addSubview(dayLabel)
 		self.backgroundColor = .clear
 		self.contentView.backgroundColor = .clear
-		
 	
 		dayLabel.snp.makeConstraints { (make) in
 			make.top.equalToSuperview().offset(8)
@@ -55,7 +54,7 @@ class NewScheduleTabTableCell:UITableViewCell{
 		}
 	}
 	typealias CellDelegate = UIViewController & UserChangeDelegate
-	public func setupCell(_ cellDelegate:CellDelegate,timetable:[SALesson]){
+	public func setupCell(_ cellDelegate: CellDelegate, timetable: [SALesson]) {
 		placeholder.isHidden = !timetable.isEmpty
 		container.isHidden = !placeholder.isHidden
 		

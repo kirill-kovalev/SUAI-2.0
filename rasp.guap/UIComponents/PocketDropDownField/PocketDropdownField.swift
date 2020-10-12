@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PocketDropdownView:UIView{
+class PocketDropdownView: UIView {
 	let image = UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
 	init() {
 		super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))

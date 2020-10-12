@@ -8,16 +8,14 @@
 
 import UIKit
 
-class SecondPageView: TutorialPageView{
-    
+class SecondPageView: TutorialPageView {
     // MARK: - Views
     
-    let newsFirst:PocketNewsView = PocketNewsView()
-    let newsSecond:PocketNewsView = PocketNewsView()
+    let newsFirst: PocketNewsView = PocketNewsView()
+    let newsSecond: PocketNewsView = PocketNewsView()
     
-    lazy var divFirst:PocketDivView<PocketNewsView> = {return PocketDivView(content: newsFirst) }()
-    lazy var divSecond:PocketDivView<PocketNewsView> = {return PocketDivView(content: newsSecond) }()
-    
+    lazy var divFirst: PocketDivView<PocketNewsView> = {return PocketDivView(content: newsFirst) }()
+    lazy var divSecond: PocketDivView<PocketNewsView> = {return PocketDivView(content: newsSecond) }()
     
     // MARK: - View setup
     
@@ -51,11 +49,9 @@ class SecondPageView: TutorialPageView{
     
     }
     
-    private func setupUI(){
+    private func setupUI() {
         self.title.text = "Новости"
         self.text.text = "Будь в курсе всех событий \nуниверситета и секций"
-        
-        
         
     }
     

@@ -13,7 +13,7 @@ import ESTabBarController_swift
 class InfoTabViewController: ViewController<InfoTabView> {
     required init() {
         super.init()
-        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(),title: "Справочник", image: Asset.AppImages.TabBarImages.info.image, tag: 3)
+        self.tabBarItem = ESTabBarItem(PocketTabBarIcon(), title: "Справочник", image: Asset.AppImages.TabBarImages.info.image, tag: 3)
 		self.tabBarItem.image?.accessibilityValue = Asset.AppImages.TabBarImages.info.name
 		self.keyboardReflective = false
     }
@@ -29,26 +29,25 @@ class InfoTabViewController: ViewController<InfoTabView> {
 		self.rootView.indicator.startAnimating()
 		updateWebView()
 	}
-	func loadWebView(darkMode:Bool = false){
-		if let url = URL(string: "https://suaipocket.ru/info\(darkMode ? "#dark" : "#light")"){
+	func loadWebView(darkMode: Bool = false) {
+		if let url = URL(string: "https://suaipocket.ru/info\(darkMode ? "#dark" : "#light")") {
 			Logger.print(from: #function, "WEB: loading with url \(url)")
 			let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 15	)
-			if let _ = self.rootView.webView.load(request){
+			if self.rootView.webView.load(request) != nil {
 				Logger.print(from: #function, "WEB: load returned object")
-			}else{
+			} else {
 				Logger.print(from: #function, "WEB: load returned nil")
 			}
 		}
 		
-		
 	}
-	func updateWebView(){
+	func updateWebView() {
 //		self.rootView.indicator.startAnimating()
 		self.rootView.webView.backgroundColor = self.rootView.backgroundColor
 		if #available(iOS 12.0, *) {
 			if traitCollection.userInterfaceStyle == .dark {
 				loadWebView(darkMode: true)
-			}else {
+			} else {
 				loadWebView(darkMode: false)
 			}
 		} else {
@@ -62,26 +61,22 @@ class InfoTabViewController: ViewController<InfoTabView> {
 		updateColorScheme()
 		
 	}
-	func updateColorScheme(){
+	func updateColorScheme() {
 		if #available(iOS 12.0, *) {
 			let scheme = traitCollection.userInterfaceStyle == .dark ? "client_dark" : "client_light"
 			self.rootView.webView.evaluateJavaScript("document.body.setAttribute('scheme','\(scheme)')", completionHandler: nil)
 		}
 	}
 	
-	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 }
-extension InfoTabViewController:WKNavigationDelegate{
+extension InfoTabViewController: WKNavigationDelegate {
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-		
-		
 		Logger.print(from: #function, "WEB: loaded url \(webView.url as Any)")
 		if let url = webView.url {
-			URLSession.shared.dataTask(with: url) { (data, response, err) in
-				
+			URLSession.shared.dataTask(with: url) { (_, response, _) in
 				if let resp = (response as? HTTPURLResponse),
 				resp.statusCode == 200 {
 					DispatchQueue.main.async {
@@ -90,7 +85,7 @@ extension InfoTabViewController:WKNavigationDelegate{
 						self.rootView.indicator.stopAnimating()
 						self.updateColorScheme()
 					}
-				}else{
+				} else {
 					DispatchQueue.main.async {
 						self.rootView.indicator.stopAnimating()
 						self.rootView.notReleasedLabel.isHidden = false
@@ -104,4 +99,3 @@ extension InfoTabViewController:WKNavigationDelegate{
 		Logger.print(from: #function, "WEB: failed nav \(navigation!) wit err \(error)")
 	}
 }
-

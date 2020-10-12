@@ -9,7 +9,7 @@
 import UIKit
 
 class SuaiIDView: View {
-	let proguap:UILabel = {
+	let proguap: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.text = "pro.guap"
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -17,18 +17,18 @@ class SuaiIDView: View {
 		return label
 	}()
 	
-	let emailTF:UITextField = {
+	let emailTF: UITextField = {
 		let tf = PocketTextField(frame: .zero)
 		tf.placeholder = "Электронная почта"
 		return tf
 	}()
-	let passTF:UITextField = {
+	let passTF: UITextField = {
 		let tf = PocketTextField(frame: .zero)
 		tf.placeholder = "Пароль"
 		tf.isSecureTextEntry = true
 		return tf
 	}()
-	let submitBtn:PocketLongActionButton = {
+	let submitBtn: PocketLongActionButton = {
 		let btn = PocketLongActionButton()
 		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
 		btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
@@ -45,13 +45,13 @@ class SuaiIDView: View {
 		setupConstraints()
 	}
 	
-	func addViews(){
+	func addViews() {
 		self.addSubview(proguap)
 		self.addSubview(emailTF)
 		self.addSubview(passTF)
 		self.addSubview(submitBtn)
 	}
-	func setupConstraints(){
+	func setupConstraints() {
 		proguap.snp.makeConstraints { $0.top.right.left.equalToSuperview() }
 		emailTF.snp.makeConstraints { (make) in
 			make.left.right.equalToSuperview()
@@ -70,6 +70,5 @@ class SuaiIDView: View {
 			make.bottom.equalToSuperview()
 		}
 	}
-	
 
 }

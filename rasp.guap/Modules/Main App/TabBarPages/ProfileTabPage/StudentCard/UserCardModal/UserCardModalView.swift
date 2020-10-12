@@ -9,17 +9,16 @@
 import UIKit
 
 class UserCardModalView: UIView {
-	
 	let card = PocketCard()
 	
-	let title:UILabel = {
+	let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Все нужное - в кармане!"
         label.font = FontFamily.TTCommons.bold.font(size: 21)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    let subtitle:UILabel = {
+    let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "SUAI ID позволяет собирать в SUAI Pocket информацию из других сервисов, первым из которых стал pro.guap, расширяя имеющуюся функциональность"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -28,33 +27,33 @@ class UserCardModalView: UIView {
 		label.textAlignment = .center
         return label
     }()
-    let serviceListLabel:UILabel = {
+    let serviceListLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Доступные сервисы"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-	let serviceStack:UIStackView = {
+	let serviceStack: UIStackView = {
 		let stack = UIStackView(frame: .zero)
 		stack.axis = .vertical
 		stack.spacing = 12
 		return stack
 	}()
-	let scroll:UIScrollView = {
+	let scroll: UIScrollView = {
 		let scroll = UIScrollView(frame: .zero)
 		
 		return scroll
 	}()
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-	required init(){
-		super.init(frame:.zero)
+	required init() {
+		super.init(frame: .zero)
 		addViews()
 		setupConstraints()
 	}
 	
-	private func addViews(){
+	private func addViews() {
 		self.addSubview(card)
 		addSubview(title)
         addSubview(subtitle)
@@ -62,7 +61,7 @@ class UserCardModalView: UIView {
 		addSubview(scroll)
 		scroll.addSubview(serviceStack)
 	}
-	private func setupConstraints(){
+	private func setupConstraints() {
 		card.snp.makeConstraints { (make) in
 			make.top.equalToSuperview()
 			make.left.right.equalToSuperview()

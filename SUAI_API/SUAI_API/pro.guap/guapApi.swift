@@ -58,9 +58,9 @@ public class ProGuap{
 		request.httpShouldHandleCookies = true
 		print("""
 			[\(url)]_________________________________________________
-			METHOD : "\(request.httpMethod as Any)"
-			Headers : \(request.allHTTPHeaderFields)
-			Params : \(String(data:request.httpBody ?? Data(),encoding: .utf8))
+			METHOD : "\(request.httpMethod ?? "nil")"
+			Headers : \(request.allHTTPHeaderFields ?? [:])
+			Params : \(String(data:request.httpBody ?? Data(),encoding: .utf8) ?? "nil")
 			___________________________________________________________________________________
 			""")
 		

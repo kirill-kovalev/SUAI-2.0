@@ -9,10 +9,9 @@
 import UIKit
 
 class PocketNewsView: UIView {
-    
     // MARK: - views
     
-    let authorLabel:UILabel = {
+    let authorLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketDarkBlue.color
@@ -20,7 +19,7 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    let titleLabel:UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 15)
         label.textColor = Asset.PocketColors.pocketBlack.color
@@ -29,7 +28,7 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    let imageView:UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 87, height: 87))
         imageView.image = Asset.AppImages.photoPlaceholder.image
         imageView.layer.cornerRadius = 10
@@ -38,7 +37,7 @@ class PocketNewsView: UIView {
         return imageView
     }()
     
-    let datetimeLabel:UILabel = {
+    let datetimeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -46,14 +45,14 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    let likeIcon:UIImageView = {
+    let likeIcon: UIImageView = {
         let icon = UIImageView(image: Asset.AppImages.Feed.likeOutline24.image )
         icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
         icon.tintColor = Asset.PocketColors.pocketError.color
         return icon
     }()
     
-    let likeLabel:UILabel = {
+    let likeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -61,14 +60,13 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    
-    let commentIcon:UIImageView = {
+    let commentIcon: UIImageView = {
         let icon = UIImageView(image: Asset.AppImages.Feed.commentOutline24.image )
         icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
         icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
         return icon
     }()
-    let commentLabel:UILabel = {
+    let commentLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -76,13 +74,13 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    let repostIcon:UIImageView = {
+    let repostIcon: UIImageView = {
            let icon = UIImageView(image: Asset.AppImages.Feed.shareOutline24.image )
            icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
            icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
            return icon
    }()
-   let repostLabel:UILabel = {
+   let repostLabel: UILabel = {
        let label = UILabel(frame: .zero)
        label.font = FontFamily.SFProDisplay.regular.font(size: 14)
        label.textColor = Asset.PocketColors.pocketGray.color
@@ -90,13 +88,13 @@ class PocketNewsView: UIView {
        return label
    }()
     
-    let viewsIcon:UIImageView = {
+    let viewsIcon: UIImageView = {
             let icon = UIImageView(image: Asset.AppImages.Feed.viewOutline24.image )
             icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
             icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
             return icon
     }()
-    let viewsLabel:UILabel = {
+    let viewsLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -104,15 +102,14 @@ class PocketNewsView: UIView {
         return label
     }()
     
-    
-    required init(big:Bool = false) {
-        super.init(frame:.zero)
+    required init(big: Bool = false) {
+        super.init(frame: .zero)
         addViews()
-        if big{
+        if big {
             self.imageView.layer.cornerRadius = 0
             setupConstraintsBig()
-        }else{
-            for view in [repostLabel,repostIcon,commentLabel,commentIcon,viewsIcon,viewsLabel] {
+        } else {
+            for view in [repostLabel, repostIcon, commentLabel, commentIcon, viewsIcon, viewsLabel] {
                 view.isHidden = true
             }
             setupConstraintsSmall()
@@ -120,9 +117,7 @@ class PocketNewsView: UIView {
         
     }
     
-    
-    private func addViews(){
-        
+    private func addViews() {
         self.addSubview(imageView)
         self.addSubview(authorLabel)
         self.addSubview(titleLabel)
@@ -143,7 +138,7 @@ class PocketNewsView: UIView {
 
     }
     
-    private func setupConstraintsSmall(){
+    private func setupConstraintsSmall() {
         self.imageView.snp.makeConstraints { (make) in
             make.height.width.equalTo(87)
             make.top.bottom.right.equalToSuperview()
@@ -175,7 +170,7 @@ class PocketNewsView: UIView {
         }
     }
     
-    private func setupConstraintsBig(){
+    private func setupConstraintsBig() {
         self.imageView.snp.makeConstraints { (make) in
             make.height.equalTo(200)
             make.top.left.equalToSuperview().offset(-10)
@@ -189,14 +184,10 @@ class PocketNewsView: UIView {
             make.centerY.equalTo(authorLabel)
             make.right.equalToSuperview()
         }
-        
-        
         self.titleLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.authorLabel.snp.bottom).offset(6)
         }
-        
-        
         self.likeIcon.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 16, height: 16))
             make.left.equalToSuperview()
@@ -207,7 +198,6 @@ class PocketNewsView: UIView {
             make.left.equalTo(likeIcon.snp.right).offset(7)
             make.centerY.equalTo(likeIcon)
         }
-        
         self.commentIcon.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 16, height: 16))
             make.left.equalTo(likeLabel.snp.right).offset(7)
@@ -217,7 +207,6 @@ class PocketNewsView: UIView {
             make.left.equalTo(commentIcon.snp.right).offset(7)
             make.centerY.equalTo(likeIcon)
         }
-        
         self.repostIcon.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 16, height: 16))
             make.left.equalTo(commentLabel.snp.right).offset(7)
@@ -227,9 +216,7 @@ class PocketNewsView: UIView {
             make.left.equalTo(repostIcon.snp.right).offset(7)
             make.centerY.equalTo(likeIcon)
         }
-        
         self.viewsLabel.snp.makeConstraints { (make) in
-            
             make.right.equalToSuperview()
             make.centerY.equalTo(likeIcon)
         }
@@ -243,8 +230,5 @@ class PocketNewsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
     
 }

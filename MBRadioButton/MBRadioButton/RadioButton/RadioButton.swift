@@ -8,9 +8,8 @@
 
 import UIKit
 
-// MARK:- RadioButtonDelegate
+// MARK: - RadioButtonDelegate
 public protocol MBRadioButtonDelegate: class {
-    
     /// Delegate called when radio button is Selected
     ///
     /// - Parameter button: RadioButton
@@ -24,7 +23,7 @@ public protocol MBRadioButtonDelegate: class {
     
 }
 
-// MARK:- RadioLayer
+// MARK: - RadioLayer
 internal class RadioLayer: CAShapeLayer {
     /// Path for active layer
     var activePath: CGPath?
@@ -33,9 +32,8 @@ internal class RadioLayer: CAShapeLayer {
     var inactivePath: CGPath?
 }
 
-// MARK:- RadioCheckboxBaseButton
+// MARK: - RadioCheckboxBaseButton
 public class MBRadioButton: MBRadioCheckboxBaseButton {
-    
     private var outerLayer = CAShapeLayer()
     private var innerLayer = RadioLayer()
     
@@ -130,9 +128,8 @@ public class MBRadioButton: MBRadioCheckboxBaseButton {
     
 }
 
-// MARK:- Radio button layer path
+// MARK: - Radio button layer path
 private extension UIBezierPath {
-    
     /// Get outer circle layer
     static func outerCircle(rect: CGRect, circle: MBRadioButtonCircleStyle, style: RadioCheckboxStyle) -> UIBezierPath {
         let size = CGSize(width: circle.outer, height: circle.outer)

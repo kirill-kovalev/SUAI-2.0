@@ -13,7 +13,7 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 	override func viewDidLoad() {
 		self.keyboardReflective = false
 		
-		self.rootView.submitBtn.addTarget(action: { (sender) in
+		self.rootView.submitBtn.addTarget(action: { (_) in
 			SAUserSettings.shared.prologin = self.rootView.emailTF.text
 			SAUserSettings.shared.propass = self.rootView.passTF.text
 			
@@ -24,7 +24,7 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 					MainTabBarController.Snack(status: .ok, text: "Настройки обновлены")
 					DispatchQueue.main.async {self.rootView.submitBtn.isActive = false}
 					self.isTextEdited = false
-				}else{
+				} else {
 					Logger.print(from: #function, "SUAI ID Err")
 					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
 					DispatchQueue.main.async {self.textFieldDidChange()}
@@ -34,13 +34,12 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 		self.rootView.emailTF.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
 		self.rootView.passTF.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
 		
-		
 		DispatchQueue.global().async {
 			self.update()
 		}
 	}
 	var isTextEdited = false
-	@objc func textFieldDidChange(){
+	@objc func textFieldDidChange() {
 		self.isTextEdited = true
 		self.rootView.submitBtn.isActive = !(self.rootView.emailTF.text?.isEmpty ?? true) && !(self.rootView.passTF.text?.isEmpty ?? true)
 	}
@@ -55,7 +54,7 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 		}
 	}
 	
-	func update(){
+	func update() {
 		let login = SAUserSettings.shared.prologin
 		let pass = SAUserSettings.shared.propass
 		DispatchQueue.main.async {

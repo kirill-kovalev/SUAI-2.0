@@ -10,28 +10,27 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-
 class InterfaceController: WKInterfaceController {
 	@IBOutlet weak var table: WKInterfaceTable!
 	
-	var lessons:[[String]] {
+	var lessons: [[String]] {
 		get { _lessons}
-		set{
+		set {
 			_lessons = newValue
 			print("lessons did set")
 			self.updateTable()
 		}
 	}
-	var _lessons:[[String]] = []
+	var _lessons: [[String]] = []
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-		if let payload = UserDefaults.standard.data(forKey: "timetable"){
-			do{
+		if let payload = UserDefaults.standard.data(forKey: "timetable") {
+			do {
 				self.lessons =  try JSONDecoder().decode([[String]].self, from: payload)
-			}catch{print(error)}
+			} catch {print(error)}
 			
 		}
-		if WCSession.isSupported(){
+		if WCSession.isSupported() {
 			let session = WCSession.default
 			session.delegate = self
 			session.activate()
@@ -49,19 +48,19 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-		WCSession.default.sendMessage(["":""], replyHandler: nil, errorHandler: nil)
+		WCSession.default.sendMessage(["": ""], replyHandler: nil, errorHandler: nil)
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-		WCSession.default.sendMessage(["":""], replyHandler: nil, errorHandler: nil)
+		WCSession.default.sendMessage(["": ""], replyHandler: nil, errorHandler: nil)
     }
 	
-	func updateTable(){
+	func updateTable() {
 		print(#function)
 		self.table.setNumberOfRows(self.lessons.count, withRowType: "shecduleItem")
-		for (index,lesson) in self.lessons.enumerated() {
+		for (index, lesson) in self.lessons.enumerated() {
 			if let controller = self.table.rowController(at: index) as? TableRowController {
 				switch lesson[0] {
 					case "Л":
@@ -70,21 +69,22 @@ class InterfaceController: WKInterfaceController {
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_aqua"))
 					case "ПР":
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_orange"))
+
 					default:
 						controller.lessonTypeColor.setColor(UIColor(named: "pocket_green"))
 				}
 				controller.LessonNameLabel.setText(lesson[1])
-			}else{
+			} else {
 				print("cast error")
 			}
 		}
 	}
-	func decodeFromContext(applicationContext: [String : Any]){
-		if let payload = applicationContext["timetable"] as? Data{
-			do{
+	func decodeFromContext(applicationContext: [String: Any]) {
+		if let payload = applicationContext["timetable"] as? Data {
+			do {
 				UserDefaults.standard.set(payload, forKey: "timetable")
 				self.lessons =  try JSONDecoder().decode([[String]].self, from: payload)
-			}catch{
+			} catch {
 				print("JSON: \(error)")
 			}
 			
@@ -93,17 +93,16 @@ class InterfaceController: WKInterfaceController {
 	
 }
 
-extension InterfaceController:WCSessionDelegate{
+extension InterfaceController: WCSessionDelegate {
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		if let error = error {
             fatalError("Can't activate session with error: \(error.localizedDescription)")
         }
 		print("WC Session activated with state: \(activationState.rawValue)")
 	}
-	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
 		print(#function)
 		decodeFromContext(applicationContext: applicationContext)
 	}
-	
 	
 }

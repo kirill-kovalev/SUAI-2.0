@@ -10,31 +10,29 @@ import UIKit
 import SUAI_API
 import SafariServices
 
-
 class FeedListViewController: UITableViewController {
     init() {
         self._stream = .empty
         super.init(style: .plain)
     }
-    init(stream:SAFeedStream){
+    init(stream: SAFeedStream) {
         self._stream = stream
 		super.init(style: .plain)
     }
 	
-    private var isLoading:Bool = false
+    private var isLoading: Bool = false
 	
-    private var _stream:SAFeedStream
-    var stream:SAFeedStream{
-        get{
+    private var _stream: SAFeedStream
+    var stream: SAFeedStream {
+        get {
             self._stream
         }
-        set{
+        set {
             self._stream = newValue
             self.isLoading = false
             self.updateView()
         }
     }
-    
     
 	//private var images:[IndexPath:UIImage] = [:]
     
@@ -43,11 +41,11 @@ class FeedListViewController: UITableViewController {
 		self.tableView.allowsSelection = false
 		self.tableView.register(FeedTableCell.self, forCellReuseIdentifier: "newsCell")
 		self.tableView.rowHeight = UITableView.automaticDimension
-		self.tableView.estimatedRowHeight = 500;
+		self.tableView.estimatedRowHeight = 500
 		tableView.backgroundColor = .clear
 		tableView.separatorStyle = .none
     }
-    func updateView(){
+    func updateView() {
 		self.tableView.reloadData()
         DispatchQueue.global(qos: .background).async {
             self.isLoading = true
@@ -66,10 +64,10 @@ class FeedListViewController: UITableViewController {
 
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentSize.height <= (scrollView.contentOffset.y + scrollView.frame.height) {
-            if !self.isLoading{
+            if !self.isLoading {
                 DispatchQueue.global(qos: .background).async {
                     self.isLoading = true
-                    let _ = self.stream.next()
+                    _ = self.stream.next()
                     DispatchQueue.main.async {
 						self.tableView.reloadData()
                         self.isLoading = false
@@ -80,7 +78,7 @@ class FeedListViewController: UITableViewController {
     }
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if (indexPath.row == self.stream.feed.count ){
+		if indexPath.row == self.stream.feed.count {
 			let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 			let indicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
 			indicator.startAnimating()
@@ -98,13 +96,13 @@ class FeedListViewController: UITableViewController {
 			return cell
 		}
 		NetworkManager.dataTask(url: self.stream.feed[indexPath.row].imageURL ?? "") { (result) in
-			switch(result){
+			switch result {
 				case .success(let data):
-					guard let image = UIImage(data: data) else{ return }
-					DispatchQueue.main.async{
+					guard let image = UIImage(data: data) else { return }
+					DispatchQueue.main.async {
 						(tableView.cellForRow(at: indexPath) as? FeedTableCell)?.newsView.imageView.image = image
 					}
-					break
+
 				case .failure: break
 			}
 		}
@@ -115,16 +113,16 @@ class FeedListViewController: UITableViewController {
 		cell.updateConstraintsIfNeeded()
 		cell.container.addTarget(action: { (_) in
 			let element = self.stream.feed[indexPath.row]
-			if let url = URL(string: "vk://\(element.postUrl)"){
+			if let url = URL(string: "vk://\(element.postUrl)") {
 				UIApplication.shared.open(url, options: [:], completionHandler: { success in
-					if !success{ self.openPost(url: element.postUrl)}
+					if !success { self.openPost(url: element.postUrl)}
 				})
 			} else { self.openPost(url: element.postUrl)}
 		}, for: .touchUpInside)
 		return cell
 		
 	}
-	func openPost(url:String){
+	func openPost(url: String) {
 		let config = SFSafariViewController.Configuration()
 		guard let url = URL(string: "https://\(url)") else {return}
 		let vc = SFSafariViewController(url: url, configuration: config)
@@ -137,16 +135,10 @@ class FeedListViewController: UITableViewController {
 	
 }
 
-
-
-
-
-
-
-class FeedTableCell:UITableViewCell{
-	let newsView:PocketNewsView = PocketNewsView(big: true)
+class FeedTableCell: UITableViewCell {
+	let newsView: PocketNewsView = PocketNewsView(big: true)
 	lazy var container = PocketScalableContainer(content: PocketDivView(content: newsView))
-	private var url:String = ""
+	private var url: String = ""
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -157,7 +149,7 @@ class FeedTableCell:UITableViewCell{
 		super.init(coder: coder)
 		initSetup()
 	}
-	private func initSetup(){
+	private func initSetup() {
 		Logger.print(from: #function, "init setup")
 		self.backgroundColor = .clear
 		self.contentView.addSubview(container)
@@ -167,17 +159,15 @@ class FeedTableCell:UITableViewCell{
 		}
 	}
 
-	private func convertoToK(_ num:Int)->String{
+	private func convertoToK(_ num: Int) -> String {
 		if num > 999 {
 			return String(format: "%.1fК", Float(num)/1000)
-		}else{
+		} else {
 			return "\(num)"
 		}
 	}
 	
-	
-	
-	func setupView(element:SAFeedElement){
+	func setupView(element: SAFeedElement) {
 		self.contentView.addSubview(container)
 		newsView.authorLabel.text = element.source.name
 		newsView.titleLabel.text = element.title

@@ -10,14 +10,14 @@
 import UIKit
 
 class DeadlineEditModalView: View {
-    private func sectionLabelGenerator(_ text:String) -> UILabel{
+    private func sectionLabelGenerator(_ text: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = text
         return label
     }
-    private func sectionTextGenerator(_ text:String = "") -> UILabel{
+    private func sectionTextGenerator(_ text: String = "") -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -25,7 +25,7 @@ class DeadlineEditModalView: View {
         label.text = text
         return label
     }
-    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> PocketLongActionButton {
+    private func buttonGenerator(_ text: String, image: UIImage? = nil) -> PocketLongActionButton {
         let btn = PocketLongActionButton(frame: .zero)
         btn.setTitle(text, for: .normal)
         btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -33,7 +33,7 @@ class DeadlineEditModalView: View {
         btn.setTitleColor(Asset.PocketColors.pocketGray.color, for: .disabled)
         return btn
     }
-    private func textFieldGenerator(_ title:String = "")->UITextField{
+    private func textFieldGenerator(_ title: String = "") -> UITextField {
         let field = PocketTextField(frame: .zero)
         field.placeholder = title
         field.font = FontFamily.SFProDisplay.regular.font(size: 14)
@@ -47,10 +47,8 @@ class DeadlineEditModalView: View {
         field.doneAccessory = true
         return field
     }
-    
-    
 
-	private func notRequiredGenerator()  -> UILabel{
+	private func notRequiredGenerator() -> UILabel {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketGray.color
@@ -58,16 +56,16 @@ class DeadlineEditModalView: View {
 		return label
 	}
 	
-    lazy var nameSectionTitle:UILabel = sectionLabelGenerator("Название дедлайна")
-    lazy var commentSectionTitle:UILabel = sectionLabelGenerator("Описание дедлайна")
-    lazy var dateSectionTitle:UILabel = sectionLabelGenerator("Дата дедлайна")
-    lazy var lessonSectionTitle:UILabel = sectionLabelGenerator("Предмет")
+    lazy var nameSectionTitle: UILabel = sectionLabelGenerator("Название дедлайна")
+    lazy var commentSectionTitle: UILabel = sectionLabelGenerator("Описание дедлайна")
+    lazy var dateSectionTitle: UILabel = sectionLabelGenerator("Дата дедлайна")
+    lazy var lessonSectionTitle: UILabel = sectionLabelGenerator("Предмет")
 	
 	lazy var commentNRLabel = notRequiredGenerator()
 	lazy var lessonNRLabel = notRequiredGenerator()
     
-    lazy var nameLabel:UITextField = textFieldGenerator("Выполнить лабораторную работу №1")
-    lazy var commentLabel:UITextView = {
+    lazy var nameLabel: UITextField = textFieldGenerator("Выполнить лабораторную работу №1")
+    lazy var commentLabel: UITextView = {
         let field = UITextViewFixed(frame: .zero)
         field.layer.cornerRadius = 10
         field.backgroundColor = Asset.PocketColors.pocketLightGray.color
@@ -79,13 +77,13 @@ class DeadlineEditModalView: View {
         return field
     }()
     
-    lazy var formatter:DateFormatter = {
+    lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "RU")
         formatter.dateFormat = "YYYY-MM-dd"
         return formatter
     }()
-    lazy var datePicker:UIDatePicker = {
+    lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.locale = Locale(identifier: "Ru")
         datePicker.datePickerMode = .date
@@ -97,15 +95,14 @@ class DeadlineEditModalView: View {
         return datePicker
     }()
     
-    lazy var dateLabel:UITextField = {
-    
+    lazy var dateLabel: UITextField = {
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dateCancelSeleceted))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dateSeleceted))
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        toolbar.setItems([cancelButton,spacer,doneButton], animated: true)
+        toolbar.setItems([cancelButton, spacer, doneButton], animated: true)
 
         let dateLabel = textFieldGenerator("2012-01-01")
         
@@ -115,7 +112,7 @@ class DeadlineEditModalView: View {
         return dateLabel
     }()
     
-    @objc private func dateSeleceted(){
+    @objc private func dateSeleceted() {
         guard let inputView = dateLabel.inputView as? UIDatePicker else {
             dateLabel.resignFirstResponder()
             return
@@ -123,27 +120,20 @@ class DeadlineEditModalView: View {
         self.dateLabel.text = formatter.string(from: inputView.date)
         dateLabel.resignFirstResponder()
     }
-    @objc private func dateCancelSeleceted(){
+    @objc private func dateCancelSeleceted() {
         dateLabel.resignFirstResponder()
     }
     
-    
-    
     lazy var lessonPicker = UIPickerView()
     
-    lazy var lessonLabel:UITextField = {
+    lazy var lessonLabel: UITextField = {
 		let lessonLabel = PocketDropdownField(frame: .zero)
 		lessonLabel.text = "Не выбрано"
         lessonLabel.inputView = lessonPicker
         return lessonLabel
     }()
     
-    
-    
-    lazy var closeButton:PocketLongActionButton = buttonGenerator("Создать дедлайн")
-    
-    
-    
+    lazy var closeButton: PocketLongActionButton = buttonGenerator("Создать дедлайн")
     
     required init() {
         super.init()
@@ -151,7 +141,7 @@ class DeadlineEditModalView: View {
         setupConstraints()
     }
     
-    func addViews(){
+    func addViews() {
         self.addSubview(nameSectionTitle)
         self.addSubview(commentSectionTitle)
 		self.addSubview(commentNRLabel)
@@ -169,7 +159,7 @@ class DeadlineEditModalView: View {
         self.addSubview(closeButton)
         
     }
-    func setupConstraints(){
+    func setupConstraints() {
         nameSectionTitle.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
         }
@@ -224,30 +214,26 @@ class DeadlineEditModalView: View {
         }
     }
     
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 }
 
-
-
-
 @IBDesignable class UITextViewFixed: UITextView {
-	private class Delegate:NSObject,UITextViewDelegate{
+	private class Delegate: NSObject, UITextViewDelegate {
 		func textViewDidChange(_ textView: UITextView) {
 			(textView as? UITextViewFixed)?.placehlderLabel.isHidden = (textView.text != "")
 		}
 	}
 	override init(frame: CGRect, textContainer: NSTextContainer?) {
-		super.init(frame:frame,textContainer:textContainer)
+		super.init(frame: frame, textContainer: textContainer)
 		
 	}
-	public var placeholder:String{
-		get{self.placehlderLabel.text ?? ""}
-		set{self.placehlderLabel.text = newValue}
+	public var placeholder: String {
+		get {self.placehlderLabel.text ?? ""}
+		set {self.placehlderLabel.text = newValue}
 	}
-	lazy var placehlderLabel:UILabel = {
+	lazy var placehlderLabel: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.numberOfLines = 0
 		label.font = self.font
@@ -259,7 +245,7 @@ class DeadlineEditModalView: View {
 	}()
 	private var editController = Delegate()
 	required init?(coder: NSCoder) {
-		super.init(coder:coder)
+		super.init(coder: coder)
 		self.addSubview(placehlderLabel)
 	}
 	override func layoutSubviews() {

@@ -15,15 +15,14 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     // MARK: - Main AppDelegate lifecycle
     
     var window: UIWindow?
     
     private let vkDelegate  = (UINib(nibName: "VkLogin", bundle: nil).instantiate(withOwner: nil, options: nil).first as! VKLoginPageViewController)
     
-	func setupWatchConnetivity(){
-		if WCSession.isSupported(){
+	func setupWatchConnetivity() {
+		if WCSession.isSupported() {
 			let session = WCSession.default
 			session.delegate = self
 			session.activate()
@@ -36,20 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		VK.sessions.default.config.language = .ru
         if VK.sessions.default.state != .authorized {
             self.PresentVKLoginPage()
-        }else{
+        } else {
             self.LoggedInVK()
 			setupWatchConnetivity()
         }
         return true
     }
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         let app = options[.sourceApplication] as? String
         VK.handle(url: url, sourceApplication: app )
         return true
     }
     
-    
-    func LoggedInVK(){
+    func LoggedInVK() {
 		let token = VK.sessions.default.accessToken?.get()
         PocketAPI.shared.setToken( token ?? "")
 		window = UIWindow(frame: UIScreen.main.bounds)
@@ -57,20 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
     
-    
-    
-    func PresentVKLoginPage(){
+    func PresentVKLoginPage() {
         VK.release()
         window = UIWindow(frame: UIScreen.main.bounds)
 		window?.rootViewController = self.vkDelegate
         window?.makeKeyAndVisible()
-        
 
     }
-    
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
-		
 			SATracker.track("start")
 		
 //		if !NotificationManager.shared.isAuth {
@@ -88,18 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Logger.save()
 	}
     
-  
-   
-    
 }
 
-
-extension UIApplication{
-    var appDelegate: AppDelegate{
+extension UIApplication {
+    var appDelegate: AppDelegate {
         return self.delegate as! AppDelegate
     }
 }
-extension AppDelegate:WCSessionDelegate{
+extension AppDelegate: WCSessionDelegate {
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		print(#function)
 		if let error = error {
@@ -115,52 +104,51 @@ extension AppDelegate:WCSessionDelegate{
 	func sessionDidDeactivate(_ session: WCSession) {
 		print(#function)
 	}
-	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+	func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
 		DispatchQueue.global().async {
 			let settings = SAUserSettings.shared
 			let group = settings.group
 			
 			guard let user = SASchedule.shared.groups.get(name: group! ) else {return}
-			let _ = SASchedule.shared.load(for: user)
+			_ = SASchedule.shared.load(for: user)
 			let timetable = SASchedule.shared.get(for: user)
 			self.setWatchTimetable(timetable)
 		}
 	}
-	func setWatchTimetable(_ tt:SATimetable){
+	func setWatchTimetable(_ tt: SATimetable) {
 		print("Setting Watch TT")
-		if WCSession.isSupported(){
+		if WCSession.isSupported() {
 			MyAppTracker.track("watch Supported")
 			if WCSession.default.activationState == .activated {
 				MyAppTracker.track("watch acivated")
 				let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
 				let curWeek = SASchedule.shared.settings?.week ?? .odd
 				let timetable = tt.get(week: curWeek, day: today).map { lesson -> [String] in
-					let preps = lesson.prepods.map{$0.shortName}.joined(separator: ";\n")
+					let preps = lesson.prepods.map {$0.shortName}.joined(separator: ";\n")
 					let tags = lesson.tags.joined(separator: "; ")
-					return [lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps,tags]
+					return [lesson.type.rawValue, lesson.name, "\(lesson.start) – \(lesson.end)", preps, tags]
 				}
 				
-				do{
+				do {
 					let encoded = try JSONEncoder().encode(timetable)
-					try WCSession.default.updateApplicationContext(["timetable":encoded])
-				}catch{print(error)}
+					try WCSession.default.updateApplicationContext(["timetable": encoded])
+				} catch {print(error)}
 			}
 		}
 		print("End of Setting Watch TT")
 	}
 	
-	
 }
 
-extension AppDelegate{
+extension AppDelegate {
 	static let shortcutNotification = NSNotification.Name(rawValue: "AppDelegate.shortcutNotification")
-	static var lastShortcut:UIApplicationShortcutItem? = nil
+	static var lastShortcut: UIApplicationShortcutItem? = nil
 	func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
 		Self.lastShortcut = shortcutItem
-		NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+		NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut": shortcutItem])
 	}
 }
-extension AppDelegate : UNUserNotificationCenterDelegate{
+extension AppDelegate: UNUserNotificationCenterDelegate {
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 		Logger.print(from: "UNNotifications", "start")
 		let identifier = response.notification.request.identifier
@@ -168,11 +156,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
 		if identifier.contains("Lesson") {
 			let shortcutItem = UIApplicationShortcutItem(type: "tab2", localizedTitle: "")
 			Self.lastShortcut = shortcutItem
-			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
-		}else if identifier.contains("Deadline"){
+			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut": shortcutItem])
+		} else if identifier.contains("Deadline") {
 			let shortcutItem = UIApplicationShortcutItem(type: "tab1", localizedTitle: "")
 			Self.lastShortcut = shortcutItem
-			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut":shortcutItem])
+			NotificationCenter.default.post(name: AppDelegate.shortcutNotification, object: nil, userInfo: ["shortcut": shortcutItem])
 		}
 		completionHandler()
 	}

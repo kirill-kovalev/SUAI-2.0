@@ -8,15 +8,15 @@
 
 import UIKit
 
-class AboutUsView:View{
-	let image:UIImageView = {
+class AboutUsView: View {
+	let image: UIImageView = {
 		let view = UIImageView(frame: .zero)
 		view.layer.masksToBounds = true
 		view.layer.cornerRadius = 10
 		view.image = UIImage(named: "AppIconLight")
 		return view
 	}()
-	let title:UILabel = {
+	let title: UILabel = {
 		let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 		
 		let label = UILabel(frame: .zero)
@@ -25,7 +25,7 @@ class AboutUsView:View{
 		label.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		return label
 	}()
-	let vkButton:Button = {
+	let vkButton: Button = {
 		let label = Button(frame: .zero)
 		label.setTitle("Группа ВКонтакте", for: .normal)
 		label.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
@@ -39,12 +39,12 @@ class AboutUsView:View{
 		addViews()
 		setupConstraints()
 	}
-	func addViews(){
+	func addViews() {
 		self.addSubview(imageContainer)
 		self.addSubview(title)
 		self.addSubview(vkButton)
 	}
-	func setupConstraints(){
+	func setupConstraints() {
 		imageContainer.snp.makeConstraints { (make) in
 			make.top.left.bottom.equalToSuperview()
 			make.width.height.equalTo(55)

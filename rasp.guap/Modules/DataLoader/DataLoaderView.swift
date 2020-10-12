@@ -8,22 +8,21 @@
 
 import UIKit
 
-class DataLoaderView:View {
-	
-	let label:UILabel = {
+class DataLoaderView: View {
+	let label: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.numberOfLines = 0
 		label.font = FontFamily.TTCommons.demiBold.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketGray.color
 		return label
 	}()
-	let image:UIImageView = {
+	let image: UIImageView = {
 		let image = UIImageView(frame: .zero)
 		image.image = Asset.AppImages.launchScreen.image
 		image.contentMode = .scaleAspectFill
 		return image
 	}()
-	let reloadButton:Button = {
+	let reloadButton: Button = {
 		let btn = Button(frame: .zero)
 		btn.setImage(Asset.SystemIcons.reload.image.withRenderingMode(.alwaysTemplate), for: .normal)
 		btn.imageView?.tintColor = Asset.PocketColors.pocketDarkBlue.color
@@ -31,14 +30,13 @@ class DataLoaderView:View {
 		return btn
 	}()
 	
-	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	required init() {
 		super.init()
 		self.addSubview(image)
 		self.addSubview(label)
 		self.addSubview(reloadButton)
-		image.snp.makeConstraints{$0.bottom.left.top.right.equalToSuperview()}
+		image.snp.makeConstraints {$0.bottom.left.top.right.equalToSuperview()}
 		label.snp.makeConstraints { (make) in
 			make.centerX.equalToSuperview()
 			make.bottom.lessThanOrEqualToSuperview().inset(60)
@@ -51,6 +49,5 @@ class DataLoaderView:View {
 			make.height.width.equalTo(30)
 		}
 	}
-	
 	
 }

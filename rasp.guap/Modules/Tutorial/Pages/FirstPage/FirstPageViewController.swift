@@ -8,18 +8,16 @@
 
 import UIKit
 
-class FirstPageViewController : ViewController<FirstPageView> {
-    
-    var delegate:FirstTutorialPageSkipDelegate?
+class FirstPageViewController: ViewController<FirstPageView> {
+    var delegate: FirstTutorialPageSkipDelegate?
     
     // MARK: - View Controller lifecycle
     override func viewDidLoad() {
         self.rootView.tapGesture.addTarget(self, action: #selector(action(_:)))
     }
     
-    
     // MARK: - Actions
-    @objc private func action(_ sender:UITapGestureRecognizer){
+    @objc private func action(_ sender: UITapGestureRecognizer) {
         self.delegate?.skipPages()
     }
 }

@@ -9,8 +9,7 @@
 import UIKit
 
 class TutorialScreenViewController: ViewController<TutorialScreenView> {
-    
-    private let pages : [UIViewController] = [FirstPageViewController(),SecondPageViewController(),ThirdPageViewController(),FourthPageViewController(),FifthPageViewController(),GroupSelectPageViewController()]
+    private let pages: [UIViewController] = [FirstPageViewController(), SecondPageViewController(), ThirdPageViewController(), FourthPageViewController(), FifthPageViewController(), GroupSelectPageViewController()]
     
     // MARK: - ViewController lifecycle
     
@@ -25,15 +24,11 @@ class TutorialScreenViewController: ViewController<TutorialScreenView> {
             page.didMove(toParent: self)
         }
         
-        self.rootView.backButton.addTarget(action: { (sender) in
+        self.rootView.backButton.addTarget(action: { (_) in
             self.navigationController?.popViewController(animated: true)
         }, for: .touchUpInside)
         
     }
-    
-
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -41,7 +36,7 @@ class TutorialScreenViewController: ViewController<TutorialScreenView> {
     }
     
     // MARK: - support functions
-    private func moveElipse( position:Int){
+    private func moveElipse( position: Int) {
         UIView.animate(withDuration: 0.35) {
             self.rootView.elipse.setState(position: position)
         }
@@ -49,15 +44,14 @@ class TutorialScreenViewController: ViewController<TutorialScreenView> {
     
 }
 
-
-extension TutorialScreenViewController:PagedViewDelegate {
+extension TutorialScreenViewController: PagedViewDelegate {
     func pagedViewDidChanged(_ pageNumber: Int) {
         moveElipse(position: pageNumber)
     }
 }
 
-extension TutorialScreenViewController:FirstTutorialPageSkipDelegate {
+extension TutorialScreenViewController: FirstTutorialPageSkipDelegate {
     func skipPages() {
-        self.rootView.pagedView.setPage(pageNumber: self.rootView.pagedView.pageControl.numberOfPages - 1 , animated: true)
+        self.rootView.pagedView.setPage(pageNumber: self.rootView.pagedView.pageControl.numberOfPages - 1, animated: true)
     }
 }

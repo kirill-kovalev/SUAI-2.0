@@ -8,73 +8,70 @@
 
 import UIKit
 
-
 // temp class
 // will be moved to model
-enum DedadlineState{
+enum DedadlineState {
     case nearest
     case open
     case closed
 }
 
 class PocketDeadlineView: View {
-    
-    public func setLessonText(lesson name:String?){
+    public func setLessonText(lesson name: String?) {
         self.lessonLabel.text = name
         if name == "" || name == nil {
             self.calendarIcon.snp.updateConstraints { (make) in
                 make.width.equalTo(0)
             }
-        }else{
+        } else {
             self.calendarIcon.snp.updateConstraints { (make) in
                 make.width.equalTo(20)
             }
         }
         
     }
-    public func setDescriptionText(description text:String?){
+    public func setDescriptionText(description text: String?) {
         if text == "" || text == nil || text == " " {
             self.articleIcon.snp.updateConstraints { (make) in
                 make.width.equalTo(0)
             }
-        }else{
+        } else {
             self.articleIcon.snp.updateConstraints { (make) in
                 make.width.equalTo(20)
             }
         }
     }
-    public func setTitleText(description text:String?){
+    public func setTitleText(description text: String?) {
         self.titleLabel.text = text
     }
-    public func setState(state:DedadlineState){
+    public func setState(state: DedadlineState) {
         switch state {
         case .nearest:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineRed.color
             imageView.tintColor = Asset.PocketColors.pocketRedButtonText.color
-            
+
             checkbox.isChecked = false
-            break;
+
         case .open:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.recent.image)
             imageView.backgroundColor = Asset.PocketColors.pocketBlue.color
             imageView.tintColor = Asset.PocketColors.buttonOutlineBorder.color
             
             checkbox.isChecked = false
-            break;
+
         case .closed:
             imageView.image = prepareIcon(Asset.AppImages.DeadlineStateImages.done.image)
             imageView.backgroundColor = Asset.PocketColors.pocketDeadlineGreen.color
             imageView.tintColor = Asset.PocketColors.pocketGreenButtonText.color
             
             checkbox.isChecked = true
-            break;
         }
     }
     
     // MARK: - views
     
-    let titleLabel:UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
@@ -83,7 +80,7 @@ class PocketDeadlineView: View {
         return label
     }()
     
-    let lessonLabel:UILabel = {
+    let lessonLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 13)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -92,7 +89,7 @@ class PocketDeadlineView: View {
         return label
     }()
     
-    let imageView:UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
@@ -101,29 +98,25 @@ class PocketDeadlineView: View {
         return imageView
     }()
     
-    let articleIcon:UIImageView = {
+    let articleIcon: UIImageView = {
         let icon = UIImageView(image: Asset.AppImages.DeadlineStateImages.article.image )
         icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
         icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
         return icon
     }()
-    let calendarIcon:UIImageView = {
+    let calendarIcon: UIImageView = {
         let icon = UIImageView(image: Asset.AppImages.DeadlineStateImages.calendar.image )
         icon.image = icon.image?.withRenderingMode(.alwaysTemplate)
         icon.tintColor = Asset.PocketColors.pocketDarkBlue.color
         return icon
     }()
-    let checkbox:CheckBox = {
+    let checkbox: CheckBox = {
         let checkbox = CheckBox(frame: .zero)
         checkbox.checkmarkColor = Asset.PocketColors.pocketDarkBlue.color
         checkbox.uncheckedBorderColor = Asset.PocketColors.pocketLightGray.color
         checkbox.checkedBorderColor =  Asset.PocketColors.pocketDarkBlue.color
         return checkbox
     }()
-    
-    
-    
-    
     
     required init() {
         super.init()
@@ -133,8 +126,7 @@ class PocketDeadlineView: View {
         
     }
     
-    private func addViews(){
-        
+    private func addViews() {
         self.addSubview(lessonLabel)
         self.addSubview(titleLabel)
         self.addSubview(imageView)
@@ -145,7 +137,7 @@ class PocketDeadlineView: View {
         self.addSubview(self.checkbox)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         self.imageView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -183,22 +175,19 @@ class PocketDeadlineView: View {
             make.right.equalToSuperview()
         }
         
-        
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func prepareIcon(_ image:UIImage) -> UIImage {
+    private func prepareIcon(_ image: UIImage) -> UIImage {
         let newSize = CGSize(width: 28, height: 28)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage.withRenderingMode(.alwaysTemplate)
     }
-    
     
 }

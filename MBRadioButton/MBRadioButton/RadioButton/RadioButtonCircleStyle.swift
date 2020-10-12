@@ -10,7 +10,6 @@ import UIKit
 
 /// Define RadioButtonCircleStyle
 public struct MBRadioButtonCircleStyle {
-    
     let outer: CGFloat
     let inner: CGFloat
     let lineWidth: CGFloat

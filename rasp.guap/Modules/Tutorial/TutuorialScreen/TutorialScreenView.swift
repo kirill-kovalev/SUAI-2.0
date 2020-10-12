@@ -9,30 +9,26 @@
 import UIKit
 
 class TutorialScreenView: View, UIScrollViewDelegate {
-    
-    
-    let pagedView:PagedView = {
-        let pages =  PagedView();
+    let pagedView: PagedView = {
+        let pages =  PagedView()
         pages.pageControl.currentPageIndicatorTintColor =  Asset.PocketColors.pocketDarkBlue.color
         pages.pageControl.pageIndicatorTintColor = Asset.PocketColors.pocketBlue.color
         return pages
     }()
     let elipse = TutorialScreenView.BackgroundElipse()
-    let backButton:Button = {
-        let btn = Button(frame: .zero);
+    let backButton: Button = {
+        let btn = Button(frame: .zero)
         btn.setTitle("Назад", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         return btn
     }()
 
     func addViews() {
-        
         self.addSubview(elipse)
         self.addSubview(pagedView)
         self.addSubview(backButton)
 
     }
-    
     
     func setupConstraints() {
         self.pagedView.snp.makeConstraints { (make) in
@@ -51,7 +47,6 @@ class TutorialScreenView: View, UIScrollViewDelegate {
         
     }
     
-    
     required init() {
         super.init()
         addViews()
@@ -64,5 +59,3 @@ class TutorialScreenView: View, UIScrollViewDelegate {
     }
 
 }
-
-

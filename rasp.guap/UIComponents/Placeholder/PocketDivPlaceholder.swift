@@ -9,14 +9,14 @@
 import UIKit
 import SnapKit
 
-class PocketDivPlaceholder:UIView{
-	let loadingIndicator:PocketActivityIndicatorView = {
+class PocketDivPlaceholder: UIView {
+	let loadingIndicator: PocketActivityIndicatorView = {
         let indicator = PocketActivityIndicatorView(style: .gray)
         indicator.color = Asset.PocketColors.pocketGray.color
         indicator.hidesWhenStopped = true
         return indicator
     }()
-    let titleLabel:UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.bold.font(size: 20)
         label.textColor = Asset.PocketColors.pocketBlack.color
@@ -24,7 +24,7 @@ class PocketDivPlaceholder:UIView{
 		label.numberOfLines = 0
         return label
     }()
-	private let subtitleLabel:UILabel = {
+	private let subtitleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -32,49 +32,49 @@ class PocketDivPlaceholder:UIView{
 		label.numberOfLines = 0
         return label
     }()
-    private let imageView:UIImageView = {
+    private let imageView: UIImageView = {
 		let imageView = UIImageView(frame: .zero)
         imageView.tintColor = Asset.PocketColors.accent.color
         return imageView
     }()
 	
-	public var title:String? {
-		get{
+	public var title: String? {
+		get {
 			self.titleLabel.text
 		}
-		set{
+		set {
 			self.titleLabel.text = newValue
 		}
 	}
-	public var subtitle:String? {
-		get{
+	public var subtitle: String? {
+		get {
 			self.subtitleLabel.text
 		}
-		set{
+		set {
 			self.subtitleLabel.text = newValue
 		}
 	}
-	public var image:UIImage?{
-		get{
+	public var image: UIImage? {
+		get {
 			self.imageView.image
 		}
-		set{
+		set {
 			self.imageView.image = newValue?.withRenderingMode(.alwaysTemplate)
 		}
 	}
-	public var imageTint:UIColor {
-		get{
+	public var imageTint: UIColor {
+		get {
 			imageView.tintColor
 		}
-		set{
+		set {
 			imageView.tintColor = newValue
 		}
 		
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-	init(title:String?=nil,subtitle:String?=nil,image:UIImage?=nil,tint:UIColor = Asset.PocketColors.accent.color){
-		super.init(frame:.zero)
+	init(title: String?=nil, subtitle: String?=nil, image: UIImage?=nil, tint: UIColor = Asset.PocketColors.accent.color) {
+		super.init(frame: .zero)
 		addViews()
 		setupConstraints()
 		self.title = title
@@ -84,40 +84,37 @@ class PocketDivPlaceholder:UIView{
 		self.startLoading()
 	}
 	
-	
-	func startLoading(){
+	func startLoading() {
 		self.imageView.isHidden = true
 		self.titleLabel.isHidden = true
 		self.subtitleLabel.isHidden = true
 		self.loadingIndicator.startAnimating()
 	}
-	func stopLoading(){
+	func stopLoading() {
 		self.loadingIndicator.stopAnimating()
 		self.titleLabel.isHidden = false
 		self.subtitleLabel.isHidden = false
 		self.imageView.isHidden = false
 	}
 	
-	private var heightConstraint: Constraint? = nil
-	func hide(){
+	private var heightConstraint: Constraint?
+	func hide() {
 		self.isHidden = true
 		heightConstraint?.activate()
 	}
-	func show(){
+	func show() {
 		self.isHidden = false
 		heightConstraint?.deactivate()
 	}
 	
-	
-	
-	private func addViews(){
+	private func addViews() {
 		self.addSubview(loadingIndicator)
 		self.addSubview(titleLabel)
 		self.addSubview(subtitleLabel)
 		self.addSubview(imageView)
 	}
 	
-	private func setupConstraints(){
+	private func setupConstraints() {
 		loadingIndicator.snp.makeConstraints { (make) in
 			make.center.equalToSuperview()
 			make.height.width.equalTo(45)
@@ -148,6 +145,5 @@ class PocketDivPlaceholder:UIView{
 			self.heightConstraint = make.height.equalTo(0).priority(.high).constraint
 		}
 	}
-	
     
 }

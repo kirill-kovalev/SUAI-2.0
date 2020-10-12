@@ -9,14 +9,13 @@
 import UIKit
 import SUAI_API
 
-class FourthPageViewController : ViewController<FourthPageView> {
-    
+class FourthPageViewController: ViewController<FourthPageView> {
     // MARK: - View Controller lifecycle
     override func loadView() {
         super.loadView()
     }
     
-    let preparedData:[SALesson] = [
+    let preparedData: [SALesson] = [
         SALesson(name: "Линейная алгебра", lessonNum: 1, type: .lab, prepod: SAUsers.User(Name: "Смирнов А.О.", ItemId: 0), group: SAUsers.User(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"]),
         SALesson(name: "Дифференциальные уравнения", lessonNum: 2, type: .lecture, prepod: SAUsers.User(Name: "Смирнов А.О.", ItemId: 0), group: SAUsers.User(Name: "М611", ItemId: 0), tags: ["Б.М. 12-10"]),
         SALesson(name: "Линейная алгебра", lessonNum: 3, type: .practice, prepod: SAUsers.User(Name: "Смирнов А.О.", ItemId: 0), group: SAUsers.User(Name: "М611", ItemId: 0), tags: ["Гаст. 24-12"])
@@ -34,4 +33,3 @@ class FourthPageViewController : ViewController<FourthPageView> {
     }
     
 }
-

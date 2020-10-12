@@ -9,15 +9,14 @@
 import UIKit
 import WebKit
 
-
-class InfoTabView:View {
-    let webView:WKWebView = {
+class InfoTabView: View {
+    let webView: WKWebView = {
         let view = WKWebView(frame: .zero)
 		
 		view.allowsLinkPreview = false
         return view
     }()
-	let indicator:PocketActivityIndicatorView = {
+	let indicator: PocketActivityIndicatorView = {
 		let indicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 		indicator.startAnimating()
 		return indicator
@@ -31,7 +30,6 @@ class InfoTabView:View {
 		label.text = "Ждите в ближайших обновлениях"
 		return label
 	}()
-	
     
     required init() {
         super.init()
@@ -42,7 +40,7 @@ class InfoTabView:View {
 			make.top.left.right.bottom.equalTo(self.safeAreaLayoutGuide)
         }
 
-		indicator.snp.makeConstraints{
+		indicator.snp.makeConstraints {
 			$0.center.equalToSuperview()
 			$0.width.height.equalTo(40)
 		}

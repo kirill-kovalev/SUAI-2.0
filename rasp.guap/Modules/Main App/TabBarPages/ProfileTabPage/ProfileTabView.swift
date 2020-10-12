@@ -8,31 +8,31 @@
 
 import UIKit
 
-class ProfileTabView:TabBarPageView {
-	lazy var scroll:UIScrollView = {
+class ProfileTabView: TabBarPageView {
+	lazy var scroll: UIScrollView = {
 		let scroll = UIScrollView(frame: .zero)
 		
 		return scroll
 	}()
-	lazy var stack:UIStackView = {
+	lazy var stack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
         stack.spacing = 10
         return stack
     }()
     
-	required init(){
+	required init() {
         super.init()
         addViews()
         setupConstraints()
     }
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
-	func addViews(){
+	func addViews() {
 		self.addSubview(scroll)
         scroll.addSubview(self.stack)
     }
-    func setupConstraints(){
+    func setupConstraints() {
 		scroll.snp.makeConstraints { (make) in
 			make.top.equalToSuperview().offset(12)
 			make.left.right.equalToSuperview()
@@ -46,7 +46,7 @@ class ProfileTabView:TabBarPageView {
         }
     }
 	
-    func labelGenerator(title:String)->UILabel{
+    func labelGenerator(title: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.bold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -54,8 +54,8 @@ class ProfileTabView:TabBarPageView {
         return label
     }
 	
-    func addBlock(title:String?,view:UIView?){
-        if title != nil{
+    func addBlock(title: String?, view: UIView?) {
+        if title != nil {
             self.stack.addArrangedSubview(labelGenerator(title: title!))
         }
         if view != nil {
@@ -63,7 +63,5 @@ class ProfileTabView:TabBarPageView {
         }
         
     }
-	
-	
 	
 }

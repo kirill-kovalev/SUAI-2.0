@@ -11,13 +11,11 @@ import UserNotifications
 import SwiftyVK
 
 class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
-
 	override func viewDidLoad() {
 		self.setTitle("DEBUG")
 		self.content.textField.text = Logger.log
 		self.content.oldimetable.toggle.isOn = AppSettings.isOldTimetableEnabled
 		self.content.oldimetable.toggle.addTarget(self, action: #selector(self.setOldTimetable), for: .valueChanged)
-		
 		
 		self.content.goodTB.toggle.isOn = AppSettings.isGoodTabBar
 		self.content.goodTB.toggle.addTarget(self, action: #selector(self.setGoodTabBar), for: .valueChanged)
@@ -26,11 +24,9 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 		self.content.listNotificationsBtn.addTarget(action: { (_) in
 			UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
 				DispatchQueue.main.async {
-					
-					
 					if requests.isEmpty {
 						self.content.textField.text = "no pending notifications "
-					}else{
+					} else {
 						self.content.textField.text = ""
 					}
 					for r in requests {
@@ -46,10 +42,10 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 			Logger.print("VK: start check")
 			if VK.needToSetUp {
 				Logger.print("VK: needsToSetup")
-			}else{
+			} else {
 				Logger.print("VK: set up ok")
 				Logger.print("VK: session status \(VK.sessions.default.state)")
-				VK.API.Users.get([.fields:"photo_100"]).onError { (err) in
+				VK.API.Users.get([.fields: "photo_100"]).onError { (err) in
 					Logger.print("VK: Error - \(err)")
 				}.onSuccess { (data) in
 					Logger.print("VK: success - \(data)")
@@ -57,12 +53,12 @@ class DebugSettingsViewController: ModalViewController <DebugSettingsView> {
 			}
 		}, for: .touchUpInside)
 	}
-	@objc private func setOldTimetable(){
+	@objc private func setOldTimetable() {
 		AppSettings.isOldTimetableEnabled = self.content.oldimetable.toggle.isOn
 		Logger.print(from: "", "ВСЕ ОК, отчеты отклоню, оно не вылетает, а закрывается")
 		//exit(0)
 	}
-	@objc private func setGoodTabBar(){
+	@objc private func setGoodTabBar() {
 		AppSettings.isGoodTabBar = self.content.goodTB.toggle.isOn
 		Logger.print(from: "", "ВСЕ ОК, отчеты отклоню, оно не вылетает, а закрывается")
 		//exit(0)

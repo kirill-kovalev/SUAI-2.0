@@ -8,17 +8,15 @@
 
 import UIKit
 
-
-class GroupSelectPageView:TutorialPageView{
-    
+class GroupSelectPageView: TutorialPageView {
     // MARK: - Views
-    let select:PocketDropdownField = {
+    let select: PocketDropdownField = {
         let tf = PocketDropdownField(frame: .zero)
 		tf.placeholder = "М611"
         return tf
     }()
     
-    let button:PocketLongActionButton = {
+    let button: PocketLongActionButton = {
         let button = PocketLongActionButton(frame: .zero)
         button.setTitle("Продолжить", for: .normal)
         button.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
@@ -26,7 +24,6 @@ class GroupSelectPageView:TutorialPageView{
 		button.isActive = false
         return button
     }()
-    
     
     // MARK: - View setup
     
@@ -51,14 +48,13 @@ class GroupSelectPageView:TutorialPageView{
         }
 		self.button.snp.removeConstraints()
         self.button.snp.makeConstraints { (make) in
-            
             make.center.equalToSuperview()
 			make.width.equalTo(select)
 			make.height.equalTo(40)
         }
     }
     
-    private func setupUI(){
+    private func setupUI() {
         self.title.text = "Начнем?"
         self.text.text = "Выбери свою группу и нажми “Продолжить”"
     }

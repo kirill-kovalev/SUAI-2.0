@@ -8,33 +8,31 @@
 
 import UIKit
 
-
 class FeedBriefInfoView: UIScrollView {
-    
-    lazy var stack:UIStackView = {
+    lazy var stack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
         stack.spacing = 10
         return stack
     }()
-    lazy var indicator:PocketActivityIndicatorView = {
+    lazy var indicator: PocketActivityIndicatorView = {
         let indicator = PocketActivityIndicatorView(frame: .zero)
         return indicator
     }()
-    init(){
-        super.init(frame:.zero)
+    init() {
+        super.init(frame: .zero)
         addViews()
         setupConstraints()
     }
-    func labelGenerator(title:String)->UILabel{
+    func labelGenerator(title: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.bold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
         label.text = title
         return label
     }
-    func addBlock(title:String? = nil ,view:UIView? = nil){
-        if title != nil{
+    func addBlock(title: String? = nil, view: UIView? = nil) {
+        if title != nil {
             self.stack.addArrangedSubview(labelGenerator(title: title!))
         }
         if view != nil {
@@ -46,11 +44,11 @@ class FeedBriefInfoView: UIScrollView {
         self.stack.addArrangedSubview(view)
     }
     
-    func addViews(){
+    func addViews() {
         super.addSubview(indicator)
         super.addSubview(self.stack)
     }
-    func setupConstraints(){
+    func setupConstraints() {
         indicator.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
 			make.height.width.equalTo(45)
@@ -66,6 +64,6 @@ class FeedBriefInfoView: UIScrollView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(frame:.zero)
+        super.init(frame: .zero)
     }
 }

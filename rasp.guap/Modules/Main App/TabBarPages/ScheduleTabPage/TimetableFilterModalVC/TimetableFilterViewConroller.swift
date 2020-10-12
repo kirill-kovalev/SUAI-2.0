@@ -10,26 +10,24 @@ import UIKit
 import SUAI_API
 
 class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
-	enum FilterTypes{
+	enum FilterTypes {
 		case all
 		case preps
 		case groups
 	}
     
-    private var userlist:SAUsers = SASchedule.shared.groups
+    private var userlist: SAUsers = SASchedule.shared.groups
     
-    private var activeTF:UITextField? = nil
+    private var activeTF: UITextField?
 	
-	var currentUser:SAUsers.User? = nil
-    var delegate:UserChangeDelegate?
-	var filterTypes:FilterTypes = .all
-	
+	var currentUser: SAUsers.User?
+    var delegate: UserChangeDelegate?
+	var filterTypes: FilterTypes = .all
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         
         setTitle("Фильтр")
         self.content.selector.dataSource = self
@@ -41,8 +39,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         self.content.groupField.delegate = self
         self.content.prepField.delegate = self
         
-        
-        self.content.clearButton.addTarget(action: { (sender) in
+        self.content.clearButton.addTarget(action: { (_) in
 			if let group = SAUserSettings.shared.group {
                 guard let user = SASchedule.shared.groups.get(name: group) else { return }
 				self.currentUser = user
@@ -59,8 +56,7 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
         super.viewWillAppear(animated)
 		
 		if let name = self.currentUser?.Name {
-			
-			if SASchedule.shared.preps.get(name:name) != nil{
+			if SASchedule.shared.preps.get(name: name) != nil {
 				self.content.prepField.text = name
 			} else if SASchedule.shared.groups.get(name: name) != nil {
 				self.content.groupField.text = name
@@ -71,14 +67,13 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 		self.showAll()
 		
         DispatchQueue.global(qos: .background).async {
-            let _ = SAUserSettings.shared.reload()
+            _ = SAUserSettings.shared.reload()
             SASchedule.shared.preps.loadFromServer()
             SASchedule.shared.groups.loadFromServer()
         }
     }
-    
 
-	override func keyboardDidAppear(responder:UIView,keyboardHeight:CGFloat){
+	override func keyboardDidAppear(responder: UIView, keyboardHeight: CGFloat) {
 		let screenHeight = self.view.frame.height - keyboardHeight - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0 )*1.2
 		self.rootView.transform  = CGAffineTransform(translationX: 0, y: -keyboardHeight)
 		
@@ -87,24 +82,21 @@ class TimetableFilterViewConroller: ModalViewController<TimetableFilterView> {
 		}
 		
 	}
-	
     
 }
 
-extension TimetableFilterViewConroller : UITextFieldDelegate{
-	
+extension TimetableFilterViewConroller: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-		
         self.activeTF = textField
-        if self.content.groupField == textField{
+        if self.content.groupField == textField {
             self.content.prepField.text = ""
 			self.hidePreps()
-        }else{
+        } else {
             self.content.groupField.text = ""
 			self.hideGroups()
         }
         textFieldDidChange(textField)
-		if let text = textField.text{
+		if let text = textField.text {
 			if let row = self.userlist.index(name: text) {
 				self.content.selector.selectRow(row+1, inComponent: 0, animated: false)
 			}
@@ -117,7 +109,6 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
 		self.showAll()
 		self.rootView.transform = .identity
 		
-		
         guard let text = textField.text,
               let user = userlist.search(name: text).get(index: 0) else { return }
         self.delegate?.didSetUser(user: user)
@@ -126,49 +117,45 @@ extension TimetableFilterViewConroller : UITextFieldDelegate{
     
     @objc func textFieldDidChange(_ textField: UITextField) {
 		print(#function)
-        var baseUserlist:SAUsers
-        if textField == self.content.groupField{
+        var baseUserlist: SAUsers
+        if textField == self.content.groupField {
             baseUserlist = SASchedule.shared.groups
-        }else{
+        } else {
             baseUserlist = SASchedule.shared.preps
         }
-        
         
         let searchText = textField.text ?? ""
         
         if searchText == "" {
             self.userlist = baseUserlist
-        }else{
+        } else {
             self.userlist = baseUserlist.search(name: searchText)
         }
 		
-		
-		if let curName = self.currentUser?.shortName{
+		if let curName = self.currentUser?.shortName {
 			self.content.clearButton.isHidden = (searchText == curName)
-		}else{
+		} else {
 			self.content.clearButton.isHidden = true
 		}
 
         self.content.selector.reloadAllComponents()
         
     }
-
     
 }
 
-
-extension TimetableFilterViewConroller:UIPickerViewDelegate{
+extension TimetableFilterViewConroller: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		if let user = userlist.get(index: row-1){
+		if let user = userlist.get(index: row-1) {
 			self.activeTF?.text = user.shortName
 			self.delegate?.didSetUser(user: user)
-		}else{
+		} else {
 			self.activeTF?.text = ""
 		}
 		if activeTF != nil {self.textFieldDidChange(activeTF!)}
     }
 }
-extension TimetableFilterViewConroller:UIPickerViewDataSource{
+extension TimetableFilterViewConroller: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -183,11 +170,9 @@ extension TimetableFilterViewConroller:UIPickerViewDataSource{
    
 }
 
-
-
-extension TimetableFilterViewConroller{
+extension TimetableFilterViewConroller {
 //	let prepFieldHeightConstraint
-	func hidePreps(){
+	func hidePreps() {
 		self.content.prepField.isHidden = true
 		self.content.preplabel.isHidden = true
 		self.content.prepField.layer.opacity = 0
@@ -198,7 +183,7 @@ extension TimetableFilterViewConroller{
 			make.bottom.equalTo(self.content.selector.snp.top)
 		}
 	}
-	func hideGroups(){
+	func hideGroups() {
 		self.content.groupField.isHidden = true
 		self.content.grouplabel.isHidden = true
 		self.content.groupField.layer.opacity = 0
@@ -210,8 +195,8 @@ extension TimetableFilterViewConroller{
 		}
 	}
 	
-	func showAll(){
-		if self.filterTypes == .all || self.filterTypes == .groups{
+	func showAll() {
+		if self.filterTypes == .all || self.filterTypes == .groups {
 			self.content.grouplabel.snp.removeConstraints()
 			self.content.groupField.snp.removeConstraints()
 			self.content.groupField.isHidden = false
@@ -221,7 +206,7 @@ extension TimetableFilterViewConroller{
 				self.content.grouplabel.layer.opacity = 1
 			}
 		}
-		if self.filterTypes == .all || self.filterTypes == .preps{
+		if self.filterTypes == .all || self.filterTypes == .preps {
 			self.content.preplabel.snp.removeConstraints()
 			self.content.prepField.snp.removeConstraints()
 			self.content.prepField.isHidden = false
@@ -233,7 +218,6 @@ extension TimetableFilterViewConroller{
 		}
 		self.content.selector.snp.removeConstraints()
 		self.content.setupConstraints()
-        
 		
 	}
 }

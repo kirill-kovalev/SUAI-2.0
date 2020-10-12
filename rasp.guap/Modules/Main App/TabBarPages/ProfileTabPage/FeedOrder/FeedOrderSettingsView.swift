@@ -8,18 +8,17 @@
 
 import UIKit
 
-class FeedOrderSettingsView : View{
-	
+class FeedOrderSettingsView: View {
 	let headerBlock = PocketDivView(content: FeedOrderSettingsHeader())
 	
-	let stack:UIStackView = {
+	let stack: UIStackView = {
 		let stack = UIStackView(frame: .zero)
 		stack.axis = .vertical
 		stack.spacing = 8
 		return stack
 	}()
 	lazy var stackContainer = PocketDivView(content: stack)
-	let submitButton:PocketLongActionButton = {
+	let submitButton: PocketLongActionButton = {
 		let btn = PocketLongActionButton(frame: .zero)
 		btn.setTitle("Сохранить изменения", for: .normal)
 		btn.setTitleColor(Asset.PocketColors.accent.color, for: .normal)
@@ -35,13 +34,13 @@ class FeedOrderSettingsView : View{
 		setupConstraints()
 		activityIndicator.startAnimating()
 	}
-	func addViews(){
+	func addViews() {
 		self.addSubview(headerBlock)
 		self.addSubview(stackContainer)
 		self.addSubview(submitButton)
 		stack.addArrangedSubview(activityIndicator)
 	}
-	func setupConstraints(){
+	func setupConstraints() {
 		headerBlock.snp.makeConstraints { (make) in
 			make.top.left.right.equalToSuperview()
 		}
@@ -59,7 +58,5 @@ class FeedOrderSettingsView : View{
 			make.height.width.equalTo(40)
 		}
 	}
-	
-	
 	
 }

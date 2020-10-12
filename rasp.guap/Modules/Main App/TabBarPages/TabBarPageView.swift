@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TabBarPageView : View{
-    let header:UIView = {
+class TabBarPageView: View {
+    let header: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = Asset.PocketColors.headerBackground.color
         return view
     }()
-    let title : UILabel = {
+    let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.TTCommons.bold.font(size: 22)
         label.numberOfLines = 1
@@ -22,21 +22,20 @@ class TabBarPageView : View{
         return label
     }()
 
-    private let container:UIView = {
+    private let container: UIView = {
         let view = UIView(frame: .zero)
         return view
     }()
-    private let buttonContainer:UIStackView = {
+    private let buttonContainer: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         return stack
     }()
     
-    private func addViews(){
+    private func addViews() {
         super.addSubview(header)
         header.addSubview(title)
         header.addSubview(buttonContainer)
-        
         
         super.addSubview(container)
         
@@ -45,7 +44,7 @@ class TabBarPageView : View{
         self.container.addSubview(view)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         header.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top)
             make.bottom.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.top)
@@ -64,7 +63,6 @@ class TabBarPageView : View{
 //			make.bottom.lessThanOrEqualToSuperview().offset(-10)
         }
         
-        
         container.snp.makeConstraints { (make) in
             make.top.equalTo(header.snp.bottom)
             make.left.right.equalToSuperview()
@@ -72,10 +70,10 @@ class TabBarPageView : View{
         }
     }
     
-    func setTitle(_ title:String) {
+    func setTitle(_ title: String) {
         self.title.text = title
     }
-    func addHeaderButton(_ btn:UIButton){
+    func addHeaderButton(_ btn: UIButton) {
         self.buttonContainer.addArrangedSubview(btn)
     }
     

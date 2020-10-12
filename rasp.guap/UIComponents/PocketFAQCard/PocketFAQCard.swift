@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PocketFAQCard : View {
-    let image : UIImageView = {
+class PocketFAQCard: View {
+    let image: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.image = Asset.AppImages.FAQImages.inst.image
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    let label : UILabel = {
+    let label: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -30,7 +30,7 @@ class PocketFAQCard : View {
         addViews()
         setupConstraints()
     }
-    init(title:String, image:UIImage){
+    init(title: String, image: UIImage) {
         super.init()
         addViews()
         self.image.image = image
@@ -38,12 +38,11 @@ class PocketFAQCard : View {
         setupConstraints()
     }
     
-    
-    func addViews(){
+    func addViews() {
         self.addSubview(image)
         self.addSubview(label)
     }
-    func setupConstraints(){
+    func setupConstraints() {
         label.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(0.9)
             make.bottom.equalToSuperview()

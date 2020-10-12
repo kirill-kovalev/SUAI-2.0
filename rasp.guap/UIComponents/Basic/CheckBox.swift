@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 open class CheckBox: UIControl {
-    
     @IBInspectable
     var borderWidth: CGFloat = 1.75
     
@@ -36,7 +35,7 @@ open class CheckBox: UIControl {
     
     @IBInspectable
     var isChecked: Bool = false {
-        didSet{
+        didSet {
             self.setNeedsDisplay()
         }
     }
@@ -44,7 +43,7 @@ open class CheckBox: UIControl {
     //UIImpactFeedbackGenerator object to wake up the device engine to provide feed backs
     private var feedbackGenerator: UIImpactFeedbackGenerator?
     
-    //MARK: Intialisers
+    // MARK: Intialisers
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -56,7 +55,6 @@ open class CheckBox: UIControl {
     }
     
     private func setupViews() {
-        
         self.backgroundColor = .clear
         
     }
@@ -86,7 +84,6 @@ open class CheckBox: UIControl {
     }
     
     open override func draw(_ rect: CGRect) {
-        
         //Draw the outlined component
         let newRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
         
@@ -96,8 +93,6 @@ open class CheckBox: UIControl {
         context.setLineWidth(borderWidth)
         
         let shapePath: UIBezierPath! = UIBezierPath(roundedRect: newRect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 2, height: 2))
-        
-        
         
         context.addPath(shapePath.cgPath)
         context.strokePath()
@@ -125,7 +120,6 @@ open class CheckBox: UIControl {
     //To increase the hit frame for this component
     //Usaully check boxes are small in our app's UI, so we need more touchable area for its interaction
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        
         let relativeFrame = self.bounds
         let hitTestEdgeInsets = UIEdgeInsets(top: -increasedTouchRadius, left: -increasedTouchRadius, bottom: -increasedTouchRadius, right: -increasedTouchRadius)
         let hitFrame = relativeFrame.inset(by: hitTestEdgeInsets)
@@ -134,7 +128,6 @@ open class CheckBox: UIControl {
     
     //Draws tick inside the component
     func drawCheckMark(frame: CGRect) {
-        
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: frame.minX + 0.26000 * frame.width, y: frame.minY + 0.50000 * frame.height))
@@ -146,8 +139,5 @@ open class CheckBox: UIControl {
         checkmarkColor.setFill()
         bezierPath.fill()
     }
-    
-    
-
     
 }

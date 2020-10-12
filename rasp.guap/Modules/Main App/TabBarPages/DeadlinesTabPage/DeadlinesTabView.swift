@@ -8,27 +8,26 @@
 
 import UIKit
 
-class DeadlinesTabView:TabBarPageView {
-        
-    private let selectorStack:UIStackView = {
+class DeadlinesTabView: TabBarPageView {
+    private let selectorStack: UIStackView = {
         let s = UIStackView(frame: .zero)
         s.axis = .horizontal
         s.spacing = 6
         return s
     }()
     
-    let addButton:Button = {
+    let addButton: Button = {
         let btn = Button(frame: .zero)
         btn.setImage(Asset.SystemIcons.add.image.withRenderingMode(.alwaysTemplate), for: .normal)
         btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
         return btn
     }()
-	let scroll:UIScrollView = {
+	let scroll: UIScrollView = {
 		let s = UIScrollView(frame: .zero)
 		s.showsHorizontalScrollIndicator = false
 		return s
 	}()
-	let deadlineListSelector:SwitchSelector = {
+	let deadlineListSelector: SwitchSelector = {
 		let s = SwitchSelector(frame: .zero)
 		
 		return s
@@ -43,7 +42,7 @@ class DeadlinesTabView:TabBarPageView {
         addViews()
         setupConstraints()
     }
-    func addViews(){
+    func addViews() {
         self.header.addSubview(selectorStack)
 		self.header.addSubview(deadlineListSelector)
         self.addHeaderButton(addButton)
@@ -51,7 +50,7 @@ class DeadlinesTabView:TabBarPageView {
 		self.scroll.addSubview(pocketDiv)
 		self.pocketDiv.addSubview(placeholderContainer)
     }
-    func setupConstraints(){
+    func setupConstraints() {
 		deadlineListSelector.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(10)

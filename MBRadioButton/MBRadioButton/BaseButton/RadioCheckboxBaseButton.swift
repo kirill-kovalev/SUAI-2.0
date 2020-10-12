@@ -18,7 +18,6 @@ public enum RadioCheckboxStyle {
 // MARK: - RadioCheckboxBaseButton
 @IBDesignable
 public class MBRadioCheckboxBaseButton: UIButton {
-    
     /// Oberver frame change to update style
     private var sizeChangeObserver: NSKeyValueObservation?
     
@@ -106,9 +105,8 @@ public class MBRadioCheckboxBaseButton: UIButton {
     
 }
 
-// MARK:- frame change handler
+// MARK: - frame change handler
 extension MBRadioCheckboxBaseButton {
-    
     private func addObserverSizeChange() {
         sizeChangeObserver = observe(\MBRadioCheckboxBaseButton.frame, changeHandler: sizeChangeObseveHandler)
     }
@@ -119,9 +117,8 @@ extension MBRadioCheckboxBaseButton {
     
 }
 
-// MARK:- CAShapeLayer Stroke animation
+// MARK: - CAShapeLayer Stroke animation
 internal extension CAShapeLayer {
-    
     func animateStrokeEnd(from: CGFloat, to: CGFloat) {
         self.strokeEnd = from
         self.strokeEnd = to

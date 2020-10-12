@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AboutUsViewController:ViewController<AboutUsView>{
+class AboutUsViewController: ViewController<AboutUsView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -20,7 +20,7 @@ class AboutUsViewController:ViewController<AboutUsView>{
 			if UIApplication.shared.supportsAlternateIcons {
 				Logger.print("Supports alternate icons")
 				self.switchIcon()
-			}else{
+			} else {
 				Logger.print("Not supports alternate icon")
 			}
 		}, for: .touchUpInside)
@@ -31,8 +31,8 @@ class AboutUsViewController:ViewController<AboutUsView>{
 		}, for: .touchUpInside)
 	}
 	
-	func updateViewImage(){
-		if UIApplication.shared.supportsAlternateIcons{
+	func updateViewImage() {
+		if UIApplication.shared.supportsAlternateIcons {
 			let iconName = UIApplication.shared.alternateIconName ?? "logoLight"
 			UIView.animate(withDuration: 0.3) {
 				self.rootView.image.image = UIImage(named: iconName)
@@ -41,13 +41,13 @@ class AboutUsViewController:ViewController<AboutUsView>{
 		}
 	}
 	
-	func switchIcon(){
+	func switchIcon() {
 		if UIApplication.shared.alternateIconName == nil {
 			UIApplication.shared.setAlternateIconName("logoDark") { (err) in
 				Logger.print(err)
 				self.updateViewImage()
 			}
-		}else{
+		} else {
 			UIApplication.shared.setAlternateIconName(nil) { (err) in
 				Logger.print(err)
 				self.updateViewImage()

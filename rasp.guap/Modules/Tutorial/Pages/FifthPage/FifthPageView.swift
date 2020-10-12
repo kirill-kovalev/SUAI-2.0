@@ -8,8 +8,7 @@
 
 import UIKit
 
-class FifthPageView : TutorialPageView{
-    
+class FifthPageView: TutorialPageView {
     // MARK: - Views
     
     let cards = [
@@ -33,7 +32,7 @@ class FifthPageView : TutorialPageView{
     
     override func addViews() {
         super.addViews()
-        for card in self.containers{
+        for card in self.containers {
             self.addSubview(card)
         }
     }
@@ -50,7 +49,7 @@ class FifthPageView : TutorialPageView{
         }
     }
     
-    private func setupText(){
+    private func setupText() {
         self.title.text = "Справочник"
         self.text.text = "Находи всю важную информацию об \nуниверситете и не только"
     }

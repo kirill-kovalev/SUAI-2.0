@@ -8,9 +8,8 @@
 
 import UIKit
 
-// MARK:- CheckboxButtonDelegate
+// MARK: - CheckboxButtonDelegate
 public protocol MBCheckboxButtonDelegate: class {
-    
     /// Delegate call when Checkbox is selected
     ///
     /// - Parameter button: CheckboxButton
@@ -23,9 +22,8 @@ public protocol MBCheckboxButtonDelegate: class {
     
 }
 
-// MARK:- CheckboxButton
+// MARK: - CheckboxButton
 public class MBCheckboxButton: MBRadioCheckboxBaseButton {
-    
     private var outerLayer = CAShapeLayer()
     private var checkMarkLayer = CAShapeLayer()
     

@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension TimetableFilterViewConroller{
-	func hidePreps(){
+extension TimetableFilterViewConroller {
+	func hidePreps() {
 		self.content.prepField.isHidden = true
 		self.content.preplabel.isHidden = true
 		self.content.prepField.snp.removeConstraints()

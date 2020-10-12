@@ -10,7 +10,6 @@ import Foundation
 
 /// Struct to hold weak reference of a button
 struct WeakRef<T: MBRadioCheckboxBaseButton> {
-    
     private var selectionObservation: NSKeyValueObservation?
     weak var value: T?
     
@@ -21,7 +20,6 @@ struct WeakRef<T: MBRadioCheckboxBaseButton> {
 }
 
 public class MBRadioCheckboxBaseContainer<T> where T: MBRadioCheckboxBaseButton {
-    
     public typealias Kind = T
     
     /// Hold lsit of buttons of T type
@@ -61,7 +59,6 @@ public class MBRadioCheckboxBaseContainer<T> where T: MBRadioCheckboxBaseButton 
     
     /// Get / set selected all buttons
     public var selectedButtons: [T] {
-        
         get {
             return allButtons.filter { $0.isOn }
         }
@@ -113,7 +110,6 @@ public class MBRadioCheckboxBaseContainer<T> where T: MBRadioCheckboxBaseButton 
     ///   - button: MBRadioCheckboxBaseButton
     ///   - change: NSKeyValueObservedChange<Bool>
     internal func selectionChangeObserver(_ button: T, _ change: NSKeyValueObservedChange<Bool>) {
-        
     }
     
     /// Set common style for button added in container
@@ -135,7 +131,6 @@ public class MBRadioCheckboxBaseContainer<T> where T: MBRadioCheckboxBaseButton 
     
     // Free up the button which are no longer available
     public func compact() {
-    
         var counter = 0
         while counter < buttonContainer.count {
             if buttonContainer[counter].value == nil {

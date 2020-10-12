@@ -9,13 +9,13 @@
 import UIKit
 
 class LessonInfoModalView: View {
-    private func sectionLabelGenerator() -> UILabel{
+    private func sectionLabelGenerator() -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }
-    private func sectionTextGenerator() -> UILabel{
+    private func sectionTextGenerator() -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -23,64 +23,61 @@ class LessonInfoModalView: View {
         return label
     }
     
-    
-    lazy var nameSectionTitle:UILabel = {
+    lazy var nameSectionTitle: UILabel = {
         let label = sectionLabelGenerator()
         label.text = "Название предмета"
         return label
     }()
-    lazy var timeSectionTitle:UILabel = {
+    lazy var timeSectionTitle: UILabel = {
         let label = sectionLabelGenerator()
         label.text = "Время проведения"
         return label
     }()
-    lazy var prepSectionTitle:UILabel = {
+    lazy var prepSectionTitle: UILabel = {
         let label = sectionLabelGenerator()
         label.text = "Преподаватели"
         return label
     }()
-    lazy var groupsSectionTitle:UILabel = {
+    lazy var groupsSectionTitle: UILabel = {
         let label = sectionLabelGenerator()
         label.text = "Группы"
         return label
     }()
-    lazy var tagsSectionTitle:UILabel = {
+    lazy var tagsSectionTitle: UILabel = {
         let label = sectionLabelGenerator()
         label.text = "Дополнительные сведения"
         return label
     }()
     
-    lazy var nameLabel:UILabel = sectionTextGenerator()
-    lazy var timeLabel:UILabel = sectionTextGenerator()
+    lazy var nameLabel: UILabel = sectionTextGenerator()
+    lazy var timeLabel: UILabel = sectionTextGenerator()
     
-    let prepStack:UIStackView = {
+    let prepStack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
         stack.spacing = 6
         return stack
     }()
     
-    let tagStack:UIStackView = {
+    let tagStack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         stack.spacing = 6
         return stack
     }()
     
-    let groupList : ASCollectionView = {
-        let collection = ASCollectionView(frame: CGRect(x: 0, y: 0, width: 100 , height: 80 ), collectionViewLayout: UICollectionViewFlowLayout())
+    let groupList: ASCollectionView = {
+        let collection = ASCollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 80 ), collectionViewLayout: UICollectionViewFlowLayout())
         collection.backgroundColor = .clear
         return collection
     }()
     
-    private let scroll:UIScrollView = {
+    private let scroll: UIScrollView = {
         let scroll = UIScrollView(frame: .zero)
         scroll.showsHorizontalScrollIndicator = false
         scroll.showsVerticalScrollIndicator = false
         return scroll
     }()
-    
-    
     
     required init() {
         super.init()
@@ -88,7 +85,7 @@ class LessonInfoModalView: View {
         setupConstraints()
     }
     
-    func addViews(){
+    func addViews() {
         self.addSubview(nameSectionTitle)
         self.addSubview(nameLabel)
         self.addSubview(timeSectionTitle)
@@ -101,8 +98,7 @@ class LessonInfoModalView: View {
         self.addSubview(tagStack)
         
     }
-    func setupConstraints(){
-        
+    func setupConstraints() {
         //making width Constraints
         for view in self.subviews {
             view.snp.makeConstraints { (make) in
@@ -144,11 +140,8 @@ class LessonInfoModalView: View {
             make.top.equalTo(tagsSectionTitle.snp.bottom).offset(spacing)
             make.bottom.equalToSuperview()
         }
-        
-        
     
     }
-    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

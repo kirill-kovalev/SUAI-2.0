@@ -8,16 +8,15 @@
 
 import UIKit
 
-
-class BriefHalfScreenView:UIView{
-    init(title:String,subtitle:String = "",image:UIImage,color:UIColor? = nil) {
-        super.init(frame:.zero)
+class BriefHalfScreenView: UIView {
+    init(title: String, subtitle: String = "", image: UIImage, color: UIColor? = nil) {
+        super.init(frame: .zero)
         self.title.text = title
         self.subtitle.text = subtitle
         if color != nil {
             self.image.image = image.withRenderingMode(.alwaysTemplate)
             self.image.tintColor = color
-        }else{
+        } else {
             self.image.image = image
         }
         
@@ -25,31 +24,31 @@ class BriefHalfScreenView:UIView{
         setupConstraints()
     }
     required init?(coder: NSCoder) {
-        super.init(frame:.zero)
+        super.init(frame: .zero)
     }
-    let title:UILabel = {
+    let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.TTCommons.bold.font(size: 22)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    let subtitle:UILabel = {
+    let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
-    let image:UIImageView = {
+    let image: UIImageView = {
         let view = UIImageView(frame: .zero)
         
         return view
     }()
-    private func addViews(){
+    private func addViews() {
         self.addSubview(title)
         self.addSubview(subtitle)
         self.addSubview(image)
     }
-    private func setupConstraints(){
+    private func setupConstraints() {
         image.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview()
             make.height.width.equalTo(40)

@@ -10,7 +10,6 @@ import UIKit
 
 /// Define check box color
 public struct MBCheckBoxColor {
-    
     let activeColor: UIColor
     let inactiveColor: UIColor
     let inactiveBorderColor: UIColor

@@ -9,14 +9,14 @@
 import UIKit
 
 class DeadlineInfoModalView: UIStackView {
-    private func sectionLabelGenerator(_ text:String) -> UILabel{
+    private func sectionLabelGenerator(_ text: String) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         label.text = text
         return label
     }
-    private func sectionTextGenerator(_ text:String = "") -> UILabel{
+    private func sectionTextGenerator(_ text: String = "") -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -24,7 +24,7 @@ class DeadlineInfoModalView: UIStackView {
         label.text = text
         return label
     }
-    private func buttonGenerator(_ text:String,image:UIImage? = nil) -> PocketLongActionButton {
+    private func buttonGenerator(_ text: String, image: UIImage? = nil) -> PocketLongActionButton {
 		let btn = PocketLongActionButton(frame: .zero)
 		btn.setTitle(text, for: .normal)
 		btn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -33,15 +33,12 @@ class DeadlineInfoModalView: UIStackView {
 		return btn
     }
     
-    
-    
-    lazy var closeButton:PocketLongActionButton = buttonGenerator("Открыть дедлайн")
-    lazy var editButton:Button = buttonGenerator(" Редактировать",image: Asset.AppImages.DeadlineModal.edit.image)
-    lazy var deleteButton:PocketLongActionButton = {
-        
+    lazy var closeButton: PocketLongActionButton = buttonGenerator("Открыть дедлайн")
+    lazy var editButton: Button = buttonGenerator(" Редактировать", image: Asset.AppImages.DeadlineModal.edit.image)
+    lazy var deleteButton: PocketLongActionButton = {
         let color = Asset.PocketColors.pocketError.color
         
-        let btn = buttonGenerator(" Удалить",image: Asset.AppImages.DeadlineModal.delete.image)
+        let btn = buttonGenerator(" Удалить", image: Asset.AppImages.DeadlineModal.delete.image)
         btn.imageView?.tintColor = color
         btn.setTitleColor(color, for: .normal)
         btn.layer.borderColor = color.cgColor
@@ -49,29 +46,27 @@ class DeadlineInfoModalView: UIStackView {
     }()
 	let buttonContainer = UIView(frame: .zero)
     
-    
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     required init() {
-		super.init(frame:.zero)
+		super.init(frame: .zero)
 		self.axis = .vertical
 		self.spacing = 8
         addViews()
         setupConstraints()
     }
 	
-	func addBlock(title:String,text:String){
+	func addBlock(title: String, text: String) {
 		self.addArrangedSubview(sectionLabelGenerator(title))
 		self.addArrangedSubview(sectionTextGenerator(text))
 	}
 	
-    func addViews(){
+    func addViews() {
         buttonContainer.addSubview(closeButton)
         buttonContainer.addSubview(editButton)
         buttonContainer.addSubview(deleteButton)
         
     }
-    func setupConstraints(){
-        
+    func setupConstraints() {
         closeButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview()

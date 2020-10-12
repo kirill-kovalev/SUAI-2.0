@@ -8,13 +8,13 @@
 
 import UIKit
 
-class PocketUserAvatar:UIView{
-    var color:UIColor = .clear{
-        didSet{
+class PocketUserAvatar: UIView {
+    var color: UIColor = .clear {
+        didSet {
             self.layer.borderColor = self.color.cgColor
         }
     }
-    let imageView:UIImageView = {
+    let imageView: UIImageView = {
         let img = UIImageView(frame: .zero)
         img.layer.masksToBounds = true
         img.image = Asset.AppImages.photoPlaceholder.image
@@ -31,7 +31,7 @@ class PocketUserAvatar:UIView{
         super.layoutSubviews()
         self.layer.cornerRadius = self.bounds.height/2
         let size = self.bounds.size
-        let inset:CGFloat = 5
+        let inset: CGFloat = 5
         self.imageView.frame = CGRect(x: inset, y: inset, width: size.width - inset*2, height: size.height - inset*2)
         self.imageView.layer.cornerRadius = self.imageView.bounds.size.height/2
         

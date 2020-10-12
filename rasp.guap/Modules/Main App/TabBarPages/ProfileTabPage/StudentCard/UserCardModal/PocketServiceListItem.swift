@@ -9,23 +9,23 @@
 import UIKit
 
 class PocketServiceListItem: UILabel {
-	private var _isAvailable:Bool = false
-	var isAvailable:Bool {
-		set{
+	private var _isAvailable: Bool = false
+	var isAvailable: Bool {
+		get {
+			return self._isAvailable
+		}
+		set {
 			self._isAvailable = newValue
-			if newValue{
+			if newValue {
 				image.tintColor = Asset.PocketColors.pocketGreen.color
 				image.image = Asset.SystemIcons.checkCircle.image.withRenderingMode(.alwaysTemplate)
-			}else{
+			} else {
 				image.tintColor = Asset.PocketColors.pocketError.color
 				image.image = Asset.SystemIcons.cancelCircle.image.withRenderingMode(.alwaysTemplate)
 			}
 		}
-		get{
-			return self._isAvailable
-		}
 	}
-	let image:UIImageView = {
+	let image: UIImageView = {
 		let v = UIImageView(frame: .zero)
 		v.contentMode = .scaleAspectFit
 		v.tintColor = Asset.PocketColors.pocketError.color
@@ -42,8 +42,8 @@ class PocketServiceListItem: UILabel {
 			make.height.equalTo(24)
 		}
 	}
-	convenience init(_ title:String,_ isAvailble:Bool){
-		self.init(frame:.zero)
+	convenience init(_ title: String, _ isAvailble: Bool) {
+		self.init(frame: .zero)
 		self.text = title
 		self.isAvailable = isAvailble
 	}

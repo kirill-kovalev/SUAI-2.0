@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol FirstTutorialPageSkipDelegate{
+protocol FirstTutorialPageSkipDelegate {
     func skipPages()
 }
-extension FirstTutorialPageSkipDelegate{
-    func skipPages(){
+extension FirstTutorialPageSkipDelegate {
+    func skipPages() {
         print("FirstTutuorialPageSkipDelegate.skipPages() not defined")
     }
 }

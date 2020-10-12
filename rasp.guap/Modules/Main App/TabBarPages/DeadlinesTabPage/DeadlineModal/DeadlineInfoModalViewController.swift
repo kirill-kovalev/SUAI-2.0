@@ -9,13 +9,12 @@
 import UIKit
 import SUAI_API
 
-class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalView>{
+class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView> {
+    var deadline: SADeadline
     
-    var deadline:SADeadline
+    var onChange:(() -> Void)?
     
-    var onChange:(()->Void)?
-    
-    init(deadline:SADeadline?=nil) {
+    init(deadline: SADeadline?=nil) {
         self.deadline = deadline ?? SADeadline()
         super.init()
     }
@@ -26,9 +25,8 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
     }
     required init?(coder: NSCoder) {
         self.deadline = SADeadline()
-        super.init(coder:coder)
+        super.init(coder: coder)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +34,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         
         setupContent()
         
-        self.content.editButton.addTarget(action: { (sender) in
+        self.content.editButton.addTarget(action: { (_) in
             let vc = DeadlineEditableModalViewController()
             vc.deadline = self.deadline
             vc.onChange = {
@@ -45,17 +43,15 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
             }
             self.present(vc, animated: true, completion: nil)
         }, for: .touchUpInside)
-		
         
-        self.content.closeButton.addTarget(action: { (sender) in
+        self.content.closeButton.addTarget(action: { (_) in
 			if self.deadline.closed == 0 {
 				self.closeDeadline()
-            }else{
+            } else {
 				self.reopenDeadline()
             }
 			
         }, for: .touchUpInside)
-        
         
         self.content.deleteButton.addTarget(action: { (sender) in
 			(sender as? PocketLongActionButton)?.disable()
@@ -64,7 +60,7 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 				let success = SADeadlines.shared.delete(deadline: self.deadline)
 				if !success {
 					MainTabBarController.Snack(status: .err, text: "Не удалось удалить дедлайн")
-				}else{
+				} else {
 					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно удален")
 				}
 				
@@ -79,16 +75,15 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 			
         }, for: .touchUpInside)
         
-        
     }
-	private func closeDeadline(){
+	private func closeDeadline() {
 		self.content.closeButton.disable()
 		self.content.isUserInteractionEnabled = false
 		DispatchQueue.global().async {
 			let success = SADeadlines.shared.close(deadline: self.deadline)
-			if !success{
+			if !success {
 				MainTabBarController.Snack(status: .err, text: "Не получилось закрыть дедлайн")
-			}else{
+			} else {
 				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно закрыт")
 			}
 			DispatchQueue.main.async {
@@ -103,15 +98,14 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 		}
 		
 	}
-	private func reopenDeadline(){
-		
+	private func reopenDeadline() {
 		self.content.closeButton.disable()
 		self.content.isUserInteractionEnabled = false
 		DispatchQueue.global().async {
 			let success = SADeadlines.shared.reopen(deadline: self.deadline)
-			if !success{
+			if !success {
 				MainTabBarController.Snack(status: .err, text: "Не получилось переоткрыть дедлайн")
-			}else{
+			} else {
 				MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно переоткрыт")
 			}
 			DispatchQueue.main.async {
@@ -126,8 +120,8 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 		}
 	}
     
-    func setupContent(){
-		for v in self.content.arrangedSubviews{
+    func setupContent() {
+		for v in self.content.arrangedSubviews {
 			self.content.removeArrangedSubview(v)
 			v.removeFromSuperview()
 		} // clear
@@ -144,15 +138,14 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
 		if let mark = self.deadline.markpoint {self.content.addBlock(title: "Баллы", text: mark)}
 		if let status = self.deadline.status_name {self.content.addBlock(title: "Статус", text: status)}
         
-        
-        if self.deadline.closed == 0{
+        if self.deadline.closed == 0 {
             let color = Asset.PocketColors.pocketGreen.color
             self.content.closeButton.setTitleColor(color, for: .normal)
             self.content.closeButton.setTitle("Закрыть дедлайн", for: .normal)
             self.content.closeButton.layer.borderColor = color.cgColor
         }
 		
-		if !self.deadline.isPro{
+		if !self.deadline.isPro {
 			self.content.addArrangedSubview(self.content.buttonContainer)
 		}
     }
@@ -161,6 +154,5 @@ class DeadlineInfoModalViewController : ModalViewController<DeadlineInfoModalVie
         self.onChange?()
         super.dismiss(animated: flag, completion: completion)
     }
-    
     
 }

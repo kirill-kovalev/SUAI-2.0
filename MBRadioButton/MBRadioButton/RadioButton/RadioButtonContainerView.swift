@@ -10,7 +10,6 @@ import UIKit
 
 /// View container that hold all RadioButton available as first immediate subview only
 open class MBRadioButtonContainerView: UIView {
-    
     private var _buttonContainer = MBRadioButtonContainer()
     
     /// Access button container for more features

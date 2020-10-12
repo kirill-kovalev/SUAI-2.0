@@ -9,13 +9,12 @@
 import UIKit
 import SUAI_API
 
-class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModalView>{
+class DeadlineEditableModalViewController: ModalViewController<DeadlineEditModalView> {
+	var deadline: SADeadline?
 	
-	var deadline:SADeadline?
+	var onChange:(() -> Void)?
 	
-	var onChange:(()->Void)?
-	
-	var lessonList:[SALesson] = []
+	var lessonList: [SALesson] = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,12 +29,11 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 			}
 		}
 		
-		for item in [self.content.lessonLabel, self.content.dateLabel,self.content.nameLabel]{
+		for item in [self.content.lessonLabel, self.content.dateLabel, self.content.nameLabel] {
 			item.addTarget(self, action: #selector(self.textViewDidChange(_:)), for: .editingChanged)
 		}
 		
 		self.content.commentLabel.delegate = self
-		
 		
 	}
 	
@@ -43,17 +41,16 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		super.viewWillAppear(animated)
 		if self.deadline == nil { // Создание
 			setupForAdd()
-		}else{ //Редактирование
+		} else { //Редактирование
 			setupForEdit()
 		}
 		self.textViewDidChange(self.content.commentLabel)
 		
 	}
 	
-	func setupForAdd(){
+	func setupForAdd() {
 		self.setTitle("Создать дедлайн")
-				self.content.closeButton.addTarget(action: { (btn) in
-					
+				self.content.closeButton.addTarget(action: { (_) in
 					self.content.closeButton.disable()
 					self.content.isUserInteractionEnabled = false
 					
@@ -67,11 +64,10 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 					)
 					
 					DispatchQueue.global().async {
-		
 						let success = SADeadlines.shared.create(deadline: self.deadline!)
-						if !success{
+						if !success {
 							MainTabBarController.Snack(status: .err, text: "Не получилось создать дедлайн")
-						}else{
+						} else {
 							MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно создан")
 						}
 						DispatchQueue.main.async {
@@ -82,10 +78,9 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 						}
 					}
 					
-					
 				}, for: .touchUpInside)
 	}
-	func setupForEdit(){
+	func setupForEdit() {
 		self.setTitle("Редактировать дедлайн")
 		self.content.closeButton.setTitle("Обновить дедлайн", for: .normal)
 		self.content.nameLabel.text = deadline!.deadline_name
@@ -93,7 +88,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		self.content.dateLabel.text = self.content.formatter.string(from: deadline?.end ?? Date())
 		(self.content.dateLabel.inputView as? UIDatePicker)?.date = deadline?.end ?? Date()
 		self.content.lessonLabel.text = deadline?.subject_name
-		self.content.closeButton.addTarget(action: { (btn) in
+		self.content.closeButton.addTarget(action: { (_) in
 			self.content.closeButton.disable()
 			self.content.isUserInteractionEnabled = false
 			
@@ -106,11 +101,10 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 										comment: self.content.commentLabel.text
 			)
 			DispatchQueue.global().async {
-				
 				let success = SADeadlines.shared.edit(deadline: self.deadline!)
-				if !success{
+				if !success {
 					MainTabBarController.Snack(status: .err, text: "Не получилось отредактировать дедлайн")
-				}else{
+				} else {
 					MainTabBarController.Snack(status: .ok, text: "Дедлайн успешно отредактирован")
 				}
 				DispatchQueue.main.async {
@@ -124,12 +118,7 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		}, for: .touchUpInside)
 	}
 	
-	
-	
-	
-	
-	
-	func checkModal()->Bool{
+	func checkModal() -> Bool {
 		if (self.content.nameLabel.text?.count ?? 0) < 1 || (self.content.nameLabel.text?.count ?? 0) > 50 { return false}
 		if (self.content.commentLabel.text?.count ?? 0) > 300 { return false}
 		let date = self.content.datePicker.date
@@ -139,13 +128,12 @@ class DeadlineEditableModalViewController : ModalViewController<DeadlineEditModa
 		return true
 	}
 	
-	
 	override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         self.onChange?()
         super.dismiss(animated: flag, completion: completion)
     }
 }
-extension DeadlineEditableModalViewController:UIPickerViewDataSource{
+extension DeadlineEditableModalViewController: UIPickerViewDataSource {
 	func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { self.lessonList.count+1 }
@@ -155,14 +143,14 @@ extension DeadlineEditableModalViewController:UIPickerViewDataSource{
 	}
 }
 
-extension DeadlineEditableModalViewController:UIPickerViewDelegate{
+extension DeadlineEditableModalViewController: UIPickerViewDelegate {
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		self.content.lessonLabel.text = row == 0 ? ""  : lessonList[row-1].name
 		self.content.closeButton.isEnabled = self.checkModal()
 	}
 }
 
-extension DeadlineEditableModalViewController:UITextViewDelegate{
+extension DeadlineEditableModalViewController: UITextViewDelegate {
 	@objc func textViewDidChange(_ textView: UITextView) {
 		self.content.closeButton.isEnabled = self.checkModal()
 		self.content.closeButton.layer.borderColor = self.content.closeButton.titleLabel?.textColor.cgColor

@@ -8,19 +8,17 @@
 
 import UIKit
 
-class PocketDivView<T:UIView> : View {
-    
-    var content : T
-    var contentMask:UIView = {
+class PocketDivView<T: UIView>: View {
+    var content: T
+    var contentMask: UIView = {
         let v = UIView(frame: .zero)
         v.layer.masksToBounds = true
         v.layer.cornerRadius = 10
         return v
     }()
     
-    
     required init() {
-        self.content = T(frame: .zero);
+        self.content = T(frame: .zero)
         super.init()
         
         setupView()
@@ -33,8 +31,7 @@ class PocketDivView<T:UIView> : View {
         self.content.addSubview(view)
     }
     
-    
-    required init(content:T) {
+    required init(content: T) {
         self.content = content
         super.init()
         
@@ -45,15 +42,13 @@ class PocketDivView<T:UIView> : View {
 
     }
     
-    private func setupView(){
-        
+    private func setupView() {
         self.backgroundColor = Asset.PocketColors.pocketWhite.color
         
         self.layer.cornerRadius = 10
         
         self.layer.borderColor = Asset.PocketColors.pocketDivBorder.color.cgColor
         self.layer.borderWidth = 1
-        
         
         self.layer.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         self.layer.shadowRadius = 15
@@ -66,8 +61,6 @@ class PocketDivView<T:UIView> : View {
         super.traitCollectionDidChange(previousTraitCollection)
         self.setupView()
     }
-    
-    /// TODO: сделать комбинирование теней
     
     private func setupCombinedShadows() {
         super.layoutSubviews()
@@ -85,18 +78,14 @@ class PocketDivView<T:UIView> : View {
         shadow2.shadowColor = Asset.PocketColors.pocketShadow.color.cgColor
         shadow2.shadowRadius = 15
         shadow2.shadowOffset = .zero
-        
         shadow2.masksToBounds = false
-        //shadow2.frame = self.frame
-        
-        
-        
         self.layer.masksToBounds = false
+		
         self.layer.addSublayer(shadow1)
         self.layer.addSublayer(shadow2)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         self.contentMask.snp.makeConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
         }
@@ -110,8 +99,6 @@ class PocketDivView<T:UIView> : View {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
 }
 //

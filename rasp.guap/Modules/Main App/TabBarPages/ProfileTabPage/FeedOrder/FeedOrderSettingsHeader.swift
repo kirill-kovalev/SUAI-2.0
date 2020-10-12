@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeedOrderSettingsHeader:UIStackView{
-	let title:UILabel = {
+class FeedOrderSettingsHeader: UIStackView {
+	let title: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.text = "Настраивай новости под себя"
 		label.numberOfLines = 0
@@ -18,7 +18,7 @@ class FeedOrderSettingsHeader:UIStackView{
 		label.layoutMargins.top = 10
 		return label
 	}()
-	let text:UILabel = {
+	let text: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.text = "В SUAI Pocket размещено большое количество тематических пабликов, но мы прекрасно понимаем, что некоторые из них не нужны.\nПоэтому от них можно легко отказаться, оставив только самые необходимые!"
 		label.numberOfLines = 0

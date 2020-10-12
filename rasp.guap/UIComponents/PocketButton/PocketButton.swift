@@ -9,15 +9,15 @@
 import UIKit
 
 class PocketButton: Button {
-    var isActive:Bool = false {
-        didSet{
+    var isActive: Bool = false {
+        didSet {
             self.isEnabled = self.isActive
             setupView()
         }
     }
 	
-	var borderWidth:CGFloat = 1
-	var cornerRadius:CGFloat = 10
+	var borderWidth: CGFloat = 1
+	var cornerRadius: CGFloat = 10
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,11 +27,8 @@ class PocketButton: Button {
         super.init(coder: coder)
         setupView()
     }
-	
     
-    func setupView(){
-		
-		
+    func setupView() {
 		self.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 13)
 		let color = self.titleLabel?.textColor ?? .blue
         
@@ -51,18 +48,17 @@ class PocketButton: Button {
 		setupView()
 	}
     
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         self.setupView()
     }
 
-	@objc private func touchDown(_ sender:Button){
+	@objc private func touchDown(_ sender: Button) {
 		UIView.animate(withDuration: 0.1) {
 			self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
 		}
 	}
-	@objc private func touchUp(_ sender:Button){
+	@objc private func touchUp(_ sender: Button) {
 		UIView.animate(withDuration: 0.1) {
 			self.transform = .identity
 		}

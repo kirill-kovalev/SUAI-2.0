@@ -8,18 +8,18 @@
 
 import UIKit
 
-class PocketTextField:UITextField{
+class PocketTextField: UITextField {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		setupView()
 	}
 	
 	required init?(coder: NSCoder) {
-		super.init(coder:coder)
+		super.init(coder: coder)
 		setupView()
 	}
 	
-	func setupView(){
+	func setupView() {
 		self.font = FontFamily.SFProDisplay.regular.font(size: 14)
 		self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
 		self.leftViewMode = .always

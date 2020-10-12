@@ -11,7 +11,7 @@ import SUAI_API
 import SwiftyVK
 import WatchConnectivity
 
-class DataLoaderViewController:ViewController<DataLoaderView>{
+class DataLoaderViewController: ViewController<DataLoaderView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -22,15 +22,15 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
 				btn.transform = .init(rotationAngle: 180.degreesToRadians)
 				btn.transform = .init(rotationAngle: 360.degreesToRadians)
-			}) { (_) in
+			}, completion: { (_) in
 				DispatchQueue.global().async { self.loadData()}
 				btn.transform = .identity
-			}
-
+			})
 
 		}, for: .touchUpInside)
 	}
-	func loadData(){
+	// swiftlint:disable cyclomatic_complexity
+	func loadData() {
 		DispatchQueue.main.async {
 			self.rootView.reloadButton.isHidden = true
 		}
@@ -47,29 +47,29 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 		
 		self.setText("Загружаю настройки")
 		let settings = SAUserSettings.shared
-		if !settings.reload(){
+		if !settings.reload() {
 			DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить настройки")}
 		  }
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
 			self.setText("Загружаю список групп")
-			if SASchedule.shared.groups.count == 0{
+			if SASchedule.shared.groups.count == 0 {
 				SASchedule.shared.groups.loadFromServer()
 			}
 			self.setText("Загружаю список преподавателей")
-			if SASchedule.shared.preps.count == 0{
+			if SASchedule.shared.preps.count == 0 {
 				SASchedule.shared.preps.loadFromServer()
 			}
 			self.setText("Ищу твою группу")
-			if let user = SASchedule.shared.groups.get(name: group ){
+			if let user = SASchedule.shared.groups.get(name: group ) {
 				let timetable = SASchedule.shared.get(for: user)
 				self.setText("Нашел группу")
 				
 				// - MARK: УВедомления расписания!!!!!
 				if AppSettings.isTimetableNotificationsEnabled,
 					NotificationManager.shared.isAuth,
-					!timetable.setupNotifications()  {
+					!timetable.setupNotifications() {
 					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления расписания")}
 				}
 				self.setText("Синхронизируюсь с часами")
@@ -80,7 +80,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 
 			self.setText("Загружаю дедлайны")
 			SADeadlines.shared.loadFromCache()
-			if SADeadlines.shared.all.isEmpty{
+			if SADeadlines.shared.all.isEmpty {
 				if !SADeadlines.shared.loadFromServer() {
 					DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить дедлайны")}
 				}
@@ -88,7 +88,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			// - MARK: УВедомления дедлайнов!!!!!
 			if AppSettings.isDeadlineNotificationsEnabled,
 			NotificationManager.shared.isAuth,
-			!SADeadlines.shared.setupNotifications(){
+			!SADeadlines.shared.setupNotifications() {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось установить уведомления Дедлайнов")}
 			}
 			
@@ -96,9 +96,9 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			if !SABrief.shared.loadFromServer() {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить сводку")}
 			}
-			let _ = SANews.shared.loadSourceList()
+			_ = SANews.shared.loadSourceList()
 			self.startApp()
-		}else{
+		} else {
 			self.setText("Загружаю список групп")
 			SASchedule.shared.groups.loadFromServer()
 			if SASchedule.shared.groups.count == 0 {
@@ -106,35 +106,35 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 					self.showSnack(status: .err, text: "Не удалось загрузить список групп.")
 					self.rootView.reloadButton.isHidden = false
 				}
-			}else{
+			} else {
 				self.showTutorialPages()
 			}
 			
 		}
 	}
-	
-	func setWatchTimetable(_ tt:SATimetable){
+	// swiftlint:enable cyclomatic_complexity
+	func setWatchTimetable(_ tt: SATimetable) {
 		Logger.print(from: #function, "Setting Watch TT")
-		if WCSession.isSupported(){
+		if WCSession.isSupported() {
 			if WCSession.default.activationState == .activated {
 				let today = Calendar.convertToRU(Calendar.current.component(.weekday, from: Date()))
 				let curWeek = SASchedule.shared.settings?.week ?? .odd
 				let timetable = tt.get(week: curWeek, day: today).map { lesson -> [String] in
-					let preps = lesson.prepods.map{$0.shortName}.joined(separator: ";\n")
+					let preps = lesson.prepods.map {$0.shortName}.joined(separator: ";\n")
 					let tags = lesson.tags.joined(separator: "; ")
-					return [lesson.type.rawValue,lesson.name,"\(lesson.start) – \(lesson.end)",preps,tags]
+					return [lesson.type.rawValue, lesson.name, "\(lesson.start) – \(lesson.end)", preps, tags]
 				}
 				
-				do{
+				do {
 					let encoded = try JSONEncoder().encode(timetable)
-					try WCSession.default.updateApplicationContext(["timetable":encoded])
-				}catch{Logger.print(from: #function, error)}
+					try WCSession.default.updateApplicationContext(["timetable": encoded])
+				} catch {Logger.print(from: #function, error)}
 			}
 		}
 		Logger.print(from: #function, "End of Setting Watch TT")
 	}
 	
-	func showSnack(status:PocketSnackView.Status,text:String){
+	func showSnack(status: PocketSnackView.Status, text: String) {
 		let snack = PocketSnackView(status: status, text: text)
 		let snackBarDiv = PocketDivView(content: snack)
 		let snackContainer = PocketScalableContainer(content: snackBarDiv)
@@ -158,21 +158,21 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 		DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.hideSnack(snackContainer) }
 	}
 	
-	func hideSnack(_ snack:UIView){
+	func hideSnack(_ snack: UIView) {
 		let offset = self.view.frame.height-snack.frame.origin.y
 		UIView.animate(withDuration: 0.3, animations: {
 			snack.transform = .init(translationX: 0, y: offset)
-		}) { (ended) in
+		}, completion: { (_) in
 			snack.removeFromSuperview()
-		}
+		})
 	}
 	
-	func setText(_ text:String){
+	func setText(_ text: String) {
 		DispatchQueue.main.async {
 			self.rootView.label.text = text
 		}
 	}
-	func showTutorialPages(){
+	func showTutorialPages() {
 		DispatchQueue.main.async {
 			let vc = TutorialScreenViewController()
 			vc.modalTransitionStyle = .flipHorizontal
@@ -180,7 +180,7 @@ class DataLoaderViewController:ViewController<DataLoaderView>{
 			self.present(vc, animated: true, completion: nil)
 		}
 	}
-	func startApp(){
+	func startApp() {
 		DispatchQueue.main.async {
 			let vc = MainTabBarController()
 			vc.modalTransitionStyle = .flipHorizontal

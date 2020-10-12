@@ -9,7 +9,7 @@
 import UIKit
 
 class NewScheduleDayPlaceholder: UIView {
-	let titleLabel:UILabel = {
+	let titleLabel: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
 		label.textColor = Asset.PocketColors.pocketBlack.color
@@ -18,7 +18,7 @@ class NewScheduleDayPlaceholder: UIView {
 		label.text = "Понедельник, пар нет!"
 		return label
 	}()
-	private let subtitleLabel:UILabel = {
+	private let subtitleLabel: UILabel = {
 		let label = UILabel(frame: .zero)
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 12)
 		label.textColor = Asset.PocketColors.pocketGray.color
@@ -27,28 +27,28 @@ class NewScheduleDayPlaceholder: UIView {
 		label.text = "Можно спать спокойно!"
 		return label
 	}()
-	private let imageView:UIImageView = {
+	private let imageView: UIImageView = {
 		let imageView = UIImageView(frame: .zero)
 		imageView.tintColor = Asset.PocketColors.accent.color
 		imageView.image = Asset.AppImages.DeadlineStateImages.calendar.image.withRenderingMode(.alwaysTemplate)
 		return imageView
 	}()
 	
-	init(){
-		super.init(frame:.zero)
+	init() {
+		super.init(frame: .zero)
 		addViews()
 		setupConstraints()
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
-	private func addViews(){
+	private func addViews() {
 		self.addSubview(titleLabel)
 		self.addSubview(subtitleLabel)
 		self.addSubview(imageView)
 	}
 	
-	private func setupConstraints(){
+	private func setupConstraints() {
 		imageView.snp.makeConstraints { (make) in
 			make.left.equalToSuperview()
 			make.top.greaterThanOrEqualToSuperview().offset(4)

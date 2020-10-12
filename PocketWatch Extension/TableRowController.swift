@@ -12,5 +12,4 @@ import Foundation
 class TableRowController: NSObject {
 	@IBOutlet weak var lessonTypeColor: WKInterfaceSeparator!
 	@IBOutlet weak var LessonNameLabel: WKInterfaceLabel!
-	
 }

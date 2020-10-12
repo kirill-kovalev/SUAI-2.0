@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 
 class View: UIView {
-
 	required init() {
 		super.init(frame: .zero)
 	}
@@ -20,5 +19,3 @@ class View: UIView {
 	}
 	
 }
-
-

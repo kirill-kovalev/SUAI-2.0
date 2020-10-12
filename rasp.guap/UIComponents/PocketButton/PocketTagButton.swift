@@ -20,7 +20,7 @@ class PocketTagButton: PocketButton {
         setupSizeConstraints()
     }
 
-    override func setupView(){
+    override func setupView() {
         let borderColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketTagBorder.color
         self.backgroundColor = self.isActive ? Asset.PocketColors.pocketBlue.color : Asset.PocketColors.pocketLightGray.color
         let textColor = self.isActive ? Asset.PocketColors.accent.color : Asset.PocketColors.pocketGray.color
@@ -30,7 +30,7 @@ class PocketTagButton: PocketButton {
         self.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
         self.titleLabel?.textAlignment = .center
     }
-    private func setupSizeConstraints(){
+    private func setupSizeConstraints() {
         self.snp.removeConstraints()
         self.titleLabel?.snp.removeConstraints()
         self.snp.makeConstraints { (make) in

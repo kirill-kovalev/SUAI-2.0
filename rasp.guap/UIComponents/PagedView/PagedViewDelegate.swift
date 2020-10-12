@@ -9,9 +9,9 @@
 import UIKit
 
 protocol PagedViewDelegate {
-    func pagedViewDidChanged(_ pageNumber:Int)
+    func pagedViewDidChanged(_ pageNumber: Int)
 }
-extension PagedViewDelegate{
-    func pagedViewDidChanged(_ pageNumber:Int){
+extension PagedViewDelegate {
+    func pagedViewDidChanged(_ pageNumber: Int) {
     }
 }

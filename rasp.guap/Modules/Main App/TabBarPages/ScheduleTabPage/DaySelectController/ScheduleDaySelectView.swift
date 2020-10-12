@@ -9,9 +9,7 @@
 import UIKit
 
 class ScheduleDaySelectView: View {
-    
-    
-    private func buttonGenerator(_ title:String)->Button{
+    private func buttonGenerator(_ title: String) -> Button {
         let btn = Button(frame: .zero)
         btn.setTitle(title, for: .normal)
         btn.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -24,17 +22,15 @@ class ScheduleDaySelectView: View {
             make.top.equalToSuperview().offset(7)
             make.bottom.equalToSuperview().inset(7)
         })
-        return btn;
+        return btn
     }
     
     lazy var weekBtn = buttonGenerator("Четная")
-	lazy var daySelector:SwitchSelector = {
+	lazy var daySelector: SwitchSelector = {
 		let s = SwitchSelector(frame: .zero)
 		
 		return s
 	}()
-    
-    
     
     required init() {
         super.init()
@@ -43,11 +39,11 @@ class ScheduleDaySelectView: View {
         setupConstraints()
     }
     
-    private func addViews(){
+    private func addViews() {
         self.addSubview(weekBtn)
 		self.addSubview(daySelector)
     }
-    private func setupConstraints(){
+    private func setupConstraints() {
         weekBtn.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
         }
@@ -60,7 +56,5 @@ class ScheduleDaySelectView: View {
     required init(coder: NSCoder) {
         super.init()
     }
-    
-    
     
 }

@@ -8,10 +8,9 @@
 
 import Foundation
 
-class Logger{
-	public static var log:String = UserDefaults.standard.string(forKey: "Logger.log") ?? ""
-	static func print(_ items:Any?...){
-		
+class Logger {
+	public static var log: String = UserDefaults.standard.string(forKey: "Logger.log") ?? ""
+	static func print(_ items: Any?...) {
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "Ru")
 		formatter.dateFormat = "YY/M/dd hh:mm:ss"
@@ -22,25 +21,23 @@ class Logger{
 		prnt(log: string)
 
 	}
-	static func print(from:Any,_ items:Any?...){
+	static func print(from: Any, _ items: Any?...) {
 		Logger.print("\(from.self) \n \(items)")
 	}
-	static func save(){
+	static func save() {
 		UserDefaults.standard.synchronize()
 		UserDefaults.standard.removeObject(forKey: "Logger.log")
 		UserDefaults.standard.set(self.log, forKey: "Logger.log")
 	}
 }
-fileprivate func prnt(log:Any?){
-	if let log = log{
+private func prnt(log: Any?) {
+	if let log = log {
 		print(log)
 	}
 }
 
-func fatalError(_ message:String)->Never{
+func fatalError(_ message: String) -> Never {
 	Logger.print(from: "FATAL ERROR", message)
 	Logger.save()
 	fatalError()
 }
-
-

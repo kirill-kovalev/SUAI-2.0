@@ -10,7 +10,7 @@ import UIKit
 import SUAI_API
 
 class RocketModalViewController: ModalViewController<RocketModalView> {
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         self.rootView.titleLabel.text = ""
         DispatchQueue.global().async {
             let users = SABrief.shared.rockets.top
@@ -27,32 +27,32 @@ class RocketModalViewController: ModalViewController<RocketModalView> {
         }
     }
 	
-	private func wordCase(_ n:Int) -> String{
-		let words = ["день","дня","дней"]
+	private func wordCase(_ n: Int) -> String {
+		let words = ["день", "дня", "дней"]
 		guard words.count >= 3 else { return ""}
 		var n = n
-		if (n >= 5 && n <= 20) {
-		  return words[2];
+		if n >= 5 && n <= 20 {
+		  return words[2]
 		}
-		n = n % 10;
-		if (n == 1) {
-		  return  words[0];
+		n = n % 10
+		if n == 1 {
+		  return  words[0]
 		}
-		if (n >= 2 && n <= 4) {
-		  return  words[1];
+		if n >= 2 && n <= 4 {
+		  return  words[1]
 		}
-		return  words[2];
+		return  words[2]
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		var todayComponents = Calendar.current.dateComponents([.year,.month], from: Date())
+		var todayComponents = Calendar.current.dateComponents([.year, .month], from: Date())
 		todayComponents.month = (todayComponents.month ?? 0) + 1
-		if let nextPlay = Calendar.current.date(from: todayComponents){
-			var diff:Int = Int(nextPlay.timeIntervalSince(Date()) / (3600*24))
-			if diff < 2{
+		if let nextPlay = Calendar.current.date(from: todayComponents) {
+			let diff = Int(nextPlay.timeIntervalSince(Date()) / (3600*24))
+			if diff < 2 {
 				self.content.nextGiveaway.text = "(Следующий розыгрыш завтра)"
-			}else {
+			} else {
 			    self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) \(wordCase(diff))"
 			}
 			

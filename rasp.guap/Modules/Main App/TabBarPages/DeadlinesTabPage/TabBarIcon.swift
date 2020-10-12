@@ -10,7 +10,6 @@ import Foundation
 import ESTabBarController_swift
 
 class DeadineCustomTabBarIcon: PocketTabBarIcon {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,7 +22,6 @@ class DeadineCustomTabBarIcon: PocketTabBarIcon {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
 }
 class DeadineCustomTabBarItemBadgeView: ESTabBarItemBadgeView {

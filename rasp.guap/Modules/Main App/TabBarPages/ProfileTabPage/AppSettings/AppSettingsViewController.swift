@@ -9,8 +9,7 @@
 import UIKit
 import SUAI_API
 
-class AppSettingsViewController :ViewController<AppSettingsView>{
-	
+class AppSettingsViewController: ViewController<AppSettingsView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.rootView.deadlineNotifications.toggle.addTarget(self, action: #selector(self.setupDeadlineNotifications), for: .valueChanged)
@@ -37,19 +36,18 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		
 	}
 	
-	@objc private func setupDeadlineNotifications(){
+	@objc private func setupDeadlineNotifications() {
 		AppSettings.isDeadlineNotificationsEnabled = self.rootView.deadlineNotifications.toggle.isOn
 		
 		if self.rootView.deadlineNotifications.toggle.isOn {
 			if SADeadlines.shared.setupNotifications() {
-				
 				if NotificationManager.shared.isAuth {
 					MainTabBarController.Snack(status: .ok, text: "Оповещения о дедлайнах включены")
-				}else{
+				} else {
 					MainTabBarController.Snack(status: .err, text: "Нет доступа, разрешите уведомления для приложения в настройках iOS")
 					self.rootView.deadlineNotifications.toggle.isOn = false
 				}
-			}else{
+			} else {
 				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
 				self.rootView.deadlineNotifications.toggle.isOn = false
 			}
@@ -59,22 +57,21 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		}
 	}
 	
-	@objc private func setupTimetableNotifications(){
+	@objc private func setupTimetableNotifications() {
 		AppSettings.isTimetableNotificationsEnabled = self.rootView.timetableNotifications.toggle.isOn
 		
 		if self.rootView.timetableNotifications.toggle.isOn {
-			
 			if let group = SAUserSettings.shared.group,
 			let user = SASchedule.shared.groups.get(name: group),
-			SASchedule.shared.get(for: user).setupNotifications(){
+			SASchedule.shared.get(for: user).setupNotifications() {
 				if NotificationManager.shared.isAuth {
 					MainTabBarController.Snack(status: .ok, text: "Оповещения о занятиях включены")
-				}else{
+				} else {
 					MainTabBarController.Snack(status: .err, text: "Нет доступа, разрешите уведомления для приложения в настройках iOS")
 					self.rootView.timetableNotifications.toggle.isOn = false
 				}
 				
-            }else{
+            } else {
 				MainTabBarController.Snack(status: .err, text: "Не удалось включить уведомления")
 				self.rootView.timetableNotifications.toggle.isOn = false
 			}
@@ -85,7 +82,7 @@ class AppSettingsViewController :ViewController<AppSettingsView>{
 		}
 	}
 	
-	@objc private func setOldTimetable(){
+	@objc private func setOldTimetable() {
 		AppSettings.isOldTimetableEnabled = self.rootView.oldTimetable.toggle.isOn
 		MainTabBarController.Snack(status: .ok, text: "Изменения станут активны при следующем запуске приложения")
 	}

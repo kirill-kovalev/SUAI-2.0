@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCollectionView: UICollectionView {
-
     override var contentSize: CGSize {
         didSet {
             invalidateIntrinsicContentSize()
@@ -21,4 +20,3 @@ class ASCollectionView: UICollectionView {
         return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
     }
 }
-

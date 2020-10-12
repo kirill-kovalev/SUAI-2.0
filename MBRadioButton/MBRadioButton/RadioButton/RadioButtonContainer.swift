@@ -10,7 +10,6 @@ import Foundation
 
 /// Hold all Radio Buttons
 public class MBRadioButtonContainer: MBRadioCheckboxBaseContainer<MBRadioButton> {
-    
     /// Radio button delegate will be assigned to all button added in container
     public weak var delegate: MBRadioButtonDelegate? {
         didSet {
@@ -86,4 +85,3 @@ public class MBRadioButtonContainer: MBRadioCheckboxBaseContainer<MBRadioButton>
         }
     }
 }
-

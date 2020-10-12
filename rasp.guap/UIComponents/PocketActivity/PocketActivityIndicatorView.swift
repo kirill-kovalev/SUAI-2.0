@@ -10,24 +10,24 @@ import UIKit
 
 @IBDesignable
 class PocketActivityIndicatorView: UIView {
-	var color : UIColor = .gray {
-		didSet{
+	var color: UIColor = .gray {
+		didSet {
 			self.circleLayer.strokeColor = color.cgColor
 		}
 	}
 	var hidesWhenStopped: Bool = true
-	var isAnimating:Bool = false
+	var isAnimating: Bool = false
 	
-	private var radius:CGFloat{
-		if self.frame.height > self.frame.width{
+	private var radius: CGFloat {
+		if self.frame.height > self.frame.width {
 			return self.frame.width/2 - 10
-		}else{
+		} else {
 			return self.frame.height/2 - 10
 		}
 	}
 	
 	lazy var rotationLayer = CALayer()
-	lazy var circleLayer:CAShapeLayer = {
+	lazy var circleLayer: CAShapeLayer = {
 		let layer = CAShapeLayer()
 		layer.strokeColor = self.color.cgColor
 		layer.strokeStart = 0
@@ -37,7 +37,7 @@ class PocketActivityIndicatorView: UIView {
 		layer.lineCap = .round
 		return layer
 	}()
-	lazy var showAnimation:CABasicAnimation = {
+	lazy var showAnimation: CABasicAnimation = {
 		let animation = CABasicAnimation(keyPath: "strokeEnd")
 		animation.toValue = 1
 		animation.duration = 0.6
@@ -45,7 +45,7 @@ class PocketActivityIndicatorView: UIView {
 		animation.isRemovedOnCompletion = false
 		return animation
 	}()
-	lazy var hideAnimation:CABasicAnimation = {
+	lazy var hideAnimation: CABasicAnimation = {
 		let animation = CABasicAnimation(keyPath: "strokeEnd")
 		animation.toValue = -0.1
 		animation.duration = 0.3
@@ -54,8 +54,8 @@ class PocketActivityIndicatorView: UIView {
 		return animation
 	}()
 	
-	lazy var rotateAnimation:CAAnimation = {
-		let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
+	lazy var rotateAnimation: CAAnimation = {
+		let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
 		rotation.fromValue = 0
 		rotation.toValue = 2*Double.pi
 		rotation.duration = 1
@@ -73,11 +73,9 @@ class PocketActivityIndicatorView: UIView {
 		layer.addSublayer(circleLayer)
 		startAnimating()
 	}
-	convenience init(style:UIActivityIndicatorView.Style){
-		self.init(frame:.zero)
+	convenience init(style: UIActivityIndicatorView.Style) {
+		self.init(frame: .zero)
 	}
-	
-	
 	
 	func startAnimating() {
 		self.isHidden = false
@@ -89,8 +87,8 @@ class PocketActivityIndicatorView: UIView {
 	}
 	
 	func stopAnimating() {
-		if self.isAnimating{
-			if hidesWhenStopped{
+		if self.isAnimating {
+			if hidesWhenStopped {
 				CATransaction.begin()
 				CATransaction.setCompletionBlock {
 					self.isAnimating = false
@@ -98,7 +96,7 @@ class PocketActivityIndicatorView: UIView {
 				}
 				circleLayer.add(hideAnimation, forKey: "hideAnimation")
 				CATransaction.commit()
-			}else{
+			} else {
 				self.isAnimating = false
 				self.layer.removeAnimation(forKey: "rotationAnimation")
 			}
@@ -114,14 +112,10 @@ class PocketActivityIndicatorView: UIView {
 	}
 }
 
-
-class TestVC:UIViewController{
-
-	
+class TestVC: UIViewController {
 	let v = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		
 		let gest = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
 		view.addGestureRecognizer(gest)
@@ -136,12 +130,11 @@ class TestVC:UIViewController{
 		}
 		v.startAnimating()
 	}
-	
 
-	@objc func tap(_ sender:Any?){
+	@objc func tap(_ sender: Any?) {
 		if self.v.isAnimating {
 			self.v.stopAnimating()
-		}else{
+		} else {
 			self.v.startAnimating()
 		}
 	}

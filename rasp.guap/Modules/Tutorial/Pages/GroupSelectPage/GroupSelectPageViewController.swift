@@ -9,13 +9,11 @@
 import UIKit
 import SUAI_API
 
-
-class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserChangeDelegate {
+class GroupSelectPageViewController: ViewController<GroupSelectPageView>, UserChangeDelegate {
     func didSetUser(user: SAUsers.User) {
 		self.rootView.select.text = user.Name
 		self.rootView.button.isActive = true
     }
-    
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -26,7 +24,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
     }
     
     // MARK: - Actions
-	@objc private func groupSelected(){
+	@objc private func groupSelected() {
 		let user = self.rootView.select.text ?? ""
 		self.rootView.button.disable()
 		
@@ -39,7 +37,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
 						self.present(DataLoaderViewController(), animated: true, completion: nil)
 					}
 
-				}else{
+				} else {
 					DispatchQueue.main.async {
 						self.rootView.button.enable()
 					}
@@ -53,8 +51,7 @@ class GroupSelectPageViewController : ViewController<GroupSelectPageView>,UserCh
     
 }
 
-extension GroupSelectPageViewController : UITextFieldDelegate{
-	
+extension GroupSelectPageViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
 		textField.resignFirstResponder()
 		let vc = TimetableFilterViewConroller()

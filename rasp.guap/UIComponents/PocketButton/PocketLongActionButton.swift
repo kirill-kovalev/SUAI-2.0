@@ -9,7 +9,7 @@
 import UIKit
 
 class PocketLongActionButton: PocketButton {
-	let indicator:PocketActivityIndicatorView = PocketActivityIndicatorView(frame: .zero)
+	let indicator: PocketActivityIndicatorView = PocketActivityIndicatorView(frame: .zero)
     override init(frame: CGRect) {
         super.init(frame: frame)
 		
@@ -36,27 +36,24 @@ class PocketLongActionButton: PocketButton {
 		self.indicator.isHidden = true
 		indicator.stopAnimating()
 	}
-	
-	
 
-    override func setupView(){
+    override func setupView() {
 		super.setupView()
 		indicator.color = self.titleLabel?.textColor ?? .gray
     }
 	
-	func disable(){
+	func disable() {
 		self.isActive = false
 		self.indicator.isHidden = false
 		self.titleLabel?.layer.opacity = 0
 		self.imageView?.layer.opacity = 0
 		self.indicator.startAnimating()
 	}
-	func enable(){
+	func enable() {
 		self.isActive = true
 		self.titleLabel?.layer.opacity = 1
 		self.imageView?.layer.opacity = 1
 		self.indicator.stopAnimating()
 	}
-    
 
 }

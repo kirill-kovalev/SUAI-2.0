@@ -8,18 +8,16 @@
 
 import UIKit
 
-
-class TutorialPageView:View{
-    
+class TutorialPageView: View {
     // MARK: - Views
-    let title:UILabel = {
+    let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = FontFamily.TTCommons.demiBold.font(size: 22)
         return label
     }()
     
-    let text:UILabel = {
+    let text: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -27,17 +25,14 @@ class TutorialPageView:View{
         label.font = FontFamily.TTCommons.regular.font(size: 18)
         return label
     }()
-    
-    
 
     // MARK: - View setup
     
-    func addViews(){
+    func addViews() {
         self.addSubview(title)
         self.addSubview(text)
     }
-    func setupConstraints(){
-        
+    func setupConstraints() {
         title.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(self.snp.bottom).multipliedBy(0.8)

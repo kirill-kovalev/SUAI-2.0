@@ -8,17 +8,15 @@
 
 import UIKit
 
-class NewScheduleTabView:TabBarPageView{
-    
-
-    let selectButton:Button = {
+class NewScheduleTabView: TabBarPageView {
+    let selectButton: Button = {
         let btn = Button(frame: .zero)
 		btn.setImage(Asset.SystemIcons.searchLense.image.withRenderingMode(.alwaysTemplate), for: .normal)
         btn.imageView?.tintColor = Asset.PocketColors.pocketGray.color
         return btn
     }()
     
-    let dayLabel:UILabel = {
+    let dayLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
@@ -26,7 +24,7 @@ class NewScheduleTabView:TabBarPageView{
         return label
     }()
     
-	let table:UITableView = {
+	let table: UITableView = {
 		let table = UITableView(frame: .zero)
 		table.allowsSelection = false
 		table.estimatedRowHeight = 35
@@ -36,8 +34,6 @@ class NewScheduleTabView:TabBarPageView{
 	}()
 	let activityIndicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 	
-	
-	
     required init() {
         super.init()
         addViews()
@@ -45,12 +41,12 @@ class NewScheduleTabView:TabBarPageView{
         
     }
     
-    private func addViews(){
+    private func addViews() {
         self.addHeaderButton(selectButton)
 		self.addSubview(activityIndicator)
 		self.addSubview(table)
     }
-    private func setupConstraints(){
+    private func setupConstraints() {
 		activityIndicator.snp.makeConstraints { (make) in
 			make.height.width.equalTo(40)
 			make.center.equalTo(table)
@@ -65,8 +61,6 @@ class NewScheduleTabView:TabBarPageView{
 			make.height.equalTo(self).priority(.low)
 		}
     }
-    
-  
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

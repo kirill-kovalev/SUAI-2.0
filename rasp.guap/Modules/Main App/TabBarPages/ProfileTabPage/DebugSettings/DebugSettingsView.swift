@@ -9,7 +9,7 @@
 import UIKit
 
 class DebugSettingsView: View {
-	let stack:UIStackView = {
+	let stack: UIStackView = {
 		let s = UIStackView(frame: .zero)
 		s.axis = .vertical
 		s.alignment = .fill
@@ -21,7 +21,7 @@ class DebugSettingsView: View {
 	let goodTB = AppSettingsBlock(title: "Правильный таб бар")
 	let listNotificationsBtn = PocketButton(type: .roundedRect)
 	let checkVK = PocketButton(type: .roundedRect)
-	required init(){
+	required init() {
 		super.init()
 		
 		self.backgroundColor = .clear
@@ -37,7 +37,6 @@ class DebugSettingsView: View {
 		stack.addArrangedSubview(listNotificationsBtn)
 		stack.addArrangedSubview(checkVK)
 		stack.addArrangedSubview(textField)
-		
 		
 	}
 	

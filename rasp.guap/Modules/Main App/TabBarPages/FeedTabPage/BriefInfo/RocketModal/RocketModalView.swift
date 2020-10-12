@@ -9,19 +9,19 @@
 import UIKit
 
 class RocketModalView: ModalView {
-    let image:UIImageView = {
+    let image: UIImageView = {
         let img = UIImageView(frame: .zero)
         img.image = Asset.AppImages.stickers.image
         return img
     }()
-    let title:UILabel = {
+    let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Собирай рокеты!"
         label.font = FontFamily.TTCommons.bold.font(size: 21)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    let subtitle:UILabel = {
+    let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Пользуйся сервисом и получай рокеты! Лучших ждут стикеры еженедельно!"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -30,21 +30,21 @@ class RocketModalView: ModalView {
 		label.textAlignment = .center
         return label
     }()
-    let topTitle:UILabel = {
+    let topTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Топ-3 месяца"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    let stack:UIStackView = {
+    let stack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         stack.spacing = 6
 		stack.distribution = .fillEqually
         return stack
     }()
-    let nextGiveaway:UILabel = {
+    let nextGiveaway: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "(Следующий розыгрышь через дней)"
 		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
@@ -58,7 +58,7 @@ class RocketModalView: ModalView {
         setupConstraints()
     }
     
-    func addViews(){
+    func addViews() {
         addSubview(image)
         addSubview(title)
         addSubview(subtitle)
@@ -66,7 +66,7 @@ class RocketModalView: ModalView {
         addSubview(stack)
         addSubview(nextGiveaway)
     }
-    func setupConstraints(){
+    func setupConstraints() {
         image.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()

@@ -9,64 +9,64 @@
 import Foundation
 
 struct AppSettings {
-	static var isDeadlineNotificationsEnabled:Bool{
-		get{
+	static var isDeadlineNotificationsEnabled: Bool {
+		get {
 			let get = UserDefaults.standard.bool(forKey: "deadlineNotifications") && NotificationManager.shared.isAuth
 			Logger.print(from: #function, "isDeadlineNotificationsEnabled get \(get)")
 			return get
 		}
-		set{
+		set {
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "deadlineNotifications")
 			Logger.print(from: #function, "isDeadlineNotificationsEnabled set \(newValue)")
 		}
 	}
 	
-	static var isTimetableNotificationsEnabled:Bool{
-		get{
+	static var isTimetableNotificationsEnabled: Bool {
+		get {
 			UserDefaults.standard.synchronize()
 			let get = UserDefaults.standard.bool(forKey: "timetableNotifications") && NotificationManager.shared.isAuth
 			Logger.print(from: #function, "isTimetableNotificationsEnabled get \(get)")
 			return get
 		}
-		set{
+		set {
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "timetableNotifications")
 			Logger.print(from: #function, "isTimetableNotificationsEnabled set \(newValue)")
 		}
 	}
 	
-	static var isOldTimetableEnabled:Bool{
-		get{
+	static var isOldTimetableEnabled: Bool {
+		get {
 			UserDefaults.standard.synchronize()
 			let get = UserDefaults.standard.bool(forKey: "oldTimetable")
 			Logger.print(from: #function, "isOldTimetableEnabled get \(get)")
 			return get
 		}
-		set{
+		set {
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "oldTimetable")
 			Logger.print(from: #function, "isOldTimetableEnabled set \(newValue)")
 		}
 	}
 	
-	static var isGoodTabBar:Bool{
-		get{
+	static var isGoodTabBar: Bool {
+		get {
 			UserDefaults.standard.synchronize()
 			let get = UserDefaults.standard.bool(forKey: "goodTabBar")
 			Logger.print(from: #function, "isGoodTabBar get \(get)")
 			return get
 		}
-		set{
+		set {
 			UserDefaults.standard.synchronize()
 			UserDefaults.standard.set(newValue, forKey: "goodTabBar")
 			Logger.print(from: #function, "isGoodTabBar set \(newValue)")
 		}
 	}
 	
-	static func clearCache(){
+	static func clearCache() {
 		NotificationManager.shared.clear()
-		for (key,_) in UserDefaults.standard.dictionaryRepresentation() {
+		for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
 			UserDefaults.standard.removeObject(forKey: key)
 		}
 		let domain = Bundle.main.bundleIdentifier ?? ""

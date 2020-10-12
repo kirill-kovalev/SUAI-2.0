@@ -8,21 +8,19 @@
 
 import UIKit
 
-extension UITextField{
-    
-    @IBInspectable var doneAccessory: Bool{
-        get{
+extension UITextField {
+    @IBInspectable var doneAccessory: Bool {
+        get {
             return self.doneAccessory
         }
         set (hasDone) {
-            if hasDone{
+            if hasDone {
                 addDoneButtonOnKeyboard()
             }
         }
     }
     
-    func addDoneButtonOnKeyboard()
-    {
+    func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
         
@@ -36,27 +34,24 @@ extension UITextField{
         self.inputAccessoryView = doneToolbar
     }
     
-    @objc func doneButtonAction()
-    {
+    @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
 }
 
-extension UITextView{
-    
-    @IBInspectable var doneAccessory: Bool{
-        get{
+extension UITextView {
+    @IBInspectable var doneAccessory: Bool {
+        get {
             return self.doneAccessory
         }
         set (hasDone) {
-            if hasDone{
+            if hasDone {
                 addDoneButtonOnKeyboard()
             }
         }
     }
     
-    func addDoneButtonOnKeyboard()
-    {
+    func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
         
@@ -70,8 +65,7 @@ extension UITextView{
         self.inputAccessoryView = doneToolbar
     }
     
-    @objc func doneButtonAction()
-    {
+    @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
 }

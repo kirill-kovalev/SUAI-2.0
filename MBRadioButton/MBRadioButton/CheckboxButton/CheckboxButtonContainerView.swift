@@ -10,7 +10,6 @@ import UIKit
 
 /// View container that hold all CheckboxButton available as first immediate subview only
 open class MBCheckboxButtonContainerView: UIView {
-    
     private var _buttonContainer = MBCheckboxButtonContainer()
     
     /// Access button container for more features

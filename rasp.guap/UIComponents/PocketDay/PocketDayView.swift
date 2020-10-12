@@ -9,7 +9,6 @@
 import UIKit
 
 class PocketDayView: NibView {
-
 	@IBOutlet weak var lessonType: UILabel?
 	
 	@IBOutlet weak var title: UILabel!

@@ -9,7 +9,6 @@
 import UIKit
 
 class FirstScreenView: View {
-    
     // MARK: - Views
     
     let label: UILabel = {
@@ -19,31 +18,31 @@ class FirstScreenView: View {
         return label
     }()
     
-    let btn :Button = {
+    let btn: Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Show", for: .normal)
         btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
-        return btn;
+        return btn
     }()
     
-    let btn2 :Button = {
+    let btn2: Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Go", for: .normal)
         btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
-        return btn;
+        return btn
     }()
     
-    let btn3 :Button = {
+    let btn3: Button = {
         let btn = Button(frame: .zero)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Alert", for: .normal)
         btn.setTitleColor(Asset.PocketColors.pocketBlack.color, for: .normal)
-        return btn;
+        return btn
     }()
     
-    let textInput:UITextField =  {
+    let textInput: UITextField =  {
         let field = UITextField(frame: .zero)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
@@ -64,7 +63,7 @@ class FirstScreenView: View {
         setupConstraints()
     }
     
-    private func addViews(){
+    private func addViews() {
         self.addSubview(label)
         self.addSubview(btn)
         self.addSubview(btn2)
@@ -73,7 +72,7 @@ class FirstScreenView: View {
         
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../appTracker/Tracker/Tracker.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:TestPlayground.playground">
    </FileRef>
    <FileRef

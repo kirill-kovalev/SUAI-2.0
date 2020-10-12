@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PocketBannerView:UIView{
-    init(title:String,subtitle:String = "",image:UIImage) {
-        super.init(frame:.zero)
+class PocketBannerView: UIView {
+    init(title: String, subtitle: String = "", image: UIImage) {
+        super.init(frame: .zero)
         self.title.text = title
         self.subtitle.text = subtitle
         self.image.image = image
@@ -19,21 +19,21 @@ class PocketBannerView:UIView{
         setupConstraints()
     }
     required init?(coder: NSCoder) {
-        super.init(frame:.zero)
+        super.init(frame: .zero)
     }
-    private let title:UILabel = {
+    private let title: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.TTCommons.bold.font(size: 22)
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }()
-    private let subtitle:UILabel = {
+    private let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
         return label
     }()
-    private let button:PocketLongActionButton = {
+    private let button: PocketLongActionButton = {
         let btn = PocketLongActionButton(frame: .zero)
         btn.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 14)
         btn.setTitleColor(Asset.PocketColors.buttonOutlineBorder.color, for: .normal)
@@ -49,18 +49,18 @@ class PocketBannerView:UIView{
         })
         return btn
     }()
-    private let image:UIImageView = {
+    private let image: UIImageView = {
         let view = UIImageView(frame: .zero)
 		view.contentMode = .scaleAspectFill
         return view
     }()
-    private func addViews(){
+    private func addViews() {
         self.addSubview(title)
         self.addSubview(subtitle)
         self.addSubview(button)
         self.addSubview(image)
     }
-    private func setupConstraints(){
+    private func setupConstraints() {
         title.snp.makeConstraints { (make) in
 			make.top.equalToSuperview().offset(4)
 			make.left.equalToSuperview()
@@ -84,7 +84,7 @@ class PocketBannerView:UIView{
             make.bottom.equalToSuperview().offset(11)
         }
     }
-    public func setButton(title:String,action: @escaping (Button) -> Void ){
+    public func setButton(title: String, action: @escaping (Button) -> Void ) {
         self.button.setTitle(title, for: .normal)
         self.button.addTarget(action: action, for: .touchUpInside)
     }

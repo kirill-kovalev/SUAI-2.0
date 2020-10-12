@@ -8,20 +8,17 @@
 
 import UIKit
 
-class FirstScreenViewController: ViewController<FirstScreenView>{
-	
-	
+class FirstScreenViewController: ViewController<FirstScreenView> {
 	// MARK: - ViewController lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.rootView.label.text = ""
-        rootView.btn.addTarget(action: { (sender) in
+        rootView.btn.addTarget(action: { (_) in
             self.present(TimetableFilterViewConroller(), animated: true, completion: nil)
         }, for: .touchUpInside)
-        rootView.btn2.addTarget(action: { (sender) in
+        rootView.btn2.addTarget(action: { (_) in
             self.navigationController?.pushViewController(TutorialScreenViewController(), animated: true)
         }, for: .touchUpInside)
-        
         
 	}
 }
