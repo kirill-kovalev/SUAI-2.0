@@ -94,9 +94,9 @@ extension NewScheduleTabViewController: UITableViewDelegate {
 extension NewScheduleTabViewController: UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
 		if self.timetable.get(week: .outOfTable).isEmpty {
-			return 3
+			return self.curWeekDay == 0 ? 2 : 3
 		} else {
-			return 4
+			return self.curWeekDay == 0 ? 3 : 4
 		}
 	}
 	
@@ -189,58 +189,66 @@ extension NewScheduleTabViewController: UITableViewDataSource {
 	}
 	func generateViewForHeader(isUp: Bool, isEven: Bool) -> UITableViewCell {
 		let view = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-		let image = UIView(frame: .zero)//UIImageView(image: Asset.SystemIcons.searchDropdown.image.withRenderingMode(.alwaysTemplate))
-		image.backgroundColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : .red //Asset.PocketColors.pocketRedButtonText.color
-		//image.transform = isUp ? .init(rotationAngle: CGFloat.pi) : .identity
+		view.backgroundColor = Asset.PocketColors.headerBackground.color
+		
+		let image = UIView(frame: .zero)
+		image.backgroundColor = isEven ? Asset.PocketColors.pocketDarkBlue.color : .red
 		image.layer.cornerRadius = 2.5
-		
-		let label = UILabel(frame: .zero)
-		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
-		
-		label.textColor = Asset.PocketColors.pocketGray.color
-		label.text = isEven ? "Четная неделя" : "Нечетная неделя"
-		
 		view.addSubview(image)
 		image.snp.makeConstraints { (make) in
 			make.centerY.equalToSuperview()
 			make.left.equalToSuperview().offset(10)
 			make.width.height.equalTo(5)
 		}
+		
+		let label = UILabel(frame: .zero)
+		label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
+		label.textColor = Asset.PocketColors.pocketGray.color
+		label.text = isEven ? "Четная неделя" : "Нечетная неделя"
 		view.addSubview(label)
 		label.snp.makeConstraints { (make) in
 			make.left.equalTo(image.snp.right).offset(8)
 			make.centerY.equalToSuperview()
 			make.height.equalToSuperview().inset(4)
 		}
-		view.backgroundColor = Asset.PocketColors.headerBackground.color
-//		view.contentView.snp.makeConstraints { (make) in
-//			make.height.equalTo(35)
-//		}
+		
+
 		return view
 	}
 	func generateTodayLabel() -> Button {
 		let button = Button(frame: .zero)
 		let week = self.currentWeek == .even ? "четная" : "нечетная"
-		
-		let formatter = DateFormatter()
-		formatter.locale = Locale(identifier: "ru")
-		formatter.dateFormat = "d MMMM"
-		
+				
 		button.titleLabel?.font = FontFamily.SFProDisplay.bold.font(size: 14)
 		button.contentHorizontalAlignment = .left
-		
 		button.backgroundColor = Asset.PocketColors.headerBackground.color
-		
 		button.addTarget(action: { (_) in self.setCurrentUser() }, for: .touchUpInside)
+		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8 + 15, bottom: 0, right: 0)
 		
-		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+		let image = UIView(frame: .zero)
+		image.backgroundColor = self.currentWeek == .even ? Asset.PocketColors.pocketDarkBlue.color : .red
+		image.layer.cornerRadius = 2.5
+		button.addSubview(image)
+		
+		image.snp.makeConstraints { (make) in
+			make.centerY.equalToSuperview()
+			make.left.equalToSuperview().offset(10)
+			make.width.height.equalTo(5)
+		}
 		
 		if let curUser = self.currentUser,
-		   let settingsGroup = SAUserSettings.shared.group {
+			let settingsGroup = SAUserSettings.shared.group,
+			let weekNum = SASchedule.shared.settings?.weekNum {
 			if curUser.Name == settingsGroup {
 				button.isEnabled = false
+				
+				let formatter = DateFormatter()
+				formatter.locale = Locale(identifier: "ru")
+				formatter.dateFormat = "d MMMM"
+				let todayStr = formatter.string(from: Date())
+				
 				button.setTitleColor(Asset.PocketColors.pocketGray.color, for: .normal)
-				button.setTitle("\(formatter.string(from: Date())), \(week) неделя", for: .disabled)
+				button.setTitle("\(todayStr), \(week) неделя (\(weekNum))", for: .disabled)
 				return button
 			}
 			
@@ -254,8 +262,7 @@ extension NewScheduleTabViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat { [0, 1, 2].contains(section) ? 35 : 0}
-//	func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat { [0,1].contains(section) ? 35 : 0}
-	
+
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		switch section {
 			case 0 : return generateTodayLabel()
@@ -264,13 +271,5 @@ extension NewScheduleTabViewController: UITableViewDataSource {
 			default: return nil
 		}
 	}
-//	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//		switch section{
-//			case 0 : return generateViewForHeader(isUp: false, isEven: nextWeek != .even)
-//			case 1 : return generateViewForHeader(isUp: false, isEven: currentWeek != .even)
-//			default: return nil
-//		}
-//
-//	}
 	
 }

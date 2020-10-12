@@ -20,6 +20,7 @@ public struct ScheduleSettings:Codable {
     public var week:SATimetable.Week{
         return IsWeekOdd ? .odd : .even
     }
+	public var weekNum:Int { self.CurrentWeek }
     
     
     
