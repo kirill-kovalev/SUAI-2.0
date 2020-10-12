@@ -212,7 +212,6 @@ extension NewScheduleTabViewController: UITableViewDataSource {
 			make.height.equalToSuperview().inset(4)
 		}
 		
-
 		return view
 	}
 	func generateTodayLabel() -> Button {
