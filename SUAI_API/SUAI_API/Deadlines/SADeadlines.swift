@@ -47,12 +47,13 @@ public class SADeadlines{
 	public func loadFromServer() -> Bool{
 		while self.sync > 0 {}
 		self.sync += 1
-		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
+		let params : [String:String] = (SAUserSettings.shared.proSupport) ? [:] : [:]
 		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) {
 			self.sync -= 1
 			
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
+				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
 				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
 				return true
@@ -63,6 +64,30 @@ public class SADeadlines{
 		self.sync -= 1
 		return false
 	}
+	private func loadPro(){
+		if !ProGuap.shared.needsToAuth,
+			ProGuap.shared.getUser() != nil,
+			let tasks = ProGuap.shared.getTasks()
+		{
+			let deadlines = tasks.compactMap { task -> SADeadline? in
+				guard let id = Int(task.id) else {return nil}
+				var deadline = SADeadline(id: id, subject_name: task.subject_name, deadline_name: task.name, closed: 0, start: task.datecreate, end: Date(), comment: task.description)
+				
+				
+				deadline.end = task.dateend
+				
+				deadline.status_name = task.status_name
+				deadline.type_name = task.type_name
+				deadline.markpoint = task.markpoint
+				deadline.is_our = 0
+				
+				
+				return deadline
+			}
+			self.deadlines.append(contentsOf: deadlines)
+		}
+	}
+	
 	public func loadFromCache(){
 		if let data = UserDefaults.standard.data(forKey: self.userDefaultsKey){
 			do {

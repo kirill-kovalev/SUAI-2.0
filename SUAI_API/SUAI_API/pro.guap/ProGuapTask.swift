@@ -31,7 +31,12 @@ public struct ProTask:Codable{
 	public let type_name: String
 	public let curPoints: String?
 	public let status_name: String?
-	
+	public var dateend:Date?{
+		guard let hardDeadline = self.harddeadline else {return nil}
+		let formatter = DateFormatter()
+		formatter.dateFormat = "YYYY-MM-dd"
+		return formatter.date(from: hardDeadline)
+	}
 	// MARK: - Task
 	public struct Detailed:Codable{
 		public let id: String
