@@ -45,7 +45,20 @@ class DeadlineInfoModalView: UIStackView {
         return btn
     }()
 	let buttonContainer = UIView(frame: .zero)
-    
+
+	let downloadButton: PocketLongActionButton = {
+		let button: PocketLongActionButton = PocketLongActionButton(frame: .zero)
+		button.layer.borderWidth = 2
+		button.layer.cornerRadius = 14
+		
+		button.setTitle("file.pdf", for: .normal)
+		button.titleLabel?.font = FontFamily.SFProDisplay.regular.font(size: 14)
+		
+		button.imageEdgeInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 10)
+		
+		return button
+	}()
+	
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     required init() {
 		super.init(frame: .zero)
@@ -87,7 +100,9 @@ class DeadlineInfoModalView: UIStackView {
             make.height.equalTo(40)
         }
         
-        //
+		downloadButton.snp.makeConstraints { (make) in
+			make.height.equalTo(35)
+		}
     }
     
 }

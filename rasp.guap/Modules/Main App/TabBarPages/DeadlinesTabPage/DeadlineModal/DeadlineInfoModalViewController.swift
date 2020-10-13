@@ -11,9 +11,9 @@ import SUAI_API
 
 class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView> {
     var deadline: SADeadline
-    
+	var fileDetailed:ProTask.Detailed? = nil
+	
     var onChange:(() -> Void)?
-    
     init(deadline: SADeadline?=nil) {
         self.deadline = deadline ?? SADeadline()
         super.init()
@@ -163,8 +163,75 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
 		
 		if !self.deadline.isPro {
 			self.content.addArrangedSubview(self.content.buttonContainer)
+			return
 		}
+		
+		
+		//TODO : Сделать АСИНХРОННО!!!!!
+		//swiftlint:disable opening_brace
+		if  let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+			let detailed = ProGuap.shared.getDetailedTask(id: self.deadline.id),
+			let filename = detailed.filename,
+			let link = detailed.link
+		{
+			let fileURL = documentsFolder.appendingPathComponent(filename)
+			self.content.addArrangedSubview(self.content.sectionLabelGenerator("Прикрпеленный файл"))
+
+			self.content.downloadButton.setTitle(filename, for: .normal)
+			setupDownloadButton(fileURL)
+			self.content.addArrangedSubview(self.content.downloadButton)
+			
+			setupDownloadButtonAction(fileURL: fileURL, downloadURL: link)
+		}
+		
     }
+	
+	private func fileExists(_ url: URL) -> Bool { return (try? Data(contentsOf: url)) != nil }
+	
+	func setupDownloadButton(_ fileURL: URL){
+		if fileExists(fileURL) {
+			self.content.downloadButton.setTitleColor(Asset.PocketColors.pocketDarkBlue.color, for: .normal)
+			self.content.downloadButton.setImage(Asset.SystemIcons.document.image.withRenderingMode(.alwaysTemplate), for: .normal)
+		} else {
+			self.content.downloadButton.setTitleColor(Asset.PocketColors.pocketGreen.color, for: .normal)
+			self.content.downloadButton.setImage(Asset.SystemIcons.download.image.withRenderingMode(.alwaysTemplate), for: .normal)
+		}
+		self.content.downloadButton.imageView?.contentMode = .scaleAspectFit
+		self.content.downloadButton.imageView?.tintColor = self.content.downloadButton.titleLabel?.textColor
+	}
+	
+	func setupDownloadButtonAction(fileURL: URL, downloadURL: URL){
+		self.content.downloadButton.addTarget(action: { (_) in
+			Logger.print("FILES: check \(fileURL)")
+			if self.fileExists(fileURL) {
+				Logger.print("FILES: check true")
+				self.openFile(fileURL)
+			} else {
+				Logger.print("FILES: check false")
+				self.downloadFile(link: downloadURL.absoluteString)
+			}
+		}, for: .touchUpInside)
+	}
+	
+	private func openFile(_ fileUrl: URL){
+		let activityController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+		self.present(activityController, animated: true, completion: nil)
+	}
+	private func downloadFile(link: String){
+		self.content.downloadButton.disable()
+		NetworkManager.downloadFile(url: link) { (result) in
+			switch result{
+				case .success(let downloadedFileUrl):
+					self.setupDownloadButton(downloadedFileUrl)
+					Logger.print("FILES: downloaded \(downloadedFileUrl.absoluteString)")
+				
+				case .failure(let err):
+					Logger.print("FILES: error \(err)")
+			}
+			
+			self.content.downloadButton.enable()
+		}
+	}
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         self.onChange?()
