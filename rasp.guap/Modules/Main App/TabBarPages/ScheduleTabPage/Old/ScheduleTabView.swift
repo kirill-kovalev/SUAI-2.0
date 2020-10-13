@@ -32,7 +32,7 @@ class ScheduleTabView: TabBarPageView {
         btn.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         return btn
     }()
-	let scrollView:UIScrollView = {
+	let scrollView: UIScrollView = {
 		let s = UIScrollView(frame: .zero)
 		s.showsHorizontalScrollIndicator = false
 		return s
