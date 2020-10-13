@@ -46,7 +46,9 @@ public class SAUserSettings: Codable {
 			let photo_100:String
         }
         
-		guard let data = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
+		guard
+			!VK.needToSetUp,
+			let data = try? VK.API.Users.get([.fields:"photo_100"]).synchronously().send(),
 			let resp = try? JSONDecoder().decode([vkResponse].self, from: data),
 			let user = resp.first else {
 			print("Logger (\(#function): can't get VK profle info");

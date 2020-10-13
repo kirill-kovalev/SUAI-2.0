@@ -47,20 +47,22 @@ public class SADeadlines{
 	public func loadFromServer() -> Bool{
 		while self.sync > 0 {}
 		self.sync += 1
-		let params : [String:String] = (SAUserSettings.shared.proSupport) ? [:] : [:]
+		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
 		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) {
 			self.sync -= 1
 			
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
+				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
 				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
 				return true
 			}catch{
 				print("Deadlines: \(error)")
 			}
-			if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 		}
+		if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
+
 		self.sync -= 1
 		return false
 	}
@@ -85,6 +87,9 @@ public class SADeadlines{
 				return deadline
 			}
 			self.deadlines.append(contentsOf: deadlines)
+		}else{
+			print("LOADPRO: needs to auth \(ProGuap.shared.needsToAuth)")
+			print("LOADPRO: used \(ProGuap.shared.getUser()as Any)")
 		}
 	}
 	
