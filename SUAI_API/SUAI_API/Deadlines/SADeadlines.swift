@@ -53,13 +53,13 @@ public class SADeadlines{
 			
 			do {
 				self.deadlines = try self.decodeDeadlines(data: data )
-				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
 				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
 				return true
 			}catch{
 				print("Deadlines: \(error)")
 			}
+			if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 		}
 		self.sync -= 1
 		return false
