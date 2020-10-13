@@ -32,6 +32,11 @@ class ScheduleTabView: TabBarPageView {
         btn.titleLabel?.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         return btn
     }()
+	let scrollView:UIScrollView = {
+		let s = UIScrollView(frame: .zero)
+		s.showsHorizontalScrollIndicator = false
+		return s
+	}()
 	
 	let placeholder = PocketDivPlaceholder(title: "Пар нет!", subtitle: "Можно спать спокойно!", image: Asset.AppImages.TabBarImages.schedule.image)
     
@@ -43,7 +48,8 @@ class ScheduleTabView: TabBarPageView {
     }
     
     private func addViews() {
-        self.addSubview(pocketDiv)
+        self.addSubview(scrollView)
+		self.scrollView.addSubview(pocketDiv)
         self.addHeaderButton(selectButton)
         self.addSubview(dayLabel)
         self.addSubview(todayButton)
@@ -65,11 +71,18 @@ class ScheduleTabView: TabBarPageView {
             make.centerY.equalTo(dayLabel)
             make.right.equalToSuperview().inset(10)
         }
-        pocketDiv.snp.makeConstraints { (make) in
-            make.top.equalTo(dayLabel.snp.bottom).offset(8)
+        scrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(dayLabel.snp.bottom)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(10)
+            make.width.equalToSuperview()
+			make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+		pocketDiv.snp.makeConstraints { (make) in
+			make.top.equalTo(scrollView.contentLayoutGuide).offset(8)
+			make.bottom.lessThanOrEqualTo(scrollView.contentLayoutGuide).inset(8)
+			make.centerX.equalToSuperview()
+			make.width.equalToSuperview().inset(10)
+		}
 		
         placeholder.snp.makeConstraints { (make) in
 			//make.height.lessThanOrEqualToSuperview()
