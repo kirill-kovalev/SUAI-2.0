@@ -19,6 +19,7 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			let alert = UIAlertController(title: "Сброс кэша", message: "Приложение будет закрыто", preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Продолжить", style: .destructive, handler: { (_) in
 				AppSettings.clearCache()
+				NetworkManager.clearCache()
 				exit(0)
 			}))
 			alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { (_) in
