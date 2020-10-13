@@ -46,7 +46,7 @@ class NetworkManager {
 	}
 // swiftlint:disable opening_brace
 // Потому что иначе уродливо
-	public static func downloadFile(url: String, delegate: URLSessionDelegate? = nil, completion: @escaping ((Result<URL, Error>) -> Void)) {
+	public static func downloadFile(url: String, as fileName: String? = nil, delegate: URLSessionDelegate? = nil, completion: @escaping ((Result<URL, Error>) -> Void)) {
 		guard let downloadURL = URL(string: url),
 			let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 		else {return}
@@ -64,9 +64,9 @@ class NetworkManager {
 				if let fileUrl = fileUrl,
 					let response = response as? HTTPURLResponse,
 					let contentHeader = response.allHeaderFields["Content-Disposition"] as? String,
-					let filename = parseFilename(header: contentHeader)
+					let headerFilename = parseFilename(header: contentHeader)
 				{
-					let destinationURL = documentsFolder.appendingPathComponent(filename)
+					let destinationURL = documentsFolder.appendingPathComponent(fileName ?? headerFilename)
 					print(destinationURL.absoluteString)
 					
 					try? FileManager.default.removeItem(at: destinationURL)

@@ -11,7 +11,6 @@ import SUAI_API
 
 class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView> {
     var deadline: SADeadline
-	var fileDetailed:ProTask.Detailed? = nil
 	
     var onChange:(() -> Void)?
     init(deadline: SADeadline?=nil) {
@@ -161,30 +160,32 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
             self.content.closeButton.layer.borderColor = color.cgColor
         }
 		
-		if !self.deadline.isPro {
+		if self.deadline.isPro {
+			DispatchQueue.global().async { self.addDownloadButton() }
+		} else {
 			self.content.addArrangedSubview(self.content.buttonContainer)
-			return
 		}
 		
-		
-		//TODO : Сделать АСИНХРОННО!!!!!
+    }
+	func addDownloadButton() {
 		//swiftlint:disable opening_brace
 		if  let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
 			let detailed = ProGuap.shared.getDetailedTask(id: self.deadline.id),
 			let filename = detailed.filename,
 			let link = detailed.link
 		{
-			let fileURL = documentsFolder.appendingPathComponent(filename)
-			self.content.addArrangedSubview(self.content.sectionLabelGenerator("Прикрпеленный файл"))
+			DispatchQueue.main.async {
+				let fileURL = documentsFolder.appendingPathComponent(filename)
+				self.content.addArrangedSubview(self.content.sectionLabelGenerator("Прикрпеленный файл"))
 
-			self.content.downloadButton.setTitle(filename, for: .normal)
-			setupDownloadButton(fileURL)
-			self.content.addArrangedSubview(self.content.downloadButton)
-			
-			setupDownloadButtonAction(fileURL: fileURL, downloadURL: link)
+				self.content.downloadButton.setTitle(filename, for: .normal)
+				self.setupDownloadButton(fileURL)
+				self.content.addArrangedSubview(self.content.downloadButton)
+				
+				self.setupDownloadButtonAction(fileURL: fileURL, downloadURL: link)
+			}
 		}
-		
-    }
+	}
 	
 	private func fileExists(_ url: URL) -> Bool { return (try? Data(contentsOf: url)) != nil }
 	
@@ -208,7 +209,7 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
 				self.openFile(fileURL)
 			} else {
 				Logger.print("FILES: check false")
-				self.downloadFile(link: downloadURL.absoluteString)
+				self.downloadFile(link: downloadURL.absoluteString, name: fileURL.lastPathComponent)
 			}
 		}, for: .touchUpInside)
 	}
@@ -217,9 +218,9 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
 		let activityController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
 		self.present(activityController, animated: true, completion: nil)
 	}
-	private func downloadFile(link: String){
+	private func downloadFile(link: String, name: String ){
 		self.content.downloadButton.disable()
-		NetworkManager.downloadFile(url: link) { (result) in
+		NetworkManager.downloadFile(url: link, as: name) { (result) in
 			switch result{
 				case .success(let downloadedFileUrl):
 					self.setupDownloadButton(downloadedFileUrl)
