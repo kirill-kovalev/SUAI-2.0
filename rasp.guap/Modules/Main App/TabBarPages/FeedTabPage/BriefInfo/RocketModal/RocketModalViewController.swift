@@ -53,7 +53,7 @@ class RocketModalViewController: ModalViewController<RocketModalView> {
 			if diff < 2 {
 				self.content.nextGiveaway.text = "(Следующий розыгрыш завтра)"
 			} else {
-			    self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) \(wordCase(diff))"
+			    self.content.nextGiveaway.text = "(Следующий розыгрыш через \(diff) \(wordCase(diff)))"
 			}
 			
 		}
