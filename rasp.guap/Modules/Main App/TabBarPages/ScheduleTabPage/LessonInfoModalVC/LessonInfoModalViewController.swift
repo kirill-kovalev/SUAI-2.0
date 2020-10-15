@@ -44,7 +44,7 @@ class LessonInfoModalViewController: ModalViewController<LessonInfoModalView> {
             return hs
         }
 		if lesson.prepods.isEmpty {
-			let label = self.content.sectionTextGenerator();
+			let label = self.content.sectionTextGenerator()
 			label.text = "Преподаватели не указаны"
 			self.content.prepStack.addArrangedSubview(label)
 		}

@@ -126,5 +126,4 @@ extension PocketDayView {
 		pocketLessonView.tagStack.addArrangedSubview(tag)
 	}
 
-	
 }
