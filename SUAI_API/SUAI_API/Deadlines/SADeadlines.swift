@@ -47,8 +47,8 @@ public class SADeadlines{
 	public func loadFromServer() -> Bool{
 		while self.sync > 0 {}
 		self.sync += 1
-		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
-		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines ,params:params ) {
+//		let params : [String:String] = (SAUserSettings.shared.proSupport) ? ["need_proguap":"True"] : [:]
+		if let data = PocketAPI.shared.syncLoadTask(method: .getDeadlines/* ,params:params*/ ) {
 			self.sync -= 1
 			
 			do {
