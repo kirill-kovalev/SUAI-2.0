@@ -43,7 +43,11 @@ class LessonInfoModalViewController: ModalViewController<LessonInfoModalView> {
             hs.axis = .horizontal
             return hs
         }
-		
+		if lesson.prepods.isEmpty {
+			let label = self.content.sectionTextGenerator();
+			label.text = "Преподаватели не указаны"
+			self.content.prepStack.addArrangedSubview(label)
+		}
         for prep in lesson.prepods {
             let tagView = PocketTagButton()
             tagView.setTitle(prep.Name, for: .normal)

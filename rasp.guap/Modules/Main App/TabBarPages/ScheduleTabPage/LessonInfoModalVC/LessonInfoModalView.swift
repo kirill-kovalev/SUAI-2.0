@@ -15,7 +15,7 @@ class LessonInfoModalView: View {
         label.textColor = Asset.PocketColors.pocketBlack.color
         return label
     }
-    private func sectionTextGenerator() -> UILabel {
+    func sectionTextGenerator() -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = FontFamily.SFProDisplay.regular.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
