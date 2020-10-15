@@ -254,7 +254,7 @@ class FeedBriefInfoViewController: UIViewController {
 		let weekdays = ["понедельник", "вторник", "среду", "четверг", "пятницу", "субботу"]
 		let today = Calendar.convertToRU(Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0)
 		
-		let stack = UIStackView(arrangedSubviews: lessons.map {  TimetableLessonCell(lesson: $0) })
+		let stack = UIStackView(arrangedSubviews: lessons.map {  PocketDayView.make(lesson: $0) })
 		stack.axis = .vertical
 		
 		let div = PocketDivView(content: stack)

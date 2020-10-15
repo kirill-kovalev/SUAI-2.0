@@ -9,35 +9,24 @@
 import UIKit
 import SUAI_API
 
-class TimetableLessonCell: UIView {
-	let pocketLessonView: PocketDayView = {
-		if AppSettings.isOldTimetableEnabled {return PocketDayView.fromNib()} else {return PocketDayView.fromNib(named: "NewPocketDayView")} 
-	}()
-	private var lesson: SALesson?
-	
-	private let btn: Button = {
-		let btn = Button(frame: .zero)
-		return btn
-	}()
-	
-	init(lesson: SALesson? = nil ) {
-		super.init(frame: .zero)
+extension PocketDayView {
+//	let pocketLessonView: PocketDayView = {
+//		if AppSettings.isOldTimetableEnabled {return } else {return PocketDayView.fromNib(named: "NewPocketDayView")}
+//	}()
+	private var pocketLessonView: Self {self }
 		
-		addViews()
-		setupConstraints()
-		
-		if lesson != nil {
-			setLesson(lesson: lesson!)
-		}
-	}
-	private func addViews() {
-		self.addSubview(pocketLessonView)
-	}
-	private func setupConstraints() {
-		self.pocketLessonView.snp.makeConstraints { (make) in
-			make.top.bottom.equalToSuperview()
-			make.left.right.equalToSuperview()
-		}
+//	convenience init(lesson: SALesson? = nil ) {
+//		super.init(frame: .zero)
+//
+//
+//		if lesson != nil {
+//			setLesson(lesson: lesson!)
+//		}
+//	}
+	static func make(lesson: SALesson? = nil) -> PocketDayView {
+		let cell = AppSettings.isOldTimetableEnabled ? PocketDayView.fromNib() : PocketDayView.fromNib(named: "NewPocketDayView")
+		if let lesson = lesson { cell.setLesson(lesson: lesson) }
+		return cell
 	}
 	
 	private func wordCase(_ n: Int) -> String {
@@ -58,7 +47,7 @@ class TimetableLessonCell: UIView {
 	}
 	
 	private func oldSetLesson(lesson: SALesson) {
-		self.lesson = lesson
+//		self.lesson = lesson
 		
 		pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name
 		pocketLessonView.lessonNum.text = "\(lesson.lessonNum)"
@@ -89,7 +78,7 @@ class TimetableLessonCell: UIView {
 	}
 	
 	private func newSetLesson(lesson: SALesson) {
-		self.lesson = lesson
+//		self.lesson = lesson
 		
 		pocketLessonView.prep.text = lesson.prepods.isEmpty ? "Преподаватель не указан" : lesson.prepods[0].Name
 		pocketLessonView.lessonNum.text = "\(lesson.lessonNum)"
@@ -136,9 +125,6 @@ class TimetableLessonCell: UIView {
 		tag.isEnabled = false
 		pocketLessonView.tagStack.addArrangedSubview(tag)
 	}
-	
-	required init?(coder: NSCoder) {
-		super.init(coder: coder)
-	}
+
 	
 }
