@@ -9,6 +9,7 @@
 import Foundation
 
 public class SATimetable {
+	private var user: SAUsers.User?
     public static let lessonHours:[[DateComponents]] = [
         [.init(hour: 09, minute: 30),.init(hour: 11, minute: 00)],//1
         [.init(hour: 11, minute: 10),.init(hour: 12, minute: 40)],//2
@@ -32,17 +33,31 @@ public class SATimetable {
     private var timetable = [SALesson]()//список пар
     
     public func load(for user: SAUsers.User) -> Self{
-        
+		self.user = user
         let type = user.Name.contains(" — ") ? "prep" : "group"
         
         let url = URL(string: "https://api.guap.ru/rasp/custom/get-sem-rasp/\(type)\(user.ItemId)")!
         let sem = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             self.decodeAPIResponse(data: data, resp: resp, err: err)
+			if self.timetable.isEmpty {
+				self.reserveLoad(for: user)
+			}
             sem.signal()
         }.resume()
         let _ = sem.wait(timeout: .distantFuture)
         return self
+    }
+	private func reserveLoad(for user: SAUsers.User){
+		let url = URL(string: "https://suaipocket.ru:8000/GetSchedule?group=\(user.shortName)")!
+		
+        let sem = DispatchSemaphore(value: 0)
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            self.decodeAPIResponse(data: data, resp: resp, err: err)
+            sem.signal()
+        }.resume()
+		
+        _ = sem.wait(timeout: .distantFuture)
     }
 
     
