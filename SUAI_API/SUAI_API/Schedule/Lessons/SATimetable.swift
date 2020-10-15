@@ -49,15 +49,15 @@ public class SATimetable {
         return self
     }
 	private func reserveLoad(for user: SAUsers.User){
-		let url = URL(string: "https://suaipocket.ru:8000/GetSchedule?group=\(user.shortName)")!
-		
-        let sem = DispatchSemaphore(value: 0)
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
-            self.decodeAPIResponse(data: data, resp: resp, err: err)
-            sem.signal()
-        }.resume()
-		
-        _ = sem.wait(timeout: .distantFuture)
+		if let url = URL(string: "https://suaipocket.ru:8000/GetSchedule?group=\(user.shortName)"){
+			let sem = DispatchSemaphore(value: 0)
+			URLSession.shared.dataTask(with: url) { (data, resp, err) in
+				self.decodeAPIResponse(data: data, resp: resp, err: err)
+				sem.signal()
+			}.resume()
+			
+			_ = sem.wait(timeout: .distantFuture)
+		}
     }
 
     
