@@ -29,12 +29,11 @@ class DeadlineEditableModalViewController: ModalViewController<DeadlineEditModal
 			}
 		}
 		
-		for item in [self.content.lessonLabel, self.content.dateLabel, self.content.nameLabel] {
-			item.addTarget(self, action: #selector(self.textViewDidChange(_:)), for: .editingChanged)
+		for item in [self.content.lessonLabel, self.content.dateLabel, self.content.nameLabel, self.content.datePicker] {
+			item.addTarget(self, action: #selector(self.textViewDidChange(_:)), for: .allEditingEvents)
 		}
 		
 		self.content.commentLabel.delegate = self
-		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -145,6 +144,7 @@ extension DeadlineEditableModalViewController: UIPickerViewDataSource {
 
 extension DeadlineEditableModalViewController: UIPickerViewDelegate {
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		self.content.lessonLabel.placeholder = "Не выбрано"
 		self.content.lessonLabel.text = row == 0 ? ""  : lessonList[row-1].name
 		self.content.closeButton.isEnabled = self.checkModal()
 	}
