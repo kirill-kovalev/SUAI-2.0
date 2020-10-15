@@ -127,6 +127,7 @@ class VKLoginPageViewController: UIViewController {
 	
 	private func setupQuickActions() {
 		NotificationCenter.default.addObserver(self, selector: #selector(shortcutNotification(_:)), name: AppDelegate.shortcutNotification, object: nil)
+		UIApplication.shared.shortcutItems = nil
 //		UIApplication.shared.shortcutItems = [UIApplicationShortcutItem(type: "vkLogin", localizedTitle: "Авторизоваться через VK", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: Asset.SystemIcons.vkLogo.name), userInfo: nil)]
 	}
 	@objc func shortcutNotification(_ notif: Notification) {
