@@ -118,8 +118,8 @@ class DeadlineEditableModalViewController: ModalViewController<DeadlineEditModal
 	}
 	
 	func checkModal() -> Bool {
-		if (self.content.nameLabel.text?.count ?? 0) < 1 || (self.content.nameLabel.text?.count ?? 0) > 50 { return false}
-		if (self.content.commentLabel.text?.count ?? 0) > 300 { return false}
+		if (self.content.nameLabel.text?.filter { $0 != " " }.count ?? 0) < 1 || (self.content.nameLabel.text?.count ?? 0) > 50 { return false}
+		if (self.content.commentLabel.text?.filter { $0 != " " }.count ?? 0) > 300 { return false}
 		let date = self.content.datePicker.date
 		let todayStr = self.content.formatter.string(from: Date())
 		let today = self.content.formatter.date(from: todayStr) ?? Date()
