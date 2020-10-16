@@ -75,7 +75,8 @@ class PagedView: UIView {
     
     private func setupViewConstraints(_ view: UIView) {
         view.snp.makeConstraints { (make) in
-            make.height.width.equalTo(self.scrollView)
+			make.height.width.equalTo(self.scrollView)
+			make.top.bottom.equalToSuperview()
             if views.last != nil {
                 make.left.equalTo(views.last!.snp.right)
             } else {
