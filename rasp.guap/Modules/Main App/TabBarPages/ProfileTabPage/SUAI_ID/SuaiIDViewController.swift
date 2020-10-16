@@ -20,13 +20,14 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 			self.rootView.submitBtn.isActive = false
 			DispatchQueue.global().async {
 				if SAUserSettings.shared.update() {
+					_ = ProGuap.shared.auth(login: SAUserSettings.shared.prologin ?? "", pass: SAUserSettings.shared.propass ?? "")
 					Logger.print(from: #function, "SUAI ID OK")
-					MainTabBarController.Snack(status: .ok, text: "Настройки обновлены")
+					MainTabBarController.Snack(status: .ok, text: "Аккаунт привязан")
 					DispatchQueue.main.async {self.rootView.submitBtn.isActive = false}
 					self.isTextEdited = false
 				} else {
 					Logger.print(from: #function, "SUAI ID Err")
-					MainTabBarController.Snack(status: .err, text: "Ошибка обновления настроек")
+					MainTabBarController.Snack(status: .err, text: "Ошибка авторизации в pro.guap")
 					DispatchQueue.main.async {self.textFieldDidChange()}
 				}
 			}
@@ -55,12 +56,24 @@ class SuaiIDViewController: ViewController<SuaiIDView> {
 	}
 	
 	func update() {
+		guard !isTextEdited else {return}
 		let login = SAUserSettings.shared.prologin
 		let pass = SAUserSettings.shared.propass
 		DispatchQueue.main.async {
 			self.rootView.emailTF.text = login
 			self.rootView.passTF.text = pass
 		}
+		
+		if let login = login,
+		   let pass = pass,
+		   ProGuap.shared.auth(login: login, pass: pass) {
+			DispatchQueue.main.async {
+				self.rootView.emailTF.text = login
+				self.rootView.passTF.text = pass
+			}
+			self.isTextEdited = false
+		}
+		
 	}
 	
 }

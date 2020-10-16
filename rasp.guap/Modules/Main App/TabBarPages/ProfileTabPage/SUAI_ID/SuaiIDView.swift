@@ -20,6 +20,9 @@ class SuaiIDView: View {
 	let emailTF: UITextField = {
 		let tf = PocketTextField(frame: .zero)
 		tf.placeholder = "Электронная почта"
+		tf.autocapitalizationType = .none
+		tf.keyboardType = .asciiCapable
+		
 		return tf
 	}()
 	let passTF: UITextField = {
