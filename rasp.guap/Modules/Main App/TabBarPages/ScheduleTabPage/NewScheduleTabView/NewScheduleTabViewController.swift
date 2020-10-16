@@ -181,10 +181,8 @@ extension NewScheduleTabViewController: UITableViewDataSource {
 			
 		}
 		
-		cell.setNeedsUpdateConstraints()
+//		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()
-		cell.setNeedsLayout()
-		cell.layoutIfNeeded()
 		return cell
 	}
 	func generateViewForHeader(isUp: Bool, isEven: Bool) -> UITableViewCell {
