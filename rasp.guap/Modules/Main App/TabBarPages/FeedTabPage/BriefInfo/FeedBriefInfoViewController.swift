@@ -322,7 +322,7 @@ class FeedBriefInfoViewController: UIViewController {
 			stack.addArrangedSubview(tapContainer)
 		}
 		
-		self.rootView.addBlock(title: "Актуальные новости", view: PocketDivView(content: stack) )
+		self.rootView.addBlock(title: "Популярные новости", view: PocketDivView(content: stack) )
 		
 	}
 	private func openPost(url: String) {
