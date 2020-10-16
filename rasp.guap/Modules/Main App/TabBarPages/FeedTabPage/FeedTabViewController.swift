@@ -63,10 +63,10 @@ class FeedTabViewController: ViewController<FeedTabView> {
 		self.rootView.sourceSelector.updateView()
 		if news.sources.count == 0 {
 			reloadSources()
-			self.rootView.sourceSelector.selectedIndex = 0
-			showBrief()
 		} else if news.sources.count != (SANews.shared.sources.count + 1) {
 			showSources()
+			self.rootView.sourceSelector.selectedIndex = 0
+			showBrief()
 		}
 		
     }
