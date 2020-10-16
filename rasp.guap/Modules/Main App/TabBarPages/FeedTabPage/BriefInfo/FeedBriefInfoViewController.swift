@@ -34,8 +34,8 @@ class FeedBriefInfoViewController: UIViewController {
 	}
 	
 	private func openGroupInVKApp() {
-		UIApplication.shared.open(URL(string: "vk://vk.com/teampocket")!, options: [:]) { (success) in
-			if success { self.updatePage() } else { UIApplication.shared.open(URL(string: "https://vk.com/teampocket")!, options: [:]) { (_) in self.updatePage() } }
+		UIApplication.shared.open(URL(string: "vk://vk.com/pocketapp")!, options: [:]) { (success) in
+			if success { self.updatePage() } else { UIApplication.shared.open(URL(string: "https://vk.com/pocketapp")!, options: [:]) { (_) in self.updatePage() } }
 		}
 		
 	}

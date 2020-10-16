@@ -25,8 +25,8 @@ class AboutUsViewController: ViewController<AboutUsView> {
 			}
 		}, for: .touchUpInside)
 		self.rootView.vkButton.addTarget(action: { (_) in
-			UIApplication.shared.open(URL(string: "vk://vk.com/teampocket")!, options: [:]) { (success) in
-				if !success { UIApplication.shared.open(URL(string: "https://vk.com/teampocket")!, options: [:]) }
+			UIApplication.shared.open(URL(string: "vk://vk.com/pocketapp")!, options: [:]) { (success) in
+				if !success { UIApplication.shared.open(URL(string: "https://vk.com/pocketapp")!, options: [:]) }
 			}
 		}, for: .touchUpInside)
 	}
