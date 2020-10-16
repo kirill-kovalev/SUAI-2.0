@@ -129,9 +129,11 @@ class LessonInfoModalView: View {
         groupsSectionTitle.snp.makeConstraints { (make) in
             make.top.equalTo(prepStack.snp.bottom).offset(spacing)
         }
+		groupList.snp.removeConstraints()
         groupList.snp.makeConstraints { (make) in
             make.top.equalTo(groupsSectionTitle.snp.bottom).offset(spacing)
             make.height.greaterThanOrEqualTo(22)
+			make.right.left.equalToSuperview()
         }
         tagsSectionTitle.snp.makeConstraints { (make) in
             make.top.equalTo(groupList.snp.bottom).offset(spacing)

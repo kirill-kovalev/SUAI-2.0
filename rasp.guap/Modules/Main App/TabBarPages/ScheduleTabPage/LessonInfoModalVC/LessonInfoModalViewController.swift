@@ -74,8 +74,13 @@ class LessonInfoModalViewController: ModalViewController<LessonInfoModalView> {
             lessonTag.setTitle(tag, for: .normal)
             self.content.tagStack.addArrangedSubview(lessonTag)
         }
-
+		self.content.groupList.reloadData()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.content.groupList.reloadData()
+	}
     
     func setNewUser(user: SAUsers.User) {
         self.delegate?.didSetUser(user: user)
