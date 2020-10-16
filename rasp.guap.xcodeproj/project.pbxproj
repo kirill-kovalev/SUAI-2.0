@@ -1659,7 +1659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
@@ -1681,7 +1681,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
