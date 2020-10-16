@@ -366,7 +366,15 @@ class FeedBriefInfoViewController: UIViewController {
 		stack.axis = .vertical
 		stack.spacing = 15
 		for element in feed {
-			let tapContainer = PocketScalableContainer(content: self.generateNewsView(from: element, source: element.source.name))
+			let newsView = generateNewsView(from: element, source: element.source.name)
+			newsView.datetimeLabel.snp.removeConstraints()
+			newsView.datetimeLabel.snp.makeConstraints { (make) in
+				make.bottom.equalTo(newsView.imageView)
+				make.left.equalToSuperview()
+			}
+			newsView.likeIcon.removeFromSuperview()
+			newsView.likeLabel.removeFromSuperview()
+			let tapContainer = PocketScalableContainer(content: newsView)
 			if element.postUrl.isEmpty {
 				tapContainer.isUserInteractionEnabled = false
 				tapContainer.isEnabled = false
