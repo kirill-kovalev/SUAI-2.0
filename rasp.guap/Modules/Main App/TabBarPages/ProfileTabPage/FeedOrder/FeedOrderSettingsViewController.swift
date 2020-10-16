@@ -77,13 +77,15 @@ class FeedOrderSettingsViewController: ModalViewController<FeedOrderSettingsView
 		self.content.stack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 		for (index, source) in self.sources.enumerated() {
 			let block = AppSettingsBlock(title: source.name)
-			block.toggle.isOn = (SANews.shared.get(name: source.name) != nil)
+			let sharedSources = SANews.shared.sources.filter { $0 == source }
+			block.toggle.isOn = ( sharedSources.first != nil)
 			block.toggle.tag = index
 			self.selection[index] = block.toggle.isOn
 			block.toggle.addTarget(self, action: #selector(self.toggle(_:)), for: .valueChanged)
 			self.content.stack.addArrangedSubview(block)
 		}
 	}
+	
 	@objc func toggle(_ sender: UISwitch) {
 		self.selection[sender.tag] = sender.isOn
 		var flag = false

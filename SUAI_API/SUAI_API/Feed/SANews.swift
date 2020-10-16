@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct FeedSource:Codable{
+public struct FeedSource:Codable,Equatable{
     public let name:String
     public let id:Int
 }
