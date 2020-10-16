@@ -23,7 +23,7 @@ class RocketModalView: ModalView {
     }()
     let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Пользуйся сервисом и получай рокеты! Лучших ждут стикеры еженедельно!"
+        label.text = "Пользуйся сервисом и получай рокеты! Лучших ждут стикеры ежемесячно!"
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
 		label.numberOfLines = 0
