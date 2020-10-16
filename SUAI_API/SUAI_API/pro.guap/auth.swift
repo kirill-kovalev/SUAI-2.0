@@ -27,7 +27,7 @@ public extension ProGuap{
 					if let resp = resp,
 					   let cookie = (resp.allHeaderFields["Set-Cookie"] as? String)?.split(separator: ";").first{
 						self.AUTH_COOKIE = String(cookie)
-						UserDefaults(suiteName: "pro_guap")?.setValue(self.AUTH_COOKIE, forKey: "phpCookie")
+						UserDefaults.standard.setValue(self.AUTH_COOKIE, forKey: "ProGuapPhpCookie")
 						success = true
 					}
 					semaphore.signal()
