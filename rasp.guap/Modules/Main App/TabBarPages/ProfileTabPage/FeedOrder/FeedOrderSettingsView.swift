@@ -17,6 +17,11 @@ class FeedOrderSettingsView: View {
 		stack.spacing = 8
 		return stack
 	}()
+	let scroll: UIScrollView = {
+		let scroll = UIScrollView(frame: .zero)
+		
+		return scroll
+	}()
 	lazy var stackContainer = PocketDivView(content: stack)
 	let submitButton: PocketLongActionButton = {
 		let btn = PocketLongActionButton(frame: .zero)
@@ -35,21 +40,29 @@ class FeedOrderSettingsView: View {
 		activityIndicator.startAnimating()
 	}
 	func addViews() {
-		self.addSubview(headerBlock)
-		self.addSubview(stackContainer)
+		self.addSubview(scroll)
+		scroll.addSubview(headerBlock)
+		scroll.addSubview(stackContainer)
 		self.addSubview(submitButton)
 		stack.addArrangedSubview(activityIndicator)
 	}
 	func setupConstraints() {
+		scroll.snp.makeConstraints { (make) in
+			make.top.equalToSuperview().offset(-12)
+			make.left.right.equalToSuperview()
+			make.height.greaterThanOrEqualTo(scroll.contentLayoutGuide).priority(.medium)
+		}
 		headerBlock.snp.makeConstraints { (make) in
-			make.top.left.right.equalToSuperview()
+			make.top.equalTo(scroll.contentLayoutGuide).offset(12)
+			make.left.right.equalTo(scroll.frameLayoutGuide)
 		}
 		stackContainer.snp.makeConstraints { (make) in
 			make.top.equalTo(headerBlock.snp.bottom).offset(12)
-			make.left.right.equalToSuperview()
+			make.bottom.equalTo(scroll.contentLayoutGuide).inset(12)
+			make.left.right.equalTo(scroll.frameLayoutGuide)
 		}
 		submitButton.snp.makeConstraints { (make) in
-			make.top.equalTo(stackContainer.snp.bottom).offset(12)
+			make.top.equalTo(scroll.snp.bottom).offset(12)
 			make.left.right.equalToSuperview()
 			make.height.equalTo(45)
 			make.bottom.equalToSuperview()
