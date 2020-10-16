@@ -91,6 +91,7 @@ class PocketCard: UIView {
 		self.userLabel.snp.makeConstraints { (make) in
 			make.left.equalToSuperview().offset(12)
 			make.centerY.equalTo(profileImage)
+			make.right.lessThanOrEqualTo(image.snp.left).inset(10)
 		}
 	}
 
