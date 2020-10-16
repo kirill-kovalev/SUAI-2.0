@@ -55,7 +55,8 @@ public class SADeadlines{
 				self.deadlines = try self.decodeDeadlines(data: data )
 				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
-				UserDefaults.standard.set(data, forKey: self.userDefaultsKey)
+				let encoded = try? self.encodeDeadlines(deadlines: self.deadlines)
+				UserDefaults.standard.set(encoded ?? data, forKey: self.userDefaultsKey)
 				return true
 			}catch{
 				print("Deadlines: \(error)")
@@ -109,6 +110,12 @@ public class SADeadlines{
 		
 		decoder.dateDecodingStrategy = .formatted(SADeadline.formatter)
 		return try decoder.decode([SADeadline].self, from: data)
+	}
+	
+	private func encodeDeadlines(deadlines:[SADeadline]) throws  -> Data {
+		let encoder = JSONEncoder()
+		encoder.dateEncodingStrategy = .formatted(SADeadline.formatter)
+		return try encoder.encode(deadlines)
 	}
 	
 	func index(deadline: SADeadline)->Int?{
