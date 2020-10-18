@@ -208,15 +208,6 @@
 		5D0BBA0424FDA318000D8CBB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5D0BBA0624FEC079000D8CBB /* FeedBriefViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefViews.swift; sourceTree = "<group>"; };
 		5D0E336224E018FD00B45143 /* PocketDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketDayView.swift; sourceTree = "<group>"; };
-		5D238B10250D1ECD0042800F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		5D238B12250D1ECE0042800F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5D238B14250D1ECE0042800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D238B1E250D1ECE0042800F /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		5D238B20250D1ECE0042800F /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		5D238B22250D1ECE0042800F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5D238B24250D1ECE0042800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D238B30250D1F540042800F /* ScheduleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDetailController.swift; sourceTree = "<group>"; };
-		5D238B31250D1F540042800F /* TableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRowController.swift; sourceTree = "<group>"; };
 		5D2640E724E41A4F001A97A2 /* LessonInfoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalViewController.swift; sourceTree = "<group>"; };
 		5D2640E924E41A58001A97A2 /* LessonInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoModalView.swift; sourceTree = "<group>"; };
 		5D27457C24FFB36D00F52D7A /* PocketBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketBannerView.swift; sourceTree = "<group>"; };
@@ -436,29 +427,6 @@
 				5DCE2FE924E0282700CFF29A /* PocketDayView.xib */,
 			);
 			path = PocketDay;
-			sourceTree = "<group>";
-		};
-		5D238B0E250D1ECD0042800F /* PocketWatch */ = {
-			isa = PBXGroup;
-			children = (
-				5D238B0F250D1ECD0042800F /* Interface.storyboard */,
-				5D238B12250D1ECE0042800F /* Assets.xcassets */,
-				5D238B14250D1ECE0042800F /* Info.plist */,
-			);
-			path = PocketWatch;
-			sourceTree = "<group>";
-		};
-		5D238B1D250D1ECE0042800F /* PocketWatch Extension */ = {
-			isa = PBXGroup;
-			children = (
-				5D238B30250D1F540042800F /* ScheduleDetailController.swift */,
-				5D238B31250D1F540042800F /* TableRowController.swift */,
-				5D238B1E250D1ECE0042800F /* InterfaceController.swift */,
-				5D238B20250D1ECE0042800F /* ExtensionDelegate.swift */,
-				5D238B22250D1ECE0042800F /* Assets.xcassets */,
-				5D238B24250D1ECE0042800F /* Info.plist */,
-			);
-			path = "PocketWatch Extension";
 			sourceTree = "<group>";
 		};
 		5D2640E624E41A29001A97A2 /* LessonInfoModalVC */ = {
@@ -719,8 +687,6 @@
 		5D95A61324D412AB000418B5 = {
 			isa = PBXGroup;
 			children = (
-				5D238B0E250D1ECD0042800F /* PocketWatch */,
-				5D238B1D250D1ECE0042800F /* PocketWatch Extension */,
 				5D95A61E24D412AB000418B5 /* rasp.guap */,
 				5D95A61D24D412AB000418B5 /* Products */,
 				A235ABA9F81984ED9F89B1AE /* Pods */,
@@ -1512,14 +1478,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5D238B0F250D1ECD0042800F /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5D238B10250D1ECD0042800F /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		5D95A63824D412AC000418B5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
