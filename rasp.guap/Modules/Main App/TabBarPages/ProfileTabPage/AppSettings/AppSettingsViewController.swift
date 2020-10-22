@@ -15,6 +15,8 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		self.rootView.deadlineNotifications.toggle.addTarget(self, action: #selector(self.setupDeadlineNotifications), for: .valueChanged)
 		self.rootView.timetableNotifications.toggle.addTarget(self, action: #selector(self.setupTimetableNotifications), for: .valueChanged)
 		self.rootView.oldTimetable.toggle.addTarget(self, action: #selector(self.setOldTimetable), for: .valueChanged)
+		self.rootView.fastLoading.toggle.addTarget(self, action: #selector(self.setFastLoading), for: .valueChanged)
+		
 		self.rootView.clearCacheBtn.addTarget(action: { (_) in
 			let alert = UIAlertController(title: "Сброс кэша", message: "Приложение будет закрыто", preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Продолжить", style: .destructive, handler: { (_) in
@@ -34,7 +36,17 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 		self.rootView.timetableNotifications.toggle.isOn = AppSettings.isTimetableNotificationsEnabled
 		self.rootView.deadlineNotifications.toggle.isOn = AppSettings.isDeadlineNotificationsEnabled
 		self.rootView.oldTimetable.toggle.isOn = AppSettings.isOldTimetableEnabled
+		self.rootView.fastLoading.toggle.isOn = AppSettings.isFastLoadingEnabled
+	}
+	
+	@objc private func setFastLoading() {
+		let alert = UIAlertController(title: "Включить?", message: "Быстрая загрузка может привести к неактуальности данных, используйте эту функцию с осторожностью!", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in alert.dismiss(animated: true, completion: nil) }))
+		alert.addAction(UIAlertAction(title: "Включить", style: .default, handler: { (_) in
+			AppSettings.isFastLoadingEnabled = self.rootView.deadlineNotifications.toggle.isOn
+		}))
 		
+		self.present(alert, animated: true, completion: nil)
 	}
 	
 	@objc private func setupDeadlineNotifications() {

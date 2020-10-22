@@ -64,6 +64,20 @@ struct AppSettings {
 		}
 	}
 	
+	static var isFastLoadingEnabled: Bool {
+		get {
+			UserDefaults.standard.synchronize()
+			let get = UserDefaults.standard.bool(forKey: "isFastLoadingEnabled")
+			Logger.print(from: #function, "isFastLoadingEnabled get \(get)")
+			return get
+		}
+		set {
+			UserDefaults.standard.synchronize()
+			UserDefaults.standard.set(newValue, forKey: "isFastLoadingEnabled")
+			Logger.print(from: #function, "isFastLoadingEnabled set \(newValue)")
+		}
+	}
+	
 	static func clearCache() {
 		NotificationManager.shared.clear()
 		for (key, _) in UserDefaults.standard.dictionaryRepresentation() {

@@ -45,20 +45,36 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 			self.showSnack(status: .err, text: "ДАНЯ! Что со временем ответов сервера!")
 		}
 		
-		self.setText("Загружаю настройки")
+		self.setText("Обновляю данные")
+		
 		let settings = SAUserSettings.shared
-		if !settings.reload() {
+		
+		if !AppSettings.isFastLoadingEnabled,
+		   self.setText("Загружаю настройки") == Void(),
+		   !settings.reload()
+		{
 			DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить настройки")}
-		  }
+		}
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
 			self.setText("Синхронизирую недели")
 			SASchedule.shared.reloadSettings()
-			self.setText("Загружаю список групп")
-			SASchedule.shared.groups.loadFromServer()
-			self.setText("Загружаю список преподавателей")
-			SASchedule.shared.preps.loadFromServer()
+			
+			if AppSettings.isFastLoadingEnabled {
+				self.setText("Загружаю список групп")
+				SASchedule.shared.groups.loadFromServer()
+				self.setText("Загружаю список преподавателей")
+				SASchedule.shared.preps.loadFromServer()
+			} else {
+				self.setText("Загружаю список групп")
+				SASchedule.shared.groups.loadFromCache()
+				if SASchedule.shared.groups.count == 0 { SASchedule.shared.groups.loadFromServer() }
+				self.setText("Загружаю список преподавателей")
+				SASchedule.shared.preps.loadFromCache()
+				if SASchedule.shared.preps.count == 0 { SASchedule.shared.preps.loadFromServer() }
+			}
+			
 			self.setText("Ищу твою группу")
 			if let user = SASchedule.shared.groups.get(name: group ) {
 				let timetable = SASchedule.shared.get(for: user)
@@ -91,10 +107,18 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 			}
 			
 			self.setText("Загружаю новости")
-			if !SABrief.shared.loadFromServer() {
+			
+			if !AppSettings.isFastLoadingEnabled,
+			   !SABrief.shared.loadFromServer() {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить сводку")}
 			}
-			_ = SANews.shared.loadSourceList()
+			
+			if !AppSettings.isFastLoadingEnabled,
+			   !SANews.shared.loadSourceList(){
+				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить источники новостей")}
+			}
+			
+			self.setText("Запускаю приложение")
 			self.startApp()
 		} else {
 			self.setText("Загружаю список групп")
@@ -178,6 +202,7 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 			self.present(vc, animated: true, completion: nil)
 		}
 	}
+	
 	func startApp() {
 		DispatchQueue.main.async {
 			let vc = MainTabBarController()

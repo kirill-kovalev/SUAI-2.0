@@ -31,7 +31,7 @@ public class SAUserSettings: Codable {
 	public var vkLastName:String?
 	public var vkPhoto:String?
     
-	public static var shared = fromServer() ?? fromCache() ?? SAUserSettings();
+	public static var shared = fromCache() ?? SAUserSettings();
     
 	private init(){
 		self.idtab = 1
