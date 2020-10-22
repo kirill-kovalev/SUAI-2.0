@@ -245,6 +245,7 @@
 		5D74FE2324E0993700FC38B8 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		5D74FE2824E13E5B00FC38B8 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		5D74FE2A24E13FBF00FC38B8 /* TimetableLessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableLessonCell.swift; sourceTree = "<group>"; };
+		5D77A6922541EF4300606CC2 /* SUAI Pocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SUAI Pocket.entitlements"; sourceTree = "<group>"; };
 		5D7D667224F3E34600F39D59 /* keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboard.swift; sourceTree = "<group>"; };
 		5D7D667524F4068D00F39D59 /* DeadlineEditModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEditModal.swift; sourceTree = "<group>"; };
 		5D7D667724F4070600F39D59 /* DeadlineEditableModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEditableModalViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -705,6 +706,7 @@
 		5D95A61E24D412AB000418B5 /* rasp.guap */ = {
 			isa = PBXGroup;
 			children = (
+				5D77A6922541EF4300606CC2 /* SUAI Pocket.entitlements */,
 				5D602AA1252A0C4200ACE315 /* Icons */,
 				5D95A63624D412AC000418B5 /* Assets.xcassets */,
 				5D0BBA0324FDA2F7000D8CBB /* Utils */,
@@ -1608,6 +1610,7 @@
 			baseConfigurationReference = 71877CC64B93F636D05D788C /* Pods-rasp.guap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
+				CODE_SIGN_ENTITLEMENTS = "rasp.guap/SUAI Pocket.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FCXJCDV375;
@@ -1617,7 +1620,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
@@ -1630,6 +1633,7 @@
 			baseConfigurationReference = 6D74A57EA11B09DCA279D291 /* Pods-rasp.guap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconLight;
+				CODE_SIGN_ENTITLEMENTS = "rasp.guap/SUAI Pocket.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FCXJCDV375;
@@ -1639,7 +1643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kovalev.guapp;
 				PRODUCT_NAME = "SUAI Pocket";
 				SWIFT_VERSION = 5.0;
