@@ -56,7 +56,7 @@ class GroupSelectPageView: TutorialPageView {
     
     private func setupUI() {
         self.title.text = "Начнем?"
-        self.text.text = "Выбери свою группу и нажми “Продолжить”"
+        self.text.text = "Выбери свою группу и нажми “Продолжить”"
     }
     
     required init?(coder: NSCoder) {
