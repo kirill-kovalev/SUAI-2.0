@@ -20,7 +20,7 @@ class UserCardModalView: UIView {
     }()
     let subtitle: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "SUAI ID позволяет собирать в SUAI Pocket информацию из других сервисов, первым из которых стал pro.guap, расширяя имеющуюся функциональность"
+        label.text = "SUAI ID позволяет собирать информацию из других сервисов, первым из которых стал pro.guap, и расширять имеющуюся функциональность."
         label.font = FontFamily.SFProDisplay.semibold.font(size: 14)
         label.textColor = Asset.PocketColors.pocketGray.color
 		label.numberOfLines = 0
