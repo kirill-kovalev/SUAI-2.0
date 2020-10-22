@@ -52,7 +52,7 @@ public class SADeadlines{
 			self.sync -= 1
 			
 			do {
-				self.deadlines = try self.decodeDeadlines(data: data )
+				self.deadlines = try self.decodeDeadlines(data: data ).reversed()
 				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
 				let encoded = try? self.encodeDeadlines(deadlines: self.deadlines)
