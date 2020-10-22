@@ -178,7 +178,7 @@ class FeedBriefInfoViewController: UIViewController {
 																			image: self.getWeatherImage(id: icon).0,
 																			color: self.getWeatherImage(id: icon).1)))
 		
-		let rocketsView = BriefHalfScreenView(title: "\(rockets)", subtitle: "рокетов за неделю", image: Asset.AppImages.rocket.image)
+		let rocketsView = BriefHalfScreenView(title: "\(rockets)", subtitle: "рокетов за месяц", image: Asset.AppImages.rocket.image)
 		let container = PocketScalableContainer(content: PocketDivView(content: rocketsView))
 		container.addTarget(action: { _ in
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.present(RocketModalViewController(), animated: true, completion: nil) })
