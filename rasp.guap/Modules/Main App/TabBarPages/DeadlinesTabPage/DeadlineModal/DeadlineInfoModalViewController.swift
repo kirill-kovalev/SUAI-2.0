@@ -161,7 +161,7 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
         }
 		
 		if self.deadline.isPro {
-			DispatchQueue.global().async { self.addDownloadButton() }
+			self.addDownloadButton()
 		} else {
 			self.content.addArrangedSubview(self.content.buttonContainer)
 		}
@@ -169,20 +169,28 @@ class DeadlineInfoModalViewController: ModalViewController<DeadlineInfoModalView
     }
 	func addDownloadButton() {
 		//swiftlint:disable opening_brace
-		if  let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
-			let detailed = ProGuap.shared.getDetailedTask(id: self.deadline.id),
-			let filename = detailed.filename,
-			let link = detailed.link
-		{
-			DispatchQueue.main.async {
-				let fileURL = documentsFolder.appendingPathComponent(filename)
-				self.content.addArrangedSubview(self.content.sectionLabelGenerator("Прикрпеленный файл"))
+		let indicator = PocketActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 70))
+		self.content.addArrangedSubview(indicator)
+		indicator.startAnimating()
+		DispatchQueue.global().async {
+			if  let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+				let detailed = ProGuap.shared.getDetailedTask(id: self.deadline.id),
+				let filename = detailed.filename,
+				let link = detailed.link
+			{
+				DispatchQueue.main.async {
+					let fileURL = documentsFolder.appendingPathComponent(filename)
+					self.content.addArrangedSubview(self.content.sectionLabelGenerator("Прикрпеленный файл"))
 
-				self.content.downloadButton.setTitle(filename, for: .normal)
-				self.setupDownloadButton(fileURL)
-				self.content.addArrangedSubview(self.content.downloadButton)
-				
-				self.setupDownloadButtonAction(fileURL: fileURL, downloadURL: link)
+					self.content.downloadButton.setTitle(filename, for: .normal)
+					self.setupDownloadButton(fileURL)
+					self.content.addArrangedSubview(self.content.downloadButton)
+					
+					self.setupDownloadButtonAction(fileURL: fileURL, downloadURL: link)
+					indicator.removeFromSuperview()
+				}
+			} else {
+				DispatchQueue.main.async { indicator.removeFromSuperview() }
 			}
 		}
 	}
