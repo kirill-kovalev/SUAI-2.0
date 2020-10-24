@@ -19,22 +19,28 @@ public class SADeadlines{
 		}
 	}
 	public var open:[SADeadline]{
-		return self.deadlines.filter { (d) -> Bool in
+		return self.all.filter { (d) -> Bool in
 			return d.type != .closed && d.type != .pro
 		}
 	}
 	public var closed:[SADeadline]{
-		return self.deadlines.filter { (d) -> Bool in
+		return self.all.filter { (d) -> Bool in
 			return d.type == .closed
 		}
 	}
 	public var pro:[SADeadline]{
-		return self.deadlines.filter { (d) -> Bool in
+		return self.all.filter { (d) -> Bool in
 			return d.isPro
 		}
 	}
 	public var all:[SADeadline]{
-		return self.deadlines
+		return self.deadlines.sorted(by: {
+			if let date1 = $0.end,
+			   let date2 = $1.end{
+				return date1 < date2
+			}
+			return false
+		})
 	}
 	
 	private var deadlines = [SADeadline]()
@@ -52,7 +58,7 @@ public class SADeadlines{
 			self.sync -= 1
 			
 			do {
-				self.deadlines = try self.decodeDeadlines(data: data ).reversed()
+				self.deadlines = try self.decodeDeadlines(data: data )
 				if SAUserSettings.shared.proSupport,self.pro.isEmpty { self.loadPro() } // Если у Дани сломаются дедлайны, тянем сразу из гуапа
 				self.lastUpdate = Date()
 				let encoded = try? self.encodeDeadlines(deadlines: self.deadlines)
@@ -81,8 +87,14 @@ public class SADeadlines{
 				
 				deadline.status_name = task.status_name
 				deadline.type_name = task.type_name
-				deadline.markpoint = task.markpoint
 				deadline.is_our = 0
+				
+				if let points = task.curPoints{
+					deadline.markpoint = points + " из " + task.markpoint
+				}else{
+					deadline.markpoint = "Максимальный: " + task.markpoint
+				}
+				
 				
 				
 				return deadline
