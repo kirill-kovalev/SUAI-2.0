@@ -12,16 +12,25 @@ public struct ScheduleSettings:Codable {
     let Years: String
     let IsAutumn: Bool
     let Update: String
-    let CurrentWeek: Int
-    let IsWeekOdd: Bool
-    let IsWeekUp: Bool
-    let IsWeekRed: Bool
+    var CurrentWeek: Int
+    var IsWeekOdd: Bool
     
     public var week:SATimetable.Week{
         return IsWeekOdd ? .odd : .even
     }
 	public var weekNum:Int { self.CurrentWeek }
     
+	public mutating func calculateWeek(){
+		let curWeek = Calendar.current.component(.weekOfYear, from: Date())
+		
+		let year = Calendar.current.component(.year, from: Date())
+		let firstOfSeptember = Calendar.current.date(from: DateComponents(year: year, month: 09, day: 1)) ?? Date()
+		let firstOfSeptemberWeek = Calendar.current.component(.weekOfYear, from: firstOfSeptember)
+		let week = abs(curWeek - firstOfSeptemberWeek) + 1
+		
+		self.CurrentWeek = week
+		self.IsWeekOdd = week % 2 != 0
+	}
     
     
     public static func load() -> ScheduleSettings?{

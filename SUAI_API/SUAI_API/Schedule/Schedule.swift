@@ -27,6 +27,8 @@ public class SASchedule{
 	public func reloadSettings(){
 		if let settings = ScheduleSettings.load(){
 			self.settings =  settings
+		}else{
+			self.settings?.calculateWeek()
 		}
 	}
 	public func loadFromCache(){
