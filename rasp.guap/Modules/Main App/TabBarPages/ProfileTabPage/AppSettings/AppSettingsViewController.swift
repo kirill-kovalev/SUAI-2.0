@@ -46,7 +46,11 @@ class AppSettingsViewController: ViewController<AppSettingsView> {
 			AppSettings.isFastLoadingEnabled = self.rootView.deadlineNotifications.toggle.isOn
 		}))
 		
-		self.present(alert, animated: true, completion: nil)
+		if !AppSettings.isFastLoadingEnabled{
+			self.present(alert, animated: true, completion: nil)
+		}else{
+			AppSettings.isFastLoadingEnabled = self.rootView.deadlineNotifications.toggle.isOn
+		}
 	}
 	
 	@objc private func setupDeadlineNotifications() {
