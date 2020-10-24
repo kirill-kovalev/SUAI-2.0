@@ -58,10 +58,19 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 		if let group = settings.group {
 			self.setText("Загружаю расписание")
 			SASchedule.shared.loadFromCache()
-			self.setText("Синхронизирую недели")
-			SASchedule.shared.reloadSettings()
 			
-			if AppSettings.isFastLoadingEnabled {
+			if !AppSettings.isFastLoadingEnabled {
+				self.setText("Синхронизирую недели")
+				SASchedule.shared.reloadSettings()
+			} else {
+				DispatchQueue.global(qos: .utility).async {
+					SASchedule.shared.reloadSettings()
+				}
+				SASchedule.shared.settings?.calculateWeek()
+								
+			}
+			
+			if !AppSettings.isFastLoadingEnabled {
 				self.setText("Загружаю список групп")
 				SASchedule.shared.groups.loadFromServer()
 				self.setText("Загружаю список преподавателей")
@@ -114,7 +123,7 @@ class DataLoaderViewController: ViewController<DataLoaderView> {
 			}
 			
 			if !AppSettings.isFastLoadingEnabled,
-			   !SANews.shared.loadSourceList(){
+			   !SANews.shared.loadSourceList() {
 				DispatchQueue.main.async {self.showSnack(status: .err, text: "Не удалось загрузить источники новостей")}
 			}
 			
